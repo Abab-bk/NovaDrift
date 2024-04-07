@@ -1,20 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1hvfrsat441r"]
+[gd_scene load_steps=3 format=3 uid="uid://b1hvfrsat441r"]
 
 [ext_resource type="PackedScene" uid="uid://b1vmhmtmuma0x" path="res://Scenes/Prefabs/Actors/ActorBase.tscn" id="1_0c8c2"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Player.cs" id="2_15kon"]
-[ext_resource type="Script" path="res://addons/statechart_sharp/node/Statechart.cs" id="2_tm5ju"]
-[ext_resource type="Script" path="res://addons/statechart_sharp/node/State.cs" id="3_vrm5n"]
 
 [node name="Player" instance=ExtResource("1_0c8c2")]
 script = ExtResource("2_15kon")
-
-[node name="Statechart" type="Node" parent="StateChart" index="0"]
-script = ExtResource("2_tm5ju")
-
-[node name="RootState" type="Node" parent="StateChart/Statechart" index="0"]
-script = ExtResource("3_vrm5n")
-
-[node name="Idle" type="Node" parent="StateChart/Statechart/RootState" index="0"]
-script = ExtResource("3_vrm5n")
 
 [node name="Camera2D" type="Camera2D" parent="." index="3"]

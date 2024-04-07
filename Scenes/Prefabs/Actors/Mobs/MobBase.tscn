@@ -1,0 +1,33 @@
+[gd_scene load_steps=7 format=3 uid="uid://dunej3cac37vn"]
+
+[ext_resource type="PackedScene" uid="uid://b1vmhmtmuma0x" path="res://Scenes/Prefabs/Actors/ActorBase.tscn" id="1_kd23v"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Mobs/MobBase.cs" id="2_e2oe2"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/MobAiComponent.cs" id="3_d6jih"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/state_chart.gd" id="4_474go"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/atomic_state.gd" id="5_s8atf"]
+[ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="5_v1esm"]
+
+[node name="MobBase" instance=ExtResource("1_kd23v")]
+script = ExtResource("2_e2oe2")
+
+[node name="MobAiComponent" type="Node" parent="State" index="0"]
+script = ExtResource("3_d6jih")
+
+[node name="MobBaseAi" type="Node" parent="State" index="1"]
+script = ExtResource("4_474go")
+
+[node name="Root" type="Node" parent="State/MobBaseAi" index="0"]
+script = ExtResource("5_v1esm")
+initial_state = NodePath("Idle")
+
+[node name="Idle" type="Node" parent="State/MobBaseAi/Root" index="0"]
+unique_name_in_owner = true
+script = ExtResource("5_s8atf")
+
+[node name="Running" type="Node" parent="State/MobBaseAi/Root" index="1"]
+unique_name_in_owner = true
+script = ExtResource("5_s8atf")
+
+[node name="Dead" type="Node" parent="State/MobBaseAi/Root" index="2"]
+unique_name_in_owner = true
+script = ExtResource("5_s8atf")

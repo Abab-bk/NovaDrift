@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://d25jyaf2cexon"]
+[gd_scene load_steps=4 format=3 uid="uid://d25jyaf2cexon"]
 
 [ext_resource type="PackedScene" uid="uid://b1hvfrsat441r" path="res://Scenes/Prefabs/Actors/Player.tscn" id="1_7ul45"]
 [ext_resource type="Texture2D" uid="uid://c5oierqc18mer" path="res://icon.svg" id="2_sgvmq"]
+[ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="3_2nedp"]
 
 [node name="World" type="Node2D"]
 
@@ -16,3 +17,6 @@ texture = ExtResource("2_sgvmq")
 
 [node name="Player" parent="." instance=ExtResource("1_7ul45")]
 position = Vector2(590, 436)
+
+[node name="MobBase" parent="." instance=ExtResource("3_2nedp")]
+position = Vector2(765, 135)

@@ -10,6 +10,6 @@ public partial class Actor : CharacterBody2D, ICanSendCommand
 {
     public IArchitecture GetArchitecture()
     {
-        return ActorArchitecture.Interface;
+        return PlayerArchitecture.Interface;
     }
 }

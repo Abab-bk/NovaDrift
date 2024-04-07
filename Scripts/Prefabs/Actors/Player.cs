@@ -7,7 +7,7 @@ public partial class Player : Actor
 {
     public override void _Ready()
     {
-        Earth.Player = this;
+        Global.Player = this;
     }
 
     public override void _PhysicsProcess(double delta)
