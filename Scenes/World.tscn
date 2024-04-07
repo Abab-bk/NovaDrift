@@ -1,3 +1,18 @@
-[gd_scene format=3 uid="uid://d25jyaf2cexon"]
+[gd_scene load_steps=3 format=3 uid="uid://d25jyaf2cexon"]
+
+[ext_resource type="PackedScene" uid="uid://b1hvfrsat441r" path="res://Scenes/Prefabs/Actors/Player.tscn" id="1_7ul45"]
+[ext_resource type="Texture2D" uid="uid://c5oierqc18mer" path="res://icon.svg" id="2_sgvmq"]
 
 [node name="World" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -1
+
+[node name="Icon" type="Sprite2D" parent="."]
+modulate = Color(1, 0.372549, 1, 0.509804)
+position = Vector2(1275, 505)
+scale = Vector2(6.99, 6.99)
+texture = ExtResource("2_sgvmq")
+
+[node name="Player" parent="." instance=ExtResource("1_7ul45")]
+position = Vector2(590, 436)

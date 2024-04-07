@@ -12,5 +12,6 @@ public class ActorModel : AbstractModel
     protected override void OnInit()
     {
         CharacterStats = new CharacterStats();
+        Actor = Earth.Player;
     }
 }

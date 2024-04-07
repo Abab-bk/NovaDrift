@@ -11,7 +11,7 @@ public class ActorMoveCommand : AbstractCommand
         Vector2 mousePos = model.Actor.GetGlobalMousePosition();
         model.Actor.Rotation = mousePos.AngleToPoint(model.Actor.Position);
 
-        if (Input.IsActionJustPressed("Click"))
+        if (Input.IsActionPressed("Click"))
         {
             model.Actor.Velocity = model.Actor.GlobalPosition.DirectionTo(mousePos) * model.CharacterStats.Speed.Value;
         }
