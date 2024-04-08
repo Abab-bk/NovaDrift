@@ -5,4 +5,6 @@ namespace NovaDrift.Scripts;
 public class Global
 {
     public static Player Player;
+    
+    public static GameWorld GameWorld;
 }

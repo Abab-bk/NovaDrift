@@ -1,0 +1,11 @@
+[gd_scene load_steps=2 format=3 uid="uid://dopw3ixphjmh7"]
+
+[ext_resource type="Script" path="res://Scripts/Prefabs/BulletBase.cs" id="1_l73w7"]
+
+[node name="BulletBase" type="CharacterBody2D"]
+script = ExtResource("1_l73w7")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="."]
+polygon = PackedVector2Array(25, -9, 21, 11, -29, 0)

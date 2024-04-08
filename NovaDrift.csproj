@@ -7,6 +7,5 @@
   </PropertyGroup>
   <ItemGroup>
     <Folder Include="Scripts\Prefabs\Components\" />
-    <Folder Include="Scripts\Systems\" />
   </ItemGroup>
 </Project>

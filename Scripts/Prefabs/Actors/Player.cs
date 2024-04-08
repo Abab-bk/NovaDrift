@@ -19,5 +19,19 @@ public partial class Player : Actor
             Velocity = GlobalPosition.DirectionTo(mousePos) * CharacterStats.Speed.Value;
             MoveAndSlide();
         }
+
+        if (Input.IsActionPressed("RClick"))
+        {
+            if (ShootCd > 0)
+            {
+                Shoot(GlobalPosition.DirectionTo(mousePos));
+                ShootCd -= 1;
+            }
+            else
+            {
+                ShootCd += 0.1f;
+            }
+
+        }
     }
 }
