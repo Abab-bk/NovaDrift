@@ -1,5 +1,4 @@
 using Godot;
-using NovaDrift.Scripts.Frameworks.Commands;
 
 namespace NovaDrift.Scripts.Prefabs.Actors;
 
@@ -12,9 +11,13 @@ public partial class Player : Actor
 
     public override void _PhysicsProcess(double delta)
     {
+        Vector2 mousePos = GetGlobalMousePosition();
+        LookAt(mousePos);
+        
         if (Input.IsActionPressed("Click"))
         {
-            this.SendCommand(new ActorMoveCommand());
+            Velocity = GlobalPosition.DirectionTo(mousePos) * CharacterStats.Speed.Value;
+            MoveAndSlide();
         }
     }
 }

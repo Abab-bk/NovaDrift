@@ -1,19 +1,55 @@
-[gd_scene load_steps=4 format=3 uid="uid://d25jyaf2cexon"]
+[gd_scene load_steps=7 format=3 uid="uid://d25jyaf2cexon"]
 
 [ext_resource type="PackedScene" uid="uid://b1hvfrsat441r" path="res://Scenes/Prefabs/Actors/Player.tscn" id="1_7ul45"]
-[ext_resource type="Texture2D" uid="uid://c5oierqc18mer" path="res://icon.svg" id="2_sgvmq"]
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="3_2nedp"]
+[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="4_n08b4"]
+[ext_resource type="Texture2D" uid="uid://ctudq8y6j2stj" path="res://Assets/Textures/Backgrounds/BgStarsFar0.png" id="5_bai74"]
+[ext_resource type="Texture2D" uid="uid://7pq0nmp8afbk" path="res://Assets/Textures/Backgrounds/BgStarsMid0.png" id="6_tq1jc"]
+[ext_resource type="Texture2D" uid="uid://5kiq2ad0158h" path="res://Assets/Textures/Backgrounds/BgStarsNear0.png" id="7_s8o5w"]
 
 [node name="World" type="Node2D"]
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+scroll_offset = Vector2(1280, 720)
+
+[node name="Far" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(1.1, 1)
+motion_mirroring = Vector2(2048, 2048)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Far"]
+texture = ExtResource("5_bai74")
+centered = false
+
+[node name="Mid" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(1.3, 1)
+motion_mirroring = Vector2(2048, 2048)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Mid"]
+texture = ExtResource("6_tq1jc")
+centered = false
+
+[node name="Near" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(1.5, 1)
+motion_mirroring = Vector2(2048, 2048)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Near"]
+texture = ExtResource("7_s8o5w")
+centered = false
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -1
 
-[node name="Icon" type="Sprite2D" parent="."]
-modulate = Color(1, 0.372549, 1, 0.509804)
-position = Vector2(1275, 505)
-scale = Vector2(6.99, 6.99)
-texture = ExtResource("2_sgvmq")
+[node name="CanvasLayer2" type="CanvasLayer" parent="."]
+
+[node name="StateChartDebugger" parent="CanvasLayer2" instance=ExtResource("4_n08b4")]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+offset_left = -622.0
+offset_top = -337.0
+grow_horizontal = 0
+grow_vertical = 0
+initial_node_to_watch = NodePath("../../MobBase")
 
 [node name="Player" parent="." instance=ExtResource("1_7ul45")]
 position = Vector2(590, 436)

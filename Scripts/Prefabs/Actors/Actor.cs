@@ -1,15 +1,10 @@
 using Godot;
-using System;
-using NovaDrift.Scripts.Frameworks.Architectures;
-using NovaDrift.Scripts.Frameworks.Commands;
+using NovaDrift.Scripts.Frameworks.Stats;
 
 namespace NovaDrift.Scripts.Prefabs.Actors;
 
 [GlobalClass]
-public partial class Actor : CharacterBody2D, ICanSendCommand
+public partial class Actor : CharacterBody2D
 {
-    public IArchitecture GetArchitecture()
-    {
-        return PlayerArchitecture.Interface;
-    }
+    public CharacterStats CharacterStats = new CharacterStats();
 }

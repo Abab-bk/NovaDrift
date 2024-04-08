@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b1vmhmtmuma0x"]
 
-[ext_resource type="Texture2D" uid="uid://c5oierqc18mer" path="res://icon.svg" id="1_6g3ie"]
+[ext_resource type="Texture2D" uid="uid://br5b76vniv46c" path="res://Assets/Textures/Objects/Actors/Players/Player.png" id="1_8futd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j2ixq"]
 size = Vector2(124, 124)
@@ -8,7 +8,7 @@ size = Vector2(124, 124)
 [node name="ActorBase" type="CharacterBody2D"]
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_6g3ie")
+texture = ExtResource("1_8futd")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_j2ixq")
