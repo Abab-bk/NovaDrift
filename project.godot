@@ -49,6 +49,15 @@ RClick={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_1="Player"
+2d_physics/layer_2="Mob"
+2d_physics/layer_3="PlayerHitBox"
+2d_physics/layer_4="PlayerHurtBox"
+2d_physics/layer_5="MobHitBox"
+2d_physics/layer_6="MobHurtBox"
+
 [rendering]
 
 renderer/rendering_method="mobile"

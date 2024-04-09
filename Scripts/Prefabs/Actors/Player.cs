@@ -6,7 +6,13 @@ public partial class Player : Actor
 {
     public override void _Ready()
     {
+        base._Ready();
         Global.Player = this;
+    }
+
+    protected override void InitStats()
+    {
+        Stats.Speed.BaseValue = 300f;
     }
 
     public override void _PhysicsProcess(double delta)
@@ -16,22 +22,13 @@ public partial class Player : Actor
         
         if (Input.IsActionPressed("Click"))
         {
-            Velocity = GlobalPosition.DirectionTo(mousePos) * CharacterStats.Speed.Value;
+            Velocity = GlobalPosition.DirectionTo(mousePos) * Stats.Speed.Value;
             MoveAndSlide();
         }
 
         if (Input.IsActionPressed("RClick"))
         {
-            if (ShootCd > 0)
-            {
-                Shoot(GlobalPosition.DirectionTo(mousePos));
-                ShootCd -= 1;
-            }
-            else
-            {
-                ShootCd += 0.1f;
-            }
-
+            Shoot(GlobalPosition.DirectionTo(mousePos));
         }
     }
 }

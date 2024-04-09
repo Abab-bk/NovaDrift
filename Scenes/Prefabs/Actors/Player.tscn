@@ -9,4 +9,5 @@ script = ExtResource("2_15kon")
 [node name="Sprite2D" parent="." index="0"]
 modulate = Color(1, 0.580392, 0.196078, 1)
 
-[node name="Camera2D" type="Camera2D" parent="." index="3"]
+[node name="Shooter" parent="Components" index="0"]
+position = Vector2(63, 0)

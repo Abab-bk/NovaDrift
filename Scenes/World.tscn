@@ -54,7 +54,10 @@ grow_vertical = 0
 initial_node_to_watch = NodePath("../../MobBase")
 
 [node name="Player" parent="." instance=ExtResource("1_7ul45")]
-position = Vector2(590, 436)
+position = Vector2(495, 758)
 
 [node name="MobBase" parent="." instance=ExtResource("3_2nedp")]
 position = Vector2(765, 135)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
