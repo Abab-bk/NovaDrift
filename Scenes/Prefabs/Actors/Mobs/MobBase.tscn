@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dunej3cac37vn"]
+[gd_scene load_steps=9 format=3 uid="uid://dunej3cac37vn"]
 
 [ext_resource type="PackedScene" uid="uid://b1vmhmtmuma0x" path="res://Scenes/Prefabs/Actors/ActorBase.tscn" id="1_kd23v"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Mobs/MobBase.cs" id="2_e2oe2"]
@@ -8,8 +8,14 @@
 [ext_resource type="Script" path="res://addons/godot_state_charts/compound_state.gd" id="5_v1esm"]
 [ext_resource type="Script" path="res://addons/godot_state_charts/transition.gd" id="7_ecxpt"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hy5bx"]
+size = Vector2(124, 124)
+
 [node name="MobBase" instance=ExtResource("1_kd23v")]
 script = ExtResource("2_e2oe2")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_hy5bx")
 
 [node name="MobAiComponent" type="Node" parent="State" index="0" node_paths=PackedStringArray("_mob")]
 script = ExtResource("3_d6jih")

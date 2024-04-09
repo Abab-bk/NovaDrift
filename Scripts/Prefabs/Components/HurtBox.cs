@@ -1,4 +1,5 @@
 ﻿using Godot;
+using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Prefabs.Actors;
 
 namespace NovaDrift.Scripts.Prefabs.Components;
@@ -7,37 +8,31 @@ namespace NovaDrift.Scripts.Prefabs.Components;
 public partial class HurtBox : Area2D
 {
     [Export] private Actor _actor;
-    public Layer Layer
-    {
-        get => _layer;
-        set
-        {
-            _layer = value;
-            Init();
-        }
-    }
-    public Layer Mask
-    {
-        get => _mask;
-        set
-        {
-            _mask = value;
-            Init();
-        }
-    }
-    
-    private Layer _layer = Layer.Player;
-    private Layer _mask = Layer.Mob;
 
+    public bool IsPlayer
+    {
+        get => _isPlayer;
+        set
+        {
+            _isPlayer = value;
+            Init();
+        }
+    }
+
+    private bool _isPlayer = false;
+    
     public override void _Ready()
     {
-        Init();
+        IsPlayer = _actor.IsPlayer;
         AreaEntered += delegate(Area2D area)
         {
             if (area is HitBox hitBox)
             {
+                _actor.Stats.Health.AddModifier(new StatModifier(
+                    -hitBox.Damage,
+                    StatModType.Flat));
                 
-                // _actor.CharacterStats.Health.Value -= hitBox.Damage;
+                hitBox.HitDone?.Invoke();
             }
         };
     }
@@ -46,7 +41,14 @@ public partial class HurtBox : Area2D
     {
         CollisionLayer = 0;
         CollisionMask = 0;
-        CallDeferred("set_collision_layer_value", (int)_layer, true);
-        CallDeferred("set_collision_mask_value", (int)_mask, true);
+
+        if (_isPlayer)
+        {
+            CallDeferred("set_collision_layer_value", (int)Layer.PlayerHurtBox, true);
+            CallDeferred("set_collision_mask_value", (int)Layer.MobHitBox, true);
+            return;
+        }
+        CallDeferred("set_collision_layer_value", (int)Layer.MobHurtBox, true);
+        CallDeferred("set_collision_mask_value", (int)Layer.PlayerHitBox, true);
     }
 }

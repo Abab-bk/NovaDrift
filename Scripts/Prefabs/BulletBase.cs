@@ -1,25 +1,38 @@
 using Godot;
+using NovaDrift.Scripts.Prefabs.Components;
 
 namespace NovaDrift.Scripts.Prefabs;
 
 public interface IBullet
 {
-    public BulletBase SetTargetDir(Vector2 target);
 }
 
 public partial class BulletBase : CharacterBody2D, IBullet
 {
-    public float Speed = 500f;
-    private Vector2 TargetDir = new Vector2(0, 0);
+    [Export] private HitBox _hitBox;
+    
+    public bool IsPlayer = false;
+    
+    public float Speed = 1000f;
 
-    public BulletBase SetTargetDir(Vector2 target)
+    public float Damage
     {
-        TargetDir = target;
-        return this;
+        get => _damage;
+        set
+        {
+            _damage = value;
+            _hitBox.Damage = _damage;
+        }
     }
 
+    private float _damage = 10f;
+    public Vector2 TargetDir = new Vector2(0, 0);
+    
     public override void _Ready()
     {
+        _hitBox.IsPlayer = IsPlayer;
+        _hitBox.HitDone = QueueFree;
+        
         Velocity = GlobalPosition.DirectionTo(TargetDir) * Speed;
     }
 

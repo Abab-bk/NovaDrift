@@ -1,4 +1,5 @@
 ﻿using Godot;
+using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts.Prefabs.Components;
@@ -6,11 +7,17 @@ namespace NovaDrift.Scripts.Prefabs.Components;
 [GlobalClass]
 public partial class Shooter : Node2D
 {
+    public bool IsPlayer = false;
     private Timer _shootTimer;
     private float _shootCd = 0.1f;
 
     public override void _Ready()
     {
+        if (Owner is Actor actor)
+        {
+            IsPlayer = actor.IsPlayer;
+        }
+
         _shootTimer = new Timer();
         AddChild(_shootTimer);
         _shootTimer.OneShot = true;
@@ -23,7 +30,12 @@ public partial class Shooter : Node2D
         {
             return;
         }
-        BulletBase bullet = new BulletBuilder().SetTargetDir(targetDir).Build();
+
+        BulletBase bullet = new BulletBuilder().
+                                SetTargetDir(targetDir).
+                                SetIsPlayer(IsPlayer).
+                                Build();
+        
         Global.GameWorld.AddChild(bullet);
         bullet.GlobalPosition = GlobalPosition;
         _shootTimer.Start();

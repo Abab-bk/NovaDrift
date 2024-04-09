@@ -1,13 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1hvfrsat441r"]
+[gd_scene load_steps=4 format=3 uid="uid://b1hvfrsat441r"]
 
 [ext_resource type="PackedScene" uid="uid://b1vmhmtmuma0x" path="res://Scenes/Prefabs/Actors/ActorBase.tscn" id="1_0c8c2"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Player.cs" id="2_15kon"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w2h2n"]
+size = Vector2(122, 124)
+
 [node name="Player" instance=ExtResource("1_0c8c2")]
 script = ExtResource("2_15kon")
+IsPlayer = true
 
 [node name="Sprite2D" parent="." index="0"]
 modulate = Color(1, 0.580392, 0.196078, 1)
 
-[node name="Shooter" parent="Components" index="0"]
-position = Vector2(63, 0)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_w2h2n")

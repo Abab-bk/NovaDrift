@@ -14,18 +14,19 @@ public enum StatModType
 
 public class Stat
 {
+    public delegate void ValueChangedHandler(float newValue);
+    public event ValueChangedHandler ValueChangedEvent;
+    
     public float BaseValue;
     
     private float _lastBaseValue = float.MinValue;
-    private bool _isDirty = true;
     private float _value;
     
     public float Value {
         get {
-            if(_isDirty || !_lastBaseValue.Equals(BaseValue)) {
+            if(!_lastBaseValue.Equals(BaseValue)) {
                 _lastBaseValue = BaseValue;
                 _value = CalculateFinalValue();
-                _isDirty = false;
             }
             return _value;
         }
@@ -52,19 +53,22 @@ public class Stat
     
     public void AddModifier(StatModifier mod)
     {
-        _isDirty = true;
         _statModifiers.Add(mod);
         _statModifiers.Sort(CompareModifierOrder);
+        ValueChangedEvent?.Invoke(Value);
     }
- 
+    
     public bool RemoveModifier(StatModifier mod)
     {
         if (_statModifiers.Remove(mod))
         {
-            _isDirty = true;
+            ValueChangedEvent?.Invoke(Value);
             return true;
         }
-        return _statModifiers.Remove(mod);
+
+        _statModifiers.Remove(mod);
+        ValueChangedEvent?.Invoke(Value);
+        return false;
     }
  
     private float CalculateFinalValue()
@@ -108,7 +112,6 @@ public class Stat
         {
             if (_statModifiers[i].Source == source)
             {
-                _isDirty = true;
                 didRemove = true;
                 _statModifiers.RemoveAt(i);
             }

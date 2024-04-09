@@ -1,8 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1vmhmtmuma0x"]
+[gd_scene load_steps=6 format=3 uid="uid://b1vmhmtmuma0x"]
 
 [ext_resource type="Texture2D" uid="uid://br5b76vniv46c" path="res://Assets/Textures/Objects/Actors/Players/Player.png" id="1_8futd"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Actor.cs" id="1_s858g"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/Shooter.cs" id="2_cyf8f"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Components/HurtBox.cs" id="4_lb4uu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j2ixq"]
 size = Vector2(124, 124)
@@ -21,7 +22,12 @@ shape = SubResource("RectangleShape2D_j2ixq")
 [node name="Components" type="Node2D" parent="."]
 
 [node name="Shooter" type="Node2D" parent="Components"]
+position = Vector2(75, 0)
 script = ExtResource("2_cyf8f")
+
+[node name="HurtBox" type="Area2D" parent="Components" node_paths=PackedStringArray("_actor")]
+script = ExtResource("4_lb4uu")
+_actor = NodePath("../..")
 
 [node name="State" type="Node" parent="."]
 

@@ -5,10 +5,11 @@
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/FreeSelfWhenExitScreen.cs" id="3_bimy8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jcqaf"]
-size = Vector2(54, 20)
+size = Vector2(18, 12)
 
-[node name="BulletBase" type="CharacterBody2D"]
+[node name="BulletBase" type="CharacterBody2D" node_paths=PackedStringArray("_hitBox")]
 script = ExtResource("1_l73w7")
+_hitBox = NodePath("HitBox")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 
@@ -19,7 +20,7 @@ polygon = PackedVector2Array(-29, -9, 25, 0, -29, 11)
 script = ExtResource("2_74isq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-2, 1)
+position = Vector2(9, 1)
 shape = SubResource("RectangleShape2D_jcqaf")
 
 [node name="FreeSelfWhenExitScreen" type="VisibleOnScreenNotifier2D" parent="."]

@@ -4,6 +4,7 @@ namespace NovaDrift.Scripts;
 
 public enum Layer
 {
+    None = 0,
     Player = 1,
     Mob = 2,
     PlayerHitBox = 3,
