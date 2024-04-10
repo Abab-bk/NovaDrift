@@ -1,4 +1,6 @@
+using DsUi;
 using Godot;
+using NovaDrift.Scripts.Prefabs.Actors.Mobs;
 
 namespace NovaDrift.Scripts.Prefabs.Actors;
 
@@ -8,11 +10,37 @@ public partial class Player : Actor
     {
         base._Ready();
         Global.Player = this;
+
+        Global.OnMobDied += @base =>
+        {
+            Stats.Exp.Increase(50);
+            UpdateUi();
+        };
+        
+        UpdateUi();
     }
 
     protected override void InitStats()
     {
-        Stats.Speed.BaseValue = 300f;
+        Stats.SetDamage(30f).
+            SetHealth(300f).
+            SetSpeed(300f);
+
+        Stats.Exp.ValueToMax += UpLevel;
+        Stats.Exp.ValueChanged += UpdateUi;
+    }
+
+    private void UpLevel(float value)
+    {
+        GD.Print("升级");
+        Stats.Exp.Clear();
+        Stats.Exp.MaxValue.BaseValue += 100;
+        UpdateUi();
+    }
+
+    private void UpdateUi(float value = 0)
+    {
+        UiManager.Get_Hud_Instance()[0].UpdateExpBar(Stats.Exp.BaseValue / Stats.Exp.MaxValue.Value);
     }
 
     public override void _PhysicsProcess(double delta)

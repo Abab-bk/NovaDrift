@@ -22,9 +22,7 @@ public partial class HurtBox : Area2D
         {
             if (area is HitBox hitBox)
             {
-                Actor.Stats.Health.AddModifier(new StatModifier(
-                    -hitBox.Damage,
-                    StatModType.Flat));
+                Actor.Stats.Health.Decrease(hitBox.Damage);
                 
                 hitBox.HitDone?.Invoke();
             }

@@ -8,17 +8,21 @@ public partial class MobBase : Actor
 {
     protected override void InitStats()
     {
-        Stats = new CharacterStats(100, 200);
+        Stats.SetDamage(20f);
         
         Stats.Health.ValueChanged += (float value) =>
         {
-            GD.Print("Health changed   " + value);
-            GD.Print(Stats.Health.StatModifiers.Count);
             if (value <= 0)
             {
                 Die();
             }
         };
+    }
+
+    public override void Die()
+    {
+        Global.OnMobDied?.Invoke(this);
+        QueueFree();
     }
 
     public void SetTargetAndMove(Node2D target)

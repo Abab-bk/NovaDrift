@@ -4,17 +4,15 @@ namespace NovaDrift.Scripts.Frameworks.Stats;
 
 public class CharacterStats
 {
-    public readonly Stat Health = new Stat(100);
+    public readonly Attribute Health = new Attribute(0, 100);
     public readonly Stat Speed = new Stat(100);
+    public readonly Stat Damage = new Stat(30);
+    public readonly Attribute Exp = new Attribute(0, 100);
     
-    public CharacterStats(float health, float speed)
+    public CharacterStats SetExp(float value)
     {
-        Health = new Stat(health);
-        Speed = new Stat(speed);
-    }
-
-    public CharacterStats()
-    {
+        Exp.BaseValue = value;
+        return this;
     }
 
     public CharacterStats SetHealth(float value)
@@ -27,5 +25,22 @@ public class CharacterStats
     {
         Speed.BaseValue = value;
         return this;
+    }
+
+    public CharacterStats SetDamage(float value)
+    {
+        Damage.BaseValue = value;
+        return this;
+    }
+    
+    
+    public CharacterStats(float health, float speed)
+    {
+        Health = new Attribute(0, health);
+        Speed = new Stat(speed);
+    }
+    
+    public CharacterStats()
+    {
     }
 }

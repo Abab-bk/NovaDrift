@@ -15,6 +15,10 @@ run/main_scene="res://Scenes/World.tscn"
 config/features=PackedStringArray("4.2", "C#", "Mobile")
 config/icon="res://icon.svg"
 
+[autoload]
+
+InitUiManager="*res://addons/ds_ui/InitUiManager.cs"
+
 [display]
 
 window/size/viewport_width=2560
@@ -34,7 +38,7 @@ naming/scene_name_casing=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/AcidStats/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg")
+enabled=PackedStringArray("res://addons/AcidStats/plugin.cfg", "res://addons/ds_ui/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg")
 
 [input]
 

@@ -37,9 +37,6 @@ motion_mirroring = Vector2(2048, 2048)
 texture = ExtResource("7_s8o5w")
 centered = false
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-layer = -1
-
 [node name="CanvasLayer2" type="CanvasLayer" parent="."]
 
 [node name="StateChartDebugger" parent="CanvasLayer2" instance=ExtResource("4_n08b4")]

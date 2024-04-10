@@ -12,23 +12,21 @@ public enum StatModType
     PercentMult = 300, // Change our old Percent type to this.
 }
 
-public delegate void ValueChangedHandler(float newValue);
-
 public class Stat
 {
-    public event ValueChangedHandler ValueChanged;
+    public event Action<float> ValueChanged;
     
     public float BaseValue;
-    
+
+    private float _lastValue = -1f;
     private float _value;
     
     public float Value {
         get {
-            // if(!_lastBaseValue.Equals(BaseValue)) {
-            //     _lastBaseValue = BaseValue;
-            //     _value = CalculateFinalValue();
-            // }
-            _value = CalculateFinalValue();
+            if(!_value.Equals(_lastValue)) {
+                _lastValue = _value;
+                _value = CalculateFinalValue();
+            }
             return _value;
         }
     }
@@ -49,7 +47,7 @@ public class Stat
             return -1;
         else if (a.Order > b.Order)
             return 1;
-        return 0; // if (a.Order == b.Order)
+        return 0;
     }
     
     public void AddModifier(StatModifier mod)
@@ -75,7 +73,7 @@ public class Stat
     private float CalculateFinalValue()
     {
         float finalValue = BaseValue;
-        float sumPercentAdd = 0; // This will hold the sum of our "PercentAdd" modifiers
+        float sumPercentAdd = 0;
  
         for (int i = 0; i < _statModifiers.Count; i++)
         {
@@ -85,18 +83,17 @@ public class Stat
             {
                 finalValue += mod.Value;
             }
-            else if (mod.Type == StatModType.PercentAdd) // When we encounter a "PercentAdd" modifier
+            else if (mod.Type == StatModType.PercentAdd)
             {
-                sumPercentAdd += mod.Value; // Start adding together all modifiers of this type
+                sumPercentAdd += mod.Value;
  
-                // If we're at the end of the list OR the next modifer isn't of this type
                 if (i + 1 >= _statModifiers.Count || _statModifiers[i + 1].Type != StatModType.PercentAdd)
                 {
-                    finalValue *= 1 + sumPercentAdd; // Multiply the sum with the "finalValue", like we do for "PercentMult" modifiers
-                    sumPercentAdd = 0; // Reset the sum back to 0
+                    finalValue *= 1 + sumPercentAdd;
+                    sumPercentAdd = 0;
                 }
             }
-            else if (mod.Type == StatModType.PercentMult) // Percent renamed to PercentMult
+            else if (mod.Type == StatModType.PercentMult)
             {
                 finalValue *= 1 + mod.Value;
             }

@@ -13,7 +13,7 @@ public partial class BulletBase : CharacterBody2D, IBullet
     
     public bool IsPlayer = false;
     
-    public float Speed = 1000f;
+    public float Speed = 1300f;
 
     public float Damage
     {

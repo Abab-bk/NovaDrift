@@ -7,6 +7,8 @@ namespace NovaDrift.Scripts.Prefabs.Components;
 [GlobalClass]
 public partial class Shooter : Node2D
 {
+    [Export] private Actor _actor;
+    
     public bool IsPlayer = false;
     private Timer _shootTimer;
     private float _shootCd = 0.1f;
@@ -34,6 +36,7 @@ public partial class Shooter : Node2D
         BulletBase bullet = new BulletBuilder().
                                 SetTargetDir(targetDir).
                                 SetIsPlayer(IsPlayer).
+                                SetDamage(_actor.Stats.Damage.Value).
                                 Build();
         
         Global.GameWorld.AddChild(bullet);

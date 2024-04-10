@@ -1,4 +1,6 @@
-﻿using NovaDrift.Scripts.Prefabs.Actors;
+﻿using System;
+using NovaDrift.Scripts.Prefabs.Actors;
+using NovaDrift.Scripts.Prefabs.Actors.Mobs;
 
 namespace NovaDrift.Scripts;
 
@@ -17,4 +19,6 @@ public class Global
 {
     public static Player Player;
     public static GameWorld GameWorld;
+
+    public static Action<MobBase> OnMobDied;
 }

@@ -1,4 +1,5 @@
 using Godot;
+using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Frameworks.Stats;
 using NovaDrift.Scripts.Prefabs.Components;
 
@@ -24,7 +25,6 @@ public partial class Actor : CharacterBody2D
         if (IsPlayer)
         {
             CallDeferred("set_collision_layer_value", (int)Layer.Player, true);
-            
             return;
         }
         CallDeferred("set_collision_layer_value", (int)Layer.Mob, true);
@@ -34,13 +34,13 @@ public partial class Actor : CharacterBody2D
     {
         InitStats();
         InitCollision();
-        
+
         _hurtBox.SetIsPlayer(IsPlayer);
         
         _visibleOnScreenNotifier2D.ScreenExited += MoveToWorldEdge;
     }
 
-    public void Die()
+    public virtual void Die()
     {
         QueueFree();
     }

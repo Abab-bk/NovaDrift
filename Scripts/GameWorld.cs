@@ -1,3 +1,4 @@
+using DsUi;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors;
 
@@ -9,6 +10,8 @@ public partial class GameWorld : Node2D
     {
         Global.GameWorld = this;
 
+        UiManager.Open_Hud();
+        
         Player player = GD.Load<PackedScene>("res://Scenes/Prefabs/Actors/Player.tscn").Instantiate<Player>();
         AddChild(player);
     }

@@ -22,9 +22,10 @@ shape = SubResource("RectangleShape2D_j2ixq")
 
 [node name="Components" type="Node2D" parent="."]
 
-[node name="Shooter" type="Node2D" parent="Components"]
+[node name="Shooter" type="Node2D" parent="Components" node_paths=PackedStringArray("_actor")]
 position = Vector2(52, 0)
 script = ExtResource("2_cyf8f")
+_actor = NodePath("../..")
 
 [node name="HurtBox" type="Area2D" parent="Components"]
 script = ExtResource("4_lb4uu")
