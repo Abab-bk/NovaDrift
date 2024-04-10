@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using Godot;
 
 namespace NovaDrift.addons.AcidStats;
 
@@ -11,23 +12,23 @@ public enum StatModType
     PercentMult = 300, // Change our old Percent type to this.
 }
 
+public delegate void ValueChangedHandler(float newValue);
 
 public class Stat
 {
-    public delegate void ValueChangedHandler(float newValue);
-    public event ValueChangedHandler ValueChangedEvent;
+    public event ValueChangedHandler ValueChanged;
     
     public float BaseValue;
     
-    private float _lastBaseValue = float.MinValue;
     private float _value;
     
     public float Value {
         get {
-            if(!_lastBaseValue.Equals(BaseValue)) {
-                _lastBaseValue = BaseValue;
-                _value = CalculateFinalValue();
-            }
+            // if(!_lastBaseValue.Equals(BaseValue)) {
+            //     _lastBaseValue = BaseValue;
+            //     _value = CalculateFinalValue();
+            // }
+            _value = CalculateFinalValue();
             return _value;
         }
     }
@@ -55,19 +56,19 @@ public class Stat
     {
         _statModifiers.Add(mod);
         _statModifiers.Sort(CompareModifierOrder);
-        ValueChangedEvent?.Invoke(Value);
+        ValueChanged?.Invoke(Value);
     }
     
     public bool RemoveModifier(StatModifier mod)
     {
         if (_statModifiers.Remove(mod))
         {
-            ValueChangedEvent?.Invoke(Value);
+            ValueChanged?.Invoke(Value);
             return true;
         }
 
         _statModifiers.Remove(mod);
-        ValueChangedEvent?.Invoke(Value);
+        ValueChanged?.Invoke(Value);
         return false;
     }
  

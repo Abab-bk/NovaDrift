@@ -6,19 +6,14 @@ namespace NovaDrift.Scripts.Prefabs.Actors.Mobs;
 
 public partial class MobBase : Actor
 {
-    public override void _Ready()
-    {
-        base._Ready();
-    }
-
     protected override void InitStats()
     {
         Stats = new CharacterStats(100, 200);
         
-        Stats.Health.ValueChangedEvent += (float value) =>
+        Stats.Health.ValueChanged += (float value) =>
         {
-            GD.Print("Health changed");
-            GD.Print(value);
+            GD.Print("Health changed   " + value);
+            GD.Print(Stats.Health.StatModifiers.Count);
             if (value <= 0)
             {
                 Die();

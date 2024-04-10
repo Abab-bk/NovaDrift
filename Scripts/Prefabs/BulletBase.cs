@@ -30,7 +30,7 @@ public partial class BulletBase : CharacterBody2D, IBullet
     
     public override void _Ready()
     {
-        _hitBox.IsPlayer = IsPlayer;
+        _hitBox.SetIsPlayer(IsPlayer);
         _hitBox.HitDone = QueueFree;
         
         Velocity = GlobalPosition.DirectionTo(TargetDir) * Speed;

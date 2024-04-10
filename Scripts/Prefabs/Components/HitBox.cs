@@ -5,24 +5,15 @@ namespace NovaDrift.Scripts.Prefabs.Components;
 [GlobalClass]
 public partial class HitBox : Area2D
 {
-    [Export] public bool IsPlayer
-    {
-        get => _isPlayer;
-        set
-        {
-            _isPlayer = value;
-            Init();
-        }
-    }
-    
     private bool _isPlayer = false;
-    public float Damage = 10f;
+    public float Damage = 1f;
     
     public delegate void HitDoneHandler();
     public HitDoneHandler HitDone;
-
-    public override void _Ready()
+    
+    public void SetIsPlayer(bool value)
     {
+        _isPlayer = value;
         Init();
     }
 

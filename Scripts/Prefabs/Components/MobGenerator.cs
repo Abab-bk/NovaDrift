@@ -9,6 +9,7 @@ namespace NovaDrift.Scripts.Prefabs.Components;
 public partial class MobGenerator : Node2D
 {
     [Export] private bool _enabled = true;
+    [Export] private int _maxMobs = 1;
     [Export] private float _spawnCd = 3f;
     private Timer _timer;
 
@@ -30,6 +31,11 @@ public partial class MobGenerator : Node2D
 
     private void SpawnAMob()
     {
+        if (GetChildren().Count - 1 >= _maxMobs)
+        {
+            return;
+        }
+
         MobBuilder mobBuilder = new MobBuilder();
         MobBase mob = mobBuilder.Build();
         AddChild(mob);

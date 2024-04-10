@@ -13,5 +13,8 @@ IsPlayer = true
 [node name="Sprite2D" parent="." index="0"]
 modulate = Color(1, 0.580392, 0.196078, 1)
 
+[node name="HurtBox" parent="Components" index="1" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../..")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtBox" index="0"]
 shape = SubResource("RectangleShape2D_w2h2n")

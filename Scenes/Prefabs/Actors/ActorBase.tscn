@@ -8,9 +8,10 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j2ixq"]
 size = Vector2(124, 124)
 
-[node name="ActorBase" type="CharacterBody2D" node_paths=PackedStringArray("_shooter", "_visibleOnScreenNotifier2D")]
+[node name="ActorBase" type="CharacterBody2D" node_paths=PackedStringArray("_shooter", "_hurtBox", "_visibleOnScreenNotifier2D")]
 script = ExtResource("1_s858g")
 _shooter = NodePath("Components/Shooter")
+_hurtBox = NodePath("Components/HurtBox")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
@@ -22,12 +23,11 @@ shape = SubResource("RectangleShape2D_j2ixq")
 [node name="Components" type="Node2D" parent="."]
 
 [node name="Shooter" type="Node2D" parent="Components"]
-position = Vector2(75, 0)
+position = Vector2(52, 0)
 script = ExtResource("2_cyf8f")
 
-[node name="HurtBox" type="Area2D" parent="Components" node_paths=PackedStringArray("_actor")]
+[node name="HurtBox" type="Area2D" parent="Components"]
 script = ExtResource("4_lb4uu")
-_actor = NodePath("../..")
 
 [node name="State" type="Node" parent="."]
 

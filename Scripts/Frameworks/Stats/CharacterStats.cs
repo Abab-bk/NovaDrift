@@ -4,8 +4,8 @@ namespace NovaDrift.Scripts.Frameworks.Stats;
 
 public class CharacterStats
 {
-    public Stat Health = new Stat(100);
-    public Stat Speed = new Stat(100);
+    public readonly Stat Health = new Stat(100);
+    public readonly Stat Speed = new Stat(100);
     
     public CharacterStats(float health, float speed)
     {

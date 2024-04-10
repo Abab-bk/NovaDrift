@@ -8,6 +8,7 @@ namespace NovaDrift.Scripts.Prefabs.Actors;
 public partial class Actor : CharacterBody2D
 {
     [Export] private Shooter _shooter;
+    [Export] private HurtBox _hurtBox;
     
     [Export] private VisibleOnScreenNotifier2D _visibleOnScreenNotifier2D;
     [Export] public bool IsPlayer = false;
@@ -23,6 +24,7 @@ public partial class Actor : CharacterBody2D
         if (IsPlayer)
         {
             CallDeferred("set_collision_layer_value", (int)Layer.Player, true);
+            
             return;
         }
         CallDeferred("set_collision_layer_value", (int)Layer.Mob, true);
@@ -32,6 +34,9 @@ public partial class Actor : CharacterBody2D
     {
         InitStats();
         InitCollision();
+        
+        _hurtBox.SetIsPlayer(IsPlayer);
+        
         _visibleOnScreenNotifier2D.ScreenExited += MoveToWorldEdge;
     }
 

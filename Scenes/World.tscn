@@ -1,8 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://d25jyaf2cexon"]
+[gd_scene load_steps=7 format=3 uid="uid://d25jyaf2cexon"]
 
-[ext_resource type="PackedScene" uid="uid://b1hvfrsat441r" path="res://Scenes/Prefabs/Actors/Player.tscn" id="1_7ul45"]
 [ext_resource type="Script" path="res://Scripts/GameWorld.cs" id="1_xxmb6"]
-[ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="3_2nedp"]
 [ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="4_n08b4"]
 [ext_resource type="Texture2D" uid="uid://ctudq8y6j2stj" path="res://Assets/Textures/Backgrounds/BgStarsFar0.png" id="5_bai74"]
 [ext_resource type="Texture2D" uid="uid://7pq0nmp8afbk" path="res://Assets/Textures/Backgrounds/BgStarsMid0.png" id="6_tq1jc"]
@@ -52,17 +50,9 @@ offset_left = -622.0
 offset_top = -337.0
 grow_horizontal = 0
 grow_vertical = 0
-initial_node_to_watch = NodePath("../../MobBase")
-
-[node name="Player" parent="." instance=ExtResource("1_7ul45")]
-position = Vector2(495, 758)
-
-[node name="MobBase" parent="." instance=ExtResource("3_2nedp")]
-position = Vector2(765, 135)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
 
 [node name="MobGenerator" type="Node2D" parent="."]
 script = ExtResource("8_wqlpe")
-_enabled = false

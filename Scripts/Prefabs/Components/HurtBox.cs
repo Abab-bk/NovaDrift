@@ -7,28 +7,22 @@ namespace NovaDrift.Scripts.Prefabs.Components;
 [GlobalClass]
 public partial class HurtBox : Area2D
 {
-    [Export] private Actor _actor;
+    [Export] public Actor Actor;
+    private bool _isPlayer = false;
 
-    public bool IsPlayer
+    public void SetIsPlayer(bool value)
     {
-        get => _isPlayer;
-        set
-        {
-            _isPlayer = value;
-            Init();
-        }
+        _isPlayer = value;
+        Init();
     }
 
-    private bool _isPlayer = false;
-    
     public override void _Ready()
     {
-        IsPlayer = _actor.IsPlayer;
-        AreaEntered += delegate(Area2D area)
+        AreaEntered += (Area2D area) =>
         {
             if (area is HitBox hitBox)
             {
-                _actor.Stats.Health.AddModifier(new StatModifier(
+                Actor.Stats.Health.AddModifier(new StatModifier(
                     -hitBox.Damage,
                     StatModType.Flat));
                 
@@ -41,7 +35,7 @@ public partial class HurtBox : Area2D
     {
         CollisionLayer = 0;
         CollisionMask = 0;
-
+        
         if (_isPlayer)
         {
             CallDeferred("set_collision_layer_value", (int)Layer.PlayerHurtBox, true);
