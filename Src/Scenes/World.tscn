@@ -14,7 +14,7 @@ script = ExtResource("1_xxmb6")
 scroll_offset = Vector2(1280, 720)
 
 [node name="Far" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(1.1, 1)
+motion_scale = Vector2(1.2, 1)
 motion_mirroring = Vector2(2048, 2048)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Far"]
@@ -22,7 +22,7 @@ texture = ExtResource("5_bai74")
 centered = false
 
 [node name="Mid" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(1.3, 1)
+motion_scale = Vector2(1.4, 1)
 motion_mirroring = Vector2(2048, 2048)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Mid"]
@@ -30,7 +30,7 @@ texture = ExtResource("6_tq1jc")
 centered = false
 
 [node name="Near" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(1.5, 1)
+motion_scale = Vector2(1.6, 1)
 motion_mirroring = Vector2(2048, 2048)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Near"]
