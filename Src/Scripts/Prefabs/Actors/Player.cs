@@ -36,6 +36,8 @@ public partial class Player : Actor
         Stats.Exp.Clear();
         Stats.Exp.MaxValue.BaseValue += 100;
         UpdateUi();
+
+        Global.OnPlayerUpLevel(Stats.Level);
     }
 
     private void UpdateUi(float value = 0)

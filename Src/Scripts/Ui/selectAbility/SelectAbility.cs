@@ -8,17 +8,17 @@ using DsUi;
 public abstract partial class SelectAbility : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.PanelContainer"/>, 节点路径: SelectAbility.PanelContainer
+    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.PanelContainer"/>, 节点路径: SelectAbility.Content
     /// </summary>
-    public PanelContainer L_PanelContainer
+    public Content L_Content
     {
         get
         {
-            if (_L_PanelContainer == null) _L_PanelContainer = new PanelContainer((SelectAbilityPanel)this, GetNode<Godot.PanelContainer>("PanelContainer"));
-            return _L_PanelContainer;
+            if (_L_Content == null) _L_Content = new Content((SelectAbilityPanel)this, GetNode<Godot.PanelContainer>("Content"));
+            return _L_Content;
         }
     }
-    private PanelContainer _L_PanelContainer;
+    private Content _L_Content;
 
 
     public SelectAbility() : base(nameof(SelectAbility))
@@ -28,173 +28,104 @@ public abstract partial class SelectAbility : UiBase
     public sealed override void OnInitNestedUi()
     {
 
+        var inst1 = L_Content.L_Content;
+        RecordNestedUi(inst1.L_AbilityPanel.Instance, inst1, UiManager.RecordType.Open);
+        inst1.L_AbilityPanel.Instance.OnCreateUi();
+        inst1.L_AbilityPanel.Instance.OnInitNestedUi();
+
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.GridContainer"/>, 路径: SelectAbility.PanelContainer.HBoxContainer.GridContainer
+    /// 类型: <see cref="Godot.GridContainer"/>, 路径: SelectAbility.Content.Content.Abilities
     /// </summary>
-    public class GridContainer : UiNode<SelectAbilityPanel, Godot.GridContainer, GridContainer>
+    public class Abilities : UiNode<SelectAbilityPanel, Godot.GridContainer, Abilities>
     {
-        public GridContainer(SelectAbilityPanel uiPanel, Godot.GridContainer node) : base(uiPanel, node) {  }
-        public override GridContainer Clone() => new (UiPanel, (Godot.GridContainer)Instance.Duplicate());
+        public Abilities(SelectAbilityPanel uiPanel, Godot.GridContainer node) : base(uiPanel, node) {  }
+        public override Abilities Clone() => new (UiPanel, (Godot.GridContainer)Instance.Duplicate());
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: SelectAbility.PanelContainer.HBoxContainer.PanelContainer.VBoxContainer.AbilityTitle
+    /// 类型: <see cref="NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel"/>, 路径: SelectAbility.Content.Content.AbilityPanel
     /// </summary>
-    public class AbilityTitle : UiNode<SelectAbilityPanel, Godot.Label, AbilityTitle>
+    public class AbilityPanel : UiNode<SelectAbilityPanel, NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel, AbilityPanel>
     {
-        public AbilityTitle(SelectAbilityPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
-        public override AbilityTitle Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+        public AbilityPanel(SelectAbilityPanel uiPanel, NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel node) : base(uiPanel, node) {  }
+        public override AbilityPanel Clone()
+        {
+            var uiNode = new AbilityPanel(UiPanel, (NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel)Instance.Duplicate());
+            UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
+            uiNode.Instance.OnCreateUi();
+            uiNode.Instance.OnInitNestedUi();
+            return uiNode;
+        }
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: SelectAbility.PanelContainer.HBoxContainer.PanelContainer.VBoxContainer.AbilityDesc
+    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: SelectAbility.Content.Content
     /// </summary>
-    public class AbilityDesc : UiNode<SelectAbilityPanel, Godot.Label, AbilityDesc>
-    {
-        public AbilityDesc(SelectAbilityPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
-        public override AbilityDesc Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
-    }
-
-    /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: SelectAbility.PanelContainer.HBoxContainer.PanelContainer.VBoxContainer
-    /// </summary>
-    public class VBoxContainer : UiNode<SelectAbilityPanel, Godot.VBoxContainer, VBoxContainer>
+    public class Content_1 : UiNode<SelectAbilityPanel, Godot.HBoxContainer, Content_1>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: SelectAbility.PanelContainer.HBoxContainer.PanelContainer.AbilityTitle
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.GridContainer"/>, 节点路径: SelectAbility.Content.Abilities
         /// </summary>
-        public AbilityTitle L_AbilityTitle
+        public Abilities L_Abilities
         {
             get
             {
-                if (_L_AbilityTitle == null) _L_AbilityTitle = new AbilityTitle(UiPanel, Instance.GetNode<Godot.Label>("AbilityTitle"));
-                return _L_AbilityTitle;
+                if (_L_Abilities == null) _L_Abilities = new Abilities(UiPanel, Instance.GetNode<Godot.GridContainer>("Abilities"));
+                return _L_Abilities;
             }
         }
-        private AbilityTitle _L_AbilityTitle;
+        private Abilities _L_Abilities;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: SelectAbility.PanelContainer.HBoxContainer.PanelContainer.AbilityDesc
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel"/>, 节点路径: SelectAbility.Content.AbilityPanel
         /// </summary>
-        public AbilityDesc L_AbilityDesc
+        public AbilityPanel L_AbilityPanel
         {
             get
             {
-                if (_L_AbilityDesc == null) _L_AbilityDesc = new AbilityDesc(UiPanel, Instance.GetNode<Godot.Label>("AbilityDesc"));
-                return _L_AbilityDesc;
+                if (_L_AbilityPanel == null) _L_AbilityPanel = new AbilityPanel(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel>("AbilityPanel"));
+                return _L_AbilityPanel;
             }
         }
-        private AbilityDesc _L_AbilityDesc;
+        private AbilityPanel _L_AbilityPanel;
 
-        public VBoxContainer(SelectAbilityPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
-        public override VBoxContainer Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
+        public Content_1(SelectAbilityPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override Content_1 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.PanelContainer"/>, 路径: SelectAbility.PanelContainer.HBoxContainer.PanelContainer
+    /// 类型: <see cref="Godot.PanelContainer"/>, 路径: SelectAbility.Content
     /// </summary>
-    public class PanelContainer_1 : UiNode<SelectAbilityPanel, Godot.PanelContainer, PanelContainer_1>
+    public class Content : UiNode<SelectAbilityPanel, Godot.PanelContainer, Content>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: SelectAbility.PanelContainer.HBoxContainer.VBoxContainer
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: SelectAbility.Content
         /// </summary>
-        public VBoxContainer L_VBoxContainer
+        public Content_1 L_Content
         {
             get
             {
-                if (_L_VBoxContainer == null) _L_VBoxContainer = new VBoxContainer(UiPanel, Instance.GetNode<Godot.VBoxContainer>("VBoxContainer"));
-                return _L_VBoxContainer;
+                if (_L_Content == null) _L_Content = new Content_1(UiPanel, Instance.GetNode<Godot.HBoxContainer>("Content"));
+                return _L_Content;
             }
         }
-        private VBoxContainer _L_VBoxContainer;
+        private Content_1 _L_Content;
 
-        public PanelContainer_1(SelectAbilityPanel uiPanel, Godot.PanelContainer node) : base(uiPanel, node) {  }
-        public override PanelContainer_1 Clone() => new (UiPanel, (Godot.PanelContainer)Instance.Duplicate());
-    }
-
-    /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: SelectAbility.PanelContainer.HBoxContainer
-    /// </summary>
-    public class HBoxContainer : UiNode<SelectAbilityPanel, Godot.HBoxContainer, HBoxContainer>
-    {
-        /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.GridContainer"/>, 节点路径: SelectAbility.PanelContainer.GridContainer
-        /// </summary>
-        public GridContainer L_GridContainer
-        {
-            get
-            {
-                if (_L_GridContainer == null) _L_GridContainer = new GridContainer(UiPanel, Instance.GetNode<Godot.GridContainer>("GridContainer"));
-                return _L_GridContainer;
-            }
-        }
-        private GridContainer _L_GridContainer;
-
-        /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.PanelContainer"/>, 节点路径: SelectAbility.PanelContainer.PanelContainer
-        /// </summary>
-        public PanelContainer_1 L_PanelContainer
-        {
-            get
-            {
-                if (_L_PanelContainer == null) _L_PanelContainer = new PanelContainer_1(UiPanel, Instance.GetNode<Godot.PanelContainer>("PanelContainer"));
-                return _L_PanelContainer;
-            }
-        }
-        private PanelContainer_1 _L_PanelContainer;
-
-        public HBoxContainer(SelectAbilityPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
-        public override HBoxContainer Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
-    }
-
-    /// <summary>
-    /// 类型: <see cref="Godot.PanelContainer"/>, 路径: SelectAbility.PanelContainer
-    /// </summary>
-    public class PanelContainer : UiNode<SelectAbilityPanel, Godot.PanelContainer, PanelContainer>
-    {
-        /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: SelectAbility.HBoxContainer
-        /// </summary>
-        public HBoxContainer L_HBoxContainer
-        {
-            get
-            {
-                if (_L_HBoxContainer == null) _L_HBoxContainer = new HBoxContainer(UiPanel, Instance.GetNode<Godot.HBoxContainer>("HBoxContainer"));
-                return _L_HBoxContainer;
-            }
-        }
-        private HBoxContainer _L_HBoxContainer;
-
-        public PanelContainer(SelectAbilityPanel uiPanel, Godot.PanelContainer node) : base(uiPanel, node) {  }
-        public override PanelContainer Clone() => new (UiPanel, (Godot.PanelContainer)Instance.Duplicate());
+        public Content(SelectAbilityPanel uiPanel, Godot.PanelContainer node) : base(uiPanel, node) {  }
+        public override Content Clone() => new (UiPanel, (Godot.PanelContainer)Instance.Duplicate());
     }
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.GridContainer"/>, 节点路径: SelectAbility.PanelContainer.HBoxContainer.GridContainer
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.GridContainer"/>, 节点路径: SelectAbility.Content.Content.Abilities
     /// </summary>
-    public GridContainer S_GridContainer => L_PanelContainer.L_HBoxContainer.L_GridContainer;
+    public Abilities S_Abilities => L_Content.L_Content.L_Abilities;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: SelectAbility.PanelContainer.HBoxContainer.PanelContainer.VBoxContainer.AbilityTitle
+    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel"/>, 节点路径: SelectAbility.Content.Content.AbilityPanel
     /// </summary>
-    public AbilityTitle S_AbilityTitle => L_PanelContainer.L_HBoxContainer.L_PanelContainer.L_VBoxContainer.L_AbilityTitle;
-
-    /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: SelectAbility.PanelContainer.HBoxContainer.PanelContainer.VBoxContainer.AbilityDesc
-    /// </summary>
-    public AbilityDesc S_AbilityDesc => L_PanelContainer.L_HBoxContainer.L_PanelContainer.L_VBoxContainer.L_AbilityDesc;
-
-    /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: SelectAbility.PanelContainer.HBoxContainer.PanelContainer.VBoxContainer
-    /// </summary>
-    public VBoxContainer S_VBoxContainer => L_PanelContainer.L_HBoxContainer.L_PanelContainer.L_VBoxContainer;
-
-    /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: SelectAbility.PanelContainer.HBoxContainer
-    /// </summary>
-    public HBoxContainer S_HBoxContainer => L_PanelContainer.L_HBoxContainer;
+    public AbilityPanel S_AbilityPanel => L_Content.L_Content.L_AbilityPanel;
 
 }

@@ -1,5 +1,6 @@
-[gd_scene load_steps=2 format=3 uid="uid://dx2jdufhf6krx"]
+[gd_scene load_steps=3 format=3 uid="uid://dx2jdufhf6krx"]
 
+[ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_2tvmv"]
 [ext_resource type="Script" path="res://Scripts/Ui/hud/HudPanel.cs" id="1_jvtg7"]
 
 [node name="Hud" type="Control"]
@@ -7,6 +8,9 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2tvmv")
 script = ExtResource("1_jvtg7")
 
 [node name="ExpProgressBar" type="ProgressBar" parent="."]

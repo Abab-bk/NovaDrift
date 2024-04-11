@@ -8,6 +8,8 @@ public partial class GameWorld : Node2D
 {
     public override void _Ready()
     {
+        DataBuilder.Init();
+        
         Global.GameWorld = this;
 
         UiManager.Open_Hud();

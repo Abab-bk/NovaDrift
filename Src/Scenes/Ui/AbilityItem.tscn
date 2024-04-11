@@ -1,0 +1,33 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlsmuxwivbahj"]
+
+[ext_resource type="Script" path="res://Scripts/Ui/abilityItem/AbilityItemPanel.cs" id="1_37yr4"]
+[ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_o07cx"]
+[ext_resource type="Texture2D" uid="uid://c5oierqc18mer" path="res://icon.svg" id="2_wsjeh"]
+
+[node name="AbilityItem" type="Control"]
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 3
+anchors_preset = 0
+theme = ExtResource("1_o07cx")
+script = ExtResource("1_37yr4")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_wsjeh")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Button" type="Button" parent="."]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"EmptyBtn"

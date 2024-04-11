@@ -21,4 +21,6 @@ public class Global
     public static GameWorld GameWorld;
 
     public static Action<MobBase> OnMobDied;
+    
+    public static Action<int> OnPlayerUpLevel;
 }

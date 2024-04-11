@@ -13,18 +13,18 @@ using System.Text.Json;
 
 namespace cfg
 {
-public sealed partial class Effects : Luban.BeanBase
+public sealed partial class Ability : Luban.BeanBase
 {
-    public Effects(JsonElement _buf) 
+    public Ability(JsonElement _buf) 
     {
         Id = _buf.GetProperty("id").GetInt32();
         Name = _buf.GetProperty("name").GetString();
         Desc = _buf.GetProperty("desc").GetString();
     }
 
-    public static Effects DeserializeEffects(JsonElement _buf)
+    public static Ability DeserializeAbility(JsonElement _buf)
     {
-        return new Effects(_buf);
+        return new Ability(_buf);
     }
 
     /// <summary>
@@ -40,7 +40,7 @@ public sealed partial class Effects : Luban.BeanBase
     /// </summary>
     public readonly string Desc;
    
-    public const int __ID__ = -169275166;
+    public const int __ID__ = 464145674;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)

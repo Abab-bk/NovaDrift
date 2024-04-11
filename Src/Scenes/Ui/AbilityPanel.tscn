@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://gwdeh4n41an7"]
+
+[ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_i7yq1"]
+[ext_resource type="Script" path="res://Scripts/Ui/abilityPanel/AbilityPanelPanel.cs" id="1_yks05"]
+
+[node name="AbilityPanel" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_i7yq1")
+script = ExtResource("1_yks05")
+
+[node name="Content" type="VBoxContainer" parent="."]
+layout_mode = 0
+
+[node name="AbilityTitle" type="Label" parent="Content"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 100
+text = "Ability Name"
+
+[node name="AbilityDesc" type="Label" parent="Content"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 65
+text = "Ability Desc"

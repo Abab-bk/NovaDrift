@@ -14,17 +14,17 @@ namespace cfg
 {
 public partial class Tables
 {
-    public DataBase.TbEffects TbEffects {get; }
+    public DataBase.TbAbility TbAbility {get; }
 
     public Tables(System.Func<string, JsonElement> loader)
     {
-        TbEffects = new DataBase.TbEffects(loader("database_tbeffects"));
+        TbAbility = new DataBase.TbAbility(loader("database_tbability"));
         ResolveRef();
     }
     
     private void ResolveRef()
     {
-        TbEffects.ResolveRef(this);
+        TbAbility.ResolveRef(this);
     }
 }
 

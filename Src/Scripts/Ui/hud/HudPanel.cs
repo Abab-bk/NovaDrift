@@ -1,3 +1,4 @@
+using DsUi;
 using Godot;
 
 namespace NovaDrift.Scripts.Ui.Hud;
@@ -9,6 +10,11 @@ public partial class HudPanel : Hud
     public override void OnCreateUi()
     {
         _expBar = L_ExpProgressBar.Instance;
+
+        Global.OnPlayerUpLevel += i =>
+        {
+            OpenNestedUi(UiManager.UiName.SelectAbility);
+        };
     }
     
     public void UpdateExpBar(float ratio)

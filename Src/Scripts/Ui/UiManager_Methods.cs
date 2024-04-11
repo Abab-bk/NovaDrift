@@ -6,8 +6,106 @@ public static partial class UiManager
 
     public static class UiName
     {
+        public const string AbilityItem = "AbilityItem";
+        public const string AbilityPanel = "AbilityPanel";
         public const string Hud = "Hud";
         public const string SelectAbility = "SelectAbility";
+    }
+
+    /// <summary>
+    /// 创建 AbilityItem, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.AbilityItem.AbilityItemPanel Create_AbilityItem()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.AbilityItem.AbilityItemPanel>(UiName.AbilityItem);
+    }
+
+    /// <summary>
+    /// 打开 AbilityItem, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.AbilityItem.AbilityItemPanel Open_AbilityItem()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.AbilityItem.AbilityItemPanel>(UiName.AbilityItem);
+    }
+
+    /// <summary>
+    /// 隐藏 AbilityItem 的所有实例
+    /// </summary>
+    public static void Hide_AbilityItem()
+    {
+        var uiInstance = Get_AbilityItem_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 AbilityItem 的所有实例
+    /// </summary>
+    public static void Destroy_AbilityItem()
+    {
+        var uiInstance = Get_AbilityItem_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 AbilityItem 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.AbilityItem.AbilityItemPanel[] Get_AbilityItem_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.AbilityItem.AbilityItemPanel>(nameof(NovaDrift.Scripts.Ui.AbilityItem.AbilityItem));
+    }
+
+    /// <summary>
+    /// 创建 AbilityPanel, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel Create_AbilityPanel()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel>(UiName.AbilityPanel);
+    }
+
+    /// <summary>
+    /// 打开 AbilityPanel, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel Open_AbilityPanel()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel>(UiName.AbilityPanel);
+    }
+
+    /// <summary>
+    /// 隐藏 AbilityPanel 的所有实例
+    /// </summary>
+    public static void Hide_AbilityPanel()
+    {
+        var uiInstance = Get_AbilityPanel_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 AbilityPanel 的所有实例
+    /// </summary>
+    public static void Destroy_AbilityPanel()
+    {
+        var uiInstance = Get_AbilityPanel_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 AbilityPanel 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel[] Get_AbilityPanel_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel>(nameof(NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanel));
     }
 
     /// <summary>
