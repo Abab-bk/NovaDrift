@@ -23,4 +23,19 @@ public class Global
     public static Action<MobBase> OnMobDied;
     
     public static Action<int> OnPlayerUpLevel;
+
+
+    private static int _stopCount = 0;
+
+    public static void StopGame()
+    {
+        _stopCount++;
+        GameWorld.GetTree().Paused = _stopCount > 0;
+    }
+
+    public static void ResumeGame()
+    {
+        _stopCount--;
+        GameWorld.GetTree().Paused = _stopCount > 0;
+    }
 }

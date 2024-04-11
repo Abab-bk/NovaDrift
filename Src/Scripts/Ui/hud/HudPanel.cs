@@ -14,6 +14,7 @@ public partial class HudPanel : Hud
         Global.OnPlayerUpLevel += i =>
         {
             OpenNestedUi(UiManager.UiName.SelectAbility);
+            Global.StopGame();
         };
     }
     

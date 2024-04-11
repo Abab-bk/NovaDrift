@@ -29,8 +29,22 @@ public class DataBuilder
 
         ability.Name = tbAbility.Name;
         ability.Desc = tbAbility.Desc;
+        ability.ClassName = tbAbility.ClassName;
+        ability.Effect = BuildEffectByName(ability.ClassName);
 
         return ability;
+    }
+
+    public static Game.Effect BuildEffectByName(string name)
+    {
+        Type classType = Type.GetType("NovaDrift.Scripts.Systems.Effects." + name);
+        if (classType == null)
+        {
+            throw new Exception("无法找到类：" + name);
+        }
+        
+        Game.Effect effect = (Game.Effect) Activator.CreateInstance(classType);
+        return effect;
     }
 
     public static void Init()

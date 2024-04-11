@@ -5,6 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://gwdeh4n41an7" path="res://Scenes/Ui/AbilityPanel.tscn" id="3_8bu15"]
 
 [node name="SelectAbility" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -25,15 +26,25 @@ offset_bottom = 495.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Content" type="HBoxContainer" parent="Content"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Content"]
 layout_mode = 2
 
-[node name="Abilities" type="GridContainer" parent="Content/Content"]
+[node name="Content" type="HBoxContainer" parent="Content/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Abilities" type="GridContainer" parent="Content/VBoxContainer/Content"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="AbilityPanel" parent="Content/Content" instance=ExtResource("3_8bu15")]
+[node name="AbilityPanel" parent="Content/VBoxContainer/Content" instance=ExtResource("3_8bu15")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
+
+[node name="YesBtn" type="Button" parent="Content/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 70
+text = "确认"

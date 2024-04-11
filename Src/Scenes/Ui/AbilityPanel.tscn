@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Ui/abilityPanel/AbilityPanelPanel.cs" id="1_yks05"]
 
 [node name="AbilityPanel" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -14,7 +15,12 @@ theme = ExtResource("1_i7yq1")
 script = ExtResource("1_yks05")
 
 [node name="Content" type="VBoxContainer" parent="."]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [node name="AbilityTitle" type="Label" parent="Content"]
 layout_mode = 2
@@ -25,4 +31,4 @@ text = "Ability Name"
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 65
-text = "Ability Desc"
+text = "Nothing."

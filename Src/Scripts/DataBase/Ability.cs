@@ -20,6 +20,7 @@ public sealed partial class Ability : Luban.BeanBase
         Id = _buf.GetProperty("id").GetInt32();
         Name = _buf.GetProperty("name").GetString();
         Desc = _buf.GetProperty("desc").GetString();
+        ClassName = _buf.GetProperty("class_name").GetString();
     }
 
     public static Ability DeserializeAbility(JsonElement _buf)
@@ -39,12 +40,17 @@ public sealed partial class Ability : Luban.BeanBase
     /// 描述
     /// </summary>
     public readonly string Desc;
+    /// <summary>
+    /// 类名
+    /// </summary>
+    public readonly string ClassName;
    
     public const int __ID__ = 464145674;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
     {
+        
         
         
         
@@ -56,6 +62,7 @@ public sealed partial class Ability : Luban.BeanBase
         + "id:" + Id + ","
         + "name:" + Name + ","
         + "desc:" + Desc + ","
+        + "className:" + ClassName + ","
         + "}";
     }
 }

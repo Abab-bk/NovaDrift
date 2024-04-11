@@ -23,10 +23,11 @@ public class Stat
     
     public float Value {
         get {
-            if(!_value.Equals(_lastValue)) {
-                _lastValue = _value;
-                _value = CalculateFinalValue();
-            }
+            // if(!_value.Equals(_lastValue)) {
+            //     _lastValue = _value;
+            //     _value = CalculateFinalValue();
+            // }
+            _value = CalculateFinalValue();
             return _value;
         }
     }

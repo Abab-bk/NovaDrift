@@ -5,6 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://c5oierqc18mer" path="res://icon.svg" id="2_wsjeh"]
 
 [node name="AbilityItem" type="Control"]
+process_mode = 3
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 3
 anchors_preset = 0

@@ -34,6 +34,7 @@ public partial class Actor : CharacterBody2D
     {
         InitStats();
         InitCollision();
+        Stats.SetTarget(this);
 
         _hurtBox.SetIsPlayer(IsPlayer);
         

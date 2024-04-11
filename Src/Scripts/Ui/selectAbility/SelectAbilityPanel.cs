@@ -9,10 +9,19 @@ namespace NovaDrift.Scripts.Ui.SelectAbility;
 public partial class SelectAbilityPanel : SelectAbility
 {
     private AbilityPanelPanel _abilityPanel;
+
+    private Ability _currentAbility;
     
     public override void OnCreateUi()
     {
-        _abilityPanel = L_Content.L_Content.L_AbilityPanel.Instance;
+        _abilityPanel = S_AbilityPanel.Instance;
+        S_YesBtn.Instance.Pressed += () =>
+        {
+            _currentAbility.Use();
+            Destroy();
+        };
+        
+        GenerateAbilityPanel(new AbilityGenerateConfig(5));
     }
     
     private void GenerateAbilityPanel(AbilityGenerateConfig config)
@@ -21,13 +30,19 @@ public partial class SelectAbilityPanel : SelectAbility
         for (int i = 0; i < config.Count; i++)
         {
             Ability ability = DataBuilder.BuildAbilityById(DataBuilder.GetRandomAbilityId());
-            S_Abilities.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem);
+            var abilityItem = S_Abilities.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem);
+            abilityItem.Ability = ability;
+            abilityItem.OnAbilitySelected += ability1 =>
+            {
+                _abilityPanel.UpdateUi(ability1);
+                _currentAbility = ability1;
+            };
         }
     }
     
     public override void OnDestroyUi()
     {
-        
+        Global.ResumeGame();
     }
 
 }

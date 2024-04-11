@@ -1,4 +1,6 @@
 ﻿using NovaDrift.addons.AcidStats;
+using NovaDrift.Scripts.Prefabs.Actors;
+using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts.Frameworks.Stats;
 
@@ -13,6 +15,20 @@ public class CharacterStats
     // 武器射击速度
     public readonly Stat ShootSpeed = new Stat(1f);
     
+    private EffectSystem _effectSystem = new EffectSystem();
+    private Actor _target;
+
+    public void SetTarget(Actor target)
+    {
+        _target = target;
+        _effectSystem.Target = _target;
+    }
+    
+    public void AddEffect(Effect effect)
+    {
+        _effectSystem.AddEffect(effect);
+    }
+
     public CharacterStats SetShootSpeed(float value)
     {
         ShootSpeed.BaseValue = value;
