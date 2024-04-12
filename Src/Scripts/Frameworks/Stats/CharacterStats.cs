@@ -16,7 +16,7 @@ public class CharacterStats
 
     public Body Body = new Body();
     
-    public readonly Attribute Health = new Attribute(0, 100);
+    public readonly Attribute Health;
     public readonly Stat Speed = new Stat(100);
     public readonly Stat Damage = new Stat(30);
     public readonly Attribute Exp = new Attribute(0, 100);
@@ -67,18 +67,13 @@ public class CharacterStats
         return this;
     }
     
-    public CharacterStats(float health, float speed)
+    public CharacterStats()
     {
-        Health = new Attribute(0, health);
-        Speed = new Stat(speed);
+        Health = new Attribute(0, Body.Health);
         
         Exp.ValueToMax += (float value) =>
         {
             Level += 1;
         };
-    }
-    
-    public CharacterStats()
-    {
     }
 }

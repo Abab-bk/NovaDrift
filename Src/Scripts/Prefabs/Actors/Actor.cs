@@ -8,12 +8,14 @@ namespace NovaDrift.Scripts.Prefabs.Actors;
 [GlobalClass]
 public partial class Actor : CharacterBody2D
 {
-    [Export] private Shooter _shooter;
     [Export] private HurtBox _hurtBox;
     
     [Export] private VisibleOnScreenNotifier2D _visibleOnScreenNotifier2D;
     [Export] public bool IsPlayer = false;
 
+    [Export] public Shooter Shooter;
+
+    public Node2D ShooterNode;
     public CharacterStats Stats = new CharacterStats();
     public float ShootCd = 1f;
 
@@ -30,7 +32,7 @@ public partial class Actor : CharacterBody2D
 
     protected float RotationTo(float target, double delta)
     {
-        return Mathf.LerpAngle(Rotation, target, 2.5f * (float)delta);
+        return Mathf.LerpAngle(Rotation, target, Stats.Body.RotationSpeed * (float)delta);
     }
 
     private void InitCollision()
@@ -48,11 +50,14 @@ public partial class Actor : CharacterBody2D
 
     public override void _Ready()
     {
+        ShooterNode = GetNode<Node2D>("%ShooterNode");
+        
         InitStats();
         InitCollision();
         Stats.SetTarget(this);
 
         _hurtBox.SetIsPlayer(IsPlayer);
+        Shooter.IsPlayer = IsPlayer;
         
         _visibleOnScreenNotifier2D.ScreenExited += MoveToWorldEdge;
     }
@@ -94,7 +99,7 @@ public partial class Actor : CharacterBody2D
 
     protected virtual void Shoot(Vector2 targetDir)
     {
-        _shooter.Shoot(targetDir);
+        Shooter.Shoot(targetDir);
     }
     
 }

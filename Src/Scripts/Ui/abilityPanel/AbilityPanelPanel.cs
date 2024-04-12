@@ -13,11 +13,11 @@ public partial class AbilityPanelPanel : AbilityPanel
         _title = L_Content.L_AbilityTitle.Instance;
         _desc = L_Content.L_AbilityDesc.Instance;
     }
-
-    public void UpdateUi(Ability ability)
+    
+    public void UpdateUi(IItemInfo item)
     {
-        _title.Text = ability.Name;
-        _desc.Text = ability.Desc;
+        _title.Text = item.Name;
+        _desc.Text = item.Desc;
     }
     
     public override void OnDestroyUi()

@@ -1,17 +1,15 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1vmhmtmuma0x"]
+[gd_scene load_steps=5 format=3 uid="uid://b1vmhmtmuma0x"]
 
 [ext_resource type="Texture2D" uid="uid://br5b76vniv46c" path="res://Assets/Textures/Objects/Actors/Players/Player.png" id="1_8futd"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Actor.cs" id="1_s858g"]
-[ext_resource type="Script" path="res://Scripts/Prefabs/Components/Shooter.cs" id="2_cyf8f"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HurtBox.cs" id="4_lb4uu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j2ixq"]
 size = Vector2(124, 124)
 
-[node name="ActorBase" type="CharacterBody2D" node_paths=PackedStringArray("_shooter", "_hurtBox", "_visibleOnScreenNotifier2D")]
+[node name="ActorBase" type="CharacterBody2D" node_paths=PackedStringArray("_hurtBox", "_visibleOnScreenNotifier2D")]
 motion_mode = 1
 script = ExtResource("1_s858g")
-_shooter = NodePath("Components/Shooter")
 _hurtBox = NodePath("Components/HurtBox")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 
@@ -23,10 +21,9 @@ shape = SubResource("RectangleShape2D_j2ixq")
 
 [node name="Components" type="Node2D" parent="."]
 
-[node name="Shooter" type="Node2D" parent="Components" node_paths=PackedStringArray("_actor")]
+[node name="ShooterNode" type="Node2D" parent="Components"]
+unique_name_in_owner = true
 position = Vector2(52, 0)
-script = ExtResource("2_cyf8f")
-_actor = NodePath("../..")
 
 [node name="HurtBox" type="Area2D" parent="Components"]
 script = ExtResource("4_lb4uu")

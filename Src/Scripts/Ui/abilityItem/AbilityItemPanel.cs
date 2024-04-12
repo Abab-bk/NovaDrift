@@ -6,14 +6,14 @@ namespace NovaDrift.Scripts.Ui.AbilityItem;
 
 public partial class AbilityItemPanel : AbilityItem
 {
-    public Ability Ability;
-    public event Action<Ability> OnAbilitySelected;
+    public IItemInfo Item;
+    public event Action<IItemInfo> OnAbilitySelected;
     
     public override void OnCreateUi()
     {
         S_Button.Instance.Pressed += () =>
         {
-            OnAbilitySelected?.Invoke(Ability);
+            OnAbilitySelected?.Invoke(Item);
         };
         ShowUi();
     }

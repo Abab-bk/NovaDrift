@@ -2,8 +2,8 @@
 
 public class Body
 {
-    public float Health = 100;
+    public readonly float Health = 100;
     public float Acceleration = 200f;
     public float Deceleration = 60f;
-    public float RotationSpeed = 10f;
+    public float RotationSpeed = 4.5f; // 越高越灵敏
 }

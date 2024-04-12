@@ -15,16 +15,19 @@ namespace cfg
 public partial class Tables
 {
     public DataBase.TbAbility TbAbility {get; }
+    public DataBase.TbWeapon TbWeapon {get; }
 
     public Tables(System.Func<string, JsonElement> loader)
     {
         TbAbility = new DataBase.TbAbility(loader("database_tbability"));
+        TbWeapon = new DataBase.TbWeapon(loader("database_tbweapon"));
         ResolveRef();
     }
     
     private void ResolveRef()
     {
         TbAbility.ResolveRef(this);
+        TbWeapon.ResolveRef(this);
     }
 }
 

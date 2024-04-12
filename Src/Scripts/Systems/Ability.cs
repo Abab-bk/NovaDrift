@@ -1,12 +1,12 @@
 ﻿namespace NovaDrift.Scripts.Systems;
 
-public class Ability
+public class Ability : IItemInfo
 {
-    public string Name;
-    public string Desc;
+    public string Name { get; set; }
+    public string Desc { get; set; }
     public string ClassName;
     public Effect Effect;
-
+    
     public void Use()
     {
         Global.Player.Stats.AddEffect(Effect);

@@ -3,6 +3,7 @@ using System.IO;
 using System.Linq;
 using System.Text.Json;
 using cfg;
+using Godot;
 using Game = NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts;
@@ -13,13 +14,32 @@ public class DataBuilder
 
     public static int GetRandomAbilityId()
     {
-        Random random = new Random();
-        int id = random.Next(
+        int id = Random.Shared.Next(
             Tables.TbAbility.DataMap.Keys.First(),
-            Tables.TbAbility.DataMap.Keys.Last()
+            Tables.TbAbility.DataMap.Keys.Last() + 1
             );
-        
         return id;
+    }
+
+    public static int GetRandomWeaponId()
+    {
+        int id = Random.Shared.Next(
+            Tables.TbWeapon.DataMap.Keys.First(),
+            Tables.TbWeapon.DataMap.Keys.Last() + 1
+        );
+        return id;
+    }
+    
+    public static Game.Weapon BuildWeaponById(int id)
+    {
+        cfg.Weapon tbWeapon = Tables.TbWeapon.Get(id);
+        Game.Weapon weapon = new Game.Weapon();
+        
+        weapon.Name = tbWeapon.Name;
+        weapon.Desc = tbWeapon.Desc;
+        weapon.SceneName = tbWeapon.SceneName;
+        
+        return weapon;
     }
 
     public static Game.Ability BuildAbilityById(int id)

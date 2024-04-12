@@ -7,10 +7,10 @@ namespace NovaDrift.Scripts.Prefabs.Components;
 [GlobalClass]
 public partial class Shooter : Node2D
 {
-    [Export] private Actor _actor;
+    [Export] public Actor Actor;
     
     public bool IsPlayer = false;
-    private Timer _shootTimer;
+    protected Timer ShootTimer;
     private float _shootCd = 0.1f;
 
     public override void _Ready()
@@ -20,15 +20,26 @@ public partial class Shooter : Node2D
             IsPlayer = actor.IsPlayer;
         }
 
-        _shootTimer = new Timer();
-        AddChild(_shootTimer);
-        _shootTimer.OneShot = true;
-        _shootTimer.WaitTime = _shootCd;
+        ShootTimer = new Timer();
+        AddChild(ShootTimer);
+        ShootTimer.OneShot = true;
+        ShootTimer.WaitTime = _shootCd;
+        Init();   
+    }
+
+    protected void SetShootCd(float value)
+    {
+        _shootCd = value;
+        ShootTimer.WaitTime = _shootCd;
+    }
+    
+    protected virtual void Init()
+    {
     }
 
     public virtual void Shoot(Vector2 targetDir)
     {
-        if (!_shootTimer.IsStopped())
+        if (!ShootTimer.IsStopped())
         {
             return;
         }
@@ -36,11 +47,11 @@ public partial class Shooter : Node2D
         BulletBase bullet = new BulletBuilder().
                                 SetTargetDir(targetDir).
                                 SetIsPlayer(IsPlayer).
-                                SetDamage(_actor.Stats.Damage.Value).
+                                SetDamage(Actor.Stats.Damage.Value).
                                 Build();
         
         Global.GameWorld.AddChild(bullet);
         bullet.GlobalPosition = GlobalPosition;
-        _shootTimer.Start();
+        ShootTimer.Start();
     }
 }

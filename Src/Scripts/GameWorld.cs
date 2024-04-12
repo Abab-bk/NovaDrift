@@ -17,8 +17,8 @@ public partial class GameWorld : Node2D
         
         DataBuilder.Init();
 
-        _moveJoystick.Visible = Global.CurrentPlatform == GamePlatform.Desktop;
-        _aimJoystick.Visible = Global.CurrentPlatform == GamePlatform.Desktop;
+        _moveJoystick.Visible = Global.CurrentPlatform != GamePlatform.Desktop;
+        _aimJoystick.Visible = Global.CurrentPlatform != GamePlatform.Desktop;
 
         Global.GameWorld = this;
 
