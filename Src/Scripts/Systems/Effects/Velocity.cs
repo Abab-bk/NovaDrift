@@ -22,11 +22,4 @@ public class Velocity : Effect
             Target.Stats.Speed
         );
     }
-
-    public override void OnDestroy()
-    {
-        Target.Stats.ShootSpeed.RemoveAllModifiersFromSource(this);
-        Target.Stats.Damage.RemoveAllModifiersFromSource(this);
-        Target.Stats.Speed.RemoveAllModifiersFromSource(this);
-    }
 }

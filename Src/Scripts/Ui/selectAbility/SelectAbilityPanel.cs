@@ -17,6 +17,7 @@ public partial class SelectAbilityPanel : SelectAbility
         _abilityPanel = S_AbilityPanel.Instance;
         S_YesBtn.Instance.Pressed += () =>
         {
+            if (_currentAbility == null) return;
             _currentAbility.Use();
             Destroy();
         };

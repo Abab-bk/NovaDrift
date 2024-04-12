@@ -3,7 +3,7 @@ using Godot;
 using System;
 
 [Tool]
-public partial class AcidStatsPlugin : EditorPlugin
+public partial class AcidJoystickPlugin : EditorPlugin
 {
 	public override void _EnterTree()
 	{

@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://drcoa0ndbt6te"]
+
+[ext_resource type="Texture2D" uid="uid://ci06rqnb03xne" path="res://addons/AcidJoystick/Assets/JoyRing.png" id="1_ovayn"]
+[ext_resource type="Script" path="res://addons/AcidJoystick/Joystick.cs" id="1_ugnbq"]
+[ext_resource type="Texture2D" uid="uid://bxpmeit1mecr0" path="res://addons/AcidJoystick/Assets/JoyKnob.png" id="2_fqdi5"]
+[ext_resource type="Script" path="res://addons/AcidJoystick/JoyKnob.cs" id="4_2xjwd"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_tix8x"]
+radius = 900.0
+
+[node name="Joystick" type="Node2D"]
+script = ExtResource("1_ugnbq")
+
+[node name="JoyRing" type="Sprite2D" parent="."]
+texture = ExtResource("1_ovayn")
+
+[node name="JoyKnob" type="Sprite2D" parent="." node_paths=PackedStringArray("_button")]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("2_fqdi5")
+script = ExtResource("4_2xjwd")
+_button = NodePath("../TouchScreenButton")
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+shape = SubResource("CircleShape2D_tix8x")

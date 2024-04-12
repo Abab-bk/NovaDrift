@@ -1,4 +1,5 @@
-﻿using NovaDrift.addons.AcidStats;
+﻿using System.Collections.Generic;
+using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Prefabs.Actors;
 
 namespace NovaDrift.Scripts.Systems;
@@ -14,10 +15,13 @@ public class Effect
     // 是否自动开启
     public bool AutoStart = false;
 
-    public void AddModifierToTarget(StatModifier modifier, Stat target)
+    private readonly List<(Stat, StatModifier)> _statModifiers = new List<(Stat, StatModifier)>();
+
+    protected void AddModifierToTarget(StatModifier modifier, Stat target)
     {
         if (Target == null) return;
         target.AddModifier(modifier);
+        _statModifiers.Add((target, modifier));
     }
 
     public virtual void OnCreate()
@@ -30,5 +34,9 @@ public class Effect
 
     public virtual void OnDestroy()
     {
+        foreach (var value in _statModifiers)
+        {
+            value.Item1.RemoveAllModifiersFromSource(value.Item2);
+        }
     }
 }

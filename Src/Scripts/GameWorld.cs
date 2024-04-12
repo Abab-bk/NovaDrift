@@ -1,3 +1,4 @@
+using AcidJoystick;
 using DsUi;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors;
@@ -15,6 +16,7 @@ public partial class GameWorld : Node2D
         UiManager.Open_Hud();
         
         Player player = GD.Load<PackedScene>("res://Scenes/Prefabs/Actors/Player.tscn").Instantiate<Player>();
+        player.JoystickNode = GetNode<Joystick>("%Joystick");
         AddChild(player);
     }
 }

@@ -6,4 +6,8 @@
     <EnableDynamicLoading>true</EnableDynamicLoading>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+  <ItemGroup>
+    <Folder Include="Scripts\Systems\Shields\" />
+    <Folder Include="Scripts\Systems\Weapons\" />
+  </ItemGroup>
 </Project>

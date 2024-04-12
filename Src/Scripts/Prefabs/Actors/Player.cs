@@ -1,3 +1,4 @@
+using AcidJoystick;
 using DsUi;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
@@ -6,6 +7,8 @@ namespace NovaDrift.Scripts.Prefabs.Actors;
 
 public partial class Player : Actor
 {
+    public Joystick JoystickNode;
+    
     public override void _Ready()
     {
         base._Ready();
@@ -50,11 +53,8 @@ public partial class Player : Actor
         Vector2 mousePos = GetGlobalMousePosition();
         LookAt(mousePos);
         
-        if (Input.IsActionPressed("Click"))
-        {
-            Velocity = GlobalPosition.DirectionTo(mousePos) * Stats.Speed.Value;
-            MoveAndSlide();
-        }
+        Velocity = JoystickNode.TargetPos * Stats.Speed.Value;
+        MoveAndSlide();
 
         if (Input.IsActionPressed("RClick"))
         {

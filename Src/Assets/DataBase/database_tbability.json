@@ -1,8 +1,14 @@
 [
   {
     "id": 1001,
-    "name": "火焰",
+    "name": "高速",
     "desc": "+ 20% 武器射击速度\n+ 5% 武器伤害\n+ 50% 速度",
     "class_name": "Velocity"
+  },
+  {
+    "id": 1002,
+    "name": "快速射击",
+    "desc": "+ 15% 武器射速",
+    "class_name": "RapidFire"
   }
 ]
