@@ -9,6 +9,7 @@
 size = Vector2(124, 124)
 
 [node name="ActorBase" type="CharacterBody2D" node_paths=PackedStringArray("_shooter", "_hurtBox", "_visibleOnScreenNotifier2D")]
+motion_mode = 1
 script = ExtResource("1_s858g")
 _shooter = NodePath("Components/Shooter")
 _hurtBox = NodePath("Components/HurtBox")

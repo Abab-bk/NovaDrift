@@ -1,7 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://d25jyaf2cexon"]
+[gd_scene load_steps=7 format=3 uid="uid://d25jyaf2cexon"]
 
 [ext_resource type="Script" path="res://Scripts/GameWorld.cs" id="1_xxmb6"]
-[ext_resource type="PackedScene" uid="uid://bcwkugn6v3oy7" path="res://addons/godot_state_charts/utilities/state_chart_debugger.tscn" id="4_n08b4"]
 [ext_resource type="Texture2D" uid="uid://ctudq8y6j2stj" path="res://Assets/Textures/Backgrounds/BgStarsFar0.png" id="5_bai74"]
 [ext_resource type="PackedScene" uid="uid://drcoa0ndbt6te" path="res://addons/AcidJoystick/Joystick.tscn" id="6_6ip1o"]
 [ext_resource type="Texture2D" uid="uid://7pq0nmp8afbk" path="res://Assets/Textures/Backgrounds/BgStarsMid0.png" id="6_tq1jc"]
@@ -40,19 +39,14 @@ centered = false
 
 [node name="Hud" type="CanvasLayer" parent="."]
 
-[node name="StateChartDebugger" parent="Hud" instance=ExtResource("4_n08b4")]
-anchors_preset = 3
-anchor_left = 1.0
-anchor_top = 1.0
-offset_left = -622.0
-offset_top = -337.0
-grow_horizontal = 0
-grow_vertical = 0
-initial_node_to_watch = NodePath("../../MobGenerator")
-
-[node name="Joystick" parent="Hud" instance=ExtResource("6_6ip1o")]
+[node name="MoveJoystick" parent="Hud" instance=ExtResource("6_6ip1o")]
 unique_name_in_owner = true
-position = Vector2(338, 1121)
+position = Vector2(338, 1052)
+scale = Vector2(0.24, 0.24)
+
+[node name="AimJoystick" parent="Hud" instance=ExtResource("6_6ip1o")]
+unique_name_in_owner = true
+position = Vector2(2216, 1052)
 scale = Vector2(0.24, 0.24)
 
 [node name="Camera2D" type="Camera2D" parent="."]

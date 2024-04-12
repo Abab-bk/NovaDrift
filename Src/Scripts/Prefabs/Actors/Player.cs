@@ -1,4 +1,5 @@
 using AcidJoystick;
+using AcidWallStudio.AcidUtilities;
 using DsUi;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
@@ -27,7 +28,7 @@ public partial class Player : Actor
     {
         Stats.SetDamage(30f).
             SetHealth(300f).
-            SetSpeed(300f);
+            SetSpeed(600f);
 
         Stats.Exp.ValueToMax += UpLevel;
         Stats.Exp.ValueChanged += UpdateUi;
@@ -51,9 +52,35 @@ public partial class Player : Actor
     public override void _PhysicsProcess(double delta)
     {
         Vector2 mousePos = GetGlobalMousePosition();
-        LookAt(mousePos);
-        
-        Velocity = JoystickNode.TargetPos * Stats.Speed.Value;
+
+        if (Global.CurrentPlatform == GamePlatform.Desktop)
+        {
+            Rotation = RotationTo(GlobalPosition.AngleToPoint(mousePos), delta);
+            if (Input.IsActionPressed("Click"))
+            {
+                if (GlobalPosition.DirectionTo(mousePos) != Vector2.Zero)
+                {
+                    TryMoveTo(GlobalPosition.DirectionTo(mousePos), delta);
+                }
+                else
+                {
+                    TryStop(delta);
+                }
+            }
+        }
+        else
+        {
+            Rotation = RotationTo(JoystickNode.TargetPos.Angle(), delta);
+            if (JoystickNode.TargetPos != Vector2.Zero)
+            {
+                TryMoveTo(JoystickNode.TargetPos, delta);
+            }
+            else
+            {
+                TryStop(delta);
+            }
+        }
+
         MoveAndSlide();
 
         if (Input.IsActionPressed("RClick"))

@@ -1,7 +1,9 @@
 ﻿using System;
 using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Prefabs.Actors;
+using NovaDrift.Scripts.Prefabs.Components;
 using NovaDrift.Scripts.Systems;
+using NovaDrift.Scripts.Systems.Bodies;
 using Attribute = NovaDrift.addons.AcidStats.Attribute;
 
 namespace NovaDrift.Scripts.Frameworks.Stats;
@@ -11,6 +13,8 @@ public class CharacterStats
     public Action OnBodyChanged;
     
     public int Level = 1;
+
+    public Body Body = new Body();
     
     public readonly Attribute Health = new Attribute(0, 100);
     public readonly Stat Speed = new Stat(100);

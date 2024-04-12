@@ -17,6 +17,22 @@ public partial class Actor : CharacterBody2D
     public CharacterStats Stats = new CharacterStats();
     public float ShootCd = 1f;
 
+    protected void TryMoveTo(Vector2 dir, double delta)
+    {
+        var targetVelocity = dir * Stats.Speed.Value;
+        Velocity = Velocity.MoveToward(targetVelocity, Stats.Body.Acceleration * (float)delta);
+    }
+
+    protected void TryStop(double delta)
+    {
+        Velocity = Velocity.MoveToward(Vector2.Zero, Stats.Body.Deceleration * (float)delta);
+    }
+
+    protected float RotationTo(float target, double delta)
+    {
+        return Mathf.LerpAngle(Rotation, target, 2.5f * (float)delta);
+    }
+
     private void InitCollision()
     {
         CollisionLayer = 0;

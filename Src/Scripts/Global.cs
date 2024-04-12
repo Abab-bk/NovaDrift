@@ -15,8 +15,16 @@ public enum Layer
     MobHurtBox = 6,
 }
 
+public enum GamePlatform
+{
+    Desktop,
+    Mobile,
+}
+
 public class Global
 {
+    public static GamePlatform CurrentPlatform = GamePlatform.Desktop;
+    
     public static Player Player;
     public static GameWorld GameWorld;
 
