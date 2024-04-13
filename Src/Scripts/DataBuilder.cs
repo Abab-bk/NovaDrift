@@ -30,6 +30,29 @@ public class DataBuilder
         return id;
     }
     
+    public static int GetRandomBodyId()
+    {
+        int id = Random.Shared.Next(
+            Tables.TbBody.DataMap.Keys.First(),
+            Tables.TbBody.DataMap.Keys.Last() + 1
+        );
+        return id;
+    }
+
+    public static Game.Body BuildBodyById(int id)
+    {
+        cfg.Body tbBody = Tables.TbBody.Get(id);
+        Game.Body body = new Game.Body();
+
+        body.SetName(tbBody.Name)
+            .SetDesc(tbBody.Desc)
+            .SetIconPath(tbBody.IconName)
+            .SetAcceleration(tbBody.Acceleration)
+            .SetDeceleration(tbBody.Deceleration);
+
+        return body;
+    }
+
     public static Game.Weapon BuildWeaponById(int id)
     {
         cfg.Weapon tbWeapon = Tables.TbWeapon.Get(id);

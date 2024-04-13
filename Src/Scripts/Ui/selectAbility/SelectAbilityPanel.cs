@@ -1,6 +1,7 @@
 using System;
 using DsUi;
 using Godot;
+using KaimiraGames;
 using NovaDrift.Scripts.Systems;
 using NovaDrift.Scripts.Ui.AbilityItem;
 using NovaDrift.Scripts.Ui.AbilityPanel;
@@ -33,13 +34,24 @@ public partial class SelectAbilityPanel : SelectAbility
         {
             var abilityItem = S_Abilities.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem);
             
-            if (Random.Shared.NextDouble() > 0.5)
+            WeightedList<int> selectList = new WeightedList<int>();
+            selectList.Add(1, 1);
+            selectList.Add(2, 1);
+            selectList.Add(3, 1);
+
+            switch (selectList.Next())
             {
-                abilityItem.Item = DataBuilder.BuildAbilityById(DataBuilder.GetRandomAbilityId());
-            }
-            else
-            {
-                abilityItem.Item = DataBuilder.BuildWeaponById(DataBuilder.GetRandomWeaponId());
+                case 1:
+                    abilityItem.Item = DataBuilder.BuildAbilityById(DataBuilder.GetRandomAbilityId());
+                    break;
+                case 2:
+                    abilityItem.Item = DataBuilder.BuildWeaponById(DataBuilder.GetRandomWeaponId());
+                    break;
+                case 3:
+                    abilityItem.Item = DataBuilder.BuildBodyById(DataBuilder.GetRandomBodyId());
+                    break;
+                default:
+                    throw new ArgumentOutOfRangeException();
             }
             
             abilityItem.OnAbilitySelected += item =>

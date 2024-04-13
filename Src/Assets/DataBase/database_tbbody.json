@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1001,
+    "name": "突击",
+    "desc": "突击",
+    "icon_name": "Assault",
+    "acceleration": 1000,
+    "deceleration": 400,
+    "rotation_speed": 4.5
+  },
+  {
+    "id": 1002,
+    "name": "猎狗",
+    "desc": "猎狗",
+    "icon_name": "Courser",
+    "acceleration": 1400,
+    "deceleration": 500,
+    "rotation_speed": 6
+  }
+]

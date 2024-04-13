@@ -7,10 +7,11 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j2ixq"]
 size = Vector2(124, 124)
 
-[node name="ActorBase" type="CharacterBody2D" node_paths=PackedStringArray("_hurtBox", "_visibleOnScreenNotifier2D")]
+[node name="ActorBase" type="CharacterBody2D" node_paths=PackedStringArray("_hurtBox", "_sprite", "_visibleOnScreenNotifier2D")]
 motion_mode = 1
 script = ExtResource("1_s858g")
 _hurtBox = NodePath("Components/HurtBox")
+_sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

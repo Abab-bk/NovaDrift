@@ -10,6 +10,8 @@ public partial class Actor : CharacterBody2D
 {
     [Export] private HurtBox _hurtBox;
     
+    [Export] private Sprite2D _sprite;
+    
     [Export] private VisibleOnScreenNotifier2D _visibleOnScreenNotifier2D;
     [Export] public bool IsPlayer = false;
 
@@ -55,6 +57,10 @@ public partial class Actor : CharacterBody2D
         InitStats();
         InitCollision();
         Stats.SetTarget(this);
+        Stats.OnBodyChanged += () =>
+        {
+            _sprite.Texture = GD.Load<Texture2D>(Stats.Body.IconPath);
+        };
 
         _hurtBox.SetIsPlayer(IsPlayer);
         Shooter.IsPlayer = IsPlayer;
