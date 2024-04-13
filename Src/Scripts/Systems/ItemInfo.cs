@@ -4,4 +4,6 @@ public interface IItemInfo
 {
     public string Name { get; }
     public string Desc { get; }
+    
+    public void Use();
 }

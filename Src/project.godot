@@ -69,3 +69,4 @@ pointing/emulate_touch_from_mouse=true
 [rendering]
 
 renderer/rendering_method="mobile"
+viewport/hdr_2d=true

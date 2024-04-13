@@ -11,22 +11,15 @@ public partial class SelectAbilityPanel : SelectAbility
 {
     private AbilityPanelPanel _abilityPanel;
     
-    private Ability _currentAbility;
-    private Weapon _currentWeapon;
+    private IItemInfo _currentItem;
     
     public override void OnCreateUi()
     {
         _abilityPanel = S_AbilityPanel.Instance;
         S_YesBtn.Instance.Pressed += () =>
         {
-            if (_currentAbility == null)
-            {
-                _currentWeapon.Use();
-                Destroy();
-                return;
-            }
-            
-            _currentAbility.Use();
+            if (_currentItem == null) return;
+            _currentItem.Use();
             Destroy();
         };
         
@@ -35,39 +28,24 @@ public partial class SelectAbilityPanel : SelectAbility
     
     private void GenerateAbilityPanel(AbilityGenerateConfig config)
     {
-        // 生成 Abilities Item
+        // 生成 Items
         for (int i = 0; i < config.Count; i++)
         {
-            Ability ability;
-            Weapon weapon;
-            
             var abilityItem = S_Abilities.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem);
             
             if (Random.Shared.NextDouble() > 0.5)
             {
-                ability = DataBuilder.BuildAbilityById(DataBuilder.GetRandomAbilityId());
-                abilityItem.Item = ability;
+                abilityItem.Item = DataBuilder.BuildAbilityById(DataBuilder.GetRandomAbilityId());
             }
             else
             {
-                weapon = DataBuilder.BuildWeaponById(DataBuilder.GetRandomWeaponId());
-                abilityItem.Item = weapon;
+                abilityItem.Item = DataBuilder.BuildWeaponById(DataBuilder.GetRandomWeaponId());
             }
             
             abilityItem.OnAbilitySelected += item =>
             {
                 _abilityPanel.UpdateUi(item);
-                if (item is Ability ability1)
-                {
-                    _currentAbility = ability1;
-                    _currentWeapon = null;
-                }
-
-                if (item is Weapon weapon)
-                {
-                    _currentWeapon = weapon;
-                    _currentAbility = null;
-                }
+                _currentItem = item;
             };
         }
     }

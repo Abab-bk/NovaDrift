@@ -36,7 +36,6 @@ public partial class Player : Actor
 
     private void UpLevel(float value)
     {
-        GD.Print("升级");
         Stats.Exp.Clear();
         Stats.Exp.MaxValue.BaseValue += 100;
         UpdateUi();
@@ -62,10 +61,10 @@ public partial class Player : Actor
                 {
                     TryMoveTo(GlobalPosition.DirectionTo(mousePos), delta);
                 }
-                else
-                {
-                    TryStop(delta);
-                }
+            }
+            else
+            {
+                TryStop(delta);
             }
         }
         else
