@@ -27,7 +27,7 @@ public partial class Shooter : Node2D
         Init();   
     }
 
-    protected void SetShootCd(float value)
+    public void SetShootCd(float value)
     {
         _shootCd = value;
         ShootTimer.WaitTime = _shootCd;
@@ -52,6 +52,7 @@ public partial class Shooter : Node2D
         
         Global.GameWorld.AddChild(bullet);
         bullet.GlobalPosition = GlobalPosition;
+        bullet.Rotation = targetDir.Angle();
         ShootTimer.Start();
     }
 }

@@ -12,9 +12,6 @@ script = ExtResource("2_15kon")
 IsPlayer = true
 Shooter = NodePath("Components/ShooterNode/Shooter")
 
-[node name="Sprite2D" parent="." index="0"]
-modulate = Color(1, 0.580392, 0.196078, 1)
-
 [node name="Shooter" type="Node2D" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
 script = ExtResource("3_hlk8c")
 Actor = NodePath("../../..")

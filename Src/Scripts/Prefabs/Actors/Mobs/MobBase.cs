@@ -17,6 +17,8 @@ public partial class MobBase : Actor
                 Die();
             }
         };
+        
+        Shooter.SetShootCd(0.8f);
     }
 
     public override void Die()
@@ -25,10 +27,15 @@ public partial class MobBase : Actor
         QueueFree();
     }
 
-    public void SetTargetAndMove(Node2D target)
+    public float GetDistanceToPlayer()
+    {
+        return Global.Player.GlobalPosition.DistanceTo(GlobalPosition);
+    }
+
+    public void SetTargetAndMove(Node2D target, float delta)
     {
         LookAt(target.GlobalPosition);
-        Velocity = GlobalPosition.DirectionTo(target.GlobalPosition) * Stats.Speed.Value;
+        TryMoveTo(GlobalPosition.DirectionTo(target.GlobalPosition), delta);
         MoveAndSlide();
     }
 }

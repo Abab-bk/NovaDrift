@@ -1,17 +1,19 @@
-[gd_scene load_steps=5 format=3 uid="uid://dopw3ixphjmh7"]
+[gd_scene load_steps=6 format=3 uid="uid://dopw3ixphjmh7"]
 
 [ext_resource type="Script" path="res://Scripts/Prefabs/BulletBase.cs" id="1_l73w7"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HitBox.cs" id="2_74isq"]
+[ext_resource type="Texture2D" uid="uid://cjd5cjg845jjq" path="res://Assets/Textures/Bullets/Bullet.png" id="2_7373b"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/FreeSelfWhenExitScreen.cs" id="3_bimy8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jcqaf"]
-size = Vector2(18, 12)
+size = Vector2(73, 28)
 
 [node name="BulletBase" type="CharacterBody2D" node_paths=PackedStringArray("_hitBox")]
 script = ExtResource("1_l73w7")
 _hitBox = NodePath("HitBox")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7373b")
 
 [node name="Polygon2D" type="Polygon2D" parent="."]
 polygon = PackedVector2Array(-29, -9, 25, 0, -29, 11)
@@ -20,7 +22,7 @@ polygon = PackedVector2Array(-29, -9, 25, 0, -29, 11)
 script = ExtResource("2_74isq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(9, 1)
+position = Vector2(-13.5, 1)
 shape = SubResource("RectangleShape2D_jcqaf")
 
 [node name="FreeSelfWhenExitScreen" type="VisibleOnScreenNotifier2D" parent="."]

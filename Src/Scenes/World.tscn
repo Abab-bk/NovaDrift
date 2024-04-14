@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://d25jyaf2cexon"]
+[gd_scene load_steps=10 format=3 uid="uid://d25jyaf2cexon"]
 
 [ext_resource type="Script" path="res://Scripts/GameWorld.cs" id="1_xxmb6"]
 [ext_resource type="Texture2D" uid="uid://ctudq8y6j2stj" path="res://Assets/Textures/Backgrounds/BgStarsFar0.png" id="5_bai74"]
@@ -7,11 +7,48 @@
 [ext_resource type="Texture2D" uid="uid://5kiq2ad0158h" path="res://Assets/Textures/Backgrounds/BgStarsNear0.png" id="7_s8o5w"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/MobGenerator.cs" id="8_wqlpe"]
 
+[sub_resource type="Animation" id="Animation_b3sj7"]
+resource_name = "BackGroundMove"
+length = 20.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ParallaxBackground:scroll_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 20),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(1270, 720)]
+}
+
+[sub_resource type="Animation" id="Animation_vmbyp"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("ParallaxBackground:scroll_offset")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3iie4"]
+_data = {
+"BackGroundMove": SubResource("Animation_b3sj7"),
+"RESET": SubResource("Animation_vmbyp")
+}
+
 [node name="World" type="Node2D"]
+scale = Vector2(0.5, 0.5)
 script = ExtResource("1_xxmb6")
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_offset = Vector2(1280, 720)
 
 [node name="Far" type="ParallaxLayer" parent="ParallaxBackground"]
 motion_scale = Vector2(1.2, 1)
@@ -36,6 +73,12 @@ motion_mirroring = Vector2(2048, 2048)
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Near"]
 texture = ExtResource("7_s8o5w")
 centered = false
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_3iie4")
+}
+autoplay = "BackGroundMove"
 
 [node name="Hud" type="CanvasLayer" parent="."]
 

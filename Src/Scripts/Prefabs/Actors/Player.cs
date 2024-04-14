@@ -32,6 +32,7 @@ public partial class Player : Actor
 
         Stats.Exp.ValueToMax += UpLevel;
         Stats.Exp.ValueChanged += UpdateUi;
+        Stats.Health.ValueChanged += UpdateUi;
     }
 
     private void UpLevel(float value)
@@ -46,6 +47,7 @@ public partial class Player : Actor
     private void UpdateUi(float value = 0)
     {
         UiManager.Get_Hud_Instance()[0].UpdateExpBar(Stats.Exp.BaseValue / Stats.Exp.MaxValue.Value);
+        UiManager.Get_Hud_Instance()[0].UpdateHpBar(Stats.Health.BaseValue / Stats.Health.MaxValue.Value);
     }
 
     public override void _PhysicsProcess(double delta)

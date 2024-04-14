@@ -103,7 +103,7 @@ public partial class Actor : CharacterBody2D
     {
     }
 
-    protected virtual void Shoot(Vector2 targetDir)
+    public virtual void Shoot(Vector2 targetDir)
     {
         Shooter.Shoot(targetDir);
     }

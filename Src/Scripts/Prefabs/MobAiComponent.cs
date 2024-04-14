@@ -28,12 +28,16 @@ public partial class MobAiComponent : Node
 
     public virtual void _OnIdleProcess(float delta)
     {
-        GD.Print("Mob is Idle");
     }
 
     public virtual void _OnRunningProcess(float delta)
     {
-        _mob.SetTargetAndMove(Global.Player);
+        _mob.SetTargetAndMove(Global.Player, delta);
+
+        if (Global.Player.GlobalPosition.DistanceTo(_mob.GlobalPosition) < 300)
+        {
+            _mob.Shoot(_mob.GlobalPosition.DirectionTo(Global.Player.GlobalPosition));
+        }
     }
 
     public virtual void _OnDeadProcess(float delta)
@@ -43,7 +47,6 @@ public partial class MobAiComponent : Node
     
     public virtual void _OnIdleStateEntered()
     {
-        GD.Print("Mob entered Idle");
         _stateChart.CallDeferred("send_event", "ToRunning");
     }
 
