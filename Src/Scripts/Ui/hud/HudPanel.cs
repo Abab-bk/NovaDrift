@@ -18,6 +18,7 @@ public partial class HudPanel : Hud
             OpenNestedUi(UiManager.UiName.SelectAbility);
             Global.StopGame();
         };
+        Global.OnGameOver += Destroy;
     }
     
     public void UpdateExpBar(float ratio)

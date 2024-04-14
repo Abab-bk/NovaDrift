@@ -20,6 +20,18 @@ public partial class MobGenerator : Node2D
             return;
         }
 
+        Global.OnGameOver += () =>
+        {
+            _timer.Stop();
+            _enabled = false;
+        };
+
+        Global.OnGameInit += () =>
+        {
+            _enabled = true;
+            _timer.Start();
+        };
+
         _timer = new Timer();
         AddChild(_timer);
         _timer.OneShot = false;
@@ -28,16 +40,22 @@ public partial class MobGenerator : Node2D
         _timer.Timeout += SpawnAMob;
         _timer.Start();
     }
-
+    
     private void SpawnAMob()
     {
+        if (!_enabled) return;
+        
         if (GetChildren().Count - 1 >= _maxMobs)
         {
             return;
         }
 
         MobBuilder mobBuilder = new MobBuilder();
-        MobBase mob = mobBuilder.Build();
+        
+        MobBase mob = mobBuilder
+                        .SetMobInfo(DataBuilder.BuildMobInfoById(DataBuilder.GetRandomMobId()))
+                        .Build();
+        
         AddChild(mob);
         mob.GlobalPosition = GetRandomPosition();
     }

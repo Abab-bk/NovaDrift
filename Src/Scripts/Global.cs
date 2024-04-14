@@ -29,9 +29,11 @@ public class Global
     public static GameWorld GameWorld;
 
     public static Action<MobBase> OnMobDied;
-    
     public static Action<int> OnPlayerUpLevel;
-
+    public static Action OnPlayerDead;
+    public static Action OnGameOver;
+    public static Action OnGameInit;
+    public static Action OnGameStart;
 
     private static int _stopCount = 0;
 

@@ -32,12 +32,12 @@ public partial class MobAiComponent : Node
 
     public virtual void _OnRunningProcess(float delta)
     {
-        _mob.SetTargetAndMove(Global.Player, delta);
-
         if (Global.Player.GlobalPosition.DistanceTo(_mob.GlobalPosition) < 300)
         {
             _mob.Shoot(_mob.GlobalPosition.DirectionTo(Global.Player.GlobalPosition));
+            return;
         }
+        _mob.SetTargetAndMove(Global.Player, delta);
     }
 
     public virtual void _OnDeadProcess(float delta)

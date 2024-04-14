@@ -1,14 +1,19 @@
+using System;
 using Godot;
-using NovaDrift.addons.AcidStats;
-using NovaDrift.Scripts.Frameworks.Stats;
+using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts.Prefabs.Actors.Mobs;
 
 public partial class MobBase : Actor
 {
-    protected override void InitStats()
+    public MobInfo MobInfo;
+
+    public override void _Ready()
     {
-        Stats.SetDamage(20f);
+        base._Ready();
+        AddToGroup("Mobs");
+        if (MobInfo == null) throw new Exception("MobInfo 为 Null");
+        Sprite.Texture = GD.Load<Texture2D>(MobInfo.IconPath);
         
         Stats.Health.ValueChanged += (float value) =>
         {
@@ -17,7 +22,11 @@ public partial class MobBase : Actor
                 Die();
             }
         };
-        
+    }
+
+    protected override void InitStats()
+    {
+        Stats.SetDamage(20f);
         Shooter.SetShootCd(0.8f);
     }
 

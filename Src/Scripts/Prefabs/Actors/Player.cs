@@ -20,6 +20,14 @@ public partial class Player : Actor
             Stats.Exp.Increase(50);
             UpdateUi();
         };
+        Stats.Health.ValueChanged += (float value) =>
+        {
+            UpdateUi();
+            if (value <= 0)
+            {
+                Die();
+            }
+        };
         
         UpdateUi();
     }
@@ -33,6 +41,12 @@ public partial class Player : Actor
         Stats.Exp.ValueToMax += UpLevel;
         Stats.Exp.ValueChanged += UpdateUi;
         Stats.Health.ValueChanged += UpdateUi;
+    }
+
+    public override void Die()
+    {
+        Global.OnPlayerDead?.Invoke();
+        Global.OnGameOver?.Invoke();
     }
 
     private void UpLevel(float value)

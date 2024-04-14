@@ -38,6 +38,15 @@ public class DataBuilder
         );
         return id;
     }
+    
+    public static int GetRandomMobId()
+    {
+        int id = Random.Shared.Next(
+            Tables.TbMobInfo.DataMap.Keys.First(),
+            Tables.TbMobInfo.DataMap.Keys.Last() + 1
+        );
+        return id;
+    }
 
     public static Game.Body BuildBodyById(int id)
     {
@@ -88,6 +97,18 @@ public class DataBuilder
         
         Game.Effect effect = (Game.Effect) Activator.CreateInstance(classType);
         return effect;
+    }
+    
+    public static Game.MobInfo BuildMobInfoById(int id)
+    {
+        cfg.MobInfo tbMobInfo = Tables.TbMobInfo.Get(id);
+        Game.MobInfo mobInfo = new Game.MobInfo();
+
+        mobInfo.
+            SetName(tbMobInfo.IconName).
+            SetIconPath(tbMobInfo.IconName);
+        
+        return mobInfo;
     }
 
     public static void Init()

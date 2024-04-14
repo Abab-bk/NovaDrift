@@ -8,6 +8,7 @@ public static partial class UiManager
     {
         public const string AbilityItem = "AbilityItem";
         public const string AbilityPanel = "AbilityPanel";
+        public const string GameOver = "GameOver";
         public const string Hud = "Hud";
         public const string SelectAbility = "SelectAbility";
     }
@@ -106,6 +107,54 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel[] Get_AbilityPanel_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel>(nameof(NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanel));
+    }
+
+    /// <summary>
+    /// 创建 GameOver, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.GameOver.GameOverPanel Create_GameOver()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.GameOver.GameOverPanel>(UiName.GameOver);
+    }
+
+    /// <summary>
+    /// 打开 GameOver, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.GameOver.GameOverPanel Open_GameOver()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.GameOver.GameOverPanel>(UiName.GameOver);
+    }
+
+    /// <summary>
+    /// 隐藏 GameOver 的所有实例
+    /// </summary>
+    public static void Hide_GameOver()
+    {
+        var uiInstance = Get_GameOver_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 GameOver 的所有实例
+    /// </summary>
+    public static void Destroy_GameOver()
+    {
+        var uiInstance = Get_GameOver_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 GameOver 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.GameOver.GameOverPanel[] Get_GameOver_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.GameOver.GameOverPanel>(nameof(NovaDrift.Scripts.Ui.GameOver.GameOver));
     }
 
     /// <summary>

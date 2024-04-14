@@ -13,8 +13,9 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hy5bx"]
 size = Vector2(124, 124)
 
-[node name="MobBase" node_paths=PackedStringArray("Shooter") instance=ExtResource("1_kd23v")]
+[node name="MobBase" node_paths=PackedStringArray("Sprite", "Shooter") instance=ExtResource("1_kd23v")]
 script = ExtResource("2_e2oe2")
+Sprite = NodePath("Sprite2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")
 
 [node name="Sprite2D" parent="." index="0"]

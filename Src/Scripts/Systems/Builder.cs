@@ -46,4 +46,10 @@ public class MobBuilder
     {
         return _mobBase;
     }
+
+    public MobBuilder SetMobInfo(MobInfo mobInfo)
+    {
+        _mobBase.MobInfo = mobInfo;
+        return this;
+    }
 }
