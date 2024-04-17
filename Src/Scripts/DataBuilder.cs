@@ -16,7 +16,7 @@ public class DataBuilder
     public static int GetRandomAbilityId()
     {
         int id = Random.Shared.Next(
-            _tables.TbAbility.DataMap.Keys.First(),
+            _tables.TbAbility.DataMap.Keys.ElementAt(1),
             _tables.TbAbility.DataMap.Keys.Last() + 1
             );
         return id;
@@ -25,7 +25,7 @@ public class DataBuilder
     public static int GetRandomWeaponId()
     {
         int id = Random.Shared.Next(
-            _tables.TbWeapon.DataMap.Keys.First(),
+            _tables.TbWeapon.DataMap.Keys.ElementAt(1),
             _tables.TbWeapon.DataMap.Keys.Last() + 1
         );
         return id;
@@ -34,7 +34,7 @@ public class DataBuilder
     public static int GetRandomBodyId()
     {
         int id = Random.Shared.Next(
-            _tables.TbBody.DataMap.Keys.First(),
+            _tables.TbBody.DataMap.Keys.ElementAt(1),
             _tables.TbBody.DataMap.Keys.Last() + 1
         );
         return id;
@@ -43,7 +43,7 @@ public class DataBuilder
     public static int GetRandomMobId()
     {
         int id = Random.Shared.Next(
-            _tables.TbMobInfo.DataMap.Keys.First(),
+            _tables.TbMobInfo.DataMap.Keys.ElementAt(1),
             _tables.TbMobInfo.DataMap.Keys.Last() + 1
         );
         return id;
@@ -52,9 +52,17 @@ public class DataBuilder
     public static Game.Body BuildBodyById(int id)
     {
         cfg.Body tbBody = _tables.TbBody.Get(id);
-        Game.Body body = new Game.Body();
 
-        body.SetName(tbBody.Name)
+        string name = tbBody.ClassName;
+        Type classType = Type.GetType("NovaDrift.Scripts.Systems.Bodies." + name);
+        if (classType == null)
+        {
+            throw new Exception("无法找到类：" + name);
+        }
+        
+        Game.Body body = (Game.Body) Activator.CreateInstance(classType);
+
+        body?.SetName(tbBody.Name)
             .SetDesc(tbBody.Desc)
             .SetIconPath(tbBody.IconName)
             .SetAcceleration(tbBody.Acceleration)
@@ -72,9 +80,6 @@ public class DataBuilder
         weapon.Name = tbWeapon.Name;
         weapon.Desc = tbWeapon.Desc;
         weapon.SceneName = tbWeapon.SceneName;
-        weapon.ShootSpeed.BaseValue = tbWeapon.ShootSpeed;
-        weapon.BulletSpeed.BaseValue = tbWeapon.BulletSpeed;
-        weapon.ShootSpread.BaseValue = tbWeapon.ShootSpread;
         
         return weapon;
     }

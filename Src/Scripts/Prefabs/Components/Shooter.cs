@@ -1,13 +1,16 @@
-﻿using Godot;
+﻿using System;
+using Godot;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts.Prefabs.Components;
 
 [GlobalClass]
-public partial class Shooter : Node2D
+public partial class Shooter : Node2D, IObject
 {
     [Export] public Actor Actor;
+    
+    public event Action<BulletBase> OnShoot;
     
     public Weapon Weapon = new Weapon();
     
@@ -24,12 +27,20 @@ public partial class Shooter : Node2D
         ShootTimer = new Timer();
         AddChild(ShootTimer);
         ShootTimer.OneShot = true;
-        ShootTimer.WaitTime = Weapon.ShootSpeed.Value;
-        Init();   
+        ShootTimer.WaitTime = Actor.Stats.ShootSpeed.Value;
+        Init();
+        
+        Actor.Stats.ShootSpeed.ValueChanged += SetShootCd;
+    }
+
+    public void Destroy()
+    {
+        Actor.Stats.ShootSpeed.ValueChanged -= SetShootCd;
     }
 
     public void SetShootCd(float value)
     {
+        ShootTimer.Stop();
         ShootTimer.WaitTime = value;
     }
     
@@ -48,12 +59,13 @@ public partial class Shooter : Node2D
                                 SetTargetDir(targetDir).
                                 SetIsPlayer(IsPlayer).
                                 SetDamage(Actor.Stats.Damage.Value).
-                                SetSpeed(Weapon.BulletSpeed.Value).
+                                SetSpeed(Actor.Stats.BulletSpeed.Value).
                                 Build();
         
         Global.GameWorld.AddChild(bullet);
         bullet.GlobalPosition = GlobalPosition;
         bullet.Rotation = targetDir.Angle();
         ShootTimer.Start();
+        OnShoot?.Invoke(bullet);
     }
 }

@@ -1,9 +1,15 @@
-﻿using NovaDrift.addons.AcidStats;
+﻿using System.Collections.Generic;
+using AcidWallStudio.AcidUtilities;
+using Godot;
+using NovaDrift.addons.AcidStats;
+using NovaDrift.Scripts.Prefabs.Actors;
 
 namespace NovaDrift.Scripts.Systems;
 
 public class Body : IItemInfo
 {
+    public Actor Actor;
+    
     public string Name { get; set; }
     public string Desc { get; set; }
     public string IconPath = "res://Assets/Textures/Bodies/Default.png";
@@ -14,6 +20,23 @@ public class Body : IItemInfo
     public Stat Deceleration = new Stat(300f);
     public Stat RotationSpeed = new Stat(4.5f); // 越高越灵敏
     public Stat ShootingDeceleration = new Stat(500f);
+    
+    private readonly List<(Stat, StatModifier)> _statModifiers = new List<(Stat, StatModifier)>();
+
+    protected void AddModifierToTarget(StatModifier modifier, Stat target)
+    {
+        target.AddModifier(modifier);
+        _statModifiers.Add((target, modifier));
+    }
+    
+    public virtual void OnDestroy()
+    {
+        foreach (var value in _statModifiers)
+        {
+            value.Item1.RemoveAllModifiersFromSource(value.Item2);
+        }
+    }
+    
     
     public Body SetName(string name)
     {
@@ -63,8 +86,9 @@ public class Body : IItemInfo
         return this;
     }
 
-    public void Use()
+    public virtual void Use()
     {
         Global.Player.Stats.SetBody(this);
+        Actor = Global.Player;
     }
 }

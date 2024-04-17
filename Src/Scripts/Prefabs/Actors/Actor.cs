@@ -22,7 +22,7 @@ public partial class Actor : CharacterBody2D
     public float ShootCd = 1f;
     
     protected bool IsShooting = false;
-
+    
     protected void TryMoveTo(Vector2 dir, double delta)
     {
         var targetVelocity = dir * Stats.Speed.Value;

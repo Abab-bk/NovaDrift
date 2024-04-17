@@ -11,6 +11,8 @@ public static partial class UiManager
         public const string GameOver = "GameOver";
         public const string Hud = "Hud";
         public const string SelectAbility = "SelectAbility";
+        public const string StatsMonitor = "StatsMonitor";
+        public const string StatsMonitorItem = "StatsMonitorItem";
     }
 
     /// <summary>
@@ -251,6 +253,102 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.SelectAbility.SelectAbilityPanel[] Get_SelectAbility_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.SelectAbility.SelectAbilityPanel>(nameof(NovaDrift.Scripts.Ui.SelectAbility.SelectAbility));
+    }
+
+    /// <summary>
+    /// 创建 StatsMonitor, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.StatsMonitor.StatsMonitorPanel Create_StatsMonitor()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.StatsMonitor.StatsMonitorPanel>(UiName.StatsMonitor);
+    }
+
+    /// <summary>
+    /// 打开 StatsMonitor, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.StatsMonitor.StatsMonitorPanel Open_StatsMonitor()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.StatsMonitor.StatsMonitorPanel>(UiName.StatsMonitor);
+    }
+
+    /// <summary>
+    /// 隐藏 StatsMonitor 的所有实例
+    /// </summary>
+    public static void Hide_StatsMonitor()
+    {
+        var uiInstance = Get_StatsMonitor_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 StatsMonitor 的所有实例
+    /// </summary>
+    public static void Destroy_StatsMonitor()
+    {
+        var uiInstance = Get_StatsMonitor_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 StatsMonitor 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.StatsMonitor.StatsMonitorPanel[] Get_StatsMonitor_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.StatsMonitor.StatsMonitorPanel>(nameof(NovaDrift.Scripts.Ui.StatsMonitor.StatsMonitor));
+    }
+
+    /// <summary>
+    /// 创建 StatsMonitorItem, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.StatsMonitorItem.StatsMonitorItemPanel Create_StatsMonitorItem()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.StatsMonitorItem.StatsMonitorItemPanel>(UiName.StatsMonitorItem);
+    }
+
+    /// <summary>
+    /// 打开 StatsMonitorItem, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.StatsMonitorItem.StatsMonitorItemPanel Open_StatsMonitorItem()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.StatsMonitorItem.StatsMonitorItemPanel>(UiName.StatsMonitorItem);
+    }
+
+    /// <summary>
+    /// 隐藏 StatsMonitorItem 的所有实例
+    /// </summary>
+    public static void Hide_StatsMonitorItem()
+    {
+        var uiInstance = Get_StatsMonitorItem_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 StatsMonitorItem 的所有实例
+    /// </summary>
+    public static void Destroy_StatsMonitorItem()
+    {
+        var uiInstance = Get_StatsMonitorItem_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 StatsMonitorItem 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.StatsMonitorItem.StatsMonitorItemPanel[] Get_StatsMonitorItem_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.StatsMonitorItem.StatsMonitorItemPanel>(nameof(NovaDrift.Scripts.Ui.StatsMonitorItem.StatsMonitorItem));
     }
 
 }

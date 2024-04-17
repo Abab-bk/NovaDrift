@@ -1,0 +1,37 @@
+[gd_scene load_steps=3 format=3 uid="uid://6kdybyjessho"]
+
+[ext_resource type="Script" path="res://Scripts/Ui/statsMonitor/StatsMonitorPanel.cs" id="1_ioa6x"]
+[ext_resource type="PackedScene" uid="uid://d2cye5oiw0vv0" path="res://Scenes/Ui/StatsMonitorItem.tscn" id="2_kbxn6"]
+
+[node name="StatsMonitor" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ioa6x")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -383.0
+offset_right = 670.0
+grow_vertical = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 40
+theme_override_constants/margin_top = 40
+theme_override_constants/margin_right = 40
+theme_override_constants/margin_bottom = 40
+
+[node name="Items" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="StatsMonitorItem" parent="PanelContainer/MarginContainer/Items" instance=ExtResource("2_kbxn6")]
+layout_mode = 2
+MonitorName = "ShootSpeed"

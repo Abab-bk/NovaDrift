@@ -18,8 +18,11 @@ public class CharacterStats
     public Stat Speed = new Stat(100);
     public Stat Damage = new Stat(30);
     public Attribute Exp = new Attribute(0, 100);
+    
     // 武器射击速度
-    public readonly Stat ShootSpeed = new Stat(1f);
+    public Stat ShootSpeed = new Stat(0.5f); // 射击速度，单位为秒，越低越快
+    public Stat BulletSpeed = new Stat(1000f); // 子弹射速
+    public Stat ShootSpread = new Stat(0f);
     
     private EffectSystem _effectSystem = new EffectSystem();
     private Actor _target;

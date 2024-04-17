@@ -28,16 +28,18 @@ public partial class GameWorld : Node2D
         _moveJoystick.Visible = Global.CurrentPlatform != GamePlatform.Desktop;
         _aimJoystick.Visible = Global.CurrentPlatform != GamePlatform.Desktop;
 
-        Global.GameWorld = this;
-
         UiManager.Open_Hud();
+        
+        Global.GameWorld = this;
         
         Player player = GD.Load<PackedScene>("res://Scenes/Prefabs/Actors/Player.tscn").Instantiate<Player>();
         player.JoystickNode = _moveJoystick;
         AddChild(player);
         
-        DataBuilder.BuildBodyById(1001).Use();
-        DataBuilder.BuildWeaponById(1001).Use();
+        DataBuilder.BuildBodyById(1000).Use();
+        DataBuilder.BuildWeaponById(1000).Use();
+
+        UiManager.Get_Hud_Instance()[0].OpenNestedUi(UiManager.UiName.StatsMonitor);
     }
 
     private async void GameOver()
