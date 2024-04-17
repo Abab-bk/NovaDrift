@@ -1,8 +1,20 @@
 [
   {
     "id": 1001,
+    "name": "默认武器",
+    "desc": "最普通的武器。",
+    "scene_name": "DefaultShooter",
+    "shoot_speed": 0.2,
+    "bullet_speed": 1300,
+    "shoot_spread": 0
+  },
+  {
+    "id": 1002,
     "name": "剑",
     "desc": "每 0.5s 自动旋转一圈。",
-    "scene_name": "Sword"
+    "scene_name": "Sword",
+    "shoot_speed": 0.5,
+    "bullet_speed": 0,
+    "shoot_spread": 0
   }
 ]

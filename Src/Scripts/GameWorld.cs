@@ -35,6 +35,9 @@ public partial class GameWorld : Node2D
         Player player = GD.Load<PackedScene>("res://Scenes/Prefabs/Actors/Player.tscn").Instantiate<Player>();
         player.JoystickNode = _moveJoystick;
         AddChild(player);
+        
+        DataBuilder.BuildBodyById(1001).Use();
+        DataBuilder.BuildWeaponById(1001).Use();
     }
 
     private async void GameOver()

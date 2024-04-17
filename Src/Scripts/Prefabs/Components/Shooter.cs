@@ -9,9 +9,10 @@ public partial class Shooter : Node2D
 {
     [Export] public Actor Actor;
     
+    public Weapon Weapon = new Weapon();
+    
     public bool IsPlayer = false;
     protected Timer ShootTimer;
-    private float _shootCd = 0.1f;
 
     public override void _Ready()
     {
@@ -23,14 +24,13 @@ public partial class Shooter : Node2D
         ShootTimer = new Timer();
         AddChild(ShootTimer);
         ShootTimer.OneShot = true;
-        ShootTimer.WaitTime = _shootCd;
+        ShootTimer.WaitTime = Weapon.ShootSpeed.Value;
         Init();   
     }
 
     public void SetShootCd(float value)
     {
-        _shootCd = value;
-        ShootTimer.WaitTime = _shootCd;
+        ShootTimer.WaitTime = value;
     }
     
     protected virtual void Init()
@@ -48,6 +48,7 @@ public partial class Shooter : Node2D
                                 SetTargetDir(targetDir).
                                 SetIsPlayer(IsPlayer).
                                 SetDamage(Actor.Stats.Damage.Value).
+                                SetSpeed(Weapon.BulletSpeed.Value).
                                 Build();
         
         Global.GameWorld.AddChild(bullet);

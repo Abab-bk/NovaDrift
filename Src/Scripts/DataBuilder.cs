@@ -2,6 +2,7 @@
 using System.IO;
 using System.Linq;
 using System.Text.Json;
+using AcidWallStudio.AcidUtilities;
 using cfg;
 using Godot;
 using Game = NovaDrift.Scripts.Systems;
@@ -10,13 +11,13 @@ namespace NovaDrift.Scripts;
 
 public class DataBuilder
 {
-    public static Tables Tables;
+    private static Tables _tables;
 
     public static int GetRandomAbilityId()
     {
         int id = Random.Shared.Next(
-            Tables.TbAbility.DataMap.Keys.First(),
-            Tables.TbAbility.DataMap.Keys.Last() + 1
+            _tables.TbAbility.DataMap.Keys.First(),
+            _tables.TbAbility.DataMap.Keys.Last() + 1
             );
         return id;
     }
@@ -24,8 +25,8 @@ public class DataBuilder
     public static int GetRandomWeaponId()
     {
         int id = Random.Shared.Next(
-            Tables.TbWeapon.DataMap.Keys.First(),
-            Tables.TbWeapon.DataMap.Keys.Last() + 1
+            _tables.TbWeapon.DataMap.Keys.First(),
+            _tables.TbWeapon.DataMap.Keys.Last() + 1
         );
         return id;
     }
@@ -33,8 +34,8 @@ public class DataBuilder
     public static int GetRandomBodyId()
     {
         int id = Random.Shared.Next(
-            Tables.TbBody.DataMap.Keys.First(),
-            Tables.TbBody.DataMap.Keys.Last() + 1
+            _tables.TbBody.DataMap.Keys.First(),
+            _tables.TbBody.DataMap.Keys.Last() + 1
         );
         return id;
     }
@@ -42,41 +43,45 @@ public class DataBuilder
     public static int GetRandomMobId()
     {
         int id = Random.Shared.Next(
-            Tables.TbMobInfo.DataMap.Keys.First(),
-            Tables.TbMobInfo.DataMap.Keys.Last() + 1
+            _tables.TbMobInfo.DataMap.Keys.First(),
+            _tables.TbMobInfo.DataMap.Keys.Last() + 1
         );
         return id;
     }
 
     public static Game.Body BuildBodyById(int id)
     {
-        cfg.Body tbBody = Tables.TbBody.Get(id);
+        cfg.Body tbBody = _tables.TbBody.Get(id);
         Game.Body body = new Game.Body();
 
         body.SetName(tbBody.Name)
             .SetDesc(tbBody.Desc)
             .SetIconPath(tbBody.IconName)
             .SetAcceleration(tbBody.Acceleration)
-            .SetDeceleration(tbBody.Deceleration);
+            .SetDeceleration(tbBody.Deceleration)
+            .SetHealth(tbBody.Health);
 
         return body;
     }
 
     public static Game.Weapon BuildWeaponById(int id)
     {
-        cfg.Weapon tbWeapon = Tables.TbWeapon.Get(id);
+        cfg.Weapon tbWeapon = _tables.TbWeapon.Get(id);
         Game.Weapon weapon = new Game.Weapon();
         
         weapon.Name = tbWeapon.Name;
         weapon.Desc = tbWeapon.Desc;
         weapon.SceneName = tbWeapon.SceneName;
+        weapon.ShootSpeed.BaseValue = tbWeapon.ShootSpeed;
+        weapon.BulletSpeed.BaseValue = tbWeapon.BulletSpeed;
+        weapon.ShootSpread.BaseValue = tbWeapon.ShootSpread;
         
         return weapon;
     }
 
     public static Game.Ability BuildAbilityById(int id)
     {
-        cfg.Ability tbAbility = Tables.TbAbility.Get(id);
+        cfg.Ability tbAbility = _tables.TbAbility.Get(id);
         Game.Ability ability = new Game.Ability();
 
         ability.Name = tbAbility.Name;
@@ -101,7 +106,7 @@ public class DataBuilder
     
     public static Game.MobInfo BuildMobInfoById(int id)
     {
-        cfg.MobInfo tbMobInfo = Tables.TbMobInfo.Get(id);
+        cfg.MobInfo tbMobInfo = _tables.TbMobInfo.Get(id);
         Game.MobInfo mobInfo = new Game.MobInfo();
 
         mobInfo.
@@ -113,7 +118,7 @@ public class DataBuilder
 
     public static void Init()
     {
-        Tables = new cfg.Tables(file => JsonSerializer.Deserialize<JsonElement>(
-            File.ReadAllText($"Assets/DataBase/{file}.json")));
+        _tables = new cfg.Tables(file => JsonSerializer.Deserialize<JsonElement>(
+            Wizard.ReadAllText($"Assets/DataBase/{file}.json")));
     }
 }

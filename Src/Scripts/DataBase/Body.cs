@@ -20,6 +20,7 @@ public sealed partial class Body : Luban.BeanBase
         Id = _buf.GetProperty("id").GetInt32();
         Name = _buf.GetProperty("name").GetString();
         Desc = _buf.GetProperty("desc").GetString();
+        Health = _buf.GetProperty("health").GetSingle();
         IconName = _buf.GetProperty("icon_name").GetString();
         Acceleration = _buf.GetProperty("acceleration").GetSingle();
         Deceleration = _buf.GetProperty("deceleration").GetSingle();
@@ -43,6 +44,10 @@ public sealed partial class Body : Luban.BeanBase
     /// 描述
     /// </summary>
     public readonly string Desc;
+    /// <summary>
+    /// 生命值
+    /// </summary>
+    public readonly float Health;
     /// <summary>
     /// 图片
     /// </summary>
@@ -72,6 +77,7 @@ public sealed partial class Body : Luban.BeanBase
         
         
         
+        
     }
 
     public override string ToString()
@@ -80,6 +86,7 @@ public sealed partial class Body : Luban.BeanBase
         + "id:" + Id + ","
         + "name:" + Name + ","
         + "desc:" + Desc + ","
+        + "health:" + Health + ","
         + "iconName:" + IconName + ","
         + "acceleration:" + Acceleration + ","
         + "deceleration:" + Deceleration + ","

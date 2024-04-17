@@ -8,9 +8,7 @@ public class Body : IItemInfo
     public string Desc { get; set; }
     public string IconPath = "res://Assets/Textures/Bodies/Default.png";
     
-    
     // TODO: 护盾
-    
     public float Health = 100;
     public Stat Acceleration = new Stat(1000f);
     public Stat Deceleration = new Stat(300f);

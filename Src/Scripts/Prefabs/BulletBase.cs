@@ -35,6 +35,7 @@ public partial class BulletBase : CharacterBody2D, IBullet
         
         Velocity = GlobalPosition.DirectionTo(TargetDir) * Speed;
     }
+    
 
     public override void _PhysicsProcess(double delta)
     {

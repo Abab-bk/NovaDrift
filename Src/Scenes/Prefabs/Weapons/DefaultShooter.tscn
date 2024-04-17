@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b8u14jtp5pcjp"]
+
+[ext_resource type="Script" path="res://Scripts/Prefabs/Components/Shooter.cs" id="1_vckg5"]
+
+[node name="DefaultShooter" type="Node2D"]
+script = ExtResource("1_vckg5")

@@ -21,6 +21,9 @@ public sealed partial class Weapon : Luban.BeanBase
         Name = _buf.GetProperty("name").GetString();
         Desc = _buf.GetProperty("desc").GetString();
         SceneName = _buf.GetProperty("scene_name").GetString();
+        ShootSpeed = _buf.GetProperty("shoot_speed").GetSingle();
+        BulletSpeed = _buf.GetProperty("bullet_speed").GetSingle();
+        ShootSpread = _buf.GetProperty("shoot_spread").GetSingle();
     }
 
     public static Weapon DeserializeWeapon(JsonElement _buf)
@@ -44,12 +47,27 @@ public sealed partial class Weapon : Luban.BeanBase
     /// 场景名
     /// </summary>
     public readonly string SceneName;
+    /// <summary>
+    /// 射击CD
+    /// </summary>
+    public readonly float ShootSpeed;
+    /// <summary>
+    /// 子弹速度
+    /// </summary>
+    public readonly float BulletSpeed;
+    /// <summary>
+    /// 武器散射
+    /// </summary>
+    public readonly float ShootSpread;
    
     public const int __ID__ = -1707954628;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
     {
+        
+        
+        
         
         
         
@@ -63,6 +81,9 @@ public sealed partial class Weapon : Luban.BeanBase
         + "name:" + Name + ","
         + "desc:" + Desc + ","
         + "sceneName:" + SceneName + ","
+        + "shootSpeed:" + ShootSpeed + ","
+        + "bulletSpeed:" + BulletSpeed + ","
+        + "shootSpread:" + ShootSpread + ","
         + "}";
     }
 }

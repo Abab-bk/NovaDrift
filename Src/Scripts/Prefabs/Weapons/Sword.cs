@@ -10,7 +10,6 @@ public partial class Sword : Shooter
 
     protected override void Init()
     {
-        SetShootCd(0.5f);
         _sword1 = GetNode<Node2D>("%Sword1");
         _sword1 = GetNode<Node2D>("%Sword2");
 
