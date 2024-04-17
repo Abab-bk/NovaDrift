@@ -13,7 +13,7 @@ public class CharacterStats
     public int Level = 1;
 
     public Body Body = new Body();
-    
+
     public Attribute Health;
     public Stat Speed = new Stat(100);
     public Stat Damage = new Stat(30);

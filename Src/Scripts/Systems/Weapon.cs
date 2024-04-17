@@ -9,6 +9,10 @@ public class Weapon : IItemInfo
     public string Desc { get; set; }
     public string SceneName;
     
+    // TODO: 武器射速
+    // TODO: 武器扩散
+    // TODO: 子弹速度
+    
     public void Use()
     {
         Shooter shooter = GD.Load<PackedScene>($"res://Scenes/Prefabs/Weapons/{SceneName}.tscn").Instantiate<Shooter>();
