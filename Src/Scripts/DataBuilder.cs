@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text.Json;
@@ -92,12 +93,12 @@ public class DataBuilder
         ability.Name = tbAbility.Name;
         ability.Desc = tbAbility.Desc;
         ability.ClassName = tbAbility.ClassName;
-        ability.Effect = BuildEffectByName(ability.ClassName);
+        ability.Effect = BuildEffectByName(ability.ClassName, tbAbility.Values);
 
         return ability;
     }
 
-    public static Game.Effect BuildEffectByName(string name)
+    public static Game.Effect BuildEffectByName(string name, List<float> values)
     {
         Type classType = Type.GetType("NovaDrift.Scripts.Systems.Effects." + name);
         if (classType == null)
@@ -106,6 +107,7 @@ public class DataBuilder
         }
         
         Game.Effect effect = (Game.Effect) Activator.CreateInstance(classType);
+        effect.Values = values;
         return effect;
     }
     

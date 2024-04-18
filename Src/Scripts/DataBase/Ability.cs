@@ -20,6 +20,7 @@ public sealed partial class Ability : Luban.BeanBase
         Id = _buf.GetProperty("id").GetInt32();
         Name = _buf.GetProperty("name").GetString();
         Desc = _buf.GetProperty("desc").GetString();
+        { var __json0 = _buf.GetProperty("values"); Values = new System.Collections.Generic.List<float>(__json0.GetArrayLength()); foreach(JsonElement __e0 in __json0.EnumerateArray()) { float __v0;  __v0 = __e0.GetSingle();  Values.Add(__v0); }   }
         ClassName = _buf.GetProperty("class_name").GetString();
     }
 
@@ -41,6 +42,10 @@ public sealed partial class Ability : Luban.BeanBase
     /// </summary>
     public readonly string Desc;
     /// <summary>
+    /// 数值
+    /// </summary>
+    public readonly System.Collections.Generic.List<float> Values;
+    /// <summary>
     /// 类名
     /// </summary>
     public readonly string ClassName;
@@ -54,6 +59,7 @@ public sealed partial class Ability : Luban.BeanBase
         
         
         
+        
     }
 
     public override string ToString()
@@ -62,6 +68,7 @@ public sealed partial class Ability : Luban.BeanBase
         + "id:" + Id + ","
         + "name:" + Name + ","
         + "desc:" + Desc + ","
+        + "values:" + Luban.StringUtil.CollectionToString(Values) + ","
         + "className:" + ClassName + ","
         + "}";
     }

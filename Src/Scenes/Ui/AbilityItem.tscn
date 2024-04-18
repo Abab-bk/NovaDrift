@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlsmuxwivbahj"]
+[gd_scene load_steps=5 format=3 uid="uid://dlsmuxwivbahj"]
 
 [ext_resource type="Script" path="res://Scripts/Ui/abilityItem/AbilityItemPanel.cs" id="1_37yr4"]
 [ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_o07cx"]
 [ext_resource type="Texture2D" uid="uid://yytp41n7xqbe" path="res://Assets/Ui/Icons/AbilityIcons/TestIcon.png" id="3_3d5gs"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_10d0n"]
+bg_color = Color(0, 0, 0, 0.396078)
 
 [node name="AbilityItem" type="Control"]
 process_mode = 3
@@ -32,3 +35,4 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"EmptyBtn"
+theme_override_styles/pressed = SubResource("StyleBoxFlat_10d0n")

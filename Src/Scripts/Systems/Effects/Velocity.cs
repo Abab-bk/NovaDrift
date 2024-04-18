@@ -10,16 +10,12 @@ public class Velocity : Effect
         // + 5% 武器伤害
         // + 50% 速度
         AddModifierToTarget(
-            new StatModifier(-0.2f, StatModType.PercentAdd, this),
+            new StatModifier(Values[0], StatModType.PercentAdd, this),
             Target.Stats.ShootSpeed
             );
         AddModifierToTarget(
-            new StatModifier(0.05f, StatModType.PercentAdd, this),
+            new StatModifier(Values[1], StatModType.PercentAdd, this),
             Target.Stats.Damage
             );
-        AddModifierToTarget(
-            new StatModifier(0.5f, StatModType.PercentAdd, this),
-            Target.Stats.Speed
-        );
     }
 }

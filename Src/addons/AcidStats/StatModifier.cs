@@ -2,7 +2,7 @@
 
 public class StatModifier
 {
-    public readonly float Value;
+    public float Value;
     public readonly StatModType Type;
     public readonly int Order;
     public readonly object Source; // Added this variable

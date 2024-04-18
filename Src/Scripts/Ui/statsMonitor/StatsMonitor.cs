@@ -33,6 +33,11 @@ public abstract partial class StatsMonitor : UiBase
         inst1.L_StatsMonitorItem.Instance.OnCreateUi();
         inst1.L_StatsMonitorItem.Instance.OnInitNestedUi();
 
+        var inst2 = L_PanelContainer.L_MarginContainer.L_Items;
+        RecordNestedUi(inst2.L_StatsMonitorItem2.Instance, inst2, UiManager.RecordType.Open);
+        inst2.L_StatsMonitorItem2.Instance.OnCreateUi();
+        inst2.L_StatsMonitorItem2.Instance.OnInitNestedUi();
+
     }
 
     /// <summary>
@@ -44,6 +49,22 @@ public abstract partial class StatsMonitor : UiBase
         public override StatsMonitorItem Clone()
         {
             var uiNode = new StatsMonitorItem(UiPanel, (NovaDrift.Scripts.Ui.StatsMonitorItem.StatsMonitorItemPanel)Instance.Duplicate());
+            UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
+            uiNode.Instance.OnCreateUi();
+            uiNode.Instance.OnInitNestedUi();
+            return uiNode;
+        }
+    }
+
+    /// <summary>
+    /// 类型: <see cref="NovaDrift.Scripts.Ui.StatsMonitorItem.StatsMonitorItemPanel"/>, 路径: StatsMonitor.PanelContainer.MarginContainer.Items.StatsMonitorItem2
+    /// </summary>
+    public class StatsMonitorItem2 : UiNode<StatsMonitorPanel, NovaDrift.Scripts.Ui.StatsMonitorItem.StatsMonitorItemPanel, StatsMonitorItem2>
+    {
+        public StatsMonitorItem2(StatsMonitorPanel uiPanel, NovaDrift.Scripts.Ui.StatsMonitorItem.StatsMonitorItemPanel node) : base(uiPanel, node) {  }
+        public override StatsMonitorItem2 Clone()
+        {
+            var uiNode = new StatsMonitorItem2(UiPanel, (NovaDrift.Scripts.Ui.StatsMonitorItem.StatsMonitorItemPanel)Instance.Duplicate());
             UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
             uiNode.Instance.OnCreateUi();
             uiNode.Instance.OnInitNestedUi();
@@ -68,6 +89,19 @@ public abstract partial class StatsMonitor : UiBase
             }
         }
         private StatsMonitorItem _L_StatsMonitorItem;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.StatsMonitorItem.StatsMonitorItemPanel"/>, 节点路径: StatsMonitor.PanelContainer.MarginContainer.StatsMonitorItem2
+        /// </summary>
+        public StatsMonitorItem2 L_StatsMonitorItem2
+        {
+            get
+            {
+                if (_L_StatsMonitorItem2 == null) _L_StatsMonitorItem2 = new StatsMonitorItem2(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.StatsMonitorItem.StatsMonitorItemPanel>("StatsMonitorItem2"));
+                return _L_StatsMonitorItem2;
+            }
+        }
+        private StatsMonitorItem2 _L_StatsMonitorItem2;
 
         public Items(StatsMonitorPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
         public override Items Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
@@ -122,6 +156,11 @@ public abstract partial class StatsMonitor : UiBase
     /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.StatsMonitorItem.StatsMonitorItemPanel"/>, 节点路径: StatsMonitor.PanelContainer.MarginContainer.Items.StatsMonitorItem
     /// </summary>
     public StatsMonitorItem S_StatsMonitorItem => L_PanelContainer.L_MarginContainer.L_Items.L_StatsMonitorItem;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.StatsMonitorItem.StatsMonitorItemPanel"/>, 节点路径: StatsMonitor.PanelContainer.MarginContainer.Items.StatsMonitorItem2
+    /// </summary>
+    public StatsMonitorItem2 S_StatsMonitorItem2 => L_PanelContainer.L_MarginContainer.L_Items.L_StatsMonitorItem2;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: StatsMonitor.PanelContainer.MarginContainer.Items

@@ -35,3 +35,7 @@ layout_mode = 2
 [node name="StatsMonitorItem" parent="PanelContainer/MarginContainer/Items" instance=ExtResource("2_kbxn6")]
 layout_mode = 2
 MonitorName = "ShootSpeed"
+
+[node name="StatsMonitorItem2" parent="PanelContainer/MarginContainer/Items" instance=ExtResource("2_kbxn6")]
+layout_mode = 2
+MonitorName = "BulletSpeed"

@@ -17,6 +17,8 @@ public class Effect
 
     private readonly List<(Stat, StatModifier)> _statModifiers = new List<(Stat, StatModifier)>();
 
+    public List<float> Values = new List<float>();
+
     protected void AddModifierToTarget(StatModifier modifier, Stat target)
     {
         if (Target == null) return;

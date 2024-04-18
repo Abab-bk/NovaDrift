@@ -34,7 +34,7 @@ public partial class Player : Actor
 
     protected override void InitStats()
     {
-        Stats.SetDamage(30f).
+        Stats.SetDamage(10f).
             SetHealth(300f).
             SetSpeed(600f);
 
