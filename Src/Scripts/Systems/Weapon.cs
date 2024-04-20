@@ -8,7 +8,8 @@ namespace NovaDrift.Scripts.Systems;
 public class Weapon : IItemInfo
 {
     public Actor Actor;
-
+    public int Id;
+    
     public string Name { get; set; }
     public string Desc { get; set; }
     public string SceneName;

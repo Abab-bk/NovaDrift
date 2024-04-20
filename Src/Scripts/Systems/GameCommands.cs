@@ -5,8 +5,10 @@ namespace NovaDrift.Scripts.Systems;
 public class GameCommands
 {
     [ConsoleCommand("UseAbilityById", Usage = "UseAbilityById [Id]")]
-    public void UseAbilityById(int id)
+    public void UseAbilityById(int id = 0)
     {
+        if (id == 0) return;
+        Console.Instance.Print("请输入 ID", Console.PrintType.Warning);
         DataBuilder.BuildAbilityById(id).Use();
     }
 

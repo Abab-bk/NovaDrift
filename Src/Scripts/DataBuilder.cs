@@ -61,13 +61,16 @@ public static class DataBuilder
         
         Game.Body body = (Game.Body) Activator.CreateInstance(classType);
 
-        body?.SetName(tbBody.Name)
+        if (body == null) return null;
+        
+        body.Id = tbBody.Id;
+        body.SetName(tbBody.Name)
             .SetDesc(tbBody.Desc)
             .SetIconPath(tbBody.IconName)
             .SetAcceleration(tbBody.Acceleration)
             .SetDeceleration(tbBody.Deceleration)
             .SetHealth(tbBody.Health);
-
+        
         return body;
     }
 
@@ -76,6 +79,7 @@ public static class DataBuilder
         Weapon tbWeapon = _tables.TbWeapon.Get(id);
         Game.Weapon weapon = new Game.Weapon();
         
+        weapon.Id = tbWeapon.Id;
         weapon.Name = tbWeapon.Name;
         weapon.Desc = tbWeapon.Desc;
         weapon.SceneName = tbWeapon.SceneName;

@@ -29,32 +29,72 @@ public partial class SelectAbilityPanel : SelectAbility
     
     private void GenerateAbilityPanel(AbilityGenerateConfig config)
     {
+        if (Global.Player.Stats.Body.Id == 1000)
+        {
+            S_Gears.Instance.Visible = true;
+            for (int i = 0; i < 3; i++)
+            {
+                var abilityItem = S_Gears.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem);
+                abilityItem.Item = DataBuilder.BuildBodyById(DataBuilder.GetRandomBodyId());
+                
+                abilityItem.OnAbilitySelected += (IItemInfo item) =>
+                {
+                    _abilityPanel.UpdateUi(item);
+                    _currentItem = item;
+                };
+            }
+            return;
+        }
+        
+        if (Global.Player.Shooter.Weapon.Id == 1000)
+        {
+            S_Gears.Instance.Visible = true;
+            for (int i = 0; i < 3; i++)
+            {
+                var abilityItem = S_Gears.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem);
+                abilityItem.Item = DataBuilder.BuildWeaponById(DataBuilder.GetRandomWeaponId());
+                
+                abilityItem.OnAbilitySelected += (IItemInfo item) =>
+                {
+                    _abilityPanel.UpdateUi(item);
+                    _currentItem = item;
+                };
+            }
+            return;
+        }
+        
         // 生成 Items
         for (int i = 0; i < config.Count; i++)
         {
             var abilityItem = S_Abilities.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem);
-            
-            WeightedList<int> selectList = new WeightedList<int>();
-            selectList.Add(1, 1);
-            selectList.Add(2, 1);
-            selectList.Add(3, 1);
 
-            switch (selectList.Next())
+            abilityItem.Item = DataBuilder.BuildAbilityById(DataBuilder.GetRandomAbilityId());
+            
+            abilityItem.OnAbilitySelected += (IItemInfo item) =>
             {
-                case 1:
-                    abilityItem.Item = DataBuilder.BuildAbilityById(DataBuilder.GetRandomAbilityId());
-                    break;
-                case 2:
-                    abilityItem.Item = DataBuilder.BuildWeaponById(DataBuilder.GetRandomWeaponId());
-                    break;
-                case 3:
+                _abilityPanel.UpdateUi(item);
+                _currentItem = item;
+            };
+        }
+        
+        for (int i = 0; i < 3; i++)
+        {
+            var abilityItem = S_Gears.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem);
+
+            switch (i)
+            {
+                case 0:
                     abilityItem.Item = DataBuilder.BuildBodyById(DataBuilder.GetRandomBodyId());
                     break;
-                default:
-                    throw new ArgumentOutOfRangeException();
+                case 1:
+                    abilityItem.Item = DataBuilder.BuildWeaponById(DataBuilder.GetRandomWeaponId());
+                    break;
+                case 2:
+                    abilityItem.Item = DataBuilder.BuildAbilityById(DataBuilder.GetRandomAbilityId());
+                    break;
             }
             
-            abilityItem.OnAbilitySelected += item =>
+            abilityItem.OnAbilitySelected += (IItemInfo item) =>
             {
                 _abilityPanel.UpdateUi(item);
                 _currentItem = item;
