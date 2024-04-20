@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.IO;
 using System.Linq;
 using System.Text.Json;
 using AcidWallStudio.AcidUtilities;
 using cfg;
-using Godot;
 using Game = NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts;
 
-public class DataBuilder
+public static class DataBuilder
 {
     private static Tables _tables;
 
@@ -52,7 +50,7 @@ public class DataBuilder
 
     public static Game.Body BuildBodyById(int id)
     {
-        cfg.Body tbBody = _tables.TbBody.Get(id);
+        Body tbBody = _tables.TbBody.Get(id);
 
         string name = tbBody.ClassName;
         Type classType = Type.GetType("NovaDrift.Scripts.Systems.Bodies." + name);
@@ -75,7 +73,7 @@ public class DataBuilder
 
     public static Game.Weapon BuildWeaponById(int id)
     {
-        cfg.Weapon tbWeapon = _tables.TbWeapon.Get(id);
+        Weapon tbWeapon = _tables.TbWeapon.Get(id);
         Game.Weapon weapon = new Game.Weapon();
         
         weapon.Name = tbWeapon.Name;
@@ -87,7 +85,7 @@ public class DataBuilder
 
     public static Game.Ability BuildAbilityById(int id)
     {
-        cfg.Ability tbAbility = _tables.TbAbility.Get(id);
+        Ability tbAbility = _tables.TbAbility.Get(id);
         Game.Ability ability = new Game.Ability();
 
         ability.Name = tbAbility.Name;
@@ -98,7 +96,7 @@ public class DataBuilder
         return ability;
     }
 
-    protected static Game.Effect BuildEffectByName(string name, List<float> values, string showName)
+    private static Game.Effect BuildEffectByName(string name, List<float> values, string showName)
     {
         Type classType = Type.GetType("NovaDrift.Scripts.Systems.Effects." + name);
         if (classType == null)
@@ -119,7 +117,7 @@ public class DataBuilder
     
     public static Game.Buff BuildBuffById(int id)
     {
-        cfg.Buff tbBuff = _tables.TbBuff.Get(id);
+        Buff tbBuff = _tables.TbBuff.Get(id);
         
         string name = tbBuff.ClassName;
         Type classType = Type.GetType("NovaDrift.Scripts.Systems.Buffs." + name);
@@ -132,6 +130,8 @@ public class DataBuilder
 
         if (buff != null)
         {
+            buff.Id = tbBuff.Id;
+            buff.Name = tbBuff.Name;
             buff.Duration = tbBuff.Duration;
             buff.RepeatTime = tbBuff.RepeatTime;
             buff.Values = tbBuff.Values;
@@ -142,7 +142,7 @@ public class DataBuilder
     
     public static Game.MobInfo BuildMobInfoById(int id)
     {
-        cfg.MobInfo tbMobInfo = _tables.TbMobInfo.Get(id);
+        MobInfo tbMobInfo = _tables.TbMobInfo.Get(id);
         Game.MobInfo mobInfo = new Game.MobInfo();
 
         mobInfo.
@@ -157,7 +157,7 @@ public class DataBuilder
 
     public static void Init()
     {
-        _tables = new cfg.Tables(file => JsonSerializer.Deserialize<JsonElement>(
+        _tables = new Tables(file => JsonSerializer.Deserialize<JsonElement>(
             Wizard.ReadAllText($"Assets/DataBase/{file}.json")));
     }
 }

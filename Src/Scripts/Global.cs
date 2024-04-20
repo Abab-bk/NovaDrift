@@ -1,6 +1,5 @@
 ﻿using System;
 using NovaDrift.Scripts.Prefabs.Actors;
-using NovaDrift.Scripts.Prefabs.Actors.Mobs;
 
 namespace NovaDrift.Scripts;
 
@@ -21,7 +20,7 @@ public enum GamePlatform
     Mobile,
 }
 
-public class Global
+public static class Global
 {
     public static GamePlatform CurrentPlatform = GamePlatform.Desktop;
     
@@ -35,7 +34,7 @@ public class Global
     public static Action OnGameInit;
     public static Action OnGameStart;
 
-    private static int _stopCount = 0;
+    private static int _stopCount;
 
     public static void StopGame()
     {

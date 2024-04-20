@@ -16,6 +16,8 @@ public partial class Console : Node
     public static Console Instance;
     public List<ConsoleCommandReference> Commands = new();
     private readonly List<string> _commandHistory = new();
+    private List<string> _suggestions = new List<string>();
+    private int _currentSuggestionIndex = -1;
     
     public bool Open;
 
@@ -26,6 +28,8 @@ public partial class Console : Node
     [Export] private Button _commandSendButton;
     [Export] private ScrollContainer _historyScrollContainer;
     [Export] private VBoxContainer _historyContent;
+    [Export] private VBoxContainer _suggestionsContent;
+    [Export] private PanelContainer _suggestionsPanel;
     
     public override void _EnterTree()
     {
@@ -36,7 +40,11 @@ public partial class Console : Node
 
         _closeButton.Pressed += () => { SetConsole(false); };
         _commandSendButton.Pressed += () => { ProcessCommand(_commandInput.Text); };
-        _commandInput.TextSubmitted += ProcessCommand;
+        _commandInput.TextSubmitted += (t) =>
+        {
+            ProcessCommand(t);
+            UpdateUi(true);
+        };
         
         LoadCommands();
         
@@ -44,6 +52,8 @@ public partial class Console : Node
         Space();
         
         GD.Print("[SofiaConsole] Done");
+
+        // _commandInput.TextChanged += _ => UpdateUi();
     }
 
     public override void _Input(InputEvent @event)
@@ -65,20 +75,56 @@ public partial class Console : Node
             }
 
             // Press Up to toggle between previous commands
-            if (eventKey.Keycode == Key.Up && _commandInput.HasFocus() && _commandHistory.Count > 0)
-            {
-                var historyIndex = _commandHistory.FindIndex(x => x == _commandInput.Text);
-                if (historyIndex == -1)
-                {
-                    historyIndex = _commandHistory.Count;
-                }
-                
-                if (historyIndex == 0)
-                {
-                    historyIndex = _commandHistory.Count;
-                }
+            // TODO
+            // if (eventKey.Keycode == Key.Up && _commandInput.HasFocus() && _commandHistory.Count > 0)
+            // {
+            //     var historyIndex = _commandHistory.FindIndex(x => x == _commandInput.Text);
+            //     if (historyIndex == -1)
+            //     {
+            //         historyIndex = _commandHistory.Count;
+            //     }
+            //     
+            //     if (historyIndex == 0)
+            //     {
+            //         historyIndex = _commandHistory.Count;
+            //     }
+            //
+            //     _commandInput.Text = _commandHistory[historyIndex - 1];
+            // }
+            
+            string inputText = _commandInput.Text;
 
-                _commandInput.Text = _commandHistory[historyIndex - 1];
+            if (inputText == "")
+            {
+                _suggestions.Clear();
+            }
+            else
+            {
+                _suggestions = Commands
+                    .Where(cmd => cmd.Command.StartsWith(inputText))
+                    .Select(cmd => cmd.Command)
+                    .ToList();
+            }
+            
+            if (eventKey.Keycode == Key.Down && _commandInput.HasFocus() && _suggestions.Count > 0)
+            {
+                _currentSuggestionIndex = (_currentSuggestionIndex + 1) % _suggestions.Count;
+            }
+            else if (eventKey.Keycode == Key.Up && _commandInput.HasFocus() && _suggestions.Count > 0)
+            {
+                _currentSuggestionIndex = (_currentSuggestionIndex - 1) % _suggestions.Count;
+                if (_currentSuggestionIndex < 0)
+                    _currentSuggestionIndex = _suggestions.Count - 1;
+            }
+            else if (eventKey.Keycode == Key.Tab || eventKey.Keycode == Key.Enter && _commandInput.HasFocus() && _suggestions.Count > 0 && _currentSuggestionIndex < _suggestions.Count)
+            {
+                if (_suggestions.Count > 0 && _currentSuggestionIndex >= 0)
+                {
+                    // _commandInput.Text = _suggestions[_currentSuggestionIndex];
+                    _commandInput.Text = "";
+                    _commandInput.InsertTextAtCaret(_suggestions[_currentSuggestionIndex]);
+                    _commandInput.GrabFocus();
+                }
             }
         }
 
@@ -87,6 +133,45 @@ public partial class Console : Node
             // TODO: Check if Mouse is not within Input/Button
             _commandInput.ReleaseFocus();
             _commandSendButton.ReleaseFocus();
+        }
+
+        UpdateUi();
+    }
+
+    private void UpdateUi(bool close = false)
+    {
+        if (!Open) return;
+
+        foreach (var node in _suggestionsContent.GetChildren())
+        {
+            node.QueueFree();
+        }
+        
+        if (close) return;
+        if (_suggestions.Count == 0)
+        {
+            _suggestionsPanel.Hide();
+            return;
+        }
+
+        _suggestionsPanel.Show();
+        foreach (var text in _suggestions)
+        {
+            var newLabel = new Label
+            {
+                Text = text,
+                Theme = new Theme
+                {
+                    DefaultFontSize = 30
+                }
+            };
+
+            if (_currentSuggestionIndex >= 0 && _suggestions.Count > 0 && _currentSuggestionIndex < _suggestions.Count && _suggestions[_currentSuggestionIndex] == text)
+            {
+                newLabel.AddThemeStyleboxOverride("normal", GD.Load<StyleBoxFlat>("res://addons/sofiaconsole/StyleBox.tres"));
+            }
+
+            _suggestionsContent.AddChild(newLabel);
         }
     }
 

@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dyya4j4ywm1k6"]
+[gd_scene load_steps=14 format=3 uid="uid://dyya4j4ywm1k6"]
 
 [ext_resource type="Script" path="res://addons/sofiaconsole/Console.cs" id="1_dw41g"]
 [ext_resource type="Script" path="res://addons/sofiaconsole/Commands/FpsCounterCommand.cs" id="2_nkfel"]
@@ -39,6 +39,9 @@ content_margin_right = 10.0
 content_margin_bottom = 10.0
 bg_color = Color(0.133333, 0.133333, 0.133333, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wpanm"]
+bg_color = Color(0, 0, 0, 1)
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25al0"]
 content_margin_left = 10.0
 content_margin_top = 10.0
@@ -58,7 +61,7 @@ outline_color = Color(0, 0, 0, 1)
 shadow_size = 5
 shadow_color = Color(0, 0, 0, 1)
 
-[node name="Console" type="Node" node_paths=PackedStringArray("_consoleCanvas", "_background", "_closeButton", "_commandInput", "_commandSendButton", "_historyScrollContainer", "_historyContent")]
+[node name="Console" type="Node" node_paths=PackedStringArray("_consoleCanvas", "_background", "_closeButton", "_commandInput", "_commandSendButton", "_historyScrollContainer", "_historyContent", "_suggestionsContent", "_suggestionsPanel")]
 process_mode = 3
 script = ExtResource("1_dw41g")
 _consoleCanvas = NodePath("ConsoleCanvas")
@@ -68,6 +71,8 @@ _commandInput = NodePath("ConsoleCanvas/Background/Window/Content/Input/HBoxCont
 _commandSendButton = NodePath("ConsoleCanvas/Background/Window/Content/Input/HBoxContainer/CommandSendButton")
 _historyScrollContainer = NodePath("ConsoleCanvas/Background/Window/Content/History/ScrollContainer")
 _historyContent = NodePath("ConsoleCanvas/Background/Window/Content/History/ScrollContainer/Content")
+_suggestionsContent = NodePath("ConsoleCanvas/Background/Window/Content/History/SuggestionsPanel/Suggestions/Suggestions")
+_suggestionsPanel = NodePath("ConsoleCanvas/Background/Window/Content/History/SuggestionsPanel")
 
 [node name="ConsoleCanvas" type="CanvasLayer" parent="."]
 layer = 128
@@ -127,6 +132,7 @@ text = "Console"
 custom_minimum_size = Vector2(65, 0)
 layout_mode = 2
 size_flags_horizontal = 8
+focus_mode = 0
 text = "Close"
 
 [node name="History" type="PanelContainer" parent="ConsoleCanvas/Background/Window/Content"]
@@ -145,6 +151,24 @@ vertical_scroll_mode = 2
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
+
+[node name="SuggestionsPanel" type="PanelContainer" parent="ConsoleCanvas/Background/Window/Content/History"]
+visible = false
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_wpanm")
+
+[node name="Suggestions" type="ScrollContainer" parent="ConsoleCanvas/Background/Window/Content/History/SuggestionsPanel"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_fbsm3")
+horizontal_scroll_mode = 0
+vertical_scroll_mode = 2
+
+[node name="Suggestions" type="VBoxContainer" parent="ConsoleCanvas/Background/Window/Content/History/SuggestionsPanel/Suggestions"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_constants/separation = 0
+alignment = 2
 
 [node name="Input" type="PanelContainer" parent="ConsoleCanvas/Background/Window/Content"]
 layout_mode = 2
@@ -167,6 +191,7 @@ flat = true
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 8
+focus_mode = 0
 text = "Send"
 
 [node name="BuiltinCommands" type="Node" parent="."]

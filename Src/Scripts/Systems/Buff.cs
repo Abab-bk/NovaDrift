@@ -9,6 +9,7 @@ public class Buff
 {
     public Actor Target;
     public int Id;
+    public string Name;
     
     public event Action<Buff> OnDestroy;
     

@@ -15,7 +15,7 @@ public partial class MobBase : Actor
         if (MobInfo == null) throw new Exception("MobInfo 为 Null");
         Sprite.Texture = GD.Load<Texture2D>(MobInfo.IconPath);
         
-        Stats.Health.ValueChanged += (float value) =>
+        Stats.Health.ValueChanged += (value) =>
         {
             if (value <= 0)
             {
@@ -36,7 +36,7 @@ public partial class MobBase : Actor
         base.Die();
     }
 
-    public float GetDistanceToPlayer()
+    private float GetDistanceToPlayer()
     {
         return Global.Player.GlobalPosition.DistanceTo(GlobalPosition);
     }
