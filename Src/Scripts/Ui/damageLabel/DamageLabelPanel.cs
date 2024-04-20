@@ -12,14 +12,13 @@ public partial class DamageLabelPanel : DamageLabel
 
     public void ShowValue(float value,
         Vector2 pos,
-        Vector2 travel = default,
         float duration = 2f,
         float spread = Mathf.Pi / 2,
         bool critical = false)
     {
         GlobalPosition = pos;
 
-        travel = new Vector2(0, -80);
+        Vector2 travel = new Vector2(0, -80);
         
         L_Label.Instance.Text = value.ToString(CultureInfo.CurrentCulture);
         Vector2 movement = travel.Rotated((float)GD.RandRange( (double)-spread / 2f, (double)spread / 2f));

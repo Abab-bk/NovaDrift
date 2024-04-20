@@ -18,6 +18,7 @@ public partial class Tables
     public DataBase.TbWeapon TbWeapon {get; }
     public DataBase.TbBody TbBody {get; }
     public DataBase.TbMobInfo TbMobInfo {get; }
+    public DataBase.TbBuff TbBuff {get; }
 
     public Tables(System.Func<string, JsonElement> loader)
     {
@@ -25,6 +26,7 @@ public partial class Tables
         TbWeapon = new DataBase.TbWeapon(loader("database_tbweapon"));
         TbBody = new DataBase.TbBody(loader("database_tbbody"));
         TbMobInfo = new DataBase.TbMobInfo(loader("database_tbmobinfo"));
+        TbBuff = new DataBase.TbBuff(loader("database_tbbuff"));
         ResolveRef();
     }
     
@@ -34,6 +36,7 @@ public partial class Tables
         TbWeapon.ResolveRef(this);
         TbBody.ResolveRef(this);
         TbMobInfo.ResolveRef(this);
+        TbBuff.ResolveRef(this);
     }
 }
 

@@ -1,0 +1,13 @@
+[
+  {
+    "id": 1001,
+    "name": "燃烧",
+    "desc": "每秒造成120点燃烧伤害，持续三秒。",
+    "values": [
+      120
+    ],
+    "duration": 3,
+    "repeat_time": 1,
+    "class_name": "Burning"
+  }
+]

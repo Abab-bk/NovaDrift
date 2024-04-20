@@ -23,12 +23,12 @@ public partial class HudPanel : Hud
     
     public void UpdateExpBar(float ratio)
     {
-        _expBar.Value = ratio * 100f;
+        _expBar.SetDeferred(Range.PropertyName.Value, ratio * 100f);
     }
     
     public void UpdateHpBar(float ratio)
     {
-        _hpBar.Value = ratio * 100f;
+        _hpBar.SetDeferred(Range.PropertyName.Value, ratio * 100f);
     }
 
     public override void OnDestroyUi()

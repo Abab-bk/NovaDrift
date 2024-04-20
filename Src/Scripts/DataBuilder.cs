@@ -93,12 +93,12 @@ public class DataBuilder
         ability.Name = tbAbility.Name;
         ability.Desc = tbAbility.Desc;
         ability.ClassName = tbAbility.ClassName;
-        ability.Effect = BuildEffectByName(ability.ClassName, tbAbility.Values);
+        ability.Effect = BuildEffectByName(ability.ClassName, tbAbility.Values, tbAbility.Name);
 
         return ability;
     }
 
-    public static Game.Effect BuildEffectByName(string name, List<float> values)
+    protected static Game.Effect BuildEffectByName(string name, List<float> values, string showName)
     {
         Type classType = Type.GetType("NovaDrift.Scripts.Systems.Effects." + name);
         if (classType == null)
@@ -107,8 +107,37 @@ public class DataBuilder
         }
         
         Game.Effect effect = (Game.Effect) Activator.CreateInstance(classType);
-        effect.Values = values;
+
+        if (effect != null)
+        {
+            effect.Values = values;
+            effect.Name = showName;
+        }
+
         return effect;
+    }
+    
+    public static Game.Buff BuildBuffById(int id)
+    {
+        cfg.Buff tbBuff = _tables.TbBuff.Get(id);
+        
+        string name = tbBuff.ClassName;
+        Type classType = Type.GetType("NovaDrift.Scripts.Systems.Buffs." + name);
+        if (classType == null)
+        {
+            throw new Exception("无法找到类：" + name);
+        }
+        
+        Game.Buff buff = (Game.Buff) Activator.CreateInstance(classType);
+
+        if (buff != null)
+        {
+            buff.Duration = tbBuff.Duration;
+            buff.RepeatTime = tbBuff.RepeatTime;
+            buff.Values = tbBuff.Values;
+        }
+        
+        return buff;
     }
     
     public static Game.MobInfo BuildMobInfoById(int id)
@@ -118,7 +147,10 @@ public class DataBuilder
 
         mobInfo.
             SetName(tbMobInfo.IconName).
-            SetIconPath(tbMobInfo.IconName);
+            SetIconPath(tbMobInfo.IconName).
+            SetHealth(tbMobInfo.Health).
+            SetSpeed(tbMobInfo.Speed).
+            SetShootCd(tbMobInfo.ShootCd);
         
         return mobInfo;
     }

@@ -26,14 +26,14 @@ public partial class MobBase : Actor
 
     protected override void InitStats()
     {
-        Stats.SetDamage(20f).SetHealth(100f);
-        Shooter.SetShootCd(0.8f);
+        Stats.SetDamage(MobInfo.Damage).SetHealth(MobInfo.Health);
+        Shooter.SetShootCd(MobInfo.ShootCd);
     }
 
     public override void Die()
     {
-        Global.OnMobDied?.Invoke(this);
-        QueueFree();
+        Global.OnMobDied?.Invoke();
+        base.Die();
     }
 
     public float GetDistanceToPlayer()

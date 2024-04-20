@@ -1,4 +1,6 @@
+using System;
 using Godot;
+using NovaDrift.Scripts.Prefabs.Actors;
 
 namespace NovaDrift.Scripts.Prefabs.Components;
 
@@ -8,8 +10,7 @@ public partial class HitBox : Area2D
     private bool _isPlayer = false;
     public float Damage = 1f;
     
-    public delegate void HitDoneHandler();
-    public HitDoneHandler HitDone;
+    public Action<Actor> HitDone;
     
     public void SetIsPlayer(bool value)
     {

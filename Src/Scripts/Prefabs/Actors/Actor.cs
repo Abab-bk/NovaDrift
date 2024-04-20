@@ -1,3 +1,4 @@
+using System;
 using DsUi;
 using Godot;
 using NovaDrift.addons.AcidStats;
@@ -73,9 +74,11 @@ public partial class Actor : CharacterBody2D
         {
             Sprite.Texture = GD.Load<Texture2D>(Stats.Body.IconPath);
         };
-
-        _hurtBox.SetIsPlayer(IsPlayer);
+        // Stats.Health.ValueChanged += OnHit;
+        
         _hurtBox.OnHit += OnHit;
+        
+        _hurtBox.SetIsPlayer(IsPlayer);
         
         Shooter.IsPlayer = IsPlayer;
         
@@ -89,7 +92,7 @@ public partial class Actor : CharacterBody2D
 
     public virtual void Die()
     {
-        QueueFree();
+        CallDeferred(Node.MethodName.QueueFree);
     }
 
     private void MoveToWorldEdge()

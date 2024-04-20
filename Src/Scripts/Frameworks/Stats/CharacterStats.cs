@@ -1,4 +1,5 @@
 ﻿using System;
+using Godot;
 using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Systems;
@@ -24,18 +25,27 @@ public class CharacterStats
     public Stat BulletSpeed = new Stat(1000f); // 子弹射速
     public Stat ShootSpread = new Stat(0f);
     
-    private EffectSystem _effectSystem = new EffectSystem();
+    // 一般是给玩家用的，无限，一般是Mod
+    public readonly EffectSystem EffectSystem = new EffectSystem();
+    // 效果
+    public readonly BuffSystem BuffSystem = new BuffSystem();
     private Actor _target;
+
+    public void AddBuff(Buff buff)
+    {
+        BuffSystem.AddBuff(buff);
+    }
 
     public void SetTarget(Actor target)
     {
         _target = target;
-        _effectSystem.Target = _target;
+        EffectSystem.Target = _target;
+        BuffSystem.Target = _target;
     }
     
     public void AddEffect(Effect effect)
     {
-        _effectSystem.AddEffect(effect);
+        EffectSystem.AddEffect(effect);
     }
 
     public CharacterStats SetShootSpeed(float value)

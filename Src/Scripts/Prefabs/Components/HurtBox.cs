@@ -27,7 +27,7 @@ public partial class HurtBox : Area2D
             {
                 Actor.Stats.Health.Decrease(hitBox.Damage);
                 OnHit?.Invoke(hitBox.Damage);
-                hitBox.HitDone?.Invoke();
+                hitBox.HitDone?.Invoke((Actor)Owner);
             }
         };
     }

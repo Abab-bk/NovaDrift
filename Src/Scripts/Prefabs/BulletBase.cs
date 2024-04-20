@@ -1,6 +1,7 @@
 using System;
 using Godot;
 using NovaDrift.addons.AcidStats;
+using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Components;
 
 namespace NovaDrift.Scripts.Prefabs;
@@ -14,6 +15,7 @@ public partial class BulletBase : CharacterBody2D, IBullet
     [Export] private HitBox _hitBox;
  
     public event Action<float> OnMove;
+    public event Action<Actor> OnHit;
     
     public bool IsPlayer = false;
     
@@ -37,8 +39,12 @@ public partial class BulletBase : CharacterBody2D, IBullet
     public override void _Ready()
     {
         _hitBox.SetIsPlayer(IsPlayer);
-        _hitBox.HitDone = QueueFree;
-        
+        _hitBox.HitDone += (actor) =>
+        {
+            OnHit?.Invoke(actor);
+            QueueFree();
+        };
+
         Velocity = GlobalPosition.DirectionTo(TargetDir) * Speed;
     }
 

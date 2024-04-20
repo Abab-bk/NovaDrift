@@ -3,12 +3,16 @@
     "id": 1000,
     "name": "默认武器",
     "desc": "最普通的武器。",
-    "scene_name": "DefaultShooter"
+    "scene_name": "DefaultShooter",
+    "knockback": 0,
+    "recoil": 0
   },
   {
     "id": 1001,
     "name": "剑",
     "desc": "每 0.5s 自动旋转一圈。",
-    "scene_name": "Sword"
+    "scene_name": "Sword",
+    "knockback": 0,
+    "recoil": 0
   }
 ]

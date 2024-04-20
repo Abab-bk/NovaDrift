@@ -13,21 +13,22 @@ using System.Text.Json;
 
 namespace cfg
 {
-public sealed partial class Weapon : Luban.BeanBase
+public sealed partial class Buff : Luban.BeanBase
 {
-    public Weapon(JsonElement _buf) 
+    public Buff(JsonElement _buf) 
     {
         Id = _buf.GetProperty("id").GetInt32();
         Name = _buf.GetProperty("name").GetString();
         Desc = _buf.GetProperty("desc").GetString();
-        SceneName = _buf.GetProperty("scene_name").GetString();
-        Knockback = _buf.GetProperty("knockback").GetSingle();
-        Recoil = _buf.GetProperty("recoil").GetSingle();
+        { var __json0 = _buf.GetProperty("values"); Values = new System.Collections.Generic.List<float>(__json0.GetArrayLength()); foreach(JsonElement __e0 in __json0.EnumerateArray()) { float __v0;  __v0 = __e0.GetSingle();  Values.Add(__v0); }   }
+        Duration = _buf.GetProperty("duration").GetSingle();
+        RepeatTime = _buf.GetProperty("repeat_time").GetSingle();
+        ClassName = _buf.GetProperty("class_name").GetString();
     }
 
-    public static Weapon DeserializeWeapon(JsonElement _buf)
+    public static Buff DeserializeBuff(JsonElement _buf)
     {
-        return new Weapon(_buf);
+        return new Buff(_buf);
     }
 
     /// <summary>
@@ -43,23 +44,28 @@ public sealed partial class Weapon : Luban.BeanBase
     /// </summary>
     public readonly string Desc;
     /// <summary>
-    /// 场景名
+    /// 数值
     /// </summary>
-    public readonly string SceneName;
+    public readonly System.Collections.Generic.List<float> Values;
     /// <summary>
-    /// 击退
+    /// 持续时间
     /// </summary>
-    public readonly float Knockback;
+    public readonly float Duration;
     /// <summary>
-    /// 反作用力
+    /// 循环时间
     /// </summary>
-    public readonly float Recoil;
+    public readonly float RepeatTime;
+    /// <summary>
+    /// 类名
+    /// </summary>
+    public readonly string ClassName;
    
-    public const int __ID__ = -1707954628;
+    public const int __ID__ = 2081907;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
     {
+        
         
         
         
@@ -74,9 +80,10 @@ public sealed partial class Weapon : Luban.BeanBase
         + "id:" + Id + ","
         + "name:" + Name + ","
         + "desc:" + Desc + ","
-        + "sceneName:" + SceneName + ","
-        + "knockback:" + Knockback + ","
-        + "recoil:" + Recoil + ","
+        + "values:" + Luban.StringUtil.CollectionToString(Values) + ","
+        + "duration:" + Duration + ","
+        + "repeatTime:" + RepeatTime + ","
+        + "className:" + ClassName + ","
         + "}";
     }
 }

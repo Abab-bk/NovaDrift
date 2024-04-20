@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Prefabs.Actors;
 
@@ -6,6 +7,7 @@ namespace NovaDrift.Scripts.Systems;
 
 public class Effect
 {
+    public string Name;
     // 目标
     public Actor Target;
     // 冷却时间
@@ -14,6 +16,8 @@ public class Effect
     public bool Infinite = false;
     // 是否自动开启
     public bool AutoStart = false;
+    
+    public Action<Effect> OnDestroyed;
 
     private readonly List<(Stat, StatModifier)> _statModifiers = new List<(Stat, StatModifier)>();
 
@@ -40,5 +44,6 @@ public class Effect
         {
             value.Item1.RemoveAllModifiersFromSource(value.Item2);
         }
+        OnDestroyed?.Invoke(this);
     }
 }
