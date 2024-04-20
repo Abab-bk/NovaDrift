@@ -1,3 +1,4 @@
+using DsUi;
 using Godot;
 using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Frameworks.Stats;
@@ -72,12 +73,18 @@ public partial class Actor : CharacterBody2D
         {
             Sprite.Texture = GD.Load<Texture2D>(Stats.Body.IconPath);
         };
-        
 
         _hurtBox.SetIsPlayer(IsPlayer);
+        _hurtBox.OnHit += OnHit;
+        
         Shooter.IsPlayer = IsPlayer;
         
         _visibleOnScreenNotifier2D.ScreenExited += MoveToWorldEdge;
+    }
+
+    protected void OnHit(float value)
+    {
+        UiManager.Open_DamageLabel().ShowValue(value, GlobalPosition);
     }
 
     public virtual void Die()

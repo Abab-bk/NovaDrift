@@ -8,6 +8,7 @@ public static partial class UiManager
     {
         public const string AbilityItem = "AbilityItem";
         public const string AbilityPanel = "AbilityPanel";
+        public const string DamageLabel = "DamageLabel";
         public const string GameOver = "GameOver";
         public const string Hud = "Hud";
         public const string SelectAbility = "SelectAbility";
@@ -109,6 +110,54 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel[] Get_AbilityPanel_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel>(nameof(NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanel));
+    }
+
+    /// <summary>
+    /// 创建 DamageLabel, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.DamageLabel.DamageLabelPanel Create_DamageLabel()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.DamageLabel.DamageLabelPanel>(UiName.DamageLabel);
+    }
+
+    /// <summary>
+    /// 打开 DamageLabel, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.DamageLabel.DamageLabelPanel Open_DamageLabel()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.DamageLabel.DamageLabelPanel>(UiName.DamageLabel);
+    }
+
+    /// <summary>
+    /// 隐藏 DamageLabel 的所有实例
+    /// </summary>
+    public static void Hide_DamageLabel()
+    {
+        var uiInstance = Get_DamageLabel_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 DamageLabel 的所有实例
+    /// </summary>
+    public static void Destroy_DamageLabel()
+    {
+        var uiInstance = Get_DamageLabel_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 DamageLabel 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.DamageLabel.DamageLabelPanel[] Get_DamageLabel_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.DamageLabel.DamageLabelPanel>(nameof(NovaDrift.Scripts.Ui.DamageLabel.DamageLabel));
     }
 
     /// <summary>

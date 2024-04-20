@@ -1,4 +1,5 @@
-﻿using Godot;
+﻿using System;
+using Godot;
 using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Prefabs.Actors;
 
@@ -10,6 +11,8 @@ public partial class HurtBox : Area2D
     [Export] public Actor Actor;
     private bool _isPlayer = false;
 
+    public event Action<float> OnHit;
+    
     public void SetIsPlayer(bool value)
     {
         _isPlayer = value;
@@ -23,7 +26,7 @@ public partial class HurtBox : Area2D
             if (area is HitBox hitBox)
             {
                 Actor.Stats.Health.Decrease(hitBox.Damage);
-                
+                OnHit?.Invoke(hitBox.Damage);
                 hitBox.HitDone?.Invoke();
             }
         };
