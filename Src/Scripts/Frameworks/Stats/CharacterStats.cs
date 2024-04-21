@@ -22,10 +22,17 @@ public class CharacterStats
     
     // 武器射击速度
     public readonly Stat ShootSpeed = new Stat(0.5f); // 射击速度，单位为秒，越低越快
-    public readonly Stat BulletSpeed = new Stat(1000f); // 子弹射速
-    public readonly Stat ShootSpread = new Stat(0f);
-    public readonly Stat ShootKnockBack = new Stat(10f);
-    public readonly Stat BurstFire = new Stat(1f);
+    public readonly Stat BulletSpeed = new Stat(1000f); // 子弹速度
+    public readonly Stat ShootSpread = new Stat(0f); // TODO: 修改每个射弹对组合射弹的弧线贡献的角度或宽度。
+    public readonly Stat ShootKnockBack = new Stat(10f); // 打中后对目标的击退
+    public readonly Stat BurstFire = new Stat(1f); // 使你非常快速地多次发射武器，然后等待相同数量的武器冷却时间，然后才能再次发射，再加上 0.04 秒的单次平坦延迟。
+    
+    public readonly Stat BulletSize = new Stat(1f); // 子弹大小，单位缩放
+    public readonly Stat BulletDegeneration = new Stat(1f); // 子弹退化速度（也就是从开始到消失需要的速度）
+    public readonly Stat Recoil = new Stat(0f); // TODO: 射击后武器把自己击退的速度
+    public readonly Stat BulletCount = new Stat(1f); // TODO: 发射的子弹数量
+    public readonly Stat BlastDamage = new Stat(0f); // TODO: 爆炸伤害
+    public readonly Stat BlastRadius = new Stat(0f); // TODO: 爆炸半径
     
     // 一般是给玩家用的，无限，一般是Mod
     public readonly EffectSystem EffectSystem = new EffectSystem();

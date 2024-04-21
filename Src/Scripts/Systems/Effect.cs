@@ -29,7 +29,7 @@ public class Effect
         target.AddModifier(modifier);
         _statModifiers.Add((target, modifier));
     }
-
+    
     public virtual void OnCreate()
     {
     }

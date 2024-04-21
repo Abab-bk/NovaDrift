@@ -20,6 +20,8 @@ public partial class BulletBase : CharacterBody2D, IBullet
     public bool IsPlayer = false;
     
     public float Speed = 1300f;
+    public float Size = 1f;
+    public float Degeneration = 0.8f;
 
     public float Damage
     {
@@ -45,7 +47,12 @@ public partial class BulletBase : CharacterBody2D, IBullet
             QueueFree();
         };
 
+        Scale = new Vector2(Size, Size);
         Velocity = GlobalPosition.DirectionTo(TargetDir) * Speed;
+        
+        Tween tween = CreateTween();
+        tween.TweenProperty(this, "scale", Vector2.Zero, Degeneration);
+        tween.Finished += QueueFree;
     }
 
     public void AddModifierToDamage(StatModifier modifier)

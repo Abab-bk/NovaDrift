@@ -6,10 +6,10 @@ namespace NovaDrift.Scripts.Systems.Effects;
 
 public class Warpath : Effect
 {
-    private int _token = 0;
-    private float _addKnockBack = 0;
-    private float _addShootSpeed = 0;
-    private Timer _timer = null;
+    private int _token;
+    private float _addKnockBack;
+    private float _addShootSpeed;
+    private Timer _timer;
     
     public override void OnCreate()
     {

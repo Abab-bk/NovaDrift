@@ -71,6 +71,8 @@ public partial class Shooter : Node2D, IObject
                 SetIsPlayer(IsPlayer).
                 SetDamage(Actor.Stats.Damage.Value).
                 SetSpeed(Actor.Stats.BulletSpeed.Value).
+                SetSize(Actor.Stats.BulletSize.Value).
+                SetDegeneration(Actor.Stats.BulletDegeneration.Value).
                 Build();
         
             Global.GameWorld.AddChild(bullet);

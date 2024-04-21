@@ -58,6 +58,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.301961, 0.290196, 0.384314, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 

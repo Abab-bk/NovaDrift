@@ -8,6 +8,18 @@ public class BulletBuilder
 {
     private readonly BulletBase _bulletBase = GD.Load<PackedScene>("res://Scenes/Prefabs/BulletBase.tscn").Instantiate() as BulletBase;
 
+    public BulletBuilder SetDegeneration(float degeneration)
+    {
+        _bulletBase.Degeneration = degeneration;
+        return this;
+    }
+
+    public BulletBuilder SetSize(float size)
+    {
+        _bulletBase.Size = size;
+        return this;
+    }
+
     public BulletBuilder SetIsPlayer(bool isPlayer)
     {
         _bulletBase.IsPlayer = isPlayer;
