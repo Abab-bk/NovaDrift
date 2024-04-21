@@ -7,7 +7,12 @@
       -0.2,
       0.05
     ],
-    "class_name": "Velocity"
+    "class_name": "Velocity",
+    "clash_abilities": [],
+    "next_abilities": [
+      1003,
+      1004
+    ]
   },
   {
     "id": 1002,
@@ -16,7 +21,12 @@
     "values": [
       -0.15
     ],
-    "class_name": "RapidFire"
+    "class_name": "RapidFire",
+    "clash_abilities": [],
+    "next_abilities": [
+      1006,
+      1007
+    ]
   },
   {
     "id": 1003,
@@ -26,7 +36,13 @@
       1.2,
       0.2
     ],
-    "class_name": "Snipe"
+    "class_name": "Snipe",
+    "clash_abilities": [
+      1004
+    ],
+    "next_abilities": [
+      1005
+    ]
   },
   {
     "id": 1004,
@@ -36,7 +52,13 @@
       1.2,
       0.2
     ],
-    "class_name": "Snipe"
+    "class_name": "Calibrate",
+    "clash_abilities": [
+      1003
+    ],
+    "next_abilities": [
+      1005
+    ]
   },
   {
     "id": 1005,
@@ -45,6 +67,119 @@
     "values": [
       0.1
     ],
-    "class_name": "IncendiaryStrike"
+    "class_name": "IncendiaryStrike",
+    "clash_abilities": [],
+    "next_abilities": []
+  },
+  {
+    "id": 1006,
+    "name": "三连射杀",
+    "desc": "你的武器快速射击，但产生的冷却时间等于射击的累积冷却时间\n+2 连射\n+20% 武器射速",
+    "values": [
+      2,
+      0.2
+    ],
+    "class_name": "BurstFire",
+    "clash_abilities": [
+      1007
+    ],
+    "next_abilities": [
+      1008
+    ]
+  },
+  {
+    "id": 1007,
+    "name": "战争路径",
+    "desc": "每当击败敌人时都会获得战争代币\n每层代币令武器射速 -0.75%、推力 +0.75%，最高为 30%\n随着时间的推移，代币会迅速减少",
+    "values": [
+      0.075,
+      0.3,
+      2
+    ],
+    "class_name": "Warpath",
+    "clash_abilities": [
+      1006
+    ],
+    "next_abilities": [
+      1008
+    ]
+  },
+  {
+    "id": 1008,
+    "name": "攻城武器",
+    "desc": "每次连续射击或为武器充电时，您的武器总射速都会增加\n射击时-80% 总推力\n当你连续开火时，你的武器会对你的船体造成逐渐增加的自我伤害",
+    "values": [
+      0.8
+    ],
+    "class_name": "SiegeWeaponry",
+    "clash_abilities": [],
+    "next_abilities": []
+  },
+  {
+    "id": 1009,
+    "name": "齐鸣",
+    "desc": "+2 武器射弹\n-20% 武器射弹爆炸半径和总射弹伤害\n-10% 武器射弹尺寸和总射弹速度\n+20% 武器扩散",
+    "values": [
+      2,
+      -0.2,
+      -0.1,
+      0.2
+    ],
+    "class_name": "Volley",
+    "clash_abilities": [
+      1010
+    ],
+    "next_abilities": [
+      1010,
+      1011
+    ]
+  },
+  {
+    "id": 1010,
+    "name": "火力聚焦",
+    "desc": "-40% 总武器分布",
+    "values": [
+      -0.4
+    ],
+    "class_name": "FocusFire",
+    "clash_abilities": [
+      1009
+    ],
+    "next_abilities": [
+      1012
+    ]
+  },
+  {
+    "id": 1011,
+    "name": "射击阵列",
+    "desc": "在你的中央投射物上增加20%的总武器投射物伤害和爆炸半径。其他武器投射物也会相应地调整总投射物伤害和爆炸半径，逐渐减少到最外层投射物为止，最终调整为0%。\n对于你的中央射弹，增加30%的总射弹大小。你其他的武器射弹也会进行调整，总射弹大小逐渐减小，最外层的射弹减小到-30%。\n+10% 武器扩散",
+    "values": [
+      0.2,
+      0,
+      0.3,
+      -0.3,
+      0.1
+    ],
+    "class_name": "FiringArray",
+    "clash_abilities": [
+      1010
+    ],
+    "next_abilities": [
+      1012
+    ]
+  },
+  {
+    "id": 1012,
+    "name": "大号射击",
+    "desc": "基础武器射弹数量翻倍。\n增加1个武器射弹。\n减少15%的武器射弹爆炸半径和总射弹伤害。\n减少10%的武器射弹大小和总射弹速度。\n增加15%的武器散布。",
+    "values": [
+      1,
+      0.15,
+      0.1,
+      0.15
+    ],
+    "class_name": "Fusillade",
+    "clash_abilities": [],
+    "next_abilities": []
   }
 ]

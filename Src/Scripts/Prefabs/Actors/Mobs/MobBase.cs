@@ -32,7 +32,7 @@ public partial class MobBase : Actor
 
     public override void Die()
     {
-        Global.OnMobDied?.Invoke();
+        Global.OnMobDied?.Invoke(this);
         base.Die();
     }
 

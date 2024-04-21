@@ -1,7 +1,4 @@
-using System;
 using DsUi;
-using Godot;
-using KaimiraGames;
 using NovaDrift.Scripts.Systems;
 using NovaDrift.Scripts.Ui.AbilityItem;
 using NovaDrift.Scripts.Ui.AbilityPanel;
@@ -23,6 +20,8 @@ public partial class SelectAbilityPanel : SelectAbility
             _currentItem.Use();
             Destroy();
         };
+
+        S_CloseBtn.Instance.Pressed += Destroy;
         
         GenerateAbilityPanel(new AbilityGenerateConfig(5));
     }

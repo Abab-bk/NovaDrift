@@ -149,6 +149,15 @@ public abstract partial class SelectAbility : UiBase
     }
 
     /// <summary>
+    /// 类型: <see cref="Godot.Button"/>, 路径: SelectAbility.Content.VBoxContainer.CloseBtn
+    /// </summary>
+    public class CloseBtn : UiNode<SelectAbilityPanel, Godot.Button, CloseBtn>
+    {
+        public CloseBtn(SelectAbilityPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
+        public override CloseBtn Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
+    }
+
+    /// <summary>
     /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: SelectAbility.Content.VBoxContainer
     /// </summary>
     public class VBoxContainer : UiNode<SelectAbilityPanel, Godot.VBoxContainer, VBoxContainer>
@@ -178,6 +187,19 @@ public abstract partial class SelectAbility : UiBase
             }
         }
         private YesBtn _L_YesBtn;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: SelectAbility.Content.CloseBtn
+        /// </summary>
+        public CloseBtn L_CloseBtn
+        {
+            get
+            {
+                if (_L_CloseBtn == null) _L_CloseBtn = new CloseBtn(UiPanel, Instance.GetNode<Godot.Button>("CloseBtn"));
+                return _L_CloseBtn;
+            }
+        }
+        private CloseBtn _L_CloseBtn;
 
         public VBoxContainer(SelectAbilityPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
         public override VBoxContainer Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
@@ -225,5 +247,10 @@ public abstract partial class SelectAbility : UiBase
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: SelectAbility.Content.VBoxContainer.YesBtn
     /// </summary>
     public YesBtn S_YesBtn => L_Content.L_VBoxContainer.L_YesBtn;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: SelectAbility.Content.VBoxContainer.CloseBtn
+    /// </summary>
+    public CloseBtn S_CloseBtn => L_Content.L_VBoxContainer.L_CloseBtn;
 
 }

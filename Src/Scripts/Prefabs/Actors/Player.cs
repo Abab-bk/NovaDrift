@@ -13,7 +13,7 @@ public partial class Player : Actor
         base._Ready();
         Global.Player = this;
 
-        Global.OnMobDied += () =>
+        Global.OnMobDied += _ =>
         {
             Stats.Exp.Increase(50);
             UpdateUi();

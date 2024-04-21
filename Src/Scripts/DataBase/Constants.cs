@@ -19,6 +19,7 @@ public sealed partial class Constants : Luban.BeanBase
     {
         KnockBackShootDistance = _buf.GetProperty("knock_back_shoot_distance").GetSingle();
         KnockBackOnhitDistance = _buf.GetProperty("knock_back_onhit_distance").GetSingle();
+        BurstInterval = _buf.GetProperty("burst_interval").GetSingle();
     }
 
     public static Constants DeserializeConstants(JsonElement _buf)
@@ -34,12 +35,17 @@ public sealed partial class Constants : Luban.BeanBase
     /// 默认被打后坐力
     /// </summary>
     public readonly float KnockBackOnhitDistance;
+    /// <summary>
+    /// 默认连发间隔
+    /// </summary>
+    public readonly float BurstInterval;
    
     public const int __ID__ = 1581691183;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
     {
+        
         
         
     }
@@ -49,6 +55,7 @@ public sealed partial class Constants : Luban.BeanBase
         return "{ "
         + "knockBackShootDistance:" + KnockBackShootDistance + ","
         + "knockBackOnhitDistance:" + KnockBackOnhitDistance + ","
+        + "burstInterval:" + BurstInterval + ","
         + "}";
     }
 }

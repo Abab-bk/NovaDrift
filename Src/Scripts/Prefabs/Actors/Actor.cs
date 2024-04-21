@@ -24,7 +24,11 @@ public partial class Actor : CharacterBody2D
         set
         {
             _shooter = value;
-            if (_shooter != null) _shooter.OnShoot += _OnShoot;
+            if (_shooter != null)
+            {
+                _shooter.OnShoot += _OnShoot;
+                _shooter.OnHit += _OnShooterHit;
+            }
         }
     }
 
@@ -35,7 +39,12 @@ public partial class Actor : CharacterBody2D
     public float ShootCd = 1f;
     
     protected bool IsShooting = false;
-    
+
+    protected void _OnShooterHit(Actor actor)
+    {
+        actor.Stats.AddKnockBack(Stats.ShootKnockBack.Value);
+    }
+
     protected void TryMoveTo(Vector2 dir, double delta)
     {
         var targetVelocity = dir * Stats.Speed.Value;

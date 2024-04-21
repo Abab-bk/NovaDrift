@@ -1,6 +1,7 @@
 [
   {
     "knock_back_shoot_distance": 80,
-    "knock_back_onhit_distance": 80
+    "knock_back_onhit_distance": 80,
+    "burst_interval": 0.1
   }
 ]

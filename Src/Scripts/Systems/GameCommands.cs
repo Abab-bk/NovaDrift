@@ -7,9 +7,13 @@ public class GameCommands
     [ConsoleCommand("UseAbilityById", Usage = "UseAbilityById [Id]")]
     public void UseAbilityById(int id = 0)
     {
-        if (id == 0) return;
-        Console.Instance.Print("请输入 ID", Console.PrintType.Warning);
+        if (id == 0)
+        {
+            Console.Instance.Print("请输入 ID", Console.PrintType.Warning);
+            return;
+        }
         DataBuilder.BuildAbilityById(id).Use();
+        Console.Instance.Print($"添加成功，能力ID：{id}", Console.PrintType.Success);
     }
 
     [ConsoleCommand("PrintPlayerAbilities")]

@@ -22,6 +22,8 @@ public sealed partial class Ability : Luban.BeanBase
         Desc = _buf.GetProperty("desc").GetString();
         { var __json0 = _buf.GetProperty("values"); Values = new System.Collections.Generic.List<float>(__json0.GetArrayLength()); foreach(JsonElement __e0 in __json0.EnumerateArray()) { float __v0;  __v0 = __e0.GetSingle();  Values.Add(__v0); }   }
         ClassName = _buf.GetProperty("class_name").GetString();
+        { var __json0 = _buf.GetProperty("clash_abilities"); ClashAbilities = new System.Collections.Generic.List<int>(__json0.GetArrayLength()); foreach(JsonElement __e0 in __json0.EnumerateArray()) { int __v0;  __v0 = __e0.GetInt32();  ClashAbilities.Add(__v0); }   }
+        { var __json0 = _buf.GetProperty("next_abilities"); NextAbilities = new System.Collections.Generic.List<int>(__json0.GetArrayLength()); foreach(JsonElement __e0 in __json0.EnumerateArray()) { int __v0;  __v0 = __e0.GetInt32();  NextAbilities.Add(__v0); }   }
     }
 
     public static Ability DeserializeAbility(JsonElement _buf)
@@ -49,12 +51,22 @@ public sealed partial class Ability : Luban.BeanBase
     /// 类名
     /// </summary>
     public readonly string ClassName;
+    /// <summary>
+    /// 互斥升级
+    /// </summary>
+    public readonly System.Collections.Generic.List<int> ClashAbilities;
+    /// <summary>
+    /// 下一级升级
+    /// </summary>
+    public readonly System.Collections.Generic.List<int> NextAbilities;
    
     public const int __ID__ = 464145674;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
     {
+        
+        
         
         
         
@@ -70,6 +82,8 @@ public sealed partial class Ability : Luban.BeanBase
         + "desc:" + Desc + ","
         + "values:" + Luban.StringUtil.CollectionToString(Values) + ","
         + "className:" + ClassName + ","
+        + "clashAbilities:" + Luban.StringUtil.CollectionToString(ClashAbilities) + ","
+        + "nextAbilities:" + Luban.StringUtil.CollectionToString(NextAbilities) + ","
         + "}";
     }
 }

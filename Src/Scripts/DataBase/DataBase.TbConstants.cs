@@ -36,6 +36,10 @@ public partial class TbConstants
     /// 默认被打后坐力
     /// </summary>
      public float KnockBackOnhitDistance => _data.KnockBackOnhitDistance;
+    /// <summary>
+    /// 默认连发间隔
+    /// </summary>
+     public float BurstInterval => _data.BurstInterval;
     
     public void ResolveRef(Tables tables)
     {

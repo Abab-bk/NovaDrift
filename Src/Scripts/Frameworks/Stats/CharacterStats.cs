@@ -16,14 +16,16 @@ public class CharacterStats
     public Body Body = new Body();
 
     public Attribute Health;
-    public Stat Speed = new Stat(100);
-    public Stat Damage = new Stat(30);
-    public Attribute Exp = new Attribute(0, 100);
+    public readonly Stat Speed = new Stat(100);
+    public readonly Stat Damage = new Stat(30);
+    public readonly Attribute Exp = new Attribute(0, 100);
     
     // 武器射击速度
-    public Stat ShootSpeed = new Stat(0.5f); // 射击速度，单位为秒，越低越快
-    public Stat BulletSpeed = new Stat(1000f); // 子弹射速
-    public Stat ShootSpread = new Stat(0f);
+    public readonly Stat ShootSpeed = new Stat(0.5f); // 射击速度，单位为秒，越低越快
+    public readonly Stat BulletSpeed = new Stat(1000f); // 子弹射速
+    public readonly Stat ShootSpread = new Stat(0f);
+    public readonly Stat ShootKnockBack = new Stat(10f);
+    public readonly Stat BurstFire = new Stat(1f);
     
     // 一般是给玩家用的，无限，一般是Mod
     public readonly EffectSystem EffectSystem = new EffectSystem();
