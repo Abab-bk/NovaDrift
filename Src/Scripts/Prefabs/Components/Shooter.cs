@@ -1,4 +1,5 @@
 ﻿using System;
+using AcidWallStudio.AcidUtilities;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Systems;
@@ -18,7 +19,9 @@ public partial class Shooter : Node2D, IObject
     public bool IsPlayer = false;
     protected Timer ShootTimer;
     
-    protected Timer _burstIntervalTimer;
+    protected Timer BurstIntervalTimer;
+    protected Timer BurstCooldownTimer;
+    protected bool IsBursting = false;
 
     public override void _Ready()
     {
@@ -27,15 +30,19 @@ public partial class Shooter : Node2D, IObject
             IsPlayer = actor.IsPlayer;
         }
 
+        BurstCooldownTimer = Wizard.CreateTimer(0.5f);
+        AddChild(BurstCooldownTimer);
+        BurstCooldownTimer.Timeout += () => IsBursting = false; 
+        
         ShootTimer = new Timer();
         AddChild(ShootTimer);
         ShootTimer.OneShot = true;
         ShootTimer.WaitTime = Actor.Stats.ShootSpeed.Value;
 
-        _burstIntervalTimer = new Timer();
-        AddChild(_burstIntervalTimer);
-        _burstIntervalTimer.OneShot = true;
-        _burstIntervalTimer.WaitTime = DataBuilder.Constants.BurstInterval;
+        BurstIntervalTimer = new Timer();
+        AddChild(BurstIntervalTimer);
+        BurstIntervalTimer.OneShot = true;
+        BurstIntervalTimer.WaitTime = DataBuilder.Constants.BurstInterval;
         
         Init();
         
@@ -59,31 +66,39 @@ public partial class Shooter : Node2D, IObject
 
     public virtual async void Shoot(Vector2 targetDir)
     {
-        if (!ShootTimer.IsStopped())
+        if (!ShootTimer.IsStopped()) { return; }
+        if (IsBursting) { return; }
+
+        IsBursting = true;
+        
+        for (int x = 0; x < Actor.Stats.BurstFire.Value; x++)
         {
-            return;
+            for (int i = 0; i < Actor.Stats.BulletCount.Value; i++)
+            {
+                // targetDir = Wizard.GetPosOnArcByIndex(i, (int)Actor.Stats.BulletCount.Value);
+                
+                BulletBase bullet = new BulletBuilder().
+                    SetTargetDir(targetDir).
+                    SetIsPlayer(IsPlayer).
+                    SetDamage(Actor.Stats.Damage.Value).
+                    SetSpeed(Actor.Stats.BulletSpeed.Value).
+                    SetSize(Actor.Stats.BulletSize.Value).
+                    SetDegeneration(Actor.Stats.BulletDegeneration.Value).
+                    Build();
+        
+                Global.GameWorld.AddChild(bullet);
+                bullet.GlobalPosition = GlobalPosition;
+                bullet.Rotation = targetDir.Angle();
+                ShootTimer.Start();
+        
+                OnShoot?.Invoke(bullet);
+                bullet.OnHit += actor => { OnHit?.Invoke(actor); };
+                BurstIntervalTimer.Start();
+                await ToSignal(BurstIntervalTimer, "timeout");
+            }
         }
 
-        for (int i = 0; i < Actor.Stats.BurstFire.Value; i++)
-        {
-            BulletBase bullet = new BulletBuilder().
-                SetTargetDir(targetDir).
-                SetIsPlayer(IsPlayer).
-                SetDamage(Actor.Stats.Damage.Value).
-                SetSpeed(Actor.Stats.BulletSpeed.Value).
-                SetSize(Actor.Stats.BulletSize.Value).
-                SetDegeneration(Actor.Stats.BulletDegeneration.Value).
-                Build();
-        
-            Global.GameWorld.AddChild(bullet);
-            bullet.GlobalPosition = GlobalPosition;
-            bullet.Rotation = targetDir.Angle();
-            ShootTimer.Start();
-        
-            OnShoot?.Invoke(bullet);
-            bullet.OnHit += actor => { OnHit?.Invoke(actor); };
-            _burstIntervalTimer.Start();
-            await ToSignal(_burstIntervalTimer, Timer.SignalName.Timeout);
-        }
+        BurstCooldownTimer.WaitTime = Actor.Stats.ShootSpeed.Value * Actor.Stats.BurstFire.Value;
+        BurstCooldownTimer.Start();
     }
 }

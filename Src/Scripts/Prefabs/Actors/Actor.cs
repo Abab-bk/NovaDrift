@@ -42,7 +42,7 @@ public partial class Actor : CharacterBody2D
 
     protected void _OnShooterHit(Actor actor)
     {
-        actor.Stats.AddKnockBack(Stats.ShootKnockBack.Value);
+        actor.Stats.AddKnockBack(Stats.Recoil.Value);
     }
 
     protected void TryMoveTo(Vector2 dir, double delta)
