@@ -17,10 +17,21 @@ public partial class Actor : CharacterBody2D
     [Export] private VisibleOnScreenNotifier2D _visibleOnScreenNotifier2D;
     [Export] public bool IsPlayer = false;
 
-    [Export] public Shooter Shooter;
+    [Export]
+    public Shooter Shooter
+    {
+        get => _shooter;
+        set
+        {
+            _shooter = value;
+            if (_shooter != null) _shooter.OnShoot += _OnShoot;
+        }
+    }
+
+    private Shooter _shooter;
 
     public Node2D ShooterNode;
-    public CharacterStats Stats = new CharacterStats();
+    public readonly CharacterStats Stats = new CharacterStats();
     public float ShootCd = 1f;
     
     protected bool IsShooting = false;
@@ -79,12 +90,16 @@ public partial class Actor : CharacterBody2D
         _hurtBox.OnHit += OnHit;
         
         _hurtBox.SetIsPlayer(IsPlayer);
-        
-        Shooter.IsPlayer = IsPlayer;
-        
+
         _visibleOnScreenNotifier2D.ScreenExited += MoveToWorldEdge;
     }
 
+    protected virtual void _OnShoot(BulletBase bullet)
+    {
+        Stats.AddKnockBack(DataBuilder.Constants.KnockBackShootDistance);
+        Shooter.IsPlayer = IsPlayer;
+    }
+    
     protected void OnHit(float value)
     {
         UiManager.Open_DamageLabel().ShowValue(value, GlobalPosition);
@@ -130,4 +145,13 @@ public partial class Actor : CharacterBody2D
         Shooter.Shoot(targetDir);
     }
     
+    public override void _PhysicsProcess(double delta)
+    {
+        if (Stats.GetKnockBack() > 0)
+        {
+            Velocity += Vector2.Right.Rotated(Rotation) * -Stats.GetKnockBack();
+            Stats.AddKnockBack(-Stats.GetKnockBack());
+        }
+        MoveAndSlide();
+    }
 }

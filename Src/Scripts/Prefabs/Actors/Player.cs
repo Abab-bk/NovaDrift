@@ -1,8 +1,6 @@
 using AcidJoystick;
-using AcidWallStudio.AcidUtilities;
 using DsUi;
 using Godot;
-using NovaDrift.Scripts.Prefabs.Actors.Mobs;
 
 namespace NovaDrift.Scripts.Prefabs.Actors;
 
@@ -66,6 +64,8 @@ public partial class Player : Actor
 
     public override void _PhysicsProcess(double delta)
     {
+        base._PhysicsProcess(delta);
+        
         Vector2 mousePos = GetGlobalMousePosition();
 
         if (Global.CurrentPlatform == GamePlatform.Desktop)
@@ -95,8 +95,6 @@ public partial class Player : Actor
                 TryStop(delta);
             }
         }
-
-        MoveAndSlide();
 
         if (Input.IsActionPressed("RClick"))
         {

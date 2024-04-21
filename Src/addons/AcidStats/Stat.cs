@@ -15,19 +15,32 @@ public enum StatModType
 public class Stat
 {
     public event Action<float> ValueChanged;
-    
-    public float BaseValue;
 
-    private float _lastValue = -1f;
-    private float _value;
+    public float BaseValue
+    {
+        get => _baseValue;
+        set
+        {
+            if (_baseValue.Equals(value)) return;
+            _baseValue = value;
+            _isDirty = true;
+            ValueChanged?.Invoke(Value);
+        }
+    }
     
+    private float _baseValue;
+
+    private bool _isDirty = true;
+    private float _value;
+ 
     public float Value {
         get {
-            // if(!_value.Equals(_lastValue)) {
-            //     _lastValue = _value;
-            //     _value = CalculateFinalValue();
-            // }
-            _value = CalculateFinalValue();
+            if(_isDirty) {
+                _value = CalculateFinalValue();
+                ValueChanged?.Invoke(_value);
+                _isDirty = false;
+            }
+            
             return _value;
         }
     }
@@ -50,25 +63,18 @@ public class Stat
             return 1;
         return 0;
     }
-    
+
     public void AddModifier(StatModifier mod)
     {
+        _isDirty = true;
         _statModifiers.Add(mod);
         _statModifiers.Sort(CompareModifierOrder);
-        ValueChanged?.Invoke(Value);
     }
-    
+
     public bool RemoveModifier(StatModifier mod)
     {
-        if (_statModifiers.Remove(mod))
-        {
-            ValueChanged?.Invoke(Value);
-            return true;
-        }
-
-        _statModifiers.Remove(mod);
-        ValueChanged?.Invoke(Value);
-        return false;
+        _isDirty = true;
+        return _statModifiers.Remove(mod);
     }
  
     private float CalculateFinalValue()

@@ -30,7 +30,18 @@ public class CharacterStats
     // 效果
     public readonly BuffSystem BuffSystem = new BuffSystem();
     private Actor _target;
+    private readonly Stat _knockBack = new Stat(10);
 
+    public void AddKnockBack(float value)
+    {
+        _knockBack.BaseValue += value;
+    }
+
+    public float GetKnockBack()
+    {
+        return _knockBack.Value;
+    }
+    
     public void AddBuff(Buff buff)
     {
         BuffSystem.AddBuff(buff);

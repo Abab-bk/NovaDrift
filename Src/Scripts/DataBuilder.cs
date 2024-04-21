@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text.Json;
 using AcidWallStudio.AcidUtilities;
 using cfg;
+using cfg.DataBase;
 using Game = NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts;
@@ -11,6 +12,7 @@ namespace NovaDrift.Scripts;
 public static class DataBuilder
 {
     private static Tables _tables;
+    public static TbConstants Constants => _tables.TbConstants;
 
     public static int GetRandomAbilityId()
     {

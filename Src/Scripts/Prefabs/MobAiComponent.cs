@@ -11,7 +11,7 @@ public partial class MobAiComponent : Node
     private StateChart _stateChart;
     
     public override void _Ready()
-    {;
+    {
         var stateChartNode = GetNode("%MobAiStateChart");
         _stateChart = StateChart.Of(stateChartNode);
         
