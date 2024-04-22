@@ -48,7 +48,7 @@ public partial class Actor : CharacterBody2D
 
     protected virtual void _OnShoot(BulletBase bullet)
     {
-        Stats.AddKnockBack(DataBuilder.Constants.KnockBackShootDistance);
+        Stats.AddKnockBack(Stats.ShootKnockBack.Value);
         Shooter.IsPlayer = IsPlayer;
         OnShoot?.Invoke(bullet);
     }
@@ -65,22 +65,22 @@ public partial class Actor : CharacterBody2D
         {
             Velocity = Velocity.MoveToward(
                 targetVelocity, 
-                (Stats.Body.Acceleration.Value - Stats.Body.ShootingDeceleration.Value) *
+                (Stats.Acceleration.Value - Stats.ShootingDeceleration.Value) *
                 (float)delta);
             return;
         }
-
-        Velocity = Velocity.MoveToward(targetVelocity, Stats.Body.Acceleration.Value * (float)delta);
+        
+        Velocity = Velocity.MoveToward(targetVelocity, Stats.Acceleration.Value * (float)delta);
     }
 
     protected void TryStop(double delta)
     {
-        Velocity = Velocity.MoveToward(Vector2.Zero, Stats.Body.Deceleration.Value * (float)delta);
+        Velocity = Velocity.MoveToward(Vector2.Zero, Stats.Deceleration.Value * (float)delta);
     }
 
     protected float RotationTo(float target, double delta)
     {
-        return Mathf.LerpAngle(Rotation, target, Stats.Body.RotationSpeed.Value * (float)delta);
+        return Mathf.LerpAngle(Rotation, target, Stats.RotationSpeed.Value * (float)delta);
     }
 
     private void InitCollision()
@@ -107,7 +107,6 @@ public partial class Actor : CharacterBody2D
         {
             Sprite.Texture = GD.Load<Texture2D>(Stats.Body.IconPath);
         };
-        // Stats.Health.ValueChanged += OnHit;
         
         _hurtBox.OnHit += OnHit;
         

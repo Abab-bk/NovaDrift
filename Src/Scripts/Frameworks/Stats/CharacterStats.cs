@@ -16,7 +16,7 @@ public class CharacterStats
     public Body Body = new Body();
 
     public Attribute Health;
-    public readonly Stat Speed = new Stat(100);
+    public readonly Stat Speed = new Stat(1000);
     public readonly Stat Damage = new Stat(30);
     public readonly Attribute Exp = new Attribute(0, 100);
     
@@ -27,12 +27,17 @@ public class CharacterStats
     public readonly Stat ShootKnockBack = new Stat(10f); // 打中后对目标的击退
     public readonly Stat BurstFire = new Stat(1f); // 你的武器会快速射击，然后进入一个冷却状态，这个冷却时间与已射出的子弹的冷却时间总和相等。
     
-    public readonly Stat BulletSize = new Stat(3f); // 子弹大小，单位缩放
-    public readonly Stat BulletDegeneration = new Stat(1f); // 子弹退化速度（也就是从开始到消失需要的速度）
+    public readonly Stat BulletSize = new Stat(1f); // 子弹大小，单位缩放
+    public readonly Stat BulletDegeneration = new Stat(5f); // 子弹退化速度（也就是从开始到消失需要的速度）
     public readonly Stat Recoil = new Stat(50f); // 射击后武器把自己击退的速度
     public readonly Stat BulletCount = new Stat(1f); // 发射的子弹数量
     public readonly Stat BlastDamage = new Stat(0f); // TODO: 爆炸伤害
     public readonly Stat BlastRadius = new Stat(0f); // TODO: 爆炸半径
+    
+    public readonly Stat Acceleration = new Stat(1);
+    public readonly Stat Deceleration = new Stat(1);
+    public readonly Stat RotationSpeed = new Stat(1); // 越高越灵敏
+    public readonly Stat ShootingDeceleration = new Stat(1);
     
     // 一般是给玩家用的，无限持续时间，一般是Mod
     public readonly EffectSystem EffectSystem = new EffectSystem();
@@ -101,7 +106,6 @@ public class CharacterStats
     public CharacterStats SetBody(Body value)
     {
         Body = value;
-        Health = new Attribute(0, Body.Health);
         OnBodyChanged?.Invoke();
         return this;
     }

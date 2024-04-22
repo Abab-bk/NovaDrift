@@ -17,9 +17,21 @@ public sealed partial class Constants : Luban.BeanBase
 {
     public Constants(JsonElement _buf) 
     {
-        KnockBackShootDistance = _buf.GetProperty("knock_back_shoot_distance").GetSingle();
-        KnockBackOnhitDistance = _buf.GetProperty("knock_back_onhit_distance").GetSingle();
         BurstInterval = _buf.GetProperty("burst_interval").GetSingle();
+        PlayerHealth = _buf.GetProperty("player_health").GetSingle();
+        PlayerSpeed = _buf.GetProperty("player_speed").GetSingle();
+        PlayerDamage = _buf.GetProperty("player_damage").GetSingle();
+        PlayerShootSpeed = _buf.GetProperty("player_shoot_speed").GetSingle();
+        PlayerBulletSpeed = _buf.GetProperty("player_bullet_speed").GetSingle();
+        PlayerShootSpread = _buf.GetProperty("player_shoot_spread").GetSingle();
+        PlayerKnockBack = _buf.GetProperty("player_knock_back").GetSingle();
+        PlayerBurstFire = _buf.GetProperty("player_burst_fire").GetSingle();
+        PlayerBulletSize = _buf.GetProperty("player_bullet_size").GetSingle();
+        PlayerBulletDegeneration = _buf.GetProperty("player_bullet_degeneration").GetSingle();
+        PlayerRecoil = _buf.GetProperty("player_recoil").GetSingle();
+        PlayerBulletCount = _buf.GetProperty("player_bullet_count").GetSingle();
+        PlayerBlastDamage = _buf.GetProperty("player_blast_damage").GetSingle();
+        PlayerBlastRadius = _buf.GetProperty("player_blast_radius").GetSingle();
     }
 
     public static Constants DeserializeConstants(JsonElement _buf)
@@ -28,17 +40,65 @@ public sealed partial class Constants : Luban.BeanBase
     }
 
     /// <summary>
-    /// 默认射击后坐力
-    /// </summary>
-    public readonly float KnockBackShootDistance;
-    /// <summary>
-    /// 默认被打后坐力
-    /// </summary>
-    public readonly float KnockBackOnhitDistance;
-    /// <summary>
     /// 默认连发间隔
     /// </summary>
     public readonly float BurstInterval;
+    /// <summary>
+    /// 默认玩家生命
+    /// </summary>
+    public readonly float PlayerHealth;
+    /// <summary>
+    /// 默认玩家速度
+    /// </summary>
+    public readonly float PlayerSpeed;
+    /// <summary>
+    /// 默认玩家伤害
+    /// </summary>
+    public readonly float PlayerDamage;
+    /// <summary>
+    /// 默认玩家射击速度
+    /// </summary>
+    public readonly float PlayerShootSpeed;
+    /// <summary>
+    /// 默认玩家子弹速度
+    /// </summary>
+    public readonly float PlayerBulletSpeed;
+    /// <summary>
+    /// 默认玩家武器散布
+    /// </summary>
+    public readonly float PlayerShootSpread;
+    /// <summary>
+    /// 默认玩家打中后对目标的击退
+    /// </summary>
+    public readonly float PlayerKnockBack;
+    /// <summary>
+    /// 默认玩家BurstFire
+    /// </summary>
+    public readonly float PlayerBurstFire;
+    /// <summary>
+    /// 默认玩家子弹大小
+    /// </summary>
+    public readonly float PlayerBulletSize;
+    /// <summary>
+    /// 默认玩家子弹退化速度
+    /// </summary>
+    public readonly float PlayerBulletDegeneration;
+    /// <summary>
+    /// 默认射击后坐力
+    /// </summary>
+    public readonly float PlayerRecoil;
+    /// <summary>
+    /// 默认子弹数量
+    /// </summary>
+    public readonly float PlayerBulletCount;
+    /// <summary>
+    /// 默认爆炸伤害
+    /// </summary>
+    public readonly float PlayerBlastDamage;
+    /// <summary>
+    /// 默认爆炸半径
+    /// </summary>
+    public readonly float PlayerBlastRadius;
    
     public const int __ID__ = 1581691183;
     public override int GetTypeId() => __ID__;
@@ -48,14 +108,38 @@ public sealed partial class Constants : Luban.BeanBase
         
         
         
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
     }
 
     public override string ToString()
     {
         return "{ "
-        + "knockBackShootDistance:" + KnockBackShootDistance + ","
-        + "knockBackOnhitDistance:" + KnockBackOnhitDistance + ","
         + "burstInterval:" + BurstInterval + ","
+        + "playerHealth:" + PlayerHealth + ","
+        + "playerSpeed:" + PlayerSpeed + ","
+        + "playerDamage:" + PlayerDamage + ","
+        + "playerShootSpeed:" + PlayerShootSpeed + ","
+        + "playerBulletSpeed:" + PlayerBulletSpeed + ","
+        + "playerShootSpread:" + PlayerShootSpread + ","
+        + "playerKnockBack:" + PlayerKnockBack + ","
+        + "playerBurstFire:" + PlayerBurstFire + ","
+        + "playerBulletSize:" + PlayerBulletSize + ","
+        + "playerBulletDegeneration:" + PlayerBulletDegeneration + ","
+        + "playerRecoil:" + PlayerRecoil + ","
+        + "playerBulletCount:" + PlayerBulletCount + ","
+        + "playerBlastDamage:" + PlayerBlastDamage + ","
+        + "playerBlastRadius:" + PlayerBlastRadius + ","
         + "}";
     }
 }

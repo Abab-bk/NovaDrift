@@ -29,17 +29,65 @@ public partial class TbConstants
 
 
     /// <summary>
-    /// 默认射击后坐力
-    /// </summary>
-     public float KnockBackShootDistance => _data.KnockBackShootDistance;
-    /// <summary>
-    /// 默认被打后坐力
-    /// </summary>
-     public float KnockBackOnhitDistance => _data.KnockBackOnhitDistance;
-    /// <summary>
     /// 默认连发间隔
     /// </summary>
      public float BurstInterval => _data.BurstInterval;
+    /// <summary>
+    /// 默认玩家生命
+    /// </summary>
+     public float PlayerHealth => _data.PlayerHealth;
+    /// <summary>
+    /// 默认玩家速度
+    /// </summary>
+     public float PlayerSpeed => _data.PlayerSpeed;
+    /// <summary>
+    /// 默认玩家伤害
+    /// </summary>
+     public float PlayerDamage => _data.PlayerDamage;
+    /// <summary>
+    /// 默认玩家射击速度
+    /// </summary>
+     public float PlayerShootSpeed => _data.PlayerShootSpeed;
+    /// <summary>
+    /// 默认玩家子弹速度
+    /// </summary>
+     public float PlayerBulletSpeed => _data.PlayerBulletSpeed;
+    /// <summary>
+    /// 默认玩家武器散布
+    /// </summary>
+     public float PlayerShootSpread => _data.PlayerShootSpread;
+    /// <summary>
+    /// 默认玩家打中后对目标的击退
+    /// </summary>
+     public float PlayerKnockBack => _data.PlayerKnockBack;
+    /// <summary>
+    /// 默认玩家BurstFire
+    /// </summary>
+     public float PlayerBurstFire => _data.PlayerBurstFire;
+    /// <summary>
+    /// 默认玩家子弹大小
+    /// </summary>
+     public float PlayerBulletSize => _data.PlayerBulletSize;
+    /// <summary>
+    /// 默认玩家子弹退化速度
+    /// </summary>
+     public float PlayerBulletDegeneration => _data.PlayerBulletDegeneration;
+    /// <summary>
+    /// 默认射击后坐力
+    /// </summary>
+     public float PlayerRecoil => _data.PlayerRecoil;
+    /// <summary>
+    /// 默认子弹数量
+    /// </summary>
+     public float PlayerBulletCount => _data.PlayerBulletCount;
+    /// <summary>
+    /// 默认爆炸伤害
+    /// </summary>
+     public float PlayerBlastDamage => _data.PlayerBlastDamage;
+    /// <summary>
+    /// 默认爆炸半径
+    /// </summary>
+     public float PlayerBlastRadius => _data.PlayerBlastRadius;
     
     public void ResolveRef(Tables tables)
     {

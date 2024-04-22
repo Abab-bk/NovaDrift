@@ -109,5 +109,6 @@ zoom = Vector2(0.5, 0.5)
 
 [node name="MobGenerator" type="Node2D" parent="."]
 script = ExtResource("8_wqlpe")
+_enabled = false
 _maxMobs = 2
 _spawnCd = 1.0

@@ -9,8 +9,6 @@ public class Assault : Body
     {
         base.Use();
         
-        Actor.Stats.Body.OnDestroy();
-        
         Actor.Shooter.OnShoot += bullet =>
         {
             if (!Wizard.ChanceOverThreshold(8))
@@ -22,7 +20,7 @@ public class Assault : Body
         
         AddModifierToTarget(
             new StatModifier(0.15f, StatModType.PercentAdd, this),
-            ShootingDeceleration
+            Actor.Stats.ShootingDeceleration
             );
 
         AddModifierToTarget(

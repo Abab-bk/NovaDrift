@@ -32,10 +32,30 @@ public partial class Player : Actor
 
     protected override void InitStats()
     {
-        Stats.SetDamage(10f).
-            SetHealth(300f).
-            SetSpeed(600f);
+        Stats.Health.BaseValue = DataBuilder.Constants.PlayerHealth;
+        Stats.Health.MaxValue.BaseValue = DataBuilder.Constants.PlayerHealth;
+        Stats.Health.MaxValue.BaseValue = DataBuilder.Constants.PlayerHealth;
+        
+        Stats.Speed.BaseValue = DataBuilder.Constants.PlayerSpeed;
+        
+        Stats.ShootSpeed.BaseValue = DataBuilder.Constants.PlayerShootSpeed;
+        Stats.ShootKnockBack.BaseValue = DataBuilder.Constants.PlayerKnockBack;
+        Stats.ShootSpread.BaseValue = DataBuilder.Constants.PlayerShootSpread;
 
+        Stats.Damage.BaseValue = DataBuilder.Constants.PlayerDamage;
+        
+        Stats.Recoil.BaseValue = DataBuilder.Constants.PlayerRecoil;
+        
+        Stats.Exp.BaseValue = 0;
+        
+        Stats.BulletCount.BaseValue = DataBuilder.Constants.PlayerBulletCount;
+        Stats.BulletSize.BaseValue = DataBuilder.Constants.PlayerBulletSize;
+        Stats.BulletSpeed.BaseValue = DataBuilder.Constants.PlayerBulletSpeed;
+        Stats.BulletDegeneration.BaseValue = DataBuilder.Constants.PlayerBulletDegeneration;
+        Stats.BlastDamage.BaseValue = DataBuilder.Constants.PlayerBlastDamage;
+        Stats.BlastRadius.BaseValue = DataBuilder.Constants.PlayerBlastRadius;
+        Stats.BurstFire.BaseValue = DataBuilder.Constants.PlayerBurstFire;
+        
         Stats.Exp.ValueToMax += UpLevel;
         Stats.Exp.ValueChanged += UpdateUi;
         Stats.Health.ValueChanged += UpdateUi;

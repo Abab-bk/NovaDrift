@@ -17,10 +17,10 @@ public class Body : IItemInfo
     
     // TODO: 护盾
     public float Health = 100;
-    public Stat Acceleration = new Stat(1000f);
-    public Stat Deceleration = new Stat(300f);
-    public Stat RotationSpeed = new Stat(4.5f); // 越高越灵敏
-    public Stat ShootingDeceleration = new Stat(500f);
+    
+    public float Acceleration = 1000f;
+    public float Deceleration = 300f;
+    public float RotationSpeed = 3f; // 越高越灵敏
     
     private readonly List<(Stat, StatModifier)> _statModifiers = new List<(Stat, StatModifier)>();
 
@@ -63,33 +63,36 @@ public class Body : IItemInfo
         return this;
     }
     
-    public Body SetShootingDeceleration(float shootingDeceleration)
-    {
-        ShootingDeceleration.BaseValue = shootingDeceleration;
-        return this;
-    }
     
     public Body SetAcceleration(float acceleration)
     {
-        Acceleration.BaseValue = acceleration;
+        Acceleration = acceleration;
         return this;
     }
     
     public Body SetDeceleration(float deceleration)
     {
-        Deceleration.BaseValue = deceleration;
+        Deceleration = deceleration;
         return this;
     }
     
     public Body SetRotationSpeed(float rotationSpeed)
     {
-        RotationSpeed.BaseValue = rotationSpeed;
+        RotationSpeed = rotationSpeed;
         return this;
     }
 
     public virtual void Use()
     {
-        Global.Player.Stats.SetBody(this);
         Actor = Global.Player;
+
+        Actor.Stats.Body.OnDestroy();
+        
+        Global.Player.Stats.SetBody(this);
+        
+        AddModifierToTarget(new StatModifier(Health, StatModType.Flat), Actor.Stats.Health.MaxValue);
+        AddModifierToTarget(new StatModifier(Acceleration, StatModType.Flat), Actor.Stats.Acceleration);
+        AddModifierToTarget(new StatModifier(Deceleration, StatModType.Flat), Actor.Stats.Deceleration);
+        AddModifierToTarget(new StatModifier(RotationSpeed, StatModType.Flat), Actor.Stats.RotationSpeed);
     }
 }

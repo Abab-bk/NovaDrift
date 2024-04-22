@@ -26,7 +26,12 @@ public partial class MobBase : Actor
 
     protected override void InitStats()
     {
-        Stats.SetDamage(MobInfo.Damage).SetHealth(MobInfo.Health);
+        Stats.Health.BaseValue = MobInfo.Health;
+        Stats.Health.MaxValue.BaseValue = MobInfo.Health;
+        
+        Stats.Speed.BaseValue = MobInfo.Speed;
+        Stats.Damage.BaseValue = MobInfo.Damage;
+        
         Shooter.SetShootCd(MobInfo.ShootCd);
     }
 
