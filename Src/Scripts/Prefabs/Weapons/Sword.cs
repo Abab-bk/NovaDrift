@@ -33,7 +33,7 @@ public partial class Sword : Shooter
         ShootTimer.Start();
     }
 
-    public override void Shoot(Vector2 targetDir)
+    public override void Shoot()
     {
         
     }

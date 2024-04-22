@@ -34,7 +34,7 @@ public partial class MobAiComponent : Node
     {
         if (Global.Player.GlobalPosition.DistanceTo(_mob.GlobalPosition) < 300)
         {
-            _mob.Shoot(_mob.GlobalPosition.DirectionTo(Global.Player.GlobalPosition));
+            _mob.Shoot();
             return;
         }
         _mob.SetTargetAndMove(Global.Player, delta);

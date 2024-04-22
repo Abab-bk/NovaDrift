@@ -17,6 +17,9 @@ Shooter = NodePath("Components/ShooterNode/Shooter")
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("3_fa43h")
 
+[node name="ShooterNode" parent="Components" index="0"]
+position = Vector2(93, 0)
+
 [node name="Shooter" type="Node2D" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
 script = ExtResource("3_hlk8c")
 Actor = NodePath("../../..")

@@ -40,7 +40,7 @@ content_margin_bottom = 10.0
 bg_color = Color(0.133333, 0.133333, 0.133333, 0)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wpanm"]
-bg_color = Color(0, 0, 0, 1)
+bg_color = Color(0.0900985, 0.0900985, 0.0900985, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_25al0"]
 content_margin_left = 10.0
@@ -66,13 +66,13 @@ process_mode = 3
 script = ExtResource("1_dw41g")
 _consoleCanvas = NodePath("ConsoleCanvas")
 _background = NodePath("ConsoleCanvas/Background")
-_closeButton = NodePath("ConsoleCanvas/Background/Window/Content/Header/HBoxContainer/CloseButton")
-_commandInput = NodePath("ConsoleCanvas/Background/Window/Content/Input/HBoxContainer/CommandInput")
-_commandSendButton = NodePath("ConsoleCanvas/Background/Window/Content/Input/HBoxContainer/CommandSendButton")
-_historyScrollContainer = NodePath("ConsoleCanvas/Background/Window/Content/History/ScrollContainer")
-_historyContent = NodePath("ConsoleCanvas/Background/Window/Content/History/ScrollContainer/Content")
-_suggestionsContent = NodePath("ConsoleCanvas/Background/Window/Content/History/SuggestionsPanel/Suggestions/Suggestions")
-_suggestionsPanel = NodePath("ConsoleCanvas/Background/Window/Content/History/SuggestionsPanel")
+_closeButton = NodePath("ConsoleCanvas/Background/MarginContainer/Window/Content/Header/HBoxContainer/CloseButton")
+_commandInput = NodePath("ConsoleCanvas/Background/MarginContainer/Window/Content/Input/HBoxContainer/CommandInput")
+_commandSendButton = NodePath("ConsoleCanvas/Background/MarginContainer/Window/Content/Input/HBoxContainer/CommandSendButton")
+_historyScrollContainer = NodePath("ConsoleCanvas/Background/MarginContainer/Window/Content/History/ScrollContainer")
+_historyContent = NodePath("ConsoleCanvas/Background/MarginContainer/Window/Content/History/ScrollContainer/Content")
+_suggestionsContent = NodePath("ConsoleCanvas/Background/MarginContainer/Window/Content/History/SuggestionsPanel/Suggestions/Suggestions")
+_suggestionsPanel = NodePath("ConsoleCanvas/Background/MarginContainer/Window/Content/History/SuggestionsPanel")
 
 [node name="ConsoleCanvas" type="CanvasLayer" parent="."]
 layer = 128
@@ -87,23 +87,24 @@ grow_vertical = 2
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_cvk4f")
 
-[node name="Window" type="Panel" parent="ConsoleCanvas/Background"]
-custom_minimum_size = Vector2(600, 400)
+[node name="MarginContainer" type="MarginContainer" parent="ConsoleCanvas/Background"]
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -767.0
-offset_top = -488.0
-offset_right = 767.0
-offset_bottom = 488.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="Window" type="Panel" parent="ConsoleCanvas/Background/MarginContainer"]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_lpjvy")
 
-[node name="Content" type="VBoxContainer" parent="ConsoleCanvas/Background/Window"]
+[node name="Content" type="VBoxContainer" parent="ConsoleCanvas/Background/MarginContainer/Window"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -112,82 +113,83 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 0
 
-[node name="Header" type="PanelContainer" parent="ConsoleCanvas/Background/Window/Content"]
+[node name="Header" type="PanelContainer" parent="ConsoleCanvas/Background/MarginContainer/Window/Content"]
 custom_minimum_size = Vector2(0, 80)
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_t5a6w")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ConsoleCanvas/Background/Window/Content/Header"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ConsoleCanvas/Background/MarginContainer/Window/Content/Header"]
 layout_mode = 2
 theme_override_constants/separation = 15
 alignment = 1
 
-[node name="Label" type="Label" parent="ConsoleCanvas/Background/Window/Content/Header/HBoxContainer"]
+[node name="Label" type="Label" parent="ConsoleCanvas/Background/MarginContainer/Window/Content/Header/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 40
 text = "Console"
 
-[node name="CloseButton" type="Button" parent="ConsoleCanvas/Background/Window/Content/Header/HBoxContainer"]
+[node name="CloseButton" type="Button" parent="ConsoleCanvas/Background/MarginContainer/Window/Content/Header/HBoxContainer"]
 custom_minimum_size = Vector2(65, 0)
 layout_mode = 2
 size_flags_horizontal = 8
 focus_mode = 0
 text = "Close"
 
-[node name="History" type="PanelContainer" parent="ConsoleCanvas/Background/Window/Content"]
+[node name="History" type="PanelContainer" parent="ConsoleCanvas/Background/MarginContainer/Window/Content"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_rquom")
 
-[node name="ScrollContainer" type="ScrollContainer" parent="ConsoleCanvas/Background/Window/Content/History"]
+[node name="ScrollContainer" type="ScrollContainer" parent="ConsoleCanvas/Background/MarginContainer/Window/Content/History"]
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_styles/panel = SubResource("StyleBoxFlat_fbsm3")
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="Content" type="VBoxContainer" parent="ConsoleCanvas/Background/Window/Content/History/ScrollContainer"]
+[node name="Content" type="VBoxContainer" parent="ConsoleCanvas/Background/MarginContainer/Window/Content/History/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 0
 
-[node name="SuggestionsPanel" type="PanelContainer" parent="ConsoleCanvas/Background/Window/Content/History"]
+[node name="SuggestionsPanel" type="PanelContainer" parent="ConsoleCanvas/Background/MarginContainer/Window/Content/History"]
 visible = false
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_wpanm")
 
-[node name="Suggestions" type="ScrollContainer" parent="ConsoleCanvas/Background/Window/Content/History/SuggestionsPanel"]
+[node name="Suggestions" type="ScrollContainer" parent="ConsoleCanvas/Background/MarginContainer/Window/Content/History/SuggestionsPanel"]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_fbsm3")
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 2
 
-[node name="Suggestions" type="VBoxContainer" parent="ConsoleCanvas/Background/Window/Content/History/SuggestionsPanel/Suggestions"]
+[node name="Suggestions" type="VBoxContainer" parent="ConsoleCanvas/Background/MarginContainer/Window/Content/History/SuggestionsPanel/Suggestions"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 0
 alignment = 2
 
-[node name="Input" type="PanelContainer" parent="ConsoleCanvas/Background/Window/Content"]
+[node name="Input" type="PanelContainer" parent="ConsoleCanvas/Background/MarginContainer/Window/Content"]
 layout_mode = 2
 size_flags_vertical = 8
 theme_override_styles/panel = SubResource("StyleBoxFlat_25al0")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="ConsoleCanvas/Background/Window/Content/Input"]
+[node name="HBoxContainer" type="HBoxContainer" parent="ConsoleCanvas/Background/MarginContainer/Window/Content/Input"]
 custom_minimum_size = Vector2(0, 40)
 layout_mode = 2
 theme_override_constants/separation = 15
 
-[node name="CommandInput" type="LineEdit" parent="ConsoleCanvas/Background/Window/Content/Input/HBoxContainer"]
+[node name="CommandInput" type="LineEdit" parent="ConsoleCanvas/Background/MarginContainer/Window/Content/Input/HBoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_font_sizes/font_size = 40
 placeholder_text = "Enter \"help\" for a list of commands"
 flat = true
+caret_blink = true
 
-[node name="CommandSendButton" type="Button" parent="ConsoleCanvas/Background/Window/Content/Input/HBoxContainer"]
+[node name="CommandSendButton" type="Button" parent="ConsoleCanvas/Background/MarginContainer/Window/Content/Input/HBoxContainer"]
 custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
 size_flags_horizontal = 8

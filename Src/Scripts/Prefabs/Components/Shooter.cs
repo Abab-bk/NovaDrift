@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using AcidWallStudio.AcidUtilities;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors;
@@ -64,7 +65,7 @@ public partial class Shooter : Node2D, IObject
     {
     }
 
-    public virtual async void Shoot(Vector2 targetDir)
+    public virtual async void Shoot()
     {
         if (!ShootTimer.IsStopped()) { return; }
         if (IsBursting) { return; }
@@ -75,20 +76,28 @@ public partial class Shooter : Node2D, IObject
         {
             for (int i = 0; i < Actor.Stats.BulletCount.Value; i++)
             {
-                // targetDir = Wizard.GetPosOnArcByIndex(i, (int)Actor.Stats.BulletCount.Value);
-                
                 BulletBase bullet = new BulletBuilder().
-                    SetTargetDir(targetDir).
                     SetIsPlayer(IsPlayer).
                     SetDamage(Actor.Stats.Damage.Value).
                     SetSpeed(Actor.Stats.BulletSpeed.Value).
                     SetSize(Actor.Stats.BulletSize.Value).
                     SetDegeneration(Actor.Stats.BulletDegeneration.Value).
                     Build();
-        
-                Global.GameWorld.AddChild(bullet);
+                
                 bullet.GlobalPosition = GlobalPosition;
-                bullet.Rotation = targetDir.Angle();
+                if ((int)Actor.Stats.BulletCount.Value == 1)
+                {
+                    bullet.Rotation = GlobalRotation;
+                }
+                else
+                {
+                    float arcRad = Mathf.DegToRad(Actor.Stats.ShootSpread.Value);
+                    float increment = arcRad / (Actor.Stats.BulletCount.Value - 1);
+                    bullet.GlobalRotation = Actor.GlobalRotation + increment * i - arcRad / 2;
+                }
+
+                Global.GameWorld.AddChild(bullet);
+                
                 ShootTimer.Start();
         
                 OnShoot?.Invoke(bullet);

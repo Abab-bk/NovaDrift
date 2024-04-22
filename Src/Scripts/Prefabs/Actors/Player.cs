@@ -98,7 +98,7 @@ public partial class Player : Actor
 
         if (Input.IsActionPressed("RClick"))
         {
-            Shoot(GlobalPosition.DirectionTo(mousePos));
+            Shoot();
             IsShooting = true;
         }
         else

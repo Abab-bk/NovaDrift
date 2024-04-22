@@ -21,6 +21,7 @@ public partial class Console : Node
     
     public bool Open;
 
+    [Export] private int _maxSuggestions = 15;
     [Export] private CanvasLayer _consoleCanvas;
     [Export] private Panel _background;
     [Export] private Button _closeButton;
@@ -51,9 +52,9 @@ public partial class Console : Node
         Print("[SofiaConsole] Version 1.2.0", PrintType.Success);
         Space();
         
+        GenerateSuggestionsNode();
+        
         GD.Print("[SofiaConsole] Done");
-
-        // _commandInput.TextChanged += _ => UpdateUi();
     }
 
     public override void _Input(InputEvent @event)
@@ -73,38 +74,6 @@ public partial class Console : Node
             {
                 ToggleConsole();
             }
-
-            // Press Up to toggle between previous commands
-            // TODO
-            // if (eventKey.Keycode == Key.Up && _commandInput.HasFocus() && _commandHistory.Count > 0)
-            // {
-            //     var historyIndex = _commandHistory.FindIndex(x => x == _commandInput.Text);
-            //     if (historyIndex == -1)
-            //     {
-            //         historyIndex = _commandHistory.Count;
-            //     }
-            //     
-            //     if (historyIndex == 0)
-            //     {
-            //         historyIndex = _commandHistory.Count;
-            //     }
-            //
-            //     _commandInput.Text = _commandHistory[historyIndex - 1];
-            // }
-            
-            string inputText = _commandInput.Text;
-
-            if (inputText == "")
-            {
-                _suggestions.Clear();
-            }
-            else
-            {
-                _suggestions = Commands
-                    .Where(cmd => cmd.Command.StartsWith(inputText))
-                    .Select(cmd => cmd.Command)
-                    .ToList();
-            }
             
             if (eventKey.Keycode == Key.Down && _commandInput.HasFocus() && _suggestions.Count > 0)
             {
@@ -120,11 +89,46 @@ public partial class Console : Node
             {
                 if (_suggestions.Count > 0 && _currentSuggestionIndex >= 0)
                 {
-                    // _commandInput.Text = _suggestions[_currentSuggestionIndex];
                     _commandInput.Text = "";
                     _commandInput.InsertTextAtCaret(_suggestions[_currentSuggestionIndex]);
                     _commandInput.GrabFocus();
                 }
+            }
+        }
+        
+        if (@event is InputEventKey inputEventKey)
+        {
+            string inputText = _commandInput.Text;
+            
+            if (inputText.Trim() == "")
+            {
+                _suggestions.Clear();
+                
+                // Press Up to toggle between previous commands
+                if (inputEventKey.Keycode == Key.Up && _commandInput.HasFocus() && _commandHistory.Count > 0)
+                {
+                    var historyIndex = _commandHistory.FindIndex(x => x == _commandInput.Text);
+                    if (historyIndex == -1)
+                    {
+                        historyIndex = _commandHistory.Count;
+                    }
+                    
+                    if (historyIndex == 0)
+                    {
+                        historyIndex = _commandHistory.Count;
+                    }
+                
+                    _commandInput.Text = _commandHistory[historyIndex - 1];
+                }
+            }
+            else
+            {
+                // Filter suggestions
+                _suggestions = Commands
+                    .Where(cmd => cmd.Command.StartsWith(inputText))
+                    .OrderBy(cmd => cmd.Command.IndexOf(inputText, StringComparison.CurrentCulture))
+                    .Select(cmd => cmd.Command)
+                    .ToList();
             }
         }
 
@@ -138,40 +142,66 @@ public partial class Console : Node
         UpdateUi();
     }
 
-    private void UpdateUi(bool close = false)
+    // Generate suggestions node when enter tree, to improve performance.
+    private void GenerateSuggestionsNode()
     {
-        if (!Open) return;
-
-        foreach (var node in _suggestionsContent.GetChildren())
-        {
-            node.QueueFree();
-        }
-        
-        if (close) return;
-        if (_suggestions.Count == 0)
-        {
-            _suggestionsPanel.Hide();
-            return;
-        }
-
-        _suggestionsPanel.Show();
-        foreach (var text in _suggestions)
+        for (int i = 0; i < _maxSuggestions; i++)
         {
             var newLabel = new Label
             {
-                Text = text,
+                Text = "",
                 Theme = new Theme
                 {
                     DefaultFontSize = 30
                 }
             };
-
-            if (_currentSuggestionIndex >= 0 && _suggestions.Count > 0 && _currentSuggestionIndex < _suggestions.Count && _suggestions[_currentSuggestionIndex] == text)
-            {
-                newLabel.AddThemeStyleboxOverride("normal", GD.Load<StyleBoxFlat>("res://addons/sofiaconsole/StyleBox.tres"));
-            }
-
+            
             _suggestionsContent.AddChild(newLabel);
+            newLabel.Hide();
+        }
+    }
+
+    private void UpdateUi(bool close = false)
+    {
+        if (!Open) return;
+        if (close) return;
+
+        foreach (var node in _suggestionsContent.GetChildren())
+        {
+            if (node is Label label)
+            {
+                label.Hide();
+            }
+        }
+        
+        if (_suggestions.Count == 0)
+        {
+            _suggestionsPanel.Hide();
+            return;
+        }
+        
+        _suggestionsPanel.Show();
+        
+        for (int i = 0; i < Mathf.Min(_maxSuggestions, _suggestions.Count); i++)
+        {
+            Label suggestionLabel = _suggestionsContent.GetChild(i) as Label;
+            if (suggestionLabel == null) continue;
+            
+            suggestionLabel.Text = _suggestions[i];
+            suggestionLabel.Show();
+            
+            if (_currentSuggestionIndex >= 0 && _suggestions.Count > 0 &&
+                _currentSuggestionIndex < _suggestions.Count &&
+                _suggestions[_currentSuggestionIndex] == _suggestions[i])
+            {
+                // Background color for selected suggestion
+                suggestionLabel.AddThemeStyleboxOverride("normal", GD.Load<StyleBoxFlat>("res://addons/sofiaconsole/SelectedSuggestion.tres"));
+            }
+            else
+            {
+                // Background color for suggestion
+                suggestionLabel.RemoveThemeStyleboxOverride("normal");
+            }
         }
     }
 

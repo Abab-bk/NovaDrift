@@ -25,12 +25,6 @@ public class BulletBuilder
         _bulletBase.IsPlayer = isPlayer;
         return this;
     }
-    
-    public BulletBuilder SetTargetDir(Vector2 target)
-    {
-        _bulletBase.TargetDir = target;
-        return this;
-    }
 
     public BulletBuilder SetDamage(float damage)
     {

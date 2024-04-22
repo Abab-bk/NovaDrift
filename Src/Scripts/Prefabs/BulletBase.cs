@@ -35,8 +35,7 @@ public partial class BulletBase : CharacterBody2D, IBullet
 
     private Stat _damage = new Stat(1f);
     private Vector2 _lastPosition = new Vector2();
-    
-    public Vector2 TargetDir = new Vector2(0, 0);
+    private Vector2 _dir;
     
     public override void _Ready()
     {
@@ -48,7 +47,7 @@ public partial class BulletBase : CharacterBody2D, IBullet
         };
 
         Scale = new Vector2(Size, Size);
-        Velocity = GlobalPosition.DirectionTo(TargetDir) * Speed;
+        _dir = Vector2.Right.Rotated(GlobalRotation);
         
         Tween tween = CreateTween();
         tween.TweenProperty(this, "scale", Vector2.Zero, Degeneration);
@@ -64,7 +63,10 @@ public partial class BulletBase : CharacterBody2D, IBullet
     public override void _PhysicsProcess(double delta)
     {
         OnMove?.Invoke(GlobalPosition.DistanceTo(_lastPosition));
+        
+        Velocity = _dir * Speed;
         MoveAndSlide();
+        
         _lastPosition = GlobalPosition;
     }
 }

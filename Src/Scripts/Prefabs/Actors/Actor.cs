@@ -149,9 +149,9 @@ public partial class Actor : CharacterBody2D
     {
     }
 
-    public virtual void Shoot(Vector2 targetDir)
+    public virtual void Shoot()
     {
-        Shooter.Shoot(targetDir);
+        Shooter.Shoot();
     }
     
     public override void _PhysicsProcess(double delta)
