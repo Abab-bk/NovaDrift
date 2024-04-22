@@ -99,11 +99,21 @@ public partial class Player : Actor
         if (Input.IsActionPressed("RClick"))
         {
             Shoot();
+            if (IsShooting)
+            {
+                OnShooting?.Invoke();
+                return;
+            }
+
             IsShooting = true;
+            StartShooting?.Invoke();
         }
         else
         {
+            if (!IsShooting) return;
+            
             IsShooting = false;
+            StopShooting?.Invoke();
         }
     }
 }

@@ -38,12 +38,21 @@ public class Effect
     {
     }
 
-    public virtual void OnDestroy()
+    public virtual void Process()
+    {
+    }
+
+    protected void RemoveAllModifierFromTarget()
     {
         foreach (var value in _statModifiers)
         {
             value.Item1.RemoveAllModifiersFromSource(value.Item2);
         }
+    }
+
+    public virtual void OnDestroy()
+    {
+        RemoveAllModifierFromTarget();
         OnDestroyed?.Invoke(this);
     }
 }

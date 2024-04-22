@@ -54,6 +54,11 @@ public class Stat
         _statModifiers = new List<StatModifier>();
         StatModifiers = _statModifiers.AsReadOnly();
     }
+    
+    public void ForceCalculate()
+    {
+        _isDirty = true;
+    }
  
     private int CompareModifierOrder(StatModifier a, StatModifier b)
     {

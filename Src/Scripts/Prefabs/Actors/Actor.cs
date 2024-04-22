@@ -31,7 +31,13 @@ public partial class Actor : CharacterBody2D
             }
         }
     }
-
+    
+    public Action StartShooting;
+    public Action StopShooting;
+    public Action OnDied;
+    public Action<BulletBase> OnShoot;
+    public Action OnShooting;
+    
     private Shooter _shooter;
 
     public Node2D ShooterNode;
@@ -40,6 +46,13 @@ public partial class Actor : CharacterBody2D
     
     protected bool IsShooting = false;
 
+    protected virtual void _OnShoot(BulletBase bullet)
+    {
+        Stats.AddKnockBack(DataBuilder.Constants.KnockBackShootDistance);
+        Shooter.IsPlayer = IsPlayer;
+        OnShoot?.Invoke(bullet);
+    }
+    
     protected void _OnShooterHit(Actor actor)
     {
         actor.Stats.AddKnockBack(Stats.Recoil.Value);
@@ -101,12 +114,6 @@ public partial class Actor : CharacterBody2D
         _hurtBox.SetIsPlayer(IsPlayer);
 
         _visibleOnScreenNotifier2D.ScreenExited += MoveToWorldEdge;
-    }
-
-    protected virtual void _OnShoot(BulletBase bullet)
-    {
-        Stats.AddKnockBack(DataBuilder.Constants.KnockBackShootDistance);
-        Shooter.IsPlayer = IsPlayer;
     }
     
     protected void OnHit(float value)

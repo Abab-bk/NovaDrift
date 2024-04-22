@@ -9,7 +9,7 @@ public class Snipe : Effect
     {
         StatModifier modifier = new StatModifier(0f, StatModType.PercentAdd);
         
-        Target.Shooter.OnShoot += bullet =>
+        Target.OnShoot += bullet =>
         {
             bullet.AddModifierToDamage(modifier);
 

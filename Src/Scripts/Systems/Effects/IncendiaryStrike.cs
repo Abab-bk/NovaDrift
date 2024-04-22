@@ -4,7 +4,7 @@ public class IncendiaryStrike : Effect
 {
     public override void OnCreate()
     {
-        Target.Shooter.OnShoot += bullet =>
+        Target.OnShoot += bullet =>
         {
             bullet.OnHit += actor =>
             {

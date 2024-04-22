@@ -34,9 +34,9 @@ public class CharacterStats
     public readonly Stat BlastDamage = new Stat(0f); // TODO: 爆炸伤害
     public readonly Stat BlastRadius = new Stat(0f); // TODO: 爆炸半径
     
-    // 一般是给玩家用的，无限，一般是Mod
+    // 一般是给玩家用的，无限持续时间，一般是Mod
     public readonly EffectSystem EffectSystem = new EffectSystem();
-    // 效果
+    // 效果，有持续时间一般，比如燃烧状态
     public readonly BuffSystem BuffSystem = new BuffSystem();
     private Actor _target;
     private readonly Stat _knockBack = new Stat(10);
