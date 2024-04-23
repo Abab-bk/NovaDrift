@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" path="res://Scripts/Ui/abilityItem/AbilityItemPanel.cs" id="1_37yr4"]
 [ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_o07cx"]
-[ext_resource type="Texture2D" uid="uid://yytp41n7xqbe" path="res://Assets/Ui/Icons/AbilityIcons/TestIcon.png" id="3_3d5gs"]
+[ext_resource type="Texture2D" uid="uid://bjrcupu8eb6vi" path="res://Assets/Ui/Icons/AbilityIcons/TestIcon.tres" id="3_vny6c"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_10d0n"]
 bg_color = Color(0, 0, 0, 0.396078)
@@ -22,7 +22,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("3_3d5gs")
+texture = ExtResource("3_vny6c")
 expand_mode = 1
 stretch_mode = 5
 
