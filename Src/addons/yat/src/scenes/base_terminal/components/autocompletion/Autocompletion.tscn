@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://duldfph1vr1yb"]
+
+[ext_resource type="Script" path="res://addons/yat/src/scenes/base_terminal/components/autocompletion/Autocompletion.cs" id="2_5lpve"]
+
+[node name="Autocompletion" type="Node"]
+script = ExtResource("2_5lpve")

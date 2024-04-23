@@ -1,0 +1,104 @@
+[gd_scene load_steps=15 format=3 uid="uid://dfig0yknmx6b7"]
+
+[ext_resource type="Script" path="res://addons/yat/src/scenes/base_terminal/BaseTerminal.cs" id="1_gwi3k"]
+[ext_resource type="Theme" uid="uid://csssl8ua88ca4" path="res://addons/yat/src/scenes/base_terminal/theme/yat_base_terminal_theme.tres" id="1_mdg7i"]
+[ext_resource type="PackedScene" uid="uid://duldfph1vr1yb" path="res://addons/yat/src/scenes/base_terminal/components/autocompletion/Autocompletion.tscn" id="3_6vb77"]
+[ext_resource type="PackedScene" uid="uid://b6tsk66eajwde" path="res://addons/yat/src/scenes/base_terminal/components/output/Output.tscn" id="3_alxhd"]
+[ext_resource type="PackedScene" uid="uid://crxh4uxlaoyrq" path="res://addons/yat/src/scenes/base_terminal/components/input_info/InputInfo.tscn" id="3_evvr3"]
+[ext_resource type="Script" path="res://addons/yat/src/scenes/base_terminal/components/input/Input.cs" id="4_4lcgu"]
+[ext_resource type="PackedScene" uid="uid://c522nry8jbfon" path="res://addons/yat/src/scenes/base_terminal/components/input_info/components/command_info/CommandInfo.tscn" id="4_eo32s"]
+[ext_resource type="Theme" uid="uid://dqsefo8kmb7dj" path="res://addons/yat/src/resources/yat_tooltip_theme.tres" id="6_ovorl"]
+[ext_resource type="PackedScene" uid="uid://b2ljvgvvny52r" path="res://addons/yat/src/scenes/base_terminal/components/selected_node/SelectedNode.tscn" id="6_prlgb"]
+[ext_resource type="PackedScene" uid="uid://cm6kd53al1tcc" path="res://addons/yat/src/scenes/base_terminal/components/full_window_display/FullWindowDisplay.tscn" id="8_c4hfa"]
+[ext_resource type="PackedScene" uid="uid://x1dyt4bknu3x" path="res://addons/yat/src/scenes/base_terminal/components/command_validator/CommandValidator.tscn" id="10_isg4j"]
+[ext_resource type="PackedScene" uid="uid://3gcpwd2vlow" path="res://addons/yat/src/classes/managers/command_manager/CommandManager.tscn" id="11_623me"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ow6fw"]
+bg_color = Color(0.0823529, 0.0980392, 0.121569, 0.752941)
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
+
+[sub_resource type="Theme" id="Theme_osqyf"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_ow6fw")
+
+[node name="BaseTerminal" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_gwi3k")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_mdg7i")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Output" parent="PanelContainer/VBoxContainer" node_paths=PackedStringArray("Terminal") instance=ExtResource("3_alxhd")]
+unique_name_in_owner = true
+layout_mode = 2
+Terminal = NodePath("../../..")
+
+[node name="InputInfo" parent="PanelContainer/VBoxContainer" instance=ExtResource("3_evvr3")]
+layout_mode = 2
+size_flags_vertical = 8
+
+[node name="CommandInfo" parent="PanelContainer/VBoxContainer/InputInfo" node_paths=PackedStringArray("Input", "InputInfo", "Terminal") instance=ExtResource("4_eo32s")]
+Input = NodePath("../../InputLine/HBoxContainer/Input")
+InputInfo = NodePath("..")
+Terminal = NodePath("../../../..")
+
+[node name="InputLine" type="PanelContainer" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_osqyf")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/VBoxContainer/InputLine"]
+layout_mode = 2
+
+[node name="SelectedNodePath" type="Label" parent="PanelContainer/VBoxContainer/InputLine/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 1
+theme = ExtResource("6_ovorl")
+text = "/root"
+
+[node name="PromptLabel" type="Label" parent="PanelContainer/VBoxContainer/InputLine/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = ">"
+
+[node name="Input" type="LineEdit" parent="PanelContainer/VBoxContainer/InputLine/HBoxContainer" node_paths=PackedStringArray("Terminal")]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+caret_blink = true
+script = ExtResource("4_4lcgu")
+Terminal = NodePath("../../../../..")
+
+[node name="FullWindowDisplay" parent="." instance=ExtResource("8_c4hfa")]
+visible = false
+layout_mode = 1
+
+[node name="SelectedNode" parent="." instance=ExtResource("6_prlgb")]
+
+[node name="Components" type="Node" parent="."]
+
+[node name="Autocompletion" parent="Components" node_paths=PackedStringArray("CommandInfo") instance=ExtResource("3_6vb77")]
+CommandInfo = NodePath("../../PanelContainer/VBoxContainer/InputInfo/CommandInfo")
+
+[node name="CommandValidator" parent="Components" node_paths=PackedStringArray("Terminal") instance=ExtResource("10_isg4j")]
+Terminal = NodePath("../..")
+
+[node name="CommandManager" parent="Components" instance=ExtResource("11_623me")]

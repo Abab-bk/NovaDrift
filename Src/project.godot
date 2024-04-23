@@ -18,7 +18,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 InitUiManager="*res://addons/ds_ui/InitUiManager.cs"
-Console="*res://addons/sofiaconsole/Console.tscn"
+YAT="*res://addons/yat/src/YAT.tscn"
 
 [display]
 
@@ -39,7 +39,7 @@ naming/scene_name_casing=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ds_ui/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg", "res://addons/sofiaconsole/plugin.cfg", "res://addons/wiggly_appendage_2d/plugin.cfg")
+enabled=PackedStringArray("res://addons/ds_ui/plugin.cfg", "res://addons/godot_state_charts/plugin.cfg", "res://addons/wiggly_appendage_2d/plugin.cfg", "res://addons/yat/plugin.cfg")
 
 [input]
 

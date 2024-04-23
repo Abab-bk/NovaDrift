@@ -1,4 +1,5 @@
-﻿using NovaDrift.addons.AcidStats;
+﻿using Godot;
+using NovaDrift.addons.AcidStats;
 
 namespace NovaDrift.Scripts.Systems.Effects;
 
@@ -25,6 +26,7 @@ public class SiegeWeaponry : Effect
 
             _shootSpeedModifier.Value += Values[0];
             Target.Stats.ShootSpeed.ForceCalculate();
+            GD.Print(Target.Stats.ShootSpeed.Value);
         };
 
         Target.StopShooting += RemoveAllModifierFromTarget;

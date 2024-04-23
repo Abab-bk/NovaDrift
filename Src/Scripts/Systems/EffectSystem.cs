@@ -28,9 +28,22 @@ public class EffectSystem
         
         OnAbilityAdded?.Invoke(ability);
     }
+    
+    public void RemoveAllEffects()
+    {
+        foreach (var effect in Effects)
+        {
+            GD.Print($"Remove {effect.Name}");
+            effect.OnDestroy();
+        }
+        
+        Effects.Clear();
+        Abilities.Clear();
+    }
 
     public void RemoveEffect(Ability ability)
     {
+        ability.Effect.OnDestroy();
         Abilities.Remove(ability);
         Effects.Remove(ability.Effect);
         OnAbilityRemoved?.Invoke(ability);

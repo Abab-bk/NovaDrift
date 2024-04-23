@@ -2,6 +2,8 @@ using AcidJoystick;
 using DsUi;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors;
+using YAT.Commands;
+using YAT.Scenes;
 
 namespace NovaDrift.Scripts;
 
@@ -18,6 +20,7 @@ public partial class GameWorld : Node2D
         
         DataBuilder.Init();
         Init();
+        GameCommands.RegisterCommands();
     }
 
     private void Init()

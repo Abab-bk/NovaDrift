@@ -46,7 +46,7 @@ public class CharacterStats
     
     private Actor _target;
     private readonly Stat _knockBack = new Stat(10);
-
+    
     public void AddKnockBack(float value)
     {
         _knockBack.BaseValue += value;
