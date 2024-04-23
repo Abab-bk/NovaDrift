@@ -27,7 +27,7 @@ public partial class GameWorld : Node2D
         
         _moveJoystick.Visible = Global.CurrentPlatform != GamePlatform.Desktop;
         _aimJoystick.Visible = Global.CurrentPlatform != GamePlatform.Desktop;
-
+        
         UiManager.Open_Hud();
         
         Global.GameWorld = this;
@@ -38,13 +38,19 @@ public partial class GameWorld : Node2D
         
         DataBuilder.BuildBodyById(1000).Use();
         DataBuilder.BuildWeaponById(1000).Use();
-
+        
         UiManager.Get_Hud_Instance()[0].OpenNestedUi(UiManager.UiName.StatsMonitor);
+        
+        UiManager.Open_PausedMenu();
+        UiManager.Hide_PausedMenu();
     }
 
     private async void GameOver()
     {
         GetTree().CallGroup("Mobs", Node.MethodName.QueueFree);
+        
+        UiManager.Destroy_Hud();
+        UiManager.Destroy_PausedMenu();
         
         Global.Player.CallDeferred(Node.MethodName.QueueFree);
         UiManager.Open_GameOver();

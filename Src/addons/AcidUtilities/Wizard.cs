@@ -5,6 +5,11 @@ namespace AcidWallStudio.AcidUtilities;
 
 public class Wizard
 {
+    public static bool FileExists(string path)
+    {
+        return FileAccess.FileExists(path);
+    }
+    
     public static string ReadAllText(string path)
     {
         return FileAccess.Open(path, FileAccess.ModeFlags.Read).GetAsText();

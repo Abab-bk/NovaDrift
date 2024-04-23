@@ -13,8 +13,8 @@ public class Body : IItemInfo
     
     public string Name { get; set; }
     public string Desc { get; set; }
-    public string IconPath = "res://Assets/Textures/Bodies/Default.png";
-    
+    public string IconPath { get; set; }
+
     // TODO: 护盾
     public float Health = 100;
     

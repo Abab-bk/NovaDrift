@@ -35,4 +35,24 @@ public partial class HudPanel : Hud
     {
         
     }
+    
+    public override void _Input(InputEvent @event)
+    {
+        if (@event.IsActionPressed("Esc"))
+        {
+            if (UiManager.Get_PausedMenu_Instance().Length <= 0)
+            {
+                return;
+            }
+
+            if (UiManager.Get_PausedMenu_Instance()[0].Visible)
+            {
+                UiManager.Hide_PausedMenu();
+            }
+            else
+            {
+                UiManager.Get_PausedMenu_Instance()[0].ShowUi();
+            }
+        }
+    }
 }

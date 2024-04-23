@@ -43,6 +43,7 @@ public class CharacterStats
     public readonly EffectSystem EffectSystem = new EffectSystem();
     // 效果，有持续时间一般，比如燃烧状态
     public readonly BuffSystem BuffSystem = new BuffSystem();
+    
     private Actor _target;
     private readonly Stat _knockBack = new Stat(10);
 
@@ -68,9 +69,9 @@ public class CharacterStats
         BuffSystem.Target = _target;
     }
     
-    public void AddEffect(Effect effect)
+    public void AddEffect(Ability ability)
     {
-        EffectSystem.AddEffect(effect);
+        EffectSystem.AddEffect(ability);
     }
 
     public CharacterStats SetShootSpeed(float value)

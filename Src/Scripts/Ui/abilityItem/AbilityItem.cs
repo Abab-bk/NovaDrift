@@ -8,17 +8,17 @@ using DsUi;
 public abstract partial class AbilityItem : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: AbilityItem.TextureRect
+    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: AbilityItem.IconTexture
     /// </summary>
-    public TextureRect L_TextureRect
+    public IconTexture L_IconTexture
     {
         get
         {
-            if (_L_TextureRect == null) _L_TextureRect = new TextureRect((AbilityItemPanel)this, GetNode<Godot.TextureRect>("TextureRect"));
-            return _L_TextureRect;
+            if (_L_IconTexture == null) _L_IconTexture = new IconTexture((AbilityItemPanel)this, GetNode<Godot.TextureRect>("IconTexture"));
+            return _L_IconTexture;
         }
     }
-    private TextureRect _L_TextureRect;
+    private IconTexture _L_IconTexture;
 
     /// <summary>
     /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: AbilityItem.Button
@@ -44,12 +44,12 @@ public abstract partial class AbilityItem : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: AbilityItem.TextureRect
+    /// 类型: <see cref="Godot.TextureRect"/>, 路径: AbilityItem.IconTexture
     /// </summary>
-    public class TextureRect : UiNode<AbilityItemPanel, Godot.TextureRect, TextureRect>
+    public class IconTexture : UiNode<AbilityItemPanel, Godot.TextureRect, IconTexture>
     {
-        public TextureRect(AbilityItemPanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
-        public override TextureRect Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
+        public IconTexture(AbilityItemPanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
+        public override IconTexture Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
     }
 
     /// <summary>
@@ -63,9 +63,9 @@ public abstract partial class AbilityItem : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: AbilityItem.TextureRect
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: AbilityItem.IconTexture
     /// </summary>
-    public TextureRect S_TextureRect => L_TextureRect;
+    public IconTexture S_IconTexture => L_IconTexture;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: AbilityItem.Button

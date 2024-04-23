@@ -4,6 +4,7 @@
 [ext_resource type="Script" path="res://Scripts/Ui/hud/HudPanel.cs" id="1_jvtg7"]
 
 [node name="Hud" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

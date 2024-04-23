@@ -11,6 +11,7 @@ public static partial class UiManager
         public const string DamageLabel = "DamageLabel";
         public const string GameOver = "GameOver";
         public const string Hud = "Hud";
+        public const string PausedMenu = "PausedMenu";
         public const string SelectAbility = "SelectAbility";
         public const string StatsMonitor = "StatsMonitor";
         public const string StatsMonitorItem = "StatsMonitorItem";
@@ -254,6 +255,54 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.Hud.HudPanel[] Get_Hud_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.Hud.HudPanel>(nameof(NovaDrift.Scripts.Ui.Hud.Hud));
+    }
+
+    /// <summary>
+    /// 创建 PausedMenu, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.PausedMenu.PausedMenuPanel Create_PausedMenu()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.PausedMenu.PausedMenuPanel>(UiName.PausedMenu);
+    }
+
+    /// <summary>
+    /// 打开 PausedMenu, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.PausedMenu.PausedMenuPanel Open_PausedMenu()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.PausedMenu.PausedMenuPanel>(UiName.PausedMenu);
+    }
+
+    /// <summary>
+    /// 隐藏 PausedMenu 的所有实例
+    /// </summary>
+    public static void Hide_PausedMenu()
+    {
+        var uiInstance = Get_PausedMenu_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 PausedMenu 的所有实例
+    /// </summary>
+    public static void Destroy_PausedMenu()
+    {
+        var uiInstance = Get_PausedMenu_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 PausedMenu 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.PausedMenu.PausedMenuPanel[] Get_PausedMenu_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.PausedMenu.PausedMenuPanel>(nameof(NovaDrift.Scripts.Ui.PausedMenu.PausedMenu));
     }
 
     /// <summary>

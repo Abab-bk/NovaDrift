@@ -97,6 +97,7 @@ public static class DataBuilder
         ability.Name = tbAbility.Name;
         ability.Desc = tbAbility.Desc;
         ability.ClassName = tbAbility.ClassName;
+        ability.IconPath = $"res://Assets/Ui/Icons/AbilityIcons/{tbAbility.ClassName}.tres";
         ability.Effect = BuildEffectByName(ability.ClassName, tbAbility.Values, tbAbility.Name);
 
         return ability;
