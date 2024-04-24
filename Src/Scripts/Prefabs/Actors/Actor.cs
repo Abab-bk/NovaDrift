@@ -117,7 +117,7 @@ public partial class Actor : CharacterBody2D
     
     protected void OnHit(float value)
     {
-        UiManager.Open_DamageLabel().ShowValue(value, GlobalPosition);
+        UiManager.Open_DamageLabel().ShowValue(value, GetGlobalTransformWithCanvas().Origin);
     }
 
     public virtual void Die()
