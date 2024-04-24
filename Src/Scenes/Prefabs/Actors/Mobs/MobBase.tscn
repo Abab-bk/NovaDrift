@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://dunej3cac37vn"]
+[gd_scene load_steps=28 format=3 uid="uid://dunej3cac37vn"]
 
 [ext_resource type="PackedScene" uid="uid://b1vmhmtmuma0x" path="res://Scenes/Prefabs/Actors/ActorBase.tscn" id="1_kd23v"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Mobs/MobBase.cs" id="2_e2oe2"]
@@ -16,16 +16,16 @@ editor_offset = Vector2(120, 60)
 
 [sub_resource type="StateConfig" id="StateConfig_bkb7i"]
 state_name = &"GoingToPlayer"
-editor_offset = Vector2(620, -160)
+editor_offset = Vector2(620, -260)
 
 [sub_resource type="StateConfig" id="StateConfig_vxh6b"]
 state_name = &"Dead"
 type = 2
-editor_offset = Vector2(1140, 60)
+editor_offset = Vector2(1060, -80)
 
 [sub_resource type="StateConfig" id="StateConfig_10i34"]
 state_name = &"Shoot"
-editor_offset = Vector2(620, 300)
+editor_offset = Vector2(880, 400)
 
 [sub_resource type="VariableConfig" id="VariableConfig_widyf"]
 variable_name = &"PlayerInShootRange"
@@ -97,9 +97,35 @@ type = 2
 and_mode = true
 variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_sddp3")])
 
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_c3kuj"]
+variable_config = SubResource("VariableConfig_widyf")
+comparator = 0
+variable_as_value = false
+value = true
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_ojgkx"]
+from_state_config = SubResource("StateConfig_bkb7i")
+to_state_config = SubResource("StateConfig_10i34")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_c3kuj")])
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_7n15e"]
+variable_config = SubResource("VariableConfig_widyf")
+comparator = 0
+variable_as_value = false
+value = false
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_pjwqe"]
+from_state_config = SubResource("StateConfig_10i34")
+to_state_config = SubResource("StateConfig_bkb7i")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_7n15e")])
+
 [sub_resource type="FSMConfig" id="FSMConfig_waqe7"]
 state_config_list = Array[StateConfig]([SubResource("StateConfig_q8vje"), SubResource("StateConfig_bkb7i"), SubResource("StateConfig_vxh6b"), SubResource("StateConfig_10i34")])
-transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_5aads"), SubResource("TransitionConfig_rca21"), SubResource("TransitionConfig_7g6ik"), SubResource("TransitionConfig_vgpei"), SubResource("TransitionConfig_56kt1")])
+transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_5aads"), SubResource("TransitionConfig_rca21"), SubResource("TransitionConfig_7g6ik"), SubResource("TransitionConfig_vgpei"), SubResource("TransitionConfig_56kt1"), SubResource("TransitionConfig_ojgkx"), SubResource("TransitionConfig_pjwqe")])
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_widyf"), SubResource("VariableConfig_w7t7n")])
 
 [node name="MobBase" node_paths=PackedStringArray("Sprite", "Shooter") instance=ExtResource("1_kd23v")]

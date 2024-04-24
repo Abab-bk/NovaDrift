@@ -48,7 +48,7 @@ public sealed partial class Ability : Luban.BeanBase
     /// </summary>
     public readonly System.Collections.Generic.List<float> Values;
     /// <summary>
-    /// 类名
+    /// 类名（也是图标名）
     /// </summary>
     public readonly string ClassName;
     /// <summary>

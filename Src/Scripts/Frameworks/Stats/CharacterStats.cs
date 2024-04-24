@@ -34,8 +34,8 @@ public class CharacterStats
     public readonly Stat BlastDamage = new Stat(0f); // TODO: 爆炸伤害
     public readonly Stat BlastRadius = new Stat(0f); // TODO: 爆炸半径
     
-    public readonly Stat Acceleration = new Stat(1);
-    public readonly Stat Deceleration = new Stat(1);
+    public readonly Stat Acceleration = new Stat(1000);
+    public readonly Stat Deceleration = new Stat(500);
     public readonly Stat RotationSpeed = new Stat(1); // 越高越灵敏
     public readonly Stat ShootingDeceleration = new Stat(1);
     
