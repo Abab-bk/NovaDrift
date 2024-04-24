@@ -3,6 +3,7 @@
     "id": 1000,
     "name": "默认",
     "desc": "默认",
+    "values": [],
     "health": 100,
     "icon_name": "Default",
     "class_name": "Default",
@@ -14,6 +15,12 @@
     "id": 1001,
     "name": "突击",
     "desc": "攻击时，8% 的几率强化子弹\n武器射速、武器扩散和射弹速度提高 15%\n+15% 对攻击时降低移速的抵抗力\n- 10% 最大护盾",
+    "values": [
+      0.08,
+      0.15,
+      0.15,
+      -0.1
+    ],
     "health": 100,
     "icon_name": "Assault",
     "class_name": "Assault",
@@ -25,6 +32,12 @@
     "id": 1002,
     "name": "猎狗",
     "desc": "+3 子弹数量\n+10% 武器射速\n-60% 武器扩散\n你的武器从两门舷侧加农炮发射，你的射弹将在它们之间分开\n-10% 武器伤害、爆炸半径和射弹尺寸",
+    "values": [
+      3,
+      0.1,
+      -0.6,
+      -0.1
+    ],
     "health": 100,
     "icon_name": "Courser",
     "class_name": "Courser",

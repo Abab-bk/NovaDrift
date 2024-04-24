@@ -21,6 +21,8 @@ public class Body : IItemInfo
     public float Acceleration = 1000f;
     public float Deceleration = 300f;
     public float RotationSpeed = 3f; // 越高越灵敏
+
+    public List<float> Values = new List<float>();
     
     private readonly List<(Stat, StatModifier)> _statModifiers = new List<(Stat, StatModifier)>();
 
@@ -36,50 +38,6 @@ public class Body : IItemInfo
         {
             value.Item1.RemoveAllModifiersFromSource(value.Item2);
         }
-    }
-    
-    
-    public Body SetName(string name)
-    {
-        Name = name;
-        return this;
-    }
-    
-    public Body SetDesc(string desc)
-    {
-        Desc = desc;
-        return this;
-    }
-    
-    public Body SetIconPath(string iconName)
-    {
-        IconPath = $"res://Assets/Textures/Bodies/{iconName}.png";
-        return this;
-    }
-
-    public Body SetHealth(float health)
-    {
-        Health = health;
-        return this;
-    }
-    
-    
-    public Body SetAcceleration(float acceleration)
-    {
-        Acceleration = acceleration;
-        return this;
-    }
-    
-    public Body SetDeceleration(float deceleration)
-    {
-        Deceleration = deceleration;
-        return this;
-    }
-    
-    public Body SetRotationSpeed(float rotationSpeed)
-    {
-        RotationSpeed = rotationSpeed;
-        return this;
     }
 
     public virtual void Use()

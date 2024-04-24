@@ -5,6 +5,7 @@ using System.Text.Json;
 using AcidWallStudio.AcidUtilities;
 using cfg;
 using cfg.DataBase;
+using NovaDrift.addons.AcidStats;
 using Game = NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts;
@@ -14,6 +15,22 @@ public static class DataBuilder
     private static Tables _tables;
     public static TbConstants Constants => _tables.TbConstants;
 
+    public static StatModifier BuildFlatModifier(float value)
+    {
+        return new StatModifier(value, StatModType.Flat);
+    }
+    
+    public static StatModifier BuildPercentAddModifier(float value)
+    {
+        return new StatModifier(value, StatModType.PercentAdd);
+    }
+    
+    public static StatModifier BuildPercentMultModifier(float value)
+    {
+        return new StatModifier(value, StatModType.PercentMult);
+    }
+    
+    
     public static int GetRandomAbilityId()
     {
         int id = Random.Shared.Next(
@@ -66,12 +83,13 @@ public static class DataBuilder
         if (body == null) return null;
         
         body.Id = tbBody.Id;
-        body.SetName(tbBody.Name)
-            .SetDesc(tbBody.Desc)
-            .SetIconPath(tbBody.IconName)
-            .SetAcceleration(tbBody.Acceleration)
-            .SetDeceleration(tbBody.Deceleration)
-            .SetHealth(tbBody.Health);
+        body.Name = tbBody.Name;
+        body.Desc = tbBody.Desc;
+        body.IconPath = $"res://Assets/Textures/Bodies/{tbBody.IconName}.png";
+        body.Acceleration = tbBody.Acceleration;
+        body.Deceleration = tbBody.Deceleration;
+        body.Health = tbBody.Health;
+        body.Values = tbBody.Values;
         
         return body;
     }

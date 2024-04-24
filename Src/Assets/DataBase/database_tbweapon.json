@@ -14,5 +14,21 @@
     "scene_name": "Sword",
     "knockback": 0,
     "recoil": 0
+  },
+  {
+    "id": 1002,
+    "name": "默认武器",
+    "desc": "最普通的武器。",
+    "scene_name": "DefaultShooter",
+    "knockback": 0,
+    "recoil": 0
+  },
+  {
+    "id": 1003,
+    "name": "默认武器",
+    "desc": "最普通的武器。",
+    "scene_name": "DefaultShooter",
+    "knockback": 0,
+    "recoil": 0
   }
 ]

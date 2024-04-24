@@ -20,6 +20,7 @@ public sealed partial class Body : Luban.BeanBase
         Id = _buf.GetProperty("id").GetInt32();
         Name = _buf.GetProperty("name").GetString();
         Desc = _buf.GetProperty("desc").GetString();
+        { var __json0 = _buf.GetProperty("values"); Values = new System.Collections.Generic.List<float>(__json0.GetArrayLength()); foreach(JsonElement __e0 in __json0.EnumerateArray()) { float __v0;  __v0 = __e0.GetSingle();  Values.Add(__v0); }   }
         Health = _buf.GetProperty("health").GetSingle();
         IconName = _buf.GetProperty("icon_name").GetString();
         ClassName = _buf.GetProperty("class_name").GetString();
@@ -45,6 +46,10 @@ public sealed partial class Body : Luban.BeanBase
     /// 描述
     /// </summary>
     public readonly string Desc;
+    /// <summary>
+    /// 数值
+    /// </summary>
+    public readonly System.Collections.Generic.List<float> Values;
     /// <summary>
     /// 生命值
     /// </summary>
@@ -84,6 +89,7 @@ public sealed partial class Body : Luban.BeanBase
         
         
         
+        
     }
 
     public override string ToString()
@@ -92,6 +98,7 @@ public sealed partial class Body : Luban.BeanBase
         + "id:" + Id + ","
         + "name:" + Name + ","
         + "desc:" + Desc + ","
+        + "values:" + Luban.StringUtil.CollectionToString(Values) + ","
         + "health:" + Health + ","
         + "iconName:" + IconName + ","
         + "className:" + ClassName + ","
