@@ -90,4 +90,5 @@ anchor_mode = 0
 zoom = Vector2(0.5, 0.5)
 
 [node name="MobSpawner" type="Node2D" parent="."]
+position = Vector2(1222, 259)
 script = ExtResource("4_4mpug")

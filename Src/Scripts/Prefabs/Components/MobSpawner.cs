@@ -1,8 +1,7 @@
-﻿using System.Collections.Generic;
-using AcidWallStudio.AcidUtilities;
+﻿using AcidWallStudio.AcidUtilities;
 using Godot;
 using KaimiraGames;
-using NovaDrift.Scripts.Prefabs.Actors.Mobs;
+using NovaDrift.addons.AcidUtilities;
 using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts.Prefabs.Components;
@@ -52,8 +51,8 @@ public partial class MobSpawner : Node2D
         mobList.Add(1002, 2);
         
         WeightedList<SpawnType> spawnTypeList = new WeightedList<SpawnType>();
-        spawnTypeList.Add(new StandardSpawnType(), 1);
-        spawnTypeList.Add(new ArcSpawnType(), 1);
+        spawnTypeList.Add(new RectSpawnType(), 1);
+        spawnTypeList.Add(new CircleSpawnType(), 1);
         
         return new WaveInfo(mobList, spawnTypeList);
     }
@@ -69,11 +68,10 @@ public partial class MobSpawner : Node2D
         MobInfo mobInfo = _waveInfo.SelectMob();
         int mobCount = _waveInfo.SelectMobCount(spawnType);
 
-        GD.Print($"预备生成{mobCount}个敌人");
+        spawnType.SetMobCount(mobCount);
+        
         for (int i = 1; i <= mobCount; i++)
         {
-            GD.Print("生成第 " + i + " 个敌人");
-            
             MobBuilder mobBuilder = new MobBuilder();
             mobBuilder.SetMobInfo(mobInfo);
             var mob = mobBuilder.Build();
@@ -81,7 +79,7 @@ public partial class MobSpawner : Node2D
             if (mob == null) return;
             
             AddChild(mob);
-            mob.Position = spawnType.GetSpawnPosition(i);   
+            mob.Position = spawnType.GetSpawnPosition(i);
         }
     }
     
@@ -118,46 +116,44 @@ public class WaveInfo
 // 生成类型（SpawnType）：决定了敌人生成的位置和顺序，以及它们是否有跟随者，如果有的话，跟随者的行为方式是怎样的。
 public class SpawnType
 {
+    protected IShape Shape;
+    
     public int MaxMobCount;
     public int MinMobCount;
     public int ModeMobCount;
+
+    private int _mobCount;
     
     protected bool HasFollowers;
 
-    public virtual Vector2 GetSpawnPosition(int mobCount) { return Vector2.Zero; }
+    public virtual void SetMobCount(int mobCount) { _mobCount = mobCount; }
+    
+    public Vector2 GetSpawnPosition(int mobCount)
+    {
+        return Shape.GetPosByIndex(mobCount - 1);
+    }
 }
 
-public class StandardSpawnType : SpawnType
+public class RectSpawnType : SpawnType
 {
-    public StandardSpawnType()
+    public RectSpawnType()
     {
         MaxMobCount = 4;
         MinMobCount = 1;
         ModeMobCount = 2;
         HasFollowers = false;
     }
-
-    public override Vector2 GetSpawnPosition(int mobCount)
+    
+    public override void SetMobCount(int mobCount)
     {
-        switch (mobCount)
-        {
-            case 1:
-                return new Vector2(-100, -100);
-            case 2:
-                return new Vector2(100, -100);
-            case 3:
-                return new Vector2(100, 100);
-            case 4:
-                return new Vector2(-100, 100);
-            default:
-                return new Vector2(0, 0);
-        }
+        base.SetMobCount(mobCount);
+        Shape = new RectangleShape(mobCount, 400, 400);
     }
 }
 
-public class ArcSpawnType : SpawnType
+public class CircleSpawnType : SpawnType
 {
-    public ArcSpawnType()
+    public CircleSpawnType()
     {
         MaxMobCount = 6;
         MinMobCount = 3;
@@ -165,24 +161,9 @@ public class ArcSpawnType : SpawnType
         HasFollowers = true;
     }
 
-    public override Vector2 GetSpawnPosition(int mobCount)
+    public override void SetMobCount(int mobCount)
     {
-        switch (mobCount)
-        {
-            case 1:
-                return new Vector2(-100, -100);
-            case 2:
-                return new Vector2(100, -100);
-            case 3:
-                return new Vector2(100, 100);
-            case 4:
-                return new Vector2(-100, 100);
-            case 5:
-                return new Vector2(0, 0);
-            case 6:
-                return new Vector2(0, 0);
-            default:
-                return new Vector2(0, 0);
-        }
+        base.SetMobCount(mobCount);
+        Shape = new CircleShape(mobCount, 400);
     }
 }
