@@ -1,4 +1,5 @@
-﻿using Godot;
+﻿using System;
+using Godot;
 using KaimiraGames;
 
 namespace AcidWallStudio.AcidUtilities;
@@ -28,5 +29,16 @@ public class Wizard
         Timer timer = new Timer();
         timer.WaitTime = time;
         return timer;
+    }
+
+    public static float GetTriangularSample(float max, float min, float mode)
+    {
+        float u = (float)Random.Shared.NextDouble();
+        float f = (mode - min) / (max - min);
+
+        if (u <= f)
+            return min + (float)Math.Sqrt(u * (max - min) * (mode - min));
+        
+        return max - (float)Math.Sqrt((1 - u) * (max - min) * (max - mode));
     }
 }

@@ -2,8 +2,8 @@
 
 [ext_resource type="Script" path="res://Scripts/GameWorld.cs" id="1_xxmb6"]
 [ext_resource type="Texture2D" uid="uid://b8gw82tgl2r2x" path="res://Assets/Textures/Backgrounds/NebulaBlue.png" id="2_n84c3"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Components/MobSpawner.cs" id="4_4mpug"]
 [ext_resource type="PackedScene" uid="uid://drcoa0ndbt6te" path="res://addons/AcidJoystick/Joystick.tscn" id="6_6ip1o"]
-[ext_resource type="Script" path="res://Scripts/Prefabs/Components/MobGenerator.cs" id="8_wqlpe"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2d171"]
 
@@ -89,7 +89,5 @@ scale = Vector2(0.24, 0.24)
 anchor_mode = 0
 zoom = Vector2(0.5, 0.5)
 
-[node name="MobGenerator" type="Node2D" parent="."]
-script = ExtResource("8_wqlpe")
-_maxMobs = 2
-_spawnCd = 1.0
+[node name="MobSpawner" type="Node2D" parent="."]
+script = ExtResource("4_4mpug")
