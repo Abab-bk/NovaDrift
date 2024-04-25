@@ -6,6 +6,7 @@ using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts.Prefabs.Components;
 
+// 设想很美好，实际实现不是这样！
     /*
      * 1. 选择需要生成的敌人（mob） -> 通过加权列表选择生成哪个敌人
      * 2. 查找 mob 的不同生成类型，并根据权重选择其中一种（有些生成类型比其他类型更常见）。
@@ -29,10 +30,22 @@ public partial class MobSpawner : Node2D
 
     private WaveInfo _waveInfo;
     private Timer _timer;
+
+    private WeightedList<int> _mobList;
+    private WeightedList<SpawnType> _spawnTypeList;
     
     public override void _Ready()
     {
         if (!_enabled) return;
+        
+        _mobList = new WeightedList<int>();
+        _mobList.Add(1001, 1);
+        _mobList.Add(1002, 2);
+        
+       _spawnTypeList = new WeightedList<SpawnType>();
+        _spawnTypeList.Add(new RectSpawnType(), 1);
+        _spawnTypeList.Add(new CircleSpawnType(), 1);
+        
         _timer = new Timer
         {
             WaitTime = 2f,
@@ -44,18 +57,7 @@ public partial class MobSpawner : Node2D
         _timer.Start();
     }
 
-    private WaveInfo NewWaveInfo()
-    {
-        WeightedList<int> mobList = new WeightedList<int>();
-        mobList.Add(1001, 1);
-        mobList.Add(1002, 2);
-        
-        WeightedList<SpawnType> spawnTypeList = new WeightedList<SpawnType>();
-        spawnTypeList.Add(new RectSpawnType(), 1);
-        spawnTypeList.Add(new CircleSpawnType(), 1);
-        
-        return new WaveInfo(mobList, spawnTypeList);
-    }
+    private WaveInfo NewWaveInfo() { return new WaveInfo(_mobList, _spawnTypeList); }
 
     private void GenerateMob()
     {

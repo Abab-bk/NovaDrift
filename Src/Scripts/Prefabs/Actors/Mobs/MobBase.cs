@@ -52,4 +52,11 @@ public partial class MobBase : Actor
         TryMoveTo(GlobalPosition.DirectionTo(target.GlobalPosition), delta);
         MoveAndSlide();
     }
+    
+    public void SetTargetPosAndMove(Vector2 pos, float delta)
+    {
+        LookAt(pos);
+        TryMoveTo(GlobalPosition.DirectionTo(pos), delta);
+        MoveAndSlide();
+    }
 }

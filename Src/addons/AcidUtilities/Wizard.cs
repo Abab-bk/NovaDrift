@@ -41,4 +41,9 @@ public class Wizard
         
         return max - (float)Math.Sqrt((1 - u) * (max - min) * (max - mode));
     }
+
+    public static Vector2 ReverseVectorX(Vector2 vector)
+    {
+        return new Vector2(-vector.X, vector.Y);
+    }
 }
