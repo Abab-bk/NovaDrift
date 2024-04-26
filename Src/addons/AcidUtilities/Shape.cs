@@ -85,3 +85,26 @@ public class TriangleShape : IShape
         return Points[index];
     }
 }
+
+// 双螺旋型
+public class SpiralShape : IShape
+{
+    public List<Vector2> Points { set; get; }
+
+    public SpiralShape(int pointCount, float width, float height)
+    {
+        Points = new List<Vector2>();
+
+        for (int i = 0; i < pointCount; i++)
+        {
+            float x = width / 2 * (float)Math.Cos(2 * Math.PI * i / pointCount);
+            float y = height / 2 * (float)Math.Sin(2 * Math.PI * i / pointCount);
+            Points.Add(new Vector2(x, y));
+        }
+    }
+
+    public Vector2 GetPosByIndex(int index)
+    {
+        return Points[index];
+    }
+}

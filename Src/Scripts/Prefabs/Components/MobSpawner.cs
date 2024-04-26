@@ -39,6 +39,7 @@ public partial class MobSpawner : Node2D
     {
         new WeightedListItem<SpawnType>(new RectSpawnType(), 1),
         new WeightedListItem<SpawnType>(new CircleSpawnType(), 1),
+        new WeightedListItem<SpawnType>(new SpiralSpawnType(), 1),
     };
 
     private WaveInfo _waveInfo;
@@ -51,6 +52,8 @@ public partial class MobSpawner : Node2D
     {
         if (!_enabled) return;
         
+        Global.OnGameStart += () => { _timer.Start(); };
+        
         _mobList = new(_mobListItems);
         _spawnTypeList = new(_spawnTypeListItems);
         
@@ -62,7 +65,6 @@ public partial class MobSpawner : Node2D
         };
         AddChild(_timer);
         _timer.Timeout += GenerateMob;
-        _timer.Start();
     }
 
     private WaveInfo NewWaveInfo() { return new WaveInfo(_mobList, _spawnTypeList); }
@@ -174,5 +176,22 @@ public class CircleSpawnType : SpawnType
     {
         base.SetMobCount(mobCount);
         Shape = new CircleShape(mobCount, 400);
+    }
+}
+
+public class SpiralSpawnType : SpawnType
+{
+    public SpiralSpawnType()
+    {
+        MaxMobCount = 6;
+        MinMobCount = 3;
+        ModeMobCount = 3;
+        HasFollowers = true;
+    }
+
+    public override void SetMobCount(int mobCount)
+    {
+        base.SetMobCount(mobCount);
+        Shape = new SpiralShape(mobCount, 400, 400);
     }
 }

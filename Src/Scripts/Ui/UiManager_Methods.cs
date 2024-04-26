@@ -9,10 +9,12 @@ public static partial class UiManager
         public const string AbilityItem = "AbilityItem";
         public const string AbilityPanel = "AbilityPanel";
         public const string DamageLabel = "DamageLabel";
+        public const string GalleryBtn = "GalleryBtn";
         public const string GameOver = "GameOver";
         public const string Hud = "Hud";
         public const string PausedMenu = "PausedMenu";
         public const string SelectAbility = "SelectAbility";
+        public const string StartMenu = "StartMenu";
         public const string StatsMonitor = "StatsMonitor";
         public const string StatsMonitorItem = "StatsMonitorItem";
     }
@@ -159,6 +161,54 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.DamageLabel.DamageLabelPanel[] Get_DamageLabel_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.DamageLabel.DamageLabelPanel>(nameof(NovaDrift.Scripts.Ui.DamageLabel.DamageLabel));
+    }
+
+    /// <summary>
+    /// 创建 GalleryBtn, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel Create_GalleryBtn()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel>(UiName.GalleryBtn);
+    }
+
+    /// <summary>
+    /// 打开 GalleryBtn, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel Open_GalleryBtn()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel>(UiName.GalleryBtn);
+    }
+
+    /// <summary>
+    /// 隐藏 GalleryBtn 的所有实例
+    /// </summary>
+    public static void Hide_GalleryBtn()
+    {
+        var uiInstance = Get_GalleryBtn_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 GalleryBtn 的所有实例
+    /// </summary>
+    public static void Destroy_GalleryBtn()
+    {
+        var uiInstance = Get_GalleryBtn_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 GalleryBtn 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel[] Get_GalleryBtn_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel>(nameof(NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtn));
     }
 
     /// <summary>
@@ -351,6 +401,54 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.SelectAbility.SelectAbilityPanel[] Get_SelectAbility_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.SelectAbility.SelectAbilityPanel>(nameof(NovaDrift.Scripts.Ui.SelectAbility.SelectAbility));
+    }
+
+    /// <summary>
+    /// 创建 StartMenu, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.StartMenu.StartMenuPanel Create_StartMenu()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.StartMenu.StartMenuPanel>(UiName.StartMenu);
+    }
+
+    /// <summary>
+    /// 打开 StartMenu, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.StartMenu.StartMenuPanel Open_StartMenu()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.StartMenu.StartMenuPanel>(UiName.StartMenu);
+    }
+
+    /// <summary>
+    /// 隐藏 StartMenu 的所有实例
+    /// </summary>
+    public static void Hide_StartMenu()
+    {
+        var uiInstance = Get_StartMenu_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 StartMenu 的所有实例
+    /// </summary>
+    public static void Destroy_StartMenu()
+    {
+        var uiInstance = Get_StartMenu_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 StartMenu 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.StartMenu.StartMenuPanel[] Get_StartMenu_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.StartMenu.StartMenuPanel>(nameof(NovaDrift.Scripts.Ui.StartMenu.StartMenu));
     }
 
     /// <summary>

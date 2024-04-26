@@ -1,8 +1,12 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://b7g6xk4hko1sg"]
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://b7g6xk4hko1sg"]
+
+[ext_resource type="FontFile" uid="uid://djmsc2817eku8" path="res://Assets/Fonts/SourceHanSansCN-Medium.otf" id="1_bss3n"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x0rvm"]
 
 [resource]
+default_font = ExtResource("1_bss3n")
+default_font_size = 30
 EmptyBtn/base_type = &"Button"
 EmptyBtn/styles/disabled = SubResource("StyleBoxEmpty_x0rvm")
 EmptyBtn/styles/focus = SubResource("StyleBoxEmpty_x0rvm")

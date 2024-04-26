@@ -1,6 +1,7 @@
 using AcidJoystick;
 using DsUi;
 using Godot;
+using NathanHoad;
 using NovaDrift.Scripts.Prefabs.Actors;
 using YAT.Commands;
 using YAT.Scenes;
@@ -14,15 +15,22 @@ public partial class GameWorld : Node2D
     
     public override void _Ready()
     {
+        SoundManager.PlayMusic(GD.Load<AudioStream>(MusicPaths.ZeroGravity));
+        
+        GetNode<Joystick>("%MoveJoystick").Hide();
+        GetNode<Joystick>("%AimJoystick").Hide();
+        
         Global.OnGameInit += Init;
         Global.OnGameOver += GameOver;
-        Global.OnGameStart?.Invoke();
         
         DataBuilder.Init();
-        Init();
+        
         GameCommands.RegisterCommands();
+
+        UiManager.Open_StartMenu();
     }
 
+    // 顺序是：GameInit => GameStart => GameOver
     private void Init()
     {
         _moveJoystick = GetNode<Joystick>("%MoveJoystick");
@@ -46,6 +54,8 @@ public partial class GameWorld : Node2D
         
         UiManager.Open_PausedMenu();
         UiManager.Hide_PausedMenu();
+        
+        Global.OnGameStart?.Invoke();
     }
 
     private async void GameOver()
