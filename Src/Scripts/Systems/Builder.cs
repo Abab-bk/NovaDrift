@@ -1,4 +1,5 @@
-﻿using Godot;
+﻿using System.Linq.Expressions;
+using Godot;
 using NovaDrift.Scripts.Prefabs;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
 
@@ -46,16 +47,17 @@ public class BulletBuilder
 
 public class MobBuilder
 {
-    private readonly MobBase _mobBase = GD.Load<PackedScene>("res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn").Instantiate() as MobBase;
-    
+    private readonly MobBase _mobBase;
+
+    public MobBuilder(MobInfo mobInfo)
+    {
+        _mobBase = GD.Load<PackedScene>(mobInfo.ScenePath).Instantiate() as MobBase;
+        if (_mobBase == null) throw new ("无法找到场景：" + mobInfo.ScenePath);
+        _mobBase.MobInfo = mobInfo;
+    }
+
     public MobBase Build()
     {
         return _mobBase;
-    }
-
-    public MobBuilder SetMobInfo(MobInfo mobInfo)
-    {
-        _mobBase.MobInfo = mobInfo;
-        return this;
     }
 }

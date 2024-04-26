@@ -2,7 +2,7 @@
   {
     "id": 1001,
     "name": "光束1",
-    "icon_name": "Beamcaster0",
+    "scene_name": "Beamcaster",
     "health": 20,
     "speed": 300,
     "damage": 100,
@@ -11,7 +11,7 @@
   {
     "id": 1002,
     "name": "光束2",
-    "icon_name": "Beamcaster1",
+    "scene_name": "Boltthrower",
     "health": 20,
     "speed": 300,
     "damage": 100,

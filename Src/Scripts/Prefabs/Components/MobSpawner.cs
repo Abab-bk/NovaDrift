@@ -1,4 +1,6 @@
-﻿using AcidWallStudio.AcidUtilities;
+﻿using System;
+using System.Collections.Generic;
+using AcidWallStudio.AcidUtilities;
 using Godot;
 using KaimiraGames;
 using NovaDrift.addons.AcidUtilities;
@@ -28,6 +30,17 @@ public partial class MobSpawner : Node2D
 {
     [Export] bool _enabled = true;
 
+    private readonly List<WeightedListItem<int>> _mobListItems = new()
+    {
+        new WeightedListItem<int>(1001, 1),
+        new WeightedListItem<int>(1002, 2),
+    };
+    private readonly List<WeightedListItem<SpawnType>> _spawnTypeListItems = new()
+    {
+        new WeightedListItem<SpawnType>(new RectSpawnType(), 1),
+        new WeightedListItem<SpawnType>(new CircleSpawnType(), 1),
+    };
+
     private WaveInfo _waveInfo;
     private Timer _timer;
 
@@ -38,13 +51,8 @@ public partial class MobSpawner : Node2D
     {
         if (!_enabled) return;
         
-        _mobList = new WeightedList<int>();
-        _mobList.Add(1001, 1);
-        _mobList.Add(1002, 2);
-        
-       _spawnTypeList = new WeightedList<SpawnType>();
-        _spawnTypeList.Add(new RectSpawnType(), 1);
-        _spawnTypeList.Add(new CircleSpawnType(), 1);
+        _mobList = new(_mobListItems);
+        _spawnTypeList = new(_spawnTypeListItems);
         
         _timer = new Timer
         {
@@ -74,8 +82,7 @@ public partial class MobSpawner : Node2D
         
         for (int i = 1; i <= mobCount; i++)
         {
-            MobBuilder mobBuilder = new MobBuilder();
-            mobBuilder.SetMobInfo(mobInfo);
+            MobBuilder mobBuilder = new MobBuilder(mobInfo);
             var mob = mobBuilder.Build();
             
             if (mob == null) return;

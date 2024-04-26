@@ -19,7 +19,7 @@ public sealed partial class MobInfo : Luban.BeanBase
     {
         Id = _buf.GetProperty("id").GetInt32();
         Name = _buf.GetProperty("name").GetString();
-        IconName = _buf.GetProperty("icon_name").GetString();
+        SceneName = _buf.GetProperty("scene_name").GetString();
         Health = _buf.GetProperty("health").GetSingle();
         Speed = _buf.GetProperty("speed").GetSingle();
         Damage = _buf.GetProperty("damage").GetSingle();
@@ -40,9 +40,9 @@ public sealed partial class MobInfo : Luban.BeanBase
     /// </summary>
     public readonly string Name;
     /// <summary>
-    /// 图标名
+    /// 场景名
     /// </summary>
-    public readonly string IconName;
+    public readonly string SceneName;
     /// <summary>
     /// 血量
     /// </summary>
@@ -79,7 +79,7 @@ public sealed partial class MobInfo : Luban.BeanBase
         return "{ "
         + "id:" + Id + ","
         + "name:" + Name + ","
-        + "iconName:" + IconName + ","
+        + "sceneName:" + SceneName + ","
         + "health:" + Health + ","
         + "speed:" + Speed + ","
         + "damage:" + Damage + ","

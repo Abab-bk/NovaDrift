@@ -168,14 +168,15 @@ public static class DataBuilder
     public static Game.MobInfo BuildMobInfoById(int id)
     {
         MobInfo tbMobInfo = _tables.TbMobInfo.Get(id);
-        Game.MobInfo mobInfo = new Game.MobInfo();
-
-        mobInfo.
-            SetName(tbMobInfo.IconName).
-            SetIconPath(tbMobInfo.IconName).
-            SetHealth(tbMobInfo.Health).
-            SetSpeed(tbMobInfo.Speed).
-            SetShootCd(tbMobInfo.ShootCd);
+        Game.MobInfo mobInfo = new Game.MobInfo
+        {
+            Name = tbMobInfo.Name,
+            Health = tbMobInfo.Health,
+            Speed = tbMobInfo.Speed,
+            Damage = tbMobInfo.Damage,
+            ShootCd = tbMobInfo.ShootCd,
+            ScenePath = $"res://Scenes/Prefabs/Actors/Mobs/{tbMobInfo.SceneName}.tscn".Trim(),
+        };
         
         return mobInfo;
     }

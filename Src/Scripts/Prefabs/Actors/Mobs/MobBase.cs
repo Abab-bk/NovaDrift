@@ -13,7 +13,6 @@ public partial class MobBase : Actor
         base._Ready();
         AddToGroup("Mobs");
         if (MobInfo == null) throw new Exception("MobInfo 为 Null");
-        Sprite.Texture = GD.Load<Texture2D>(MobInfo.IconPath);
         
         Stats.Health.ValueChanged += (value) =>
         {
