@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 
 [autoload]
 
+RunConfigManager="*res://addons/run-configs/run-config-manager.gd"
 InitUiManager="*res://addons/ds_ui/InitUiManager.cs"
 YAT="*res://addons/yat/src/YAT.tscn"
 SoundManager="*res://addons/sound_manager/sound_manager.gd"
@@ -40,7 +41,7 @@ naming/scene_name_casing=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ds_ui/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/wiggly_appendage_2d/plugin.cfg", "res://addons/yat/plugin.cfg")
+enabled=PackedStringArray("res://addons/ds_ui/plugin.cfg", "res://addons/run-configs/plugin.cfg", "res://addons/sound_manager/plugin.cfg", "res://addons/wiggly_appendage_2d/plugin.cfg", "res://addons/yat/plugin.cfg")
 
 [input]
 
@@ -77,3 +78,8 @@ pointing/emulate_touch_from_mouse=true
 
 renderer/rendering_method="mobile"
 viewport/hdr_2d=true
+
+[run_configs]
+
+data/configs=["{\"custom_scene\":\"\",\"environment_variables\":{\"ShowStartMenu\":\"false\"},\"name\":\"Debug\",\"play_mode\":0}", "{\"custom_scene\":\"\",\"environment_variables\":{\"ShowStartMenu\":\"true\"},\"name\":\"Release\",\"play_mode\":0}"]
+data/current=0

@@ -1,6 +1,7 @@
 using System;
 using DsUi;
 using Godot;
+using NathanHoad;
 using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Frameworks.Stats;
 using NovaDrift.Scripts.Prefabs.Components;
@@ -118,6 +119,7 @@ public partial class Actor : CharacterBody2D
     protected void OnHit(float value)
     {
         UiManager.Open_DamageLabel().ShowValue(value, GetGlobalTransformWithCanvas().Origin);
+        SoundManager.PlaySound(SoundPaths.Ping);
     }
 
     public virtual void Die()

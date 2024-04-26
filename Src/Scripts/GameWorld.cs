@@ -15,7 +15,7 @@ public partial class GameWorld : Node2D
     
     public override void _Ready()
     {
-        SoundManager.PlayMusic(GD.Load<AudioStream>(MusicPaths.ZeroGravity));
+        SoundManager.PlayMusic(GD.Load<AudioStream>(SoundPaths.ZeroGravity));
         
         GetNode<Joystick>("%MoveJoystick").Hide();
         GetNode<Joystick>("%AimJoystick").Hide();
@@ -27,7 +27,19 @@ public partial class GameWorld : Node2D
         
         GameCommands.RegisterCommands();
 
-        UiManager.Open_StartMenu();
+        if (Global.CurrentPlatform != GamePlatform.Desktop)
+        {
+            Global.OnGameInit?.Invoke();
+            return;
+        }
+        
+        if (OS.GetEnvironment("ShowStartMenu") == "true")
+        {
+            UiManager.Open_StartMenu();
+            return;
+        }
+        
+        Global.OnGameInit?.Invoke();
     }
 
     // 顺序是：GameInit => GameStart => GameOver

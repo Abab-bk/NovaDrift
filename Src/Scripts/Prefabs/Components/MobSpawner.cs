@@ -64,7 +64,15 @@ public partial class MobSpawner : Node2D
             Autostart = false,
         };
         AddChild(_timer);
-        _timer.Timeout += GenerateMob;
+        _timer.Timeout += () =>
+        {
+            if (GetTree().GetNodesInGroup("Mobs").Count < 2)
+            {
+                GenerateMob();
+            }
+
+            _timer.Start();
+        };
     }
 
     private WaveInfo NewWaveInfo() { return new WaveInfo(_mobList, _spawnTypeList); }
