@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://dx2jdufhf6krx"]
+[gd_scene load_steps=7 format=3 uid="uid://dx2jdufhf6krx"]
 
 [ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_2tvmv"]
 [ext_resource type="Script" path="res://Scripts/Ui/hud/HudPanel.cs" id="1_jvtg7"]
+
+[sub_resource type="Gradient" id="Gradient_oln25"]
+colors = PackedColorArray(0.0117647, 0.490196, 1, 1, 0.0117647, 0.490196, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ihdti"]
+gradient = SubResource("Gradient_oln25")
+
+[sub_resource type="Gradient" id="Gradient_dhh0k"]
+colors = PackedColorArray(0.956863, 0, 0.368627, 1, 0.956863, 0, 0.368627, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_glh1x"]
+gradient = SubResource("Gradient_dhh0k")
 
 [node name="Hud" type="Control"]
 process_mode = 3
@@ -14,25 +26,42 @@ grow_vertical = 2
 theme = ExtResource("1_2tvmv")
 script = ExtResource("1_jvtg7")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 12
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_top = -58.0
+offset_top = -104.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_constants/margin_left = 300
+theme_override_constants/margin_right = 300
+theme_override_constants/margin_bottom = 50
 
-[node name="HpProgressBar" type="ProgressBar" parent="VBoxContainer"]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 
-[node name="ExpProgressBar" type="ProgressBar" parent="VBoxContainer"]
+[node name="ExpProgressBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+size_flags_horizontal = 3
+value = 50.0
+fill_mode = 6
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_ihdti")
 
-[node name="ShieldBar" type="ProgressBar" parent="VBoxContainer"]
+[node name="HpProgressBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 50)
+layout_mode = 2
+value = 50.0
+fill_mode = 6
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_glh1x")
+
+[node name="ShieldBar" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 layout_mode = 2

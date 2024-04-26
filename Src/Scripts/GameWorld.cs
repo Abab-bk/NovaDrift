@@ -62,7 +62,7 @@ public partial class GameWorld : Node2D
         DataBuilder.BuildBodyById(1000).Use();
         DataBuilder.BuildWeaponById(1000).Use();
         
-        UiManager.Get_Hud_Instance()[0].OpenNestedUi(UiManager.UiName.StatsMonitor);
+        // UiManager.Get_Hud_Instance()[0].OpenNestedUi(UiManager.UiName.StatsMonitor);
         
         UiManager.Open_PausedMenu();
         UiManager.Hide_PausedMenu();

@@ -5,7 +5,7 @@
     "scene_name": "Beamcaster",
     "health": 20,
     "speed": 300,
-    "damage": 100,
+    "damage": 10,
     "shoot_cd": 1
   },
   {
@@ -14,7 +14,7 @@
     "scene_name": "Boltthrower",
     "health": 20,
     "speed": 300,
-    "damage": 100,
+    "damage": 10,
     "shoot_cd": 1
   }
 ]

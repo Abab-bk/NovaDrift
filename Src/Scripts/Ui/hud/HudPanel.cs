@@ -5,8 +5,8 @@ namespace NovaDrift.Scripts.Ui.Hud;
 
 public partial class HudPanel : Hud
 {
-    private ProgressBar _expBar;
-    private ProgressBar _hpBar;
+    private TextureProgressBar _expBar;
+    private TextureProgressBar _hpBar;
     
     public override void OnCreateUi()
     {
