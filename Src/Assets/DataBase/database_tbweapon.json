@@ -17,9 +17,9 @@
   },
   {
     "id": 1002,
-    "name": "默认武器",
+    "name": "齐射",
     "desc": "最普通的武器。",
-    "scene_name": "DefaultShooter",
+    "scene_name": "Salvo",
     "knockback": 0,
     "recoil": 0
   },

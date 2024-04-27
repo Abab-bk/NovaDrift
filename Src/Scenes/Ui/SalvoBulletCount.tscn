@@ -1,0 +1,30 @@
+[gd_scene load_steps=3 format=3 uid="uid://drhlph77eydsj"]
+
+[ext_resource type="Script" path="res://Scripts/Ui/salvoBulletCount/SalvoBulletCountPanel.cs" id="1_7u4sd"]
+[ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_h6ka7"]
+
+[node name="SalvoBulletCount" type="Control"]
+layout_mode = 3
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -543.0
+offset_top = -146.0
+offset_right = 543.0
+offset_bottom = -71.0
+grow_horizontal = 2
+grow_vertical = 0
+theme = ExtResource("1_h6ka7")
+script = ExtResource("1_7u4sd")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "124"
+horizontal_alignment = 1
+vertical_alignment = 1

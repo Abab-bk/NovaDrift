@@ -57,29 +57,30 @@ public partial class Boltthrower : MobAiComponent
             return;
         }
         _targetPos = GetOppositePos();
+        GD.Print(_targetPos);
         Mob.SetTargetPosAndMove(_targetPos, delta);
     }
 
     private Vector2 GetOppositePos()
     {
         Vector2 targetPos = new Vector2();
-        if (Mob.GlobalPosition.X > (float)DisplayServer.WindowGetSize().X / 2)
+        if (Mob.GlobalPosition.X >= (float)DisplayServer.WindowGetSize().X / 2)
         {
             // 目前在右边，移动到左边
             targetPos.X = 100;
         } 
-        else if (Mob.GlobalPosition.X < (float)DisplayServer.WindowGetSize().X / 2)
+        else if (Mob.GlobalPosition.X <= (float)DisplayServer.WindowGetSize().X / 2)
         {
             // 目前在左边，移动到右边
             targetPos.X = (float)DisplayServer.WindowGetSize().X - 100;
         }
 
-        if (Mob.GlobalPosition.Y > (float)DisplayServer.WindowGetSize().Y / 2)
+        if (Mob.GlobalPosition.Y >= (float)DisplayServer.WindowGetSize().Y / 2)
         {
             // 目前在下边，移动到上边
             targetPos.Y = 100;
         }
-        else if (Mob.GlobalPosition.Y < (float)DisplayServer.WindowGetSize().Y / 2)
+        else if (Mob.GlobalPosition.Y <= (float)DisplayServer.WindowGetSize().Y / 2)
         {
             // 目前在上边，移动到下边
             targetPos.Y = (float)DisplayServer.WindowGetSize().Y - 100;

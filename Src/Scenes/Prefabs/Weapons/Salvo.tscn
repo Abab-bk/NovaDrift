@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://c0s8m5cmxi1uj"]
+
+[ext_resource type="PackedScene" uid="uid://b8u14jtp5pcjp" path="res://Scenes/Prefabs/Weapons/DefaultShooter.tscn" id="1_1c0wn"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Weapons/Salvo.cs" id="2_be8nv"]
+
+[node name="Salvo" instance=ExtResource("1_1c0wn")]
+script = ExtResource("2_be8nv")
+
+[node name="ReplenishTimer" type="Timer" parent="." index="0"]
+wait_time = 0.5
