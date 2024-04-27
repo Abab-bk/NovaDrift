@@ -1,4 +1,5 @@
 using System;
+using AcidWallStudio.AcidNodes;
 using Godot;
 using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Prefabs.Actors;
@@ -6,11 +7,7 @@ using NovaDrift.Scripts.Prefabs.Components;
 
 namespace NovaDrift.Scripts.Prefabs;
 
-public interface IBullet
-{
-}
-
-public partial class BulletBase : CharacterBody2D, IBullet
+public partial class BulletBase : CharacterBody2D
 {
     [Export] private HitBox _hitBox;
  
@@ -22,6 +19,8 @@ public partial class BulletBase : CharacterBody2D, IBullet
     public float Speed = 1300f;
     public float Size = 1f;
     public float Degeneration = 0.8f;
+
+    private SmokeTrail _smokeTrail;
 
     public float Damage
     {
@@ -39,6 +38,8 @@ public partial class BulletBase : CharacterBody2D, IBullet
     
     public override void _Ready()
     {
+        _smokeTrail = GetNode<SmokeTrail>("%SmokeTrail");
+        
         _hitBox.SetIsPlayer(IsPlayer);
         _hitBox.HitDone += (actor) =>
         {
@@ -62,6 +63,7 @@ public partial class BulletBase : CharacterBody2D, IBullet
 
     public override void _PhysicsProcess(double delta)
     {
+        _smokeTrail.AddAgePoint(GlobalPosition);
         OnMove?.Invoke(GlobalPosition.DistanceTo(_lastPosition));
         
         Velocity = _dir * Speed;

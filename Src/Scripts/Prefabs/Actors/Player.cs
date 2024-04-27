@@ -1,4 +1,5 @@
 using AcidJoystick;
+using AcidWallStudio.AcidNodes;
 using DsUi;
 using Godot;
 
@@ -7,12 +8,16 @@ namespace NovaDrift.Scripts.Prefabs.Actors;
 public partial class Player : Actor
 {
     public Joystick JoystickNode;
+
+    private SmokeTrail _smokeTrail;
     
     public override void _Ready()
     {
         base._Ready();
         Global.Player = this;
 
+        _smokeTrail = GetNode<SmokeTrail>("%SmokeTrail");
+        
         Global.OnMobDied += _ =>
         {
             Stats.Exp.Increase(50);
@@ -96,6 +101,7 @@ public partial class Player : Actor
                 if (GlobalPosition.DirectionTo(mousePos) != Vector2.Zero)
                 {
                     TryMoveTo(GlobalPosition.DirectionTo(mousePos), delta);
+                    _smokeTrail.AddAgePoint(GlobalPosition);
                 }
             }
             else
@@ -109,6 +115,7 @@ public partial class Player : Actor
             if (JoystickNode.TargetPos != Vector2.Zero)
             {
                 TryMoveTo(JoystickNode.TargetPos, delta);
+                _smokeTrail.AddAgePoint(GlobalPosition);
             }
             else
             {

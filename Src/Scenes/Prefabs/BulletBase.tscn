@@ -1,14 +1,17 @@
-[gd_scene load_steps=8 format=3 uid="uid://dopw3ixphjmh7"]
+[gd_scene load_steps=9 format=3 uid="uid://dopw3ixphjmh7"]
 
 [ext_resource type="Script" path="res://Scripts/Prefabs/BulletBase.cs" id="1_l73w7"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HitBox.cs" id="2_74isq"]
 [ext_resource type="Texture2D" uid="uid://cjd5cjg845jjq" path="res://Assets/Textures/Bullets/Bullet.png" id="2_7373b"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/FreeSelfWhenExitScreen.cs" id="3_bimy8"]
-[ext_resource type="Script" path="res://addons/BurstParticles2D/BurstParticles2D.gd" id="5_ty5lm"]
-[ext_resource type="Texture2D" uid="uid://w80uidtfwsgd" path="res://Assets/Textures/Particles/fire_01.png" id="6_kgl2d"]
+[ext_resource type="Curve" uid="uid://bfftvhg22hmgf" path="res://Assets/Resources/BaseTrail.tres" id="5_3xjcw"]
+[ext_resource type="Script" path="res://addons/AcidNodes/SmokeTrail.cs" id="5_a0yah"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jcqaf"]
 size = Vector2(73, 28)
+
+[sub_resource type="Gradient" id="Gradient_06518"]
+colors = PackedColorArray(0, 0, 0, 0, 0.368627, 0.505882, 0.592157, 1)
 
 [node name="BulletBase" type="CharacterBody2D" node_paths=PackedStringArray("_hitBox")]
 script = ExtResource("1_l73w7")
@@ -28,9 +31,11 @@ shape = SubResource("RectangleShape2D_jcqaf")
 scale = Vector2(6.2, 3.1)
 script = ExtResource("3_bimy8")
 
-[node name="BurstParticles2D" type="Node2D" parent="."]
-script = ExtResource("5_ty5lm")
-num_particles = 1
-texture = ExtResource("6_kgl2d")
-image_scale = 0.4
-distance = 0.0
+[node name="SmokeTrail" type="Line2D" parent="."]
+unique_name_in_owner = true
+width = 40.0
+width_curve = ExtResource("5_3xjcw")
+gradient = SubResource("Gradient_06518")
+script = ExtResource("5_a0yah")
+_wildNess = 1000.0
+_minSpawnDistance = 20.0
