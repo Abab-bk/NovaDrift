@@ -58,4 +58,4 @@ _labelText = "设置"
 unique_name_in_owner = true
 custom_minimum_size = Vector2(190, 325)
 layout_mode = 2
-_labelText = "退出游戏"
+_labelText = "退出"

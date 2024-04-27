@@ -11,4 +11,7 @@
     <Folder Include="Scripts\Systems\Weapons\" />
     <Compile Remove="script_templates/**/*.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="addons\AcidUtilities\plugin.cfg" />
+  </ItemGroup>
 </Project>

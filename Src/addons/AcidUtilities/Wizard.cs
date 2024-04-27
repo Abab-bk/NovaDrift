@@ -4,7 +4,7 @@ using KaimiraGames;
 
 namespace AcidWallStudio.AcidUtilities;
 
-public class Wizard
+public static class Wizard
 {
     public static bool FileExists(string path)
     {
@@ -45,5 +45,9 @@ public class Wizard
     public static Vector2 ReverseVectorX(Vector2 vector)
     {
         return new Vector2(-vector.X, vector.Y);
+    }
+    
+    public static float FloatRange(this Random random, float min = 0.0f, float max = 1.0f) {
+        return (float) (random.NextDouble() * (max - min) + min);
     }
 }

@@ -11,6 +11,10 @@ public partial class StartMenuPanel : StartMenu
         {
             Global.OnGameInit?.Invoke();
         };
+        S_ExitBtn.Instance.OnClick += () =>
+        {
+            GetTree().Quit();
+        };
 
         Global.OnGameStart += () =>
         {
