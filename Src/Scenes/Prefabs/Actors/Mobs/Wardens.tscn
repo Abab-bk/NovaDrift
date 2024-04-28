@@ -1,0 +1,90 @@
+[gd_scene load_steps=19 format=3 uid="uid://4cuy72rqjgqw"]
+
+[ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_u23yy"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Ai/Wardens.cs" id="2_i27au"]
+
+[sub_resource type="StateConfig" id="StateConfig_wtddb"]
+state_name = &"Idle"
+type = 1
+editor_offset = Vector2(0, 80)
+
+[sub_resource type="StateConfig" id="StateConfig_hl76x"]
+state_name = &"GoingToPlayer"
+editor_offset = Vector2(240, 80)
+
+[sub_resource type="StateConfig" id="StateConfig_gxalx"]
+state_name = &"Charge"
+editor_offset = Vector2(500, 80)
+
+[sub_resource type="StateConfig" id="StateConfig_lx6q3"]
+state_name = &"Attack"
+editor_offset = Vector2(760, 80)
+
+[sub_resource type="StateConfig" id="StateConfig_7h2gq"]
+state_name = &"RunAway"
+editor_offset = Vector2(1040, 80)
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_uk7qd"]
+from_state_config = SubResource("StateConfig_wtddb")
+to_state_config = SubResource("StateConfig_hl76x")
+
+[sub_resource type="VariableConfig" id="VariableConfig_2ftj0"]
+variable_name = &"ArrivedPlayer"
+resource_name = "ArrivedPlayer: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_556r4"]
+variable_config = SubResource("VariableConfig_2ftj0")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_bbt66"]
+from_state_config = SubResource("StateConfig_hl76x")
+to_state_config = SubResource("StateConfig_gxalx")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_556r4")])
+
+[sub_resource type="VariableConfig" id="VariableConfig_k51yh"]
+variable_name = &"Charged"
+resource_name = "Charged: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_eb55b"]
+variable_config = SubResource("VariableConfig_k51yh")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_r87pq"]
+from_state_config = SubResource("StateConfig_gxalx")
+to_state_config = SubResource("StateConfig_lx6q3")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_eb55b")])
+
+[sub_resource type="VariableConfig" id="VariableConfig_xd1k4"]
+variable_name = &"Attacked"
+resource_name = "Attacked: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_q6m7f"]
+variable_config = SubResource("VariableConfig_xd1k4")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_f547i"]
+from_state_config = SubResource("StateConfig_lx6q3")
+to_state_config = SubResource("StateConfig_7h2gq")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_q6m7f")])
+
+[sub_resource type="FSMConfig" id="FSMConfig_xh2dx"]
+state_config_list = Array[StateConfig]([SubResource("StateConfig_wtddb"), SubResource("StateConfig_hl76x"), SubResource("StateConfig_gxalx"), SubResource("StateConfig_lx6q3"), SubResource("StateConfig_7h2gq")])
+transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_uk7qd"), SubResource("TransitionConfig_bbt66"), SubResource("TransitionConfig_r87pq"), SubResource("TransitionConfig_f547i")])
+variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_2ftj0"), SubResource("VariableConfig_k51yh"), SubResource("VariableConfig_xd1k4")])
+
+[node name="Wardens" instance=ExtResource("1_u23yy")]
+
+[node name="Sprite2D" parent="." index="0"]
+modulate = Color(1, 1, 0, 1)
+
+[node name="MobAiComponent" parent="State" index="0"]
+script = ExtResource("2_i27au")
+
+[node name="HFSM" parent="State" index="1"]
+root_fsm_config = SubResource("FSMConfig_xh2dx")

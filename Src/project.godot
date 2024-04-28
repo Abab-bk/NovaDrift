@@ -18,9 +18,9 @@ config/icon="res://icon.svg"
 [autoload]
 
 RunConfigManager="*res://addons/run-configs/run-config-manager.gd"
+YAT="*res://addons/yat/src/YAT.tscn"
 InitUiManager="*res://addons/ds_ui/InitUiManager.cs"
 SoundManager="*res://addons/sound_manager/sound_manager.gd"
-YAT="*res://addons/yat/src/YAT.tscn"
 
 [display]
 

@@ -16,5 +16,14 @@
     "speed": 300,
     "damage": 10,
     "shoot_cd": 1
+  },
+  {
+    "id": 1003,
+    "name": "典狱长",
+    "scene_name": "Wardens",
+    "health": 20,
+    "speed": 300,
+    "damage": 10,
+    "shoot_cd": 1
   }
 ]
