@@ -1,13 +1,16 @@
 using Godot;
 using System;
+using AcidWallStudio.AcidUtilities;
 using DsUi;
 using NovaDrift.Scripts;
 using NovaDrift.Scripts.Prefabs;
+using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Components;
+using NovaDrift.Scripts.Prefabs.Weapons;
 using NovaDrift.Scripts.Systems;
 using NovaDrift.Scripts.Ui.SalvoBulletCount;
 
-public partial class Salvo : Shooter
+public partial class Salvo : BaseShooter
 {
     private SalvoBulletCountPanel _salvoBulletCountPanel;
     private Timer _replenishTimer;
@@ -16,7 +19,6 @@ public partial class Salvo : Shooter
     
     public override void _Ready()
     {
-        base._Ready();
         _replenishTimer = GetNode<Timer>("ReplenishTimer");
         _salvoBulletCountPanel = UiManager.Open_SalvoBulletCount();
 
@@ -24,26 +26,21 @@ public partial class Salvo : Shooter
         Actor.StopShooting += () => { _replenishTimer.Start(); };
         _replenishTimer.Timeout += () =>
         {
-            _bulletCount += 5;
+            _bulletCount += 4;
             _salvoBulletCountPanel.UpdateUi(_bulletCount);
         };
         
         _replenishTimer.Start();
+        _salvoBulletCountPanel.UpdateUi(_bulletCount);
     }
 
     public override void Destroy()
     {
-        base.Destroy();
         UiManager.Destroy_SalvoBulletCount();
     }
 
-    public override async void Shoot()
+    public override void Shoot()
     {
-        if (!ShootTimer.IsStopped()) { return; }
-        if (IsBursting) { return; }
-
-        IsBursting = true;
-        
         for (int x = 0; x < Actor.Stats.BurstFire.Value; x++)
         {
             for (int i = 0; i < _bulletCount; i++)
@@ -55,33 +52,29 @@ public partial class Salvo : Shooter
                     SetSize(Actor.Stats.BulletSize.Value).
                     SetDegeneration(Actor.Stats.BulletDegeneration.Value).
                     Build();
-                
-                bullet.GlobalPosition = GlobalPosition;
-                if ((int)Actor.Stats.BulletCount.Value == 1)
-                {
-                    bullet.Rotation = GlobalRotation;
-                }
-                else
-                {
-                    float arcRad = Mathf.DegToRad(Actor.Stats.ShootSpread.Value);
-                    float increment = arcRad / (Actor.Stats.BulletCount.Value - 1);
-                    bullet.GlobalRotation = Actor.GlobalRotation + increment * i - arcRad / 2;
-                }
 
+                bullet.Direction = bullet.Direction.Rotated(GlobalRotation);
+                bullet.GlobalPosition = GlobalPosition;
                 Global.GameWorld.AddChild(bullet);
-                
-                ShootTimer.Start();
         
                 OnShoot?.Invoke(bullet);
                 bullet.OnHit += actor => { OnHit?.Invoke(actor); };
-                BurstIntervalTimer.Start();
-                // await ToSignal(BurstIntervalTimer, "timeout");
+                bullet.OnMove += f =>
+                {
+                    bullet.Direction = bullet.Direction.Rotated(Random.Shared.FloatRange(-0.2f, 0.2f));
+                };
             }
         }
 
         _bulletCount = 0;
+        _salvoBulletCountPanel.UpdateUi(_bulletCount);
+    }
 
-        BurstCooldownTimer.WaitTime = Actor.Stats.ShootSpeed.Value * Actor.Stats.BurstFire.Value;
-        BurstCooldownTimer.Start();
+    public override void Init()
+    {
+    }
+
+    public override void SetShootCd(float value)
+    {
     }
 }

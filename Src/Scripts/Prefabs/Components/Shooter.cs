@@ -3,26 +3,19 @@ using System.Collections.Generic;
 using AcidWallStudio.AcidUtilities;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors;
+using NovaDrift.Scripts.Prefabs.Weapons;
 using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts.Prefabs.Components;
 
 [GlobalClass]
-public partial class Shooter : Node2D, IObject
+public partial class Shooter : BaseShooter
 {
-    [Export] public Actor Actor;
+    private Timer _shootTimer;
     
-    public Action<BulletBase> OnShoot;
-    public Action<Actor> OnHit;
-    
-    public Weapon Weapon = new Weapon();
-    
-    public bool IsPlayer = false;
-    protected Timer ShootTimer;
-    
-    protected Timer BurstIntervalTimer;
-    protected Timer BurstCooldownTimer;
-    protected bool IsBursting = false;
+    private Timer _burstIntervalTimer;
+    private Timer _burstCooldownTimer;
+    private bool _isBursting = false;
 
     public override void _Ready()
     {
@@ -31,46 +24,46 @@ public partial class Shooter : Node2D, IObject
             IsPlayer = actor.IsPlayer;
         }
 
-        BurstCooldownTimer = Wizard.CreateTimer(0.5f);
-        AddChild(BurstCooldownTimer);
-        BurstCooldownTimer.Timeout += () => IsBursting = false; 
+        _burstCooldownTimer = Wizard.CreateTimer(0.5f);
+        AddChild(_burstCooldownTimer);
+        _burstCooldownTimer.Timeout += () => _isBursting = false; 
         
-        ShootTimer = new Timer();
-        AddChild(ShootTimer);
-        ShootTimer.OneShot = true;
-        ShootTimer.WaitTime = Actor.Stats.ShootSpeed.Value;
+        _shootTimer = new Timer();
+        AddChild(_shootTimer);
+        _shootTimer.OneShot = true;
+        _shootTimer.WaitTime = Actor.Stats.ShootSpeed.Value;
 
-        BurstIntervalTimer = new Timer();
-        AddChild(BurstIntervalTimer);
-        BurstIntervalTimer.OneShot = true;
-        BurstIntervalTimer.WaitTime = DataBuilder.Constants.BurstInterval;
+        _burstIntervalTimer = new Timer();
+        AddChild(_burstIntervalTimer);
+        _burstIntervalTimer.OneShot = true;
+        _burstIntervalTimer.WaitTime = DataBuilder.Constants.BurstInterval;
         
         Init();
         
         Actor.Stats.ShootSpeed.ValueChanged += SetShootCd;
     }
 
-    public virtual void Destroy()
+    public override void Destroy()
     {
         Actor.Stats.ShootSpeed.ValueChanged -= SetShootCd;
     }
 
-    public void SetShootCd(float value)
+    public override void SetShootCd(float value)
     {
-        ShootTimer.Stop();
-        ShootTimer.WaitTime = value;
+        _shootTimer.Stop();
+        _shootTimer.WaitTime = value;
     }
     
-    protected virtual void Init()
+    public override void Init()
     {
     }
 
-    public virtual async void Shoot()
+    public override void Shoot()
     {
-        if (!ShootTimer.IsStopped()) { return; }
-        if (IsBursting) { return; }
+        if (!_shootTimer.IsStopped()) { return; }
+        if (_isBursting) { return; }
 
-        IsBursting = true;
+        _isBursting = true;
         
         for (int x = 0; x < Actor.Stats.BurstFire.Value; x++)
         {
@@ -87,27 +80,27 @@ public partial class Shooter : Node2D, IObject
                 bullet.GlobalPosition = GlobalPosition;
                 if ((int)Actor.Stats.BulletCount.Value == 1)
                 {
-                    bullet.Rotation = GlobalRotation;
+                    bullet.Direction = bullet.Direction.Rotated(GlobalRotation);
                 }
                 else
                 {
                     float arcRad = Mathf.DegToRad(Actor.Stats.ShootSpread.Value);
                     float increment = arcRad / (Actor.Stats.BulletCount.Value - 1);
-                    bullet.GlobalRotation = Actor.GlobalRotation + increment * i - arcRad / 2;
+                    bullet.Direction = bullet.Direction.Rotated(Actor.GlobalRotation + increment * i - arcRad / 2);
                 }
 
                 Global.GameWorld.AddChild(bullet);
                 
-                ShootTimer.Start();
+                _shootTimer.Start();
         
                 OnShoot?.Invoke(bullet);
                 bullet.OnHit += actor => { OnHit?.Invoke(actor); };
-                BurstIntervalTimer.Start();
-                // await ToSignal(BurstIntervalTimer, "timeout");
+                _burstIntervalTimer.Start();
+                // await ToSignal(_burstIntervalTimer, "timeout");
             }
         }
 
-        BurstCooldownTimer.WaitTime = Actor.Stats.ShootSpeed.Value * Actor.Stats.BurstFire.Value;
-        BurstCooldownTimer.Start();
+        _burstCooldownTimer.WaitTime = Actor.Stats.ShootSpeed.Value * Actor.Stats.BurstFire.Value;
+        _burstCooldownTimer.Start();
     }
 }

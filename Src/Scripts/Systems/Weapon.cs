@@ -2,6 +2,7 @@
 using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Components;
+using NovaDrift.Scripts.Prefabs.Weapons;
 
 namespace NovaDrift.Scripts.Systems;
 
@@ -20,10 +21,10 @@ public class Weapon : IItemInfo
     {
         Actor = Global.Player;
         
-        Shooter shooter = GD.Load<PackedScene>($"res://Scenes/Prefabs/Weapons/{SceneName}.tscn").Instantiate<Shooter>();
+        BaseShooter shooter = GD.Load<PackedScene>($"res://Scenes/Prefabs/Weapons/{SceneName}.tscn").Instantiate<BaseShooter>();
         shooter.Weapon = this;
         
-        Shooter originalShooter = Global.Player.Shooter;
+        BaseShooter originalShooter = Global.Player.Shooter;
         originalShooter.Destroy();
         originalShooter.QueueFree();
         

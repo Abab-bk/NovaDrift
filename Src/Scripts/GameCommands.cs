@@ -12,6 +12,7 @@ public static class GameCommands
 	public static void RegisterCommands()
 	{
 		RegisteredCommands.AddCommand(typeof(UseAbilityById));
+		RegisteredCommands.AddCommand(typeof(UseShooterById));
 	}
 }
 
@@ -29,6 +30,21 @@ public sealed class UseAbilityById : ICommand
 		return ICommand.Success();
 	}
 }
+
+[Command("UseShooterById", "UseShooterById [Id]")]
+[Usage("UseShooterById [Id]")]
+[Argument("id", "int", "The id for the shooter.")]
+public sealed class UseShooterById : ICommand
+{
+	public CommandResult Execute(CommandData data)
+	{
+		var id = (int)data.Arguments["id"];
+		if (id == 0) return ICommand.Failure();
+		DataBuilder.BuildWeaponById(id).Use();
+		return ICommand.Success();
+	}
+}
+
 
 // [ConsoleCommand("RemoveAllEffects")]
 // public void RemoveAllEffects()

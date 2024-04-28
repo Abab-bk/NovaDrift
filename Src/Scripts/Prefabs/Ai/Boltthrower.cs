@@ -57,7 +57,6 @@ public partial class Boltthrower : MobAiComponent
             return;
         }
         _targetPos = GetOppositePos();
-        GD.Print(_targetPos);
         Mob.SetTargetPosAndMove(_targetPos, delta);
     }
 

@@ -4,7 +4,6 @@ using Godot;
 using NathanHoad;
 using NovaDrift.Scripts.Prefabs.Actors;
 using YAT.Commands;
-using YAT.Scenes;
 
 namespace NovaDrift.Scripts;
 

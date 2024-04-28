@@ -34,10 +34,12 @@ public partial class BulletBase : CharacterBody2D
 
     private Stat _damage = new Stat(1f);
     private Vector2 _lastPosition = new Vector2();
-    private Vector2 _dir;
+    public Vector2 Direction = Vector2.Right;
     
     public override void _Ready()
     {
+        Rotation = Direction.Angle();
+        
         _smokeTrail = GetNode<SmokeTrail>("%SmokeTrail");
         
         _hitBox.SetIsPlayer(IsPlayer);
@@ -48,7 +50,6 @@ public partial class BulletBase : CharacterBody2D
         };
 
         Scale = new Vector2(Size, Size);
-        _dir = Vector2.Right.Rotated(GlobalRotation);
         
         Tween tween = CreateTween();
         tween.TweenProperty(this, "scale", Vector2.Zero, Degeneration);
@@ -65,9 +66,11 @@ public partial class BulletBase : CharacterBody2D
     {
         _smokeTrail.AddAgePoint(GlobalPosition);
         OnMove?.Invoke(GlobalPosition.DistanceTo(_lastPosition));
+
+        Rotation = Direction.Angle();
         
-        Velocity = _dir * Speed;
-        MoveAndSlide();
+        Position += (Direction * Speed) * (float)delta;
+        // MoveAndSlide();
         
         _lastPosition = GlobalPosition;
     }

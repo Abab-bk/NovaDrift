@@ -5,6 +5,7 @@ using NathanHoad;
 using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Frameworks.Stats;
 using NovaDrift.Scripts.Prefabs.Components;
+using NovaDrift.Scripts.Prefabs.Weapons;
 
 namespace NovaDrift.Scripts.Prefabs.Actors;
 
@@ -19,7 +20,7 @@ public partial class Actor : CharacterBody2D
     [Export] public bool IsPlayer = false;
 
     [Export]
-    public Shooter Shooter
+    public BaseShooter Shooter
     {
         get => _shooter;
         set
@@ -39,7 +40,7 @@ public partial class Actor : CharacterBody2D
     public Action<BulletBase> OnShoot;
     public Action OnShooting;
     
-    private Shooter _shooter;
+    private BaseShooter _shooter;
 
     public Node2D ShooterNode;
     public readonly CharacterStats Stats = new CharacterStats();
