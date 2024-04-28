@@ -1,4 +1,5 @@
-﻿using Godot;
+﻿using System;
+using Godot;
 using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Components;

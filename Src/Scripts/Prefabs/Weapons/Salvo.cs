@@ -16,14 +16,17 @@ public partial class Salvo : BaseShooter
     private Timer _replenishTimer;
 
     private int _bulletCount;
+
+    private Action _startShooting;
+    private Action _stopShooting;
     
     public override void _Ready()
     {
         _replenishTimer = GetNode<Timer>("ReplenishTimer");
         _salvoBulletCountPanel = UiManager.Open_SalvoBulletCount();
 
-        Actor.StartShooting += () => { _replenishTimer.Stop(); };
-        Actor.StopShooting += () => { _replenishTimer.Start(); };
+        Actor.StartShooting += _startShooting = () => { _replenishTimer.Stop(); };
+        Actor.StopShooting += _stopShooting = () => { _replenishTimer.Start(); };
         _replenishTimer.Timeout += () =>
         {
             _bulletCount += 4;
@@ -37,6 +40,8 @@ public partial class Salvo : BaseShooter
     public override void Destroy()
     {
         UiManager.Destroy_SalvoBulletCount();
+        Actor.StartShooting -= _startShooting;
+        Actor.StopShooting -= _stopShooting;
     }
 
     public override void Shoot()

@@ -12,8 +12,8 @@ script = ExtResource("1_pwhl6")
 
 [node name="Sword1" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(140, 0)
-rotation = 1.5708
+position = Vector2(-229, -120)
+rotation = 0.610865
 
 [node name="Sprite2D" type="Sprite2D" parent="Sword1"]
 position = Vector2(-69, 0)
@@ -29,8 +29,9 @@ shape = SubResource("RectangleShape2D_h04xg")
 
 [node name="Sword2" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-140, 0)
-rotation = -1.5708
+position = Vector2(-229, 120)
+rotation = -0.610865
+scale = Vector2(1, 1)
 
 [node name="Sprite2D" type="Sprite2D" parent="Sword2"]
 position = Vector2(-69, 0)
