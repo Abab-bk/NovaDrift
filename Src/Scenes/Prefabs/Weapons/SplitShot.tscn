@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://c1a6vsj7aevhk"]
+
+[ext_resource type="PackedScene" uid="uid://b8u14jtp5pcjp" path="res://Scenes/Prefabs/Weapons/DefaultShooter.tscn" id="1_jb1ir"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Weapons/SplitShot.cs" id="2_b8m58"]
+
+[node name="SplitShot" instance=ExtResource("1_jb1ir")]
+script = ExtResource("2_b8m58")

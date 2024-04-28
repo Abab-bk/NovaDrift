@@ -23,14 +23,18 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="AbilityTitle" type="Label" parent="Content"]
+custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "Ability Name"
+autowrap_mode = 2
 clip_text = true
 
 [node name="AbilityDesc" type="Label" parent="Content"]
+custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 65
 text = "Nothing."
+autowrap_mode = 2
 text_overrun_behavior = 1
