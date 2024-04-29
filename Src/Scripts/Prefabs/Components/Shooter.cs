@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using AcidWallStudio.AcidUtilities;
+﻿using AcidWallStudio.AcidUtilities;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Weapons;
@@ -96,7 +94,6 @@ public partial class Shooter : BaseShooter
                 OnShoot?.Invoke(bullet);
                 bullet.OnHit += actor => { OnHit?.Invoke(actor); };
                 _burstIntervalTimer.Start();
-                // await ToSignal(_burstIntervalTimer, "timeout");
             }
         }
 

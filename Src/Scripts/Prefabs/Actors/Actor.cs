@@ -116,7 +116,14 @@ public partial class Actor : CharacterBody2D
 
         _visibleOnScreenNotifier2D.ScreenExited += MoveToWorldEdge;
     }
-    
+
+    public void TakeDamage(float value)
+    {
+        Stats.AddKnockBack(Stats.ShootKnockBack.Value);
+        Stats.Health.Decrease(value);
+        OnHit(value);
+    }
+
     protected void OnHit(float value)
     {
         UiManager.Open_DamageLabel().ShowValue(value, GetGlobalTransformWithCanvas().Origin);

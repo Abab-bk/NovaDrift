@@ -2,7 +2,8 @@
 
 namespace NovaDrift.Scripts.Systems;
 
-public class VfxFactory
+public static class VfxFactory
 {
-    public Node2D GetALightBall() { return GD.Load<Node2D>("res://Scenes/Vfx/LightBall.tscn"); }
+    public static Node2D GetALightBall() { return GD.Load<PackedScene>("res://Scenes/Vfx/LightBall.tscn").Instantiate<Node2D>(); }
+    public static Blast GetBlast() { return GD.Load<PackedScene>("res://Scenes/Vfx/Blast.tscn").Instantiate<Blast>(); }
 }

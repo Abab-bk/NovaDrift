@@ -1,9 +1,7 @@
-using System;
-using System.Collections.Generic;
 using AcidWallStudio.AcidUtilities;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors;
-using NovaDrift.Scripts.Prefabs.Weapons;
+using NovaDrift.Scripts.Prefabs.Actors.Mobs;
 using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts.Prefabs.Weapons;
@@ -61,9 +59,8 @@ public partial class SplitShot : BaseShooter
     {
         if (!_shootTimer.IsStopped()) { return; }
         if (_isBursting) { return; }
-
+    
         _isBursting = true;
-        
         
         for (int x = 0; x < Actor.Stats.BurstFire.Value; x++)
         {
@@ -78,28 +75,41 @@ public partial class SplitShot : BaseShooter
                     Build();
                 
                 bullet.GlobalPosition = GlobalPosition;
-                if ((int)Actor.Stats.BulletCount.Value + 3 == 1)
-                {
-                    bullet.Direction = bullet.Direction.Rotated(GlobalRotation);
-                }
-                else
-                {
-                    float arcRad = Mathf.DegToRad(Actor.Stats.ShootSpread.Value);
-                    float increment = arcRad / (Actor.Stats.BulletCount.Value - 1);
-                    bullet.Direction = bullet.Direction.Rotated(Actor.GlobalRotation + increment * i - arcRad / 2);
-                }
-
+                
+                float arcRad = Mathf.DegToRad(Actor.Stats.ShootSpread.Value);
+                float increment = arcRad / (Actor.Stats.BulletCount.Value - 1 + 3);
+                bullet.Direction = bullet.Direction.Rotated(Actor.GlobalRotation + increment * i - arcRad / 2);
+    
                 Global.GameWorld.AddChild(bullet);
                 
                 _shootTimer.Start();
         
                 OnShoot?.Invoke(bullet);
-                bullet.OnHit += actor => { OnHit?.Invoke(actor); };
+                bullet.OnHit += actor =>
+                {
+                    OnHit?.Invoke(actor);
+                    var blast = VfxFactory.GetBlast();
+                    Global.GameWorld.AddChild(blast);
+                    blast.GlobalPosition = bullet.GlobalPosition;
+                    foreach (var body in blast.GetBodies())
+                    {
+                        if (body is Actor blastActor)
+                        {
+                            if (blastActor is Player player && IsPlayer)
+                            {
+                                player.TakeDamage(20);
+                            }
+                            else if (blastActor is MobBase mob && !IsPlayer)
+                            {
+                                mob.TakeDamage(20);
+                            }
+                        }
+                    }
+                };
                 _burstIntervalTimer.Start();
-                // await ToSignal(_burstIntervalTimer, "timeout");
             }
         }
-
+    
         _burstCooldownTimer.WaitTime = Actor.Stats.ShootSpeed.Value * Actor.Stats.BurstFire.Value;
         _burstCooldownTimer.Start();
     }

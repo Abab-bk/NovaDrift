@@ -29,10 +29,14 @@ public partial class Salvo : BaseShooter
         Actor.StopShooting += _stopShooting = () => { _replenishTimer.Start(); };
         _replenishTimer.Timeout += () =>
         {
-            _bulletCount += 4;
+            _bulletCount += (4 + (int)Actor.Stats.BulletCount.Value - 1) - _bulletCount;
             _salvoBulletCountPanel.UpdateUi(_bulletCount);
         };
-        
+        Actor.Stats.ShootSpeed.ValueChanged += f =>
+        {
+            _replenishTimer.WaitTime -= f / 5;
+        };
+
         _replenishTimer.Start();
         _salvoBulletCountPanel.UpdateUi(_bulletCount);
     }
