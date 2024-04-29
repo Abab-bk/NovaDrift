@@ -93,6 +93,6 @@ public static class Wizard
 
     public static Vector2 GetMapCornerByIndex(int index)
     {
-        return MapCorners[index];
+        return MapCorners[Mathf.Min(index, MapCorners.Length - 1)];
     }
 }

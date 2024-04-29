@@ -32,9 +32,9 @@ public partial class Boltthrower : MobAiComponent
             Mob.Shoot();
             _shootDone = true;
             Machine.SetTrigger("ShootDone");
+            _boltthrowers.Remove(this);
         };
         
-        Mob.OnDied += () => _boltthrowers.Remove(this);
         _boltthrowers.Add(this);
     }
 
