@@ -1,4 +1,5 @@
-﻿using AcidWallStudio.AcidUtilities;
+﻿using System.Collections.Generic;
+using AcidWallStudio.AcidUtilities;
 using Godot;
 
 namespace NovaDrift.Scripts.Prefabs.Ai;
@@ -7,6 +8,8 @@ public partial class Boltthrower : MobAiComponent
 {
     private Vector2 _targetPos = Vector2.Zero;
     private bool _shootDone = false;
+    
+    static List<Boltthrower> _boltthrowers = new();
 
     public override void _Ready()
     {
@@ -15,6 +18,8 @@ public partial class Boltthrower : MobAiComponent
             Machine.SetTrigger("ShootDone");
             _shootDone = true;
         };
+        Mob.OnDied += () => _boltthrowers.Remove(this);
+        _boltthrowers.Add(this);
     }
 
     protected override void ConnectProcessSignals(State state, float delta)
@@ -30,13 +35,13 @@ public partial class Boltthrower : MobAiComponent
 
     private void _OnRunAwayProcess(float delta)
     {
-        Mob.SetTargetPosAndMove(Wizard.ReverseVectorX(GetOppositePos()) + new Vector2(-GetOppositePos().X, 0), delta);
+        Mob.SetTargetPosAndMove(Vector2.Right.Rotated(Mob.GlobalRotation) * 10000, delta);
     }
 
     private void _OnShootStateProcess(float delta)
     {
         // 面向对面
-        Mob.LookAt(GetOppositePos());
+        // Mob.LookAt(GetOppositePos());
         Mob.Shoot();
     }
 
@@ -46,44 +51,15 @@ public partial class Boltthrower : MobAiComponent
         {
             if (Mob.GlobalPosition.DistanceTo(_targetPos) < 20)
             {
-                if (_shootDone)
-                {
-                    Machine.SetTrigger("RunAway");
-                }
+                if (_shootDone) { Machine.SetTrigger("RunAway"); }
 
                 Machine.SetTrigger("ArriveOpposite");
             }
             Mob.SetTargetPosAndMove(_targetPos, delta);
             return;
         }
-        _targetPos = GetOppositePos();
+        _targetPos = Wizard.GetMapCornerByIndex(_boltthrowers.IndexOf(this));
+        GD.Print(_targetPos);
         Mob.SetTargetPosAndMove(_targetPos, delta);
-    }
-
-    private Vector2 GetOppositePos()
-    {
-        Vector2 targetPos = new Vector2();
-        if (Mob.GlobalPosition.X >= (float)DisplayServer.WindowGetSize().X / 2)
-        {
-            // 目前在右边，移动到左边
-            targetPos.X = 100;
-        } 
-        else if (Mob.GlobalPosition.X <= (float)DisplayServer.WindowGetSize().X / 2)
-        {
-            // 目前在左边，移动到右边
-            targetPos.X = (float)DisplayServer.WindowGetSize().X - 100;
-        }
-
-        if (Mob.GlobalPosition.Y >= (float)DisplayServer.WindowGetSize().Y / 2)
-        {
-            // 目前在下边，移动到上边
-            targetPos.Y = 100;
-        }
-        else if (Mob.GlobalPosition.Y <= (float)DisplayServer.WindowGetSize().Y / 2)
-        {
-            // 目前在上边，移动到下边
-            targetPos.Y = (float)DisplayServer.WindowGetSize().Y - 100;
-        }
-        return targetPos;
     }
 }

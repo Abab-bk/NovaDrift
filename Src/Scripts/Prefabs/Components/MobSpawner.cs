@@ -30,11 +30,13 @@ public partial class MobSpawner : Node2D
 {
     [Export] bool _enabled = true;
 
+    public static Action<int> GenerateMobByIdAction;
+
     private readonly List<WeightedListItem<int>> _mobListItems = new()
     {
         new WeightedListItem<int>(1001, 1),
         new WeightedListItem<int>(1002, 1),
-        new WeightedListItem<int>(1003, 3),
+        new WeightedListItem<int>(1003, 1),
     };
     private readonly List<WeightedListItem<SpawnType>> _spawnTypeListItems = new()
     {
@@ -51,12 +53,14 @@ public partial class MobSpawner : Node2D
     
     public override void _Ready()
     {
-        if (!_enabled) return;
-        
-        Global.OnGameStart += () => { _timer.Start(); };
+        GenerateMobByIdAction += GenerateMobById;
         
         _mobList = new(_mobListItems);
         _spawnTypeList = new(_spawnTypeListItems);
+        
+        if (!_enabled) return;
+        
+        Global.OnGameStart += () => { _timer.Start(); };
         
         _timer = new Timer
         {
@@ -67,10 +71,7 @@ public partial class MobSpawner : Node2D
         AddChild(_timer);
         _timer.Timeout += () =>
         {
-            if (GetTree().GetNodesInGroup("Mobs").Count < 2)
-            {
-                GenerateMob();
-            }
+            if (GetTree().GetNodesInGroup("Mobs").Count < 2) { GenerateMob(); }
 
             _timer.Start();
         };
@@ -83,12 +84,25 @@ public partial class MobSpawner : Node2D
         _waveInfo = NewWaveInfo();
         SpawnMob(_waveInfo.SelectSpawnType());
     }
+    
+    private void GenerateMobById(int id)
+    {
+        _waveInfo = new WaveInfo(new (
+            new List<WeightedListItem<int>> 
+            { 
+                new WeightedListItem<int>(id, 1), 
+            }
+        ), _spawnTypeList);
+        SpawnMob(_waveInfo.SelectSpawnType());
+    }
 
     private void SpawnMob(SpawnType spawnType)
     {
         MobInfo mobInfo = _waveInfo.SelectMob();
         int mobCount = _waveInfo.SelectMobCount(spawnType);
 
+        if (mobInfo.Id == 1002) { mobCount = Mathf.Min(mobCount, 4); }
+        
         spawnType.SetMobCount(mobCount);
         
         for (int i = 1; i <= mobCount; i++)

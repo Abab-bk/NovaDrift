@@ -3,6 +3,7 @@
 public class MobInfo
 {
     public string Name;
+    public int Id;
     public float Health;
     public float Speed;
     public float Damage;

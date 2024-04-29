@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Godot;
 using KaimiraGames;
 
@@ -6,6 +7,19 @@ namespace AcidWallStudio.AcidUtilities;
 
 public static class Wizard
 {
+    const float MapPadding = 100f;
+    private static readonly Vector2[] MapCorners = new []
+    {
+        // 右下
+        new Vector2(DisplayServer.WindowGetSize().X - MapPadding, DisplayServer.WindowGetSize().Y - MapPadding),
+        // 左下
+        new Vector2(MapPadding, DisplayServer.WindowGetSize().Y - MapPadding),
+        // 左上
+        new Vector2(MapPadding, MapPadding),
+        // 右上
+        new Vector2(DisplayServer.WindowGetSize().X - MapPadding, MapPadding)
+    };
+    
     public static bool FileExists(string path)
     {
         return FileAccess.FileExists(path);
@@ -49,5 +63,26 @@ public static class Wizard
     
     public static float FloatRange(this Random random, float min = 0.0f, float max = 1.0f) {
         return (float) (random.NextDouble() * (max - min) + min);
+    }
+
+    public static Vector2 GetClosestMapCorner(Vector2 pos)
+    {
+        float minDistance = float.MaxValue;
+        Vector2 result = Vector2.Zero;
+
+        foreach (Vector2 corner in MapCorners)
+        {
+            var distance = pos.DistanceTo(corner);
+            if (distance > minDistance) break;
+            minDistance = distance;
+            result = corner;
+        }
+        
+        return result;
+    }
+
+    public static Vector2 GetMapCornerByIndex(int index)
+    {
+        return MapCorners[index];
     }
 }

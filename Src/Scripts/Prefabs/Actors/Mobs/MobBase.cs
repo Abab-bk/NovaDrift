@@ -8,6 +8,8 @@ public partial class MobBase : Actor
 {
     public MobInfo MobInfo;
 
+    [Export] public string Sign;
+
     public override void _Ready()
     {
         base._Ready();

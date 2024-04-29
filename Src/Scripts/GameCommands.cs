@@ -1,5 +1,6 @@
 using Godot;
 using NovaDrift.Scripts;
+using NovaDrift.Scripts.Prefabs.Components;
 using YAT.Attributes;
 using YAT.Interfaces;
 using YAT.Scenes;
@@ -13,6 +14,19 @@ public static class GameCommands
 	{
 		RegisteredCommands.AddCommand(typeof(UseAbilityById));
 		RegisteredCommands.AddCommand(typeof(UseShooterById));
+		RegisteredCommands.AddCommand(typeof(GenerateMobById));
+	}
+}
+
+
+[Command("GenerateMobById", "GenerateMobById [Id]")]
+[Argument("id", "int", "The id for the mob.")]
+public sealed class GenerateMobById : ICommand
+{
+	public CommandResult Execute(CommandData data)
+	{
+		MobSpawner.GenerateMobByIdAction?.Invoke((int)data.Arguments["id"]);
+		return ICommand.Success();
 	}
 }
 

@@ -16,7 +16,7 @@ public partial class TerminalManager : Node
 
 	public override void _Ready()
 	{
-		GameTerminal = GD.Load<PackedScene>("uid://dsyqv187j7w76").Instantiate<GameTerminal>();
+		GameTerminal = GD.Load<PackedScene>("res://addons/yat/src/scenes/game_terminal/GameTerminal.tscn").Instantiate<GameTerminal>();
 
 		_yat = GetNode<YAT>("/root/YAT");
 		_yat.Ready += () =>

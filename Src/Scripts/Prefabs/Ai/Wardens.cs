@@ -1,6 +1,4 @@
 using Godot;
-using System;
-using NovaDrift.Scripts.Prefabs;
 
 namespace NovaDrift.Scripts.Prefabs.Ai;
 
@@ -17,7 +15,11 @@ public partial class Wardens : MobAiComponent
             OneShot = true
         };
         AddChild(_chargeTimer);
-        _chargeTimer.Timeout += () => { Machine.SetTrigger("Charged"); };
+        _chargeTimer.Timeout += () =>
+        {
+            Machine.SetTrigger("Charged");
+            GetNode<Node2D>("%LightBall").Hide();
+        };
     }
 
     protected override void ConnectEnteredSignals(State state)
@@ -30,13 +32,13 @@ public partial class Wardens : MobAiComponent
             }
             case "Charge":
             {
+                GetNode<Node2D>("%LightBall").Show();
                 _chargeTimer.Start();
                 break;
             }
             case "Attack":
             {
-                Mob.Shoot();
-                Machine.SetTrigger("Attacked");
+                Attack();
                 break;
             }
             case "RunAway":
@@ -44,6 +46,13 @@ public partial class Wardens : MobAiComponent
                 break;
             }
         }
+    }
+
+    private async void Attack()
+    {
+        Mob.Shoot();
+        await ToSignal(GetTree(), "process_frame");
+        Machine.SetTrigger("Attacked");
     }
 
     protected override void ConnectProcessSignals(State state, float delta)
@@ -55,7 +64,8 @@ public partial class Wardens : MobAiComponent
                 Mob.SetTargetAndMove(Global.Player, delta);
                 if (Mob.GlobalPosition.DistanceTo(Global.Player.GlobalPosition) < 400)
                 {
-                    Mob.TryStop(delta);
+                    // Mob.TryStop(delta);
+                    Mob.Velocity = Vector2.Zero;
                     Machine.SetTrigger("ArrivedPlayer");
                 }
                 break;
@@ -71,7 +81,7 @@ public partial class Wardens : MobAiComponent
             }
             case "RunAway":
             {
-                Mob.SetTargetPosAndMove(new Vector2(-300, -300), delta);
+                Mob.SetTargetPosAndMove(Vector2.Right.Rotated(Mob.GlobalRotation) * 10000, delta);
                 break;
             }
         }

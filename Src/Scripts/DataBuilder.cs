@@ -171,6 +171,7 @@ public static class DataBuilder
         Game.MobInfo mobInfo = new Game.MobInfo
         {
             Name = tbMobInfo.Name,
+            Id = tbMobInfo.Id,
             Health = tbMobInfo.Health,
             Speed = tbMobInfo.Speed,
             Damage = tbMobInfo.Damage,
