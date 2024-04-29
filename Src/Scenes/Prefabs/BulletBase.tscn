@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://addons/AcidNodes/SmokeTrail.cs" id="5_a0yah"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_jcqaf"]
-size = Vector2(73, 28)
+size = Vector2(49, 12)
 
 [sub_resource type="Gradient" id="Gradient_06518"]
 colors = PackedColorArray(0, 0, 0, 0, 0.368627, 0.505882, 0.592157, 1)
@@ -18,13 +18,14 @@ script = ExtResource("1_l73w7")
 _hitBox = NodePath("HitBox")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_7373b")
 
 [node name="HitBox" type="Area2D" parent="."]
 script = ExtResource("2_74isq")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
-position = Vector2(-13.5, 1)
+position = Vector2(-13.5, 0)
 shape = SubResource("RectangleShape2D_jcqaf")
 
 [node name="FreeSelfWhenExitScreen" type="VisibleOnScreenNotifier2D" parent="."]

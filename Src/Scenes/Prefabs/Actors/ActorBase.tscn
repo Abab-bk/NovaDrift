@@ -1,11 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://b1vmhmtmuma0x"]
+[gd_scene load_steps=4 format=3 uid="uid://b1vmhmtmuma0x"]
 
-[ext_resource type="Texture2D" uid="uid://br5b76vniv46c" path="res://Assets/Textures/Objects/Actors/Players/Player.png" id="1_8futd"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Actor.cs" id="1_s858g"]
+[ext_resource type="Texture2D" uid="uid://c3i8wr1dlwymr" path="res://Assets/Textures/Bodies/Default.png" id="2_44451"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HurtBox.cs" id="4_lb4uu"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_j2ixq"]
-size = Vector2(124, 124)
 
 [node name="ActorBase" type="CharacterBody2D" node_paths=PackedStringArray("_hurtBox", "_visibleOnScreenNotifier2D")]
 motion_mode = 1
@@ -14,10 +11,9 @@ _hurtBox = NodePath("Components/HurtBox")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("1_8futd")
+texture = ExtResource("2_44451")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_j2ixq")
 
 [node name="Components" type="Node2D" parent="."]
 
@@ -32,4 +28,4 @@ script = ExtResource("4_lb4uu")
 
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(32, 0)
-scale = Vector2(3, 4.1129)
+scale = Vector2(2.4, 3.29032)

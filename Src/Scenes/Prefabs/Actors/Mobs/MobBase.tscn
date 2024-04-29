@@ -1,13 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dunej3cac37vn"]
+[gd_scene load_steps=6 format=3 uid="uid://dunej3cac37vn"]
 
 [ext_resource type="PackedScene" uid="uid://b1vmhmtmuma0x" path="res://Scenes/Prefabs/Actors/ActorBase.tscn" id="1_kd23v"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Mobs/MobBase.cs" id="2_e2oe2"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/MobAiComponent.cs" id="3_d6jih"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/Shooter.cs" id="3_j5x1v"]
 [ext_resource type="Texture2D" uid="uid://5n0bewp45vcv" path="res://Assets/Textures/Mobs/Beamcaster0.png" id="3_sc2bm"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hy5bx"]
-size = Vector2(124, 124)
 
 [node name="MobBase" node_paths=PackedStringArray("Sprite", "Shooter") instance=ExtResource("1_kd23v")]
 script = ExtResource("2_e2oe2")
@@ -24,9 +21,6 @@ Actor = NodePath("../../..")
 
 [node name="HurtBox" parent="Components" index="1" node_paths=PackedStringArray("Actor")]
 Actor = NodePath("../..")
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtBox" index="0"]
-shape = SubResource("RectangleShape2D_hy5bx")
 
 [node name="MobAiComponent" type="Node" parent="State" index="0" node_paths=PackedStringArray("Mob")]
 script = ExtResource("3_d6jih")

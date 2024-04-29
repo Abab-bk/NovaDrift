@@ -1,9 +1,16 @@
-[gd_scene load_steps=20 format=3 uid="uid://duok4mn4qkth7"]
+[gd_scene load_steps=23 format=3 uid="uid://duok4mn4qkth7"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_0ifgw"]
 [ext_resource type="Texture2D" uid="uid://byoqa0mauu43i" path="res://Assets/Textures/Mobs/Beamcaster1.png" id="2_4h4xk"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/FreeSelfWhenExitScreen.cs" id="2_06ekw"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/Boltthrower.cs" id="2_ayrbs"]
+[ext_resource type="PackedScene" uid="uid://ddh1yqvil5l6g" path="res://Scenes/Vfx/LightBall.tscn" id="5_gd3g6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ym3x2"]
+size = Vector2(36, 96)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_41eva"]
+size = Vector2(36, 96)
 
 [sub_resource type="StateConfig" id="StateConfig_kpjtb"]
 state_name = &"Idle"
@@ -16,7 +23,7 @@ editor_offset = Vector2(420, 60)
 
 [sub_resource type="StateConfig" id="StateConfig_h8p8w"]
 state_name = &"Shoot"
-editor_offset = Vector2(960, 60)
+editor_offset = Vector2(940, 60)
 
 [sub_resource type="StateConfig" id="StateConfig_s5rwj"]
 state_name = &"RunAway"
@@ -80,7 +87,17 @@ variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_dgcdw"
 [node name="Boltthrower" instance=ExtResource("1_0ifgw")]
 
 [node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_4h4xk")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_ym3x2")
+
+[node name="ShooterNode" parent="Components" index="0"]
+position = Vector2(19, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_41eva")
 
 [node name="MobAiComponent" parent="State" index="0"]
 script = ExtResource("2_ayrbs")
@@ -88,5 +105,15 @@ script = ExtResource("2_ayrbs")
 [node name="HFSM" parent="State" index="1"]
 root_fsm_config = SubResource("FSMConfig_v8u54")
 
+[node name="VisibleOnScreenNotifier2D" parent="." index="4"]
+position = Vector2(9.5, 0.951601)
+scale = Vector2(0.85, 3.19516)
+
 [node name="FreeSelfWhenExitScreen" type="VisibleOnScreenNotifier2D" parent="." index="5"]
 script = ExtResource("2_06ekw")
+
+[node name="LightBall" parent="." index="6" instance=ExtResource("5_gd3g6")]
+unique_name_in_owner = true
+visible = false
+position = Vector2(54, 0)
+scale = Vector2(0.3, 0.3)

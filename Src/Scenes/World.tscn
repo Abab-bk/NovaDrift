@@ -85,13 +85,7 @@ unique_name_in_owner = true
 position = Vector2(2216, 1052)
 scale = Vector2(0.24, 0.24)
 
-[node name="Camera2D" type="Camera2D" parent="."]
-anchor_mode = 0
-zoom = Vector2(0.5, 0.5)
-
 [node name="MobSpawner" type="Node2D" parent="."]
-position = Vector2(1245, 681)
+position = Vector2(1253, 670)
 script = ExtResource("4_4mpug")
 _enabled = false
-
-[node name="Marker2D" type="Marker2D" parent="."]

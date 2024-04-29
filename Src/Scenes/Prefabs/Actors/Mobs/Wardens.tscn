@@ -1,9 +1,15 @@
-[gd_scene load_steps=21 format=3 uid="uid://4cuy72rqjgqw"]
+[gd_scene load_steps=23 format=3 uid="uid://4cuy72rqjgqw"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_u23yy"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/Wardens.cs" id="2_i27au"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/FreeSelfWhenExitScreen.cs" id="3_t68ta"]
 [ext_resource type="PackedScene" uid="uid://ddh1yqvil5l6g" path="res://Scenes/Vfx/LightBall.tscn" id="4_fbhcj"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3jmk"]
+size = Vector2(40, 50)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbx4f"]
+size = Vector2(40, 50)
 
 [sub_resource type="StateConfig" id="StateConfig_wtddb"]
 state_name = &"Idle"
@@ -84,6 +90,16 @@ variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_2ftj0"
 
 [node name="Sprite2D" parent="." index="0"]
 modulate = Color(1, 1, 0, 1)
+scale = Vector2(0.4, 0.4)
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_w3jmk")
+
+[node name="ShooterNode" parent="Components" index="0"]
+position = Vector2(20, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_sbx4f")
 
 [node name="MobAiComponent" parent="State" index="0"]
 script = ExtResource("2_i27au")
@@ -95,12 +111,12 @@ root_fsm_config = SubResource("FSMConfig_xh2dx")
 visible = false
 
 [node name="FreeSelfWhenExitScreen" type="VisibleOnScreenNotifier2D" parent="." index="5"]
-position = Vector2(37, 0)
-scale = Vector2(2.6, 2.6)
+position = Vector2(16, 0)
+scale = Vector2(0.5, 2.6)
 script = ExtResource("3_t68ta")
 
 [node name="LightBall" parent="." index="6" instance=ExtResource("4_fbhcj")]
 unique_name_in_owner = true
 visible = false
-position = Vector2(134, 0)
-scale = Vector2(0.5, 0.5)
+position = Vector2(52, 0)
+scale = Vector2(0.3, 0.3)

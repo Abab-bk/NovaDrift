@@ -2,13 +2,15 @@
 
 [ext_resource type="PackedScene" uid="uid://b1vmhmtmuma0x" path="res://Scenes/Prefabs/Actors/ActorBase.tscn" id="1_0c8c2"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Player.cs" id="2_15kon"]
-[ext_resource type="Texture2D" uid="uid://c3i8wr1dlwymr" path="res://Assets/Textures/Bodies/Default.png" id="3_fa43h"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/Shooter.cs" id="3_hlk8c"]
 [ext_resource type="Script" path="res://addons/AcidNodes/SmokeTrail.cs" id="5_dp7hw"]
 [ext_resource type="Curve" uid="uid://bfftvhg22hmgf" path="res://Assets/Resources/BaseTrail.tres" id="5_o1eaj"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pl074"]
+size = Vector2(78, 100)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w2h2n"]
-size = Vector2(122, 124)
+size = Vector2(78, 100)
 
 [sub_resource type="Gradient" id="Gradient_y1nwb"]
 colors = PackedColorArray(0, 0, 0, 0, 0.631373, 1, 1, 1)
@@ -19,11 +21,11 @@ Sprite = NodePath("Sprite2D")
 IsPlayer = true
 Shooter = NodePath("Components/ShooterNode/Shooter")
 
-[node name="Sprite2D" parent="." index="0"]
-texture = ExtResource("3_fa43h")
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_pl074")
 
 [node name="ShooterNode" parent="Components" index="0"]
-position = Vector2(93, 0)
+position = Vector2(42, 0)
 
 [node name="Shooter" type="Node2D" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
 script = ExtResource("3_hlk8c")
@@ -34,6 +36,10 @@ Actor = NodePath("../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtBox" index="0"]
 shape = SubResource("RectangleShape2D_w2h2n")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="4"]
+position = Vector2(25, 0)
+scale = Vector2(2, 2.74193)
 
 [node name="SmokeTrail" type="Line2D" parent="." index="5"]
 unique_name_in_owner = true

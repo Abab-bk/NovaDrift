@@ -11,13 +11,13 @@ public static class Wizard
     private static readonly Vector2[] MapCorners = new []
     {
         // 右下
-        new Vector2(DisplayServer.WindowGetSize().X - MapPadding, DisplayServer.WindowGetSize().Y - MapPadding),
+        new Vector2((float)ProjectSettings.GetSetting("display/window/size/viewport_width") - MapPadding, (float)ProjectSettings.GetSetting("display/window/size/viewport_height") - MapPadding),
         // 左下
-        new Vector2(MapPadding, DisplayServer.WindowGetSize().Y - MapPadding),
+        new Vector2(MapPadding, (float)ProjectSettings.GetSetting("display/window/size/viewport_height") - MapPadding),
         // 左上
         new Vector2(MapPadding, MapPadding),
         // 右上
-        new Vector2(DisplayServer.WindowGetSize().X - MapPadding, MapPadding)
+        new Vector2((float)ProjectSettings.GetSetting("display/window/size/viewport_width") - MapPadding, MapPadding)
     };
     
     public static bool FileExists(string path)
@@ -61,6 +61,16 @@ public static class Wizard
         return new Vector2(-vector.X, vector.Y);
     }
     
+    public static Vector2 ReverseVectorY(Vector2 vector)
+    {
+        return new Vector2(vector.X, -vector.Y);
+    }
+
+    public static Vector2 ReverseVector(Vector2 vector)
+    {
+        return new Vector2(-vector.X, -vector.Y);
+    }
+
     public static float FloatRange(this Random random, float min = 0.0f, float max = 1.0f) {
         return (float) (random.NextDouble() * (max - min) + min);
     }
