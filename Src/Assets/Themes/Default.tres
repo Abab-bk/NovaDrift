@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://b7g6xk4hko1sg"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://b7g6xk4hko1sg"]
 
 [ext_resource type="FontFile" uid="uid://djmsc2817eku8" path="res://Assets/Fonts/SourceHanSansCN-Medium.otf" id="1_bss3n"]
 
@@ -44,6 +44,36 @@ corner_radius_bottom_left = 100
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x0rvm"]
 
+[sub_resource type="ImageTexture" id="ImageTexture_4plgt"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vn3sr"]
+bg_color = Color(0.94902, 0.94902, 0.94902, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.47451, 0.513726, 0.537255, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+expand_margin_top = 24.0
+expand_margin_bottom = 24.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_urdej"]
+bg_color = Color(0.0235294, 0.0509804, 0.0509804, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.427451, 0.462745, 0.482353, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+expand_margin_top = 24.0
+expand_margin_bottom = 24.0
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdmgo"]
 bg_color = Color(0, 0, 0, 0.317647)
 
@@ -64,5 +94,12 @@ EmptyBtn/styles/focus = SubResource("StyleBoxEmpty_x0rvm")
 EmptyBtn/styles/hover = SubResource("StyleBoxEmpty_x0rvm")
 EmptyBtn/styles/normal = SubResource("StyleBoxEmpty_x0rvm")
 EmptyBtn/styles/pressed = SubResource("StyleBoxEmpty_x0rvm")
+HSlider/icons/grabber = SubResource("ImageTexture_4plgt")
+HSlider/icons/grabber_disabled = SubResource("ImageTexture_4plgt")
+HSlider/icons/grabber_highlight = SubResource("ImageTexture_4plgt")
+HSlider/icons/tick = SubResource("ImageTexture_4plgt")
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_vn3sr")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_vn3sr")
+HSlider/styles/slider = SubResource("StyleBoxFlat_urdej")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_cdmgo")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_n1uxb")

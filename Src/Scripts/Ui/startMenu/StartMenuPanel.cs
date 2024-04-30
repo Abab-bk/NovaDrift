@@ -15,6 +15,10 @@ public partial class StartMenuPanel : StartMenu
         {
             GetTree().Quit();
         };
+        S_SettingBtn.Instance.OnClick += () =>
+        {
+            OpenNextUi(UiManager.UiName.Setting);
+        };
 
         Global.OnGameStart += () =>
         {

@@ -15,6 +15,7 @@ public static partial class UiManager
         public const string PausedMenu = "PausedMenu";
         public const string SalvoBulletCount = "SalvoBulletCount";
         public const string SelectAbility = "SelectAbility";
+        public const string Setting = "Setting";
         public const string StartMenu = "StartMenu";
         public const string StatsMonitor = "StatsMonitor";
         public const string StatsMonitorItem = "StatsMonitorItem";
@@ -450,6 +451,54 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.SelectAbility.SelectAbilityPanel[] Get_SelectAbility_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.SelectAbility.SelectAbilityPanel>(nameof(NovaDrift.Scripts.Ui.SelectAbility.SelectAbility));
+    }
+
+    /// <summary>
+    /// 创建 Setting, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Setting.SettingPanel Create_Setting()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.Setting.SettingPanel>(UiName.Setting);
+    }
+
+    /// <summary>
+    /// 打开 Setting, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Setting.SettingPanel Open_Setting()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.Setting.SettingPanel>(UiName.Setting);
+    }
+
+    /// <summary>
+    /// 隐藏 Setting 的所有实例
+    /// </summary>
+    public static void Hide_Setting()
+    {
+        var uiInstance = Get_Setting_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 Setting 的所有实例
+    /// </summary>
+    public static void Destroy_Setting()
+    {
+        var uiInstance = Get_Setting_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 Setting 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Setting.SettingPanel[] Get_Setting_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.Setting.SettingPanel>(nameof(NovaDrift.Scripts.Ui.Setting.Setting));
     }
 
     /// <summary>
