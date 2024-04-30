@@ -4,6 +4,7 @@ using DsUi;
 using GDebugPanelGodot.Core;
 using Godot;
 using NathanHoad;
+using NovaDrift.addons.AcidUtilities;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Components;
 
@@ -25,9 +26,8 @@ public partial class GameWorld : Node2D
         Global.OnGameOver += GameOver;
         
         DataBuilder.Init();
+        AcidSaver.LoadAll();
         
-        // GameCommands.RegisterCommands();
-
         if (Global.CurrentPlatform != GamePlatform.Desktop)
         {
             Global.OnGameInit?.Invoke();

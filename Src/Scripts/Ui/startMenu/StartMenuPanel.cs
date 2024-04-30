@@ -1,5 +1,6 @@
 using DsUi;
 using Godot;
+using NovaDrift.Scripts.Ui.Setting;
 
 namespace NovaDrift.Scripts.Ui.StartMenu;
 

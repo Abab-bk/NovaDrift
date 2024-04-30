@@ -47,23 +47,70 @@ theme_override_constants/margin_right = 600
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 20
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="UiVolum" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/UiVolum"]
 custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
 size_flags_horizontal = 0
-text = "总音量"
+text = "Ui音量"
 label_settings = ExtResource("4_87fsr")
 horizontal_alignment = 2
 
-[node name="HSlider" type="HSlider" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="UiVolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/UiVolum"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
+max_value = 1.0
+step = 0.05
+value = 0.8
+
+[node name="MusicVolum" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/MusicVolum"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "音乐音量"
+label_settings = ExtResource("4_87fsr")
+horizontal_alignment = 2
+
+[node name="MusicVolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/MusicVolum"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.05
+value = 0.8
+
+[node name="SoundVolum" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/SoundVolum"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "音效音量"
+label_settings = ExtResource("4_87fsr")
+horizontal_alignment = 2
+
+[node name="SoundVolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/SoundVolum"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 1
+max_value = 1.0
+step = 0.05
+value = 0.8
 
 [node name="CloseBtn" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true

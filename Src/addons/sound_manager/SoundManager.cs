@@ -74,6 +74,12 @@ namespace NathanHoad
         {
             Instance.Call("set_sound_volume", volume);
         }
+        
+        
+        public static void SetUiSoundVolume(float volume)
+        {
+            Instance.Call("set_ui_sound_volume", volume);
+        }
 
 
         public static AudioStreamPlayer PlaySound(AudioStream resource, string overrideBus = "")

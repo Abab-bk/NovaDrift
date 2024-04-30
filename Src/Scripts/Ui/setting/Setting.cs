@@ -40,7 +40,7 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.HBoxContainer.Label
+    /// 类型: <see cref="Godot.Label"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.UiVolum.Label
     /// </summary>
     public class Label_1 : UiNode<SettingPanel, Godot.Label, Label_1>
     {
@@ -49,18 +49,18 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HSlider"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.HBoxContainer.HSlider
+    /// 类型: <see cref="Godot.HSlider"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.UiVolum.UiVolumeSlider
     /// </summary>
-    public class HSlider : UiNode<SettingPanel, Godot.HSlider, HSlider>
+    public class UiVolumeSlider : UiNode<SettingPanel, Godot.HSlider, UiVolumeSlider>
     {
-        public HSlider(SettingPanel uiPanel, Godot.HSlider node) : base(uiPanel, node) {  }
-        public override HSlider Clone() => new (UiPanel, (Godot.HSlider)Instance.Duplicate());
+        public UiVolumeSlider(SettingPanel uiPanel, Godot.HSlider node) : base(uiPanel, node) {  }
+        public override UiVolumeSlider Clone() => new (UiPanel, (Godot.HSlider)Instance.Duplicate());
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.HBoxContainer
+    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.UiVolum
     /// </summary>
-    public class HBoxContainer : UiNode<SettingPanel, Godot.HBoxContainer, HBoxContainer>
+    public class UiVolum : UiNode<SettingPanel, Godot.HBoxContainer, UiVolum>
     {
         /// <summary>
         /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.Label
@@ -76,20 +76,126 @@ public abstract partial class Setting : UiBase
         private Label_1 _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.HSlider
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.UiVolumeSlider
         /// </summary>
-        public HSlider L_HSlider
+        public UiVolumeSlider L_UiVolumeSlider
         {
             get
             {
-                if (_L_HSlider == null) _L_HSlider = new HSlider(UiPanel, Instance.GetNode<Godot.HSlider>("HSlider"));
-                return _L_HSlider;
+                if (_L_UiVolumeSlider == null) _L_UiVolumeSlider = new UiVolumeSlider(UiPanel, Instance.GetNode<Godot.HSlider>("UiVolumeSlider"));
+                return _L_UiVolumeSlider;
             }
         }
-        private HSlider _L_HSlider;
+        private UiVolumeSlider _L_UiVolumeSlider;
 
-        public HBoxContainer(SettingPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
-        public override HBoxContainer Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+        public UiVolum(SettingPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override UiVolum Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.Label"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.MusicVolum.Label
+    /// </summary>
+    public class Label_2 : UiNode<SettingPanel, Godot.Label, Label_2>
+    {
+        public Label_2(SettingPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Label_2 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.HSlider"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.MusicVolum.MusicVolumeSlider
+    /// </summary>
+    public class MusicVolumeSlider : UiNode<SettingPanel, Godot.HSlider, MusicVolumeSlider>
+    {
+        public MusicVolumeSlider(SettingPanel uiPanel, Godot.HSlider node) : base(uiPanel, node) {  }
+        public override MusicVolumeSlider Clone() => new (UiPanel, (Godot.HSlider)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.MusicVolum
+    /// </summary>
+    public class MusicVolum : UiNode<SettingPanel, Godot.HBoxContainer, MusicVolum>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.Label
+        /// </summary>
+        public Label_2 L_Label
+        {
+            get
+            {
+                if (_L_Label == null) _L_Label = new Label_2(UiPanel, Instance.GetNode<Godot.Label>("Label"));
+                return _L_Label;
+            }
+        }
+        private Label_2 _L_Label;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.MusicVolumeSlider
+        /// </summary>
+        public MusicVolumeSlider L_MusicVolumeSlider
+        {
+            get
+            {
+                if (_L_MusicVolumeSlider == null) _L_MusicVolumeSlider = new MusicVolumeSlider(UiPanel, Instance.GetNode<Godot.HSlider>("MusicVolumeSlider"));
+                return _L_MusicVolumeSlider;
+            }
+        }
+        private MusicVolumeSlider _L_MusicVolumeSlider;
+
+        public MusicVolum(SettingPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override MusicVolum Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.Label"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.SoundVolum.Label
+    /// </summary>
+    public class Label_3 : UiNode<SettingPanel, Godot.Label, Label_3>
+    {
+        public Label_3(SettingPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Label_3 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.HSlider"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.SoundVolum.SoundVolumeSlider
+    /// </summary>
+    public class SoundVolumeSlider : UiNode<SettingPanel, Godot.HSlider, SoundVolumeSlider>
+    {
+        public SoundVolumeSlider(SettingPanel uiPanel, Godot.HSlider node) : base(uiPanel, node) {  }
+        public override SoundVolumeSlider Clone() => new (UiPanel, (Godot.HSlider)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.SoundVolum
+    /// </summary>
+    public class SoundVolum : UiNode<SettingPanel, Godot.HBoxContainer, SoundVolum>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.Label
+        /// </summary>
+        public Label_3 L_Label
+        {
+            get
+            {
+                if (_L_Label == null) _L_Label = new Label_3(UiPanel, Instance.GetNode<Godot.Label>("Label"));
+                return _L_Label;
+            }
+        }
+        private Label_3 _L_Label;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.SoundVolumeSlider
+        /// </summary>
+        public SoundVolumeSlider L_SoundVolumeSlider
+        {
+            get
+            {
+                if (_L_SoundVolumeSlider == null) _L_SoundVolumeSlider = new SoundVolumeSlider(UiPanel, Instance.GetNode<Godot.HSlider>("SoundVolumeSlider"));
+                return _L_SoundVolumeSlider;
+            }
+        }
+        private SoundVolumeSlider _L_SoundVolumeSlider;
+
+        public SoundVolum(SettingPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override SoundVolum Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
@@ -98,17 +204,43 @@ public abstract partial class Setting : UiBase
     public class VBoxContainer_2 : UiNode<SettingPanel, Godot.VBoxContainer, VBoxContainer_2>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.HBoxContainer
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.UiVolum
         /// </summary>
-        public HBoxContainer L_HBoxContainer
+        public UiVolum L_UiVolum
         {
             get
             {
-                if (_L_HBoxContainer == null) _L_HBoxContainer = new HBoxContainer(UiPanel, Instance.GetNode<Godot.HBoxContainer>("HBoxContainer"));
-                return _L_HBoxContainer;
+                if (_L_UiVolum == null) _L_UiVolum = new UiVolum(UiPanel, Instance.GetNode<Godot.HBoxContainer>("UiVolum"));
+                return _L_UiVolum;
             }
         }
-        private HBoxContainer _L_HBoxContainer;
+        private UiVolum _L_UiVolum;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.MusicVolum
+        /// </summary>
+        public MusicVolum L_MusicVolum
+        {
+            get
+            {
+                if (_L_MusicVolum == null) _L_MusicVolum = new MusicVolum(UiPanel, Instance.GetNode<Godot.HBoxContainer>("MusicVolum"));
+                return _L_MusicVolum;
+            }
+        }
+        private MusicVolum _L_MusicVolum;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.SoundVolum
+        /// </summary>
+        public SoundVolum L_SoundVolum
+        {
+            get
+            {
+                if (_L_SoundVolum == null) _L_SoundVolum = new SoundVolum(UiPanel, Instance.GetNode<Godot.HBoxContainer>("SoundVolum"));
+                return _L_SoundVolum;
+            }
+        }
+        private SoundVolum _L_SoundVolum;
 
         public VBoxContainer_2(SettingPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
         public override VBoxContainer_2 Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
@@ -239,14 +371,34 @@ public abstract partial class Setting : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.HBoxContainer.HSlider
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.UiVolum.UiVolumeSlider
     /// </summary>
-    public HSlider S_HSlider => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer.L_HBoxContainer.L_HSlider;
+    public UiVolumeSlider S_UiVolumeSlider => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer.L_UiVolum.L_UiVolumeSlider;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.HBoxContainer
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.UiVolum
     /// </summary>
-    public HBoxContainer S_HBoxContainer => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer.L_HBoxContainer;
+    public UiVolum S_UiVolum => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer.L_UiVolum;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.MusicVolum.MusicVolumeSlider
+    /// </summary>
+    public MusicVolumeSlider S_MusicVolumeSlider => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer.L_MusicVolum.L_MusicVolumeSlider;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.MusicVolum
+    /// </summary>
+    public MusicVolum S_MusicVolum => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer.L_MusicVolum;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.SoundVolum.SoundVolumeSlider
+    /// </summary>
+    public SoundVolumeSlider S_SoundVolumeSlider => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer.L_SoundVolum.L_SoundVolumeSlider;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.SoundVolum
+    /// </summary>
+    public SoundVolum S_SoundVolum => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer.L_SoundVolum;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.CloseBtn
