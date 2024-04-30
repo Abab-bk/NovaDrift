@@ -1,11 +1,11 @@
 using AcidJoystick;
 using AcidWallStudio.AcidUtilities;
 using DsUi;
+using GDebugPanelGodot.Core;
 using Godot;
 using NathanHoad;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Components;
-using YAT.Commands;
 
 namespace NovaDrift.Scripts;
 
@@ -26,7 +26,7 @@ public partial class GameWorld : Node2D
         
         DataBuilder.Init();
         
-        GameCommands.RegisterCommands();
+        // GameCommands.RegisterCommands();
 
         if (Global.CurrentPlatform != GamePlatform.Desktop)
         {

@@ -186,6 +186,6 @@ public static class DataBuilder
     public static void Init()
     {
         _tables = new Tables(file => JsonSerializer.Deserialize<JsonElement>(
-            Wizard.ReadAllText($"Assets/DataBase/{file}.json")));
+            Wizard.ReadAllText($"res://Assets/DataBase/{file}.json")));
     }
 }

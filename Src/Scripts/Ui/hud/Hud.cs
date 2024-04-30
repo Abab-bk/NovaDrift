@@ -20,6 +20,19 @@ public abstract partial class Hud : UiBase
     }
     private MarginContainer _L_MarginContainer;
 
+    /// <summary>
+    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Control"/>, 节点路径: Hud.DebugPanel
+    /// </summary>
+    public DebugPanel L_DebugPanel
+    {
+        get
+        {
+            if (_L_DebugPanel == null) _L_DebugPanel = new DebugPanel((HudPanel)this, GetNode<Godot.Control>("DebugPanel"));
+            return _L_DebugPanel;
+        }
+    }
+    private DebugPanel _L_DebugPanel;
+
 
     public Hud() : base(nameof(Hud))
     {
@@ -127,6 +140,15 @@ public abstract partial class Hud : UiBase
         public override MarginContainer Clone() => new (UiPanel, (Godot.MarginContainer)Instance.Duplicate());
     }
 
+    /// <summary>
+    /// 类型: <see cref="Godot.Control"/>, 路径: Hud.DebugPanel
+    /// </summary>
+    public class DebugPanel : UiNode<HudPanel, Godot.Control, DebugPanel>
+    {
+        public DebugPanel(HudPanel uiPanel, Godot.Control node) : base(uiPanel, node) {  }
+        public override DebugPanel Clone() => new (UiPanel, (Godot.Control)Instance.Duplicate());
+    }
+
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: Hud.MarginContainer.VBoxContainer.ExpProgressBar
@@ -152,5 +174,10 @@ public abstract partial class Hud : UiBase
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: Hud.MarginContainer
     /// </summary>
     public MarginContainer S_MarginContainer => L_MarginContainer;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Control"/>, 节点路径: Hud.DebugPanel
+    /// </summary>
+    public DebugPanel S_DebugPanel => L_DebugPanel;
 
 }

@@ -1,4 +1,6 @@
 using DsUi;
+using GDebugPanelGodot.Core;
+using GDebugPanelGodot.DebugActions.Containers;
 using Godot;
 
 namespace NovaDrift.Scripts.Ui.Hud;
@@ -7,6 +9,10 @@ public partial class HudPanel : Hud
 {
     private TextureProgressBar _expBar;
     private TextureProgressBar _hpBar;
+    
+    private bool _isDebugPanelOpened = false;
+
+    [Export] private Control _debugPanel;
     
     public override void OnCreateUi()
     {
@@ -19,6 +25,8 @@ public partial class HudPanel : Hud
             Global.StopGame();
         };
         Global.OnGameOver += Destroy;
+        
+        GenerateDebugPanel();
     }
     
     public void UpdateExpBar(float ratio)
@@ -54,5 +62,23 @@ public partial class HudPanel : Hud
                 UiManager.Get_PausedMenu_Instance()[0].ShowUi();
             }
         }
+        if (@event.IsActionPressed("OpenConsole"))
+        {
+            _isDebugPanelOpened = !_isDebugPanelOpened;
+
+            if (_isDebugPanelOpened)
+            {
+                Global.StopGame();
+                GDebugPanel.Show(_debugPanel); return;
+            }
+            Global.ResumeGame();
+            GDebugPanel.Hide();
+        }
+    }
+
+    private void GenerateDebugPanel()
+    {
+        IDebugActionsSection playerSection = GDebugPanel.AddSection("Player", new PlayerCommands());
+        IDebugActionsSection worldSection = GDebugPanel.AddSection("World", new WorldCommands());
     }
 }

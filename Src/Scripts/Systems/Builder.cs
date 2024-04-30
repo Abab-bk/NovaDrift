@@ -1,4 +1,5 @@
-﻿using System.Linq.Expressions;
+﻿using System;
+using System.Linq.Expressions;
 using Godot;
 using NovaDrift.Scripts.Prefabs;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
@@ -7,7 +8,29 @@ namespace NovaDrift.Scripts.Systems;
 
 public class BulletBuilder
 {
-    private readonly BulletBase _bulletBase = GD.Load<PackedScene>("res://Scenes/Prefabs/BulletBase.tscn").Instantiate() as BulletBase;
+    public enum BulletType
+    {
+        Normal,
+        FireBall,
+    }
+    
+    private readonly BulletBase _bulletBase;
+
+    public BulletBuilder(BulletType type = BulletType.Normal)
+    {
+        switch (type)
+        {
+            case BulletType.Normal:
+                _bulletBase = GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/NormalBullet.tscn").Instantiate() as BulletBase;
+                break;
+            case BulletType.FireBall:
+                _bulletBase = GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/FireBall.tscn").Instantiate() as BulletBase;
+                break;
+            default:
+                _bulletBase = GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/NormalBullet.tscn").Instantiate() as BulletBase;
+                throw new Exception("无法识别的子弹类型");
+        }
+    }
 
     public BulletBuilder SetDegeneration(float degeneration)
     {

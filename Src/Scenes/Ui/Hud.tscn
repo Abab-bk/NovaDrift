@@ -15,7 +15,7 @@ colors = PackedColorArray(0.956863, 0, 0.368627, 1, 0.956863, 0, 0.368627, 1)
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_glh1x"]
 gradient = SubResource("Gradient_dhh0k")
 
-[node name="Hud" type="Control"]
+[node name="Hud" type="Control" node_paths=PackedStringArray("_debugPanel")]
 process_mode = 3
 layout_mode = 3
 anchors_preset = 15
@@ -25,6 +25,7 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_2tvmv")
 script = ExtResource("1_jvtg7")
+_debugPanel = NodePath("DebugPanel")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -65,3 +66,11 @@ texture_progress = SubResource("GradientTexture1D_glh1x")
 unique_name_in_owner = true
 visible = false
 layout_mode = 2
+
+[node name="DebugPanel" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

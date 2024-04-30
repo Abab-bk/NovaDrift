@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://diprwfc6e1di5"]
+
+[ext_resource type="PackedScene" uid="uid://dopw3ixphjmh7" path="res://Scenes/Prefabs/BulletBase.tscn" id="1_3llyd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_luklo"]
+size = Vector2(49, 14)
+
+[node name="NormalBullet" instance=ExtResource("1_3llyd")]
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("RectangleShape2D_luklo")

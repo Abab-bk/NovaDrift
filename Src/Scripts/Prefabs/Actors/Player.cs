@@ -18,11 +18,7 @@ public partial class Player : Actor
 
         _smokeTrail = GetNode<SmokeTrail>("%SmokeTrail");
         
-        Global.OnMobDied += _ =>
-        {
-            Stats.Exp.Increase(50);
-            UpdateUi();
-        };
+        Global.OnMobDied += _ => { UpdateUi(); };
         Stats.Health.ValueChanged += (float value) =>
         {
             UpdateUi();

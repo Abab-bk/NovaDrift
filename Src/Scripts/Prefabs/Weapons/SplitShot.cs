@@ -88,23 +88,9 @@ public partial class SplitShot : BaseShooter
                 bullet.OnHit += actor =>
                 {
                     OnHit?.Invoke(actor);
-                    var blast = VfxFactory.GetBlast();
-                    Global.GameWorld.AddChild(blast);
-                    blast.GlobalPosition = bullet.GlobalPosition;
-                    foreach (var body in blast.GetBodies())
-                    {
-                        if (body is Actor blastActor)
-                        {
-                            if (blastActor is Player player && IsPlayer)
-                            {
-                                player.TakeDamage(20);
-                            }
-                            else if (blastActor is MobBase mob && !IsPlayer)
-                            {
-                                mob.TakeDamage(20);
-                            }
-                        }
-                    }
+                    var fireBall = new BulletBuilder(BulletBuilder.BulletType.FireBall).Build();
+                    fireBall.GlobalPosition = bullet.GlobalPosition;
+                    AddChild(fireBall);
                 };
                 _burstIntervalTimer.Start();
             }

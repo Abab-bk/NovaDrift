@@ -7,7 +7,7 @@ using NovaDrift.Scripts.Prefabs.Components;
 
 namespace NovaDrift.Scripts.Prefabs;
 
-public partial class BulletBase : CharacterBody2D
+public partial class BulletBase : Node2D
 {
     [Export] private HitBox _hitBox;
  
@@ -50,7 +50,11 @@ public partial class BulletBase : CharacterBody2D
         };
 
         Scale = new Vector2(Size, Size);
-        
+        Degenerate();
+    }
+
+    protected virtual void Degenerate()
+    {
         Tween tween = CreateTween();
         tween.TweenProperty(this, "scale", Vector2.Zero, Degeneration);
         tween.Finished += QueueFree;
@@ -64,13 +68,17 @@ public partial class BulletBase : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
+        Move(delta);
+    }
+
+    protected virtual void Move(double delta)
+    {
         _smokeTrail.AddAgePoint(GlobalPosition);
         OnMove?.Invoke(GlobalPosition.DistanceTo(_lastPosition));
 
         Rotation = Direction.Angle();
         
         Position += (Direction * Speed) * (float)delta;
-        // MoveAndSlide();
         
         _lastPosition = GlobalPosition;
     }

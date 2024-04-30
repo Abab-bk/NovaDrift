@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://3wh7ubkrtntu"]
+[gd_scene load_steps=6 format=3 uid="uid://3wh7ubkrtntu"]
 
 [ext_resource type="Texture2D" uid="uid://w80uidtfwsgd" path="res://Assets/Textures/Particles/fire_01.png" id="1_j4p14"]
 [ext_resource type="Script" path="res://Scripts/Vfx/Blast.cs" id="1_t4knj"]
@@ -54,12 +54,8 @@ _data = {
 "Run": SubResource("Animation_u880m")
 }
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7jb03"]
-size = Vector2(148, 154)
-
-[node name="Blast" type="Node2D" node_paths=PackedStringArray("_area2D")]
+[node name="Blast" type="Node2D"]
 script = ExtResource("1_t4knj")
-_area2D = NodePath("Area2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 modulate = Color(1, 0.423529, 0.0666667, 1)
@@ -67,14 +63,8 @@ scale = Vector2(0.1, 0.1)
 texture = ExtResource("1_j4p14")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_irb00")
 }
 autoplay = "Run"
-
-[node name="Area2D" type="Area2D" parent="."]
-collision_layer = 0
-collision_mask = 3
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
-shape = SubResource("RectangleShape2D_7jb03")
