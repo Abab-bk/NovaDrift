@@ -15,6 +15,8 @@ public class Weapon : IItemInfo
     public string Name { get; set; }
     public string Desc { get; set; }
     public string IconPath { get; set; }
+    public string IconPath2 { get; set; }
+
     public string SceneName;
     
     // TODO: 武器扩散

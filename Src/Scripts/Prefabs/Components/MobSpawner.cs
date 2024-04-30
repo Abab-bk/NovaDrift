@@ -58,9 +58,8 @@ public partial class MobSpawner : Node2D
         _mobList = new(_mobListItems);
         _spawnTypeList = new(_spawnTypeListItems);
         
-        if (!_enabled) return;
-        
         Global.OnGameStart += () => { _timer.Start(); };
+        Global.OnGameOver += () => { _enabled = false; _timer.Stop(); };
         
         _timer = new Timer
         {
@@ -81,6 +80,7 @@ public partial class MobSpawner : Node2D
 
     private void GenerateMob()
     {
+        if (!_enabled) return;
         _waveInfo = NewWaveInfo();
         SpawnMob(_waveInfo.SelectSpawnType());
     }

@@ -8,6 +8,19 @@ using DsUi;
 public abstract partial class SelectAbility : UiBase
 {
     /// <summary>
+    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: SelectAbility.ColorRect
+    /// </summary>
+    public ColorRect L_ColorRect
+    {
+        get
+        {
+            if (_L_ColorRect == null) _L_ColorRect = new ColorRect((SelectAbilityPanel)this, GetNode<Godot.ColorRect>("ColorRect"));
+            return _L_ColorRect;
+        }
+    }
+    private ColorRect _L_ColorRect;
+
+    /// <summary>
     /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.PanelContainer"/>, 节点路径: SelectAbility.Content
     /// </summary>
     public Content L_Content
@@ -19,6 +32,19 @@ public abstract partial class SelectAbility : UiBase
         }
     }
     private Content _L_Content;
+
+    /// <summary>
+    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: SelectAbility.Indicator
+    /// </summary>
+    public Indicator L_Indicator
+    {
+        get
+        {
+            if (_L_Indicator == null) _L_Indicator = new Indicator((SelectAbilityPanel)this, GetNode<Godot.TextureRect>("Indicator"));
+            return _L_Indicator;
+        }
+    }
+    private Indicator _L_Indicator;
 
 
     public SelectAbility() : base(nameof(SelectAbility))
@@ -36,56 +62,153 @@ public abstract partial class SelectAbility : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.GridContainer"/>, 路径: SelectAbility.Content.VBoxContainer.Content.VBoxContainer.Abilities
+    /// 类型: <see cref="Godot.ColorRect"/>, 路径: SelectAbility.ColorRect
     /// </summary>
-    public class Abilities : UiNode<SelectAbilityPanel, Godot.GridContainer, Abilities>
+    public class ColorRect : UiNode<SelectAbilityPanel, Godot.ColorRect, ColorRect>
     {
-        public Abilities(SelectAbilityPanel uiPanel, Godot.GridContainer node) : base(uiPanel, node) {  }
-        public override Abilities Clone() => new (UiPanel, (Godot.GridContainer)Instance.Duplicate());
+        public ColorRect(SelectAbilityPanel uiPanel, Godot.ColorRect node) : base(uiPanel, node) {  }
+        public override ColorRect Clone() => new (UiPanel, (Godot.ColorRect)Instance.Duplicate());
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.GridContainer"/>, 路径: SelectAbility.Content.VBoxContainer.Content.VBoxContainer.Gears
+    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: SelectAbility.Content.VBoxContainer.Content.Items.VBoxContainer.ItemRow1
     /// </summary>
-    public class Gears : UiNode<SelectAbilityPanel, Godot.GridContainer, Gears>
+    public class ItemRow1 : UiNode<SelectAbilityPanel, Godot.HBoxContainer, ItemRow1>
     {
-        public Gears(SelectAbilityPanel uiPanel, Godot.GridContainer node) : base(uiPanel, node) {  }
-        public override Gears Clone() => new (UiPanel, (Godot.GridContainer)Instance.Duplicate());
+        public ItemRow1(SelectAbilityPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override ItemRow1 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: SelectAbility.Content.VBoxContainer.Content.VBoxContainer
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: SelectAbility.Content.VBoxContainer.Content.Items.VBoxContainer
     /// </summary>
     public class VBoxContainer_1 : UiNode<SelectAbilityPanel, Godot.VBoxContainer, VBoxContainer_1>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.GridContainer"/>, 节点路径: SelectAbility.Content.VBoxContainer.Content.Abilities
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: SelectAbility.Content.VBoxContainer.Content.Items.ItemRow1
         /// </summary>
-        public Abilities L_Abilities
+        public ItemRow1 L_ItemRow1
         {
             get
             {
-                if (_L_Abilities == null) _L_Abilities = new Abilities(UiPanel, Instance.GetNode<Godot.GridContainer>("Abilities"));
-                return _L_Abilities;
+                if (_L_ItemRow1 == null) _L_ItemRow1 = new ItemRow1(UiPanel, Instance.GetNode<Godot.HBoxContainer>("ItemRow1"));
+                return _L_ItemRow1;
             }
         }
-        private Abilities _L_Abilities;
-
-        /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.GridContainer"/>, 节点路径: SelectAbility.Content.VBoxContainer.Content.Gears
-        /// </summary>
-        public Gears L_Gears
-        {
-            get
-            {
-                if (_L_Gears == null) _L_Gears = new Gears(UiPanel, Instance.GetNode<Godot.GridContainer>("Gears"));
-                return _L_Gears;
-            }
-        }
-        private Gears _L_Gears;
+        private ItemRow1 _L_ItemRow1;
 
         public VBoxContainer_1(SelectAbilityPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
         public override VBoxContainer_1 Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: SelectAbility.Content.VBoxContainer.Content.Items.VBoxContainer2.ItemRow2
+    /// </summary>
+    public class ItemRow2 : UiNode<SelectAbilityPanel, Godot.HBoxContainer, ItemRow2>
+    {
+        public ItemRow2(SelectAbilityPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override ItemRow2 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: SelectAbility.Content.VBoxContainer.Content.Items.VBoxContainer2
+    /// </summary>
+    public class VBoxContainer2 : UiNode<SelectAbilityPanel, Godot.VBoxContainer, VBoxContainer2>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: SelectAbility.Content.VBoxContainer.Content.Items.ItemRow2
+        /// </summary>
+        public ItemRow2 L_ItemRow2
+        {
+            get
+            {
+                if (_L_ItemRow2 == null) _L_ItemRow2 = new ItemRow2(UiPanel, Instance.GetNode<Godot.HBoxContainer>("ItemRow2"));
+                return _L_ItemRow2;
+            }
+        }
+        private ItemRow2 _L_ItemRow2;
+
+        public VBoxContainer2(SelectAbilityPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
+        public override VBoxContainer2 Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: SelectAbility.Content.VBoxContainer.Content.Items.VBoxContainer3.ItemRow3
+    /// </summary>
+    public class ItemRow3 : UiNode<SelectAbilityPanel, Godot.HBoxContainer, ItemRow3>
+    {
+        public ItemRow3(SelectAbilityPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override ItemRow3 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: SelectAbility.Content.VBoxContainer.Content.Items.VBoxContainer3
+    /// </summary>
+    public class VBoxContainer3 : UiNode<SelectAbilityPanel, Godot.VBoxContainer, VBoxContainer3>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: SelectAbility.Content.VBoxContainer.Content.Items.ItemRow3
+        /// </summary>
+        public ItemRow3 L_ItemRow3
+        {
+            get
+            {
+                if (_L_ItemRow3 == null) _L_ItemRow3 = new ItemRow3(UiPanel, Instance.GetNode<Godot.HBoxContainer>("ItemRow3"));
+                return _L_ItemRow3;
+            }
+        }
+        private ItemRow3 _L_ItemRow3;
+
+        public VBoxContainer3(SelectAbilityPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
+        public override VBoxContainer3 Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: SelectAbility.Content.VBoxContainer.Content.Items
+    /// </summary>
+    public class Items : UiNode<SelectAbilityPanel, Godot.VBoxContainer, Items>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: SelectAbility.Content.VBoxContainer.Content.VBoxContainer
+        /// </summary>
+        public VBoxContainer_1 L_VBoxContainer
+        {
+            get
+            {
+                if (_L_VBoxContainer == null) _L_VBoxContainer = new VBoxContainer_1(UiPanel, Instance.GetNode<Godot.VBoxContainer>("VBoxContainer"));
+                return _L_VBoxContainer;
+            }
+        }
+        private VBoxContainer_1 _L_VBoxContainer;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: SelectAbility.Content.VBoxContainer.Content.VBoxContainer2
+        /// </summary>
+        public VBoxContainer2 L_VBoxContainer2
+        {
+            get
+            {
+                if (_L_VBoxContainer2 == null) _L_VBoxContainer2 = new VBoxContainer2(UiPanel, Instance.GetNode<Godot.VBoxContainer>("VBoxContainer2"));
+                return _L_VBoxContainer2;
+            }
+        }
+        private VBoxContainer2 _L_VBoxContainer2;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: SelectAbility.Content.VBoxContainer.Content.VBoxContainer3
+        /// </summary>
+        public VBoxContainer3 L_VBoxContainer3
+        {
+            get
+            {
+                if (_L_VBoxContainer3 == null) _L_VBoxContainer3 = new VBoxContainer3(UiPanel, Instance.GetNode<Godot.VBoxContainer>("VBoxContainer3"));
+                return _L_VBoxContainer3;
+            }
+        }
+        private VBoxContainer3 _L_VBoxContainer3;
+
+        public Items(SelectAbilityPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
+        public override Items Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
@@ -110,17 +233,17 @@ public abstract partial class SelectAbility : UiBase
     public class Content_1 : UiNode<SelectAbilityPanel, Godot.HBoxContainer, Content_1>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: SelectAbility.Content.VBoxContainer.VBoxContainer
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: SelectAbility.Content.VBoxContainer.Items
         /// </summary>
-        public VBoxContainer_1 L_VBoxContainer
+        public Items L_Items
         {
             get
             {
-                if (_L_VBoxContainer == null) _L_VBoxContainer = new VBoxContainer_1(UiPanel, Instance.GetNode<Godot.VBoxContainer>("VBoxContainer"));
-                return _L_VBoxContainer;
+                if (_L_Items == null) _L_Items = new Items(UiPanel, Instance.GetNode<Godot.VBoxContainer>("Items"));
+                return _L_Items;
             }
         }
-        private VBoxContainer_1 _L_VBoxContainer;
+        private Items _L_Items;
 
         /// <summary>
         /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel"/>, 节点路径: SelectAbility.Content.VBoxContainer.AbilityPanel
@@ -137,15 +260,6 @@ public abstract partial class SelectAbility : UiBase
 
         public Content_1(SelectAbilityPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
         public override Content_1 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
-    }
-
-    /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: SelectAbility.Content.VBoxContainer.YesBtn
-    /// </summary>
-    public class YesBtn : UiNode<SelectAbilityPanel, Godot.Button, YesBtn>
-    {
-        public YesBtn(SelectAbilityPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
-        public override YesBtn Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
     }
 
     /// <summary>
@@ -174,19 +288,6 @@ public abstract partial class SelectAbility : UiBase
             }
         }
         private Content_1 _L_Content;
-
-        /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: SelectAbility.Content.YesBtn
-        /// </summary>
-        public YesBtn L_YesBtn
-        {
-            get
-            {
-                if (_L_YesBtn == null) _L_YesBtn = new YesBtn(UiPanel, Instance.GetNode<Godot.Button>("YesBtn"));
-                return _L_YesBtn;
-            }
-        }
-        private YesBtn _L_YesBtn;
 
         /// <summary>
         /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: SelectAbility.Content.CloseBtn
@@ -227,16 +328,50 @@ public abstract partial class SelectAbility : UiBase
         public override Content Clone() => new (UiPanel, (Godot.PanelContainer)Instance.Duplicate());
     }
 
+    /// <summary>
+    /// 类型: <see cref="Godot.TextureRect"/>, 路径: SelectAbility.Indicator
+    /// </summary>
+    public class Indicator : UiNode<SelectAbilityPanel, Godot.TextureRect, Indicator>
+    {
+        public Indicator(SelectAbilityPanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
+        public override Indicator Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
+    }
+
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.GridContainer"/>, 节点路径: SelectAbility.Content.VBoxContainer.Content.VBoxContainer.Abilities
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ColorRect"/>, 节点路径: SelectAbility.ColorRect
     /// </summary>
-    public Abilities S_Abilities => L_Content.L_VBoxContainer.L_Content.L_VBoxContainer.L_Abilities;
+    public ColorRect S_ColorRect => L_ColorRect;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.GridContainer"/>, 节点路径: SelectAbility.Content.VBoxContainer.Content.VBoxContainer.Gears
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: SelectAbility.Content.VBoxContainer.Content.Items.VBoxContainer.ItemRow1
     /// </summary>
-    public Gears S_Gears => L_Content.L_VBoxContainer.L_Content.L_VBoxContainer.L_Gears;
+    public ItemRow1 S_ItemRow1 => L_Content.L_VBoxContainer.L_Content.L_Items.L_VBoxContainer.L_ItemRow1;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: SelectAbility.Content.VBoxContainer.Content.Items.VBoxContainer2.ItemRow2
+    /// </summary>
+    public ItemRow2 S_ItemRow2 => L_Content.L_VBoxContainer.L_Content.L_Items.L_VBoxContainer2.L_ItemRow2;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: SelectAbility.Content.VBoxContainer.Content.Items.VBoxContainer2
+    /// </summary>
+    public VBoxContainer2 S_VBoxContainer2 => L_Content.L_VBoxContainer.L_Content.L_Items.L_VBoxContainer2;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: SelectAbility.Content.VBoxContainer.Content.Items.VBoxContainer3.ItemRow3
+    /// </summary>
+    public ItemRow3 S_ItemRow3 => L_Content.L_VBoxContainer.L_Content.L_Items.L_VBoxContainer3.L_ItemRow3;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: SelectAbility.Content.VBoxContainer.Content.Items.VBoxContainer3
+    /// </summary>
+    public VBoxContainer3 S_VBoxContainer3 => L_Content.L_VBoxContainer.L_Content.L_Items.L_VBoxContainer3;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: SelectAbility.Content.VBoxContainer.Content.Items
+    /// </summary>
+    public Items S_Items => L_Content.L_VBoxContainer.L_Content.L_Items;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel"/>, 节点路径: SelectAbility.Content.VBoxContainer.Content.AbilityPanel
@@ -244,13 +379,13 @@ public abstract partial class SelectAbility : UiBase
     public AbilityPanel S_AbilityPanel => L_Content.L_VBoxContainer.L_Content.L_AbilityPanel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: SelectAbility.Content.VBoxContainer.YesBtn
-    /// </summary>
-    public YesBtn S_YesBtn => L_Content.L_VBoxContainer.L_YesBtn;
-
-    /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: SelectAbility.Content.VBoxContainer.CloseBtn
     /// </summary>
     public CloseBtn S_CloseBtn => L_Content.L_VBoxContainer.L_CloseBtn;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: SelectAbility.Indicator
+    /// </summary>
+    public Indicator S_Indicator => L_Indicator;
 
 }

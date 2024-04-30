@@ -75,7 +75,7 @@ public partial class Player : Actor
     private void UpLevel(float value)
     {
         Stats.Exp.Clear();
-        Stats.Exp.MaxValue.BaseValue += 100;
+        Stats.Exp.MaxValue.BaseValue += 300;
         UpdateUi();
 
         Global.OnPlayerUpLevel(Stats.Level);

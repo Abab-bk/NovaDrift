@@ -1,7 +1,17 @@
-[gd_scene load_steps=3 format=3 uid="uid://gwdeh4n41an7"]
+[gd_scene load_steps=7 format=3 uid="uid://gwdeh4n41an7"]
 
 [ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_i7yq1"]
 [ext_resource type="Script" path="res://Scripts/Ui/abilityPanel/AbilityPanelPanel.cs" id="1_yks05"]
+[ext_resource type="LabelSettings" uid="uid://cnabg1bgvdj1o" path="res://Assets/LabelSettings/WeightTitle.tres" id="3_bu2ud"]
+[ext_resource type="LabelSettings" uid="uid://kllykcd3b5f6" path="res://Assets/LabelSettings/BoldGray44.tres" id="4_kixas"]
+
+[sub_resource type="Gradient" id="Gradient_wclbs"]
+colors = PackedColorArray(0, 0, 0, 0.560784, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_b73xe"]
+gradient = SubResource("Gradient_wclbs")
+fill_from = Vector2(1, 1)
+fill_to = Vector2(0, 0)
 
 [node name="AbilityPanel" type="Control"]
 process_mode = 3
@@ -14,27 +24,59 @@ grow_vertical = 2
 theme = ExtResource("1_i7yq1")
 script = ExtResource("1_yks05")
 
-[node name="Content" type="VBoxContainer" parent="."]
+[node name="TextureRect" type="TextureRect" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+texture = SubResource("GradientTexture2D_b73xe")
 
-[node name="AbilityTitle" type="Label" parent="Content"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Content" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AbilityTitle" type="Label" parent="MarginContainer/VBoxContainer/Content"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 150)
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "Ability Name"
+label_settings = ExtResource("3_bu2ud")
 autowrap_mode = 2
 clip_text = true
 
-[node name="AbilityDesc" type="Label" parent="Content"]
+[node name="AbilityDesc" type="Label" parent="MarginContainer/VBoxContainer/Content"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(100, 100)
 layout_mode = 2
 size_flags_vertical = 3
 theme_override_font_sizes/font_size = 65
 text = "Nothing."
+label_settings = ExtResource("4_kixas")
 autowrap_mode = 2
 text_overrun_behavior = 1
+
+[node name="YesBtn" type="Button" parent="MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "确认"

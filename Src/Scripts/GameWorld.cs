@@ -1,8 +1,10 @@
 using AcidJoystick;
+using AcidWallStudio.AcidUtilities;
 using DsUi;
 using Godot;
 using NathanHoad;
 using NovaDrift.Scripts.Prefabs.Actors;
+using NovaDrift.Scripts.Prefabs.Components;
 using YAT.Commands;
 
 namespace NovaDrift.Scripts;
@@ -57,6 +59,9 @@ public partial class GameWorld : Node2D
         Player player = GD.Load<PackedScene>("res://Scenes/Prefabs/Actors/Player.tscn").Instantiate<Player>();
         player.JoystickNode = _moveJoystick;
         AddChild(player);
+
+        MoveActorToScreenCenter mover = new MoveActorToScreenCenter(player);
+        AddChild(mover);
         
         DataBuilder.BuildBodyById(1000).Use();
         DataBuilder.BuildWeaponById(1000).Use();

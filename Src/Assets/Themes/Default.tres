@@ -1,6 +1,46 @@
-[gd_resource type="Theme" load_steps=5 format=3 uid="uid://b7g6xk4hko1sg"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://b7g6xk4hko1sg"]
 
 [ext_resource type="FontFile" uid="uid://djmsc2817eku8" path="res://Assets/Fonts/SourceHanSansCN-Medium.otf" id="1_bss3n"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qvurc"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_l41ad"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_w7y2f"]
+bg_color = Color(0.0313726, 0.0509804, 0.054902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.47451, 0.513726, 0.537255, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_deoc1"]
+bg_color = Color(0.0313726, 0.0509804, 0.054902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.534958, 0.574855, 0.598821, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r8gst"]
+bg_color = Color(0.0313726, 0.0509804, 0.054902, 1)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.862745, 0.862745, 0.862745, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_x0rvm"]
 
@@ -13,6 +53,11 @@ bg_color = Color(0.6, 1, 0.6, 1)
 [resource]
 default_font = ExtResource("1_bss3n")
 default_font_size = 30
+Button/styles/disabled = SubResource("StyleBoxEmpty_qvurc")
+Button/styles/focus = SubResource("StyleBoxEmpty_l41ad")
+Button/styles/hover = SubResource("StyleBoxFlat_w7y2f")
+Button/styles/normal = SubResource("StyleBoxFlat_deoc1")
+Button/styles/pressed = SubResource("StyleBoxFlat_r8gst")
 EmptyBtn/base_type = &"Button"
 EmptyBtn/styles/disabled = SubResource("StyleBoxEmpty_x0rvm")
 EmptyBtn/styles/focus = SubResource("StyleBoxEmpty_x0rvm")

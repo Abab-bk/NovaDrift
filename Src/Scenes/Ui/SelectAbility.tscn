@@ -1,8 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://bdquv3cpmvkvo"]
+[gd_scene load_steps=7 format=3 uid="uid://bdquv3cpmvkvo"]
 
 [ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_3v07u"]
 [ext_resource type="Script" path="res://Scripts/Ui/selectAbility/SelectAbilityPanel.cs" id="1_g8dl3"]
 [ext_resource type="PackedScene" uid="uid://gwdeh4n41an7" path="res://Scenes/Ui/AbilityPanel.tscn" id="3_8bu15"]
+[ext_resource type="Texture2D" uid="uid://cnfpkl0hd4frk" path="res://Assets/Ui/Icons/Mods.png" id="4_liddx"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0f7kx"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vu67"]
+atlas = ExtResource("4_liddx")
+region = Rect2(3900, 0, 300, 300)
 
 [node name="SelectAbility" type="Control"]
 process_mode = 3
@@ -15,6 +22,15 @@ grow_vertical = 2
 theme = ExtResource("1_3v07u")
 script = ExtResource("1_g8dl3")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.615686)
+
 [node name="Content" type="PanelContainer" parent="."]
 layout_mode = 1
 anchors_preset = 14
@@ -25,6 +41,7 @@ offset_top = -495.0
 offset_bottom = 495.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_0f7kx")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Content"]
 layout_mode = 2
@@ -33,36 +50,62 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Content/VBoxContainer/Content"]
+[node name="Items" type="VBoxContainer" parent="Content/VBoxContainer/Content"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_constants/separation = -255
+alignment = 1
 
-[node name="Abilities" type="GridContainer" parent="Content/VBoxContainer/Content/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 3
-columns = 5
-
-[node name="Gears" type="GridContainer" parent="Content/VBoxContainer/Content/VBoxContainer"]
-unique_name_in_owner = true
+[node name="VBoxContainer" type="VBoxContainer" parent="Content/VBoxContainer/Content/Items"]
 layout_mode = 2
 size_flags_vertical = 3
-columns = 5
+mouse_filter = 2
+alignment = 1
+
+[node name="ItemRow1" type="HBoxContainer" parent="Content/VBoxContainer/Content/Items/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="Content/VBoxContainer/Content/Items"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+alignment = 1
+
+[node name="ItemRow2" type="HBoxContainer" parent="Content/VBoxContainer/Content/Items/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="Content/VBoxContainer/Content/Items"]
+layout_mode = 2
+size_flags_vertical = 3
+mouse_filter = 2
+alignment = 1
+
+[node name="ItemRow3" type="HBoxContainer" parent="Content/VBoxContainer/Content/Items/VBoxContainer3"]
+unique_name_in_owner = true
+layout_mode = 2
+mouse_filter = 2
+alignment = 1
 
 [node name="AbilityPanel" parent="Content/VBoxContainer/Content" instance=ExtResource("3_8bu15")]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="YesBtn" type="Button" parent="Content/VBoxContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-theme_override_font_sizes/font_size = 70
-text = "确认"
-
 [node name="CloseBtn" type="Button" parent="Content/VBoxContainer"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 2
 theme_override_font_sizes/font_size = 70
 text = "取消"
+
+[node name="Indicator" type="TextureRect" parent="."]
+unique_name_in_owner = true
+visible = false
+layout_mode = 0
+texture = SubResource("AtlasTexture_6vu67")

@@ -60,7 +60,14 @@ public partial class Actor : CharacterBody2D
         actor.Stats.AddKnockBack(Stats.Recoil.Value);
     }
 
-    protected void TryMoveTo(Vector2 dir, double delta)
+    public void SetTargetPosAndMove(Vector2 pos, float delta)
+    {
+        LookAt(pos);
+        TryMoveTo(GlobalPosition.DirectionTo(pos), delta);
+        MoveAndSlide();
+    }
+    
+    public void TryMoveTo(Vector2 dir, double delta)
     {
         var targetVelocity = dir * Stats.Speed.Value;
         if (IsShooting)

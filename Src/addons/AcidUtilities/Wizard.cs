@@ -95,4 +95,12 @@ public static class Wizard
     {
         return MapCorners[Mathf.Min(index, MapCorners.Length - 1)];
     }
+
+    public static Vector2 GetScreenCenter()
+    {
+        return new Vector2(
+            (float)ProjectSettings.GetSetting("display/window/size/viewport_width") / 2,
+            (float)ProjectSettings.GetSetting("display/window/size/viewport_height") / 2
+            );
+    }
 }

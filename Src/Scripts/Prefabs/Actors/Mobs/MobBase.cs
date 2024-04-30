@@ -27,11 +27,11 @@ public partial class MobBase : Actor
 
     protected override void InitStats()
     {
-        Stats.Health.BaseValue = MobInfo.Health;
-        Stats.Health.MaxValue.BaseValue = MobInfo.Health;
+        Stats.Health.BaseValue = MobInfo.Health * Global.GetPlayerLevel();
+        Stats.Health.MaxValue.BaseValue = MobInfo.Health * Global.GetPlayerLevel();
         
         Stats.Speed.BaseValue = MobInfo.Speed;
-        Stats.Damage.BaseValue = MobInfo.Damage;
+        Stats.Damage.BaseValue = MobInfo.Damage * Global.GetPlayerLevel();
         
         Shooter.SetShootCd(MobInfo.ShootCd);
     }
@@ -51,13 +51,6 @@ public partial class MobBase : Actor
     {
         LookAt(target.GlobalPosition);
         TryMoveTo(GlobalPosition.DirectionTo(target.GlobalPosition), delta);
-        MoveAndSlide();
-    }
-    
-    public void SetTargetPosAndMove(Vector2 pos, float delta)
-    {
-        LookAt(pos);
-        TryMoveTo(GlobalPosition.DirectionTo(pos), delta);
         MoveAndSlide();
     }
 }

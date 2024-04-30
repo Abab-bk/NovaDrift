@@ -35,6 +35,9 @@ public partial class AbilityItemPanel : AbilityItem
         if (Item == null) return;
         if (!Wizard.FileExists(Item.IconPath)) return;
         S_IconTexture.Instance.Texture = GD.Load<Texture2D>(Item.IconPath);
+        
+        if (!Wizard.FileExists(Item.IconPath2)) return;
+        S_IconTexture.Instance.Texture = GD.Load<Texture2D>(Item.IconPath2);
     }
 
     public override void OnDestroyUi()

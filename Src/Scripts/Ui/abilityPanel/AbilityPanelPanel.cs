@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using NovaDrift.Scripts.Systems;
 
@@ -5,19 +6,21 @@ namespace NovaDrift.Scripts.Ui.AbilityPanel;
 
 public partial class AbilityPanelPanel : AbilityPanel
 {
-    private Label _title;
-    private Label _desc;
+    public event Action OnClickYesBtn;
     
     public override void OnCreateUi()
     {
-        _title = L_Content.L_AbilityTitle.Instance;
-        _desc = L_Content.L_AbilityDesc.Instance;
     }
-    
+
+    public override void _Ready()
+    {
+        S_YesBtn.Instance.Pressed += () => OnClickYesBtn?.Invoke();
+    }
+
     public void UpdateUi(IItemInfo item)
     {
-        _title.Text = item.Name;
-        _desc.Text = item.Desc;
+        S_AbilityTitle.Instance.Text = item.Name;
+        S_AbilityDesc.Instance.Text = item.Desc;
     }
     
     public override void OnDestroyUi()

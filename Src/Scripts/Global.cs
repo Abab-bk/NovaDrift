@@ -48,4 +48,10 @@ public static class Global
         _stopCount--;
         GameWorld.GetTree().Paused = _stopCount > 0;
     }
+
+    public static int GetPlayerLevel()
+    {
+        if (Player == null) return 1;
+        return Player.Stats.Level;
+    }
 }

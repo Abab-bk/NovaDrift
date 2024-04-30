@@ -86,6 +86,7 @@ public static class DataBuilder
         body.Name = tbBody.Name;
         body.Desc = tbBody.Desc;
         body.IconPath = $"res://Assets/Textures/Bodies/{tbBody.IconName}.png";
+        body.IconPath2 = $"res://Assets/Ui/Icons/BodyIcons/{tbBody.IconName}Icon.png";
         body.Acceleration = tbBody.Acceleration;
         body.Deceleration = tbBody.Deceleration;
         body.Health = tbBody.Health;
