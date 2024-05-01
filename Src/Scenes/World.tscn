@@ -1,8 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://d25jyaf2cexon"]
+[gd_scene load_steps=10 format=3 uid="uid://d25jyaf2cexon"]
 
 [ext_resource type="Script" path="res://Scripts/GameWorld.cs" id="1_xxmb6"]
 [ext_resource type="Texture2D" uid="uid://b8gw82tgl2r2x" path="res://Assets/Textures/Backgrounds/NebulaBlue.png" id="2_n84c3"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/MobSpawner.cs" id="4_4mpug"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Components/HazardSpawner.cs" id="5_2fkc6"]
 [ext_resource type="PackedScene" uid="uid://drcoa0ndbt6te" path="res://addons/AcidJoystick/Joystick.tscn" id="6_6ip1o"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2d171"]
@@ -88,3 +89,7 @@ scale = Vector2(0.24, 0.24)
 [node name="MobSpawner" type="Node2D" parent="."]
 position = Vector2(1253, 670)
 script = ExtResource("4_4mpug")
+_enabled = false
+
+[node name="HazardSpawner" type="Node2D" parent="."]
+script = ExtResource("5_2fkc6")

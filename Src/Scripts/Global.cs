@@ -1,6 +1,7 @@
 ﻿using System;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
+using NovaDrift.Scripts.Prefabs.Components;
 
 namespace NovaDrift.Scripts;
 
@@ -34,6 +35,8 @@ public static class Global
     public static Action OnGameOver;
     public static Action OnGameInit;
     public static Action OnGameStart;
+
+    public static HazardSpawner HazardSpawner;
 
     private static int _stopCount;
 

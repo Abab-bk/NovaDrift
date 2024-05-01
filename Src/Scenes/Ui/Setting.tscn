@@ -10,6 +10,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1_rotgw")
 script = ExtResource("1_ubno3")
 
@@ -67,7 +69,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 max_value = 1.0
-step = 0.05
+step = 0.1
 value = 0.8
 
 [node name="MusicVolum" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
@@ -88,7 +90,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 max_value = 1.0
-step = 0.05
+step = 0.1
 value = 0.8
 
 [node name="SoundVolum" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
@@ -109,7 +111,7 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 1
 max_value = 1.0
-step = 0.05
+step = 0.1
 value = 0.8
 
 [node name="CloseBtn" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]

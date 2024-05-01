@@ -43,11 +43,12 @@ public partial class BulletBase : Node2D
         _smokeTrail = GetNode<SmokeTrail>("%SmokeTrail");
         
         _hitBox.SetIsPlayer(IsPlayer);
-        _hitBox.HitDone += (actor) =>
+        _hitBox.OnHit += (actor) =>
         {
             OnHit?.Invoke(actor);
             QueueFree();
         };
+        _hitBox.OnHitOthers += QueueFree;
 
         Scale = new Vector2(Size, Size);
         Degenerate();

@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 RunConfigManager="*res://addons/run-configs/run-config-manager.gd"
 InitUiManager="*res://addons/ds_ui/InitUiManager.cs"
 SoundManager="*res://addons/sound_manager/sound_manager.gd"
+GodotGTweensContextNode="*res://addons/GTweensGodot/Source/Contexts/GodotGTweensContextNode.cs"
 
 [display]
 
@@ -86,4 +87,4 @@ viewport/hdr_2d=true
 [run_configs]
 
 data/configs=["{\"custom_scene\":\"\",\"environment_variables\":{\"ShowStartMenu\":\"false\"},\"name\":\"Debug\",\"play_mode\":0}", "{\"custom_scene\":\"\",\"environment_variables\":{\"ShowStartMenu\":\"true\"},\"name\":\"Release\",\"play_mode\":0}"]
-data/current=1
+data/current=0

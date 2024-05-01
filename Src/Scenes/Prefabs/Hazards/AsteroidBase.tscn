@@ -1,0 +1,31 @@
+[gd_scene load_steps=6 format=3 uid="uid://bherm3vjqjv4j"]
+
+[ext_resource type="Script" path="res://Scripts/Prefabs/Hazards/AsteroidBase.cs" id="1_eyydi"]
+[ext_resource type="Texture2D" uid="uid://c5oierqc18mer" path="res://icon.svg" id="2_rlbrx"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Components/HitBox.cs" id="3_g8o5o"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Components/PureHurtBox.cs" id="3_jt5gu"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Components/FreeSelfWhenExitScreen.cs" id="5_3s24p"]
+
+[node name="AsteroidBase" type="Node2D" node_paths=PackedStringArray("_hurtBox", "_hitBox")]
+script = ExtResource("1_eyydi")
+_hurtBox = NodePath("PureHurtBox")
+_hitBox = NodePath("HitBox")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_rlbrx")
+
+[node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("3_g8o5o")
+IsWorld = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+
+[node name="PureHurtBox" type="Area2D" parent="."]
+collision_layer = 40
+collision_mask = 20
+script = ExtResource("3_jt5gu")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PureHurtBox"]
+
+[node name="FreeSelfWhenExitScreen" type="VisibleOnScreenNotifier2D" parent="."]
+script = ExtResource("5_3s24p")

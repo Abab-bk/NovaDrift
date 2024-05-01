@@ -7,10 +7,13 @@ namespace NovaDrift.Scripts.Prefabs.Components;
 [GlobalClass]
 public partial class HitBox : Area2D
 {
+    [Export] public bool IsWorld = false;
+    
     private bool _isPlayer = false;
     public float Damage = 1f;
     
-    public Action<Actor> HitDone;
+    public Action<Actor> OnHit;
+    public Action OnHitOthers;
     
     public void SetIsPlayer(bool value)
     {
@@ -23,13 +26,16 @@ public partial class HitBox : Area2D
         CollisionLayer = 0;
         CollisionMask = 0;
 
-        if (_isPlayer)
+        if (_isPlayer || IsWorld)
         {
             CallDeferred("set_collision_layer_value", (int)Layer.PlayerHitBox, true);
             CallDeferred("set_collision_mask_value", (int)Layer.MobHurtBox, true);
-            return;
         }
-        CallDeferred("set_collision_layer_value", (int)Layer.MobHitBox, true);
-        CallDeferred("set_collision_mask_value", (int)Layer.PlayerHurtBox, true);
+
+        if (!_isPlayer || IsWorld)
+        {
+            CallDeferred("set_collision_layer_value", (int)Layer.MobHitBox, true);
+            CallDeferred("set_collision_mask_value", (int)Layer.PlayerHurtBox, true);
+        }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Godot;
 using KaimiraGames;
 
@@ -101,5 +102,21 @@ public static class Wizard
             (float)ProjectSettings.GetSetting("display/window/size/viewport_width") / 2,
             (float)ProjectSettings.GetSetting("display/window/size/viewport_height") / 2
             );
+    }
+
+    public static Vector2 GetRandomScreenPosition()
+    {
+        return new Vector2(
+            Random.Shared.FloatRange(0f, (float)ProjectSettings.GetSetting("display/window/size/viewport_width")),
+            Random.Shared.FloatRange(0f, (float)ProjectSettings.GetSetting("display/window/size/viewport_height"))
+        );
+    }
+
+    public static T GetRandomEnum<T>(this Random random)
+        where T : struct, Enum
+    {
+        var values = Enum.GetValues<T>();
+
+        return values[random.Next(values.Length)];
     }
 }

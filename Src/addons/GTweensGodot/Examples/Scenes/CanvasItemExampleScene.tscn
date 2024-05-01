@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://b46osrfvpqim8"]
+
+[ext_resource type="Script" path="res://GTweensGodot/Godot/Examples/Scripts/CanvasItemExample.cs" id="1_a8snh"]
+[ext_resource type="Texture2D" uid="uid://cik0j4hik2jqn" path="res://GTweensGodot/Godot/Examples/Textures/GTweensGodot-Examples-BlueSquare.png" id="2_bbl05"]
+
+[node name="CanvasItemExampleScene" type="Node2D"]
+
+[node name="Example" type="Node2D" parent="." node_paths=PackedStringArray("Target")]
+rotation = 6.28319
+script = ExtResource("1_a8snh")
+Target = NodePath("../Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_bbl05")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(2, 2)

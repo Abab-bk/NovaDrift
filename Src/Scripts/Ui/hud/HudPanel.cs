@@ -78,7 +78,7 @@ public partial class HudPanel : Hud
 
     private void GenerateDebugPanel()
     {
-        IDebugActionsSection playerSection = GDebugPanel.AddSection("Player", new PlayerCommands());
-        IDebugActionsSection worldSection = GDebugPanel.AddSection("World", new WorldCommands());
+        GDebugPanel.AddSection("Player", new PlayerCommands());
+        GDebugPanel.AddSection("World", new WorldCommands());
     }
 }

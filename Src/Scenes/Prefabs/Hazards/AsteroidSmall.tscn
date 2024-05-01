@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://bsifunasueotq"]
+
+[ext_resource type="PackedScene" uid="uid://bherm3vjqjv4j" path="res://Scenes/Prefabs/Hazards/AsteroidBase.tscn" id="1_7okrc"]
+[ext_resource type="Texture2D" uid="uid://bgt7mrghsbnh2" path="res://Assets/Textures/Objects/Asteroids/AsteroidSmall.png" id="2_ok2cd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbwy7"]
+size = Vector2(60, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_eh75t"]
+size = Vector2(62, 64)
+
+[node name="AsteroidSmall" instance=ExtResource("1_7okrc")]
+_health = 30.0
+_damage = 5.0
+_scale = 0.2
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_ok2cd")
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("RectangleShape2D_cbwy7")
+
+[node name="CollisionShape2D" parent="PureHurtBox" index="0"]
+shape = SubResource("RectangleShape2D_eh75t")
