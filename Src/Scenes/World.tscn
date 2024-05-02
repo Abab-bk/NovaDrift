@@ -2,11 +2,10 @@
 
 [ext_resource type="Script" path="res://Scripts/GameWorld.cs" id="1_xxmb6"]
 [ext_resource type="Texture2D" uid="uid://b8gw82tgl2r2x" path="res://Assets/Textures/Backgrounds/NebulaBlue.png" id="2_n84c3"]
+[ext_resource type="Texture2D" uid="uid://ca5ke1brwqwxl" path="res://Assets/Textures/Backgrounds/StarsSmall1.png" id="3_8degx"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/MobSpawner.cs" id="4_4mpug"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HazardSpawner.cs" id="5_2fkc6"]
 [ext_resource type="PackedScene" uid="uid://drcoa0ndbt6te" path="res://addons/AcidJoystick/Joystick.tscn" id="6_6ip1o"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_2d171"]
 
 [sub_resource type="Animation" id="Animation_b3sj7"]
 resource_name = "BackGroundMove"
@@ -65,7 +64,8 @@ motion_scale = Vector2(1.4, 1)
 motion_mirroring = Vector2(2048, 2048)
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Star"]
-texture = SubResource("CompressedTexture2D_2d171")
+scale = Vector2(1917, 1121)
+texture = ExtResource("3_8degx")
 centered = false
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
