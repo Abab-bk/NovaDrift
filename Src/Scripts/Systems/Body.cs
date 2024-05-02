@@ -9,7 +9,7 @@ namespace NovaDrift.Scripts.Systems;
 public class Body : IItemInfo
 {
     public Actor Actor;
-    public int Id;
+    public int Id { get; set; }
     
     public string Name { get; set; }
     public string Desc { get; set; }

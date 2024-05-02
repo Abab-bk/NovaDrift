@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://bdquv3cpmvkvo"]
+[gd_scene load_steps=8 format=3 uid="uid://bdquv3cpmvkvo"]
 
 [ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_3v07u"]
 [ext_resource type="Script" path="res://Scripts/Ui/selectAbility/SelectAbilityPanel.cs" id="1_g8dl3"]
 [ext_resource type="PackedScene" uid="uid://gwdeh4n41an7" path="res://Scenes/Ui/AbilityPanel.tscn" id="3_8bu15"]
+[ext_resource type="PackedScene" uid="uid://wxgnpvarbhdl" path="res://Scenes/Ui/AbilityTree.tscn" id="4_ehfad"]
 [ext_resource type="Texture2D" uid="uid://cnfpkl0hd4frk" path="res://Assets/Ui/Icons/Mods.png" id="4_liddx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_0f7kx"]
@@ -37,8 +38,8 @@ anchors_preset = 14
 anchor_top = 0.5
 anchor_right = 1.0
 anchor_bottom = 0.5
-offset_top = -495.0
-offset_bottom = 495.0
+offset_top = -612.0
+offset_bottom = 612.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_0f7kx")
@@ -50,47 +51,46 @@ layout_mode = 2
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Items" type="VBoxContainer" parent="Content/VBoxContainer/Content"]
+[node name="Mods" type="VBoxContainer" parent="Content/VBoxContainer/Content"]
+custom_minimum_size = Vector2(1200, 0)
+layout_mode = 2
+
+[node name="Items" type="VBoxContainer" parent="Content/VBoxContainer/Content/Mods"]
 layout_mode = 2
 size_flags_horizontal = 3
-theme_override_constants/separation = -255
-alignment = 1
-
-[node name="VBoxContainer" type="VBoxContainer" parent="Content/VBoxContainer/Content/Items"]
-layout_mode = 2
 size_flags_vertical = 3
-mouse_filter = 2
+theme_override_constants/separation = -80
 alignment = 1
 
-[node name="ItemRow1" type="HBoxContainer" parent="Content/VBoxContainer/Content/Items/VBoxContainer"]
+[node name="ItemRow1" type="HBoxContainer" parent="Content/VBoxContainer/Content/Mods/Items"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = -45
 alignment = 1
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Content/VBoxContainer/Content/Items"]
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-alignment = 1
-
-[node name="ItemRow2" type="HBoxContainer" parent="Content/VBoxContainer/Content/Items/VBoxContainer2"]
+[node name="ItemRow2" type="HBoxContainer" parent="Content/VBoxContainer/Content/Mods/Items"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = -45
 alignment = 1
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="Content/VBoxContainer/Content/Items"]
-layout_mode = 2
-size_flags_vertical = 3
-mouse_filter = 2
-alignment = 1
-
-[node name="ItemRow3" type="HBoxContainer" parent="Content/VBoxContainer/Content/Items/VBoxContainer3"]
+[node name="ItemRow3" type="HBoxContainer" parent="Content/VBoxContainer/Content/Mods/Items"]
 unique_name_in_owner = true
 layout_mode = 2
 mouse_filter = 2
+theme_override_constants/separation = -45
 alignment = 1
+
+[node name="CenterContainer" type="CenterContainer" parent="Content/VBoxContainer/Content/Mods"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="AbilityTree" parent="Content/VBoxContainer/Content/Mods/CenterContainer" instance=ExtResource("4_ehfad")]
+unique_name_in_owner = true
+visible = false
+layout_mode = 2
 
 [node name="AbilityPanel" parent="Content/VBoxContainer/Content" instance=ExtResource("3_8bu15")]
 unique_name_in_owner = true

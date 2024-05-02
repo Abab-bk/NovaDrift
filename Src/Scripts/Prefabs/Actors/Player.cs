@@ -68,7 +68,7 @@ public partial class Player : Actor
         Global.OnGameOver?.Invoke();
     }
 
-    private void UpLevel(float value)
+    public void UpLevel(float value = 0f)
     {
         Stats.Exp.Clear();
         Stats.Exp.MaxValue.BaseValue += 300;

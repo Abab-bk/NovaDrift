@@ -1,0 +1,32 @@
+[
+  {
+    "id": 1001,
+    "name": "高速",
+    "start_ability_id": 1001,
+    "middle_ability_ids": [
+      1003,
+      1004
+    ],
+    "end_ability_id": 1005
+  },
+  {
+    "id": 1002,
+    "name": "快速射击",
+    "start_ability_id": 1002,
+    "middle_ability_ids": [
+      1006,
+      1007
+    ],
+    "end_ability_id": 1008
+  },
+  {
+    "id": 1003,
+    "name": "齐鸣",
+    "start_ability_id": 1009,
+    "middle_ability_ids": [
+      1010,
+      1011
+    ],
+    "end_ability_id": 1012
+  }
+]

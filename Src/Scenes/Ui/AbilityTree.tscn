@@ -1,0 +1,50 @@
+[gd_scene load_steps=3 format=3 uid="uid://wxgnpvarbhdl"]
+
+[ext_resource type="Script" path="res://Scripts/Ui/abilityTree/AbilityTreePanel.cs" id="1_ft4ow"]
+[ext_resource type="PackedScene" uid="uid://dlsmuxwivbahj" path="res://Scenes/Ui/AbilityItem.tscn" id="2_5pnhv"]
+
+[node name="AbilityTree" type="Control"]
+custom_minimum_size = Vector2(469, 312)
+layout_mode = 3
+anchors_preset = 0
+offset_right = 469.0
+offset_bottom = 312.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+script = ExtResource("1_ft4ow")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 938.0
+offset_bottom = 624.0
+scale = Vector2(0.5, 0.5)
+alignment = 1
+
+[node name="StartAbility" parent="HBoxContainer" instance=ExtResource("2_5pnhv")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer"]
+layout_mode = 2
+alignment = 1
+
+[node name="MiddleAbility1" parent="HBoxContainer/VBoxContainer" instance=ExtResource("2_5pnhv")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="MiddleAbility2" parent="HBoxContainer/VBoxContainer" instance=ExtResource("2_5pnhv")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="EndAbility" parent="HBoxContainer" instance=ExtResource("2_5pnhv")]
+unique_name_in_owner = true
+layout_mode = 2
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(1, 1, 1, 0)

@@ -2,6 +2,7 @@
 
 public interface IItemInfo
 {
+    public int Id { get; }
     public string Name { get; }
     public string Desc { get; }
     public string IconPath { get; }

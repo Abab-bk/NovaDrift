@@ -20,6 +20,7 @@ public partial class Tables
     public DataBase.TbMobInfo TbMobInfo {get; }
     public DataBase.TbBuff TbBuff {get; }
     public DataBase.TbConstants TbConstants {get; }
+    public DataBase.TbAbilityTree TbAbilityTree {get; }
 
     public Tables(System.Func<string, JsonElement> loader)
     {
@@ -29,6 +30,7 @@ public partial class Tables
         TbMobInfo = new DataBase.TbMobInfo(loader("database_tbmobinfo"));
         TbBuff = new DataBase.TbBuff(loader("database_tbbuff"));
         TbConstants = new DataBase.TbConstants(loader("database_tbconstants"));
+        TbAbilityTree = new DataBase.TbAbilityTree(loader("database_tbabilitytree"));
         ResolveRef();
     }
     
@@ -40,6 +42,7 @@ public partial class Tables
         TbMobInfo.ResolveRef(this);
         TbBuff.ResolveRef(this);
         TbConstants.ResolveRef(this);
+        TbAbilityTree.ResolveRef(this);
     }
 }
 

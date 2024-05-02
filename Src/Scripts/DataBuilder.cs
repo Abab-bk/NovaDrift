@@ -12,8 +12,18 @@ namespace NovaDrift.Scripts;
 
 public static class DataBuilder
 {
-    private static Tables _tables;
-    public static TbConstants Constants => _tables.TbConstants;
+    public static Tables Tables;
+    public static TbConstants Constants => Tables.TbConstants;
+    public static List<int> AbilityIdPool = new List<int>();
+
+    public static void BuildAbilityIdPool()
+    {
+        AbilityIdPool.Clear();
+        foreach (var map in Tables.TbAbilityTree.DataMap)
+        {
+            AbilityIdPool.Add(map.Value.StartAbilityId);
+        }
+    }
 
     public static StatModifier BuildFlatModifier(float value)
     {
@@ -34,8 +44,8 @@ public static class DataBuilder
     public static int GetRandomAbilityId()
     {
         int id = Random.Shared.Next(
-            _tables.TbAbility.DataMap.Keys.ElementAt(1),
-            _tables.TbAbility.DataMap.Keys.Last() + 1
+            Tables.TbAbility.DataMap.Keys.ElementAt(1),
+            Tables.TbAbility.DataMap.Keys.Last() + 1
             );
         return id;
     }
@@ -43,8 +53,8 @@ public static class DataBuilder
     public static int GetRandomWeaponId()
     {
         int id = Random.Shared.Next(
-            _tables.TbWeapon.DataMap.Keys.ElementAt(1),
-            _tables.TbWeapon.DataMap.Keys.Last() + 1
+            Tables.TbWeapon.DataMap.Keys.ElementAt(1),
+            Tables.TbWeapon.DataMap.Keys.Last() + 1
         );
         return id;
     }
@@ -52,8 +62,8 @@ public static class DataBuilder
     public static int GetRandomBodyId()
     {
         int id = Random.Shared.Next(
-            _tables.TbBody.DataMap.Keys.ElementAt(1),
-            _tables.TbBody.DataMap.Keys.Last() + 1
+            Tables.TbBody.DataMap.Keys.ElementAt(1),
+            Tables.TbBody.DataMap.Keys.Last() + 1
         );
         return id;
     }
@@ -61,15 +71,15 @@ public static class DataBuilder
     public static int GetRandomMobId()
     {
         int id = Random.Shared.Next(
-            _tables.TbMobInfo.DataMap.Keys.ElementAt(1),
-            _tables.TbMobInfo.DataMap.Keys.Last() + 1
+            Tables.TbMobInfo.DataMap.Keys.ElementAt(1),
+            Tables.TbMobInfo.DataMap.Keys.Last() + 1
         );
         return id;
     }
 
     public static Game.Body BuildBodyById(int id)
     {
-        Body tbBody = _tables.TbBody.Get(id);
+        Body tbBody = Tables.TbBody.Get(id);
 
         string name = tbBody.ClassName;
         Type classType = Type.GetType("NovaDrift.Scripts.Systems.Bodies." + name);
@@ -97,28 +107,31 @@ public static class DataBuilder
 
     public static Game.Weapon BuildWeaponById(int id)
     {
-        Weapon tbWeapon = _tables.TbWeapon.Get(id);
-        Game.Weapon weapon = new Game.Weapon();
-        
-        weapon.Id = tbWeapon.Id;
-        weapon.Name = tbWeapon.Name;
-        weapon.Desc = tbWeapon.Desc;
-        weapon.SceneName = tbWeapon.SceneName;
+        Weapon tbWeapon = Tables.TbWeapon.Get(id);
+        Game.Weapon weapon = new Game.Weapon
+        {
+            Id = tbWeapon.Id,
+            Name = tbWeapon.Name,
+            Desc = tbWeapon.Desc,
+            SceneName = tbWeapon.SceneName,
+        };
         
         return weapon;
     }
 
     public static Game.Ability BuildAbilityById(int id)
     {
-        Ability tbAbility = _tables.TbAbility.Get(id);
-        Game.Ability ability = new Game.Ability();
-
-        ability.Name = tbAbility.Name;
-        ability.Desc = tbAbility.Desc;
-        ability.ClassName = tbAbility.ClassName;
-        ability.IconPath = $"res://Assets/Ui/Icons/AbilityIcons/{tbAbility.ClassName}.tres";
-        ability.Effect = BuildEffectByName(ability.ClassName, tbAbility.Values, tbAbility.Name);
-
+        Ability tbAbility = Tables.TbAbility.Get(id);
+        Game.Ability ability = new Game.Ability
+        {
+            Id = tbAbility.Id,
+            Name = tbAbility.Name,
+            Desc = tbAbility.Desc,
+            ClassName = tbAbility.ClassName,
+            IconPath = $"res://Assets/Ui/Icons/AbilityIcons/{tbAbility.ClassName}.tres",
+            Effect = BuildEffectByName(tbAbility.ClassName, tbAbility.Values, tbAbility.Name),
+            Tree = BuildAbilityTreeById(tbAbility.TreeId),
+        };
         return ability;
     }
 
@@ -143,7 +156,7 @@ public static class DataBuilder
     
     public static Game.Buff BuildBuffById(int id)
     {
-        Buff tbBuff = _tables.TbBuff.Get(id);
+        Buff tbBuff = Tables.TbBuff.Get(id);
         
         string name = tbBuff.ClassName;
         Type classType = Type.GetType("NovaDrift.Scripts.Systems.Buffs." + name);
@@ -168,7 +181,7 @@ public static class DataBuilder
     
     public static Game.MobInfo BuildMobInfoById(int id)
     {
-        MobInfo tbMobInfo = _tables.TbMobInfo.Get(id);
+        MobInfo tbMobInfo = Tables.TbMobInfo.Get(id);
         Game.MobInfo mobInfo = new Game.MobInfo
         {
             Name = tbMobInfo.Name,
@@ -182,10 +195,24 @@ public static class DataBuilder
         
         return mobInfo;
     }
+    
+    public static Game.AbilityTree BuildAbilityTreeById(int id)
+    {
+        AbilityTree tbAbilityTree = Tables.TbAbilityTree.Get(id);
+        Game.AbilityTree abilityTree = new Game.AbilityTree
+        {
+            Id = tbAbilityTree.Id,
+            StartAbilityId = tbAbilityTree.StartAbilityId,
+            MiddleAbilityIds = tbAbilityTree.MiddleAbilityIds,
+            EndAbilityId = tbAbilityTree.EndAbilityId,
+        };
+        
+        return abilityTree;
+    }
 
     public static void Init()
     {
-        _tables = new Tables(file => JsonSerializer.Deserialize<JsonElement>(
+        Tables = new Tables(file => JsonSerializer.Deserialize<JsonElement>(
             Wizard.ReadAllText($"res://Assets/DataBase/{file}.json")));
     }
 }

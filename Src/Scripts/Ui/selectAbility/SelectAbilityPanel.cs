@@ -1,7 +1,5 @@
-using System;
 using AcidWallStudio.AcidUtilities;
 using DsUi;
-using Godot;
 using NovaDrift.Scripts.Systems;
 using NovaDrift.Scripts.Ui.AbilityItem;
 using NovaDrift.Scripts.Ui.AbilityPanel;
@@ -28,7 +26,7 @@ public partial class SelectAbilityPanel : SelectAbility
         
         GenerateAbilityPanel(new AbilityGenerateConfig(5));
     }
-    
+
     private void GenerateAbilityPanel(AbilityGenerateConfig config)
     {
         if (Global.Player.Stats.Body.Id == 1000)
@@ -38,7 +36,7 @@ public partial class SelectAbilityPanel : SelectAbility
                 var abilityItem = S_ItemRow2.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem);
                 abilityItem.Item = DataBuilder.BuildBodyById(DataBuilder.GetRandomBodyId());
                 
-                abilityItem.OnAbilitySelected += (IItemInfo item) => { OnAbilitySelected(abilityItem); };
+                abilityItem.OnAbilitySelected += _ => { OnAbilitySelected(abilityItem); };
             }
             return;
         }
@@ -50,7 +48,7 @@ public partial class SelectAbilityPanel : SelectAbility
                 var abilityItem = S_ItemRow2.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem);
                 abilityItem.Item = DataBuilder.BuildWeaponById(DataBuilder.GetRandomWeaponId());
                 
-                abilityItem.OnAbilitySelected += (IItemInfo item) => { OnAbilitySelected(abilityItem); };
+                abilityItem.OnAbilitySelected += _ => { OnAbilitySelected(abilityItem); };
             }
             return;
         }
@@ -60,18 +58,18 @@ public partial class SelectAbilityPanel : SelectAbility
         {
             var abilityItem = S_ItemRow1.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem);
 
-            abilityItem.Item = DataBuilder.BuildAbilityById(DataBuilder.GetRandomAbilityId());
+            abilityItem.Item = DataBuilder.BuildAbilityById(DataBuilder.AbilityIdPool.PickRandom());
             
-            abilityItem.OnAbilitySelected += (IItemInfo item) => { OnAbilitySelected(abilityItem); };
+            abilityItem.OnAbilitySelected += _ => { OnAbilitySelected(abilityItem); };
         }
         
         for (int i = 0; i < 3; i++)
         {
             var abilityItem = S_ItemRow2.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem);
 
-            abilityItem.Item = DataBuilder.BuildAbilityById(DataBuilder.GetRandomAbilityId());
+            abilityItem.Item = DataBuilder.BuildAbilityById(DataBuilder.AbilityIdPool.PickRandom());
             
-            abilityItem.OnAbilitySelected += (IItemInfo item) => { OnAbilitySelected(abilityItem); };
+            abilityItem.OnAbilitySelected += _ => { OnAbilitySelected(abilityItem); };
         }
         
         for (int i = 0; i < 2; i++)
@@ -87,11 +85,11 @@ public partial class SelectAbilityPanel : SelectAbility
                     abilityItem.Item = DataBuilder.BuildWeaponById(DataBuilder.GetRandomWeaponId());
                     break;
                 case AbilityGenerateConfig.ItemType.Ability:
-                    abilityItem.Item = DataBuilder.BuildAbilityById(DataBuilder.GetRandomAbilityId());
+                    abilityItem.Item = DataBuilder.BuildAbilityById(DataBuilder.AbilityIdPool.PickRandom());
                     break;
             }
 
-            abilityItem.OnAbilitySelected += (IItemInfo item) => { OnAbilitySelected(abilityItem); };
+            abilityItem.OnAbilitySelected += _ => { OnAbilitySelected(abilityItem); };
         }
     }
 
@@ -103,6 +101,16 @@ public partial class SelectAbilityPanel : SelectAbility
         _currentItem = item;
         var tw = CreateTween();
         tw.TweenProperty(S_Indicator.Instance, "global_position", abilityItem.GlobalPosition, 0.1f);
+        
+        if (item is Ability ability)
+        {
+            S_AbilityTree.Instance.ShowUi();
+            S_AbilityTree.Instance.UpdateUi(ability);
+        }
+        else
+        {
+            S_AbilityTree.Instance.HideUi();
+        }
     }
 
     public override void OnDestroyUi()

@@ -19,6 +19,7 @@ public partial class AbilityItemPanel : AbilityItem
     public event Action<IItemInfo> OnAbilitySelected;
     
     private IItemInfo _item;
+    private Color _pressedColor = new Color("9c9c9c");
     
     public override void OnCreateUi()
     {
@@ -26,6 +27,9 @@ public partial class AbilityItemPanel : AbilityItem
         {
             OnAbilitySelected?.Invoke(Item);
         };
+
+        S_Button.Instance.ButtonDown += () => { S_IconTexture.Instance.Modulate = _pressedColor; };
+        S_Button.Instance.ButtonUp += () => { S_IconTexture.Instance.Modulate = Colors.White; };
         ShowUi();
         UpdateUi();
     }
@@ -38,6 +42,13 @@ public partial class AbilityItemPanel : AbilityItem
         
         if (!Wizard.FileExists(Item.IconPath2)) return;
         S_IconTexture.Instance.Texture = GD.Load<Texture2D>(Item.IconPath2);
+    }
+
+    public void UpdateUiById(int id)
+    {
+        S_IconTexture.Instance.Texture = GD.Load<Texture2D>(
+            $"res://Assets/Ui/Icons/AbilityIcons/{DataBuilder.Tables.TbAbility.Get(id).ClassName}.tres"
+            );
     }
 
     public override void OnDestroyUi()

@@ -46,6 +46,9 @@ public partial class GameWorld : Node2D
     // 顺序是：GameInit => GameStart => GameOver
     private void Init()
     {
+        // 更新能力池
+        DataBuilder.BuildAbilityIdPool();
+        
         _moveJoystick = GetNode<Joystick>("%MoveJoystick");
         _aimJoystick = GetNode<Joystick>("%AimJoystick");
         
