@@ -1,8 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://dai2k1wuc6y38"]
+[gd_scene load_steps=18 format=3 uid="uid://dai2k1wuc6y38"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_yrrya"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/Beamcaster.cs" id="2_libbv"]
-[ext_resource type="Texture2D" uid="uid://bprp1wniehwt4" path="res://Assets/Textures/Mobs/Beamcaster2.png" id="2_t3cdl"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blio1"]
 size = Vector2(66, 104)
@@ -87,10 +86,6 @@ transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_wca6e")])
 
 [node name="Beamcaster" instance=ExtResource("1_yrrya")]
-
-[node name="Sprite2D" parent="." index="0"]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_t3cdl")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_blio1")

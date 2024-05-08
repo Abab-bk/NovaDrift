@@ -10,7 +10,7 @@ public partial class StartMenuPanel : StartMenu
     {
         S_StartGameBtn.Instance.OnClick += () =>
         {
-            Global.OnGameInit?.Invoke();
+            EventBus.OnGameInit?.Invoke();
         };
         S_ExitBtn.Instance.OnClick += () =>
         {
@@ -21,7 +21,7 @@ public partial class StartMenuPanel : StartMenu
             OpenNextUi(UiManager.UiName.Setting);
         };
 
-        Global.OnGameStart += () =>
+        EventBus.OnGameStart += () =>
         {
             UiManager.Destroy_StartMenu();
         };

@@ -20,4 +20,10 @@ public sealed class WorldCommands
 
     public HazardSpawner.HazardType HazardType { get; set; }
     public void SpawnHazard() => Global.HazardSpawner.SpawnHazard(HazardType);
+    
+    public enum WorldColors
+    {
+        Red,
+        Blue,
+    }
 }

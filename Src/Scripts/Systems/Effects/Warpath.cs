@@ -14,7 +14,7 @@ public class Warpath : Effect
     public override void OnCreate()
     {
         base.OnCreate();
-        Global.OnMobDied += _ =>
+        EventBus.OnMobDied += _ =>
         {
             if (_token == 0) { _timer.Start(); }
             _token += 1;

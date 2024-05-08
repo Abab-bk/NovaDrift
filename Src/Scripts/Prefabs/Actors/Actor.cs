@@ -122,6 +122,24 @@ public partial class Actor : CharacterBody2D
         _hurtBox.SetIsPlayer(IsPlayer);
 
         _visibleOnScreenNotifier2D.ScreenExited += MoveToWorldEdge;
+
+        EventBus.OnWorldColorChanged += ChangeColor;
+        ChangeColor();
+    }
+
+    public override void _ExitTree()
+    {
+        EventBus.OnWorldColorChanged -= ChangeColor;
+    }
+
+    public virtual void Die()
+    {
+        CallDeferred(Node.MethodName.QueueFree);
+    }
+    
+    private void ChangeColor()
+    {
+        Modulate = Global.WorldColor.Level1;
     }
 
     public void TakeDamage(float value)
@@ -135,11 +153,6 @@ public partial class Actor : CharacterBody2D
     {
         UiManager.Open_DamageLabel().ShowValue(value, GetGlobalTransformWithCanvas().Origin);
         SoundManager.PlaySound(SoundPaths.Ping);
-    }
-
-    public virtual void Die()
-    {
-        CallDeferred(Node.MethodName.QueueFree);
     }
 
     private void MoveToWorldEdge()

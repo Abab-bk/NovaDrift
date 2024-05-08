@@ -9,7 +9,7 @@ public partial class GameOverPanel : GameOver
     {
         S_ReStartBtn.Instance.Pressed += () =>
         {
-            Global.OnGameInit?.Invoke();
+            EventBus.OnGameInit?.Invoke();
             Destroy();
         };
     }

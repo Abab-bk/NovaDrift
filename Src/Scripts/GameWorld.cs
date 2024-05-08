@@ -22,15 +22,16 @@ public partial class GameWorld : Node2D
         GetNode<Joystick>("%MoveJoystick").Hide();
         GetNode<Joystick>("%AimJoystick").Hide();
         
-        Global.OnGameInit += Init;
-        Global.OnGameOver += GameOver;
+        EventBus.OnGameInit += Init;
+        EventBus.OnGameOver += GameOver;
         
+        Global.Init();
         DataBuilder.Init();
         AcidSaver.LoadAll();
         
         if (Global.CurrentPlatform != GamePlatform.Desktop)
         {
-            Global.OnGameInit?.Invoke();
+            EventBus.OnGameInit?.Invoke();
             return;
         }
         
@@ -40,7 +41,7 @@ public partial class GameWorld : Node2D
             return;
         }
         
-        Global.OnGameInit?.Invoke();
+        EventBus.OnGameInit?.Invoke();
     }
 
     // 顺序是：GameInit => GameStart => GameOver
@@ -74,7 +75,7 @@ public partial class GameWorld : Node2D
         UiManager.Open_PausedMenu();
         UiManager.Hide_PausedMenu();
         
-        Global.OnGameStart?.Invoke();
+        EventBus.OnGameStart?.Invoke();
     }
 
     private async void GameOver()

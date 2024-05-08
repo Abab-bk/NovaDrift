@@ -1,7 +1,10 @@
+using System;
 using DsUi;
 using GDebugPanelGodot.Core;
 using GDebugPanelGodot.DebugActions.Containers;
+using GDebugPanelGodot.Extensions;
 using Godot;
+using Range = Godot.Range;
 
 namespace NovaDrift.Scripts.Ui.Hud;
 
@@ -19,12 +22,12 @@ public partial class HudPanel : Hud
         _expBar = S_ExpProgressBar.Instance;
         _hpBar = S_HpProgressBar.Instance;
 
-        Global.OnPlayerUpLevel += i =>
+        EventBus.OnPlayerUpLevel += i =>
         {
             OpenNestedUi(UiManager.UiName.SelectAbility);
             Global.StopGame();
         };
-        Global.OnGameOver += Destroy;
+        EventBus.OnGameOver += Destroy;
         
         GenerateDebugPanel();
     }
@@ -78,7 +81,30 @@ public partial class HudPanel : Hud
 
     private void GenerateDebugPanel()
     {
+        // Player
         GDebugPanel.AddSection("Player", new PlayerCommands());
-        GDebugPanel.AddSection("World", new WorldCommands());
+
+        
+        // World
+        var worldCommand = new WorldCommands();
+        var worldSection = GDebugPanel.AddSection("World", worldCommand);
+
+        var worldColor = WorldCommands.WorldColors.Red;
+        
+        worldSection.AddEnum("ColorType", val =>
+        {
+            worldColor = val;
+
+            switch (worldColor)
+            {
+                case WorldCommands.WorldColors.Red:
+                    Global.SetWorldColor(Constants.Colors.Red);
+                    break;
+                case WorldCommands.WorldColors.Blue:
+                    Global.SetWorldColor(Constants.Colors.Blue);
+                    break;
+            }
+        }, () => worldColor);
+        
     }
 }

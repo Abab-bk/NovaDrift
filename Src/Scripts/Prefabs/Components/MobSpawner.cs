@@ -58,8 +58,8 @@ public partial class MobSpawner : Node2D
         _mobList = new(_mobListItems);
         _spawnTypeList = new(_spawnTypeListItems);
         
-        Global.OnGameStart += () => { _timer.Start(); };
-        Global.OnGameOver += () => { _enabled = false; _timer.Stop(); };
+        EventBus.OnGameStart += () => { _timer.Start(); };
+        EventBus.OnGameOver += () => { _enabled = false; _timer.Stop(); };
         
         _timer = new Timer
         {

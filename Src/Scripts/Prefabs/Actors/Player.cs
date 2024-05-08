@@ -18,7 +18,7 @@ public partial class Player : Actor
 
         _smokeTrail = GetNode<SmokeTrail>("%SmokeTrail");
         
-        Global.OnMobDied += _ => { UpdateUi(); };
+        EventBus.OnMobDied += _ => { UpdateUi(); };
         Stats.Health.ValueChanged += (float value) =>
         {
             UpdateUi();
@@ -64,8 +64,8 @@ public partial class Player : Actor
 
     public override void Die()
     {
-        Global.OnPlayerDead?.Invoke();
-        Global.OnGameOver?.Invoke();
+        EventBus.OnPlayerDead?.Invoke();
+        EventBus.OnGameOver?.Invoke();
     }
 
     public void UpLevel(float value = 0f)
@@ -74,7 +74,7 @@ public partial class Player : Actor
         Stats.Exp.MaxValue.BaseValue += 300;
         UpdateUi();
 
-        Global.OnPlayerUpLevel(Stats.Level);
+        EventBus.OnPlayerUpLevel(Stats.Level);
     }
 
     private void UpdateUi(float value = 0)

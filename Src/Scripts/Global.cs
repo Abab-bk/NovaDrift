@@ -24,21 +24,26 @@ public enum GamePlatform
 
 public static class Global
 {
-    public static GamePlatform CurrentPlatform = GamePlatform.Desktop;
+    public static readonly GamePlatform CurrentPlatform = GamePlatform.Desktop;
     
     public static Player Player;
     public static GameWorld GameWorld;
 
-    public static Action<MobBase> OnMobDied;
-    public static Action<int> OnPlayerUpLevel;
-    public static Action OnPlayerDead;
-    public static Action OnGameOver;
-    public static Action OnGameInit;
-    public static Action OnGameStart;
-
+    public static Constants.WorldColor WorldColor = Constants.Colors.Blue;
+    
     public static HazardSpawner HazardSpawner;
 
     private static int _stopCount;
+
+    public static void Init()
+    {
+    }
+
+    public static void SetWorldColor(Constants.WorldColor color)
+    {
+        WorldColor = color;
+        EventBus.OnWorldColorChanged();
+    }
 
     public static void StopGame()
     {

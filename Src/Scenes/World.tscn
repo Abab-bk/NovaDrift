@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://d25jyaf2cexon"]
+[gd_scene load_steps=12 format=3 uid="uid://d25jyaf2cexon"]
 
 [ext_resource type="Script" path="res://Scripts/GameWorld.cs" id="1_xxmb6"]
 [ext_resource type="Texture2D" uid="uid://u0tycejtltpc" path="res://Assets/Textures/Backgrounds/BgStarsFar.png" id="2_ym6w2"]
@@ -7,6 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/MobSpawner.cs" id="4_4mpug"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HazardSpawner.cs" id="5_2fkc6"]
 [ext_resource type="PackedScene" uid="uid://drcoa0ndbt6te" path="res://addons/AcidJoystick/Joystick.tscn" id="6_6ip1o"]
+[ext_resource type="Environment" uid="uid://dwua3nxtba68l" path="res://Assets/Environments/Default.tres" id="8_6l4n4"]
 
 [sub_resource type="Animation" id="Animation_kjyk7"]
 resource_name = "BackgroundMove"
@@ -66,6 +67,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
 layout_mode = 1
@@ -74,11 +76,13 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.0470588, 0.0235294, 0.12549, 1)
+color = Color(0.0996852, 0.0605216, 0.218447, 1)
+metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="."]
 
 [node name="Far" type="ParallaxLayer" parent="ParallaxBackground"]
+visible = false
 motion_scale = Vector2(1.5, 1.5)
 motion_mirroring = Vector2(2048, 2048)
 
@@ -120,3 +124,6 @@ script = ExtResource("4_4mpug")
 
 [node name="HazardSpawner" type="Node2D" parent="."]
 script = ExtResource("5_2fkc6")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("8_6l4n4")

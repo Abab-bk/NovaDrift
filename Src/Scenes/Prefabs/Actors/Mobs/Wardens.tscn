@@ -88,10 +88,6 @@ variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_2ftj0"
 
 [node name="Wardens" instance=ExtResource("1_u23yy")]
 
-[node name="Sprite2D" parent="." index="0"]
-modulate = Color(1, 1, 0, 1)
-scale = Vector2(0.4, 0.4)
-
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_w3jmk")
 

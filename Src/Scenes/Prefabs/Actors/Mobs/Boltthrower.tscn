@@ -1,7 +1,6 @@
-[gd_scene load_steps=23 format=3 uid="uid://duok4mn4qkth7"]
+[gd_scene load_steps=22 format=3 uid="uid://duok4mn4qkth7"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_0ifgw"]
-[ext_resource type="Texture2D" uid="uid://byoqa0mauu43i" path="res://Assets/Textures/Mobs/Beamcaster1.png" id="2_4h4xk"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/FreeSelfWhenExitScreen.cs" id="2_06ekw"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/Boltthrower.cs" id="2_ayrbs"]
 [ext_resource type="PackedScene" uid="uid://ddh1yqvil5l6g" path="res://Scenes/Vfx/LightBall.tscn" id="5_gd3g6"]
@@ -85,10 +84,6 @@ transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_dgcdw"), SubResource("VariableConfig_lkd4l"), SubResource("VariableConfig_2wuef")])
 
 [node name="Boltthrower" instance=ExtResource("1_0ifgw")]
-
-[node name="Sprite2D" parent="." index="0"]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_4h4xk")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_ym3x2")
