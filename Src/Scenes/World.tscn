@@ -1,16 +1,18 @@
-[gd_scene load_steps=10 format=3 uid="uid://d25jyaf2cexon"]
+[gd_scene load_steps=11 format=3 uid="uid://d25jyaf2cexon"]
 
 [ext_resource type="Script" path="res://Scripts/GameWorld.cs" id="1_xxmb6"]
-[ext_resource type="Texture2D" uid="uid://b8gw82tgl2r2x" path="res://Assets/Textures/Backgrounds/NebulaBlue.png" id="2_n84c3"]
-[ext_resource type="Texture2D" uid="uid://ca5ke1brwqwxl" path="res://Assets/Textures/Backgrounds/StarsSmall1.png" id="3_8degx"]
+[ext_resource type="Texture2D" uid="uid://u0tycejtltpc" path="res://Assets/Textures/Backgrounds/BgStarsFar.png" id="2_ym6w2"]
+[ext_resource type="Texture2D" uid="uid://ctjwbswajgyik" path="res://Assets/Textures/Backgrounds/BgStarsMid.png" id="3_0u7ly"]
+[ext_resource type="Texture2D" uid="uid://dnhr4p4esadrx" path="res://Assets/Textures/Backgrounds/BgStarsNear.png" id="3_vfhic"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/MobSpawner.cs" id="4_4mpug"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HazardSpawner.cs" id="5_2fkc6"]
 [ext_resource type="PackedScene" uid="uid://drcoa0ndbt6te" path="res://addons/AcidJoystick/Joystick.tscn" id="6_6ip1o"]
 
-[sub_resource type="Animation" id="Animation_b3sj7"]
-resource_name = "BackGroundMove"
-length = 60.0
-loop_mode = 2
+[sub_resource type="Animation" id="Animation_kjyk7"]
+resource_name = "BackgroundMove"
+length = 40.0
+loop_mode = 1
+step = 1.0
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -18,13 +20,13 @@ tracks/0/path = NodePath("ParallaxBackground:scroll_offset")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 60),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0, 40),
+"transitions": PackedFloat32Array(0.659754, 1.27456),
 "update": 0,
-"values": [Vector2(0, 0), Vector2(4000, 2000)]
+"values": [Vector2(0, 0), Vector2(2048, 2048)]
 }
 
-[sub_resource type="Animation" id="Animation_vmbyp"]
+[sub_resource type="Animation" id="Animation_iygef"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -39,40 +41,66 @@ tracks/0/keys = {
 "values": [Vector2(0, 0)]
 }
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_3iie4"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dih1w"]
 _data = {
-"BackGroundMove": SubResource("Animation_b3sj7"),
-"RESET": SubResource("Animation_vmbyp")
+"BackgroundMove": SubResource("Animation_kjyk7"),
+"RESET": SubResource("Animation_iygef")
 }
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_xxmb6")
 
-[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
-scroll_ignore_camera_zoom = true
-
-[node name="Bg" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(1.2, 1)
-motion_mirroring = Vector2(4096, 4096)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Bg"]
-texture = ExtResource("2_n84c3")
-centered = false
-
-[node name="Star" type="ParallaxLayer" parent="ParallaxBackground"]
-motion_scale = Vector2(1.4, 1)
-motion_mirroring = Vector2(2048, 2048)
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Star"]
-scale = Vector2(1917, 1121)
-texture = ExtResource("3_8degx")
-centered = false
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_3iie4")
+"": SubResource("AnimationLibrary_dih1w")
 }
-autoplay = "BackGroundMove"
+autoplay = "BackgroundMove"
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = -101
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0470588, 0.0235294, 0.12549, 1)
+
+[node name="ParallaxBackground" type="ParallaxBackground" parent="."]
+
+[node name="Far" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(1.5, 1.5)
+motion_mirroring = Vector2(2048, 2048)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Far"]
+texture = ExtResource("2_ym6w2")
+centered = false
+
+[node name="Mid" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(1.2, 1.2)
+motion_mirroring = Vector2(2048, 2048)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Mid"]
+texture = ExtResource("3_0u7ly")
+centered = false
+
+[node name="Near" type="ParallaxLayer" parent="ParallaxBackground"]
+motion_scale = Vector2(1.1, 1.1)
+motion_mirroring = Vector2(2048, 2048)
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Near"]
+texture = ExtResource("3_vfhic")
+centered = false
 
 [node name="Hud" type="CanvasLayer" parent="."]
 
