@@ -28,5 +28,25 @@
       1011
     ],
     "end_ability_id": 1012
+  },
+  {
+    "id": 1004,
+    "name": "巨大",
+    "start_ability_id": 1013,
+    "middle_ability_ids": [
+      1014,
+      1015
+    ],
+    "end_ability_id": 1016
+  },
+  {
+    "id": 1005,
+    "name": "爆炸半径",
+    "start_ability_id": 1017,
+    "middle_ability_ids": [
+      1018,
+      1019
+    ],
+    "end_ability_id": 1020
   }
 ]

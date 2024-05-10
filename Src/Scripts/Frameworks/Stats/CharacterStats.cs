@@ -10,10 +10,12 @@ namespace NovaDrift.Scripts.Frameworks.Stats;
 public class CharacterStats
 {
     public Action OnBodyChanged;
+    public Action OnShieldChanged;
     
     public int Level = 1;
 
     public Body Body = new Body();
+    public Shield Shield = new Shield();
 
     public Attribute Health;
     public readonly Stat Speed = new Stat(1000);
@@ -21,23 +23,29 @@ public class CharacterStats
     public readonly Attribute Exp = new Attribute(0, 100);
     
     // 武器射击速度
-    public readonly Stat ShootSpeed = new Stat(0.5f); // 射击速度，单位为秒，越低越快
-    public readonly Stat BulletSpeed = new Stat(1500f); // 子弹速度
-    public readonly Stat ShootSpread = new Stat(120f); // 武器散布 Spread
-    public readonly Stat ShootKnockBack = new Stat(10f); // 打中后对目标的击退
-    public readonly Stat BurstFire = new Stat(1f); // 你的武器会快速射击，然后进入一个冷却状态，这个冷却时间与已射出的子弹的冷却时间总和相等。
+    public readonly Stat 
+        ShootSpeed = new Stat(0.5f), // 射击速度，单位为秒，越低越快
+        BulletSpeed = new Stat(1500f), // 子弹速度
+        ShootSpread = new Stat(120f), // 武器散布 Spread
+        ShootKnockBack = new Stat(10f), // 打中后对目标的击退
+        BurstFire = new Stat(1f), // 你的武器会快速射击，然后进入一个冷却状态，这个冷却时间与已射出的子弹的冷却时间总和相等。
     
-    public readonly Stat BulletSize = new Stat(1f); // 子弹大小，单位缩放
-    public readonly Stat BulletDegeneration = new Stat(10f); // 子弹退化速度（也就是从开始到消失需要的速度）
-    public readonly Stat Recoil = new Stat(50f); // 射击后武器把自己击退的速度
-    public readonly Stat BulletCount = new Stat(1f); // 发射的子弹数量
-    public readonly Stat BlastDamage = new Stat(0f); // TODO: 爆炸伤害
-    public readonly Stat BlastRadius = new Stat(0f); // TODO: 爆炸半径
+        BulletSize = new Stat(1f), // 子弹大小，单位缩放
+        BulletDegeneration = new Stat(10f), // 子弹退化速度（也就是从开始到消失需要的速度）
+        Recoil = new Stat(50f), // 射击后武器把自己击退的速度
+        BulletCount = new Stat(1f), // 发射的子弹数量
+        BlastDamage = new Stat(0f), // TODO: 爆炸伤害
+        BlastRadius = new Stat(0f), // TODO: 爆炸半径
+        
+        Acceleration = new Stat(1000),
+        Deceleration = new Stat(500),
+        RotationSpeed = new Stat(1), // 越高越灵敏
+        ShootingDeceleration = new Stat(1),
+        
+        ShieldCoolDown = new Stat(0.5f), // 护盾恢复冷却时间
+        ShieldPower = new Stat(0.5f), // 护盾除了保护目标外的任何效果的力量
+        ShieldRadius = new Stat(200f); // 护盾半径
     
-    public readonly Stat Acceleration = new Stat(1000);
-    public readonly Stat Deceleration = new Stat(500);
-    public readonly Stat RotationSpeed = new Stat(1); // 越高越灵敏
-    public readonly Stat ShootingDeceleration = new Stat(1);
     
     // 一般是给玩家用的，无限持续时间，一般是Mod
     public readonly EffectSystem EffectSystem = new EffectSystem();
@@ -108,6 +116,13 @@ public class CharacterStats
     {
         Body = value;
         OnBodyChanged?.Invoke();
+        return this;
+    }
+    
+    public CharacterStats SetShield(Shield value)
+    {
+        Shield = value;
+        OnShieldChanged?.Invoke();
         return this;
     }
     

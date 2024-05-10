@@ -21,6 +21,9 @@ texture = ExtResource("2_44451")
 unique_name_in_owner = true
 position = Vector2(52, 0)
 
+[node name="ShieldNode" type="Node2D" parent="Components"]
+unique_name_in_owner = true
+
 [node name="HurtBox" type="Area2D" parent="Components"]
 script = ExtResource("4_lb4uu")
 

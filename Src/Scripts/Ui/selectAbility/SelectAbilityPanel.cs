@@ -53,6 +53,18 @@ public partial class SelectAbilityPanel : SelectAbility
             return;
         }
         
+        if (Global.Player.Shield.Shield.Id == 1000)
+        {
+            for (int i = 0; i < 3; i++)
+            {
+                var abilityItem = S_ItemRow2.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem);
+                abilityItem.Item = DataBuilder.BuildShieldById(DataBuilder.GetRandomShieldId());
+                
+                abilityItem.OnAbilitySelected += _ => { OnAbilitySelected(abilityItem); };
+            }
+            return;
+        }
+        
         // 生成 Items
         for (int i = 0; i < 2; i++)
         {
@@ -86,6 +98,9 @@ public partial class SelectAbilityPanel : SelectAbility
                     break;
                 case AbilityGenerateConfig.ItemType.Ability:
                     abilityItem.Item = DataBuilder.BuildAbilityById(DataBuilder.AbilityIdPool.PickRandom());
+                    break;
+                case AbilityGenerateConfig.ItemType.Shield:
+                    abilityItem.Item = DataBuilder.BuildShieldById(DataBuilder.GetRandomShieldId());
                     break;
             }
 

@@ -9,6 +9,7 @@ public class AbilityGenerateConfig
         Ability,
         Weapon,
         Body,
+        Shield,
     }
     
     public int Count = 3;
@@ -18,6 +19,7 @@ public class AbilityGenerateConfig
         {ItemType.Ability, 1},
         {ItemType.Weapon, 1},
         {ItemType.Body, 1},
+        {ItemType.Shield, 1},
     };
     
     public AbilityGenerateConfig(int count)

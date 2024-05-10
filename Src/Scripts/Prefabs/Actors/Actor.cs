@@ -5,6 +5,7 @@ using NathanHoad;
 using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Frameworks.Stats;
 using NovaDrift.Scripts.Prefabs.Components;
+using NovaDrift.Scripts.Prefabs.Shields;
 using NovaDrift.Scripts.Prefabs.Weapons;
 
 namespace NovaDrift.Scripts.Prefabs.Actors;
@@ -33,6 +34,8 @@ public partial class Actor : CharacterBody2D
             }
         }
     }
+
+    public BaseShield Shield;
     
     public Action StartShooting;
     public Action StopShooting;
@@ -43,6 +46,7 @@ public partial class Actor : CharacterBody2D
     private BaseShooter _shooter;
 
     public Node2D ShooterNode;
+    public Node2D ShieldNode;
     public readonly CharacterStats Stats = new CharacterStats();
     public float ShootCd = 1f;
     
@@ -108,7 +112,8 @@ public partial class Actor : CharacterBody2D
     public override void _Ready()
     {
         ShooterNode = GetNode<Node2D>("%ShooterNode");
-        
+        ShieldNode = GetNode<Node2D>("%ShieldNode");
+
         InitStats();
         InitCollision();
         Stats.SetTarget(this);
@@ -149,6 +154,12 @@ public partial class Actor : CharacterBody2D
         OnHit(value);
     }
 
+    public void TakeDamageWithoutKnockBack(float value)
+    {
+        Stats.Health.Decrease(value);
+        OnHit(value);
+    }
+    
     protected void OnHit(float value)
     {
         UiManager.Open_DamageLabel().ShowValue(value, GetGlobalTransformWithCanvas().Origin);

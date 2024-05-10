@@ -15,8 +15,7 @@ public class Body : IItemInfo
     public string Desc { get; set; }
     public string IconPath { get; set; }
     public string IconPath2 { get; set; }
-
-    // TODO: 护盾
+    
     public float Health = 100;
     
     public float Acceleration = 1000f;

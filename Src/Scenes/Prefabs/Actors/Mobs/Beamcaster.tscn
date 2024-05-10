@@ -90,6 +90,9 @@ variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_wca6e"
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_blio1")
 
+[node name="HurtBox" parent="Components" index="1"]
+unique_name_in_owner = false
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtBox" index="0"]
 shape = SubResource("RectangleShape2D_sf010")
 

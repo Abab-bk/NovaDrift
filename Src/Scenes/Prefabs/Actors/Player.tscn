@@ -31,7 +31,7 @@ position = Vector2(42, 0)
 script = ExtResource("3_hlk8c")
 Actor = NodePath("../../..")
 
-[node name="HurtBox" parent="Components" index="1" node_paths=PackedStringArray("Actor")]
+[node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]
 Actor = NodePath("../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtBox" index="0"]

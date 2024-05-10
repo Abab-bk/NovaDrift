@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://q35xmh26wes7"]
+
+[ext_resource type="Script" path="res://Scripts/Prefabs/Components/CircleSprite2D.cs" id="1_o3yu0"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Shields/BaseShield.cs" id="1_xqwrw"]
+
+[node name="BaseShield" type="Node2D"]
+script = ExtResource("1_xqwrw")
+
+[node name="CircleSprite2D" type="Sprite2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("1_o3yu0")

@@ -67,7 +67,16 @@ public static class DataBuilder
         );
         return id;
     }
-    
+
+    public static int GetRandomShieldId()
+    {
+        int id = Random.Shared.Next(
+            Tables.TbShield.DataMap.Keys.ElementAt(1),
+            Tables.TbShield.DataMap.Keys.Last() + 1
+        );
+        return id;
+    }
+
     public static int GetRandomMobId()
     {
         int id = Random.Shared.Next(
@@ -117,6 +126,21 @@ public static class DataBuilder
         };
         
         return weapon;
+    }
+    
+    public static Game.Shield BuildShieldById(int id)
+    {
+        Shield tbShield = Tables.TbShield.Get(id);
+        Game.Shield shield = new Game.Shield
+        {
+            Id = tbShield.Id,
+            Name = tbShield.Name,
+            Desc = tbShield.Desc,
+            SceneName = tbShield.SceneName,
+            Values = tbShield.Values
+        };
+        
+        return shield;
     }
 
     public static Game.Ability BuildAbilityById(int id)

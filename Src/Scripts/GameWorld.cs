@@ -69,6 +69,7 @@ public partial class GameWorld : Node2D
         
         DataBuilder.BuildBodyById(1000).Use();
         DataBuilder.BuildWeaponById(1000).Use();
+        DataBuilder.BuildShieldById(1000).Use();
         
         // UiManager.Get_Hud_Instance()[0].OpenNestedUi(UiManager.UiName.StatsMonitor);
         
@@ -76,6 +77,8 @@ public partial class GameWorld : Node2D
         UiManager.Hide_PausedMenu();
         
         EventBus.OnGameStart?.Invoke();
+        
+        Global.SetWorldColor(Constants.Colors.Red);
     }
 
     private async void GameOver()

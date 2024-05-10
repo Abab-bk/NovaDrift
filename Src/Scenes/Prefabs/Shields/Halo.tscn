@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://d2fr3mst1lnnn"]
+
+[ext_resource type="PackedScene" uid="uid://q35xmh26wes7" path="res://Scenes/Prefabs/Shields/BaseShield.tscn" id="1_sxn7s"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Shields/Halo.cs" id="1_ytxfl"]
+[ext_resource type="Texture2D" uid="uid://di7rjlndvbjiu" path="res://Assets/Textures/Particles/circle_03.png" id="2_fipen"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_3u35t"]
+radius = 181.003
+
+[node name="Halo" instance=ExtResource("1_sxn7s")]
+script = ExtResource("1_ytxfl")
+
+[node name="CircleSprite2D" parent="." index="0"]
+texture = ExtResource("2_fipen")
+
+[node name="HaloArea" type="Area2D" parent="." index="1"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HaloArea" index="0"]
+shape = SubResource("CircleShape2D_3u35t")
