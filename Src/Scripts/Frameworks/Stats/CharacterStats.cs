@@ -42,8 +42,8 @@ public class CharacterStats
         RotationSpeed = new Stat(1), // 越高越灵敏
         ShootingDeceleration = new Stat(1),
         
-        ShieldCoolDown = new Stat(0.5f), // 护盾恢复冷却时间
-        ShieldPower = new Stat(0.5f), // 护盾除了保护目标外的任何效果的力量
+        ShieldCoolDown = new Stat(0.0f), // 护盾恢复冷却时间
+        ShieldPower = new Stat(0.0f), // 护盾除了保护目标外的任何效果的力量
         ShieldRadius = new Stat(200f); // 护盾半径
     
     
@@ -54,7 +54,7 @@ public class CharacterStats
     
     private Actor _target;
     private readonly Stat _knockBack = new Stat(10);
-    
+
     public void AddKnockBack(float value)
     {
         _knockBack.BaseValue += value;

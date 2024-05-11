@@ -62,10 +62,15 @@ fill_mode = 6
 nine_patch_stretch = true
 texture_progress = SubResource("GradientTexture1D_glh1x")
 
-[node name="ShieldBar" type="ProgressBar" parent="MarginContainer/VBoxContainer"]
+[node name="ShieldProgressBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-visible = false
+modulate = Color(0.643137, 1, 0.913725, 1)
+custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
+value = 50.0
+fill_mode = 6
+nine_patch_stretch = true
+texture_progress = SubResource("GradientTexture1D_glh1x")
 
 [node name="DebugPanel" type="Control" parent="."]
 layout_mode = 1

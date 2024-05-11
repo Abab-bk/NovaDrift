@@ -4,24 +4,42 @@ using System.Collections.Generic;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Components;
 using NovaDrift.Scripts.Systems;
+using Attribute = NovaDrift.addons.AcidStats.Attribute;
 
 namespace NovaDrift.Scripts.Prefabs.Shields;
 
 public partial class BaseShield : Node2D
 {
+    public event Action OnBreak;
+    
     protected CircleSprite2D CircleSprite2D;
     protected Area2D ShieldArea;
+    protected PureHurtBox HurtBox;
+    protected Timer CoolDownTimer;
     
     public Shield Shield;
     public Actor Target;
     public List<float> Values;
+    public Attribute Health = new Attribute(0, 100);
+    public float CoolDown = 6.5f;
     
     public override void _Ready()
     {
         CircleSprite2D = GetNode("%CircleSprite2D") as CircleSprite2D;
-        if (CircleSprite2D == null) throw new Exception("CirCleSprite2D 为 Null");
-        
+        HurtBox = GetNode("%PureHurtBox") as PureHurtBox;
         ShieldArea = GetNode<Area2D>("%ShieldArea");
+        
+        if (CircleSprite2D == null) throw new Exception("CirCleSprite2D 为 Null");
+        if (HurtBox == null) throw new Exception("HurtBox 为 Null");
+        if (ShieldArea == null) throw new Exception("ShieldArea 为 Null");
+
+        CoolDownTimer = new Timer
+        {
+            WaitTime = CoolDown,
+            OneShot = true,
+        };
+        
+        AddChild(CoolDownTimer);
         
         Target.Stats.ShieldRadius.ValueChanged += UpdateRadius;
         UpdateRadius(Target.Stats.ShieldRadius.Value);
@@ -30,6 +48,38 @@ public partial class BaseShield : Node2D
         ShieldArea.BodyExited += OnBodyExited;
         ShieldArea.AreaEntered += OnAreaEntered;
         ShieldArea.AreaExited += OnAreaExited;
+        
+        HurtBox.OnHurt += OnHurt;
+        CoolDownTimer.Timeout += OnCoolDownTimeout;
+    }
+    
+    protected virtual void OnHurt(float value)
+    {
+        Health.Decrease(value);
+        
+        if (Health.BaseValue <= 0)
+        {
+            Hide();
+            OnBreak?.Invoke();
+            Break();
+        }
+        
+        CoolDownTimer.Stop();
+        CoolDownTimer.Start();
+    }
+
+    protected virtual void Break()
+    {
+        ShieldArea.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Disabled);
+        HurtBox.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Disabled);
+    }
+
+    protected virtual void OnCoolDownTimeout()
+    {
+        Show();
+        Health.Replenish();
+        ShieldArea.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Inherit);
+        HurtBox.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Inherit);
     }
 
     protected virtual void OnAreaEntered(Area2D area)

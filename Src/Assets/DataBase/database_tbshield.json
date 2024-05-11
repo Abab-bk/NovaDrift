@@ -6,6 +6,8 @@
     "values": [
       0
     ],
+    "health": 100,
+    "cool_down": 6.5,
     "scene_name": "BaseShield"
   },
   {
@@ -17,6 +19,8 @@
       120,
       3
     ],
+    "health": 100,
+    "cool_down": 6.5,
     "scene_name": "Halo"
   },
   {
@@ -26,6 +30,8 @@
     "values": [
       0.5
     ],
+    "health": 75,
+    "cool_down": 7,
     "scene_name": "Temporal"
   }
 ]

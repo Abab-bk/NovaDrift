@@ -1,10 +1,14 @@
-[gd_scene load_steps=4 format=3 uid="uid://q35xmh26wes7"]
+[gd_scene load_steps=6 format=3 uid="uid://q35xmh26wes7"]
 
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/CircleSprite2D.cs" id="1_o3yu0"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Shields/BaseShield.cs" id="1_xqwrw"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Components/PureHurtBox.cs" id="3_ro08f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b80l4"]
 radius = 181.003
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_hmejx"]
+radius = 182.88
 
 [node name="BaseShield" type="Node2D"]
 script = ExtResource("1_xqwrw")
@@ -20,3 +24,13 @@ collision_mask = 18
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ShieldArea"]
 shape = SubResource("CircleShape2D_b80l4")
+
+[node name="PureHurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 16
+script = ExtResource("3_ro08f")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PureHurtBox"]
+shape = SubResource("CircleShape2D_hmejx")
+debug_color = Color(0.972575, 0, 0.440088, 0.42)

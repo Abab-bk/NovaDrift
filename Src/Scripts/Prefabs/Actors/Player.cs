@@ -2,6 +2,7 @@ using AcidJoystick;
 using AcidWallStudio.AcidNodes;
 using DsUi;
 using Godot;
+using NovaDrift.Scripts.Prefabs.Shields;
 
 namespace NovaDrift.Scripts.Prefabs.Actors;
 
@@ -16,6 +17,10 @@ public partial class Player : Actor
         base._Ready();
         Global.Player = this;
 
+        DataBuilder.BuildBodyById(1000).Use();
+        DataBuilder.BuildWeaponById(1000).Use();
+        DataBuilder.BuildShieldById(1000).Use();
+        
         _smokeTrail = GetNode<SmokeTrail>("%SmokeTrail");
         
         EventBus.OnMobDied += _ => { UpdateUi(); };
@@ -31,6 +36,15 @@ public partial class Player : Actor
         UpdateUi();
     }
 
+    public void SetShield(BaseShield shield)
+    {
+        Shield = shield;
+        Shield.Health.ValueChanged += (float value) =>
+        {
+            UpdateUi();
+        };
+    }
+    
     protected override void InitStats()
     {
         Stats.Health.BaseValue = DataBuilder.Constants.PlayerHealth;
@@ -81,6 +95,7 @@ public partial class Player : Actor
     {
         UiManager.Get_Hud_Instance()[0].UpdateExpBar(Stats.Exp.BaseValue / Stats.Exp.MaxValue.Value);
         UiManager.Get_Hud_Instance()[0].UpdateHpBar(Stats.Health.BaseValue / Stats.Health.MaxValue.Value);
+        UiManager.Get_Hud_Instance()[0].UpdateShieldBar(Shield.Health.BaseValue / Shield.Health.MaxValue.Value);
     }
 
     public override void _PhysicsProcess(double delta)

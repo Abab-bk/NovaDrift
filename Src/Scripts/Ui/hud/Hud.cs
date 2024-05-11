@@ -62,12 +62,12 @@ public abstract partial class Hud : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ProgressBar"/>, 路径: Hud.MarginContainer.VBoxContainer.ShieldBar
+    /// 类型: <see cref="Godot.TextureProgressBar"/>, 路径: Hud.MarginContainer.VBoxContainer.ShieldProgressBar
     /// </summary>
-    public class ShieldBar : UiNode<HudPanel, Godot.ProgressBar, ShieldBar>
+    public class ShieldProgressBar : UiNode<HudPanel, Godot.TextureProgressBar, ShieldProgressBar>
     {
-        public ShieldBar(HudPanel uiPanel, Godot.ProgressBar node) : base(uiPanel, node) {  }
-        public override ShieldBar Clone() => new (UiPanel, (Godot.ProgressBar)Instance.Duplicate());
+        public ShieldProgressBar(HudPanel uiPanel, Godot.TextureProgressBar node) : base(uiPanel, node) {  }
+        public override ShieldProgressBar Clone() => new (UiPanel, (Godot.TextureProgressBar)Instance.Duplicate());
     }
 
     /// <summary>
@@ -102,17 +102,17 @@ public abstract partial class Hud : UiBase
         private HpProgressBar _L_HpProgressBar;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ProgressBar"/>, 节点路径: Hud.MarginContainer.ShieldBar
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: Hud.MarginContainer.ShieldProgressBar
         /// </summary>
-        public ShieldBar L_ShieldBar
+        public ShieldProgressBar L_ShieldProgressBar
         {
             get
             {
-                if (_L_ShieldBar == null) _L_ShieldBar = new ShieldBar(UiPanel, Instance.GetNode<Godot.ProgressBar>("ShieldBar"));
-                return _L_ShieldBar;
+                if (_L_ShieldProgressBar == null) _L_ShieldProgressBar = new ShieldProgressBar(UiPanel, Instance.GetNode<Godot.TextureProgressBar>("ShieldProgressBar"));
+                return _L_ShieldProgressBar;
             }
         }
-        private ShieldBar _L_ShieldBar;
+        private ShieldProgressBar _L_ShieldProgressBar;
 
         public VBoxContainer(HudPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
         public override VBoxContainer Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
@@ -161,9 +161,9 @@ public abstract partial class Hud : UiBase
     public HpProgressBar S_HpProgressBar => L_MarginContainer.L_VBoxContainer.L_HpProgressBar;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ProgressBar"/>, 节点路径: Hud.MarginContainer.VBoxContainer.ShieldBar
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: Hud.MarginContainer.VBoxContainer.ShieldProgressBar
     /// </summary>
-    public ShieldBar S_ShieldBar => L_MarginContainer.L_VBoxContainer.L_ShieldBar;
+    public ShieldProgressBar S_ShieldProgressBar => L_MarginContainer.L_VBoxContainer.L_ShieldProgressBar;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Hud.MarginContainer.VBoxContainer

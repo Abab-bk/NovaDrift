@@ -67,10 +67,6 @@ public partial class GameWorld : Node2D
         MoveActorToScreenCenter mover = new MoveActorToScreenCenter(player);
         AddChild(mover);
         
-        DataBuilder.BuildBodyById(1000).Use();
-        DataBuilder.BuildWeaponById(1000).Use();
-        DataBuilder.BuildShieldById(1000).Use();
-        
         // UiManager.Get_Hud_Instance()[0].OpenNestedUi(UiManager.UiName.StatsMonitor);
         
         UiManager.Open_PausedMenu();

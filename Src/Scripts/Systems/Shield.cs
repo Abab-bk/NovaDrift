@@ -15,6 +15,8 @@ public class Shield : IItemInfo
     public string Desc { get; set; }
     public string IconPath { get; set; }
     public string IconPath2 { get; set; }
+    public float Health;
+    public float CoolDown;
 
     public string SceneName;
     public List<float> Values = new List<float>();
@@ -26,6 +28,8 @@ public class Shield : IItemInfo
         var shield = GD.Load<PackedScene>($"res://Scenes/Prefabs/Shields/{SceneName}.tscn").Instantiate<BaseShield>();
         shield.Shield = this;
         shield.Values = Values;
+        shield.Health = new Attribute(0, Health);
+        shield.CoolDown = CoolDown;
         
         var originalShield = Global.Player.Shield;
 
@@ -37,7 +41,7 @@ public class Shield : IItemInfo
         
         // shield.IsPlayer = true;
         shield.Target = Global.Player;
-        Global.Player.Shield = shield;
+        Global.Player.SetShield(shield);
         Global.Player.ShieldNode.AddChild(shield);
     }
 }

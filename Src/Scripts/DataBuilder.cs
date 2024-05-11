@@ -137,7 +137,9 @@ public static class DataBuilder
             Name = tbShield.Name,
             Desc = tbShield.Desc,
             SceneName = tbShield.SceneName,
-            Values = tbShield.Values
+            Values = tbShield.Values,
+            Health = tbShield.Health,
+            CoolDown = tbShield.CoolDown,
         };
         
         return shield;

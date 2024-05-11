@@ -12,6 +12,7 @@ public partial class HudPanel : Hud
 {
     private TextureProgressBar _expBar;
     private TextureProgressBar _hpBar;
+    private TextureProgressBar _shieldBar;
     
     private bool _isDebugPanelOpened = false;
 
@@ -21,6 +22,7 @@ public partial class HudPanel : Hud
     {
         _expBar = S_ExpProgressBar.Instance;
         _hpBar = S_HpProgressBar.Instance;
+        _shieldBar = S_ShieldProgressBar.Instance;
 
         EventBus.OnPlayerUpLevel += i =>
         {
@@ -40,6 +42,11 @@ public partial class HudPanel : Hud
     public void UpdateHpBar(float ratio)
     {
         _hpBar.SetDeferred(Range.PropertyName.Value, ratio * 100f);
+    }
+    
+    public void UpdateShieldBar(float ratio)
+    {
+        _shieldBar.SetDeferred(Range.PropertyName.Value, ratio * 100f);
     }
 
     public override void OnDestroyUi()
