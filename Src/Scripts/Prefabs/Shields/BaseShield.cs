@@ -51,8 +51,16 @@ public partial class BaseShield : Node2D
         
         HurtBox.OnHurt += OnHurt;
         CoolDownTimer.Timeout += OnCoolDownTimeout;
-    }
     
+        Init();
+        
+        Active();
+    }
+
+    protected virtual void Init()
+    {
+    }
+
     protected virtual void OnHurt(float value)
     {
         Health.Decrease(value);
@@ -74,12 +82,17 @@ public partial class BaseShield : Node2D
         HurtBox.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Disabled);
     }
 
+    protected virtual void Active()
+    {
+    }
+
     protected virtual void OnCoolDownTimeout()
     {
         Show();
         Health.Replenish();
         ShieldArea.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Inherit);
         HurtBox.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Inherit);
+        Active();
     }
 
     protected virtual void OnAreaEntered(Area2D area)
@@ -111,9 +124,5 @@ public partial class BaseShield : Node2D
     {
         Target.Stats.ShieldRadius.ValueChanged -= CircleSprite2D.UpdateRadius;
         QueueFree();
-    }
-    
-    protected virtual void Charge(float delta)
-    {
     }
 }

@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b1hvfrsat441r"]
+[gd_scene load_steps=10 format=3 uid="uid://b1hvfrsat441r"]
 
 [ext_resource type="PackedScene" uid="uid://b1vmhmtmuma0x" path="res://Scenes/Prefabs/Actors/ActorBase.tscn" id="1_0c8c2"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Player.cs" id="2_15kon"]
@@ -14,6 +14,9 @@ size = Vector2(78, 100)
 
 [sub_resource type="Gradient" id="Gradient_y1nwb"]
 colors = PackedColorArray(0, 0, 0, 0, 0.631373, 1, 1, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hujpf"]
+size = Vector2(78, 92)
 
 [node name="Player" node_paths=PackedStringArray("Sprite", "Shooter") instance=ExtResource("1_0c8c2")]
 script = ExtResource("2_15kon")
@@ -49,3 +52,6 @@ gradient = SubResource("Gradient_y1nwb")
 script = ExtResource("5_dp7hw")
 _wildNess = 1000.0
 _minSpawnDistance = 20.0
+
+[node name="CollisionShape2D" parent="BodyArea" index="0"]
+shape = SubResource("RectangleShape2D_hujpf")

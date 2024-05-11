@@ -48,5 +48,25 @@
       1019
     ],
     "end_ability_id": 1020
+  },
+  {
+    "id": 1006,
+    "name": "追踪",
+    "start_ability_id": 1021,
+    "middle_ability_ids": [
+      1022,
+      1023
+    ],
+    "end_ability_id": 1024
+  },
+  {
+    "id": 1007,
+    "name": "船体增强",
+    "start_ability_id": 1025,
+    "middle_ability_ids": [
+      1026,
+      1027
+    ],
+    "end_ability_id": 1028
   }
 ]

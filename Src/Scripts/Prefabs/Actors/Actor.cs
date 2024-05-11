@@ -13,6 +13,8 @@ namespace NovaDrift.Scripts.Prefabs.Actors;
 [GlobalClass]
 public partial class Actor : CharacterBody2D
 {
+    public event Action<Node2D> OnHitSomeThing;
+    
     [Export] private HurtBox _hurtBox;
     
     [Export] protected Sprite2D Sprite;
@@ -51,6 +53,8 @@ public partial class Actor : CharacterBody2D
     public float ShootCd = 1f;
     
     protected bool IsShooting = false;
+    
+    private Area2D _bodyArea;
 
     protected virtual void _OnShoot(BulletBase bullet)
     {
@@ -113,7 +117,8 @@ public partial class Actor : CharacterBody2D
     {
         ShooterNode = GetNode<Node2D>("%ShooterNode");
         ShieldNode = GetNode<Node2D>("%ShieldNode");
-
+        _bodyArea = GetNode<Area2D>("%BodyArea");
+        
         InitStats();
         InitCollision();
         Stats.SetTarget(this);
@@ -123,13 +128,26 @@ public partial class Actor : CharacterBody2D
         };
         
         _hurtBox.OnHit += OnHit;
-        
         _hurtBox.SetIsPlayer(IsPlayer);
 
         _visibleOnScreenNotifier2D.ScreenExited += MoveToWorldEdge;
 
         EventBus.OnWorldColorChanged += ChangeColor;
         ChangeColor();
+
+        _bodyArea.CollisionLayer = 0;
+        _bodyArea.CollisionMask = 0;
+        if (IsPlayer)
+        {
+            _bodyArea.SetCollisionLayerValue((int)Layer.Player, true);
+            _bodyArea.SetCollisionMaskValue((int)Layer.Mob, true);
+        }
+        else
+        {
+            _bodyArea.SetCollisionLayerValue((int)Layer.Mob, true);
+            _bodyArea.SetCollisionMaskValue((int)Layer.Player, true);
+        }
+        _bodyArea.BodyEntered += (body) => OnHitSomeThing?.Invoke(body);
     }
 
     public override void _ExitTree()

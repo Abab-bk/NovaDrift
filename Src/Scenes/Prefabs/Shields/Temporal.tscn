@@ -10,3 +10,4 @@ script = ExtResource("2_nebda")
 
 [node name="CircleSprite2D" parent="." index="0"]
 texture = ExtResource("2_441jg")
+Radius = 200.0

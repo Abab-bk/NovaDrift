@@ -25,5 +25,14 @@
     "speed": 300,
     "damage": 10,
     "shoot_cd": 1
+  },
+  {
+    "id": 1004,
+    "name": "燕子",
+    "scene_name": "Swallow",
+    "health": 50,
+    "speed": 600,
+    "damage": 10,
+    "shoot_cd": 1
   }
 ]

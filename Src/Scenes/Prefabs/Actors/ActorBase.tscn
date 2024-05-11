@@ -32,3 +32,8 @@ script = ExtResource("4_lb4uu")
 [node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
 position = Vector2(32, 0)
 scale = Vector2(2.4, 3.29032)
+
+[node name="BodyArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="BodyArea"]

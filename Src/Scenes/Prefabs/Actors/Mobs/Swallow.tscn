@@ -1,0 +1,36 @@
+[gd_scene load_steps=8 format=3 uid="uid://d172ki0sphibv"]
+
+[ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_cs027"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Ai/Swallow.cs" id="2_33e1i"]
+
+[sub_resource type="StateConfig" id="StateConfig_cctl5"]
+state_name = &"Idle"
+type = 1
+editor_offset = Vector2(20, 100)
+
+[sub_resource type="StateConfig" id="StateConfig_iv64q"]
+state_name = &"Rush"
+editor_offset = Vector2(360, 100)
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_c6ph7"]
+from_state_config = SubResource("StateConfig_cctl5")
+to_state_config = SubResource("StateConfig_iv64q")
+auto_delay_msec = 500
+
+[sub_resource type="FSMConfig" id="FSMConfig_12vmv"]
+state_config_list = Array[StateConfig]([SubResource("StateConfig_cctl5"), SubResource("StateConfig_iv64q")])
+transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_c6ph7")])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hr8fi"]
+size = Vector2(64, 90)
+
+[node name="Swallow" instance=ExtResource("1_cs027")]
+
+[node name="MobAiComponent" parent="State" index="0"]
+script = ExtResource("2_33e1i")
+
+[node name="HFSM" parent="State" index="1"]
+root_fsm_config = SubResource("FSMConfig_12vmv")
+
+[node name="CollisionShape2D" parent="BodyArea" index="0"]
+shape = SubResource("RectangleShape2D_hr8fi")

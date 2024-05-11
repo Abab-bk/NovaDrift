@@ -33,5 +33,17 @@
     "health": 75,
     "cool_down": 7,
     "scene_name": "Temporal"
+  },
+  {
+    "id": 1003,
+    "name": "力场",
+    "desc": "力场激活时，增加20%的推力和伤害\n每个位于护盾效果半径内的威胁还会进一步提升伤害\n最大伤害加成为+100%，受护盾效果强度调整",
+    "values": [
+      0.2,
+      1
+    ],
+    "health": 50,
+    "cool_down": 6,
+    "scene_name": "ForceField"
   }
 ]
