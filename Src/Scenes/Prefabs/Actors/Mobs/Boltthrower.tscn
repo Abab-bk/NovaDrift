@@ -83,7 +83,11 @@ state_config_list = Array[StateConfig]([SubResource("StateConfig_kpjtb"), SubRes
 transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_xpxag"), SubResource("TransitionConfig_bngl8"), SubResource("TransitionConfig_os404"), SubResource("TransitionConfig_pk2e2")])
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_dgcdw"), SubResource("VariableConfig_lkd4l"), SubResource("VariableConfig_2wuef")])
 
-[node name="Boltthrower" instance=ExtResource("1_0ifgw")]
+[node name="Boltthrower" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_0ifgw")]
+_hurtBox = NodePath("Components/HurtBox")
+Sprite = NodePath("Sprite2D")
+_visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
+Shooter = NodePath("Components/ShooterNode/Shooter")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_ym3x2")
@@ -91,11 +95,18 @@ shape = SubResource("RectangleShape2D_ym3x2")
 [node name="ShooterNode" parent="Components" index="0"]
 position = Vector2(19, 0)
 
+[node name="Shooter" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../../..")
+
+[node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../..")
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtBox" index="0"]
 shape = SubResource("RectangleShape2D_41eva")
 
-[node name="MobAiComponent" parent="State" index="0"]
+[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("Mob")]
 script = ExtResource("2_ayrbs")
+Mob = NodePath("../..")
 
 [node name="HFSM" parent="State" index="1"]
 root_fsm_config = SubResource("FSMConfig_v8u54")

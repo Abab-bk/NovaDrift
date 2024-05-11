@@ -18,9 +18,11 @@ colors = PackedColorArray(0, 0, 0, 0, 0.631373, 1, 1, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hujpf"]
 size = Vector2(78, 92)
 
-[node name="Player" node_paths=PackedStringArray("Sprite", "Shooter") instance=ExtResource("1_0c8c2")]
+[node name="Player" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_0c8c2")]
 script = ExtResource("2_15kon")
+_hurtBox = NodePath("Components/HurtBox")
 Sprite = NodePath("Sprite2D")
+_visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 IsPlayer = true
 Shooter = NodePath("Components/ShooterNode/Shooter")
 
