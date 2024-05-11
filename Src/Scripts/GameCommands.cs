@@ -8,6 +8,7 @@ public sealed class PlayerCommands
     public void UseAbilityById() => DataBuilder.BuildAbilityById(SomethingId).Use();
     public void UseShooterById() => DataBuilder.BuildWeaponById(SomethingId).Use();
     public void UseBodyById() => DataBuilder.BuildBodyById(SomethingId).Use();
+    public void UseShieldById() => DataBuilder.BuildShieldById(SomethingId).Use();
     public void LevelUp() => Global.Player.UpLevel();
 
     public void RemoveAllEffects() => Global.Player.Stats.EffectSystem.RemoveAllEffects();

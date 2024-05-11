@@ -126,6 +126,8 @@ public class Stat
                 _statModifiers.RemoveAt(i);
             }
         }
+        
+        _isDirty = true;
         return didRemove;
     }
 }

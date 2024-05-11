@@ -18,5 +18,14 @@
       3
     ],
     "scene_name": "Halo"
+  },
+  {
+    "id": 1002,
+    "name": "时空",
+    "desc": "护盾半径内的目标和敌方子弹速度减慢 50%。",
+    "values": [
+      0.5
+    ],
+    "scene_name": "Temporal"
   }
 ]

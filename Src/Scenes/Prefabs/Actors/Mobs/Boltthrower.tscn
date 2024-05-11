@@ -91,9 +91,6 @@ shape = SubResource("RectangleShape2D_ym3x2")
 [node name="ShooterNode" parent="Components" index="0"]
 position = Vector2(19, 0)
 
-[node name="HurtBox" parent="Components" index="1"]
-unique_name_in_owner = false
-
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtBox" index="0"]
 shape = SubResource("RectangleShape2D_41eva")
 

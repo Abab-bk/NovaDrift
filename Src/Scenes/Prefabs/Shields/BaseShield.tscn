@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://q35xmh26wes7"]
+[gd_scene load_steps=4 format=3 uid="uid://q35xmh26wes7"]
 
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/CircleSprite2D.cs" id="1_o3yu0"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Shields/BaseShield.cs" id="1_xqwrw"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_b80l4"]
+radius = 181.003
 
 [node name="BaseShield" type="Node2D"]
 script = ExtResource("1_xqwrw")
@@ -9,3 +12,11 @@ script = ExtResource("1_xqwrw")
 [node name="CircleSprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("1_o3yu0")
+
+[node name="ShieldArea" type="Area2D" parent="."]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 18
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ShieldArea"]
+shape = SubResource("CircleShape2D_b80l4")
