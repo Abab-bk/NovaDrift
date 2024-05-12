@@ -21,6 +21,10 @@ public partial class FireBall : BulletBase, IBlaster
         if (_blastVfxVfx != null)
         {
             _blastVfxVfx.SetBlastRadius(_blastRadius);
+            if (_area2D.GetChild<CollisionShape2D>(0).Shape is CircleShape2D circleShape2D)
+            {
+                circleShape2D.Radius = _blastRadius;
+            }
         }
     }
 
@@ -32,7 +36,11 @@ public partial class FireBall : BulletBase, IBlaster
         _blastVfxVfx.OnBlastDone += QueueFree;
         
         _blastVfxVfx.SetBlastRadius(_blastRadius);
-        
+        if (_area2D.GetChild<CollisionShape2D>(0).Shape is CircleShape2D circleShape2D)
+        {
+            circleShape2D.Radius = _blastRadius;
+        }
+
         foreach (var body in _area2D.GetOverlappingBodies())
         {
             if (body is Actor blastActor)

@@ -54,6 +54,8 @@ public partial class Actor : CharacterBody2D
     
     protected bool IsShooting = false;
     
+    protected bool IsDead = false;
+    
     private Area2D _bodyArea;
 
     protected virtual void _OnShoot(BulletBase bullet)
@@ -157,6 +159,8 @@ public partial class Actor : CharacterBody2D
 
     public virtual void Die()
     {
+        if (IsDead) return;
+        IsDead = true;
         CallDeferred(Node.MethodName.QueueFree);
     }
     
