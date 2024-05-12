@@ -34,8 +34,8 @@ public class CharacterStats
         BulletDegeneration = new Stat(10f), // 子弹退化速度（也就是从开始到消失需要的速度）
         Recoil = new Stat(50f), // 射击后武器把自己击退的速度
         BulletCount = new Stat(1f), // 发射的子弹数量
-        BlastDamage = new Stat(0f), // TODO: 爆炸伤害
-        BlastRadius = new Stat(0f), // TODO: 爆炸半径
+        BlastDamage = new Stat(20f), // 爆炸伤害
+        BlastRadius = new Stat(100f), // 爆炸半径
         
         Acceleration = new Stat(1000),
         Deceleration = new Stat(500),

@@ -3,6 +3,7 @@ using System.Linq.Expressions;
 using Godot;
 using NovaDrift.Scripts.Prefabs;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
+using NovaDrift.Scripts.Prefabs.Bullets;
 
 namespace NovaDrift.Scripts.Systems;
 
@@ -59,6 +60,13 @@ public class BulletBuilder
     public BulletBuilder SetSpeed(float speed)
     {
         _bulletBase.Speed = speed;
+        return this;
+    }
+    
+    public BulletBuilder SetBlastRadius(float blastRadius)
+    {
+        if (_bulletBase is not IBlaster blaster) throw new Exception("子弹类型不支持爆炸");
+        blaster.SetBlastRadius(blastRadius);
         return this;
     }
     

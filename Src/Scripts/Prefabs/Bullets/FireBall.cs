@@ -5,20 +5,33 @@ using NovaDrift.Scripts.Prefabs.Actors.Mobs;
 
 namespace NovaDrift.Scripts.Prefabs.Bullets;
 
-public partial class FireBall : BulletBase
+public partial class FireBall : BulletBase, IBlaster
 {
     [Export] private Area2D _area2D;
     
-    private Blast _blast;
+    private BlastVfx _blastVfxVfx;
     protected override void Degenerate() { }
     protected override void Move(double delta) { }
+
+    private float _blastRadius;
+    
+    public void SetBlastRadius(float value)
+    {
+        _blastRadius = value;
+        if (_blastVfxVfx != null)
+        {
+            _blastVfxVfx.SetBlastRadius(_blastRadius);
+        }
+    }
 
     public override void _Ready()
     {
         base._Ready();
        
-        _blast = GetNode<Blast>("Blast");
-        _blast.OnBlastDone += QueueFree;
+        _blastVfxVfx = GetNode<BlastVfx>("Blast");
+        _blastVfxVfx.OnBlastDone += QueueFree;
+        
+        _blastVfxVfx.SetBlastRadius(_blastRadius);
         
         foreach (var body in _area2D.GetOverlappingBodies())
         {
@@ -26,11 +39,11 @@ public partial class FireBall : BulletBase
             {
                 if (blastActor is Player player && IsPlayer)
                 {
-                    player.TakeDamage(20);
+                    player.TakeDamage(Damage);
                 }
                 else if (blastActor is MobBase mob && !IsPlayer)
                 {
-                    mob.TakeDamage(20);
+                    mob.TakeDamage(Damage);
                 }
             }
         }

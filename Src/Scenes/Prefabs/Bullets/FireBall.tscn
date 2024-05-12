@@ -7,14 +7,16 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2732h"]
 size = Vector2(38, 38)
 
-[node name="FireBall" node_paths=PackedStringArray("_area2D") instance=ExtResource("1_l4gbv")]
+[node name="FireBall" node_paths=PackedStringArray("_area2D", "_hitBox") instance=ExtResource("1_l4gbv")]
 script = ExtResource("2_bkjp2")
 _area2D = NodePath("Area2D")
+_hitBox = NodePath("HitBox")
 
 [node name="Sprite2D" parent="." index="0"]
 visible = false
 
 [node name="Blast" parent="." index="4" instance=ExtResource("3_sfhfu")]
+scale = Vector2(0.1, 0.1)
 
 [node name="Area2D" type="Area2D" parent="." index="5"]
 collision_layer = 0

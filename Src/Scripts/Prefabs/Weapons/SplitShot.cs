@@ -88,7 +88,11 @@ public partial class SplitShot : BaseShooter
                 bullet.OnHit += actor =>
                 {
                     OnHit?.Invoke(actor);
-                    var fireBall = new BulletBuilder(BulletBuilder.BulletType.FireBall).Build();
+                    var fireBall = 
+                        new BulletBuilder(BulletBuilder.BulletType.FireBall).
+                            SetDamage(actor.Stats.BlastDamage.Value).
+                            SetBlastRadius(actor.Stats.BlastRadius.Value).
+                            Build();
                     fireBall.GlobalPosition = bullet.GlobalPosition;
                     // Global.GameWorld.AddChild(fireBall);
                     Global.GameWorld.CallDeferred(Node.MethodName.AddChild, fireBall);
