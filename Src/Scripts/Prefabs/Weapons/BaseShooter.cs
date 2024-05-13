@@ -23,4 +23,16 @@ public abstract partial class BaseShooter : Node2D
     public abstract void SetShootCd(float value);
 
     public abstract void Init();
+
+    public BulletBase GetBullet()
+    {
+        return new BulletBuilder().
+            SetIsPlayer(IsPlayer).
+            SetDamage(Actor.Stats.Damage.Value).
+            SetSpeed(Actor.Stats.BulletSpeed.Value).
+            SetSize(Actor.Stats.BulletSize.Value).
+            SetDegeneration(Actor.Stats.BulletDegeneration.Value).
+            SetSteering(Actor.Stats.Targeting.Value).
+            Build();
+    }
 }

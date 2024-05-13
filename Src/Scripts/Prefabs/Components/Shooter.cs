@@ -73,6 +73,7 @@ public partial class Shooter : BaseShooter
                     SetSpeed(Actor.Stats.BulletSpeed.Value).
                     SetSize(Actor.Stats.BulletSize.Value).
                     SetDegeneration(Actor.Stats.BulletDegeneration.Value).
+                    SetSteering(Actor.Stats.Targeting.Value).
                     Build();
                 
                 bullet.GlobalPosition = GlobalPosition;

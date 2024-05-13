@@ -68,5 +68,25 @@
       1027
     ],
     "end_ability_id": 1028
+  },
+  {
+    "id": 1008,
+    "name": "再生",
+    "start_ability_id": 1029,
+    "middle_ability_ids": [
+      1030,
+      1031
+    ],
+    "end_ability_id": 1032
+  },
+  {
+    "id": 1009,
+    "name": "改进推力",
+    "start_ability_id": 1033,
+    "middle_ability_ids": [
+      1034,
+      1035
+    ],
+    "end_ability_id": 1036
   }
 ]

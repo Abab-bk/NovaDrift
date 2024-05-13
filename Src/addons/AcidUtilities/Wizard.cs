@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Godot;
 using KaimiraGames;
+using Array = Godot.Collections.Array;
 
 namespace AcidWallStudio.AcidUtilities;
 
@@ -134,5 +135,20 @@ public static class Wizard
     public static IEnumerable<T> Shuffle<T>(this IEnumerable<T> source)
     {
         return source.OrderBy(x => Guid.NewGuid());
+    }
+
+    public static Node2D GetClosestTarget(Node2D node, string groupName)
+    {
+        List<Node2D> targets = new List<Node2D>();
+
+        foreach (var targetNode in node.GetTree().GetNodesInGroup(groupName))
+        {
+            if (targetNode is Node2D target) targets.Add(target);
+        }
+        
+        if (targets.Count <= 0) return null;
+        
+        return targets.
+            OrderBy(orderNode => orderNode.GlobalPosition.DistanceTo(orderNode.GlobalPosition)).First();
     }
 }

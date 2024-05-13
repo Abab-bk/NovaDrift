@@ -54,13 +54,7 @@ public partial class Salvo : BaseShooter
         {
             for (int i = 0; i < _bulletCount; i++)
             {
-                BulletBase bullet = new BulletBuilder().
-                    SetIsPlayer(IsPlayer).
-                    SetDamage(Actor.Stats.Damage.Value).
-                    SetSpeed(Actor.Stats.BulletSpeed.Value).
-                    SetSize(Actor.Stats.BulletSize.Value).
-                    SetDegeneration(Actor.Stats.BulletDegeneration.Value).
-                    Build();
+                BulletBase bullet = GetBullet();
 
                 bullet.Direction = bullet.Direction.Rotated(GlobalRotation);
                 bullet.GlobalPosition = GlobalPosition;

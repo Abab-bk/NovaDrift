@@ -69,7 +69,13 @@ public class BulletBuilder
         blaster.SetBlastRadius(blastRadius);
         return this;
     }
-    
+
+    public BulletBuilder SetSteering(float steering)
+    {
+        _bulletBase.Steering = steering;
+        return this;
+    }
+
     public BulletBase Build()
     {
         return _bulletBase;

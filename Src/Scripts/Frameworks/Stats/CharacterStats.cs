@@ -23,28 +23,29 @@ public class CharacterStats
     public readonly Attribute Exp = new Attribute(0, 100);
     
     // 武器射击速度
-    public readonly Stat 
-        ShootSpeed = new Stat(0.5f), // 射击速度，单位为秒，越低越快
-        BulletSpeed = new Stat(1500f), // 子弹速度
-        ShootSpread = new Stat(120f), // 武器散布 Spread
-        ShootKnockBack = new Stat(10f), // 打中后对目标的击退
-        BurstFire = new Stat(1f), // 你的武器会快速射击，然后进入一个冷却状态，这个冷却时间与已射出的子弹的冷却时间总和相等。
-    
-        BulletSize = new Stat(1f), // 子弹大小，单位缩放
-        BulletDegeneration = new Stat(10f), // 子弹退化速度（也就是从开始到消失需要的速度）
-        Recoil = new Stat(50f), // 射击后武器把自己击退的速度
-        BulletCount = new Stat(1f), // 发射的子弹数量
-        BlastDamage = new Stat(20f), // 爆炸伤害
-        BlastRadius = new Stat(100f), // 爆炸半径
+    public readonly Stat
+        ShootSpeed = new (0.5f), // 射击速度，单位为秒，越低越快
+        BulletSpeed = new (1500f), // 子弹速度
+        ShootSpread = new (120f), // 武器散布 Spread
+        ShootKnockBack = new (10f), // 打中后对目标的击退
+        BurstFire = new (1f), // 你的武器会快速射击，然后进入一个冷却状态，这个冷却时间与已射出的子弹的冷却时间总和相等。
+        Targeting = new (0), // 子弹的 Steering（转向） 能力
         
-        Acceleration = new Stat(1000),
-        Deceleration = new Stat(500),
-        RotationSpeed = new Stat(1), // 越高越灵敏
-        ShootingDeceleration = new Stat(1),
+        BulletSize = new (1f), // 子弹大小，单位缩放
+        BulletDegeneration = new (10f), // 子弹退化速度（也就是从开始到消失需要的速度）
+        Recoil = new (50f), // 射击后武器把自己击退的速度
+        BulletCount = new (1f), // 发射的子弹数量
+        BlastDamage = new (20f), // 爆炸伤害
+        BlastRadius = new (100f), // 爆炸半径
         
-        ShieldCoolDown = new Stat(0.0f), // 护盾恢复冷却时间
-        ShieldPower = new Stat(0.0f), // 护盾除了保护目标外的任何效果的力量
-        ShieldRadius = new Stat(200f); // 护盾半径
+        Acceleration = new (1000),
+        Deceleration = new (500),
+        RotationSpeed = new (1), // 越高越灵敏
+        ShootingDeceleration = new (1),
+        
+        ShieldCoolDown = new (0.0f), // 护盾恢复冷却时间
+        ShieldPower = new (0.0f), // 护盾除了保护目标外的任何效果的力量
+        ShieldRadius = new (200f); // 护盾半径
     
     
     // 一般是给玩家用的，无限持续时间，一般是Mod
