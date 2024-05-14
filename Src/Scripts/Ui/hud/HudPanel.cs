@@ -4,6 +4,7 @@ using GDebugPanelGodot.Core;
 using GDebugPanelGodot.DebugActions.Containers;
 using GDebugPanelGodot.Extensions;
 using Godot;
+using NovaDrift.Scripts.Ui.ActionBtn;
 using Range = Godot.Range;
 
 namespace NovaDrift.Scripts.Ui.Hud;
@@ -28,6 +29,13 @@ public partial class HudPanel : Hud
 		{
 			OpenNestedUi(UiManager.UiName.SelectAbility);
 			Global.StopGame();
+		};
+		EventBus.AddActionButton += (prompt, action) =>
+		{
+			var node = S_ActionButtons.OpenNestedUi<ActionBtnPanel>(UiManager.UiName.ActionBtn);
+			node.UpdateUi(prompt, action);
+			node.Show();
+			return node;
 		};
 		EventBus.OnGameOver += Destroy;
 		

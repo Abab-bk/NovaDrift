@@ -9,6 +9,7 @@ public static partial class UiManager
         public const string AbilityItem = "AbilityItem";
         public const string AbilityPanel = "AbilityPanel";
         public const string AbilityTree = "AbilityTree";
+        public const string ActionBtn = "ActionBtn";
         public const string DamageLabel = "DamageLabel";
         public const string GalleryBtn = "GalleryBtn";
         public const string GameOver = "GameOver";
@@ -164,6 +165,54 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.AbilityTree.AbilityTreePanel[] Get_AbilityTree_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.AbilityTree.AbilityTreePanel>(nameof(NovaDrift.Scripts.Ui.AbilityTree.AbilityTree));
+    }
+
+    /// <summary>
+    /// 创建 ActionBtn, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.ActionBtn.ActionBtnPanel Create_ActionBtn()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.ActionBtn.ActionBtnPanel>(UiName.ActionBtn);
+    }
+
+    /// <summary>
+    /// 打开 ActionBtn, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.ActionBtn.ActionBtnPanel Open_ActionBtn()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.ActionBtn.ActionBtnPanel>(UiName.ActionBtn);
+    }
+
+    /// <summary>
+    /// 隐藏 ActionBtn 的所有实例
+    /// </summary>
+    public static void Hide_ActionBtn()
+    {
+        var uiInstance = Get_ActionBtn_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 ActionBtn 的所有实例
+    /// </summary>
+    public static void Destroy_ActionBtn()
+    {
+        var uiInstance = Get_ActionBtn_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 ActionBtn 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.ActionBtn.ActionBtnPanel[] Get_ActionBtn_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.ActionBtn.ActionBtnPanel>(nameof(NovaDrift.Scripts.Ui.ActionBtn.ActionBtn));
     }
 
     /// <summary>

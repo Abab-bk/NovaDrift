@@ -44,7 +44,16 @@ public abstract partial class Hud : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureProgressBar"/>, 路径: Hud.MarginContainer.VBoxContainer.ExpProgressBar
+    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: Hud.MarginContainer.VBoxContainer2.ActionButtons
+    /// </summary>
+    public class ActionButtons : UiNode<HudPanel, Godot.HBoxContainer, ActionButtons>
+    {
+        public ActionButtons(HudPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override ActionButtons Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.TextureProgressBar"/>, 路径: Hud.MarginContainer.VBoxContainer2.VBoxContainer.ExpProgressBar
     /// </summary>
     public class ExpProgressBar : UiNode<HudPanel, Godot.TextureProgressBar, ExpProgressBar>
     {
@@ -53,7 +62,7 @@ public abstract partial class Hud : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureProgressBar"/>, 路径: Hud.MarginContainer.VBoxContainer.HpProgressBar
+    /// 类型: <see cref="Godot.TextureProgressBar"/>, 路径: Hud.MarginContainer.VBoxContainer2.VBoxContainer.HpProgressBar
     /// </summary>
     public class HpProgressBar : UiNode<HudPanel, Godot.TextureProgressBar, HpProgressBar>
     {
@@ -62,7 +71,7 @@ public abstract partial class Hud : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureProgressBar"/>, 路径: Hud.MarginContainer.VBoxContainer.ShieldProgressBar
+    /// 类型: <see cref="Godot.TextureProgressBar"/>, 路径: Hud.MarginContainer.VBoxContainer2.VBoxContainer.ShieldProgressBar
     /// </summary>
     public class ShieldProgressBar : UiNode<HudPanel, Godot.TextureProgressBar, ShieldProgressBar>
     {
@@ -71,12 +80,12 @@ public abstract partial class Hud : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: Hud.MarginContainer.VBoxContainer
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: Hud.MarginContainer.VBoxContainer2.VBoxContainer
     /// </summary>
     public class VBoxContainer : UiNode<HudPanel, Godot.VBoxContainer, VBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: Hud.MarginContainer.ExpProgressBar
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.ExpProgressBar
         /// </summary>
         public ExpProgressBar L_ExpProgressBar
         {
@@ -89,7 +98,7 @@ public abstract partial class Hud : UiBase
         private ExpProgressBar _L_ExpProgressBar;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: Hud.MarginContainer.HpProgressBar
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.HpProgressBar
         /// </summary>
         public HpProgressBar L_HpProgressBar
         {
@@ -102,7 +111,7 @@ public abstract partial class Hud : UiBase
         private HpProgressBar _L_HpProgressBar;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: Hud.MarginContainer.ShieldProgressBar
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.ShieldProgressBar
         /// </summary>
         public ShieldProgressBar L_ShieldProgressBar
         {
@@ -119,12 +128,25 @@ public abstract partial class Hud : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: Hud.MarginContainer
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: Hud.MarginContainer.VBoxContainer2
     /// </summary>
-    public class MarginContainer : UiNode<HudPanel, Godot.MarginContainer, MarginContainer>
+    public class VBoxContainer2 : UiNode<HudPanel, Godot.VBoxContainer, VBoxContainer2>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Hud.VBoxContainer
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Hud.MarginContainer.ActionButtons
+        /// </summary>
+        public ActionButtons L_ActionButtons
+        {
+            get
+            {
+                if (_L_ActionButtons == null) _L_ActionButtons = new ActionButtons(UiPanel, Instance.GetNode<Godot.HBoxContainer>("ActionButtons"));
+                return _L_ActionButtons;
+            }
+        }
+        private ActionButtons _L_ActionButtons;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Hud.MarginContainer.VBoxContainer
         /// </summary>
         public VBoxContainer L_VBoxContainer
         {
@@ -135,6 +157,28 @@ public abstract partial class Hud : UiBase
             }
         }
         private VBoxContainer _L_VBoxContainer;
+
+        public VBoxContainer2(HudPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
+        public override VBoxContainer2 Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: Hud.MarginContainer
+    /// </summary>
+    public class MarginContainer : UiNode<HudPanel, Godot.MarginContainer, MarginContainer>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Hud.VBoxContainer2
+        /// </summary>
+        public VBoxContainer2 L_VBoxContainer2
+        {
+            get
+            {
+                if (_L_VBoxContainer2 == null) _L_VBoxContainer2 = new VBoxContainer2(UiPanel, Instance.GetNode<Godot.VBoxContainer>("VBoxContainer2"));
+                return _L_VBoxContainer2;
+            }
+        }
+        private VBoxContainer2 _L_VBoxContainer2;
 
         public MarginContainer(HudPanel uiPanel, Godot.MarginContainer node) : base(uiPanel, node) {  }
         public override MarginContainer Clone() => new (UiPanel, (Godot.MarginContainer)Instance.Duplicate());
@@ -151,24 +195,34 @@ public abstract partial class Hud : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: Hud.MarginContainer.VBoxContainer.ExpProgressBar
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.ActionButtons
     /// </summary>
-    public ExpProgressBar S_ExpProgressBar => L_MarginContainer.L_VBoxContainer.L_ExpProgressBar;
+    public ActionButtons S_ActionButtons => L_MarginContainer.L_VBoxContainer2.L_ActionButtons;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: Hud.MarginContainer.VBoxContainer.HpProgressBar
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.VBoxContainer.ExpProgressBar
     /// </summary>
-    public HpProgressBar S_HpProgressBar => L_MarginContainer.L_VBoxContainer.L_HpProgressBar;
+    public ExpProgressBar S_ExpProgressBar => L_MarginContainer.L_VBoxContainer2.L_VBoxContainer.L_ExpProgressBar;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: Hud.MarginContainer.VBoxContainer.ShieldProgressBar
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.VBoxContainer.HpProgressBar
     /// </summary>
-    public ShieldProgressBar S_ShieldProgressBar => L_MarginContainer.L_VBoxContainer.L_ShieldProgressBar;
+    public HpProgressBar S_HpProgressBar => L_MarginContainer.L_VBoxContainer2.L_VBoxContainer.L_HpProgressBar;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Hud.MarginContainer.VBoxContainer
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.VBoxContainer.ShieldProgressBar
     /// </summary>
-    public VBoxContainer S_VBoxContainer => L_MarginContainer.L_VBoxContainer;
+    public ShieldProgressBar S_ShieldProgressBar => L_MarginContainer.L_VBoxContainer2.L_VBoxContainer.L_ShieldProgressBar;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.VBoxContainer
+    /// </summary>
+    public VBoxContainer S_VBoxContainer => L_MarginContainer.L_VBoxContainer2.L_VBoxContainer;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Hud.MarginContainer.VBoxContainer2
+    /// </summary>
+    public VBoxContainer2 S_VBoxContainer2 => L_MarginContainer.L_VBoxContainer2;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: Hud.MarginContainer

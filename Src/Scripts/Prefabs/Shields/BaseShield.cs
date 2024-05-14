@@ -1,9 +1,11 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using Godot.Collections;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Components;
 using NovaDrift.Scripts.Systems;
+using Array = Godot.Collections.Array;
 using Attribute = NovaDrift.addons.AcidStats.Attribute;
 
 namespace NovaDrift.Scripts.Prefabs.Shields;
@@ -22,7 +24,12 @@ public partial class BaseShield : Node2D
     public List<float> Values;
     public Attribute Health = new Attribute(0, 100);
     public float CoolDown = 6.5f;
-    
+
+    public Array<Node2D> GetTargetsInRange()
+    {
+        return ShieldArea.GetOverlappingBodies();
+    }
+
     public override void _Ready()
     {
         CircleSprite2D = GetNode("%CircleSprite2D") as CircleSprite2D;

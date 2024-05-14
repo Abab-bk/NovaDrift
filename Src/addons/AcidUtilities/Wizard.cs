@@ -121,7 +121,12 @@ public static class Wizard
 
         return values[random.Next(values.Length)];
     }
-    
+
+    public static Vector2 GetForwardVector2(this Node2D source, float step)
+    {
+        return source.GlobalPosition + Vector2.Right.Rotated(source.Rotation) * step;
+    }
+
     public static T PickRandom<T>(this IEnumerable<T> source)
     {
         return source.PickRandom(1).Single();

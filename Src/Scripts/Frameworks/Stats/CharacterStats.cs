@@ -24,6 +24,11 @@ public class CharacterStats
     
     // 武器射击速度
     public readonly Stat
+        Size = new (1f), // Actor 大小
+        Recovery = new (0f), // 所有类型的治疗
+        Regeneration = new (0f), // 一种特定类型的治疗。被动再生。默认情况下，只有您的船体会以每秒最大船体的 1/50 的速度再生。可以修改再生以应用于护盾。
+        PassiveRecoveryRate = new (1f), // 默认是 1/50
+        
         ShootSpeed = new (0.5f), // 射击速度，单位为秒，越低越快
         BulletSpeed = new (1500f), // 子弹速度
         ShootSpread = new (120f), // 武器散布 Spread
@@ -42,6 +47,9 @@ public class CharacterStats
         Deceleration = new (500),
         RotationSpeed = new (1), // 越高越灵敏
         ShootingDeceleration = new (1),
+        DamageResistance = new (0.0f), // 伤害抗性
+        ImpactKnockBackResistance = new (0.0f), // 撞击时获得的击退的抗性
+        ImpactDamage = new (0.0f), // 撞击时获得的伤害
         
         ShieldCoolDown = new (0.0f), // 护盾恢复冷却时间
         ShieldPower = new (0.0f), // 护盾除了保护目标外的任何效果的力量
