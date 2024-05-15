@@ -8,7 +8,7 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ym3x2"]
 size = Vector2(36, 96)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_41eva"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mei0v"]
 size = Vector2(36, 96)
 
 [sub_resource type="StateConfig" id="StateConfig_kpjtb"]
@@ -101,8 +101,8 @@ Actor = NodePath("../../..")
 [node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]
 Actor = NodePath("../..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtBox" index="0"]
-shape = SubResource("RectangleShape2D_41eva")
+[node name="CollisionShape2D" parent="Components/HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_mei0v")
 
 [node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("Mob")]
 script = ExtResource("2_ayrbs")

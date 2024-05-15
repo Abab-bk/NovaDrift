@@ -34,5 +34,14 @@
     "speed": 600,
     "damage": 10,
     "shoot_cd": 1
+  },
+  {
+    "id": 1005,
+    "name": "天体",
+    "scene_name": "Celestial",
+    "health": 400,
+    "speed": 600,
+    "damage": 10,
+    "shoot_cd": 1
   }
 ]

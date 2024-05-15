@@ -1,13 +1,14 @@
-[gd_scene load_steps=18 format=3 uid="uid://dai2k1wuc6y38"]
+[gd_scene load_steps=19 format=3 uid="uid://dai2k1wuc6y38"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_yrrya"]
+[ext_resource type="Texture2D" uid="uid://byoqa0mauu43i" path="res://Assets/Textures/Mobs/Beamcaster1.png" id="2_1xc2w"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/Beamcaster.cs" id="2_libbv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blio1"]
 size = Vector2(66, 104)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sf010"]
-size = Vector2(66, 104)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qs4m"]
+size = Vector2(66, 106)
 
 [sub_resource type="StateConfig" id="StateConfig_r1dwg"]
 state_name = &"Idle"
@@ -85,16 +86,31 @@ state_config_list = Array[StateConfig]([SubResource("StateConfig_r1dwg"), SubRes
 transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_4plgd"), SubResource("TransitionConfig_u0os2"), SubResource("TransitionConfig_udvxp"), SubResource("TransitionConfig_o67p8")])
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_wca6e")])
 
-[node name="Beamcaster" instance=ExtResource("1_yrrya")]
+[node name="Beamcaster" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_yrrya")]
+_hurtBox = NodePath("Components/HurtBox")
+Sprite = NodePath("Sprite2D")
+_visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
+Shooter = NodePath("Components/ShooterNode/Shooter")
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_1xc2w")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_blio1")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtBox" index="0"]
-shape = SubResource("RectangleShape2D_sf010")
+[node name="Shooter" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../../..")
 
-[node name="MobAiComponent" parent="State" index="0"]
+[node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../..")
+
+[node name="CollisionShape2D" parent="Components/HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_2qs4m")
+
+[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("Mob")]
 script = ExtResource("2_libbv")
+Mob = NodePath("../..")
 
 [node name="HFSM" parent="State" index="1"]
 root_fsm_config = SubResource("FSMConfig_xi2o7")

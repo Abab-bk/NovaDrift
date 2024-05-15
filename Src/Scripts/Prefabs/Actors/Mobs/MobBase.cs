@@ -44,7 +44,7 @@ public partial class MobBase : Actor
         base.Die();
     }
 
-    private float GetDistanceToPlayer()
+    public float GetDistanceToPlayer()
     {
         return Global.Player.GlobalPosition.DistanceTo(GlobalPosition);
     }

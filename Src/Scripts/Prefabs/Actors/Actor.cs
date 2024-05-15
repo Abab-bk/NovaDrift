@@ -134,9 +134,6 @@ public partial class Actor : CharacterBody2D
 
         _visibleOnScreenNotifier2D.ScreenExited += MoveToWorldEdge;
 
-        EventBus.OnWorldColorChanged += ChangeColor;
-        ChangeColor();
-
         _bodyArea.CollisionLayer = 0;
         _bodyArea.CollisionMask = 0;
         if (IsPlayer)
@@ -164,7 +161,7 @@ public partial class Actor : CharacterBody2D
         CallDeferred(Node.MethodName.QueueFree);
     }
     
-    private void ChangeColor()
+    protected void ChangeColor()
     {
         Modulate = Global.WorldColor.Level1;
     }

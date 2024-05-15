@@ -24,6 +24,9 @@ public partial class Player : Actor
         _smokeTrail = GetNode<SmokeTrail>("%SmokeTrail");
         
         EventBus.OnMobDied += _ => { UpdateUi(); };
+        EventBus.OnWorldColorChanged += ChangeColor;
+        ChangeColor();
+        
         Stats.Health.ValueChanged += (float value) =>
         {
             UpdateUi();

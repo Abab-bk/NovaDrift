@@ -350,7 +350,9 @@
     "id": 1033,
     "name": "改进推力",
     "desc": "+25％ 推力",
-    "values": [],
+    "values": [
+      0.25
+    ],
     "class_name": "ImprovedThrusters",
     "tree_id": 1009
   },
@@ -366,7 +368,13 @@
     "id": 1035,
     "name": "精简",
     "desc": "+25% 推力\n-10% 大小\n-10% 最大血量\n-20% 碰撞伤害和对目标的击退效果\n-20% 碰撞击退抵抗",
-    "values": [],
+    "values": [
+      0.25,
+      -0.1,
+      -0.1,
+      -0.2,
+      -0.2
+    ],
     "class_name": "Streamline",
     "tree_id": 1009
   },

@@ -1,0 +1,85 @@
+[gd_scene load_steps=16 format=3 uid="uid://plutyrpe4xxs"]
+
+[ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_pbe1d"]
+[ext_resource type="Texture2D" uid="uid://cuo5dvpcu4h88" path="res://Assets/Textures/Mobs/Celestial.png" id="2_d1si5"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Ai/CelestialAi.cs" id="2_ngvhr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_htfxt"]
+size = Vector2(148, 192)
+
+[sub_resource type="StateConfig" id="StateConfig_31rmu"]
+state_name = &"Idle"
+type = 1
+editor_offset = Vector2(-80, -140)
+
+[sub_resource type="StateConfig" id="StateConfig_mpen5"]
+state_name = &"GoingToPlayer"
+editor_offset = Vector2(280, -140)
+
+[sub_resource type="StateConfig" id="StateConfig_b00d6"]
+state_name = &"CirclingPlayer"
+editor_offset = Vector2(660, -120)
+
+[sub_resource type="StateConfig" id="StateConfig_hw8bt"]
+state_name = &"Shoot"
+editor_offset = Vector2(460, 240)
+
+[sub_resource type="VariableConfig" id="VariableConfig_4y5mh"]
+variable_name = &"Next"
+resource_name = "Next: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_2hwnm"]
+variable_config = SubResource("VariableConfig_4y5mh")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_mo5et"]
+from_state_config = SubResource("StateConfig_mpen5")
+to_state_config = SubResource("StateConfig_b00d6")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_2hwnm")])
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_icujs"]
+from_state_config = SubResource("StateConfig_b00d6")
+to_state_config = SubResource("StateConfig_hw8bt")
+auto_delay_msec = 4000
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_2v7qa"]
+from_state_config = SubResource("StateConfig_hw8bt")
+to_state_config = SubResource("StateConfig_mpen5")
+auto_delay_msec = 3000
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_fi3s3"]
+from_state_config = SubResource("StateConfig_31rmu")
+to_state_config = SubResource("StateConfig_mpen5")
+
+[sub_resource type="FSMConfig" id="FSMConfig_ihhjg"]
+state_config_list = Array[StateConfig]([SubResource("StateConfig_31rmu"), SubResource("StateConfig_mpen5"), SubResource("StateConfig_b00d6"), SubResource("StateConfig_hw8bt")])
+transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_mo5et"), SubResource("TransitionConfig_icujs"), SubResource("TransitionConfig_2v7qa"), SubResource("TransitionConfig_fi3s3")])
+variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_4y5mh")])
+
+[node name="Celestial" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_pbe1d")]
+_hurtBox = NodePath("Components/HurtBox")
+Sprite = NodePath("Sprite2D")
+_visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
+Shooter = NodePath("Components/ShooterNode/Shooter")
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_d1si5")
+
+[node name="Shooter" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../../..")
+
+[node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../..")
+
+[node name="CollisionShape2D" parent="Components/HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_htfxt")
+
+[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("Mob")]
+script = ExtResource("2_ngvhr")
+Mob = NodePath("../..")
+
+[node name="HFSM" parent="State" index="1"]
+root_fsm_config = SubResource("FSMConfig_ihhjg")

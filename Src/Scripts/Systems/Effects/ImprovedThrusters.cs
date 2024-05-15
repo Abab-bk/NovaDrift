@@ -2,5 +2,10 @@
 
 public class ImprovedThrusters : Effect
 {
-    
+    public override void OnCreate()
+    {
+        base.OnCreate();
+        AddModifierToTarget(DataBuilder.BuildPercentAddModifier(
+            Values[0]), Target.Stats.Acceleration);
+    }
 }

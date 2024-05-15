@@ -1,7 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://d172ki0sphibv"]
+[gd_scene load_steps=10 format=3 uid="uid://d172ki0sphibv"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_cs027"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/Swallow.cs" id="2_33e1i"]
+[ext_resource type="Texture2D" uid="uid://bprp1wniehwt4" path="res://Assets/Textures/Mobs/Beamcaster2.png" id="2_pxyoy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ylla3"]
+size = Vector2(64, 90)
 
 [sub_resource type="StateConfig" id="StateConfig_cctl5"]
 state_name = &"Idle"
@@ -24,10 +28,28 @@ transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hr8fi"]
 size = Vector2(64, 90)
 
-[node name="Swallow" instance=ExtResource("1_cs027")]
+[node name="Swallow" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_cs027")]
+_hurtBox = NodePath("Components/HurtBox")
+Sprite = NodePath("Sprite2D")
+_visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
+Shooter = NodePath("Components/ShooterNode/Shooter")
 
-[node name="MobAiComponent" parent="State" index="0"]
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_pxyoy")
+
+[node name="Shooter" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../../..")
+
+[node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../..")
+
+[node name="CollisionShape2D" parent="Components/HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_ylla3")
+
+[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("Mob")]
 script = ExtResource("2_33e1i")
+Mob = NodePath("../..")
 
 [node name="HFSM" parent="State" index="1"]
 root_fsm_config = SubResource("FSMConfig_12vmv")
