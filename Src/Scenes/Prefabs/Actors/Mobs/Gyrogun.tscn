@@ -1,0 +1,76 @@
+[gd_scene load_steps=14 format=3 uid="uid://bc77hp2vrekdo"]
+
+[ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_s3e8g"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Ai/GyrogunAi.cs" id="2_5u3nq"]
+[ext_resource type="Texture2D" uid="uid://dcpix187w4k33" path="res://Assets/Textures/Mobs/Gyrogun.png" id="2_s8ugb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_e6bjx"]
+radius = 29.0172
+
+[sub_resource type="StateConfig" id="StateConfig_qngsh"]
+state_name = &"Idle"
+type = 1
+editor_offset = Vector2(260, -100)
+
+[sub_resource type="StateConfig" id="StateConfig_7if41"]
+state_name = &"RunningToCenter"
+editor_offset = Vector2(560, -100)
+
+[sub_resource type="StateConfig" id="StateConfig_64vtu"]
+state_name = &"RunningToPlayer"
+editor_offset = Vector2(560, 280)
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_64rvy"]
+from_state_config = SubResource("StateConfig_qngsh")
+to_state_config = SubResource("StateConfig_7if41")
+
+[sub_resource type="VariableConfig" id="VariableConfig_tm6tr"]
+variable_name = &"Next"
+resource_name = "Next: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_i8wpa"]
+variable_config = SubResource("VariableConfig_tm6tr")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_kbtl4"]
+from_state_config = SubResource("StateConfig_7if41")
+to_state_config = SubResource("StateConfig_64vtu")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_i8wpa")])
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_274i5"]
+from_state_config = SubResource("StateConfig_64vtu")
+to_state_config = SubResource("StateConfig_7if41")
+auto_delay_msec = 4000
+
+[sub_resource type="FSMConfig" id="FSMConfig_oo42e"]
+state_config_list = Array[StateConfig]([SubResource("StateConfig_qngsh"), SubResource("StateConfig_7if41"), SubResource("StateConfig_64vtu")])
+transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_64rvy"), SubResource("TransitionConfig_kbtl4"), SubResource("TransitionConfig_274i5")])
+variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_tm6tr")])
+
+[node name="Gyrogun" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_s3e8g")]
+_hurtBox = NodePath("Components/HurtBox")
+Sprite = NodePath("Sprite2D")
+_visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
+Shooter = NodePath("Components/ShooterNode/Shooter")
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("2_s8ugb")
+
+[node name="Shooter" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../../..")
+
+[node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../..")
+
+[node name="CollisionShape2D" parent="Components/HurtBox" index="0"]
+shape = SubResource("CircleShape2D_e6bjx")
+
+[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("Mob")]
+script = ExtResource("2_5u3nq")
+Mob = NodePath("../..")
+
+[node name="HFSM" parent="State" index="1"]
+root_fsm_config = SubResource("FSMConfig_oo42e")

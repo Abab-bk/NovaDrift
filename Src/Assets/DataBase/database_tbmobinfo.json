@@ -43,5 +43,14 @@
     "speed": 600,
     "damage": 10,
     "shoot_cd": 1
+  },
+  {
+    "id": 1006,
+    "name": "陀螺",
+    "scene_name": "Gyrogun",
+    "health": 100,
+    "speed": 50,
+    "damage": 5,
+    "shoot_cd": 0.2
   }
 ]
