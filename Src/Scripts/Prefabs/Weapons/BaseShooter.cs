@@ -11,13 +11,14 @@ public abstract partial class BaseShooter : Node2D
     
     public Action<BulletBase> OnShoot { get; set; }
     public Action<Actor> OnHit { get; set; }
+    public Func<BaseShooter, BulletBase> GetBulletFunc { get; set; }
     
     public Weapon Weapon { get; set; } = new Weapon();
 
     public bool IsPlayer { get; set; }
     
     public abstract void Shoot();
-
+    
     public abstract void Destroy();
 
     public abstract void SetShootCd(float value);

@@ -1,0 +1,84 @@
+[gd_scene load_steps=16 format=3 uid="uid://y6i7i6yp8hap"]
+
+[ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_nhejf"]
+[ext_resource type="Texture2D" uid="uid://bg8tcr0kp5cqf" path="res://Assets/Textures/Mobs/Pulsar.png" id="2_yqdm8"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Ai/PulsarAi.cs" id="3_72wof"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_rqamv"]
+size = Vector2(74, 160)
+
+[sub_resource type="StateConfig" id="StateConfig_htxyx"]
+state_name = &"Idle"
+type = 1
+editor_offset = Vector2(140, -20)
+
+[sub_resource type="StateConfig" id="StateConfig_sgo7m"]
+state_name = &"Shoot"
+editor_offset = Vector2(940, 320)
+
+[sub_resource type="StateConfig" id="StateConfig_up511"]
+state_name = &"KeepDistance"
+editor_offset = Vector2(640, -20)
+
+[sub_resource type="StateConfig" id="StateConfig_bqhwg"]
+state_name = &"Dodge"
+editor_offset = Vector2(340, 320)
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_skj4t"]
+from_state_config = SubResource("StateConfig_htxyx")
+to_state_config = SubResource("StateConfig_up511")
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_rspqb"]
+from_state_config = SubResource("StateConfig_up511")
+to_state_config = SubResource("StateConfig_sgo7m")
+auto_delay_msec = 4000
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_hhlw8"]
+from_state_config = SubResource("StateConfig_sgo7m")
+to_state_config = SubResource("StateConfig_bqhwg")
+auto_delay_msec = 2000
+
+[sub_resource type="VariableConfig" id="VariableConfig_0sf7c"]
+variable_name = &"Next"
+resource_name = "Next: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_273c5"]
+variable_config = SubResource("VariableConfig_0sf7c")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_wb105"]
+from_state_config = SubResource("StateConfig_bqhwg")
+to_state_config = SubResource("StateConfig_up511")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_273c5")])
+
+[sub_resource type="FSMConfig" id="FSMConfig_lt2to"]
+state_config_list = Array[StateConfig]([SubResource("StateConfig_htxyx"), SubResource("StateConfig_sgo7m"), SubResource("StateConfig_up511"), SubResource("StateConfig_bqhwg")])
+transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_skj4t"), SubResource("TransitionConfig_rspqb"), SubResource("TransitionConfig_hhlw8"), SubResource("TransitionConfig_wb105")])
+variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_0sf7c")])
+
+[node name="Pulsar" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_nhejf")]
+_hurtBox = NodePath("Components/HurtBox")
+Sprite = NodePath("Sprite2D")
+_visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
+Shooter = NodePath("Components/ShooterNode/Shooter")
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_yqdm8")
+
+[node name="Shooter" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../../..")
+
+[node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../..")
+
+[node name="CollisionShape2D" parent="Components/HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_rqamv")
+
+[node name="MobAiComponent" parent="State" index="0"]
+script = ExtResource("3_72wof")
+
+[node name="HFSM" parent="State" index="1"]
+root_fsm_config = SubResource("FSMConfig_lt2to")

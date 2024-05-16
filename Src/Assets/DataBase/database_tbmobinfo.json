@@ -6,6 +6,7 @@
     "health": 20,
     "speed": 300,
     "damage": 10,
+    "targeting": 0,
     "shoot_cd": 1
   },
   {
@@ -15,6 +16,7 @@
     "health": 20,
     "speed": 300,
     "damage": 10,
+    "targeting": 0,
     "shoot_cd": 1
   },
   {
@@ -24,6 +26,7 @@
     "health": 20,
     "speed": 300,
     "damage": 10,
+    "targeting": 0,
     "shoot_cd": 1
   },
   {
@@ -33,6 +36,7 @@
     "health": 50,
     "speed": 600,
     "damage": 10,
+    "targeting": 0,
     "shoot_cd": 1
   },
   {
@@ -42,6 +46,7 @@
     "health": 400,
     "speed": 600,
     "damage": 10,
+    "targeting": 0,
     "shoot_cd": 1
   },
   {
@@ -51,6 +56,17 @@
     "health": 100,
     "speed": 50,
     "damage": 5,
-    "shoot_cd": 0.2
+    "targeting": 0,
+    "shoot_cd": 0.1
+  },
+  {
+    "id": 1007,
+    "name": "脉冲",
+    "scene_name": "Pulsar",
+    "health": 400,
+    "speed": 600,
+    "damage": 10,
+    "targeting": 70,
+    "shoot_cd": 1
   }
 ]

@@ -47,6 +47,7 @@ enabled=PackedStringArray("res://addons/AcidNodes/plugin.cfg", "res://addons/Bur
 [global_group]
 
 Mobs=""
+Players=""
 
 [input]
 

@@ -13,7 +13,9 @@ public partial class GyrogunAi : MobAiComponent
         switch (state.GetName())
         {
             case "RunningToCenter":
-                Mob.SetTargetPosAndMove(Wizard.GetScreenCenter(), delta);
+                Mob.TryMoveTo(Mob.GlobalPosition.DirectionTo(Wizard.GetScreenCenter()), delta);
+                Mob.Rotate(Mathf.DegToRad(50 * delta));
+                
                 if (Mob.GlobalPosition.DistanceTo(Wizard.GetScreenCenter()) <= 10)
                 {
                     Machine.SetTrigger("Next");

@@ -23,6 +23,7 @@ public sealed partial class MobInfo : Luban.BeanBase
         Health = _buf.GetProperty("health").GetSingle();
         Speed = _buf.GetProperty("speed").GetSingle();
         Damage = _buf.GetProperty("damage").GetSingle();
+        Targeting = _buf.GetProperty("targeting").GetSingle();
         ShootCd = _buf.GetProperty("shoot_cd").GetSingle();
     }
 
@@ -56,6 +57,10 @@ public sealed partial class MobInfo : Luban.BeanBase
     /// </summary>
     public readonly float Damage;
     /// <summary>
+    /// 转向速度
+    /// </summary>
+    public readonly float Targeting;
+    /// <summary>
     /// 攻击CD
     /// </summary>
     public readonly float ShootCd;
@@ -65,6 +70,7 @@ public sealed partial class MobInfo : Luban.BeanBase
 
     public  void ResolveRef(Tables tables)
     {
+        
         
         
         
@@ -83,6 +89,7 @@ public sealed partial class MobInfo : Luban.BeanBase
         + "health:" + Health + ","
         + "speed:" + Speed + ","
         + "damage:" + Damage + ","
+        + "targeting:" + Targeting + ","
         + "shootCd:" + ShootCd + ","
         + "}";
     }

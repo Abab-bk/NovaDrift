@@ -8,5 +8,6 @@ public class MobInfo
     public float Speed;
     public float Damage;
     public float ShootCd;
+    public float Targeting;
     public string ScenePath;
 }

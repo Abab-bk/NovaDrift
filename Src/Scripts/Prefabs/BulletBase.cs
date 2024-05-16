@@ -62,7 +62,7 @@ public partial class BulletBase : Node2D
 
         if (Steering > 0)
         {
-            _targetingActor = Wizard.GetClosestTarget(this, "Mobs");
+            _targetingActor = Wizard.GetClosestTarget(this, IsPlayer ? "Mobs" : "Players");
         }
     }
 
@@ -98,7 +98,6 @@ public partial class BulletBase : Node2D
 
         _acceleration += Seek();
         
-        // _velocity = Direction * Speed * (float)delta;
         _velocity += _acceleration * (float)delta;
         _velocity = _velocity.LimitLength(Speed);
         Rotation = _velocity.Angle();

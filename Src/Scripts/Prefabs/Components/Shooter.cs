@@ -1,4 +1,5 @@
-﻿using AcidWallStudio.AcidUtilities;
+﻿using System;
+using AcidWallStudio.AcidUtilities;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Weapons;
@@ -14,8 +15,33 @@ public partial class Shooter : BaseShooter
     private Timer _burstIntervalTimer;
     private Timer _burstCooldownTimer;
     private bool _isBursting = false;
+    
+    public override void _EnterTree()
+    {
+        if (Owner is Actor actor)
+        {
+            Actor = actor;
+        }
+    }
 
     public override void _Ready()
+    {
+        GetBulletFunc = (shooter) => shooter.GetBullet();
+        Init();
+    }
+
+    public override void Destroy()
+    {
+        Actor.Stats.ShootSpeed.ValueChanged -= SetShootCd;
+    }
+
+    public override void SetShootCd(float value)
+    {
+        _shootTimer.Stop();
+        _shootTimer.WaitTime = value;
+    }
+    
+    public override void Init()
     {
         if (Owner is Actor actor)
         {
@@ -36,24 +62,7 @@ public partial class Shooter : BaseShooter
         _burstIntervalTimer.OneShot = true;
         _burstIntervalTimer.WaitTime = DataBuilder.Constants.BurstInterval;
         
-        Init();
-        
         Actor.Stats.ShootSpeed.ValueChanged += SetShootCd;
-    }
-
-    public override void Destroy()
-    {
-        Actor.Stats.ShootSpeed.ValueChanged -= SetShootCd;
-    }
-
-    public override void SetShootCd(float value)
-    {
-        _shootTimer.Stop();
-        _shootTimer.WaitTime = value;
-    }
-    
-    public override void Init()
-    {
     }
 
     public override void Shoot()
@@ -67,14 +76,7 @@ public partial class Shooter : BaseShooter
         {
             for (int i = 0; i < Actor.Stats.BulletCount.Value; i++)
             {
-                BulletBase bullet = new BulletBuilder().
-                    SetIsPlayer(IsPlayer).
-                    SetDamage(Actor.Stats.Damage.Value).
-                    SetSpeed(Actor.Stats.BulletSpeed.Value).
-                    SetSize(Actor.Stats.BulletSize.Value).
-                    SetDegeneration(Actor.Stats.BulletDegeneration.Value).
-                    SetSteering(Actor.Stats.Targeting.Value).
-                    Build();
+                BulletBase bullet = GetBulletFunc.Invoke(this);
                 
                 bullet.GlobalPosition = GlobalPosition;
                 if ((int)Actor.Stats.BulletCount.Value == 1)

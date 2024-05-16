@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts.Prefabs.Actors.Mobs;
@@ -12,9 +13,9 @@ public partial class MobBase : Actor
 
     public override void _Ready()
     {
+        if (MobInfo == null) throw new Exception("MobInfo 为 Null");
         base._Ready();
         AddToGroup("Mobs");
-        if (MobInfo == null) throw new Exception("MobInfo 为 Null");
         
         Stats.Health.ValueChanged += (value) =>
         {
@@ -23,6 +24,8 @@ public partial class MobBase : Actor
                 Die();
             }
         };
+        
+        // if (Shooter != null) Shooter.Init();
     }
 
     protected override void InitStats()
@@ -32,6 +35,9 @@ public partial class MobBase : Actor
         
         Stats.Speed.BaseValue = MobInfo.Speed;
         Stats.Damage.BaseValue = MobInfo.Damage * Global.GetPlayerLevel();
+        Stats.ShootSpeed.BaseValue = MobInfo.ShootCd;
+
+        Stats.Targeting.BaseValue = MobInfo.Targeting;
         
         Shooter.SetShootCd(MobInfo.ShootCd);
     }
