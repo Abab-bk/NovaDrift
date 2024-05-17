@@ -1,5 +1,5 @@
+using AcidWallStudio.Fmod;
 using Godot;
-using NathanHoad;
 using NovaDrift.addons.AcidUtilities;
 
 namespace NovaDrift.Scripts.Ui.Setting;
@@ -44,9 +44,10 @@ public partial class SettingPanel : Setting
 
     private void SetVolumes()
     {
-        SoundManager.SetSoundVolume((float)S_SoundVolumeSlider.Instance.Value);
-        SoundManager.SetMusicVolume((float)S_MusicVolumeSlider.Instance.Value);
-        SoundManager.SetUiSoundVolume((float)S_UiVolumeSlider.Instance.Value);
+        Fmod.MusicVolume = (float)S_MusicVolumeSlider.Instance.Value;
+        Fmod.SfxVolume = (float)S_SoundVolumeSlider.Instance.Value;
+        Fmod.UiSoundsVolume = (float)S_UiVolumeSlider.Instance.Value;
+        Fmod.SetVolume();
     }
 
     public override void OnDestroyUi()

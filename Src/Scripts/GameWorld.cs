@@ -1,9 +1,9 @@
 using AcidJoystick;
 using AcidWallStudio.AcidUtilities;
+using AcidWallStudio.Fmod;
 using DsUi;
 using GDebugPanelGodot.Core;
 using Godot;
-using NathanHoad;
 using NovaDrift.addons.AcidUtilities;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Components;
@@ -17,7 +17,11 @@ public partial class GameWorld : Node2D
 	
 	public override void _Ready()
 	{
-		SoundManager.PlayMusic(GD.Load<AudioStream>(SoundPaths.ZeroGravity));
+		Fmod.Initialize();
+
+		Global.SceneTree = GetTree();
+		
+		Fmod.PlayOneShotById(AudioEvents.BackgroundMusic);
 		
 		GetNode<Joystick>("%MoveJoystick").Hide();
 		GetNode<Joystick>("%AimJoystick").Hide();
@@ -42,6 +46,11 @@ public partial class GameWorld : Node2D
 		}
 		
 		EventBus.OnGameInit?.Invoke();
+	}
+
+	public override void _Process(double delta)
+	{
+		Fmod.Update();
 	}
 
 	// 顺序是：GameInit => GameStart => GameOver

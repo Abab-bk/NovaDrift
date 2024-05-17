@@ -1,8 +1,8 @@
 using System;
 using AcidWallStudio.AcidNodes;
 using AcidWallStudio.AcidUtilities;
+using AcidWallStudio.Fmod;
 using Godot;
-using NathanHoad;
 using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Components;
@@ -53,7 +53,7 @@ public partial class BulletBase : Node2D
         _hitBox.SetIsPlayer(IsPlayer);
         _hitBox.OnHit += (actor) =>
         {
-            SoundManager.PlaySound(SoundPaths.BulletHit);
+            Fmod.PlayOneShotById("event:/OnBulletHit");
             OnHit?.Invoke(actor);
             QueueFree();
         };

@@ -1,4 +1,6 @@
 ﻿using System;
+using AcidWallStudio.Fmod;
+using Godot;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
 using NovaDrift.Scripts.Prefabs.Components;
@@ -34,6 +36,27 @@ public static class Global
     public static HazardSpawner HazardSpawner;
 
     private static int _stopCount;
+
+    public static SceneTree SceneTree
+    {
+        get => _sceneTree;
+        set
+        {
+            _sceneTree = value;
+            _sceneTree.NodeAdded += ConnectButtonSoundsSignal;
+        }
+    }
+
+    private static SceneTree _sceneTree;
+
+    public static void ConnectButtonSoundsSignal(Node node)
+    {
+        if (node is not BaseButton button) return;
+        button.Pressed += () =>
+        {
+            Fmod.PlayOneShotById("event:/ButtonClicked");
+        };
+    }
 
     public static void Init()
     {

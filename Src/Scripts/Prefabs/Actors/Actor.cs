@@ -1,7 +1,6 @@
 using System;
 using DsUi;
 using Godot;
-using NathanHoad;
 using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Frameworks.Stats;
 using NovaDrift.Scripts.Prefabs.Components;

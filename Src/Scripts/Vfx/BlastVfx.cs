@@ -1,7 +1,7 @@
 using System;
+using AcidWallStudio.Fmod;
 using Godot;
 using Godot.Collections;
-using NathanHoad;
 using NovaDrift.Scripts;
 using NovaDrift.Scripts.Prefabs.Components;
 
@@ -24,7 +24,7 @@ public partial class BlastVfx : Node2D
         {
             OnBlastDone?.Invoke();
         };
-
-        SoundManager.PlaySound(SoundPaths.Blast);
+        
+        Fmod.PlayOneShotById("event:/Blast");
     }
 }
