@@ -77,8 +77,9 @@ Actor = NodePath("../..")
 [node name="CollisionShape2D" parent="Components/HurtBox" index="0"]
 shape = SubResource("RectangleShape2D_rqamv")
 
-[node name="MobAiComponent" parent="State" index="0"]
+[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("Mob")]
 script = ExtResource("3_72wof")
+Mob = NodePath("../..")
 
 [node name="HFSM" parent="State" index="1"]
 root_fsm_config = SubResource("FSMConfig_lt2to")

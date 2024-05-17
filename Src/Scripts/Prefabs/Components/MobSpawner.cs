@@ -37,6 +37,9 @@ public partial class MobSpawner : Node2D
         new WeightedListItem<int>(1001, 1),
         new WeightedListItem<int>(1002, 1),
         new WeightedListItem<int>(1003, 1),
+        new WeightedListItem<int>(1004, 1),
+        new WeightedListItem<int>(1005, 1),
+        new WeightedListItem<int>(1006, 1),
     };
     private readonly List<WeightedListItem<SpawnType>> _spawnTypeListItems = new()
     {

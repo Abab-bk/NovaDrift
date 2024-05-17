@@ -13,7 +13,7 @@ public static class Constants
 
         public static readonly WorldColor Blue = new WorldColor
         {
-            Level1 = new Color(0.5f, 0.5f, 1f)    
+            Level1 = new Color(0.5f, 0.5f, 1f)
         };   
     }
     

@@ -182,7 +182,6 @@ public partial class Actor : CharacterBody2D
     protected void OnHit(float value)
     {
         UiManager.Open_DamageLabel().ShowValue(value, GetGlobalTransformWithCanvas().Origin);
-        SoundManager.PlaySound(SoundPaths.Ping);
     }
 
     private void MoveToWorldEdge()

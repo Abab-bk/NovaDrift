@@ -74,9 +74,12 @@ public partial class Player : Actor
         Stats.BlastRadius.BaseValue = DataBuilder.Constants.PlayerBlastRadius;
         Stats.BurstFire.BaseValue = DataBuilder.Constants.PlayerBurstFire;
         
+        Scale = new Vector2 { X = Stats.Size.Value, Y = Stats.Size.Value };
+        
         Stats.Exp.ValueToMax += UpLevel;
         Stats.Exp.ValueChanged += UpdateUi;
         Stats.Health.ValueChanged += UpdateUi;
+        Stats.Size.ValueChanged += f => Scale = new Vector2 { X = f, Y = f };
     }
 
     public override void Die()
