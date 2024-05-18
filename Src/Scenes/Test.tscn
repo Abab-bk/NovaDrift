@@ -1,6 +1,58 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1kwbf54qmb76"]
+[gd_scene load_steps=6 format=3 uid="uid://d1kwbf54qmb76"]
 
 [ext_resource type="Script" path="res://Scripts/Test.cs" id="1_kfpb1"]
+[ext_resource type="Texture2D" uid="uid://c5oierqc18mer" path="res://icon.svg" id="2_3prsa"]
+
+[sub_resource type="Animation" id="Animation_gqvmo"]
+resource_name = "run"
+length = 10.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 10),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(170, 790), Vector2(2447, 790)]
+}
+
+[sub_resource type="Animation" id="Animation_j7100"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(170, 701)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8hsg6"]
+_data = {
+"RESET": SubResource("Animation_j7100"),
+"run": SubResource("Animation_gqvmo")
+}
 
 [node name="Test" type="Node2D"]
 script = ExtResource("1_kfpb1")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(170, 701)
+texture = ExtResource("2_3prsa")
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+position = Vector2(1268, 765)
+texture = ExtResource("2_3prsa")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8hsg6")
+}
+autoplay = "run"

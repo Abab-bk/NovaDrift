@@ -25,6 +25,6 @@ public partial class BlastVfx : Node2D
             OnBlastDone?.Invoke();
         };
         
-        Fmod.PlayOneShotById("event:/Blast");
+        SoundManager.PlayOneShotById("event:/Blast");
     }
 }

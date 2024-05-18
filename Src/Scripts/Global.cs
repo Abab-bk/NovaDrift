@@ -29,6 +29,7 @@ public static class Global
     public static readonly GamePlatform CurrentPlatform = GamePlatform.Desktop;
     
     public static Player Player;
+    public static Node2D PlayerStand;
     public static GameWorld GameWorld;
 
     public static Constants.WorldColor WorldColor = Constants.Colors.Blue;
@@ -54,7 +55,7 @@ public static class Global
         if (node is not BaseButton button) return;
         button.Pressed += () =>
         {
-            Fmod.PlayOneShotById("event:/ButtonClicked");
+            SoundManager.PlayOneShotById("event:/ButtonClicked");
         };
     }
 

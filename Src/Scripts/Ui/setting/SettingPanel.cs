@@ -44,10 +44,10 @@ public partial class SettingPanel : Setting
 
     private void SetVolumes()
     {
-        Fmod.MusicVolume = (float)S_MusicVolumeSlider.Instance.Value;
-        Fmod.SfxVolume = (float)S_SoundVolumeSlider.Instance.Value;
-        Fmod.UiSoundsVolume = (float)S_UiVolumeSlider.Instance.Value;
-        Fmod.SetVolume();
+        SoundManager.MusicVolume = (float)S_MusicVolumeSlider.Instance.Value;
+        SoundManager.SfxVolume = (float)S_SoundVolumeSlider.Instance.Value;
+        SoundManager.UiSoundsVolume = (float)S_UiVolumeSlider.Instance.Value;
+        SoundManager.SetVolume();
     }
 
     public override void OnDestroyUi()

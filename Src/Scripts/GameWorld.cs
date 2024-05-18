@@ -17,11 +17,12 @@ public partial class GameWorld : Node2D
 	
 	public override void _Ready()
 	{
-		Fmod.Initialize();
+		AudioServer.Lock();
+		SoundManager.Initialize();
 
 		Global.SceneTree = GetTree();
 		
-		Fmod.PlayOneShotById(AudioEvents.BackgroundMusic);
+		SoundManager.PlayOneShotById(AudioEvents.BackgroundMusic);
 		
 		GetNode<Joystick>("%MoveJoystick").Hide();
 		GetNode<Joystick>("%AimJoystick").Hide();
@@ -48,9 +49,17 @@ public partial class GameWorld : Node2D
 		EventBus.OnGameInit?.Invoke();
 	}
 
+	public override void _Notification(int what)
+	{
+		if (what == NotificationExitTree)
+		{
+			AudioServer.Unlock();
+		}
+	}
+
 	public override void _Process(double delta)
 	{
-		Fmod.Update();
+		SoundManager.Update();
 	}
 
 	// 顺序是：GameInit => GameStart => GameOver

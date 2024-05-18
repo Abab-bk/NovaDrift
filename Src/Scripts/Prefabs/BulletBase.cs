@@ -53,7 +53,7 @@ public partial class BulletBase : Node2D
         _hitBox.SetIsPlayer(IsPlayer);
         _hitBox.OnHit += (actor) =>
         {
-            Fmod.PlayOneShotById("event:/OnBulletHit");
+            SoundManager.PlayOneShotById("event:/OnBulletHit");
             OnHit?.Invoke(actor);
             QueueFree();
         };
