@@ -45,18 +45,29 @@ public static class SoundManager
         }
     }
 
+    public static float GetMusicParameter(string para)
+    {
+        if (_currentMusicInstance.isValid())
+        {
+            _currentMusicInstance.getParameterByName(para, out var value);
+            return value;
+        }
+        return 0;
+    }
+
     public static void PlayUiSound(string id)
     {
         PlayOneShotById(id);
     }
 
-    public static void PlaySound(this Node2D source, string id)
+    public static SoundNode PlaySound(this Node2D source, string id)
     {
         var soundNode = new SoundNode
         {
             EventInstance = CreateInstanceById(id)
         };
         source.AddChild(soundNode);
+        return soundNode;
     }
 
     public static ATTRIBUTES_3D ToFmodAttribute3D(this Vector2 source)
@@ -118,6 +129,11 @@ public static class SoundManager
         _studioSystem.getBus("bus:/SFX", out _sfxBus);
         _studioSystem.getBus("bus:/UI", out _uiSoundsBus);
     }
+    
+    public static void LoadBank(string fileName, out Bank bank)
+    {
+        _studioSystem.loadBankFile(FmodConfig.RootPath + fileName, LOAD_BANK_FLAGS.NORMAL, out bank);
+    }
 
     public static void SetVolume()
     {
@@ -130,26 +146,30 @@ public static class SoundManager
     public static void Update()
     {
         // 更新 Listener（玩家） 属性
-        var playerAttribute = new ATTRIBUTES_3D
+        if (FmodConfig.Listener != null)
         {
-            position = new VECTOR
+            var playerAttribute = new ATTRIBUTES_3D
             {
-                x = FmodConfig.Listener.GlobalPosition.X,
-                y = -FmodConfig.Listener.GlobalPosition.Y,
-                z = 1,
-            },
-            forward = new VECTOR
-            {
-                x = 1,
-                y = 0,
-            },
-            up = new VECTOR
-            {
-                x = 0,
-                y = -1,
-            }
-        };
-        _studioSystem.setListenerAttributes(0, playerAttribute);
+                position = new VECTOR
+                {
+                    x = FmodConfig.Listener.GlobalPosition.X,
+                    y = -FmodConfig.Listener.GlobalPosition.Y,
+                    z = 1,
+                },
+                forward = new VECTOR
+                {
+                    x = 1,
+                    y = 0,
+                },
+                up = new VECTOR
+                {
+                    x = 0,
+                    y = -1,
+                }
+            };
+            _studioSystem.setListenerAttributes(0, playerAttribute);
+        }
+
         _studioSystem.update();
     }
 }

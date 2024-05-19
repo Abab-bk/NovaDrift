@@ -93,6 +93,11 @@ public static class Wizard
         return result;
     }
 
+    public static Vector2 GetRandomMapCorner()
+    {
+        return MapCorners[Random.Shared.NextInt64(0, MapCorners.Length)];
+    }
+
     public static Vector2 GetMapCornerByIndex(int index)
     {
         return MapCorners[Mathf.Min(index, MapCorners.Length - 1)];

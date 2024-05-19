@@ -78,6 +78,7 @@ scale = Vector2(0.24, 0.24)
 [node name="MobSpawner" type="Node2D" parent="."]
 position = Vector2(1253, 670)
 script = ExtResource("4_4mpug")
+_enabled = false
 
 [node name="HazardSpawner" type="Node2D" parent="."]
 script = ExtResource("5_2fkc6")

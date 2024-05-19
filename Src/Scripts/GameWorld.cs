@@ -22,7 +22,7 @@ public partial class GameWorld : Node2D
 
 		Global.SceneTree = GetTree();
 		
-		SoundManager.PlayOneShotById(AudioEvents.BackgroundMusic);
+		SoundManager.PlayMusic(AudioEvents.BackgroundMusic);
 		
 		GetNode<Joystick>("%MoveJoystick").Hide();
 		GetNode<Joystick>("%AimJoystick").Hide();

@@ -22,6 +22,8 @@ public class CharacterStats
     public readonly Stat Damage = new Stat(30);
     public readonly Attribute Exp = new Attribute(0, 100);
     
+    public Vector2 ForceVector = Vector2.Zero;
+    
     // 武器射击速度
     public readonly Stat
         Size = new (1f), // TODO Actor 大小

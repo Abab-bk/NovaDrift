@@ -18,7 +18,8 @@ public sealed class WorldCommands
 {
     public int SomethingId { get; set; }
     public void GenerateMobById() => MobSpawner.GenerateMobByIdAction?.Invoke(SomethingId);
-
+    public void GenerateBossById() => MobSpawner.GenerateBossById?.Invoke(SomethingId);
+    
     public HazardSpawner.HazardType HazardType { get; set; }
     public void SpawnHazard() => Global.HazardSpawner.SpawnHazard(HazardType);
     

@@ -1,0 +1,179 @@
+[gd_scene load_steps=34 format=3 uid="uid://5ruwopryw23m"]
+
+[ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_o3i0o"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Ai/MathematiciansAi.cs" id="2_48fg7"]
+[ext_resource type="Texture2D" uid="uid://uxad1tqnouwp" path="res://Assets/Textures/Mobs/Mathematicians.png" id="2_bjkmk"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1wip4"]
+size = Vector2(274, 300)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0s70r"]
+size = Vector2(276, 302)
+
+[sub_resource type="StateConfig" id="StateConfig_da55l"]
+state_name = &"Idle"
+type = 1
+editor_offset = Vector2(-60, 220)
+
+[sub_resource type="StateConfig" id="StateConfig_xqwf6"]
+state_name = &"CreateBlackHole"
+editor_offset = Vector2(140, 960)
+
+[sub_resource type="StateConfig" id="StateConfig_4hitx"]
+state_name = &"Blink"
+editor_offset = Vector2(440, 540)
+
+[sub_resource type="StateConfig" id="StateConfig_7cjet"]
+state_name = &"Beam"
+editor_offset = Vector2(-100, 680)
+
+[sub_resource type="StateConfig" id="StateConfig_ge3dx"]
+state_name = &"Shoot"
+editor_offset = Vector2(720, 220)
+
+[sub_resource type="StateConfig" id="StateConfig_lxddt"]
+state_name = &"MovingToCenter"
+editor_offset = Vector2(260, 220)
+
+[sub_resource type="StateConfig" id="StateConfig_2twi0"]
+state_name = &"MovingToCorner"
+editor_offset = Vector2(740, 740)
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_4a748"]
+from_state_config = SubResource("StateConfig_da55l")
+to_state_config = SubResource("StateConfig_lxddt")
+
+[sub_resource type="VariableConfig" id="VariableConfig_j3yun"]
+variable_name = &"Next"
+resource_name = "Next: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_0e4bl"]
+variable_config = SubResource("VariableConfig_j3yun")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_u5504"]
+from_state_config = SubResource("StateConfig_lxddt")
+to_state_config = SubResource("StateConfig_ge3dx")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_0e4bl")])
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_xhie0"]
+from_state_config = SubResource("StateConfig_ge3dx")
+to_state_config = SubResource("StateConfig_2twi0")
+auto_delay_msec = 5000
+
+[sub_resource type="VariableConfig" id="VariableConfig_xjs51"]
+variable_name = &"Beam"
+resource_name = "Beam: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_20roj"]
+variable_config = SubResource("VariableConfig_xjs51")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_xa1dk"]
+from_state_config = SubResource("StateConfig_2twi0")
+to_state_config = SubResource("StateConfig_7cjet")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_20roj")])
+
+[sub_resource type="VariableConfig" id="VariableConfig_1riw8"]
+variable_name = &"CreateBlackHole"
+resource_name = "CreateBlackHole: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_e8ccv"]
+variable_config = SubResource("VariableConfig_1riw8")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_7s02u"]
+from_state_config = SubResource("StateConfig_2twi0")
+to_state_config = SubResource("StateConfig_xqwf6")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_e8ccv")])
+
+[sub_resource type="VariableConfig" id="VariableConfig_ppspd"]
+variable_name = &"Blink"
+resource_name = "Blink: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_b7bva"]
+variable_config = SubResource("VariableConfig_ppspd")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_2qttw"]
+from_state_config = SubResource("StateConfig_2twi0")
+to_state_config = SubResource("StateConfig_4hitx")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_b7bva")])
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_56m1v"]
+variable_config = SubResource("VariableConfig_j3yun")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_ufbq5"]
+from_state_config = SubResource("StateConfig_xqwf6")
+to_state_config = SubResource("StateConfig_lxddt")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_56m1v")])
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_kyqrh"]
+variable_config = SubResource("VariableConfig_j3yun")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_8ejv1"]
+from_state_config = SubResource("StateConfig_7cjet")
+to_state_config = SubResource("StateConfig_lxddt")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_kyqrh")])
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_u461b"]
+variable_config = SubResource("VariableConfig_j3yun")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_3jjwu"]
+from_state_config = SubResource("StateConfig_4hitx")
+to_state_config = SubResource("StateConfig_lxddt")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_u461b")])
+
+[sub_resource type="FSMConfig" id="FSMConfig_gs236"]
+state_config_list = Array[StateConfig]([SubResource("StateConfig_da55l"), SubResource("StateConfig_xqwf6"), SubResource("StateConfig_4hitx"), SubResource("StateConfig_7cjet"), SubResource("StateConfig_ge3dx"), SubResource("StateConfig_lxddt"), SubResource("StateConfig_2twi0")])
+transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_4a748"), SubResource("TransitionConfig_u5504"), SubResource("TransitionConfig_xhie0"), SubResource("TransitionConfig_xa1dk"), SubResource("TransitionConfig_7s02u"), SubResource("TransitionConfig_2qttw"), SubResource("TransitionConfig_ufbq5"), SubResource("TransitionConfig_8ejv1"), SubResource("TransitionConfig_3jjwu")])
+variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_ppspd"), SubResource("VariableConfig_1riw8"), SubResource("VariableConfig_xjs51"), SubResource("VariableConfig_j3yun")])
+
+[node name="Mathematicians" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_o3i0o")]
+_hurtBox = NodePath("Components/HurtBox")
+Sprite = NodePath("Sprite2D")
+_visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
+Shooter = NodePath("Components/ShooterNode/Shooter")
+
+[node name="Sprite2D" parent="." index="0"]
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_bjkmk")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_1wip4")
+
+[node name="Shooter" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../../..")
+
+[node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../..")
+
+[node name="CollisionShape2D" parent="Components/HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_0s70r")
+
+[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("Mob")]
+script = ExtResource("2_48fg7")
+Mob = NodePath("../..")
+
+[node name="HFSM" parent="State" index="1"]
+root_fsm_config = SubResource("FSMConfig_gs236")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="4"]
+scale = Vector2(10.9, 14.9435)

@@ -225,6 +225,9 @@ public partial class Actor : CharacterBody2D
             Velocity += Vector2.Right.Rotated(Rotation) * -Stats.GetKnockBack();
             Stats.AddKnockBack(-Stats.GetKnockBack());
         }
+
+        Velocity += Stats.ForceVector;
+        
         MoveAndSlide();
     }
 }

@@ -31,6 +31,7 @@ public partial class MobSpawner : Node2D
     [Export] bool _enabled = true;
 
     public static Action<int> GenerateMobByIdAction;
+    public static Action<int> GenerateBossById;
 
     private readonly List<WeightedListItem<int>> _mobListItems = new()
     {
@@ -57,6 +58,7 @@ public partial class MobSpawner : Node2D
     public override void _Ready()
     {
         GenerateMobByIdAction += GenerateMobById;
+        GenerateBossById += SpawnABoss;
         
         _mobList = new(_mobListItems);
         _spawnTypeList = new(_spawnTypeListItems);
@@ -99,12 +101,30 @@ public partial class MobSpawner : Node2D
         SpawnMob(_waveInfo.SelectSpawnType());
     }
 
+    private void SpawnABoss(int id)
+    {
+        var mobInfo = DataBuilder.BuildMobInfoById(id);
+        MobBuilder mobBuilder = new MobBuilder(mobInfo);
+        var mob = mobBuilder.Build();
+        
+        if (mob == null) return;
+        
+        AddChild(mob);
+        mob.GlobalPosition = Wizard.GetScreenCenter();
+    }
+
     private void SpawnMob(SpawnType spawnType)
     {
         MobInfo mobInfo = _waveInfo.SelectMob();
         int mobCount = _waveInfo.SelectMobCount(spawnType);
 
-        if (mobInfo.Id == 1002) { mobCount = Mathf.Min(mobCount, 4); }
+        if (mobInfo.Id == 1002) { mobCount = Mathf.Min(mobCount, 4); } // HACK
+
+        if (mobInfo.Id == 1008)
+        {
+            SpawnABoss(mobInfo.Id);
+            return;
+        } // HACK
         
         spawnType.SetMobCount(mobCount);
         

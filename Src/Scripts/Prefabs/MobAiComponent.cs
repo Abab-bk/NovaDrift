@@ -21,6 +21,12 @@ public partial class MobAiComponent : Node
         Machine.Exited += ConnectExitedSignals;
         Machine.PhysicUpdated += ConnectProcessSignals;
         Machine.Transited += ConnectTransitedSignals;
+        
+        Mob.OnDied += OnMobDied;
+    }
+
+    protected virtual void OnMobDied()
+    {
     }
 
     protected virtual void ConnectTransitedSignals(State from, State to)

@@ -19,4 +19,8 @@
   <ItemGroup>
     <EmbeddedResource Remove=".godot\**" />
   </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="GDTask" Version="1.2.2" />
+    <PackageReference Include="GodotSharpSome.Drawing2D" Version="0.23.0" />
+  </ItemGroup>
 </Project>

@@ -1,7 +1,9 @@
 using AcidJoystick;
 using AcidWallStudio.AcidNodes;
+using AcidWallStudio.Fmod;
 using DsUi;
 using Godot;
+using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Prefabs.Shields;
 
 namespace NovaDrift.Scripts.Prefabs.Actors;
@@ -30,6 +32,16 @@ public partial class Player : Actor
         Stats.Health.ValueChanged += (float value) =>
         {
             UpdateUi();
+
+            if (value <= Stats.Health.MaxValue.Value * 0.5f && (int)SoundManager.GetMusicParameter(AudioParams.Stage) != (int)BackgroundMusicStage.Stage1)
+            {
+                SoundManager.SetMusicParameter(AudioParams.Stage, (int)BackgroundMusicStage.Stage2);
+            }
+            else if (value <= Stats.Health.MaxValue.Value * 0.2f && (int)SoundManager.GetMusicParameter(AudioParams.Stage) != (int)BackgroundMusicStage.Stage3)
+            {
+                SoundManager.SetMusicParameter(AudioParams.Stage, (int)BackgroundMusicStage.Stage3);
+            }
+
             if (value <= 0)
             {
                 Die();
@@ -106,8 +118,6 @@ public partial class Player : Actor
 
     public override void _PhysicsProcess(double delta)
     {
-        base._PhysicsProcess(delta);
-        
         Vector2 mousePos = GetGlobalMousePosition();
 
         if (Global.CurrentPlatform == GamePlatform.Desktop)
@@ -139,6 +149,8 @@ public partial class Player : Actor
                 TryStop(delta);
             }
         }
+        
+        base._PhysicsProcess(delta);
 
         if (Input.IsActionPressed("RClick"))
         {

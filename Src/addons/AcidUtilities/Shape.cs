@@ -4,6 +4,13 @@ using Godot;
 
 namespace NovaDrift.addons.AcidUtilities;
 
+public enum ShapeType
+{
+    Circle,
+    Rectangle,
+    Triangle,
+}
+
 public interface IShape
 {
     public List<Vector2> Points { set; get; }
@@ -11,6 +18,21 @@ public interface IShape
     public Vector2 GetPosByIndex(int pointIndex)
     {
         return Points[pointIndex];
+    }
+
+    public static IShape GetShapeInstanceByType(ShapeType shapeType, int pointCount, float width, float height)
+    {
+        switch (shapeType)
+        {
+            case ShapeType.Circle:
+                return new CircleShape(pointCount, width);
+            case ShapeType.Rectangle:
+                return new RectangleShape(pointCount, width, height);
+            case ShapeType.Triangle:
+                return new TriangleShape(pointCount, width, height);
+            default:
+                throw new ArgumentOutOfRangeException(nameof(shapeType), shapeType, null);
+        }
     }
 }
 
