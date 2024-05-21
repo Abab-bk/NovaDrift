@@ -13,6 +13,7 @@ namespace NovaDrift.Scripts.Prefabs.Shields;
 public partial class BaseShield : Node2D
 {
     public event Action OnBreak;
+    public event Action<Node2D> OnHurtEvent;
     
     protected CircleSprite2D CircleSprite2D;
     protected Area2D ShieldArea;
@@ -56,7 +57,7 @@ public partial class BaseShield : Node2D
         ShieldArea.AreaEntered += OnAreaEntered;
         ShieldArea.AreaExited += OnAreaExited;
         
-        HurtBox.OnHurt += OnHurt;
+        HurtBox.OnHurtWithSource += OnHurt;
         CoolDownTimer.Timeout += OnCoolDownTimeout;
     
         Init();
@@ -68,10 +69,11 @@ public partial class BaseShield : Node2D
     {
     }
 
-    protected virtual void OnHurt(float value)
+    protected virtual void OnHurt(float value, Node2D node2D)
     {
         Health.Decrease(value);
-        
+        OnHurtEvent?.Invoke(node2D);
+
         if (Health.BaseValue <= 0)
         {
             Hide();

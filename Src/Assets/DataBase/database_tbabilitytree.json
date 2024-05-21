@@ -88,5 +88,35 @@
       1035
     ],
     "end_ability_id": 1036
+  },
+  {
+    "id": 1010,
+    "name": "经久耐用",
+    "start_ability_id": 1037,
+    "middle_ability_ids": [
+      1038,
+      1039
+    ],
+    "end_ability_id": 1040
+  },
+  {
+    "id": 1011,
+    "name": "护盾冷却",
+    "start_ability_id": 1041,
+    "middle_ability_ids": [
+      1042,
+      1043
+    ],
+    "end_ability_id": 1044
+  },
+  {
+    "id": 1012,
+    "name": "护盾效果半径",
+    "start_ability_id": 1045,
+    "middle_ability_ids": [
+      1046,
+      1047
+    ],
+    "end_ability_id": 1048
   }
 ]

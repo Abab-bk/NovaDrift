@@ -388,5 +388,103 @@
     ],
     "class_name": "Blink",
     "tree_id": 1009
+  },
+  {
+    "id": 1037,
+    "name": "经久耐用",
+    "desc": "+20% 最大护盾",
+    "values": [
+      0.2
+    ],
+    "class_name": "ShieldDurability",
+    "tree_id": 1010
+  },
+  {
+    "id": 1038,
+    "name": "反射护盾",
+    "desc": "当你受到盾牌击中时，你的盾牌会向攻击者的方向释放能量，造成爆炸伤害\n+5% 最大护盾",
+    "values": [],
+    "class_name": "ReflexiveShields",
+    "tree_id": 1010
+  },
+  {
+    "id": 1039,
+    "name": "障碍",
+    "desc": "如果对你的护盾的攻击超过 25 点伤害，该伤害将减少至 25 点\n护盾冷却时间减慢 5%",
+    "values": [],
+    "class_name": "Barrier",
+    "tree_id": 1010
+  },
+  {
+    "id": 1040,
+    "name": "全能护盾",
+    "desc": "+55基础护盾\n+15% 护盾伤害抵抗\n+15% 护盾效果强度\n当你的护盾正在冷却时，它对因受到伤害而导致的冷却延迟有更强的抵抗力\n-85% 最大生命",
+    "values": [],
+    "class_name": "OmniShield",
+    "tree_id": 1010
+  },
+  {
+    "id": 1041,
+    "name": "护盾冷却",
+    "desc": "20％更快的盾牌冷却",
+    "values": [],
+    "class_name": "ShieldCooldown",
+    "tree_id": 1011
+  },
+  {
+    "id": 1042,
+    "name": "不稳定盾牌",
+    "desc": "当你的护盾破裂时，它会发生剧烈的放电，对附近的目标造成1000点爆炸伤害。\n+5% 最大护盾值",
+    "values": [],
+    "class_name": "VolatileShields",
+    "tree_id": 1011
+  },
+  {
+    "id": 1043,
+    "name": "闪光护盾",
+    "desc": "盾牌冷却速度加快25%\n-40% 最大护盾",
+    "values": [],
+    "class_name": "FlashShielding",
+    "tree_id": 1011
+  },
+  {
+    "id": 1044,
+    "name": "放电",
+    "desc": "当你开火时，你的护盾会释放能量电弧，烧毁附近的目标。\n放电对于射击速度较慢的武器来说，伤害更高且射程更远。\n当你开火时，你的护盾会自我受伤。",
+    "values": [],
+    "class_name": "Discharge",
+    "tree_id": 1011
+  },
+  {
+    "id": 1045,
+    "name": "护盾效果半径",
+    "desc": "+25% 护盾效果半径\n+10% 护盾效果强度\n增强护盾效果和攻击",
+    "values": [],
+    "class_name": "ShieldEffectRadius",
+    "tree_id": 1012
+  },
+  {
+    "id": 1046,
+    "name": "辉光护盾",
+    "desc": "+50% 护盾效果半径\n护盾冷却时间延长10%\n最大护盾减少10%",
+    "values": [],
+    "class_name": "RadiantShields",
+    "tree_id": 1012
+  },
+  {
+    "id": 1047,
+    "name": "集中护盾",
+    "desc": "+25% 护盾效果强度\n+5% 最大护盾\n-20% 护盾效果半径",
+    "values": [],
+    "class_name": "FocusedShields",
+    "tree_id": 1012
+  },
+  {
+    "id": 1048,
+    "name": "武装护盾",
+    "desc": "为任何护盾增加武装护盾效果\n在武装护盾效果半径内的目标承受+20% 总伤害，根据护盾效果强度进行修正",
+    "values": [],
+    "class_name": "WeaponizedShields",
+    "tree_id": 1012
   }
 ]

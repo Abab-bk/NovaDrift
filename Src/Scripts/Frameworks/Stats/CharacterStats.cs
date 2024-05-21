@@ -53,6 +53,7 @@ public class CharacterStats
         ImpactKnockBackResistance = new (0.0f), // 撞击时获得的击退的抗性
         ImpactDamage = new (0.0f), // 撞击时造成的伤害
         
+        MaxShield = new Stat(100f), // 护盾血量
         ShieldCoolDown = new (0.0f), // 护盾恢复冷却时间
         ShieldPower = new (0.0f), // 护盾除了保护目标外的任何效果的力量
         ShieldRadius = new (200f); // 护盾半径

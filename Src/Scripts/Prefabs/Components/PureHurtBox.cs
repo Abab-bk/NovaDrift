@@ -7,6 +7,7 @@ namespace NovaDrift.Scripts.Prefabs.Components;
 public partial class PureHurtBox : Area2D
 {
     public Action<float> OnHurt;
+    public Action<float, Node2D> OnHurtWithSource;
 
     public override void _Ready()
     {
