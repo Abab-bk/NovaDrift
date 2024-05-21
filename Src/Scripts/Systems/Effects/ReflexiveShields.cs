@@ -10,8 +10,13 @@ public class ReflexiveShields : Effect
         base.OnCreate();
         Target.Shield.OnHurtEvent += (node) =>
         {
-            var wave = new ShockWave();
+            var wave = new ShockWave
+            {
+                IsPlayer = Target.IsPlayer
+            };
+            wave.SetDamage(Target.Stats.BlastDamage.Value);
             Global.GameWorld.AddChild(wave);
+            wave.GlobalPosition = Target.GlobalPosition;
             wave.Emit(Target.GlobalPosition.DirectionTo(node.GlobalPosition));
         };
     }

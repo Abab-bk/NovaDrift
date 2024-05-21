@@ -57,7 +57,7 @@ public partial class BaseShield : Node2D
         ShieldArea.AreaEntered += OnAreaEntered;
         ShieldArea.AreaExited += OnAreaExited;
         
-        HurtBox.OnHurtWithSource += OnHurt;
+        HurtBox.OnHurt += OnHurt;
         CoolDownTimer.Timeout += OnCoolDownTimeout;
     
         Init();

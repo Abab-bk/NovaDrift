@@ -14,7 +14,7 @@ public partial class AsteroidBase : Hazard
     public override void _Ready()
     {
         base._Ready();
-        _hurtBox.OnHurt += f =>
+        _hurtBox.OnHurt += (f, _) =>
         {
             _health -= f;
             if (_health <= 0) Destroy();

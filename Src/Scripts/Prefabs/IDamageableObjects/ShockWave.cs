@@ -4,18 +4,27 @@ using NovaDrift.Scripts.Prefabs.Actors.Mobs;
 
 namespace NovaDrift.Scripts.Prefabs.IDamageableObjects;
 
-public partial class ShockWave : Node2D
+public partial class ShockWave : Node2D, IDamageable
 {
-    private const float MaxDistance = 5000f;
+    public bool IsPlayer;
+    
+    private const float MaxDistance = 4000f;
     
     private Line2D _line;
     private RayCast2D _cast;
-    private float _speed = 1000f;
+    private float _speed = 2000f;
     
     private Vector2 _dir;
     
     private bool _emitted = false;
-    
+
+    private float _damage;
+
+    public void SetDamage(float v)
+    {
+        _damage = v;
+    }
+
     public override void _Ready()
     {
         _line = new Line2D();
@@ -23,6 +32,17 @@ public partial class ShockWave : Node2D
         
         AddChild(_line);
         AddChild(_cast);
+
+        _cast.SetCollisionMask(0);
+        
+        if (IsPlayer)
+        {
+            _cast.SetCollisionMaskValue((int)Layer.Mob, true);
+        }
+        else
+        {
+            _cast.SetCollisionMaskValue((int)Layer.Player, true);
+        }
 
         _line.ClearPoints();
         _line.AddPoint(Vector2.Zero, 0);
@@ -53,8 +73,8 @@ public partial class ShockWave : Node2D
         
         if (collider is Actor actor)
         {
+            actor.TakeDamageWithoutKnockBack(_damage);
+            QueueFree();
         }
-        
-        QueueFree();
     }
 }

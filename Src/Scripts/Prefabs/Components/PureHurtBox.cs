@@ -6,8 +6,7 @@ namespace NovaDrift.Scripts.Prefabs.Components;
 [GlobalClass]
 public partial class PureHurtBox : Area2D
 {
-    public Action<float> OnHurt;
-    public Action<float, Node2D> OnHurtWithSource;
+    public Action<float, Node2D> OnHurt;
 
     public override void _Ready()
     {
@@ -16,10 +15,10 @@ public partial class PureHurtBox : Area2D
             if (area is HitBox hitBox)
             {
                 hitBox.OnHitOthers?.Invoke();
-                TakeDamage(hitBox.Damage);
+                TakeDamage(hitBox.Damage, area);
             }
         };
     }
 
-    private void TakeDamage(float damage) => OnHurt?.Invoke(damage);
+    private void TakeDamage(float damage, Node2D node2D) => OnHurt?.Invoke(damage, node2D);
 }
