@@ -2,13 +2,9 @@ using Godot;
 using System;
 using AcidWallStudio.AcidUtilities;
 using DsUi;
-using NovaDrift.Scripts;
-using NovaDrift.Scripts.Prefabs;
-using NovaDrift.Scripts.Prefabs.Actors;
-using NovaDrift.Scripts.Prefabs.Components;
-using NovaDrift.Scripts.Prefabs.Weapons;
-using NovaDrift.Scripts.Systems;
 using NovaDrift.Scripts.Ui.SalvoBulletCount;
+
+namespace NovaDrift.Scripts.Prefabs.Weapons;
 
 public partial class Salvo : BaseShooter
 {
