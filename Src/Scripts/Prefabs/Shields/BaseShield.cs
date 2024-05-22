@@ -14,6 +14,7 @@ public partial class BaseShield : Node2D
 {
     public event Action OnBreak;
     public event Action<Node2D> OnHurtEvent;
+    public Func<float, float> LimitMaxValue = null; 
     
     protected CircleSprite2D CircleSprite2D;
     protected Area2D ShieldArea;
@@ -71,7 +72,8 @@ public partial class BaseShield : Node2D
 
     protected virtual void OnHurt(float value, Node2D node2D)
     {
-        Health.Decrease(value);
+        var realValue = LimitMaxValue?.Invoke(value) ?? value;
+        Health.Decrease(realValue);
         OnHurtEvent?.Invoke(node2D);
 
         if (Health.BaseValue <= 0)
