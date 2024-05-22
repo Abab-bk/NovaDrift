@@ -1,11 +1,14 @@
-[gd_scene load_steps=10 format=3 uid="uid://d172ki0sphibv"]
+[gd_scene load_steps=11 format=3 uid="uid://d172ki0sphibv"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_cs027"]
+[ext_resource type="Texture2D" uid="uid://dherwc0evanuk" path="res://Assets/Textures/Mobs/Beamcaster.png" id="2_4woil"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/Swallow.cs" id="2_33e1i"]
-[ext_resource type="Texture2D" uid="uid://bprp1wniehwt4" path="res://Assets/Textures/Mobs/Beamcaster2.png" id="2_pxyoy"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1odgc"]
+size = Vector2(90, 108)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ylla3"]
-size = Vector2(64, 90)
+size = Vector2(90, 110)
 
 [sub_resource type="StateConfig" id="StateConfig_cctl5"]
 state_name = &"Idle"
@@ -26,7 +29,7 @@ state_config_list = Array[StateConfig]([SubResource("StateConfig_cctl5"), SubRes
 transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_c6ph7")])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hr8fi"]
-size = Vector2(64, 90)
+size = Vector2(90, 108)
 
 [node name="Swallow" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_cs027")]
 _hurtBox = NodePath("Components/HurtBox")
@@ -35,8 +38,11 @@ _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")
 
 [node name="Sprite2D" parent="." index="0"]
-scale = Vector2(0.4, 0.4)
-texture = ExtResource("2_pxyoy")
+texture = ExtResource("2_4woil")
+
+[node name="CollisionShape2D" parent="." index="1"]
+position = Vector2(-4, 0)
+shape = SubResource("RectangleShape2D_1odgc")
 
 [node name="Shooter" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
 Actor = NodePath("../../..")
@@ -45,6 +51,7 @@ Actor = NodePath("../../..")
 Actor = NodePath("../..")
 
 [node name="CollisionShape2D" parent="Components/HurtBox" index="0"]
+position = Vector2(-4, 0)
 shape = SubResource("RectangleShape2D_ylla3")
 
 [node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("Mob")]
@@ -55,4 +62,5 @@ Mob = NodePath("../..")
 root_fsm_config = SubResource("FSMConfig_12vmv")
 
 [node name="CollisionShape2D" parent="BodyArea" index="0"]
+position = Vector2(-4, 0)
 shape = SubResource("RectangleShape2D_hr8fi")

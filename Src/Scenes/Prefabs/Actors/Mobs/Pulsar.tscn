@@ -1,11 +1,14 @@
-[gd_scene load_steps=16 format=3 uid="uid://y6i7i6yp8hap"]
+[gd_scene load_steps=18 format=3 uid="uid://y6i7i6yp8hap"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_nhejf"]
 [ext_resource type="Texture2D" uid="uid://bg8tcr0kp5cqf" path="res://Assets/Textures/Mobs/Pulsar.png" id="2_yqdm8"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/PulsarAi.cs" id="3_72wof"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_jn6vc"]
+size = Vector2(62, 110)
+
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rqamv"]
-size = Vector2(74, 160)
+size = Vector2(62, 110)
 
 [sub_resource type="StateConfig" id="StateConfig_htxyx"]
 state_name = &"Idle"
@@ -58,15 +61,21 @@ state_config_list = Array[StateConfig]([SubResource("StateConfig_htxyx"), SubRes
 transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_skj4t"), SubResource("TransitionConfig_rspqb"), SubResource("TransitionConfig_hhlw8"), SubResource("TransitionConfig_wb105")])
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_0sf7c")])
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_03sbt"]
+size = Vector2(62, 110)
+
 [node name="Pulsar" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_nhejf")]
+modulate = Color(0.839216, 1, 0.894118, 1)
 _hurtBox = NodePath("Components/HurtBox")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")
 
 [node name="Sprite2D" parent="." index="0"]
-scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_yqdm8")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_jn6vc")
 
 [node name="Shooter" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
 Actor = NodePath("../../..")
@@ -83,3 +92,6 @@ Mob = NodePath("../..")
 
 [node name="HFSM" parent="State" index="1"]
 root_fsm_config = SubResource("FSMConfig_lt2to")
+
+[node name="CollisionShape2D" parent="BodyArea" index="0"]
+shape = SubResource("RectangleShape2D_03sbt")

@@ -31,7 +31,6 @@ public partial class GameWorld : Node2D
 		EventBus.OnGameOver += GameOver;
 		
 		Global.Init();
-		DataBuilder.Init();
 		AcidSaver.LoadAll();
 		
 		if (Global.CurrentPlatform != GamePlatform.Desktop)

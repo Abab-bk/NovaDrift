@@ -24,7 +24,7 @@ public static class DataBuilder
             AbilityIdPool.Add(map.Value.StartAbilityId);
         }
     }
-
+    
     public static StatModifier BuildFlatModifier(float value)
     {
         return new StatModifier(value, StatModType.Flat);
@@ -223,6 +223,26 @@ public static class DataBuilder
         return mobInfo;
     }
     
+    
+    public static Game.MobInfo BuildBossMobInfoById(int id)
+    {
+        BossMobInfo tbMobInfo = Tables.TbBossMobInfo.Get(id);
+        Game.MobInfo mobInfo = new Game.MobInfo
+        {
+            Name = tbMobInfo.Name,
+            Id = tbMobInfo.Id,
+            Health = tbMobInfo.Health,
+            Speed = tbMobInfo.Speed,
+            Damage = tbMobInfo.Damage,
+            ShootCd = tbMobInfo.ShootCd,
+            Targeting = tbMobInfo.Targeting,
+            ScenePath = $"res://Scenes/Prefabs/Actors/Mobs/{tbMobInfo.SceneName}.tscn".Trim(),
+        };
+        
+        return mobInfo;
+    }
+    
+    
     public static Game.AbilityTree BuildAbilityTreeById(int id)
     {
         AbilityTree tbAbilityTree = Tables.TbAbilityTree.Get(id);
@@ -237,7 +257,7 @@ public static class DataBuilder
         return abilityTree;
     }
 
-    public static void Init()
+    static DataBuilder()
     {
         Tables = new Tables(file => JsonSerializer.Deserialize<JsonElement>(
             Wizard.ReadAllText($"res://Assets/DataBase/{file}.json")));

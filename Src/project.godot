@@ -61,6 +61,14 @@ naming/scene_name_casing=1
 
 enabled=PackedStringArray("res://addons/AcidNodes/plugin.cfg", "res://addons/BurstParticles2D/plugin.cfg", "res://addons/TweenSuite/plugin.cfg", "res://addons/ds_ui/plugin.cfg", "res://addons/run-configs/plugin.cfg", "res://addons/wiggly_appendage_2d/plugin.cfg")
 
+[file_customization]
+
+folder_colors={
+"res://Assets/Textures/Mobs/": "green",
+"res://Scenes/Prefabs/Actors/Mobs/": "red",
+"res://Scripts/Prefabs/Ai/": "pink"
+}
+
 [global_group]
 
 Mobs=""
@@ -116,4 +124,4 @@ viewport/hdr_2d=true
 [run_configs]
 
 data/configs=["{\"custom_scene\":\"\",\"environment_variables\":{\"ShowStartMenu\":\"false\"},\"name\":\"Debug\",\"play_mode\":0}", "{\"custom_scene\":\"\",\"environment_variables\":{\"ShowStartMenu\":\"true\"},\"name\":\"Release\",\"play_mode\":0}"]
-data/current=0
+data/current=1

@@ -68,15 +68,5 @@
     "damage": 10,
     "targeting": 70,
     "shoot_cd": 1
-  },
-  {
-    "id": 1008,
-    "name": "数学家",
-    "scene_name": "Mathematicians",
-    "health": 400,
-    "speed": 800,
-    "damage": 10,
-    "targeting": 70,
-    "shoot_cd": 0.1
   }
 ]

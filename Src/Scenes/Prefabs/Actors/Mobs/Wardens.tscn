@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://4cuy72rqjgqw"]
+[gd_scene load_steps=25 format=3 uid="uid://4cuy72rqjgqw"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_u23yy"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/Wardens.cs" id="2_i27au"]
@@ -6,11 +6,11 @@
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/FreeSelfWhenExitScreen.cs" id="3_t68ta"]
 [ext_resource type="PackedScene" uid="uid://ddh1yqvil5l6g" path="res://Scenes/Vfx/LightBall.tscn" id="4_fbhcj"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3jmk"]
-size = Vector2(40, 50)
+[sub_resource type="CircleShape2D" id="CircleShape2D_roccn"]
+radius = 52.1536
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_sbx4f"]
-size = Vector2(40, 50)
+[sub_resource type="CircleShape2D" id="CircleShape2D_gv7ex"]
+radius = 52.0384
 
 [sub_resource type="StateConfig" id="StateConfig_wtddb"]
 state_name = &"Idle"
@@ -87,6 +87,9 @@ state_config_list = Array[StateConfig]([SubResource("StateConfig_wtddb"), SubRes
 transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_uk7qd"), SubResource("TransitionConfig_bbt66"), SubResource("TransitionConfig_r87pq"), SubResource("TransitionConfig_f547i")])
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_2ftj0"), SubResource("VariableConfig_k51yh"), SubResource("VariableConfig_xd1k4")])
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_p6lt5"]
+radius = 51.2445
+
 [node name="Wardens" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_u23yy")]
 _hurtBox = NodePath("Components/HurtBox")
 Sprite = NodePath("Sprite2D")
@@ -94,11 +97,10 @@ _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")
 
 [node name="Sprite2D" parent="." index="0"]
-scale = Vector2(0.25, 0.25)
 texture = ExtResource("2_lsc4r")
 
 [node name="CollisionShape2D" parent="." index="1"]
-shape = SubResource("RectangleShape2D_w3jmk")
+shape = SubResource("CircleShape2D_roccn")
 
 [node name="ShooterNode" parent="Components" index="0"]
 position = Vector2(20, 0)
@@ -109,8 +111,8 @@ Actor = NodePath("../../..")
 [node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]
 Actor = NodePath("../..")
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtBox" index="0"]
-shape = SubResource("RectangleShape2D_sbx4f")
+[node name="CollisionShape2D" parent="Components/HurtBox" index="0"]
+shape = SubResource("CircleShape2D_gv7ex")
 
 [node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("Mob")]
 script = ExtResource("2_i27au")
@@ -132,3 +134,6 @@ unique_name_in_owner = true
 visible = false
 position = Vector2(52, 0)
 scale = Vector2(0.3, 0.3)
+
+[node name="CollisionShape2D" parent="BodyArea" index="0"]
+shape = SubResource("CircleShape2D_p6lt5")

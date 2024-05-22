@@ -1,15 +1,16 @@
-[gd_scene load_steps=22 format=3 uid="uid://duok4mn4qkth7"]
+[gd_scene load_steps=23 format=3 uid="uid://duok4mn4qkth7"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_0ifgw"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/FreeSelfWhenExitScreen.cs" id="2_06ekw"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/Boltthrower.cs" id="2_ayrbs"]
+[ext_resource type="Texture2D" uid="uid://f85rk3b33uwb" path="res://Assets/Textures/Mobs/Boltthrower.png" id="2_jdy2l"]
 [ext_resource type="PackedScene" uid="uid://ddh1yqvil5l6g" path="res://Scenes/Vfx/LightBall.tscn" id="5_gd3g6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ym3x2"]
-size = Vector2(36, 96)
+size = Vector2(112, 56)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_mei0v"]
-size = Vector2(36, 96)
+size = Vector2(114, 58)
 
 [sub_resource type="StateConfig" id="StateConfig_kpjtb"]
 state_name = &"Idle"
@@ -84,10 +85,14 @@ transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_dgcdw"), SubResource("VariableConfig_lkd4l"), SubResource("VariableConfig_2wuef")])
 
 [node name="Boltthrower" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_0ifgw")]
+modulate = Color(0.972549, 0.831373, 1, 1)
 _hurtBox = NodePath("Components/HurtBox")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_jdy2l")
 
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_ym3x2")
@@ -112,7 +117,7 @@ Mob = NodePath("../..")
 root_fsm_config = SubResource("FSMConfig_v8u54")
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="4"]
-position = Vector2(9.5, 0.951601)
+position = Vector2(49, 0.951601)
 scale = Vector2(0.85, 3.19516)
 
 [node name="FreeSelfWhenExitScreen" type="VisibleOnScreenNotifier2D" parent="." index="5"]

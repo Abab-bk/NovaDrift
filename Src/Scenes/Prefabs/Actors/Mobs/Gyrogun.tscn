@@ -1,11 +1,14 @@
-[gd_scene load_steps=14 format=3 uid="uid://bc77hp2vrekdo"]
+[gd_scene load_steps=16 format=3 uid="uid://bc77hp2vrekdo"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_s3e8g"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/GyrogunAi.cs" id="2_5u3nq"]
 [ext_resource type="Texture2D" uid="uid://dcpix187w4k33" path="res://Assets/Textures/Mobs/Gyrogun.png" id="2_s8ugb"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_invvb"]
+radius = 52.1536
+
 [sub_resource type="CircleShape2D" id="CircleShape2D_e6bjx"]
-radius = 29.0172
+radius = 52.0096
 
 [sub_resource type="StateConfig" id="StateConfig_qngsh"]
 state_name = &"Idle"
@@ -49,15 +52,21 @@ state_config_list = Array[StateConfig]([SubResource("StateConfig_qngsh"), SubRes
 transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_64rvy"), SubResource("TransitionConfig_kbtl4"), SubResource("TransitionConfig_274i5")])
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_tm6tr")])
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_8or58"]
+radius = 52.0865
+
 [node name="Gyrogun" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_s3e8g")]
+modulate = Color(1, 0.780392, 0.74902, 1)
 _hurtBox = NodePath("Components/HurtBox")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")
 
 [node name="Sprite2D" parent="." index="0"]
-scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_s8ugb")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_invvb")
 
 [node name="Shooter" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
 Actor = NodePath("../../..")
@@ -74,3 +83,6 @@ Mob = NodePath("../..")
 
 [node name="HFSM" parent="State" index="1"]
 root_fsm_config = SubResource("FSMConfig_oo42e")
+
+[node name="CollisionShape2D" parent="BodyArea" index="0"]
+shape = SubResource("CircleShape2D_8or58")

@@ -32,16 +32,7 @@ public partial class MobSpawner : Node2D
 
     public static Action<int> GenerateMobByIdAction;
     public static Action<int> GenerateBossById;
-
-    private readonly List<WeightedListItem<int>> _mobListItems = new()
-    {
-        new WeightedListItem<int>(1001, 1),
-        new WeightedListItem<int>(1002, 1),
-        new WeightedListItem<int>(1003, 1),
-        new WeightedListItem<int>(1004, 1),
-        new WeightedListItem<int>(1005, 1),
-        new WeightedListItem<int>(1006, 1),
-    };
+    
     private readonly List<WeightedListItem<SpawnType>> _spawnTypeListItems = new()
     {
         new WeightedListItem<SpawnType>(new RectSpawnType(), 1),
@@ -52,15 +43,20 @@ public partial class MobSpawner : Node2D
     private WaveInfo _waveInfo;
     private Timer _timer;
 
-    private WeightedList<int> _mobList;
-    private WeightedList<SpawnType> _spawnTypeList;
+    private readonly WeightedList<int> _mobList = new ();
+    private WeightedList<SpawnType> _spawnTypeList = new ();
     
     public override void _Ready()
     {
+        GD.Print(DataBuilder.Tables.TbMobInfo.DataMap.Keys);
+        foreach (var id in DataBuilder.Tables.TbMobInfo.DataMap.Keys)
+        {
+            _mobList.Add(id, 1);
+        }
+        
         GenerateMobByIdAction += GenerateMobById;
         GenerateBossById += SpawnABoss;
         
-        _mobList = new(_mobListItems);
         _spawnTypeList = new(_spawnTypeListItems);
         
         EventBus.OnGameStart += () => { _timer.Start(); };

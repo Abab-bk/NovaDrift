@@ -22,6 +22,7 @@ public partial class Tables
     public DataBase.TbConstants TbConstants {get; }
     public DataBase.TbAbilityTree TbAbilityTree {get; }
     public DataBase.TbShield TbShield {get; }
+    public DataBase.TbBossMobInfo TbBossMobInfo {get; }
 
     public Tables(System.Func<string, JsonElement> loader)
     {
@@ -33,6 +34,7 @@ public partial class Tables
         TbConstants = new DataBase.TbConstants(loader("database_tbconstants"));
         TbAbilityTree = new DataBase.TbAbilityTree(loader("database_tbabilitytree"));
         TbShield = new DataBase.TbShield(loader("database_tbshield"));
+        TbBossMobInfo = new DataBase.TbBossMobInfo(loader("database_tbbossmobinfo"));
         ResolveRef();
     }
     
@@ -46,6 +48,7 @@ public partial class Tables
         TbConstants.ResolveRef(this);
         TbAbilityTree.ResolveRef(this);
         TbShield.ResolveRef(this);
+        TbBossMobInfo.ResolveRef(this);
     }
 }
 
