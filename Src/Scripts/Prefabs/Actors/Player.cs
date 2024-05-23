@@ -10,6 +10,9 @@ namespace NovaDrift.Scripts.Prefabs.Actors;
 
 public partial class Player : Actor
 {
+    private HFSM _movementMachine;
+    private HFSM _actionMachine;
+    
     public Joystick JoystickNode;
 
     private SmokeTrail _smokeTrail;
@@ -48,8 +51,66 @@ public partial class Player : Actor
             }
         };
         
+        _movementMachine = HFSMUtils.TryConvert<HFSM>(GetNode("%MovementMachine"));
+        _actionMachine = HFSMUtils.TryConvert<HFSM>(GetNode("%ActionMachine"));
+        if (_movementMachine == null) throw new("MovementMachine is Null");
+        if (_actionMachine == null) throw new("ActionMachine is Null");
+        
+        _movementMachine.Entered += ConnectMovementMachineEnter;
+        _actionMachine.Entered += ConnectActionMachineEnter;
+        _movementMachine.PhysicUpdated += ConnectMovementMachineProcess;
+        _actionMachine.PhysicUpdated += ConnectActionMachineProcess;
+        
         UpdateUi();
     }
+
+
+    private void ConnectMovementMachineEnter(State state)
+    {
+    }
+
+    private void ConnectActionMachineEnter(State state)
+    {
+        switch (state.GetName())
+        {
+            case "Idle":
+                StopShooting?.Invoke();
+                break;
+            case "Shooting":
+                StartShooting?.Invoke();
+                break;
+        }
+    }
+    
+    private void ConnectMovementMachineProcess(State state, float delta)
+    {
+        switch (state.GetName())
+        {
+            case "Idle":
+                TryStop(delta);
+                break;
+            case "Running":
+                var mousePos = GetGlobalMousePosition();
+                if (GlobalPosition.DirectionTo(mousePos) != Vector2.Zero)
+                {
+                    TryMoveTo(GlobalPosition.DirectionTo(mousePos), delta);
+                    _smokeTrail.AddAgePoint(GlobalPosition);
+                }
+                break;
+        }
+    }
+
+    private void ConnectActionMachineProcess(State state, float delta)
+    {
+        switch (state.GetName())
+        {
+            case "Shooting":
+                Shoot();
+                OnShooting?.Invoke();
+                break;
+        }
+    }
+
 
     public void SetShield(BaseShield shield)
     {
@@ -116,6 +177,13 @@ public partial class Player : Actor
         UiManager.Get_Hud_Instance()[0].UpdateShieldBar(Shield.Health.BaseValue / Shield.Health.MaxValue.Value);
     }
 
+
+    public override void _Input(InputEvent @event)
+    {
+        _movementMachine.SetTrigger(Input.IsActionPressed("Click") ? "GoToRunning" : "GoToIdle");
+        _actionMachine.SetTrigger(Input.IsActionPressed("RClick") ? "GoToShooting" : "GoToIdle");
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         Vector2 mousePos = GetGlobalMousePosition();
@@ -123,18 +191,6 @@ public partial class Player : Actor
         if (Global.CurrentPlatform == GamePlatform.Desktop)
         {
             Rotation = RotationTo(GlobalPosition.AngleToPoint(mousePos), delta);
-            if (Input.IsActionPressed("Click"))
-            {
-                if (GlobalPosition.DirectionTo(mousePos) != Vector2.Zero)
-                {
-                    TryMoveTo(GlobalPosition.DirectionTo(mousePos), delta);
-                    _smokeTrail.AddAgePoint(GlobalPosition);
-                }
-            }
-            else
-            {
-                TryStop(delta);
-            }
         }
         else
         {
@@ -151,25 +207,5 @@ public partial class Player : Actor
         }
         
         base._PhysicsProcess(delta);
-
-        if (Input.IsActionPressed("RClick"))
-        {
-            Shoot();
-            if (IsShooting)
-            {
-                OnShooting?.Invoke();
-                return;
-            }
-
-            IsShooting = true;
-            StartShooting?.Invoke();
-        }
-        else
-        {
-            if (!IsShooting) return;
-            
-            IsShooting = false;
-            StopShooting?.Invoke();
-        }
     }
 }

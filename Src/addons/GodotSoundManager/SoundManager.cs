@@ -137,6 +137,7 @@ public static class SoundManager
 
     public static void SetVolume()
     {
+        if (!_masterBus.isValid()) return;
         _masterBus.setVolume(MasterVolume);
         _musicBus.setVolume(MusicVolume);
         _sfxBus.setVolume(SfxVolume);

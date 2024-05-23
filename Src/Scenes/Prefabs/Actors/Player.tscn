@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://b1hvfrsat441r"]
+[gd_scene load_steps=28 format=3 uid="uid://b1hvfrsat441r"]
 
 [ext_resource type="PackedScene" uid="uid://b1vmhmtmuma0x" path="res://Scenes/Prefabs/Actors/ActorBase.tscn" id="1_0c8c2"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Player.cs" id="2_15kon"]
@@ -17,6 +17,94 @@ colors = PackedColorArray(0, 0, 0, 0, 0.631373, 1, 1, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hujpf"]
 size = Vector2(78, 92)
+
+[sub_resource type="StateConfig" id="StateConfig_vkgty"]
+state_name = &"Idle"
+type = 1
+editor_offset = Vector2(20, 120)
+
+[sub_resource type="StateConfig" id="StateConfig_b0fxd"]
+state_name = &"Running"
+editor_offset = Vector2(460, 120)
+
+[sub_resource type="VariableConfig" id="VariableConfig_owefu"]
+variable_name = &"GoToRunning"
+resource_name = "GoToRunning: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_j6u2s"]
+variable_config = SubResource("VariableConfig_owefu")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_lvvfh"]
+from_state_config = SubResource("StateConfig_vkgty")
+to_state_config = SubResource("StateConfig_b0fxd")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_j6u2s")])
+
+[sub_resource type="VariableConfig" id="VariableConfig_fubjn"]
+variable_name = &"GoToIdle"
+resource_name = "GoToIdle: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_wfoe8"]
+variable_config = SubResource("VariableConfig_fubjn")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_s43t3"]
+from_state_config = SubResource("StateConfig_b0fxd")
+to_state_config = SubResource("StateConfig_vkgty")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_wfoe8")])
+
+[sub_resource type="FSMConfig" id="FSMConfig_mnceu"]
+state_config_list = Array[StateConfig]([SubResource("StateConfig_vkgty"), SubResource("StateConfig_b0fxd")])
+transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_lvvfh"), SubResource("TransitionConfig_s43t3")])
+variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_owefu"), SubResource("VariableConfig_fubjn")])
+
+[sub_resource type="StateConfig" id="StateConfig_f52yo"]
+state_name = &"Idle"
+type = 1
+editor_offset = Vector2(-340, 80)
+
+[sub_resource type="StateConfig" id="StateConfig_38u7l"]
+state_name = &"Shooting"
+editor_offset = Vector2(140, 80)
+
+[sub_resource type="VariableConfig" id="VariableConfig_mu8jh"]
+variable_name = &"GoToShooting"
+resource_name = "GoToShooting: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_e5wpl"]
+variable_config = SubResource("VariableConfig_mu8jh")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_hck3y"]
+from_state_config = SubResource("StateConfig_f52yo")
+to_state_config = SubResource("StateConfig_38u7l")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_e5wpl")])
+
+[sub_resource type="VariableConfig" id="VariableConfig_01o2x"]
+variable_name = &"GoToIdle"
+resource_name = "GoToIdle: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_q42x5"]
+variable_config = SubResource("VariableConfig_01o2x")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_ad1ll"]
+from_state_config = SubResource("StateConfig_38u7l")
+to_state_config = SubResource("StateConfig_f52yo")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_q42x5")])
+
+[sub_resource type="FSMConfig" id="FSMConfig_xyrl7"]
+state_config_list = Array[StateConfig]([SubResource("StateConfig_f52yo"), SubResource("StateConfig_38u7l")])
+transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_hck3y"), SubResource("TransitionConfig_ad1ll")])
+variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_mu8jh"), SubResource("VariableConfig_01o2x")])
 
 [node name="Player" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") groups=["Players"] instance=ExtResource("1_0c8c2")]
 script = ExtResource("2_15kon")
@@ -57,3 +145,11 @@ _minSpawnDistance = 20.0
 
 [node name="CollisionShape2D" parent="BodyArea" index="0"]
 shape = SubResource("RectangleShape2D_hujpf")
+
+[node name="MovementMachine" type="HFSM" parent="." index="7"]
+root_fsm_config = SubResource("FSMConfig_mnceu")
+unique_name_in_owner = true
+
+[node name="ActionMachine" type="HFSM" parent="." index="8"]
+root_fsm_config = SubResource("FSMConfig_xyrl7")
+unique_name_in_owner = true

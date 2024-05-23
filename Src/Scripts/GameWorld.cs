@@ -17,6 +17,20 @@ public partial class GameWorld : Node2D
 	
 	public override void _Ready()
 	{
+		AcidSaver.OnLoaded += () =>
+		{
+			SoundManager.MusicVolume = AcidSaver.HasSetting("Audios", "MusicVolume")
+				? (float)AcidSaver.GetSetting("Audios", "MusicVolume")
+				: 80f;
+			SoundManager.SfxVolume = AcidSaver.HasSetting("Audios", "SoundVolume")
+				? (float)AcidSaver.GetSetting("Audios", "SoundVolume")
+				: 80f;
+			SoundManager.UiSoundsVolume = AcidSaver.HasSetting("Audios", "Ui")
+				? (float)AcidSaver.GetSetting("Audios", "Ui")
+				: 80f;
+			SoundManager.SetVolume();
+		};
+
 		AcidSaver.LoadAll();
 		AudioServer.Lock();
 		SoundManager.Initialize();

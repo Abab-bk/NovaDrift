@@ -26,29 +26,32 @@ public class CharacterStats
     
     // 武器射击速度
     public readonly Stat
-        Size = new (1f), // TODO Actor 大小
-        Recovery = new (0f), // TODO 所有类型的治疗
-        Regeneration = new (0f), // TODO 一种特定类型的治疗。被动再生。默认情况下，只有您的船体会以每秒最大船体的 1/50 的速度再生。可以修改再生以应用于护盾。
-        PassiveRecoveryRate = new (1f), // TODO 默认是 1/50
+        Size = new(1f), // TODO Actor 大小
+        Recovery = new(0f), // TODO 所有类型的治疗
+        Regeneration = new(0f), // TODO 一种特定类型的治疗。被动再生。默认情况下，只有您的船体会以每秒最大船体的 1/50 的速度再生。可以修改再生以应用于护盾。
+        PassiveRecoveryRate = new(1f), // TODO 默认是 1/50
+
+        ShootSpeed = new(0.5f), // 射击速度，单位为秒，越低越快
+        BulletSpeed = new(1500f), // 子弹速度
+        ShootSpread = new(120f), // 武器散布 Spread
+        ShootKnockBack = new(10f), // 打中后对目标的击退
+        BurstFire = new(1f), // 你的武器会快速射击，然后进入一个冷却状态，这个冷却时间与已射出的子弹的冷却时间总和相等。
+        Targeting = new(0), // 子弹的 Steering（转向） 能力
+
+        BulletSize = new(1f), // 子弹大小，单位缩放
+        BulletDegeneration = new(10f), // 子弹退化速度（也就是从开始到消失需要的速度）
+        Recoil = new(50f), // 射击后武器把自己击退的速度
+        BulletCount = new(1f), // 发射的子弹数量
+        BlastDamage = new(20f), // 爆炸伤害
+        BlastRadius = new(100f), // 爆炸半径
+
+        // 运动
+        Acceleration = new(100f),
+        Deceleration = new(500f),
+        RotationSpeed = new(1f), // 越高越灵敏
+        ShootingDeceleration = new(1f),
+        Friction = new (10f),
         
-        ShootSpeed = new (0.5f), // 射击速度，单位为秒，越低越快
-        BulletSpeed = new (1500f), // 子弹速度
-        ShootSpread = new (120f), // 武器散布 Spread
-        ShootKnockBack = new (10f), // 打中后对目标的击退
-        BurstFire = new (1f), // 你的武器会快速射击，然后进入一个冷却状态，这个冷却时间与已射出的子弹的冷却时间总和相等。
-        Targeting = new (0), // 子弹的 Steering（转向） 能力
-        
-        BulletSize = new (1f), // 子弹大小，单位缩放
-        BulletDegeneration = new (10f), // 子弹退化速度（也就是从开始到消失需要的速度）
-        Recoil = new (50f), // 射击后武器把自己击退的速度
-        BulletCount = new (1f), // 发射的子弹数量
-        BlastDamage = new (20f), // 爆炸伤害
-        BlastRadius = new (100f), // 爆炸半径
-        
-        Acceleration = new (1000),
-        Deceleration = new (500),
-        RotationSpeed = new (1), // 越高越灵敏
-        ShootingDeceleration = new (1),
         DamageResistance = new (0.0f), // 伤害抗性
         ImpactKnockBackResistance = new (0.0f), // 撞击时获得的击退的抗性
         ImpactDamage = new (0.0f), // 撞击时造成的伤害

@@ -51,9 +51,13 @@ public partial class Actor : CharacterBody2D
     public readonly CharacterStats Stats = new CharacterStats();
     public float ShootCd = 1f;
     
-    protected bool IsShooting = false;
+    // protected bool IsShooting = false;
     
     protected bool IsDead = false;
+    
+    // Drift
+    protected bool IsDrifting = false;
+    private float _driftThreshold = 0.2f;
     
     private Area2D _bodyArea;
 
@@ -79,16 +83,24 @@ public partial class Actor : CharacterBody2D
     public void TryMoveTo(Vector2 dir, double delta)
     {
         var targetVelocity = dir * Stats.Speed.Value;
-        if (IsShooting)
-        {
-            Velocity = Velocity.MoveToward(
-                targetVelocity, 
-                (Stats.Acceleration.Value - Stats.ShootingDeceleration.Value) *
-                (float)delta);
-            return;
-        }
+        // if (IsShooting)
+        // {
+        //     Velocity = Velocity.MoveToward(
+        //         targetVelocity,
+        //         (Stats.Acceleration.Value - Stats.ShootingDeceleration.Value) *
+        //         (float)delta);
+        //     return;
+        // }
+
+        // if (IsDrifting)
+        // {
+        //     Velocity = targetVelocity + Vector2.Right * Stats.Acceleration.Value;
+        //     return;
+        // }
+        //
+        Velocity = targetVelocity;
         
-        Velocity = Velocity.MoveToward(targetVelocity, Stats.Acceleration.Value * (float)delta);
+        // Velocity = Velocity.MoveToward(targetVelocity, Stats.Acceleration.Value * (float)delta);
     }
 
     public void TryStop(double delta)
@@ -224,6 +236,15 @@ public partial class Actor : CharacterBody2D
         {
             Velocity += Vector2.Right.Rotated(Rotation) * -Stats.GetKnockBack();
             Stats.AddKnockBack(-Stats.GetKnockBack());
+        }
+
+        var moveDir = GlobalPosition.DirectionTo(GetGlobalMousePosition());
+        if (moveDir.Length() > _driftThreshold && !IsDrifting)
+        {
+            IsDrifting = true;
+        } else if (moveDir.Length() <= _driftThreshold && IsDrifting)
+        {
+            IsDrifting = false;
         }
 
         Velocity += Stats.ForceVector;

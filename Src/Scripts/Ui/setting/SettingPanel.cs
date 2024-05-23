@@ -24,9 +24,15 @@ public partial class SettingPanel : Setting
 
     private void LoadAll()
     {
-        S_UiVolumeSlider.Instance.SetValueNoSignal(AcidSaver.HasSetting("Audios", "Ui") ? (float)AcidSaver.GetSetting("Audios", "Ui") : 80f);
-        S_MusicVolumeSlider.Instance.SetValueNoSignal(AcidSaver.HasSetting("Audios", "MusicVolume") ? (float)AcidSaver.GetSetting("Audios", "MusicVolume") : 80f);
-        S_SoundVolumeSlider.Instance.SetValueNoSignal(AcidSaver.HasSetting("Audios", "SoundVolume") ? (float)AcidSaver.GetSetting("Audios", "SoundVolume") : 80f);
+        S_UiVolumeSlider.Instance.SetValueNoSignal(
+            AcidSaver.HasSetting("Audios", "Ui") ? (float)AcidSaver.GetSetting("Audios", "Ui") : 80f
+            );
+        S_MusicVolumeSlider.Instance.SetValueNoSignal(
+            AcidSaver.HasSetting("Audios", "MusicVolume") ? (float)AcidSaver.GetSetting("Audios", "MusicVolume") : 80f
+            );
+        S_SoundVolumeSlider.Instance.SetValueNoSignal(
+            AcidSaver.HasSetting("Audios", "SoundVolume") ? (float)AcidSaver.GetSetting("Audios", "SoundVolume") : 80f
+            );
         
         SetVolumes();
     }

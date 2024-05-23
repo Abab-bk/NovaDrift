@@ -1,9 +1,12 @@
-﻿using Godot;
+﻿using System;
+using Godot;
 
 namespace NovaDrift.addons.AcidUtilities;
 
 public static class AcidSaver
 {
+    public static event Action OnLoaded;
+    
     const string SettingsPath = "user://Settings.cfg";
     const string SaveDataPath = "user://SaveData.cfg";
     
@@ -20,6 +23,7 @@ public static class AcidSaver
     {
         Settings.Load(SettingsPath);
         SaveData.Load(SaveDataPath);
+        OnLoaded?.Invoke();
     }
 
     public static void AddSetting(string section, string key, Variant value) => Settings.SetValue(section, key, value);
