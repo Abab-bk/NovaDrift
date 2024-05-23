@@ -11,7 +11,6 @@ public partial class SettingPanel : Setting
         base._Ready();
         S_CloseBtn.Instance.Pressed += OpenPrevUi;
         
-        AcidSaver.LoadAll();
         LoadAll();
 
         S_SoundVolumeSlider.Instance.ValueChanged += _ => { Save(); };

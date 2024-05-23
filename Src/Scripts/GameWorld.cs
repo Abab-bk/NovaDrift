@@ -17,6 +17,7 @@ public partial class GameWorld : Node2D
 	
 	public override void _Ready()
 	{
+		AcidSaver.LoadAll();
 		AudioServer.Lock();
 		SoundManager.Initialize();
 

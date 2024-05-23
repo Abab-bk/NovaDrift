@@ -1,9 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://d25jyaf2cexon"]
+[gd_scene load_steps=6 format=3 uid="uid://d25jyaf2cexon"]
 
 [ext_resource type="Script" path="res://Scripts/GameWorld.cs" id="1_xxmb6"]
-[ext_resource type="Texture2D" uid="uid://u0tycejtltpc" path="res://Assets/Textures/Backgrounds/BgStarsFar.png" id="2_ym6w2"]
-[ext_resource type="Texture2D" uid="uid://ctjwbswajgyik" path="res://Assets/Textures/Backgrounds/BgStarsMid.png" id="3_0u7ly"]
-[ext_resource type="Texture2D" uid="uid://dnhr4p4esadrx" path="res://Assets/Textures/Backgrounds/BgStarsNear.png" id="3_vfhic"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/MobSpawner.cs" id="4_4mpug"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HazardSpawner.cs" id="5_2fkc6"]
 [ext_resource type="PackedScene" uid="uid://drcoa0ndbt6te" path="res://addons/AcidJoystick/Joystick.tscn" id="6_6ip1o"]
@@ -14,6 +11,7 @@ script = ExtResource("1_xxmb6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -101
+visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -35,33 +33,6 @@ color = Color(0.162596, 0.107811, 0.32927, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxBackground" type="Node2D" parent="."]
-
-[node name="Far" type="Parallax2D" parent="ParallaxBackground"]
-repeat_size = Vector2(2048, 2048)
-autoscroll = Vector2(100, 50)
-repeat_times = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Far"]
-texture = ExtResource("2_ym6w2")
-centered = false
-
-[node name="Mid" type="Parallax2D" parent="ParallaxBackground"]
-repeat_size = Vector2(2048, 2048)
-autoscroll = Vector2(200, 100)
-repeat_times = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Mid"]
-texture = ExtResource("3_0u7ly")
-centered = false
-
-[node name="Near" type="Parallax2D" parent="ParallaxBackground"]
-repeat_size = Vector2(2048, 2048)
-autoscroll = Vector2(300, 150)
-repeat_times = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Near"]
-texture = ExtResource("3_vfhic")
-centered = false
 
 [node name="Hud" type="CanvasLayer" parent="."]
 
