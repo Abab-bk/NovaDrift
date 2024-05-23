@@ -46,11 +46,11 @@ public class CharacterStats
         BlastRadius = new(100f), // 爆炸半径
 
         // 运动
-        Acceleration = new(100f),
+        Acceleration = new(1000f),
         Deceleration = new(500f),
         RotationSpeed = new(1f), // 越高越灵敏
         ShootingDeceleration = new(1f),
-        Friction = new (10f),
+        Friction = new (150f), // 摩檫力，应该明显大于加速度 ?? 目前好像被减速度取代
         
         DamageResistance = new (0.0f), // 伤害抗性
         ImpactKnockBackResistance = new (0.0f), // 撞击时获得的击退的抗性
