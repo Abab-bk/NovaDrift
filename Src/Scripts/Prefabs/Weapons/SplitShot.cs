@@ -35,7 +35,7 @@ public partial class SplitShot : BaseShooter
         _burstIntervalTimer.OneShot = true;
         _burstIntervalTimer.WaitTime = DataBuilder.Constants.BurstInterval;
         
-        Init();
+        base._Ready();
         
         Actor.Stats.ShootSpeed.ValueChanged += SetShootCd;
     }

@@ -25,6 +25,11 @@ public abstract partial class BaseShooter : Node2D
 
     public abstract void Init();
 
+    public override void _Ready()
+    {
+        Init();
+    }
+
     public BulletBase GetBullet()
     {
         return new BulletBuilder().

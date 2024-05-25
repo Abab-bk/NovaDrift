@@ -17,7 +17,6 @@ public partial class Pulse : BaseShooter
 
     public override void Init()
     {
-        GD.Print("Init");
         _shootTimer = new Timer
         {
             WaitTime = Actor.Stats.ShootSpeed.Value,

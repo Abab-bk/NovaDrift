@@ -1,10 +1,18 @@
-[gd_scene load_steps=3 format=3 uid="uid://cb31jytngbp28"]
+[gd_scene load_steps=4 format=3 uid="uid://cb31jytngbp28"]
 
 [ext_resource type="Script" path="res://Scripts/Vfx/CircleBlast.cs" id="1_8fs8q"]
 [ext_resource type="Texture2D" uid="uid://dfqjhxgev7nlo" path="res://Assets/Textures/Particles/circle_02.png" id="2_rrgat"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ujk7a"]
+radius = 174.734
 
 [node name="CircleBlast" type="Node2D"]
 script = ExtResource("1_8fs8q")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_rrgat")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_ujk7a")
