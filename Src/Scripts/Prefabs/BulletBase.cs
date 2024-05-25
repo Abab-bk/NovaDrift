@@ -12,7 +12,9 @@ namespace NovaDrift.Scripts.Prefabs;
 public partial class BulletBase : Node2D
 {
     [Export] private HitBox _hitBox;
- 
+
+    public Actor Target;
+    
     public event Action<float> OnMove;
     public event Action<Actor> OnHit;
     
@@ -22,7 +24,7 @@ public partial class BulletBase : Node2D
     public float Size = 1f;
     public float Degeneration = 0.8f;
 
-    private SmokeTrail _smokeTrail;
+    [Export] private SmokeTrail _smokeTrail;
     private Vector2 _velocity = Vector2.Zero;
 
     public float Damage
@@ -42,22 +44,20 @@ public partial class BulletBase : Node2D
     public float Steering;
     private Node2D _targetingActor;
     private Vector2 _acceleration = Vector2.Zero;
-    
+
+    protected void TakeOnHitEvent(Actor obj)
+    {
+        OnHit?.Invoke(obj);
+    }
+
     public override void _Ready()
     {
         _velocity = Direction * Speed;
         Rotation = Direction.Angle();
         
-        _smokeTrail = GetNode<SmokeTrail>("%SmokeTrail");
-        
         _hitBox.SetIsPlayer(IsPlayer);
-        _hitBox.OnHit += (actor) =>
-        {
-            SoundManager.PlayOneShotById("event:/OnBulletHit");
-            OnHit?.Invoke(actor);
-            QueueFree();
-        };
-        _hitBox.OnHitOthers += QueueFree;
+        _hitBox.OnHit += OnHitHandle;
+        _hitBox.OnHitOthers += OnHitOthersHandle;
 
         Scale = new Vector2(Size, Size);
         Degenerate();
@@ -66,6 +66,18 @@ public partial class BulletBase : Node2D
         {
             _targetingActor = Wizard.GetClosestTarget(this, IsPlayer ? "Mobs" : "Players");
         }
+    }
+
+    protected virtual void OnHitOthersHandle()
+    {
+        QueueFree();
+    }
+
+    protected virtual void OnHitHandle(Actor actor)
+    {
+        SoundManager.PlayOneShotById("event:/OnBulletHit");
+        OnHit?.Invoke(actor);
+        QueueFree();
     }
 
     private Vector2 Seek()
@@ -95,7 +107,9 @@ public partial class BulletBase : Node2D
 
     protected virtual void Move(double delta)
     {
-        _smokeTrail.AddAgePoint(GlobalPosition);
+        if (_smokeTrail != null)
+            _smokeTrail.AddAgePoint(GlobalPosition);
+        
         OnMove?.Invoke(GlobalPosition.DistanceTo(_lastPosition));
 
         _acceleration += Seek();

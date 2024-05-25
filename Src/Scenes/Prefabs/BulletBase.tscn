@@ -10,9 +10,10 @@
 [sub_resource type="Gradient" id="Gradient_06518"]
 colors = PackedColorArray(0, 0, 0, 0, 0.368627, 0.505882, 0.592157, 1)
 
-[node name="BulletBase" type="Node2D" node_paths=PackedStringArray("_hitBox")]
+[node name="BulletBase" type="Node2D" node_paths=PackedStringArray("_hitBox", "_smokeTrail")]
 script = ExtResource("1_l73w7")
 _hitBox = NodePath("HitBox")
+_smokeTrail = NodePath("SmokeTrail")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.4, 0.4)

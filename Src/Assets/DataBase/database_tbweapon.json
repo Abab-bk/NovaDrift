@@ -38,5 +38,13 @@
     "scene_name": "Pulse",
     "knockback": 0,
     "recoil": 0
+  },
+  {
+    "id": 1005,
+    "name": "手榴弹",
+    "desc": "发射一枚爆炸性集束手榴弹\n在撞击或延迟后爆炸\n初始爆炸后，集束炸药遍布该区域\n集束覆盖范围随爆炸半径增加",
+    "scene_name": "GrenadeShooter",
+    "knockback": 0,
+    "recoil": 0
   }
 ]

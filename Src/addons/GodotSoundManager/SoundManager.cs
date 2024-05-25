@@ -2,7 +2,6 @@ using Godot;
 using System;
 using FMOD;
 using FMOD.Studio;
-using NovaDrift.Scripts;
 using INITFLAGS = FMOD.Studio.INITFLAGS;
 
 namespace AcidWallStudio.Fmod;

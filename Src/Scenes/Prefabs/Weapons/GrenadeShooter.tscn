@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1bfvancl0cj5"]
+
+[ext_resource type="Script" path="res://Scripts/Prefabs/Weapons/GrenadeShooter.cs" id="1_ihpsc"]
+
+[node name="GrenadeShooter" type="Node2D"]
+script = ExtResource("1_ihpsc")

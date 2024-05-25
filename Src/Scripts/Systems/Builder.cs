@@ -2,6 +2,7 @@
 using System.Linq.Expressions;
 using Godot;
 using NovaDrift.Scripts.Prefabs;
+using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
 using NovaDrift.Scripts.Prefabs.Bullets;
 
@@ -13,6 +14,7 @@ public class BulletBuilder
     {
         Normal,
         FireBall,
+        Grenade,
     }
     
     private readonly BulletBase _bulletBase;
@@ -27,10 +29,19 @@ public class BulletBuilder
             case BulletType.FireBall:
                 _bulletBase = GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/FireBall.tscn").Instantiate() as BulletBase;
                 break;
+            case BulletType.Grenade:
+                _bulletBase = GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/Grenade.tscn").Instantiate() as BulletBase;
+                break;
             default:
                 _bulletBase = GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/NormalBullet.tscn").Instantiate() as BulletBase;
                 throw new Exception("无法识别的子弹类型");
         }
+    }
+
+    public BulletBuilder SetOwner(Actor owner)
+    {
+        _bulletBase.Target = owner;
+        return this;
     }
 
     public BulletBuilder SetDegeneration(float degeneration)

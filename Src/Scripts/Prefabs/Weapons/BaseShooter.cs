@@ -33,6 +33,7 @@ public abstract partial class BaseShooter : Node2D
     public BulletBase GetBullet()
     {
         return new BulletBuilder().
+            SetOwner(Actor).
             SetIsPlayer(IsPlayer).
             SetDamage(Actor.Stats.Damage.Value).
             SetSpeed(Actor.Stats.BulletSpeed.Value).

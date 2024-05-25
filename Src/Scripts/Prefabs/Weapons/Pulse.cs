@@ -29,6 +29,7 @@ public partial class Pulse : BaseShooter
     {
         if (!_shootTimer.IsStopped()) return;
         _shootTimer.Start();
+        
         var circleBlast = GD.Load<PackedScene>("res://Scenes/Vfx/CircleBlast.tscn").Instantiate<CircleBlast>();
         circleBlast.IsPlayer = IsPlayer;
         circleBlast.OnSomeThingHit += node2D =>
@@ -43,6 +44,7 @@ public partial class Pulse : BaseShooter
                 actor.TakeDamageWithoutKnockBack(Actor.Stats.Damage.Value);
             }
         };
+        
         AddChild(circleBlast);
     }
 

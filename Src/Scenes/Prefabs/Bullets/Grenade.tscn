@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://pdmytcktxyd4"]
+
+[ext_resource type="Script" path="res://Scripts/Prefabs/Bullets/Grenade.cs" id="1_w6nxe"]
+[ext_resource type="Texture2D" uid="uid://8dr0nt368qv8" path="res://Assets/Textures/Circle.png" id="2_6ns1w"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Components/HitBox.cs" id="3_v32kf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_u0mna"]
+radius = 48.0416
+
+[node name="Grenade" type="Node2D" node_paths=PackedStringArray("_hitBox")]
+script = ExtResource("1_w6nxe")
+_hitBox = NodePath("HitBox")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_6ns1w")
+
+[node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("3_v32kf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("CircleShape2D_u0mna")
