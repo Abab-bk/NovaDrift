@@ -173,6 +173,8 @@ public partial class Player : Actor
 
     public void UpLevel(float value = 0f)
     {
+        SoundManager.PlayUiSound("event:/UI/Uplevel");
+        
         Stats.Exp.Clear();
         Stats.Exp.MaxValue.BaseValue = DataBuilder.GetNextLevelExp(Stats.Level);
         UpdateUi();

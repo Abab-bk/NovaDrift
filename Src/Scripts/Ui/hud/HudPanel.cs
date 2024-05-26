@@ -1,7 +1,5 @@
-using System;
 using DsUi;
 using GDebugPanelGodot.Core;
-using GDebugPanelGodot.DebugActions.Containers;
 using GDebugPanelGodot.Extensions;
 using Godot;
 using NovaDrift.Scripts.Ui.ActionBtn;
@@ -15,7 +13,7 @@ public partial class HudPanel : Hud
 	private TextureProgressBar _hpBar;
 	private TextureProgressBar _shieldBar;
 	
-	private bool _isDebugPanelOpened = false;
+	private bool _isDebugPanelOpened;
 
 	[Export] private Control _debugPanel;
 	
@@ -25,7 +23,7 @@ public partial class HudPanel : Hud
 		_hpBar = S_HpProgressBar.Instance;
 		_shieldBar = S_ShieldProgressBar.Instance;
 
-		EventBus.OnPlayerUpLevel += i =>
+		EventBus.OnPlayerUpLevel += _ =>
 		{
 			OpenNestedUi(UiManager.UiName.SelectAbility);
 			Global.StopGame();
