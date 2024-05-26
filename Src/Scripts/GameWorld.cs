@@ -2,6 +2,7 @@ using AcidJoystick;
 using AcidWallStudio.AcidUtilities;
 using AcidWallStudio.Fmod;
 using DsUi;
+using DwarfImpulse;
 using GDebugPanelGodot.Core;
 using Godot;
 using NovaDrift.addons.AcidUtilities;
@@ -12,6 +13,9 @@ namespace NovaDrift.Scripts;
 
 public partial class GameWorld : Node2D
 {
+	[Export] ShakeDirector2D _shakeDirector;
+	[Export] FastNoiseLite _noise;
+	
 	private Joystick _moveJoystick;
 	private Joystick _aimJoystick;
 	
@@ -36,6 +40,8 @@ public partial class GameWorld : Node2D
 		SoundManager.Initialize();
 
 		Global.SceneTree = GetTree();
+		Global.ShakeDirector = _shakeDirector;
+		Global.Noise = _noise;
 		
 		SoundManager.PlayMusic(AudioEvents.BackgroundMusic);
 		

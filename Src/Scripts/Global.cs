@@ -1,5 +1,6 @@
 ﻿using System;
 using AcidWallStudio.Fmod;
+using DwarfImpulse;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
@@ -16,6 +17,7 @@ public enum Layer
     PlayerHurtBox = 4,
     MobHitBox = 5,
     MobHurtBox = 6,
+    Object = 7,
 }
 
 public enum GamePlatform
@@ -31,6 +33,8 @@ public static class Global
     public static Player Player;
     public static Node2D PlayerStand;
     public static GameWorld GameWorld;
+    public static ShakeDirector2D ShakeDirector;
+    public static FastNoiseLite Noise;
 
     public static Constants.WorldColor WorldColor = Constants.Colors.Blue;
     

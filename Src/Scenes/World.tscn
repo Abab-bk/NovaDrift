@@ -1,14 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://d25jyaf2cexon"]
+[gd_scene load_steps=9 format=3 uid="uid://d25jyaf2cexon"]
 
 [ext_resource type="Script" path="res://Scripts/GameWorld.cs" id="1_xxmb6"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/MobSpawner.cs" id="4_4mpug"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HazardSpawner.cs" id="5_2fkc6"]
 [ext_resource type="PackedScene" uid="uid://drcoa0ndbt6te" path="res://addons/AcidJoystick/Joystick.tscn" id="6_6ip1o"]
 [ext_resource type="Texture2D" uid="uid://hxannpomw2b1" path="res://Assets/Textures/Particles/circle_01.png" id="6_atija"]
+[ext_resource type="Script" path="res://Scripts/Libs/DwarfImpulse/Runtime/ShakeDirector2D.cs" id="7_y53n8"]
 [ext_resource type="Environment" uid="uid://dwua3nxtba68l" path="res://Assets/Environments/Default.tres" id="8_6l4n4"]
 
-[node name="World" type="Node2D"]
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_34d4f"]
+
+[node name="World" type="Node2D" node_paths=PackedStringArray("_shakeDirector")]
 script = ExtResource("1_xxmb6")
+_shakeDirector = NodePath("ShakeDirector2D")
+_noise = SubResource("FastNoiseLite_34d4f")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -101
@@ -63,3 +68,7 @@ color = Color(0.806839, 0.573437, 0.51668, 1)
 energy = 1.51
 blend_mode = 2
 texture = ExtResource("6_atija")
+
+[node name="ShakeDirector2D" type="Node2D" parent="." node_paths=PackedStringArray("Target")]
+script = ExtResource("7_y53n8")
+Target = NodePath("..")

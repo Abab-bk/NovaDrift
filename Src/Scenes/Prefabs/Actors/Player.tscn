@@ -24,9 +24,6 @@ size = Vector2(78, 100)
 [sub_resource type="Gradient" id="Gradient_y1nwb"]
 colors = PackedColorArray(0, 0, 0, 0, 0.631373, 1, 1, 1)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_hujpf"]
-size = Vector2(78, 92)
-
 [sub_resource type="StateConfig" id="StateConfig_vkgty"]
 state_name = &"Idle"
 type = 1
@@ -115,13 +112,17 @@ state_config_list = Array[StateConfig]([SubResource("StateConfig_f52yo"), SubRes
 transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_hck3y"), SubResource("TransitionConfig_ad1ll")])
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_mu8jh"), SubResource("VariableConfig_01o2x")])
 
-[node name="Player" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") groups=["Players"] instance=ExtResource("1_0c8c2")]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hujpf"]
+size = Vector2(78, 92)
+
+[node name="Player" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter", "_speedParticles") groups=["Players"] instance=ExtResource("1_0c8c2")]
 script = ExtResource("2_15kon")
 _hurtBox = NodePath("Components/HurtBox")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 IsPlayer = true
 Shooter = NodePath("Components/ShooterNode/Shooter")
+_speedParticles = NodePath("SpeedParticles")
 
 [node name="Indicator" type="Node2D" parent="." index="0"]
 
@@ -138,7 +139,7 @@ gradient = SubResource("Gradient_y1yjm")
 script = ExtResource("7_6dhtg")
 length = 25
 
-[node name="CollisionShape2D" parent="." index="3"]
+[node name="CollisionShape2D" parent="." index="4"]
 shape = SubResource("RectangleShape2D_pl074")
 
 [node name="ShooterNode" parent="Components" index="0"]
@@ -154,10 +155,6 @@ Actor = NodePath("../..")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtBox" index="0"]
 shape = SubResource("RectangleShape2D_w2h2n")
 
-[node name="VisibleOnScreenNotifier2D" parent="." index="6"]
-position = Vector2(25, 0)
-scale = Vector2(2, 2.74193)
-
 [node name="SmokeTrail" type="Line2D" parent="." index="7"]
 unique_name_in_owner = true
 width = 40.0
@@ -167,8 +164,9 @@ script = ExtResource("5_dp7hw")
 _wildNess = 1000.0
 _minSpawnDistance = 20.0
 
-[node name="CollisionShape2D" parent="BodyArea" index="0"]
-shape = SubResource("RectangleShape2D_hujpf")
+[node name="VisibleOnScreenNotifier2D" parent="." index="8"]
+position = Vector2(25, 0)
+scale = Vector2(2, 2.74193)
 
 [node name="MovementMachine" type="HFSM" parent="." index="9"]
 root_fsm_config = SubResource("FSMConfig_mnceu")
@@ -177,3 +175,6 @@ unique_name_in_owner = true
 [node name="ActionMachine" type="HFSM" parent="." index="10"]
 root_fsm_config = SubResource("FSMConfig_xyrl7")
 unique_name_in_owner = true
+
+[node name="CollisionShape2D" parent="BodyArea" index="0"]
+shape = SubResource("RectangleShape2D_hujpf")

@@ -2,6 +2,7 @@ using AcidJoystick;
 using AcidWallStudio.AcidNodes;
 using AcidWallStudio.Fmod;
 using DsUi;
+using DwarfImpulse;
 using Godot;
 using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Prefabs.Shields;
@@ -120,7 +121,17 @@ public partial class Player : Actor
             UpdateUi();
         };
     }
-    
+
+    public override void OnHit(float value)
+    {
+        base.OnHit(value);
+        Global.ShakeDirector.Shake(
+            NoiseShake.CreateWithNoise(Global.Noise)
+                .WithDuration(0.5f)
+                .WithEulersAmount(new Vector3(0.02f, 0.02f, 0.02f))
+            );
+    }
+
     protected override void InitStats()
     {
         Stats.Health.BaseValue = DataBuilder.Constants.PlayerHealth;

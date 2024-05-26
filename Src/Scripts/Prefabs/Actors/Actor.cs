@@ -137,11 +137,13 @@ public partial class Actor : CharacterBody2D
             Sprite.Texture = GD.Load<Texture2D>(Stats.Body.IconPath);
         };
         
+        this.SetIsPlayer(IsPlayer);
+        
         _hurtBox.OnHit += OnHit;
         _hurtBox.SetIsPlayer(IsPlayer);
-
+        
         _visibleOnScreenNotifier2D.ScreenExited += MoveToWorldEdge;
-
+        
         _bodyArea.SetIsPlayer(IsPlayer);
         _bodyArea.BodyEntered += (body) => OnHitSomeThing?.Invoke(body);
     }
@@ -176,7 +178,7 @@ public partial class Actor : CharacterBody2D
         OnHit(value);
     }
     
-    protected void OnHit(float value)
+    public virtual void OnHit(float value)
     {
         Visual.FlashAndRestore();
         UiManager.Open_DamageLabel().ShowValue(value, GetGlobalTransformWithCanvas().Origin);

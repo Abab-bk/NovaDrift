@@ -29,3 +29,10 @@ script = ExtResource("3_jt5gu")
 
 [node name="FreeSelfWhenExitScreen" type="VisibleOnScreenNotifier2D" parent="."]
 script = ExtResource("5_3s24p")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 64
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+debug_color = Color(0.74511, 0.20977, 1, 0.42)

@@ -1,4 +1,4 @@
-[gd_scene load_steps=5 format=3 uid="uid://gg0i24k1b6c7"]
+[gd_scene load_steps=6 format=3 uid="uid://gg0i24k1b6c7"]
 
 [ext_resource type="PackedScene" uid="uid://bherm3vjqjv4j" path="res://Scenes/Prefabs/Hazards/AsteroidBase.tscn" id="1_0jj3v"]
 [ext_resource type="Texture2D" uid="uid://cu8px7vbsjup0" path="res://Assets/Textures/Objects/Asteroids/AsteroidMedium.png" id="2_6mhlr"]
@@ -9,10 +9,16 @@ size = Vector2(126, 122)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_m425l"]
 size = Vector2(124, 122)
 
-[node name="AsteroidMedium" instance=ExtResource("1_0jj3v")]
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_8nl8d"]
+radius = 64.0
+height = 142.0
+
+[node name="AsteroidMedium" node_paths=PackedStringArray("_hurtBox", "_hitBox") instance=ExtResource("1_0jj3v")]
 _health = 50.0
+_hurtBox = NodePath("PureHurtBox")
 _damage = 15.0
 _scale = 0.5
+_hitBox = NodePath("HitBox")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_6mhlr")
@@ -22,3 +28,7 @@ shape = SubResource("RectangleShape2D_5v21v")
 
 [node name="CollisionShape2D" parent="PureHurtBox" index="0"]
 shape = SubResource("RectangleShape2D_m425l")
+
+[node name="CollisionShape2D" parent="StaticBody2D" index="0"]
+position = Vector2(-6, 0)
+shape = SubResource("CapsuleShape2D_8nl8d")

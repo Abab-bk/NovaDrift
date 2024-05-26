@@ -14,22 +14,24 @@ public abstract partial class BaseVfx : Node2D
     }
 }
 
-public static class Area2DExtensions
+public static class CollisionObjectExtensions
 {
-    public static void SetIsPlayer(this Area2D area2D, bool isPlayer)
+    public static void SetIsPlayer(this CollisionObject2D source, bool isPlayer)
     {
-        area2D.CollisionLayer = 0;
-        area2D.CollisionMask = 0;
+        source.CollisionLayer = 0;
+        source.CollisionMask = 0;
         
         if (isPlayer)
         {
-            area2D.SetCollisionLayer((int)Layer.Player);
-            area2D.SetCollisionMask((int)Layer.Mob);
+            source.SetCollisionLayerValue((int)Layer.Player, true);
+            source.SetCollisionMaskValue((int)Layer.Mob, true);
         }
         else
         {
-            area2D.SetCollisionLayer((int)Layer.Mob);
-            area2D.SetCollisionMask((int)Layer.Player);
+            source.SetCollisionLayerValue((int)Layer.Mob, true);
+            source.SetCollisionMaskValue((int)Layer.Player, true);
         }
+        
+        source.SetCollisionMaskValue((int)Layer.Object, true);
     }
 }
