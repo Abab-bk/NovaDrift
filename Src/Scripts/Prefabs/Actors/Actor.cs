@@ -1,11 +1,13 @@
 using System;
 using DsUi;
 using Godot;
-using NovaDrift.addons.AcidStats;
+using GTweens.Builders;
+using GTweensGodot.Extensions;
 using NovaDrift.Scripts.Frameworks.Stats;
 using NovaDrift.Scripts.Prefabs.Components;
 using NovaDrift.Scripts.Prefabs.Shields;
 using NovaDrift.Scripts.Prefabs.Weapons;
+using NovaDrift.Scripts.Vfx;
 
 namespace NovaDrift.Scripts.Prefabs.Actors;
 
@@ -54,8 +56,11 @@ public partial class Actor : CharacterBody2D
     // protected bool IsShooting = false;
     
     protected bool IsDead = false;
+    protected ActorVisual Visual;
+    
     
     private Area2D _bodyArea;
+    [Export] private GpuParticles2D _speedParticles;
 
     protected virtual void _OnShoot(BulletBase bullet)
     {
@@ -120,6 +125,9 @@ public partial class Actor : CharacterBody2D
         ShooterNode = GetNode<Node2D>("%ShooterNode");
         ShieldNode = GetNode<Node2D>("%ShieldNode");
         _bodyArea = GetNode<Area2D>("%BodyArea");
+
+        Visual = new ActorVisual(this);
+        _speedParticles.Emitting = false;
         
         InitStats();
         InitCollision();
@@ -134,18 +142,7 @@ public partial class Actor : CharacterBody2D
 
         _visibleOnScreenNotifier2D.ScreenExited += MoveToWorldEdge;
 
-        _bodyArea.CollisionLayer = 0;
-        _bodyArea.CollisionMask = 0;
-        if (IsPlayer)
-        {
-            _bodyArea.SetCollisionLayerValue((int)Layer.Player, true);
-            _bodyArea.SetCollisionMaskValue((int)Layer.Mob, true);
-        }
-        else
-        {
-            _bodyArea.SetCollisionLayerValue((int)Layer.Mob, true);
-            _bodyArea.SetCollisionMaskValue((int)Layer.Player, true);
-        }
+        _bodyArea.SetIsPlayer(IsPlayer);
         _bodyArea.BodyEntered += (body) => OnHitSomeThing?.Invoke(body);
     }
 
@@ -181,6 +178,7 @@ public partial class Actor : CharacterBody2D
     
     protected void OnHit(float value)
     {
+        Visual.FlashAndRestore();
         UiManager.Open_DamageLabel().ShowValue(value, GetGlobalTransformWithCanvas().Origin);
     }
 
@@ -218,7 +216,12 @@ public partial class Actor : CharacterBody2D
     {
         Shooter.Shoot();
     }
-    
+
+    public override void _Process(double delta)
+    {
+        _speedParticles.Emitting = Velocity.LengthSquared() > Stats.Speed.Value + 100f && !_speedParticles.IsEmitting();
+    }
+
     public override void _PhysicsProcess(double delta)
     {
         if (Stats.GetKnockBack() > 0)
@@ -230,5 +233,24 @@ public partial class Actor : CharacterBody2D
         Velocity += Stats.ForceVector;
         
         MoveAndSlide();
+    }
+}
+
+
+public class ActorVisual(Node2D target)
+{
+    private Color _originalColor;
+    private bool _flashing = false;
+    public void FlashAndRestore()
+    {
+        if (_flashing) return;
+        _flashing = true;
+        _originalColor = target.Modulate;
+        GTweenSequenceBuilder.New()
+            .Append(target.TweenModulate(Colors.White, 0.2f))
+            .Append(target.TweenModulate(_originalColor, 0.2f))
+            .AppendCallback(() => _flashing = false)
+            .Build()
+            .Play();
     }
 }
