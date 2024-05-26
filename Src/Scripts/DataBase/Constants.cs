@@ -32,6 +32,7 @@ public sealed partial class Constants : Luban.BeanBase
         PlayerBulletCount = _buf.GetProperty("player_bullet_count").GetSingle();
         PlayerBlastDamage = _buf.GetProperty("player_blast_damage").GetSingle();
         PlayerBlastRadius = _buf.GetProperty("player_blast_radius").GetSingle();
+        MaxLevel = _buf.GetProperty("max_level").GetSingle();
     }
 
     public static Constants DeserializeConstants(JsonElement _buf)
@@ -99,12 +100,17 @@ public sealed partial class Constants : Luban.BeanBase
     /// 默认爆炸半径
     /// </summary>
     public readonly float PlayerBlastRadius;
+    /// <summary>
+    /// 最大等级
+    /// </summary>
+    public readonly float MaxLevel;
    
     public const int __ID__ = 1581691183;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
     {
+        
         
         
         
@@ -140,6 +146,7 @@ public sealed partial class Constants : Luban.BeanBase
         + "playerBulletCount:" + PlayerBulletCount + ","
         + "playerBlastDamage:" + PlayerBlastDamage + ","
         + "playerBlastRadius:" + PlayerBlastRadius + ","
+        + "maxLevel:" + MaxLevel + ","
         + "}";
     }
 }

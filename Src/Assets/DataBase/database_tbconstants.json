@@ -14,6 +14,7 @@
     "player_recoil": 50,
     "player_bullet_count": 1,
     "player_blast_damage": 20,
-    "player_blast_radius": 100
+    "player_blast_radius": 100,
+    "max_level": 500
   }
 ]

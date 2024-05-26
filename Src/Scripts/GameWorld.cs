@@ -1,9 +1,7 @@
 using AcidJoystick;
-using AcidWallStudio.AcidUtilities;
 using AcidWallStudio.Fmod;
 using DsUi;
 using DwarfImpulse;
-using GDebugPanelGodot.Core;
 using Godot;
 using NovaDrift.addons.AcidUtilities;
 using NovaDrift.Scripts.Prefabs.Actors;
@@ -25,13 +23,13 @@ public partial class GameWorld : Node2D
 		{
 			SoundManager.MusicVolume = AcidSaver.HasSetting("Audios", "MusicVolume")
 				? (float)AcidSaver.GetSetting("Audios", "MusicVolume")
-				: 80f;
+				: 1f;
 			SoundManager.SfxVolume = AcidSaver.HasSetting("Audios", "SoundVolume")
 				? (float)AcidSaver.GetSetting("Audios", "SoundVolume")
-				: 80f;
+				: 1f;
 			SoundManager.UiSoundsVolume = AcidSaver.HasSetting("Audios", "Ui")
 				? (float)AcidSaver.GetSetting("Audios", "Ui")
-				: 80f;
+				: 1f;
 			SoundManager.SetVolume();
 		};
 

@@ -47,7 +47,9 @@ public partial class AbilityItemPanel : AbilityItem
     public void UpdateUiById(int id)
     {
         S_IconTexture.Instance.Texture = GD.Load<Texture2D>(
-            $"res://Assets/Ui/Icons/AbilityIcons/{DataBuilder.Tables.TbAbility.Get(id).ClassName}.tres"
+            ResourceLoader.Exists($"res://Assets/Ui/Icons/AbilityIcons/{DataBuilder.Tables.TbAbility.Get(id).ClassName}.tres")
+                ? $"res://Assets/Ui/Icons/AbilityIcons/{DataBuilder.Tables.TbAbility.Get(id).ClassName}.tres"
+                : "res://Assets/Ui/Icons/AbilityIcons/TestIcon.tres"
             );
     }
 

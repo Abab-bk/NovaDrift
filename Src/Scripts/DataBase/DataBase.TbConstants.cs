@@ -88,6 +88,10 @@ public partial class TbConstants
     /// 默认爆炸半径
     /// </summary>
      public float PlayerBlastRadius => _data.PlayerBlastRadius;
+    /// <summary>
+    /// 最大等级
+    /// </summary>
+     public float MaxLevel => _data.MaxLevel;
     
     public void ResolveRef(Tables tables)
     {

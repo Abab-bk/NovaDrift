@@ -1,10 +1,8 @@
 using AcidJoystick;
-using AcidWallStudio.AcidNodes;
 using AcidWallStudio.Fmod;
 using DsUi;
 using DwarfImpulse;
 using Godot;
-using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Prefabs.Shields;
 
 namespace NovaDrift.Scripts.Prefabs.Actors;
@@ -149,6 +147,7 @@ public partial class Player : Actor
         Stats.Recoil.BaseValue = DataBuilder.Constants.PlayerRecoil;
         
         Stats.Exp.BaseValue = 0;
+        Stats.Exp.MaxValue.BaseValue = DataBuilder.GetNextLevelExp(Stats.Level);
         
         Stats.BulletCount.BaseValue = DataBuilder.Constants.PlayerBulletCount;
         Stats.BulletSize.BaseValue = DataBuilder.Constants.PlayerBulletSize;
@@ -175,7 +174,7 @@ public partial class Player : Actor
     public void UpLevel(float value = 0f)
     {
         Stats.Exp.Clear();
-        Stats.Exp.MaxValue.BaseValue += 300;
+        Stats.Exp.MaxValue.BaseValue = DataBuilder.GetNextLevelExp(Stats.Level);
         UpdateUi();
 
         EventBus.OnPlayerUpLevel(Stats.Level);
