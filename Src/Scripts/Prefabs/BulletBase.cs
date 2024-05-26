@@ -24,7 +24,6 @@ public partial class BulletBase : Node2D
     public float Size = 1f;
     public float Degeneration = 0.8f;
 
-    [Export] private SmokeTrail _smokeTrail;
     private Vector2 _velocity = Vector2.Zero;
 
     public float Damage
@@ -107,9 +106,6 @@ public partial class BulletBase : Node2D
 
     protected virtual void Move(double delta)
     {
-        if (_smokeTrail != null)
-            _smokeTrail.AddAgePoint(GlobalPosition);
-        
         OnMove?.Invoke(GlobalPosition.DistanceTo(_lastPosition));
 
         _acceleration += Seek();

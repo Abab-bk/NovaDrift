@@ -3,17 +3,25 @@
 [ext_resource type="Script" path="res://Scripts/Prefabs/BulletBase.cs" id="1_l73w7"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HitBox.cs" id="2_74isq"]
 [ext_resource type="Texture2D" uid="uid://cjd5cjg845jjq" path="res://Assets/Textures/Bullets/Bullet.png" id="2_7373b"]
+[ext_resource type="Script" path="res://addons/trail_2d/trail_2d.gd" id="2_bco6i"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/FreeSelfWhenExitScreen.cs" id="3_bimy8"]
-[ext_resource type="Curve" uid="uid://bfftvhg22hmgf" path="res://Assets/Resources/BaseTrail.tres" id="5_3xjcw"]
-[ext_resource type="Script" path="res://addons/AcidNodes/SmokeTrail.cs" id="5_a0yah"]
 
-[sub_resource type="Gradient" id="Gradient_06518"]
-colors = PackedColorArray(0, 0, 0, 0, 0.368627, 0.505882, 0.592157, 1)
+[sub_resource type="Curve" id="Curve_1iyvv"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
 
-[node name="BulletBase" type="Node2D" node_paths=PackedStringArray("_hitBox", "_smokeTrail")]
+[sub_resource type="Gradient" id="Gradient_x6jox"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+
+[node name="BulletBase" type="Node2D" node_paths=PackedStringArray("_hitBox")]
+y_sort_enabled = true
 script = ExtResource("1_l73w7")
 _hitBox = NodePath("HitBox")
-_smokeTrail = NodePath("SmokeTrail")
+
+[node name="Trail2D" type="Line2D" parent="."]
+width_curve = SubResource("Curve_1iyvv")
+gradient = SubResource("Gradient_x6jox")
+script = ExtResource("2_bco6i")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.4, 0.4)
@@ -28,12 +36,3 @@ position = Vector2(-13.5, 0)
 [node name="FreeSelfWhenExitScreen" type="VisibleOnScreenNotifier2D" parent="."]
 scale = Vector2(6.2, 3.1)
 script = ExtResource("3_bimy8")
-
-[node name="SmokeTrail" type="Line2D" parent="."]
-unique_name_in_owner = true
-width = 40.0
-width_curve = ExtResource("5_3xjcw")
-gradient = SubResource("Gradient_06518")
-script = ExtResource("5_a0yah")
-_wildNess = 1000.0
-_minSpawnDistance = 20.0

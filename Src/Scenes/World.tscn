@@ -1,9 +1,10 @@
-[gd_scene load_steps=6 format=3 uid="uid://d25jyaf2cexon"]
+[gd_scene load_steps=7 format=3 uid="uid://d25jyaf2cexon"]
 
 [ext_resource type="Script" path="res://Scripts/GameWorld.cs" id="1_xxmb6"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/MobSpawner.cs" id="4_4mpug"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HazardSpawner.cs" id="5_2fkc6"]
 [ext_resource type="PackedScene" uid="uid://drcoa0ndbt6te" path="res://addons/AcidJoystick/Joystick.tscn" id="6_6ip1o"]
+[ext_resource type="Texture2D" uid="uid://hxannpomw2b1" path="res://Assets/Textures/Particles/circle_01.png" id="6_atija"]
 [ext_resource type="Environment" uid="uid://dwua3nxtba68l" path="res://Assets/Environments/Default.tres" id="8_6l4n4"]
 
 [node name="World" type="Node2D"]
@@ -11,7 +12,6 @@ script = ExtResource("1_xxmb6")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -101
-visible = false
 
 [node name="Control" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -49,9 +49,17 @@ scale = Vector2(0.24, 0.24)
 [node name="MobSpawner" type="Node2D" parent="."]
 position = Vector2(1253, 670)
 script = ExtResource("4_4mpug")
+_enabled = false
 
 [node name="HazardSpawner" type="Node2D" parent="."]
 script = ExtResource("5_2fkc6")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("8_6l4n4")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+position = Vector2(1253, 670)
+color = Color(0.806839, 0.573437, 0.51668, 1)
+energy = 1.51
+blend_mode = 2
+texture = ExtResource("6_atija")

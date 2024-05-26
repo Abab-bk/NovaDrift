@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://b1hvfrsat441r"]
+[gd_scene load_steps=32 format=3 uid="uid://b1hvfrsat441r"]
 
 [ext_resource type="PackedScene" uid="uid://b1vmhmtmuma0x" path="res://Scenes/Prefabs/Actors/ActorBase.tscn" id="1_0c8c2"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Player.cs" id="2_15kon"]
@@ -6,6 +6,14 @@
 [ext_resource type="Script" path="res://addons/AcidNodes/SmokeTrail.cs" id="5_dp7hw"]
 [ext_resource type="Curve" uid="uid://bfftvhg22hmgf" path="res://Assets/Resources/BaseTrail.tres" id="5_o1eaj"]
 [ext_resource type="Texture2D" uid="uid://6208j2u77orx" path="res://Assets/Textures/Indicator.png" id="6_ig50u"]
+[ext_resource type="Script" path="res://addons/trail_2d/trail_2d.gd" id="7_6dhtg"]
+
+[sub_resource type="Curve" id="Curve_veys5"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_y1yjm"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_pl074"]
 size = Vector2(78, 100)
@@ -122,7 +130,15 @@ position = Vector2(0, -25)
 texture = ExtResource("6_ig50u")
 centered = false
 
-[node name="CollisionShape2D" parent="." index="2"]
+[node name="Trail2D" type="Line2D" parent="." index="2"]
+z_index = -1
+width = 25.0
+width_curve = SubResource("Curve_veys5")
+gradient = SubResource("Gradient_y1yjm")
+script = ExtResource("7_6dhtg")
+length = 25
+
+[node name="CollisionShape2D" parent="." index="3"]
 shape = SubResource("RectangleShape2D_pl074")
 
 [node name="ShooterNode" parent="Components" index="0"]
@@ -138,11 +154,11 @@ Actor = NodePath("../..")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtBox" index="0"]
 shape = SubResource("RectangleShape2D_w2h2n")
 
-[node name="VisibleOnScreenNotifier2D" parent="." index="5"]
+[node name="VisibleOnScreenNotifier2D" parent="." index="6"]
 position = Vector2(25, 0)
 scale = Vector2(2, 2.74193)
 
-[node name="SmokeTrail" type="Line2D" parent="." index="6"]
+[node name="SmokeTrail" type="Line2D" parent="." index="7"]
 unique_name_in_owner = true
 width = 40.0
 width_curve = ExtResource("5_o1eaj")
@@ -154,10 +170,10 @@ _minSpawnDistance = 20.0
 [node name="CollisionShape2D" parent="BodyArea" index="0"]
 shape = SubResource("RectangleShape2D_hujpf")
 
-[node name="MovementMachine" type="HFSM" parent="." index="8"]
+[node name="MovementMachine" type="HFSM" parent="." index="9"]
 root_fsm_config = SubResource("FSMConfig_mnceu")
 unique_name_in_owner = true
 
-[node name="ActionMachine" type="HFSM" parent="." index="9"]
+[node name="ActionMachine" type="HFSM" parent="." index="10"]
 root_fsm_config = SubResource("FSMConfig_xyrl7")
 unique_name_in_owner = true

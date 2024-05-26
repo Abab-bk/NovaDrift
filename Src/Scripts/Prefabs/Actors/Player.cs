@@ -15,7 +15,7 @@ public partial class Player : Actor
     
     public Joystick JoystickNode;
 
-    private SmokeTrail _smokeTrail;
+    // private SmokeTrail _smokeTrail;
     
     public override void _Ready()
     {
@@ -26,7 +26,7 @@ public partial class Player : Actor
         DataBuilder.BuildWeaponById(1000).Use();
         DataBuilder.BuildShieldById(1000).Use();
         
-        _smokeTrail = GetNode<SmokeTrail>("%SmokeTrail");
+        // _smokeTrail = GetNode<SmokeTrail>("%SmokeTrail");
         
         EventBus.OnMobDied += _ => { UpdateUi(); };
         EventBus.OnWorldColorChanged += ChangeColor;
@@ -94,7 +94,7 @@ public partial class Player : Actor
                 if (GlobalPosition.DirectionTo(mousePos) != Vector2.Zero)
                 {
                     TryMoveTo(GlobalPosition.DirectionTo(mousePos), delta);
-                    _smokeTrail.AddAgePoint(GlobalPosition);
+                    // _smokeTrail.AddAgePoint(GlobalPosition);
                 }
                 break;
         }
@@ -198,7 +198,7 @@ public partial class Player : Actor
             if (JoystickNode.TargetPos != Vector2.Zero)
             {
                 TryMoveTo(JoystickNode.TargetPos, delta);
-                _smokeTrail.AddAgePoint(GlobalPosition);
+                // _smokeTrail.AddAgePoint(GlobalPosition);
             }
             else
             {
