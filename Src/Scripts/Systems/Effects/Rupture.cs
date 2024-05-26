@@ -16,7 +16,6 @@ public class Rupture : Effect
                     Build();
             fireBall.GlobalPosition = mob.GlobalPosition;
             Global.GameWorld.CallDeferred(Node.MethodName.AddChild, fireBall);
-            GD.Print(Target.Stats.BlastRadius.Value);
         };
     }
 }

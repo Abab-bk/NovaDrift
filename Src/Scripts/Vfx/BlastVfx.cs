@@ -1,9 +1,9 @@
 using System;
 using AcidWallStudio.Fmod;
 using Godot;
-using Godot.Collections;
-using NovaDrift.Scripts;
 using NovaDrift.Scripts.Prefabs.Components;
+
+namespace NovaDrift.Scripts.Vfx;
 
 public partial class BlastVfx : Node2D
 {

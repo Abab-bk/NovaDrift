@@ -1,4 +1,5 @@
 ﻿using Godot;
+using NovaDrift.Scripts.Vfx;
 
 namespace NovaDrift.Scripts.Systems;
 

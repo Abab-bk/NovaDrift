@@ -1,7 +1,7 @@
 using Godot;
-using System;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
+using NovaDrift.Scripts.Vfx;
 
 namespace NovaDrift.Scripts.Prefabs.Bullets;
 
