@@ -72,6 +72,11 @@ public static class Wizard
     {
         return new Vector2(-vector.X, -vector.Y);
     }
+    
+    public static Vector2 Reverse(this Vector2 vector)
+    {
+        return new Vector2(-vector.X, -vector.Y);
+    }
 
     public static float FloatRange(this Random random, float min = 0.0f, float max = 1.0f) {
         return (float) (random.NextDouble() * (max - min) + min);

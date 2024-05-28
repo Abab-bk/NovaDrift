@@ -22,10 +22,12 @@ public static class DataBuilder
 
     public static float GetNextLevelExp(int level)
     {
-         float nextLevelExp = level < 20
-            ? FuncUpLevelCurveBefore20.Sample(level / 20f)
-            : FuncUpLevelCurveAfter20.Sample((level - 20) / Constants.MaxLevel - 20f);
-        
+         // float nextLevelExp = level < 20
+         //    ? FuncUpLevelCurveBefore20.Sample(level / 20f) * 100
+         //    : FuncUpLevelCurveAfter20.Sample((level - 20) / Constants.MaxLevel - 20f) * 100;
+
+        float nextLevelExp = 14;
+         
         return nextLevelExp;
     }
 

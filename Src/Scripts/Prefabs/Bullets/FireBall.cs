@@ -45,11 +45,11 @@ public partial class FireBall : BulletBase, IBlaster
         {
             if (body is Actor blastActor)
             {
-                if (blastActor is Player player && IsPlayer)
+                if (blastActor is Player player && !IsPlayer)
                 {
                     player.TakeDamage(Damage);
                 }
-                else if (blastActor is MobBase mob && !IsPlayer)
+                else if (blastActor is MobBase mob && IsPlayer)
                 {
                     mob.TakeDamage(Damage);
                 }

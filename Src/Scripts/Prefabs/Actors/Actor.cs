@@ -1,10 +1,12 @@
 using System;
+using AcidWallStudio.AcidUtilities;
 using DsUi;
 using Godot;
 using GTweens.Builders;
 using GTweensGodot.Extensions;
 using NovaDrift.Scripts.Frameworks.Stats;
 using NovaDrift.Scripts.Prefabs.Components;
+using NovaDrift.Scripts.Prefabs.Hazards;
 using NovaDrift.Scripts.Prefabs.Shields;
 using NovaDrift.Scripts.Prefabs.Weapons;
 using NovaDrift.Scripts.Vfx;
@@ -78,7 +80,7 @@ public partial class Actor : CharacterBody2D
     {
         LookAt(pos);
         TryMoveTo(GlobalPosition.DirectionTo(pos), delta);
-        MoveAndSlide();
+        MoveAndCollide(Velocity * delta);
     }
     
     public void TryMoveTo(Vector2 dir, double delta)
@@ -226,15 +228,27 @@ public partial class Actor : CharacterBody2D
 
     public override void _PhysicsProcess(double delta)
     {
+        Velocity += Stats.ForceVector;
+
+        var collider = MoveAndCollide(Velocity * (float)delta);
+        if (collider != null)
+        {
+            if (collider.GetCollider() is StaticBody2D staticBody2D && staticBody2D.Owner is AsteroidBase)
+            {
+                Stats.AddKnockBack(20f);
+            }
+
+            if (collider.GetCollider() is Actor actor)
+            {
+                Stats.AddKnockBack(40f);
+            }
+        }
+        
         if (Stats.GetKnockBack() > 0)
         {
             Velocity += Vector2.Right.Rotated(Rotation) * -Stats.GetKnockBack();
             Stats.AddKnockBack(-Stats.GetKnockBack());
         }
-
-        Velocity += Stats.ForceVector;
-        
-        MoveAndSlide();
     }
 }
 

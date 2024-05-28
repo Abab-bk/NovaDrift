@@ -4,7 +4,7 @@
     "player_health": 300,
     "player_speed": 1500,
     "player_damage": 30,
-    "player_shoot_speed": 0.5,
+    "player_shoot_speed": 0.3,
     "player_bullet_speed": 1500,
     "player_shoot_spread": 120,
     "player_knock_back": 10,

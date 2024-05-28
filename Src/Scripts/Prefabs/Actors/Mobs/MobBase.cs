@@ -45,7 +45,8 @@ public partial class MobBase : Actor
     public override void Die()
     {
         if (IsDead) return;
-        Global.Player.Stats.Exp.Increase(50 * Stats.Level);
+        Global.Player.Stats.Exp.Increase(5);
+        // Global.Player.Stats.Exp.Increase(50 * Stats.Level);
         EventBus.OnMobDied?.Invoke(this);
         base.Die();
     }
@@ -59,6 +60,6 @@ public partial class MobBase : Actor
     {
         LookAt(target.GlobalPosition);
         TryMoveTo(GlobalPosition.DirectionTo(target.GlobalPosition), delta);
-        MoveAndSlide();
+        MoveAndCollide(Velocity * delta);
     }
 }

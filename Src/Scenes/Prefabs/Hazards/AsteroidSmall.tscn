@@ -9,9 +9,8 @@ size = Vector2(60, 66)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_eh75t"]
 size = Vector2(62, 64)
 
-[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ijna5"]
-radius = 37.0
-height = 74.0
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_es5ij"]
+size = Vector2(62, 64)
 
 [node name="AsteroidSmall" node_paths=PackedStringArray("_hurtBox", "_hitBox") instance=ExtResource("1_7okrc")]
 _health = 30.0
@@ -30,4 +29,4 @@ shape = SubResource("RectangleShape2D_cbwy7")
 shape = SubResource("RectangleShape2D_eh75t")
 
 [node name="CollisionShape2D" parent="StaticBody2D" index="0"]
-shape = SubResource("CapsuleShape2D_ijna5")
+shape = SubResource("RectangleShape2D_es5ij")

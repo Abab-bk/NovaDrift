@@ -21,7 +21,7 @@ public partial class CelestialAi : MobAiComponent
             case "CirclingPlayer":
                 Mob.Velocity = (Mob.GlobalPosition - Global.Player.GlobalPosition).Normalized().Rotated(MathF.PI / 2) *
                                Mob.Stats.Speed.Value;
-                Mob.MoveAndSlide();
+                Mob.MoveAndCollide(Mob.Velocity * delta);
                 Mob.LookAt(Global.Player.GlobalPosition);
                 break;
             case "Shoot":
