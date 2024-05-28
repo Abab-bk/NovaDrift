@@ -9,6 +9,7 @@ public partial class Halo : BaseShield
     
     public override void _Ready()
     {
+        base._Ready();
         _haloTimer = new Timer
         {
             WaitTime = 1,
