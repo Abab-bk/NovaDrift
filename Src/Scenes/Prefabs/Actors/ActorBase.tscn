@@ -1,9 +1,10 @@
-[gd_scene load_steps=12 format=3 uid="uid://b1vmhmtmuma0x"]
+[gd_scene load_steps=13 format=3 uid="uid://b1vmhmtmuma0x"]
 
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Actor.cs" id="1_s858g"]
 [ext_resource type="Texture2D" uid="uid://c3i8wr1dlwymr" path="res://Assets/Textures/Bodies/Default.png" id="2_44451"]
 [ext_resource type="Texture2D" uid="uid://b40endjjplh73" path="res://Assets/Textures/Particles/Rotated/trace_01_rotated.png" id="4_2p2sc"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HurtBox.cs" id="4_lb4uu"]
+[ext_resource type="Script" path="res://Scripts/Libs/SpringSystem/Spring.cs" id="5_de5sx"]
 
 [sub_resource type="Gradient" id="Gradient_unkbs"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
@@ -39,10 +40,11 @@ _data = {
 "RESET": SubResource("Animation_b5fuf")
 }
 
-[node name="ActorBase" type="CharacterBody2D" node_paths=PackedStringArray("_hurtBox", "_visibleOnScreenNotifier2D", "_speedParticles")]
+[node name="ActorBase" type="CharacterBody2D" node_paths=PackedStringArray("_hurtBox", "Spring", "_visibleOnScreenNotifier2D", "_speedParticles")]
 motion_mode = 1
 script = ExtResource("1_s858g")
 _hurtBox = NodePath("Components/HurtBox")
+Spring = NodePath("Spring")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 _speedParticles = NodePath("SpeedParticles")
 
@@ -85,3 +87,7 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_o8qb3")
 }
+
+[node name="Spring" type="Node2D" parent="."]
+script = ExtResource("5_de5sx")
+EnabledDraw = true

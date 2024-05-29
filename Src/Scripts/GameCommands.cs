@@ -4,7 +4,7 @@ namespace NovaDrift.Scripts;
 
 public sealed class PlayerCommands
 {
-    public int SomethingId { get; set; }
+    public int SomethingId { get; set; } = 1001;
     public void UseAbilityById() => DataBuilder.BuildAbilityById(SomethingId).Use();
     public void UseShooterById() => DataBuilder.BuildWeaponById(SomethingId).Use();
     public void UseBodyById() => DataBuilder.BuildBodyById(SomethingId).Use();
@@ -16,7 +16,7 @@ public sealed class PlayerCommands
 
 public sealed class WorldCommands
 {
-    public int SomethingId { get; set; }
+    public int SomethingId { get; set; } = 1001;
     public void GenerateMobById() => MobSpawner.GenerateMobByIdAction?.Invoke(SomethingId);
     public void GenerateBossById() => MobSpawner.GenerateBossById?.Invoke(SomethingId);
     

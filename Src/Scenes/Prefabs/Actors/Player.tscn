@@ -115,9 +115,10 @@ variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_mu8jh"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hujpf"]
 size = Vector2(78, 92)
 
-[node name="Player" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter", "_speedParticles") groups=["Players"] instance=ExtResource("1_0c8c2")]
+[node name="Player" node_paths=PackedStringArray("_hurtBox", "Spring", "Sprite", "_visibleOnScreenNotifier2D", "Shooter", "_speedParticles") groups=["Players"] instance=ExtResource("1_0c8c2")]
 script = ExtResource("2_15kon")
 _hurtBox = NodePath("Components/HurtBox")
+Spring = NodePath("Spring")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 IsPlayer = true

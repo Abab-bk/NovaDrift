@@ -31,7 +31,7 @@ public partial class Player : Actor
         EventBus.OnWorldColorChanged += ChangeColor;
         ChangeColor();
         
-        Stats.Health.ValueChanged += (float value) =>
+        Stats.Health.ValueChanged += value =>
         {
             UpdateUi();
 
@@ -114,7 +114,7 @@ public partial class Player : Actor
     public void SetShield(BaseShield shield)
     {
         Shield = shield;
-        Shield.Health.ValueChanged += (float value) =>
+        Shield.Health.ValueChanged += _ =>
         {
             UpdateUi();
         };

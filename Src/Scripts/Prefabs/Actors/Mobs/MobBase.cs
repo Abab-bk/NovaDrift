@@ -1,6 +1,6 @@
 using System;
+using AcidWallStudio.SpringSystem;
 using Godot;
-using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts.Prefabs.Actors.Mobs;
@@ -11,11 +11,25 @@ public partial class MobBase : Actor
 
     [Export] public string Sign;
 
+    private void AddNodeToSpring(Node node)
+    {
+        if (node is not Node2D node2D) return;
+        Spring.AddTargetPoint(new SpringInfo(SpringType.Push, node2D, 10f));
+    }
+
     public override void _Ready()
     {
         if (MobInfo == null) throw new Exception("MobInfo 为 Null");
+
+        EventBus.OnMobEnteredTree += AddNodeToSpring;
+        
         base._Ready();
         AddToGroup("Mobs");
+
+        foreach (var mob in GetTree().GetNodesInGroup("Mobs"))
+        {
+            AddNodeToSpring(mob);
+        }
         
         Stats.Health.ValueChanged += (value) =>
         {
@@ -27,7 +41,7 @@ public partial class MobBase : Actor
         
         // if (Shooter != null) Shooter.Init();
     }
-
+    
     protected override void InitStats()
     {
         Stats.Health.BaseValue = MobInfo.Health * Global.GetPlayerLevel();
@@ -61,5 +75,11 @@ public partial class MobBase : Actor
         LookAt(target.GlobalPosition);
         TryMoveTo(GlobalPosition.DirectionTo(target.GlobalPosition), delta);
         MoveAndCollide(Velocity * delta);
+    }
+
+    public override void TryMoveTo(Vector2 dir, double delta)
+    {
+        var targetVelocity = (dir + Spring.GetMovement()) * Stats.Speed.Value;
+        Velocity = Velocity.MoveToward(targetVelocity, Stats.Acceleration.Value * (float)delta);
     }
 }

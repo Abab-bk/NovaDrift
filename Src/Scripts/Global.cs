@@ -48,23 +48,31 @@ public static class Global
         set
         {
             _sceneTree = value;
-            _sceneTree.NodeAdded += ConnectButtonSoundsSignal;
+            _sceneTree.NodeAdded += node =>
+            {
+                switch (node)
+                {
+                    case BaseButton button:
+                        ConnectButtonSoundsSignal(button);
+                        break;
+                    case MobBase mobBase:
+                        EventBus.EnteredMob(mobBase);
+                        break;
+                    default:
+                        break;
+                }
+            };
         }
     }
 
     private static SceneTree _sceneTree;
 
-    public static void ConnectButtonSoundsSignal(Node node)
+    private static void ConnectButtonSoundsSignal(BaseButton button)
     {
-        if (node is not BaseButton button) return;
         button.Pressed += () =>
         {
             SoundManager.PlayOneShotById("event:/ButtonClicked");
         };
-    }
-
-    public static void Init()
-    {
     }
 
     public static void SetWorldColor(Constants.WorldColor color)

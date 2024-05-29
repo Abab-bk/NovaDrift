@@ -13,7 +13,14 @@ public static class EventBus
     public static Action OnGameInit;
     public static Action OnGameStart;
 
+    public static event Action<MobBase> OnMobEnteredTree;
+
     public static Action OnWorldColorChanged;
 
     public static Func<string, string, ActionBtnPanel> AddActionButton;
+    
+    public static void EnteredMob(MobBase mobBase)
+    {
+        OnMobDied?.Invoke(mobBase);
+    }
 }

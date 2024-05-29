@@ -49,7 +49,6 @@ public partial class GameWorld : Node2D
 		EventBus.OnGameInit += Init;
 		EventBus.OnGameOver += GameOver;
 		
-		Global.Init();
 		AcidSaver.LoadAll();
 		
 		if (Global.CurrentPlatform != GamePlatform.Desktop)
@@ -113,7 +112,7 @@ public partial class GameWorld : Node2D
 		Global.SetWorldColor(Constants.Colors.Red);
 	}
 
-	private async void GameOver()
+	private void GameOver()
 	{
 		GetTree().CallGroup("Mobs", Node.MethodName.QueueFree);
 		

@@ -1,7 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://d25jyaf2cexon"]
+[gd_scene load_steps=12 format=3 uid="uid://d25jyaf2cexon"]
 
 [ext_resource type="Script" path="res://Scripts/GameWorld.cs" id="1_xxmb6"]
+[ext_resource type="Texture2D" uid="uid://dnhr4p4esadrx" path="res://Assets/Textures/Backgrounds/BgStarsNear.png" id="2_vw5cp"]
+[ext_resource type="Texture2D" uid="uid://ctjwbswajgyik" path="res://Assets/Textures/Backgrounds/BgStarsMid.png" id="3_wfgd1"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/MobSpawner.cs" id="4_4mpug"]
+[ext_resource type="Texture2D" uid="uid://u0tycejtltpc" path="res://Assets/Textures/Backgrounds/BgStarsFar.png" id="4_qp3ym"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HazardSpawner.cs" id="5_2fkc6"]
 [ext_resource type="PackedScene" uid="uid://drcoa0ndbt6te" path="res://addons/AcidJoystick/Joystick.tscn" id="6_6ip1o"]
 [ext_resource type="Texture2D" uid="uid://hxannpomw2b1" path="res://Assets/Textures/Particles/circle_01.png" id="6_atija"]
@@ -34,10 +37,34 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.162596, 0.107811, 0.32927, 1)
+color = Color(0.168468, 0.112248, 0.339585, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxBackground" type="Node2D" parent="."]
+
+[node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground"]
+repeat_size = Vector2(2048, 2048)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Parallax2D"]
+texture = ExtResource("2_vw5cp")
+centered = false
+
+[node name="Parallax2D2" type="Parallax2D" parent="ParallaxBackground"]
+repeat_size = Vector2(2048, 2048)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Parallax2D2"]
+texture = ExtResource("3_wfgd1")
+centered = false
+
+[node name="Parallax2D3" type="Parallax2D" parent="ParallaxBackground"]
+repeat_size = Vector2(2048, 2048)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Parallax2D3"]
+texture = ExtResource("4_qp3ym")
+centered = false
 
 [node name="Hud" type="CanvasLayer" parent="."]
 
@@ -54,6 +81,7 @@ scale = Vector2(0.24, 0.24)
 [node name="MobSpawner" type="Node2D" parent="."]
 position = Vector2(1253, 670)
 script = ExtResource("4_4mpug")
+_enabled = false
 
 [node name="HazardSpawner" type="Node2D" parent="."]
 script = ExtResource("5_2fkc6")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://d1kwbf54qmb76"]
+[gd_scene load_steps=7 format=3 uid="uid://d1kwbf54qmb76"]
 
 [ext_resource type="Script" path="res://Scripts/Test.cs" id="1_kfpb1"]
 [ext_resource type="Texture2D" uid="uid://c5oierqc18mer" path="res://icon.svg" id="2_3prsa"]
+[ext_resource type="Script" path="res://Scripts/Libs/SpringSystem/Spring.cs" id="3_n0dxp"]
 
 [sub_resource type="Animation" id="Animation_j7100"]
 length = 0.001
@@ -40,16 +41,28 @@ _data = {
 "run": SubResource("Animation_gqvmo")
 }
 
-[node name="Test" type="Node2D"]
+[node name="Test" type="Node2D" node_paths=PackedStringArray("_source", "_target", "_sourceSpring", "_targetSpring")]
 script = ExtResource("1_kfpb1")
+_source = NodePath("Sprite2D")
+_target = NodePath("Sprite2D2")
+_sourceSpring = NodePath("Sprite2D/Spring")
+_targetSpring = NodePath("Sprite2D2/Spring")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(170, 701)
 texture = ExtResource("2_3prsa")
 
+[node name="Spring" type="Node2D" parent="Sprite2D"]
+script = ExtResource("3_n0dxp")
+EnabledDraw = true
+
 [node name="Sprite2D2" type="Sprite2D" parent="."]
 position = Vector2(1268, 765)
 texture = ExtResource("2_3prsa")
+
+[node name="Spring" type="Node2D" parent="Sprite2D2"]
+script = ExtResource("3_n0dxp")
+EnabledDraw = true
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

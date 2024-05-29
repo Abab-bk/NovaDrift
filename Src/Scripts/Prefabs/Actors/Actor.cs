@@ -1,5 +1,6 @@
 using System;
 using AcidWallStudio.AcidUtilities;
+using AcidWallStudio.SpringSystem;
 using DsUi;
 using Godot;
 using GTweens.Builders;
@@ -20,6 +21,7 @@ public partial class Actor : CharacterBody2D
     
     [Export] private HurtBox _hurtBox;
     
+    [Export] protected Spring Spring;
     [Export] protected Sprite2D Sprite;
     
     [Export] private VisibleOnScreenNotifier2D _visibleOnScreenNotifier2D;
@@ -83,7 +85,7 @@ public partial class Actor : CharacterBody2D
         MoveAndCollide(Velocity * delta);
     }
     
-    public void TryMoveTo(Vector2 dir, double delta)
+    public virtual void TryMoveTo(Vector2 dir, double delta)
     {
         var targetVelocity = dir * Stats.Speed.Value;
         // TODO
@@ -140,6 +142,7 @@ public partial class Actor : CharacterBody2D
         };
         
         this.SetIsPlayer(IsPlayer);
+        if (IsPlayer) SetCollisionMaskValue((int)Layer.Mob, false);
         
         _hurtBox.OnHit += OnHit;
         _hurtBox.SetIsPlayer(IsPlayer);
