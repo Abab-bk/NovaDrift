@@ -9,7 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://drcoa0ndbt6te" path="res://addons/AcidJoystick/Joystick.tscn" id="6_6ip1o"]
 [ext_resource type="Texture2D" uid="uid://hxannpomw2b1" path="res://Assets/Textures/Particles/circle_01.png" id="6_atija"]
 [ext_resource type="Script" path="res://Scripts/Libs/DwarfImpulse/Runtime/ShakeDirector2D.cs" id="7_y53n8"]
-[ext_resource type="Environment" uid="uid://dwua3nxtba68l" path="res://Assets/Environments/Default.tres" id="8_6l4n4"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Components/EnvironmentGenerator.cs" id="10_4lo2s"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_34d4f"]
 
@@ -44,6 +44,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground"]
 repeat_size = Vector2(2048, 2048)
+autoscroll = Vector2(100, 50)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Parallax2D"]
@@ -52,6 +53,7 @@ centered = false
 
 [node name="Parallax2D2" type="Parallax2D" parent="ParallaxBackground"]
 repeat_size = Vector2(2048, 2048)
+autoscroll = Vector2(200, 150)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Parallax2D2"]
@@ -60,6 +62,7 @@ centered = false
 
 [node name="Parallax2D3" type="Parallax2D" parent="ParallaxBackground"]
 repeat_size = Vector2(2048, 2048)
+autoscroll = Vector2(250, 200)
 repeat_times = 3
 
 [node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Parallax2D3"]
@@ -78,6 +81,10 @@ unique_name_in_owner = true
 position = Vector2(2216, 1052)
 scale = Vector2(0.24, 0.24)
 
+[node name="EnvironmentGenerator" type="Node2D" parent="." node_paths=PackedStringArray("_parallaxBackground")]
+script = ExtResource("10_4lo2s")
+_parallaxBackground = NodePath("../ParallaxBackground")
+
 [node name="MobSpawner" type="Node2D" parent="."]
 position = Vector2(1253, 670)
 script = ExtResource("4_4mpug")
@@ -87,7 +94,6 @@ _enabled = false
 script = ExtResource("5_2fkc6")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = ExtResource("8_6l4n4")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1253, 670)
@@ -102,4 +108,3 @@ Target = NodePath("..")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
-zoom = Vector2(0.5, 0.5)

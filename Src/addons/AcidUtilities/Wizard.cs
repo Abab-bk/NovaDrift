@@ -32,6 +32,28 @@ public static class Wizard
         return FileAccess.Open(path, FileAccess.ModeFlags.Read).GetAsText();
     }
 
+
+    public static string GetRandomTexturePath(string path)
+    {
+        List<string> list = new List<string>();
+
+        var dir = DirAccess.Open(path);
+
+        dir.ListDirBegin();
+        var fileName = dir.GetNext();
+
+        while (fileName != "")
+        {
+            if (fileName.EndsWith(".png") || fileName.EndsWith(".tres"))
+            {
+                list.Add(fileName);
+            }
+            fileName = dir.GetNext();
+        }
+
+        return path + list.PickRandom();
+    }
+
     public static bool ChanceOverThreshold(int chance)
     {
         WeightedList<bool> list = new WeightedList<bool>();
