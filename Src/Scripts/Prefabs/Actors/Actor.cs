@@ -82,7 +82,7 @@ public partial class Actor : CharacterBody2D
     {
         LookAt(pos);
         TryMoveTo(GlobalPosition.DirectionTo(pos), delta);
-        MoveAndCollide(Velocity * delta);
+        MoveAndSlide();
     }
     
     public virtual void TryMoveTo(Vector2 dir, double delta)
@@ -142,7 +142,6 @@ public partial class Actor : CharacterBody2D
         };
         
         this.SetIsPlayer(IsPlayer);
-        if (IsPlayer) SetCollisionMaskValue((int)Layer.Mob, false);
         
         _hurtBox.OnHit += OnHit;
         _hurtBox.SetIsPlayer(IsPlayer);
@@ -233,19 +232,7 @@ public partial class Actor : CharacterBody2D
     {
         Velocity += Stats.ForceVector;
 
-        var collider = MoveAndCollide(Velocity * (float)delta);
-        if (collider != null)
-        {
-            if (collider.GetCollider() is StaticBody2D staticBody2D && staticBody2D.Owner is AsteroidBase)
-            {
-                Stats.AddKnockBack(20f);
-            }
-
-            if (collider.GetCollider() is Actor actor)
-            {
-                Stats.AddKnockBack(40f);
-            }
-        }
+        MoveAndSlide();
         
         if (Stats.GetKnockBack() > 0)
         {

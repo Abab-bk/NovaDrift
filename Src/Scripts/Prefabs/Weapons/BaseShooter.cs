@@ -13,6 +13,8 @@ public abstract partial class BaseShooter : Node2D
     public Action<Actor> OnHit { get; set; }
     public Func<BaseShooter, BulletBase> GetBulletFunc { get; set; }
     
+    protected Timer DefaultCooldownTimer { get; set; }
+    
     public Weapon Weapon { get; set; } = new Weapon();
 
     public bool IsPlayer { get; set; }
@@ -21,13 +23,25 @@ public abstract partial class BaseShooter : Node2D
     
     public abstract void Destroy();
 
-    public abstract void SetShootCd(float value);
+    public virtual void SetShootCd(float value)
+    {
+        if (DefaultCooldownTimer != null) DefaultCooldownTimer.WaitTime = value;
+    }
 
     public abstract void Init();
 
     public override void _Ready()
     {
         Init();
+    }
+
+    protected void SetDefaultCooldownTimer(float waitTime)
+    {
+        DefaultCooldownTimer = new Timer()
+        {
+            WaitTime = waitTime
+        };
+        AddChild(DefaultCooldownTimer);
     }
 
     public BulletBase GetBullet()

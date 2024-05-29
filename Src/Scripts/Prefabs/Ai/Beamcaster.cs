@@ -1,4 +1,5 @@
-﻿using Godot;
+﻿using System;
+using Godot;
 
 namespace NovaDrift.Scripts.Prefabs.Ai;
 
@@ -28,6 +29,9 @@ public partial class Beamcaster : MobAiComponent
     {
         Machine.SetBoolean("PlayerInShootRange", PlayerInShootRange());
         Mob.Shoot();
+        
+        Mob.Velocity = (Mob.GlobalPosition - Global.Player.GlobalPosition).Normalized().Rotated(MathF.PI / 2) *
+                       Mob.Stats.Speed.Value;
     }
     private void _OnGoingToPlayerProcess(float delta)
     {

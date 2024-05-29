@@ -1,5 +1,6 @@
 ﻿using System;
 using Godot;
+using NovaDrift.Scripts.Prefabs.Actors;
 
 namespace NovaDrift.Scripts.Vfx;
 
@@ -20,18 +21,32 @@ public static class CollisionObjectExtensions
     {
         source.CollisionLayer = 0;
         source.CollisionMask = 0;
-        
-        if (isPlayer)
+
+        if (source is Actor)
         {
-            source.SetCollisionLayerValue((int)Layer.Player, true);
-            source.SetCollisionMaskValue((int)Layer.Mob, true);
+            if (isPlayer)
+            {
+                source.SetCollisionLayerValue((int)Layer.Player, true);
+            }
+            else
+            {
+                source.SetCollisionLayerValue((int)Layer.Mob, true);
+            }
         }
         else
         {
-            source.SetCollisionLayerValue((int)Layer.Mob, true);
-            source.SetCollisionMaskValue((int)Layer.Player, true);
+            if (isPlayer)
+            {
+                source.SetCollisionLayerValue((int)Layer.Player, true);
+                source.SetCollisionMaskValue((int)Layer.Mob, true);
+            }
+            else
+            {
+                source.SetCollisionLayerValue((int)Layer.Mob, true);
+                source.SetCollisionMaskValue((int)Layer.Player, true);
+            }
         }
-        
+
         source.SetCollisionMaskValue((int)Layer.Object, true);
     }
 }

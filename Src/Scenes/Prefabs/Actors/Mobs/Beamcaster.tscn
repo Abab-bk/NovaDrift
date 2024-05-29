@@ -13,15 +13,15 @@ size = Vector2(90, 106)
 [sub_resource type="StateConfig" id="StateConfig_r1dwg"]
 state_name = &"Idle"
 type = 1
-editor_offset = Vector2(-100, -140)
+editor_offset = Vector2(-60, -120)
 
 [sub_resource type="StateConfig" id="StateConfig_x6cuv"]
 state_name = &"GoingToPlayer"
-editor_offset = Vector2(440, -140)
+editor_offset = Vector2(380, -120)
 
 [sub_resource type="StateConfig" id="StateConfig_0toy3"]
 state_name = &"Shoot"
-editor_offset = Vector2(240, 340)
+editor_offset = Vector2(380, 320)
 
 [sub_resource type="VariableConfig" id="VariableConfig_wca6e"]
 variable_name = &"PlayerInShootRange"
@@ -86,17 +86,19 @@ state_config_list = Array[StateConfig]([SubResource("StateConfig_r1dwg"), SubRes
 transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_4plgd"), SubResource("TransitionConfig_u0os2"), SubResource("TransitionConfig_udvxp"), SubResource("TransitionConfig_o67p8")])
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_wca6e")])
 
-[node name="Beamcaster" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_yrrya")]
+[node name="Beamcaster" node_paths=PackedStringArray("_hurtBox", "Spring", "Sprite", "_visibleOnScreenNotifier2D", "Shooter", "_speedParticles") instance=ExtResource("1_yrrya")]
 modulate = Color(0.972549, 0.831373, 1, 1)
 _hurtBox = NodePath("Components/HurtBox")
+Spring = NodePath("Spring")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")
+_speedParticles = NodePath("SpeedParticles")
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_y3saf")
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(-3.5, 0)
 shape = SubResource("RectangleShape2D_blio1")
 
@@ -117,6 +119,6 @@ Mob = NodePath("../..")
 [node name="HFSM" parent="State" index="1"]
 root_fsm_config = SubResource("FSMConfig_xi2o7")
 
-[node name="VisibleOnScreenNotifier2D" parent="." index="4"]
+[node name="VisibleOnScreenNotifier2D" parent="." index="5"]
 position = Vector2(17, 1.37097)
 scale = Vector2(1.6, 2.05645)

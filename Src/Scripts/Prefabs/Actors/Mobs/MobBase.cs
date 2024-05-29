@@ -9,12 +9,14 @@ public partial class MobBase : Actor
 {
     public MobInfo MobInfo;
 
+    private Node2D _target;
+    
     [Export] public string Sign;
 
     private void AddNodeToSpring(Node node)
     {
         if (node is not Node2D node2D) return;
-        Spring.AddTargetPoint(new SpringInfo(SpringType.Push, node2D, 10f));
+        Spring.AddTargetPoint(new SpringInfo(SpringType.Push, node2D, 1f));
     }
 
     public override void _Ready()
@@ -25,12 +27,15 @@ public partial class MobBase : Actor
         
         base._Ready();
         AddToGroup("Mobs");
-
+        
+        Spring.AddTargetPoint(new SpringInfo(SpringType.Pull, Global.Player, 1f));
         foreach (var mob in GetTree().GetNodesInGroup("Mobs"))
         {
             AddNodeToSpring(mob);
         }
-        
+
+        EventBus.OnMobDied += Spring.RemoveTargetPoint;
+
         Stats.Health.ValueChanged += (value) =>
         {
             if (value <= 0)
@@ -73,13 +78,23 @@ public partial class MobBase : Actor
     public void SetTargetAndMove(Node2D target, float delta)
     {
         LookAt(target.GlobalPosition);
-        TryMoveTo(GlobalPosition.DirectionTo(target.GlobalPosition), delta);
-        MoveAndCollide(Velocity * delta);
+        // TryMoveTo(GlobalPosition.DirectionTo(target.GlobalPosition), delta);
+
+        if (target != _target)
+        {
+            Spring.RemoveTargetPoint(_target);
+            _target = target;
+            Spring.AddTargetPoint(new SpringInfo(SpringType.Pull, _target, 1f));
+        }
+
+        TryMoveTo(Vector2.Right, delta);
+        MoveAndSlide();
     }
 
     public override void TryMoveTo(Vector2 dir, double delta)
     {
-        var targetVelocity = (dir + Spring.GetMovement()) * Stats.Speed.Value;
-        Velocity = Velocity.MoveToward(targetVelocity, Stats.Acceleration.Value * (float)delta);
+        var targetVelocity = Spring.GetMovement() * Stats.Speed.Value;
+        // Velocity = Velocity.MoveToward(targetVelocity, Stats.Acceleration.Value * (float)delta);
+        Velocity = targetVelocity;
     }
 }

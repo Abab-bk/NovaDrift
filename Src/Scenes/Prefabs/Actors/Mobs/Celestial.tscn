@@ -58,14 +58,16 @@ state_config_list = Array[StateConfig]([SubResource("StateConfig_31rmu"), SubRes
 transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_mo5et"), SubResource("TransitionConfig_icujs"), SubResource("TransitionConfig_2v7qa"), SubResource("TransitionConfig_fi3s3")])
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_4y5mh")])
 
-[node name="Celestial" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_pbe1d")]
+[node name="Celestial" node_paths=PackedStringArray("_hurtBox", "Spring", "Sprite", "_visibleOnScreenNotifier2D", "Shooter", "_speedParticles") instance=ExtResource("1_pbe1d")]
 modulate = Color(1, 0.968627, 0.878431, 1)
 _hurtBox = NodePath("Components/HurtBox")
+Spring = NodePath("Spring")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")
+_speedParticles = NodePath("SpeedParticles")
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_d1si5")
 
 [node name="Shooter" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]

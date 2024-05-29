@@ -99,3 +99,7 @@ texture = ExtResource("6_atija")
 [node name="ShakeDirector2D" type="Node2D" parent="." node_paths=PackedStringArray("Target")]
 script = ExtResource("7_y53n8")
 Target = NodePath("..")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+zoom = Vector2(0.5, 0.5)
