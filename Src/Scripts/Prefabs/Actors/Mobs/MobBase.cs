@@ -1,6 +1,7 @@
 using System;
 using AcidWallStudio.SpringSystem;
 using Godot;
+using NovaDrift.Scripts.Libs.Boids;
 using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts.Prefabs.Actors.Mobs;
@@ -16,13 +17,13 @@ public partial class MobBase : Actor
     private void AddNodeToSpring(Node node)
     {
         if (node is not Node2D node2D) return;
-        Spring.AddTargetPoint(new SpringInfo(SpringType.Push, node2D, 1f));
+        Spring.AddTargetPoint(new SpringInfo(SpringType.Push, node2D, 1000f));
     }
 
     public override void _Ready()
     {
         if (MobInfo == null) throw new Exception("MobInfo 为 Null");
-
+        
         EventBus.OnMobEnteredTree += AddNodeToSpring;
         
         base._Ready();
@@ -87,13 +88,14 @@ public partial class MobBase : Actor
             Spring.AddTargetPoint(new SpringInfo(SpringType.Pull, _target, 1f));
         }
 
-        TryMoveTo(Vector2.Right, delta);
+        TryMoveTo(GlobalPosition.DirectionTo(target.GlobalPosition), delta);
         MoveAndSlide();
     }
 
     public override void TryMoveTo(Vector2 dir, double delta)
     {
         var targetVelocity = Spring.GetMovement() * Stats.Speed.Value;
+        // var targetVelocity = dir * Stats.Speed.Value;
         // Velocity = Velocity.MoveToward(targetVelocity, Stats.Acceleration.Value * (float)delta);
         Velocity = targetVelocity;
     }

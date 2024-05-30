@@ -92,4 +92,3 @@ libraries = {
 
 [node name="Spring" type="Node2D" parent="."]
 script = ExtResource("5_de5sx")
-EnabledDraw = true

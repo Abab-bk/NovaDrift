@@ -86,10 +86,9 @@ state_config_list = Array[StateConfig]([SubResource("StateConfig_r1dwg"), SubRes
 transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_4plgd"), SubResource("TransitionConfig_u0os2"), SubResource("TransitionConfig_udvxp"), SubResource("TransitionConfig_o67p8")])
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_wca6e")])
 
-[node name="Beamcaster" node_paths=PackedStringArray("_hurtBox", "Spring", "Sprite", "_visibleOnScreenNotifier2D", "Shooter", "_speedParticles") instance=ExtResource("1_yrrya")]
+[node name="Beamcaster" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter", "_speedParticles") instance=ExtResource("1_yrrya")]
 modulate = Color(0.972549, 0.831373, 1, 1)
 _hurtBox = NodePath("Components/HurtBox")
-Spring = NodePath("Spring")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")
@@ -125,3 +124,6 @@ root_fsm_config = SubResource("FSMConfig_xi2o7")
 [node name="VisibleOnScreenNotifier2D" parent="." index="5"]
 position = Vector2(17, 1.37097)
 scale = Vector2(1.6, 2.05645)
+
+[node name="Spring" parent="." index="8"]
+EnabledDraw = true

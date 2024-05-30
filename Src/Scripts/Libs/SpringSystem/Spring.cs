@@ -33,18 +33,19 @@ public partial class Spring : Node2D
             
             if (springInfo.Type == SpringType.Push)
             {
-                
-                var dir = GlobalPosition.DirectionTo(target.GlobalPosition);
-                var distance = GlobalPosition.DistanceTo(target.GlobalPosition);
-                var springForce = springInfo.Force / (springInfo.Force + distance * distance * distance);
-                movement -= dir * springForce;
+                // var dir = GlobalPosition.DirectionTo(target.GlobalPosition);
+
+                var ratio = (target.GlobalPosition - GlobalPosition).Length() / 20f > 0f ? 1f : 0f;
+                var dir = GlobalPosition.DirectionTo(target.GlobalPosition) * ratio;
+
+                movement -= dir * 140f;
                 continue;
             }
 
             var pullDir = GlobalPosition.DirectionTo(target.GlobalPosition);
             var pullDistance = GlobalPosition.DistanceTo(target.GlobalPosition);
             
-            var pullSpringForce = pullDistance - 10f; // 10f is targetDistance, see video, I don`t know.
+            var pullSpringForce = pullDistance - 20f;
             movement += pullDir * pullSpringForce;
         }
 

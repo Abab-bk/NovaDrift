@@ -100,3 +100,6 @@ root_fsm_config = SubResource("FSMConfig_lt2to")
 
 [node name="CollisionShape2D" parent="BodyArea" index="0"]
 shape = SubResource("RectangleShape2D_03sbt")
+
+[node name="Spring" parent="." index="8"]
+EnabledDraw = true

@@ -6,15 +6,17 @@
 [ext_resource type="Script" path="res://Scripts/Prefabs/MobAiComponent.cs" id="3_d6jih"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/Shooter.cs" id="3_j5x1v"]
 
-[node name="MobBase" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") groups=["Mobs"] instance=ExtResource("1_kd23v")]
+[node name="MobBase" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter", "_speedParticles") groups=["Mobs"] instance=ExtResource("1_kd23v")]
 script = ExtResource("2_e2oe2")
 Sign = ""
+_boidAgent = NodePath("")
 _hurtBox = NodePath("Components/HurtBox")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")
+_speedParticles = NodePath("SpeedParticles")
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("3_4f5vs")
 
 [node name="Shooter" type="Node2D" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
