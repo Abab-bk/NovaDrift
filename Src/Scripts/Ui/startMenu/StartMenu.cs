@@ -20,6 +20,19 @@ public abstract partial class StartMenu : UiBase
     }
     private MarginContainer _L_MarginContainer;
 
+    /// <summary>
+    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.Setting.SettingPanel"/>, 节点路径: StartMenu.Setting
+    /// </summary>
+    public Setting L_Setting
+    {
+        get
+        {
+            if (_L_Setting == null) _L_Setting = new Setting((StartMenuPanel)this, GetNode<NovaDrift.Scripts.Ui.Setting.SettingPanel>("Setting"));
+            return _L_Setting;
+        }
+    }
+    private Setting _L_Setting;
+
 
     public StartMenu() : base(nameof(StartMenu))
     {
@@ -48,6 +61,20 @@ public abstract partial class StartMenu : UiBase
         inst4.L_ExitBtn.Instance.OnCreateUi();
         inst4.L_ExitBtn.Instance.OnInitNestedUi();
 
+        var inst5 = this;
+        RecordNestedUi(inst5.L_Setting.Instance, null, UiManager.RecordType.Open);
+        inst5.L_Setting.Instance.OnCreateUi();
+        inst5.L_Setting.Instance.OnInitNestedUi();
+
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.TextureRect"/>, 路径: StartMenu.MarginContainer.TextureRect
+    /// </summary>
+    public class TextureRect : UiNode<StartMenuPanel, Godot.TextureRect, TextureRect>
+    {
+        public TextureRect(StartMenuPanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
+        public override TextureRect Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
     }
 
     /// <summary>
@@ -225,6 +252,19 @@ public abstract partial class StartMenu : UiBase
     public class MarginContainer : UiNode<StartMenuPanel, Godot.MarginContainer, MarginContainer>
     {
         /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: StartMenu.TextureRect
+        /// </summary>
+        public TextureRect L_TextureRect
+        {
+            get
+            {
+                if (_L_TextureRect == null) _L_TextureRect = new TextureRect(UiPanel, Instance.GetNode<Godot.TextureRect>("TextureRect"));
+                return _L_TextureRect;
+            }
+        }
+        private TextureRect _L_TextureRect;
+
+        /// <summary>
         /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: StartMenu.VBoxContainer
         /// </summary>
         public VBoxContainer L_VBoxContainer
@@ -241,6 +281,27 @@ public abstract partial class StartMenu : UiBase
         public override MarginContainer Clone() => new (UiPanel, (Godot.MarginContainer)Instance.Duplicate());
     }
 
+    /// <summary>
+    /// 类型: <see cref="NovaDrift.Scripts.Ui.Setting.SettingPanel"/>, 路径: StartMenu.Setting
+    /// </summary>
+    public class Setting : UiNode<StartMenuPanel, NovaDrift.Scripts.Ui.Setting.SettingPanel, Setting>
+    {
+        public Setting(StartMenuPanel uiPanel, NovaDrift.Scripts.Ui.Setting.SettingPanel node) : base(uiPanel, node) {  }
+        public override Setting Clone()
+        {
+            var uiNode = new Setting(UiPanel, (NovaDrift.Scripts.Ui.Setting.SettingPanel)Instance.Duplicate());
+            UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
+            uiNode.Instance.OnCreateUi();
+            uiNode.Instance.OnInitNestedUi();
+            return uiNode;
+        }
+    }
+
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: StartMenu.MarginContainer.TextureRect
+    /// </summary>
+    public TextureRect S_TextureRect => L_MarginContainer.L_TextureRect;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Control"/>, 节点路径: StartMenu.MarginContainer.VBoxContainer.Control
@@ -281,5 +342,10 @@ public abstract partial class StartMenu : UiBase
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: StartMenu.MarginContainer
     /// </summary>
     public MarginContainer S_MarginContainer => L_MarginContainer;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.Setting.SettingPanel"/>, 节点路径: StartMenu.Setting
+    /// </summary>
+    public Setting S_Setting => L_Setting;
 
 }

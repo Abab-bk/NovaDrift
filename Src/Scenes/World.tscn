@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://d25jyaf2cexon"]
+[gd_scene load_steps=16 format=3 uid="uid://d25jyaf2cexon"]
 
 [ext_resource type="Script" path="res://Scripts/GameWorld.cs" id="1_xxmb6"]
 [ext_resource type="Texture2D" uid="uid://dnhr4p4esadrx" path="res://Assets/Textures/Backgrounds/BgStarsNear.png" id="2_vw5cp"]
@@ -6,10 +6,14 @@
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/MobSpawner.cs" id="4_4mpug"]
 [ext_resource type="Texture2D" uid="uid://u0tycejtltpc" path="res://Assets/Textures/Backgrounds/BgStarsFar.png" id="4_qp3ym"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HazardSpawner.cs" id="5_2fkc6"]
+[ext_resource type="Texture2D" uid="uid://b48ahd5gch65u" path="res://Assets/Textures/Backgrounds/Nebulas/Nebula1.tres" id="5_210am"]
 [ext_resource type="PackedScene" uid="uid://drcoa0ndbt6te" path="res://addons/AcidJoystick/Joystick.tscn" id="6_6ip1o"]
 [ext_resource type="Texture2D" uid="uid://hxannpomw2b1" path="res://Assets/Textures/Particles/circle_01.png" id="6_atija"]
+[ext_resource type="Texture2D" uid="uid://bkrnxlkdrg2it" path="res://Assets/Textures/Backgrounds/Nebulas/Nebula2.tres" id="6_fgtpv"]
+[ext_resource type="Texture2D" uid="uid://dqjypil3nt3vv" path="res://Assets/Textures/Backgrounds/Stars/Star1.tres" id="7_n7hc1"]
 [ext_resource type="Script" path="res://Scripts/Libs/DwarfImpulse/Runtime/ShakeDirector2D.cs" id="7_y53n8"]
-[ext_resource type="Script" path="res://Scripts/Prefabs/Components/EnvironmentGenerator.cs" id="10_4lo2s"]
+[ext_resource type="Texture2D" uid="uid://basuit8t43mj" path="res://Assets/Textures/Backgrounds/Stars/Star2.tres" id="8_qi8fl"]
+[ext_resource type="Environment" uid="uid://dwua3nxtba68l" path="res://Assets/Environments/Default.tres" id="12_ltxuf"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_34d4f"]
 
@@ -42,32 +46,70 @@ metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxBackground" type="Node2D" parent="."]
 
-[node name="Parallax2D" type="Parallax2D" parent="ParallaxBackground"]
+[node name="BgStarNear" type="Parallax2D" parent="ParallaxBackground"]
+repeat_size = Vector2(2048, 2048)
+autoscroll = Vector2(150, 100)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BgStarNear"]
+texture = ExtResource("2_vw5cp")
+centered = false
+
+[node name="BgStarMid" type="Parallax2D" parent="ParallaxBackground"]
 repeat_size = Vector2(2048, 2048)
 autoscroll = Vector2(100, 50)
 repeat_times = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Parallax2D"]
-texture = ExtResource("2_vw5cp")
-centered = false
-
-[node name="Parallax2D2" type="Parallax2D" parent="ParallaxBackground"]
-repeat_size = Vector2(2048, 2048)
-autoscroll = Vector2(200, 150)
-repeat_times = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Parallax2D2"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BgStarMid"]
 texture = ExtResource("3_wfgd1")
 centered = false
 
-[node name="Parallax2D3" type="Parallax2D" parent="ParallaxBackground"]
+[node name="BgStarFar" type="Parallax2D" parent="ParallaxBackground"]
 repeat_size = Vector2(2048, 2048)
-autoscroll = Vector2(250, 200)
+autoscroll = Vector2(50, 10)
 repeat_times = 3
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Parallax2D3"]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BgStarFar"]
 texture = ExtResource("4_qp3ym")
 centered = false
+
+[node name="Background" type="Node2D" parent="ParallaxBackground"]
+
+[node name="Plant" type="Parallax2D" parent="ParallaxBackground/Background"]
+repeat_size = Vector2(3000, 3000)
+autoscroll = Vector2(-4, 4)
+repeat_times = 3
+
+[node name="Plant" type="Sprite2D" parent="ParallaxBackground/Background/Plant"]
+position = Vector2(1986, 414)
+texture = ExtResource("8_qi8fl")
+
+[node name="Nebula" type="Parallax2D" parent="ParallaxBackground/Background"]
+repeat_size = Vector2(3000, 3000)
+autoscroll = Vector2(-6, 6)
+repeat_times = 3
+
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background/Nebula"]
+position = Vector2(269, 1052)
+texture = ExtResource("5_210am")
+
+[node name="Nebula2" type="Parallax2D" parent="ParallaxBackground/Background"]
+repeat_size = Vector2(3000, 3000)
+autoscroll = Vector2(-8, 8)
+repeat_times = 3
+
+[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Background/Nebula2"]
+position = Vector2(1204, 549)
+texture = ExtResource("6_fgtpv")
+
+[node name="Star" type="Parallax2D" parent="ParallaxBackground/Background"]
+repeat_size = Vector2(3000, 3000)
+autoscroll = Vector2(-5, 6)
+repeat_times = 3
+
+[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/Background/Star"]
+position = Vector2(1509, 528)
+texture = ExtResource("7_n7hc1")
 
 [node name="Hud" type="CanvasLayer" parent="."]
 
@@ -81,10 +123,6 @@ unique_name_in_owner = true
 position = Vector2(2216, 1052)
 scale = Vector2(0.24, 0.24)
 
-[node name="EnvironmentGenerator" type="Node2D" parent="." node_paths=PackedStringArray("_parallaxBackground")]
-script = ExtResource("10_4lo2s")
-_parallaxBackground = NodePath("../ParallaxBackground")
-
 [node name="MobSpawner" type="Node2D" parent="."]
 position = Vector2(1253, 670)
 script = ExtResource("4_4mpug")
@@ -94,6 +132,7 @@ _enabled = false
 script = ExtResource("5_2fkc6")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("12_ltxuf")
 
 [node name="PointLight2D" type="PointLight2D" parent="."]
 position = Vector2(1253, 670)

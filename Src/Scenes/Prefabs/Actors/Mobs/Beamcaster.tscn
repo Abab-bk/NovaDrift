@@ -95,6 +95,9 @@ _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")
 _speedParticles = NodePath("SpeedParticles")
 
+[node name="SpeedParticles" parent="." index="0"]
+visible = true
+
 [node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_y3saf")
 

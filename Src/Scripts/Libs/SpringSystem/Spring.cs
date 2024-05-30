@@ -29,9 +29,11 @@ public partial class Spring : Node2D
         
         foreach (var springInfo in _targetPoints)
         {
+            var target = springInfo.Target;
+            
             if (springInfo.Type == SpringType.Push)
             {
-                var target = springInfo.Target;
+                
                 var dir = GlobalPosition.DirectionTo(target.GlobalPosition);
                 var distance = GlobalPosition.DistanceTo(target.GlobalPosition);
                 var springForce = springInfo.Force / (springInfo.Force + distance * distance * distance);
@@ -39,12 +41,13 @@ public partial class Spring : Node2D
                 continue;
             }
 
-            var pullTarget = springInfo.Target;
-            var pullDir = GlobalPosition.DirectionTo(pullTarget.GlobalPosition);
-            var pullDistance = GlobalPosition.DistanceTo(pullTarget.GlobalPosition);
-            var pushSpringForce = pullDistance - springInfo.Force;
-            movement += pullDir * pushSpringForce;
+            var pullDir = GlobalPosition.DirectionTo(target.GlobalPosition);
+            var pullDistance = GlobalPosition.DistanceTo(target.GlobalPosition);
+            
+            var pullSpringForce = pullDistance - 10f; // 10f is targetDistance, see video, I don`t know.
+            movement += pullDir * pullSpringForce;
         }
+
         return movement.Normalized();
     }
     
