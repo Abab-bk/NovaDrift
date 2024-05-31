@@ -70,8 +70,7 @@ public partial class MobBase : Actor
     public override void Die()
     {
         if (IsDead) return;
-        Global.Player.Stats.Exp.Increase(5);
-        // Global.Player.Stats.Exp.Increase(50 * Stats.Level);
+        Global.Player.Stats.Exp.Increase(1 * Stats.Level);
         EventBus.OnMobDied?.Invoke(this);
         base.Die();
     }

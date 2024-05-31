@@ -26,8 +26,25 @@ public static class DataBuilder
          //    ? FuncUpLevelCurveBefore20.Sample(level / 20f) * 100
          //    : FuncUpLevelCurveAfter20.Sample((level - 20) / Constants.MaxLevel - 20f) * 100;
 
-        float nextLevelExp = 14;
-         
+        float nextLevelExp = 0;
+        
+        if (level == 1)
+        {
+            nextLevelExp = 5f;
+        }
+        else if (level <= 20)
+        {
+            nextLevelExp = level * 10;
+        }
+        else if (level <= 40)
+        {
+            nextLevelExp = level * 13;
+        }
+        else
+        {
+            nextLevelExp = level * 16;
+        }
+
         return nextLevelExp;
     }
 
