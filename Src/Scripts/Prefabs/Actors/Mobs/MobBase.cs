@@ -50,6 +50,8 @@ public partial class MobBase : Actor
     protected override void InitStats()
     {
         Stats.RotationSpeed.BaseValue = 2f;
+
+        Stats.Size.BaseValue = MobInfo.Size;
         
         Stats.Health.BaseValue = MobInfo.Health * Global.GetPlayerLevel();
         Stats.Health.MaxValue.BaseValue = MobInfo.Health * Global.GetPlayerLevel();

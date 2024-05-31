@@ -61,8 +61,7 @@ public partial class Actor : CharacterBody2D
     
     
     private Area2D _bodyArea;
-    [Export] private GpuParticles2D _speedParticles;
-
+    
     protected virtual void _OnShoot(BulletBase bullet)
     {
         Stats.AddKnockBack(Stats.ShootKnockBack.Value);
@@ -128,10 +127,12 @@ public partial class Actor : CharacterBody2D
         _bodyArea = GetNode<Area2D>("%BodyArea");
 
         Visual = new ActorVisual(this);
-        _speedParticles.Emitting = false;
         
         InitStats();
         InitCollision();
+
+        Scale = new Vector2(Stats.Size.Value, Stats.Size.Value);
+        
         Stats.SetTarget(this);
         Stats.OnBodyChanged += () =>
         {
@@ -222,7 +223,6 @@ public partial class Actor : CharacterBody2D
 
     public override void _Process(double delta)
     {
-        _speedParticles.Emitting = Velocity.LengthSquared() > Stats.Speed.Value + 100f && !_speedParticles.IsEmitting();
     }
 
     public override void _PhysicsProcess(double delta)

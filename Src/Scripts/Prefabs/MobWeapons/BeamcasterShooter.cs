@@ -46,13 +46,12 @@ public partial class BeamcasterShooter : BaseShooter
                     posOffset = 1000f;
                     break;
             }
-
-            bulletPos.Rotated(Actor.Rotation);
             
             var bullet = GetBulletFunc.Invoke(this);
             if (bullet is BeamcasterBullet beamcasterBullet) beamcasterBullet.PosOffset = posOffset;
             
             bullet.GlobalPosition = ToGlobal(bulletPos);
+            bullet.Rotation = Actor.Rotation;
             
             Global.GameWorld.AddChild(bullet);
             

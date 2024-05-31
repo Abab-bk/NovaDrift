@@ -1,37 +1,9 @@
-[gd_scene load_steps=13 format=3 uid="uid://b1vmhmtmuma0x"]
+[gd_scene load_steps=7 format=3 uid="uid://b1vmhmtmuma0x"]
 
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Actor.cs" id="1_s858g"]
 [ext_resource type="Texture2D" uid="uid://c3i8wr1dlwymr" path="res://Assets/Textures/Bodies/Default.png" id="2_44451"]
-[ext_resource type="Texture2D" uid="uid://b40endjjplh73" path="res://Assets/Textures/Particles/Rotated/trace_01_rotated.png" id="4_2p2sc"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HurtBox.cs" id="4_lb4uu"]
 [ext_resource type="Script" path="res://Scripts/Libs/SpringSystem/Spring.cs" id="5_de5sx"]
-
-[sub_resource type="Gradient" id="Gradient_unkbs"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_uaa6o"]
-gradient = SubResource("Gradient_unkbs")
-
-[sub_resource type="Curve" id="Curve_g8fvr"]
-_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.10124, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.681983), 0.0, 0.0, 0, 0]
-point_count = 3
-
-[sub_resource type="CurveTexture" id="CurveTexture_0j36l"]
-curve = SubResource("Curve_g8fvr")
-
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_s1fp6"]
-particle_flag_rotate_y = true
-particle_flag_disable_z = true
-emission_shape = 1
-emission_sphere_radius = 12.0
-spread = 180.0
-initial_velocity_min = 17.0
-initial_velocity_max = 21.0
-gravity = Vector3(0, 0, 0)
-scale_min = 0.2
-scale_max = 0.3
-scale_curve = SubResource("CurveTexture_0j36l")
-color_ramp = SubResource("GradientTexture1D_uaa6o")
 
 [sub_resource type="Animation" id="Animation_b5fuf"]
 length = 0.001
@@ -47,15 +19,7 @@ script = ExtResource("1_s858g")
 _hurtBox = NodePath("Components/HurtBox")
 Spring = NodePath("Spring")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
-_speedParticles = NodePath("SpeedParticles")
-
-[node name="SpeedParticles" type="GPUParticles2D" parent="."]
-visible = false
-position = Vector2(-60, 0)
-amount = 51
-process_material = SubResource("ParticleProcessMaterial_s1fp6")
-texture = ExtResource("4_2p2sc")
-lifetime = 0.7
+_speedParticles = NodePath("")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_44451")

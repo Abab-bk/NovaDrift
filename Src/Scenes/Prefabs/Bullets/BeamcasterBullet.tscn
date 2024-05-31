@@ -11,6 +11,10 @@ modulate = Color(1, 0.0392157, 1, 1)
 script = ExtResource("2_2l0o2")
 _hitBox = NodePath("HitBox")
 
+[node name="Trail2D" parent="." index="0"]
+width = 5.0
+length = 5
+
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 position = Vector2(-3, 0)
 shape = SubResource("RectangleShape2D_106o6")

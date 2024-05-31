@@ -10,5 +10,6 @@ public class MobInfo
     public float ShootCd;
     public float Targeting;
     public float BulletCount;
+    public float Size;
     public string ScenePath;
 }

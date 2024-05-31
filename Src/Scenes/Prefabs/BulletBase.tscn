@@ -7,7 +7,7 @@
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/FreeSelfWhenExitScreen.cs" id="3_bimy8"]
 
 [sub_resource type="Curve" id="Curve_1iyvv"]
-_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+_data = [Vector2(0, 0.569231), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
 point_count = 2
 
 [sub_resource type="Gradient" id="Gradient_x6jox"]

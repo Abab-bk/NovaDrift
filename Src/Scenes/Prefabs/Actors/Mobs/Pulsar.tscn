@@ -64,26 +64,19 @@ variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_0sf7c"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_03sbt"]
 size = Vector2(62, 110)
 
-[node name="Pulsar" node_paths=PackedStringArray("_hurtBox", "Spring", "Sprite", "_visibleOnScreenNotifier2D", "Shooter", "_speedParticles") instance=ExtResource("1_nhejf")]
+[node name="Pulsar" node_paths=PackedStringArray("_hurtBox", "Spring", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_nhejf")]
 modulate = Color(0.839216, 1, 0.737255, 1)
 _hurtBox = NodePath("Components/HurtBox")
 Spring = NodePath("Spring")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")
-_speedParticles = NodePath("SpeedParticles")
 
-[node name="SpeedParticles" parent="." index="0"]
-visible = true
-
-[node name="Sprite2D" parent="." index="1"]
+[node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_yqdm8")
 
-[node name="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_jn6vc")
-
-[node name="Shooter" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
-Actor = NodePath("../../..")
 
 [node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]
 Actor = NodePath("../..")
@@ -100,6 +93,3 @@ root_fsm_config = SubResource("FSMConfig_lt2to")
 
 [node name="CollisionShape2D" parent="BodyArea" index="0"]
 shape = SubResource("RectangleShape2D_03sbt")
-
-[node name="Spring" parent="." index="8"]
-EnabledDraw = true

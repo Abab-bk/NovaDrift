@@ -87,22 +87,18 @@ state_config_list = Array[StateConfig]([SubResource("StateConfig_r1dwg"), SubRes
 transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_4plgd"), SubResource("TransitionConfig_u0os2"), SubResource("TransitionConfig_udvxp"), SubResource("TransitionConfig_o67p8")])
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_wca6e")])
 
-[node name="Beamcaster" node_paths=PackedStringArray("_hurtBox", "Spring", "Sprite", "_visibleOnScreenNotifier2D", "Shooter", "_speedParticles") instance=ExtResource("1_yrrya")]
+[node name="Beamcaster" node_paths=PackedStringArray("_hurtBox", "Spring", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_yrrya")]
 modulate = Color(0.972549, 0.831373, 1, 1)
 _hurtBox = NodePath("Components/HurtBox")
 Spring = NodePath("Spring")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")
-_speedParticles = NodePath("SpeedParticles")
 
-[node name="SpeedParticles" parent="." index="0"]
-visible = true
-
-[node name="Sprite2D" parent="." index="1"]
+[node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_y3saf")
 
-[node name="CollisionShape2D" parent="." index="2"]
+[node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-3.5, 0)
 shape = SubResource("RectangleShape2D_blio1")
 
@@ -125,9 +121,6 @@ Mob = NodePath("../..")
 [node name="HFSM" parent="State" index="1"]
 root_fsm_config = SubResource("FSMConfig_xi2o7")
 
-[node name="VisibleOnScreenNotifier2D" parent="." index="5"]
+[node name="VisibleOnScreenNotifier2D" parent="." index="4"]
 position = Vector2(17, 1.37097)
 scale = Vector2(1.6, 2.05645)
-
-[node name="Spring" parent="." index="8"]
-EnabledDraw = true
