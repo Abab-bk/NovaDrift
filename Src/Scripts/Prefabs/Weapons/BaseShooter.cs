@@ -39,7 +39,8 @@ public abstract partial class BaseShooter : Node2D
     {
         DefaultCooldownTimer = new Timer()
         {
-            WaitTime = waitTime
+            WaitTime = waitTime,
+            OneShot = true,
         };
         AddChild(DefaultCooldownTimer);
     }

@@ -1,9 +1,7 @@
-﻿using System;
-using AcidWallStudio.AcidUtilities;
+﻿using AcidWallStudio.AcidUtilities;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Weapons;
-using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts.Prefabs.Components;
 

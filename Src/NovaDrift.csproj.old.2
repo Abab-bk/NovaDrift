@@ -1,4 +1,4 @@
-<Project Sdk="Godot.NET.Sdk/4.3.0-beta.1">
+<Project Sdk="Godot.NET.Sdk/4.3.0-dev.6">
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net8.0</TargetFramework>
@@ -22,6 +22,8 @@
   <ItemGroup>
     <PackageReference Include="GDTask" Version="1.2.2" />
     <PackageReference Include="GodotSharpSome.Drawing2D" Version="0.23.0" />
-    <ProjectReference Include="..\GodotGetNode\GodotGetNode.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
+    <ProjectReference Include="..\GodotGetNode\GodotGetNode.csproj"
+                      ReferenceOutputAssembly="false"
+                      OutputItemType="Analyzer"/>
   </ItemGroup>
 </Project>

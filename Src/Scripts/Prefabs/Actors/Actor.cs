@@ -1,5 +1,4 @@
 using System;
-using AcidWallStudio.AcidUtilities;
 using AcidWallStudio.SpringSystem;
 using DsUi;
 using Godot;
@@ -7,7 +6,6 @@ using GTweens.Builders;
 using GTweensGodot.Extensions;
 using NovaDrift.Scripts.Frameworks.Stats;
 using NovaDrift.Scripts.Prefabs.Components;
-using NovaDrift.Scripts.Prefabs.Hazards;
 using NovaDrift.Scripts.Prefabs.Shields;
 using NovaDrift.Scripts.Prefabs.Weapons;
 using NovaDrift.Scripts.Vfx;
@@ -27,8 +25,7 @@ public partial class Actor : CharacterBody2D
     [Export] private VisibleOnScreenNotifier2D _visibleOnScreenNotifier2D;
     [Export] public bool IsPlayer = false;
 
-    [Export]
-    public BaseShooter Shooter
+    [Export] public BaseShooter Shooter
     {
         get => _shooter;
         set

@@ -1,0 +1,16 @@
+[*.cs]
+csharp_new_line_before_open_brace = none
+csharp_new_line_before_else = false
+csharp_new_line_before_catch = false
+csharp_new_line_before_finally = false
+csharp_new_line_before_members_in_object_initializers = false
+csharp_new_line_before_members_in_anonymous_types = false
+csharp_new_line_between_query_expression_clauses = false
+
+resharper_csharp_place_accessor_attribute_on_same_line = always
+resharper_csharp_place_method_attribute_on_same_line = always
+resharper_csharp_place_attribute_on_same_line = always
+resharper_csharp_place_field_attribute_on_same_line = always
+resharper_csharp_place_accessorholder_attribute_on_same_line = always
+# don't know why this setting not work
+csharp_preferred_modifier_order = public, private, protected, internal, file, static, extern, new, virtual, abstract, sealed, override, readonly, unsafe, required, volatile, async

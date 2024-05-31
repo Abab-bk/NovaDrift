@@ -17,7 +17,7 @@ public class BulletBuilder
         Grenade,
     }
     
-    private readonly BulletBase _bulletBase;
+    private BulletBase _bulletBase;
 
     public BulletBuilder(BulletType type = BulletType.Normal)
     {
@@ -37,6 +37,13 @@ public class BulletBuilder
                 throw new Exception("无法识别的子弹类型");
         }
     }
+
+    public BulletBuilder SetBulletBase(string path)
+    {
+        _bulletBase = GD.Load<PackedScene>(path).Instantiate() as BulletBase;
+        return this;
+    }
+
 
     public BulletBuilder SetOwner(Actor owner)
     {

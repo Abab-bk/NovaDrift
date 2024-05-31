@@ -1,7 +1,6 @@
 using System;
 using AcidWallStudio.SpringSystem;
 using Godot;
-using NovaDrift.Scripts.Libs.Boids;
 using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts.Prefabs.Actors.Mobs;
