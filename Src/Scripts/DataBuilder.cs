@@ -233,6 +233,7 @@ public static class DataBuilder
             Damage = tbMobInfo.Damage,
             ShootCd = tbMobInfo.ShootCd,
             Targeting = tbMobInfo.Targeting,
+            BulletCount = tbMobInfo.BulletCount,
             ScenePath = $"res://Scenes/Prefabs/Actors/Mobs/{tbMobInfo.SceneName}.tscn".Trim(),
         };
         

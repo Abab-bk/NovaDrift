@@ -103,7 +103,7 @@ public partial class Actor : CharacterBody2D
         Velocity = Velocity.MoveToward(Vector2.Zero, Stats.Deceleration.Value * (float)delta);
     }
     
-    protected float RotationTo(float target, double delta)
+    public float RotationTo(float target, double delta)
     {
         return Mathf.LerpAngle(Rotation, target, Stats.RotationSpeed.Value * (float)delta);
     }

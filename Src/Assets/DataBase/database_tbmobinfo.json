@@ -7,7 +7,8 @@
     "speed": 200,
     "damage": 10,
     "targeting": 0,
-    "shoot_cd": 1
+    "shoot_cd": 3,
+    "bullet_count": 4
   },
   {
     "id": 1002,
@@ -17,7 +18,8 @@
     "speed": 200,
     "damage": 10,
     "targeting": 0,
-    "shoot_cd": 1
+    "shoot_cd": 1,
+    "bullet_count": 1
   },
   {
     "id": 1003,
@@ -27,7 +29,8 @@
     "speed": 200,
     "damage": 10,
     "targeting": 0,
-    "shoot_cd": 1
+    "shoot_cd": 1,
+    "bullet_count": 1
   },
   {
     "id": 1004,
@@ -37,7 +40,8 @@
     "speed": 400,
     "damage": 10,
     "targeting": 0,
-    "shoot_cd": 1
+    "shoot_cd": 1,
+    "bullet_count": 1
   },
   {
     "id": 1005,
@@ -47,7 +51,8 @@
     "speed": 200,
     "damage": 10,
     "targeting": 0,
-    "shoot_cd": 1
+    "shoot_cd": 1,
+    "bullet_count": 1
   },
   {
     "id": 1006,
@@ -57,7 +62,8 @@
     "speed": 50,
     "damage": 5,
     "targeting": 0,
-    "shoot_cd": 0.1
+    "shoot_cd": 0.1,
+    "bullet_count": 1
   },
   {
     "id": 1007,
@@ -67,6 +73,7 @@
     "speed": 600,
     "damage": 10,
     "targeting": 70,
-    "shoot_cd": 1
+    "shoot_cd": 1,
+    "bullet_count": 1
   }
 ]

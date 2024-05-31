@@ -49,6 +49,8 @@ public partial class MobBase : Actor
     
     protected override void InitStats()
     {
+        Stats.RotationSpeed.BaseValue = 2f;
+        
         Stats.Health.BaseValue = MobInfo.Health * Global.GetPlayerLevel();
         Stats.Health.MaxValue.BaseValue = MobInfo.Health * Global.GetPlayerLevel();
         
@@ -57,6 +59,8 @@ public partial class MobBase : Actor
         Stats.ShootSpeed.BaseValue = MobInfo.ShootCd;
 
         Stats.Targeting.BaseValue = MobInfo.Targeting;
+
+        Stats.BulletCount.BaseValue = MobInfo.BulletCount;
         
         Shooter.SetShootCd(MobInfo.ShootCd);
     }
@@ -77,7 +81,8 @@ public partial class MobBase : Actor
 
     public void SetTargetAndMove(Node2D target, float delta)
     {
-        LookAt(target.GlobalPosition);
+        Rotation = RotationTo(GlobalPosition.AngleToPoint(target.GlobalPosition), delta);
+        // LookAt(target.GlobalPosition);
         // TryMoveTo(GlobalPosition.DirectionTo(target.GlobalPosition), delta);
 
         if (target != _target)

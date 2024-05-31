@@ -32,6 +32,7 @@ public partial class Beamcaster : MobAiComponent
         
         Mob.Velocity = (Mob.GlobalPosition - Global.Player.GlobalPosition).Normalized().Rotated(MathF.PI / 2) *
                        Mob.Stats.Speed.Value;
+        Mob.Rotation = Mob.RotationTo(Mob.Velocity.Angle(), delta);
     }
     private void _OnGoingToPlayerProcess(float delta)
     {

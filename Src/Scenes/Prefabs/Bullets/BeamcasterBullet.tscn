@@ -1,9 +1,16 @@
-[gd_scene load_steps=3 format=3 uid="uid://beqhdsm0nbbbo"]
+[gd_scene load_steps=4 format=3 uid="uid://beqhdsm0nbbbo"]
 
 [ext_resource type="PackedScene" uid="uid://dopw3ixphjmh7" path="res://Scenes/Prefabs/BulletBase.tscn" id="1_23w8f"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Bullets/BeamcasterBullet.cs" id="2_2l0o2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_106o6"]
+size = Vector2(44, 10)
 
 [node name="BeamcasterBullet" node_paths=PackedStringArray("_hitBox") instance=ExtResource("1_23w8f")]
 modulate = Color(1, 0.0392157, 1, 1)
 script = ExtResource("2_2l0o2")
 _hitBox = NodePath("HitBox")
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(-3, 0)
+shape = SubResource("RectangleShape2D_106o6")
