@@ -35,7 +35,8 @@ public static class Global
     public static GameWorld GameWorld;
     public static ShakeDirector2D ShakeDirector;
     public static FastNoiseLite Noise;
-
+    public static WaveSpawnerController WaveSpawnerController;
+    
     public static Constants.WorldColor WorldColor = Constants.Colors.Blue;
     
     public static HazardSpawner HazardSpawner;

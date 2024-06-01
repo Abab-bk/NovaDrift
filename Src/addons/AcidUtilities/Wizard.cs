@@ -146,6 +146,16 @@ public static class Wizard
         );
     }
 
+    public static float GetRandomScreenX()
+    {
+        return Random.Shared.FloatRange(0f, (float)ProjectSettings.GetSetting("display/window/size/viewport_width"));
+    }
+    
+    public static float GetRandomScreenY()
+    {
+        return Random.Shared.FloatRange(0f, (float)ProjectSettings.GetSetting("display/window/size/viewport_height"));
+    }
+
     public static T GetRandomEnum<T>(this Random random)
         where T : struct, Enum
     {
