@@ -27,6 +27,7 @@ public sealed partial class MobInfo : Luban.BeanBase
         ShootCd = _buf.GetProperty("shoot_cd").GetSingle();
         BulletCount = _buf.GetProperty("bullet_count").GetSingle();
         Size = _buf.GetProperty("size").GetSingle();
+        DangerFactor = _buf.GetProperty("danger_factor").GetInt32();
     }
 
     public static MobInfo DeserializeMobInfo(JsonElement _buf)
@@ -74,12 +75,17 @@ public sealed partial class MobInfo : Luban.BeanBase
     /// 大小
     /// </summary>
     public readonly float Size;
+    /// <summary>
+    /// 危险系数
+    /// </summary>
+    public readonly int DangerFactor;
    
     public const int __ID__ = -1406036050;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
     {
+        
         
         
         
@@ -105,6 +111,7 @@ public sealed partial class MobInfo : Luban.BeanBase
         + "shootCd:" + ShootCd + ","
         + "bulletCount:" + BulletCount + ","
         + "size:" + Size + ","
+        + "dangerFactor:" + DangerFactor + ","
         + "}";
     }
 }
