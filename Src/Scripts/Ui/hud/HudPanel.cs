@@ -3,26 +3,22 @@ using GDebugPanelGodot.Core;
 using GDebugPanelGodot.Extensions;
 using Godot;
 using NovaDrift.Scripts.Ui.ActionBtn;
-using Range = Godot.Range;
+using NovaDrift.Scripts.Ui.AnimationProgressBar;
 
 namespace NovaDrift.Scripts.Ui.Hud;
 
 public partial class HudPanel : Hud
 {
-	private TextureProgressBar _expBar;
-	private TextureProgressBar _hpBar;
-	private TextureProgressBar _shieldBar;
+	private AnimationProgressBarPanel _expBar;
+	private AnimationProgressBarPanel _hpBar;
+	private AnimationProgressBarPanel _shieldBar;
 	
 	private bool _isDebugPanelOpened;
-
+	
 	[Export] private Control _debugPanel;
 	
 	public override void OnCreateUi()
 	{
-		_expBar = S_ExpProgressBar.Instance;
-		_hpBar = S_HpProgressBar.Instance;
-		_shieldBar = S_ShieldProgressBar.Instance;
-
 		EventBus.OnPlayerUpLevel += _ =>
 		{
 			OpenNestedUi(UiManager.UiName.SelectAbility);
@@ -36,23 +32,27 @@ public partial class HudPanel : Hud
 			return node;
 		};
 		EventBus.OnGameOver += Destroy;
+
+		_expBar = GetNode<AnimationProgressBarPanel>("%ExpProgressBar");
+		_hpBar = GetNode<AnimationProgressBarPanel>("%HpProgressBar");
+		_shieldBar = GetNode<AnimationProgressBarPanel>("%ShieldProgressBar");
 		
 		GenerateDebugPanel();
 	}
 	
 	public void UpdateExpBar(float ratio)
 	{
-		_expBar.SetDeferred(Range.PropertyName.Value, ratio * 100f);
+		_expBar.UpdateUi(ratio * 100f);
 	}
 	
 	public void UpdateHpBar(float ratio)
 	{
-		_hpBar.SetDeferred(Range.PropertyName.Value, ratio * 100f);
+		_hpBar.UpdateUi(ratio * 100f);
 	}
 	
 	public void UpdateShieldBar(float ratio)
 	{
-		_shieldBar.SetDeferred(Range.PropertyName.Value, ratio * 100f);
+		_shieldBar.UpdateUi(ratio * 100f);
 	}
 
 	public override void OnDestroyUi()

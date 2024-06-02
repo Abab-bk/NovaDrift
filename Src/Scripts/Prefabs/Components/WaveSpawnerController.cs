@@ -28,7 +28,7 @@ public partial class WaveSpawnerController : Node2D
         _clock.Timeout += () =>
         {
             GenerateWave();
-            _waitingClock = GetCost() * 2f; // Need more cal, maybe based on the score per min ratio ?
+            _waitingClock = Mathf.Min(Global.Player.Stats.Level * 2f, 20f); // Need more cal, maybe based on the score per min ratio ?
             _clock.WaitTime = _waitingClock;
             _clock.Start();
             OnNextClockChanged?.Invoke(_waitingClock);

@@ -41,6 +41,21 @@ public abstract partial class Hud : UiBase
     public sealed override void OnInitNestedUi()
     {
 
+        var inst1 = L_MarginContainer.L_VBoxContainer2.L_ProgressBars;
+        RecordNestedUi(inst1.L_ExpProgressBar.Instance, inst1, UiManager.RecordType.Open);
+        inst1.L_ExpProgressBar.Instance.OnCreateUi();
+        inst1.L_ExpProgressBar.Instance.OnInitNestedUi();
+
+        var inst2 = L_MarginContainer.L_VBoxContainer2.L_ProgressBars;
+        RecordNestedUi(inst2.L_HpProgressBar.Instance, inst2, UiManager.RecordType.Open);
+        inst2.L_HpProgressBar.Instance.OnCreateUi();
+        inst2.L_HpProgressBar.Instance.OnInitNestedUi();
+
+        var inst3 = L_MarginContainer.L_VBoxContainer2.L_ProgressBars;
+        RecordNestedUi(inst3.L_ShieldProgressBar.Instance, inst3, UiManager.RecordType.Open);
+        inst3.L_ShieldProgressBar.Instance.OnCreateUi();
+        inst3.L_ShieldProgressBar.Instance.OnInitNestedUi();
+
     }
 
     /// <summary>
@@ -53,78 +68,99 @@ public abstract partial class Hud : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureProgressBar"/>, 路径: Hud.MarginContainer.VBoxContainer2.VBoxContainer.ExpProgressBar
+    /// 类型: <see cref="NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel"/>, 路径: Hud.MarginContainer.VBoxContainer2.ProgressBars.ExpProgressBar
     /// </summary>
-    public class ExpProgressBar : UiNode<HudPanel, Godot.TextureProgressBar, ExpProgressBar>
+    public class ExpProgressBar : UiNode<HudPanel, NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel, ExpProgressBar>
     {
-        public ExpProgressBar(HudPanel uiPanel, Godot.TextureProgressBar node) : base(uiPanel, node) {  }
-        public override ExpProgressBar Clone() => new (UiPanel, (Godot.TextureProgressBar)Instance.Duplicate());
+        public ExpProgressBar(HudPanel uiPanel, NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel node) : base(uiPanel, node) {  }
+        public override ExpProgressBar Clone()
+        {
+            var uiNode = new ExpProgressBar(UiPanel, (NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel)Instance.Duplicate());
+            UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
+            uiNode.Instance.OnCreateUi();
+            uiNode.Instance.OnInitNestedUi();
+            return uiNode;
+        }
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureProgressBar"/>, 路径: Hud.MarginContainer.VBoxContainer2.VBoxContainer.HpProgressBar
+    /// 类型: <see cref="NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel"/>, 路径: Hud.MarginContainer.VBoxContainer2.ProgressBars.HpProgressBar
     /// </summary>
-    public class HpProgressBar : UiNode<HudPanel, Godot.TextureProgressBar, HpProgressBar>
+    public class HpProgressBar : UiNode<HudPanel, NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel, HpProgressBar>
     {
-        public HpProgressBar(HudPanel uiPanel, Godot.TextureProgressBar node) : base(uiPanel, node) {  }
-        public override HpProgressBar Clone() => new (UiPanel, (Godot.TextureProgressBar)Instance.Duplicate());
+        public HpProgressBar(HudPanel uiPanel, NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel node) : base(uiPanel, node) {  }
+        public override HpProgressBar Clone()
+        {
+            var uiNode = new HpProgressBar(UiPanel, (NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel)Instance.Duplicate());
+            UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
+            uiNode.Instance.OnCreateUi();
+            uiNode.Instance.OnInitNestedUi();
+            return uiNode;
+        }
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureProgressBar"/>, 路径: Hud.MarginContainer.VBoxContainer2.VBoxContainer.ShieldProgressBar
+    /// 类型: <see cref="NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel"/>, 路径: Hud.MarginContainer.VBoxContainer2.ProgressBars.ShieldProgressBar
     /// </summary>
-    public class ShieldProgressBar : UiNode<HudPanel, Godot.TextureProgressBar, ShieldProgressBar>
+    public class ShieldProgressBar : UiNode<HudPanel, NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel, ShieldProgressBar>
     {
-        public ShieldProgressBar(HudPanel uiPanel, Godot.TextureProgressBar node) : base(uiPanel, node) {  }
-        public override ShieldProgressBar Clone() => new (UiPanel, (Godot.TextureProgressBar)Instance.Duplicate());
+        public ShieldProgressBar(HudPanel uiPanel, NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel node) : base(uiPanel, node) {  }
+        public override ShieldProgressBar Clone()
+        {
+            var uiNode = new ShieldProgressBar(UiPanel, (NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel)Instance.Duplicate());
+            UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
+            uiNode.Instance.OnCreateUi();
+            uiNode.Instance.OnInitNestedUi();
+            return uiNode;
+        }
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: Hud.MarginContainer.VBoxContainer2.VBoxContainer
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: Hud.MarginContainer.VBoxContainer2.ProgressBars
     /// </summary>
-    public class VBoxContainer : UiNode<HudPanel, Godot.VBoxContainer, VBoxContainer>
+    public class ProgressBars : UiNode<HudPanel, Godot.VBoxContainer, ProgressBars>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.ExpProgressBar
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.ExpProgressBar
         /// </summary>
         public ExpProgressBar L_ExpProgressBar
         {
             get
             {
-                if (_L_ExpProgressBar == null) _L_ExpProgressBar = new ExpProgressBar(UiPanel, Instance.GetNode<Godot.TextureProgressBar>("ExpProgressBar"));
+                if (_L_ExpProgressBar == null) _L_ExpProgressBar = new ExpProgressBar(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel>("ExpProgressBar"));
                 return _L_ExpProgressBar;
             }
         }
         private ExpProgressBar _L_ExpProgressBar;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.HpProgressBar
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.HpProgressBar
         /// </summary>
         public HpProgressBar L_HpProgressBar
         {
             get
             {
-                if (_L_HpProgressBar == null) _L_HpProgressBar = new HpProgressBar(UiPanel, Instance.GetNode<Godot.TextureProgressBar>("HpProgressBar"));
+                if (_L_HpProgressBar == null) _L_HpProgressBar = new HpProgressBar(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel>("HpProgressBar"));
                 return _L_HpProgressBar;
             }
         }
         private HpProgressBar _L_HpProgressBar;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.ShieldProgressBar
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.ShieldProgressBar
         /// </summary>
         public ShieldProgressBar L_ShieldProgressBar
         {
             get
             {
-                if (_L_ShieldProgressBar == null) _L_ShieldProgressBar = new ShieldProgressBar(UiPanel, Instance.GetNode<Godot.TextureProgressBar>("ShieldProgressBar"));
+                if (_L_ShieldProgressBar == null) _L_ShieldProgressBar = new ShieldProgressBar(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel>("ShieldProgressBar"));
                 return _L_ShieldProgressBar;
             }
         }
         private ShieldProgressBar _L_ShieldProgressBar;
 
-        public VBoxContainer(HudPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
-        public override VBoxContainer Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
+        public ProgressBars(HudPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
+        public override ProgressBars Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
@@ -146,17 +182,17 @@ public abstract partial class Hud : UiBase
         private ActionButtons _L_ActionButtons;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Hud.MarginContainer.VBoxContainer
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Hud.MarginContainer.ProgressBars
         /// </summary>
-        public VBoxContainer L_VBoxContainer
+        public ProgressBars L_ProgressBars
         {
             get
             {
-                if (_L_VBoxContainer == null) _L_VBoxContainer = new VBoxContainer(UiPanel, Instance.GetNode<Godot.VBoxContainer>("VBoxContainer"));
-                return _L_VBoxContainer;
+                if (_L_ProgressBars == null) _L_ProgressBars = new ProgressBars(UiPanel, Instance.GetNode<Godot.VBoxContainer>("ProgressBars"));
+                return _L_ProgressBars;
             }
         }
-        private VBoxContainer _L_VBoxContainer;
+        private ProgressBars _L_ProgressBars;
 
         public VBoxContainer2(HudPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
         public override VBoxContainer2 Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
@@ -200,24 +236,24 @@ public abstract partial class Hud : UiBase
     public ActionButtons S_ActionButtons => L_MarginContainer.L_VBoxContainer2.L_ActionButtons;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.VBoxContainer.ExpProgressBar
+    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.ProgressBars.ExpProgressBar
     /// </summary>
-    public ExpProgressBar S_ExpProgressBar => L_MarginContainer.L_VBoxContainer2.L_VBoxContainer.L_ExpProgressBar;
+    public ExpProgressBar S_ExpProgressBar => L_MarginContainer.L_VBoxContainer2.L_ProgressBars.L_ExpProgressBar;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.VBoxContainer.HpProgressBar
+    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.ProgressBars.HpProgressBar
     /// </summary>
-    public HpProgressBar S_HpProgressBar => L_MarginContainer.L_VBoxContainer2.L_VBoxContainer.L_HpProgressBar;
+    public HpProgressBar S_HpProgressBar => L_MarginContainer.L_VBoxContainer2.L_ProgressBars.L_HpProgressBar;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.VBoxContainer.ShieldProgressBar
+    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.ProgressBars.ShieldProgressBar
     /// </summary>
-    public ShieldProgressBar S_ShieldProgressBar => L_MarginContainer.L_VBoxContainer2.L_VBoxContainer.L_ShieldProgressBar;
+    public ShieldProgressBar S_ShieldProgressBar => L_MarginContainer.L_VBoxContainer2.L_ProgressBars.L_ShieldProgressBar;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.VBoxContainer
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.ProgressBars
     /// </summary>
-    public VBoxContainer S_VBoxContainer => L_MarginContainer.L_VBoxContainer2.L_VBoxContainer;
+    public ProgressBars S_ProgressBars => L_MarginContainer.L_VBoxContainer2.L_ProgressBars;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Hud.MarginContainer.VBoxContainer2

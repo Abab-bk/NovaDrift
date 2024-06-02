@@ -2,18 +2,10 @@
 
 [ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_2tvmv"]
 [ext_resource type="Script" path="res://Scripts/Ui/hud/HudPanel.cs" id="1_jvtg7"]
-
-[sub_resource type="Gradient" id="Gradient_oln25"]
-colors = PackedColorArray(0.0117647, 0.490196, 1, 1, 0.0117647, 0.490196, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_ihdti"]
-gradient = SubResource("Gradient_oln25")
-
-[sub_resource type="Gradient" id="Gradient_dhh0k"]
-colors = PackedColorArray(0.956863, 0, 0.368627, 1, 0.956863, 0, 0.368627, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_glh1x"]
-gradient = SubResource("Gradient_dhh0k")
+[ext_resource type="PackedScene" uid="uid://jjo7vsgigivi" path="res://Scenes/Ui/AnimationProgressBar.tscn" id="3_6yig1"]
+[ext_resource type="Texture2D" uid="uid://dn158oeev4i6y" path="res://Assets/Textures/Ui/ExpBar.tres" id="3_tfhba"]
+[ext_resource type="Texture2D" uid="uid://c1xx73goajw8f" path="res://Assets/Textures/Ui/ShieldBar.tres" id="4_nh7k7"]
+[ext_resource type="Texture2D" uid="uid://b6jrw5201bblr" path="res://Assets/Textures/Ui/HpBar.tres" id="4_r2lu1"]
 
 [node name="Hud" type="Control" node_paths=PackedStringArray("_debugPanel")]
 process_mode = 3
@@ -49,39 +41,30 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
+[node name="ProgressBars" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 8
+theme_override_constants/separation = 10
 
-[node name="ExpProgressBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+[node name="ExpProgressBar" parent="MarginContainer/VBoxContainer2/ProgressBars" instance=ExtResource("3_6yig1")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-size_flags_horizontal = 3
-value = 50.0
-fill_mode = 6
-nine_patch_stretch = true
-texture_progress = SubResource("GradientTexture1D_ihdti")
+_progressTexture = ExtResource("3_tfhba")
 
-[node name="HpProgressBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+[node name="HpProgressBar" parent="MarginContainer/VBoxContainer2/ProgressBars" instance=ExtResource("3_6yig1")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-value = 50.0
-fill_mode = 6
-nine_patch_stretch = true
-texture_progress = SubResource("GradientTexture1D_glh1x")
+_progressTexture = ExtResource("4_r2lu1")
 
-[node name="ShieldProgressBar" type="TextureProgressBar" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+[node name="ShieldProgressBar" parent="MarginContainer/VBoxContainer2/ProgressBars" instance=ExtResource("3_6yig1")]
 unique_name_in_owner = true
-modulate = Color(0.643137, 1, 0.913725, 1)
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
-value = 50.0
-fill_mode = 6
-nine_patch_stretch = true
-texture_progress = SubResource("GradientTexture1D_glh1x")
+_progressTexture = ExtResource("4_nh7k7")
 
 [node name="DebugPanel" type="Control" parent="."]
 layout_mode = 1

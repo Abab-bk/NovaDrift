@@ -10,6 +10,7 @@ public static partial class UiManager
         public const string AbilityPanel = "AbilityPanel";
         public const string AbilityTree = "AbilityTree";
         public const string ActionBtn = "ActionBtn";
+        public const string AnimationProgressBar = "AnimationProgressBar";
         public const string DamageLabel = "DamageLabel";
         public const string GalleryBtn = "GalleryBtn";
         public const string GameOver = "GameOver";
@@ -213,6 +214,54 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.ActionBtn.ActionBtnPanel[] Get_ActionBtn_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.ActionBtn.ActionBtnPanel>(nameof(NovaDrift.Scripts.Ui.ActionBtn.ActionBtn));
+    }
+
+    /// <summary>
+    /// 创建 AnimationProgressBar, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel Create_AnimationProgressBar()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel>(UiName.AnimationProgressBar);
+    }
+
+    /// <summary>
+    /// 打开 AnimationProgressBar, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel Open_AnimationProgressBar()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel>(UiName.AnimationProgressBar);
+    }
+
+    /// <summary>
+    /// 隐藏 AnimationProgressBar 的所有实例
+    /// </summary>
+    public static void Hide_AnimationProgressBar()
+    {
+        var uiInstance = Get_AnimationProgressBar_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 AnimationProgressBar 的所有实例
+    /// </summary>
+    public static void Destroy_AnimationProgressBar()
+    {
+        var uiInstance = Get_AnimationProgressBar_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 AnimationProgressBar 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel[] Get_AnimationProgressBar_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel>(nameof(NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBar));
     }
 
     /// <summary>

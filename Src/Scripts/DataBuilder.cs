@@ -253,6 +253,7 @@ public static class DataBuilder
             BulletCount = tbMobInfo.BulletCount,
             Size = tbMobInfo.Size,
             DangerFactor = tbMobInfo.DangerFactor,
+            GetExp = tbMobInfo.GetExp,
             ScenePath = $"res://Scenes/Prefabs/Actors/Mobs/{tbMobInfo.SceneName}.tscn".Trim(),
         };
         

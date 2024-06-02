@@ -49,15 +49,16 @@ public partial class MobBase : Actor
     
     protected override void InitStats()
     {
+        Stats.Level = Mathf.Max(Global.GetPlayerLevel() - 1, 1);
         Stats.RotationSpeed.BaseValue = 2f;
 
         Stats.Size.BaseValue = MobInfo.Size;
         
-        Stats.Health.BaseValue = MobInfo.Health * Global.GetPlayerLevel();
-        Stats.Health.MaxValue.BaseValue = MobInfo.Health * Global.GetPlayerLevel();
+        Stats.Health.BaseValue = MobInfo.Health * Stats.Level;
+        Stats.Health.MaxValue.BaseValue = MobInfo.Health * Stats.Level;
         
         Stats.Speed.BaseValue = MobInfo.Speed;
-        Stats.Damage.BaseValue = MobInfo.Damage * Global.GetPlayerLevel();
+        Stats.Damage.BaseValue = MobInfo.Damage * Stats.Level;
         Stats.ShootSpeed.BaseValue = MobInfo.ShootCd;
 
         Stats.Targeting.BaseValue = MobInfo.Targeting;
@@ -70,7 +71,7 @@ public partial class MobBase : Actor
     public override void Die()
     {
         if (IsDead) return;
-        Global.Player.Stats.Exp.Increase(1 * Stats.Level);
+        Global.Player.Stats.Exp.Increase(MobInfo.GetExp * Stats.Level);
         EventBus.OnMobDied?.Invoke(this);
         base.Die();
     }
