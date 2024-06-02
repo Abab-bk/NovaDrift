@@ -1,5 +1,7 @@
 ﻿using System;
+using AcidWallStudio.AcidUtilities;
 using Godot;
+using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts.Prefabs.Components;
 
@@ -26,7 +28,7 @@ public partial class WaveSpawnerController : Node2D
         _clock.Timeout += () =>
         {
             GenerateWave();
-            _waitingClock = GetCost() * 5f;
+            _waitingClock = GetCost() * 2f; // Need more cal, maybe based on the score per min ratio ?
             _clock.WaitTime = _waitingClock;
             _clock.Start();
             OnNextClockChanged?.Invoke(_waitingClock);
@@ -48,6 +50,13 @@ public partial class WaveSpawnerController : Node2D
         waveSpawner.Cost = GetCost();
         AddChild(waveSpawner);
         waveSpawner.GenerateWave();
+    }
+
+    public void GenerateAMob(int id)
+    {
+        var mob = new MobBuilder(DataBuilder.BuildMobInfoById(id)).Build();
+        Global.GameWorld.AddChild(mob);
+        mob.GlobalPosition = Wizard.GetScreenCenter();
     }
 
     private int GetCost()

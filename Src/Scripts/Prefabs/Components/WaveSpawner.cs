@@ -30,7 +30,7 @@ public partial class WaveSpawner : Node2D
     
     public void GenerateWave()
     {
-        List<MobInfo> generatedMobs = new List<MobInfo>();
+        List<MobInfo> generatedMobs = [];
         
         while (Cost > 0)
         {
@@ -48,8 +48,7 @@ public partial class WaveSpawner : Node2D
         
         foreach (var mobInfo in generatedMobs)
         {
-            var mobBuilder = new MobBuilder(mobInfo);
-            var mob = mobBuilder.Build();
+            var mob = new MobBuilder(mobInfo).Build();
             Global.GameWorld.AddChild(mob);
             
             mob.GlobalPosition = ToGlobal(spawnType.GetSpawnPosition(mobIndex));
@@ -62,19 +61,21 @@ public partial class WaveSpawner : Node2D
     
     private void RandomMove()
     {
-        var pos = Vector2.Zero;
+        var pos = Wizard.GetRandomScreenPosition();
 
         switch (Random.Shared.Next(1, 2))
         {
             case 1:
+                // From random top or bottom
                 var y = Wizard.GetRandomScreenY();
                 pos.X = Wizard.GetRandomScreenX();
-                pos.Y = y > y / 2f ? 0 + 100f : 0 - 100f;
+                pos.Y = pos.Y > y / 2f ? 0 - 100f : Wizard.GetMaxScreenY() + 100f;
                 break;
             case 2:
+                // From random left or right
                 var x = Wizard.GetRandomScreenX();
                 pos.Y = Wizard.GetRandomScreenY();
-                pos.X = x > x / 2f ? 0 + 100f : 0 - 100f;
+                pos.X = pos.X > x / 2f ? 0 - 100f : Wizard.GetMaxScreenX() + 100f;
                 break;
         }
         

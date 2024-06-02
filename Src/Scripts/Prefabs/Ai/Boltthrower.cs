@@ -43,7 +43,7 @@ public partial class Boltthrower : MobAiComponent
         base.ConnectProcessSignals(state, delta);
         switch (state.GetName())
         {
-            case "Shoot": Mob.LookAt(Global.Player.GlobalPosition); break;
+            case "Shoot": Mob.Rotation = Mob.RotationTo(Global.Player.GlobalPosition.Angle(), delta); break;
             case "GoingToOpposite": _OnGoingToOppositeProcess(delta); break;
             case "RunAway": _OnRunAwayProcess(delta); break;
         }

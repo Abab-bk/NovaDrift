@@ -76,7 +76,7 @@ public partial class Actor : CharacterBody2D
 
     public void SetTargetPosAndMove(Vector2 pos, float delta)
     {
-        LookAt(pos);
+        Rotation = RotationTo(GlobalPosition.AngleToPoint(pos), delta);
         TryMoveTo(GlobalPosition.DirectionTo(pos), delta);
         MoveAndSlide();
     }

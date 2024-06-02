@@ -156,6 +156,16 @@ public static class Wizard
         return Random.Shared.FloatRange(0f, (float)ProjectSettings.GetSetting("display/window/size/viewport_height"));
     }
 
+    public static float GetMaxScreenX()
+    {
+        return (float)ProjectSettings.GetSetting("display/window/size/viewport_width");
+    }
+    
+    public static float GetMaxScreenY()
+    {
+        return (float)ProjectSettings.GetSetting("display/window/size/viewport_height");
+    }
+
     public static T GetRandomEnum<T>(this Random random)
         where T : struct, Enum
     {

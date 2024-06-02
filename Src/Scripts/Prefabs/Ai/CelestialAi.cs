@@ -22,10 +22,10 @@ public partial class CelestialAi : MobAiComponent
                 Mob.Velocity = (Mob.GlobalPosition - Global.Player.GlobalPosition).Normalized().Rotated(MathF.PI / 2) *
                                Mob.Stats.Speed.Value;
                 Mob.MoveAndSlide();
-                Mob.LookAt(Global.Player.GlobalPosition);
+                Mob.Rotation = Mob.RotationTo(Global.Player.GlobalPosition.Angle(), delta);
                 break;
             case "Shoot":
-                Mob.LookAt(Global.Player.GlobalPosition);
+                Mob.Rotation = Mob.RotationTo(Global.Player.GlobalPosition.Angle(), delta);
                 Mob.Shoot();
                 break;
         }

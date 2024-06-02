@@ -17,7 +17,7 @@ public sealed class PlayerCommands
 public sealed class WorldCommands
 {
     public int SomethingId { get; set; } = 1001;
-    // public void GenerateMobById() => MobSpawner.GenerateMobByIdAction?.Invoke(SomethingId);
+    public void GenerateMobById() => Global.WaveSpawnerController.GenerateAMob(SomethingId);
     // public void GenerateBossById() => MobSpawner.GenerateBossById?.Invoke(SomethingId);
 
     public void GenerateWave()
