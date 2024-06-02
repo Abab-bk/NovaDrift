@@ -56,6 +56,11 @@ public abstract partial class Hud : UiBase
         inst3.L_ShieldProgressBar.Instance.OnCreateUi();
         inst3.L_ShieldProgressBar.Instance.OnInitNestedUi();
 
+        var inst4 = L_MarginContainer.L_VBoxContainer2;
+        RecordNestedUi(inst4.L_ShieldCooldownProgressBar.Instance, inst4, UiManager.RecordType.Open);
+        inst4.L_ShieldCooldownProgressBar.Instance.OnCreateUi();
+        inst4.L_ShieldCooldownProgressBar.Instance.OnInitNestedUi();
+
     }
 
     /// <summary>
@@ -164,6 +169,22 @@ public abstract partial class Hud : UiBase
     }
 
     /// <summary>
+    /// 类型: <see cref="NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel"/>, 路径: Hud.MarginContainer.VBoxContainer2.ShieldCooldownProgressBar
+    /// </summary>
+    public class ShieldCooldownProgressBar : UiNode<HudPanel, NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel, ShieldCooldownProgressBar>
+    {
+        public ShieldCooldownProgressBar(HudPanel uiPanel, NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel node) : base(uiPanel, node) {  }
+        public override ShieldCooldownProgressBar Clone()
+        {
+            var uiNode = new ShieldCooldownProgressBar(UiPanel, (NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel)Instance.Duplicate());
+            UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
+            uiNode.Instance.OnCreateUi();
+            uiNode.Instance.OnInitNestedUi();
+            return uiNode;
+        }
+    }
+
+    /// <summary>
     /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: Hud.MarginContainer.VBoxContainer2
     /// </summary>
     public class VBoxContainer2 : UiNode<HudPanel, Godot.VBoxContainer, VBoxContainer2>
@@ -193,6 +214,19 @@ public abstract partial class Hud : UiBase
             }
         }
         private ProgressBars _L_ProgressBars;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel"/>, 节点路径: Hud.MarginContainer.ShieldCooldownProgressBar
+        /// </summary>
+        public ShieldCooldownProgressBar L_ShieldCooldownProgressBar
+        {
+            get
+            {
+                if (_L_ShieldCooldownProgressBar == null) _L_ShieldCooldownProgressBar = new ShieldCooldownProgressBar(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel>("ShieldCooldownProgressBar"));
+                return _L_ShieldCooldownProgressBar;
+            }
+        }
+        private ShieldCooldownProgressBar _L_ShieldCooldownProgressBar;
 
         public VBoxContainer2(HudPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
         public override VBoxContainer2 Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
@@ -254,6 +288,11 @@ public abstract partial class Hud : UiBase
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.ProgressBars
     /// </summary>
     public ProgressBars S_ProgressBars => L_MarginContainer.L_VBoxContainer2.L_ProgressBars;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.ShieldCooldownProgressBar
+    /// </summary>
+    public ShieldCooldownProgressBar S_ShieldCooldownProgressBar => L_MarginContainer.L_VBoxContainer2.L_ShieldCooldownProgressBar;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Hud.MarginContainer.VBoxContainer2

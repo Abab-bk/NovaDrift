@@ -12,6 +12,7 @@ public partial class HudPanel : Hud
 	private AnimationProgressBarPanel _expBar;
 	private AnimationProgressBarPanel _hpBar;
 	private AnimationProgressBarPanel _shieldBar;
+	private AnimationProgressBarPanel _shieldCooldownBar;
 	
 	private bool _isDebugPanelOpened;
 	
@@ -36,8 +37,14 @@ public partial class HudPanel : Hud
 		_expBar = GetNode<AnimationProgressBarPanel>("%ExpProgressBar");
 		_hpBar = GetNode<AnimationProgressBarPanel>("%HpProgressBar");
 		_shieldBar = GetNode<AnimationProgressBarPanel>("%ShieldProgressBar");
+		_shieldCooldownBar = GetNode<AnimationProgressBarPanel>("%ShieldCooldownProgressBar");
 		
 		GenerateDebugPanel();
+	}
+	
+	public void UpdateShieldCooldownBar(float ratio)
+	{
+		_shieldCooldownBar.UpdateUi(ratio * 100f);
 	}
 	
 	public void UpdateExpBar(float ratio)

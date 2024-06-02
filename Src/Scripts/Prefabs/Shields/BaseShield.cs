@@ -12,6 +12,8 @@ namespace NovaDrift.Scripts.Prefabs.Shields;
 
 public partial class BaseShield : Node2D
 {
+    public event Action OnCharge;
+    public event Action OnActive;
     public event Action OnBreak;
     public event Action<Node2D> OnHurtEvent;
     public Func<float, float> LimitMaxValue = null; 
@@ -30,6 +32,11 @@ public partial class BaseShield : Node2D
     public Array<Node2D> GetTargetsInRange()
     {
         return ShieldArea.GetOverlappingBodies();
+    }
+
+    public float GetCooldownRatio()
+    {
+        return 1f - (CoolDownTimer.TimeLeft != 0 ? (float)CoolDownTimer.TimeLeft / CoolDown : 0f);
     }
 
     public override void _Ready()
@@ -91,10 +98,12 @@ public partial class BaseShield : Node2D
     {
         ShieldArea.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Disabled);
         HurtBox.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Disabled);
+        OnCharge?.Invoke();
     }
 
     protected virtual void Active()
     {
+        OnActive?.Invoke();
     }
 
     protected virtual void OnCoolDownTimeout()

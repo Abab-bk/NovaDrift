@@ -11,6 +11,8 @@ public partial class Player : Actor
 {
     private HFSM _movementMachine;
     private HFSM _actionMachine;
+
+    private bool _updateShieldCooldown;
     
     public Joystick JoystickNode;
 
@@ -60,6 +62,9 @@ public partial class Player : Actor
         _movementMachine.PhysicUpdated += ConnectMovementMachineProcess;
         _actionMachine.PhysicUpdated += ConnectActionMachineProcess;
         
+        Shield.OnCharge += () => _updateShieldCooldown = true;
+        Shield.OnActive += () => _updateShieldCooldown = true;
+
         UpdateUi();
     }
 
@@ -189,7 +194,6 @@ public partial class Player : Actor
     {
         UiManager.Get_Hud_Instance()[0].UpdateExpBar(Stats.Exp.BaseValue / Stats.Exp.MaxValue.Value);
         UiManager.Get_Hud_Instance()[0].UpdateHpBar(Stats.Health.BaseValue / Stats.Health.MaxValue.Value);
-        UiManager.Get_Hud_Instance()[0].UpdateShieldBar(Shield.Health.BaseValue / Shield.Health.MaxValue.Value);
     }
 
 
@@ -197,6 +201,13 @@ public partial class Player : Actor
     {
         _movementMachine.SetTrigger(Input.IsActionPressed("Click") ? "GoToRunning" : "GoToIdle");
         _actionMachine.SetTrigger(Input.IsActionPressed("RClick") ? "GoToShooting" : "GoToIdle");
+    }
+
+    public override void _Process(double delta)
+    {
+        base._Process(delta);
+        if (!_updateShieldCooldown) return;
+        UiManager.Get_Hud_Instance()[0].UpdateShieldCooldownBar(Shield.GetCooldownRatio());
     }
 
     public override void _PhysicsProcess(double delta)

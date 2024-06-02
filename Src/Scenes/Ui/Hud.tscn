@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dx2jdufhf6krx"]
+[gd_scene load_steps=9 format=3 uid="uid://dx2jdufhf6krx"]
 
 [ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_2tvmv"]
 [ext_resource type="Script" path="res://Scripts/Ui/hud/HudPanel.cs" id="1_jvtg7"]
@@ -6,6 +6,12 @@
 [ext_resource type="Texture2D" uid="uid://dn158oeev4i6y" path="res://Assets/Textures/Ui/ExpBar.tres" id="3_tfhba"]
 [ext_resource type="Texture2D" uid="uid://c1xx73goajw8f" path="res://Assets/Textures/Ui/ShieldBar.tres" id="4_nh7k7"]
 [ext_resource type="Texture2D" uid="uid://b6jrw5201bblr" path="res://Assets/Textures/Ui/HpBar.tres" id="4_r2lu1"]
+
+[sub_resource type="Gradient" id="Gradient_qhgao"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_j0h8f"]
+gradient = SubResource("Gradient_qhgao")
 
 [node name="Hud" type="Control" node_paths=PackedStringArray("_debugPanel")]
 process_mode = 3
@@ -65,6 +71,12 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(0, 50)
 layout_mode = 2
 _progressTexture = ExtResource("4_nh7k7")
+
+[node name="ShieldCooldownProgressBar" parent="MarginContainer/VBoxContainer2" instance=ExtResource("3_6yig1")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 10)
+layout_mode = 2
+_progressTexture = SubResource("GradientTexture1D_j0h8f")
 
 [node name="DebugPanel" type="Control" parent="."]
 layout_mode = 1

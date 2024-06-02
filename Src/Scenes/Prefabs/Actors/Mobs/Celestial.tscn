@@ -1,8 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://plutyrpe4xxs"]
+[gd_scene load_steps=17 format=3 uid="uid://plutyrpe4xxs"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_pbe1d"]
 [ext_resource type="Texture2D" uid="uid://cuo5dvpcu4h88" path="res://Assets/Textures/Mobs/Celestial.png" id="2_d1si5"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/CelestialAi.cs" id="2_ngvhr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k2f2c"]
+size = Vector2(148, 192)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_htfxt"]
 size = Vector2(148, 192)
@@ -58,17 +61,19 @@ state_config_list = Array[StateConfig]([SubResource("StateConfig_31rmu"), SubRes
 transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_mo5et"), SubResource("TransitionConfig_icujs"), SubResource("TransitionConfig_2v7qa"), SubResource("TransitionConfig_fi3s3")])
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_4y5mh")])
 
-[node name="Celestial" node_paths=PackedStringArray("_hurtBox", "Spring", "Sprite", "_visibleOnScreenNotifier2D", "Shooter", "_speedParticles") instance=ExtResource("1_pbe1d")]
+[node name="Celestial" node_paths=PackedStringArray("_hurtBox", "Spring", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_pbe1d")]
 modulate = Color(1, 0.968627, 0.878431, 1)
 _hurtBox = NodePath("Components/HurtBox")
 Spring = NodePath("Spring")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")
-_speedParticles = NodePath("SpeedParticles")
 
-[node name="Sprite2D" parent="." index="1"]
+[node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_d1si5")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_k2f2c")
 
 [node name="Shooter" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
 Actor = NodePath("../../..")
