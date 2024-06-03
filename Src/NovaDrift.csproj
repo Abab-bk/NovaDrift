@@ -7,21 +7,36 @@
     <LangVersion>12.0</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+  
   <ItemGroup>
-    <Folder Include="Scripts\Systems\Shields\" />
-    <Folder Include="Scripts\Systems\Weapons\" />
     <Compile Remove="script_templates/**/*.cs" />
     <Compile Remove=".godot\**" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="addons\AcidUtilities\plugin.cfg" />
-  </ItemGroup>
+  
   <ItemGroup>
     <EmbeddedResource Remove=".godot\**" />
   </ItemGroup>
+  
   <ItemGroup>
     <PackageReference Include="GDTask" Version="1.2.2" />
     <PackageReference Include="GodotSharpSome.Drawing2D" Version="0.23.0" />
     <ProjectReference Include="..\GodotGetNode\GodotGetNode.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
   </ItemGroup>
+  
+  
+  <ItemGroup>
+    <Content Include="Libs\fmod.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Libs\fmodL.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Libs\fmodstudio.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Libs\fmodstudioL.dll">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+  </ItemGroup>
+  
 </Project>

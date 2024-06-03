@@ -9,6 +9,8 @@ namespace NovaDrift.Scripts.Prefabs.Actors;
 
 public partial class Player : Actor
 {
+    [GetNode("%RegenerationTimer")] private Timer _regenerationTimer;
+     
     private HFSM _movementMachine;
     private HFSM _actionMachine;
 
@@ -65,6 +67,14 @@ public partial class Player : Actor
         Shield.OnCharge += () => _updateShieldCooldown = true;
         Shield.OnActive += () => _updateShieldCooldown = true;
 
+        Scale = new Vector2(Stats.Size.Value, Stats.Size.Value);
+        
+        _regenerationTimer.Timeout += () =>
+        {
+            Stats.Health.Increase(Stats.Health.MaxValue.Value * (50f / Stats.Regeneration.Value + Stats.Regeneration.Value));
+        };
+        _regenerationTimer.Start();
+        
         UpdateUi();
     }
 

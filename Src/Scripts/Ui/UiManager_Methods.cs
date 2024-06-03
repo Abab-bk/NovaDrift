@@ -15,6 +15,7 @@ public static partial class UiManager
         public const string GalleryBtn = "GalleryBtn";
         public const string GameOver = "GameOver";
         public const string Hud = "Hud";
+        public const string Loading = "Loading";
         public const string PausedMenu = "PausedMenu";
         public const string SalvoBulletCount = "SalvoBulletCount";
         public const string SelectAbility = "SelectAbility";
@@ -454,6 +455,54 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.Hud.HudPanel[] Get_Hud_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.Hud.HudPanel>(nameof(NovaDrift.Scripts.Ui.Hud.Hud));
+    }
+
+    /// <summary>
+    /// 创建 Loading, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Loading.LoadingPanel Create_Loading()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.Loading.LoadingPanel>(UiName.Loading);
+    }
+
+    /// <summary>
+    /// 打开 Loading, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Loading.LoadingPanel Open_Loading()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.Loading.LoadingPanel>(UiName.Loading);
+    }
+
+    /// <summary>
+    /// 隐藏 Loading 的所有实例
+    /// </summary>
+    public static void Hide_Loading()
+    {
+        var uiInstance = Get_Loading_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 Loading 的所有实例
+    /// </summary>
+    public static void Destroy_Loading()
+    {
+        var uiInstance = Get_Loading_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 Loading 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Loading.LoadingPanel[] Get_Loading_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.Loading.LoadingPanel>(nameof(NovaDrift.Scripts.Ui.Loading.Loading));
     }
 
     /// <summary>

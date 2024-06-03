@@ -177,3 +177,6 @@ unique_name_in_owner = true
 [node name="ActionMachine" type="HFSM" parent="." index="10"]
 root_fsm_config = SubResource("FSMConfig_xyrl7")
 unique_name_in_owner = true
+
+[node name="RegenerationTimer" type="Timer" parent="." index="13"]
+unique_name_in_owner = true

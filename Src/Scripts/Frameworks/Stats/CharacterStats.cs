@@ -26,10 +26,9 @@ public class CharacterStats
     
     // 武器射击速度
     public readonly Stat
-        Size = new(1f), // TODO Actor 大小
-        Recovery = new(0f), // TODO 所有类型的治疗
-        Regeneration = new(0f), // TODO 一种特定类型的治疗。被动再生。默认情况下，只有您的船体会以每秒最大船体的 1/50 的速度再生。可以修改再生以应用于护盾。
-        PassiveRecoveryRate = new(1f), // TODO 默认是 1/50
+        Size = new(1f),
+        Recovery = new(1f), // TODO 所有类型的治疗
+        Regeneration = new(1f), // TODO 一种特定类型的治疗。被动再生。默认情况下，只有您的船体会以每秒最大船体的 1/50 的速度再生。可以修改再生以应用于护盾。
 
         ShootSpeed = new(0.5f), // 射击速度，单位为秒，越低越快
         BulletSpeed = new(1500f), // 子弹速度

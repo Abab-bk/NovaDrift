@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://bqs2uml1s5yli"]
+
+[ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_cw7av"]
+[ext_resource type="Script" path="res://Scripts/Ui/loading/LoadingPanel.cs" id="1_mgqcp"]
+
+[node name="Loading" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("1_cw7av")
+script = ExtResource("1_mgqcp")
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -951.0
+offset_top = -186.0
+offset_right = 951.0
+offset_bottom = -142.0
+grow_horizontal = 2
+grow_vertical = 0
