@@ -22,6 +22,7 @@ public partial class Spring : Node2D
     [Export] public bool EnabledDraw;
     
     private readonly List<SpringInfo> _targetPoints = new ();
+    private List<SpringInfo> _needRemove = new ();
     
     public Vector2 GetMovement()
     {
@@ -30,7 +31,12 @@ public partial class Spring : Node2D
         foreach (var springInfo in _targetPoints)
         {
             var target = springInfo.Target;
-            
+            if (!IsInstanceValid(target))
+            {
+                _needRemove.Add(springInfo);
+                continue;
+            }
+
             if (springInfo.Type == SpringType.Push)
             {
                 // var dir = GlobalPosition.DirectionTo(target.GlobalPosition);
@@ -47,6 +53,11 @@ public partial class Spring : Node2D
             
             var pullSpringForce = pullDistance - 20f;
             movement += pullDir * pullSpringForce;
+        }
+
+        foreach (var springInfo in _needRemove)
+        {
+            RemoveTargetPoint(springInfo);
         }
 
         return movement.Normalized();

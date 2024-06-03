@@ -19,6 +19,8 @@ public partial class GameWorld : Node2D
 	
 	public override void _Ready()
 	{
+		SoundManager.Initialize();
+		
 		AcidSaver.OnLoaded += () =>
 		{
 			SoundManager.MusicVolume = AcidSaver.HasSetting("Audios", "MusicVolume")
@@ -35,7 +37,6 @@ public partial class GameWorld : Node2D
 
 		AcidSaver.LoadAll();
 		AudioServer.Lock();
-		SoundManager.Initialize();
 
 		Global.SceneTree = GetTree();
 		Global.ShakeDirector = _shakeDirector;

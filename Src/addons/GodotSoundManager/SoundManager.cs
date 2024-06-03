@@ -117,7 +117,6 @@ public static class SoundManager
         FMOD.Studio.System.create(out _studioSystem);
         _studioSystem.initialize(FmodConfig.MaxChannels, INITFLAGS.NORMAL, FMOD.INITFLAGS._3D_RIGHTHANDED, IntPtr.Zero);
         
-        
         foreach (var path in FmodConfig.BankPaths)
         {
             _studioSystem.loadBankFile(path, LOAD_BANK_FLAGS.NORMAL, out var bank);
