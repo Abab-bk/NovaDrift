@@ -15,7 +15,7 @@ public static class DataBuilder
 {
     public static Tables Tables;
     public static TbConstants Constants => Tables.TbConstants;
-    public static List<int> AbilityIdPool = new List<int>();
+    public static readonly List<int> AbilityIdPool = new List<int>();
 
     private static readonly Curve FuncUpLevelCurveBefore20 = GD.Load<Curve>("res://Assets/Curves/UpLevelCurveBefore20.tres");
     private static readonly Curve FuncUpLevelCurveAfter20 = GD.Load<Curve>("res://Assets/Curves/UpLevelCurveAfter20.tres");
@@ -273,6 +273,10 @@ public static class DataBuilder
             Damage = tbMobInfo.Damage,
             ShootCd = tbMobInfo.ShootCd,
             Targeting = tbMobInfo.Targeting,
+            BulletCount = tbMobInfo.BulletCount,
+            Size = tbMobInfo.Size,
+            DangerFactor = tbMobInfo.DangerFactor,
+            GetExp = tbMobInfo.GetExp,
             ScenePath = $"res://Scenes/Prefabs/Actors/Mobs/{tbMobInfo.SceneName}.tscn".Trim(),
         };
         
@@ -280,7 +284,7 @@ public static class DataBuilder
     }
     
     
-    public static Game.AbilityTree BuildAbilityTreeById(int id)
+    private static Game.AbilityTree BuildAbilityTreeById(int id)
     {
         AbilityTree tbAbilityTree = Tables.TbAbilityTree.Get(id);
         Game.AbilityTree abilityTree = new Game.AbilityTree

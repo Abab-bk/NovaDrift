@@ -1,8 +1,9 @@
-[gd_scene load_steps=34 format=3 uid="uid://5ruwopryw23m"]
+[gd_scene load_steps=35 format=3 uid="uid://5ruwopryw23m"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_o3i0o"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/MathematiciansAi.cs" id="2_48fg7"]
 [ext_resource type="Texture2D" uid="uid://uxad1tqnouwp" path="res://Assets/Textures/Mobs/Mathematicians.png" id="2_bjkmk"]
+[ext_resource type="PackedScene" uid="uid://drobcpf7g4p2f" path="res://Scenes/StateDebugger.tscn" id="4_r7w0v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1wip4"]
 size = Vector2(274, 300)
@@ -146,8 +147,9 @@ state_config_list = Array[StateConfig]([SubResource("StateConfig_da55l"), SubRes
 transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_4a748"), SubResource("TransitionConfig_u5504"), SubResource("TransitionConfig_xhie0"), SubResource("TransitionConfig_xa1dk"), SubResource("TransitionConfig_7s02u"), SubResource("TransitionConfig_2qttw"), SubResource("TransitionConfig_ufbq5"), SubResource("TransitionConfig_8ejv1"), SubResource("TransitionConfig_3jjwu")])
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_ppspd"), SubResource("VariableConfig_1riw8"), SubResource("VariableConfig_xjs51"), SubResource("VariableConfig_j3yun")])
 
-[node name="Mathematicians" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_o3i0o")]
+[node name="Mathematicians" node_paths=PackedStringArray("_hurtBox", "Spring", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_o3i0o")]
 _hurtBox = NodePath("Components/HurtBox")
+Spring = NodePath("Spring")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")
@@ -177,3 +179,15 @@ root_fsm_config = SubResource("FSMConfig_gs236")
 
 [node name="VisibleOnScreenNotifier2D" parent="." index="4"]
 scale = Vector2(10.9, 14.9435)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="8"]
+
+[node name="StateDebugger" parent="CanvasLayer" index="0" instance=ExtResource("4_r7w0v")]
+custom_minimum_size = Vector2(200, 200)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -392.0
+offset_right = 687.0
+grow_horizontal = 1
+grow_vertical = 0

@@ -7,6 +7,10 @@
     "speed": 800,
     "damage": 10,
     "targeting": 70,
-    "shoot_cd": 0.1
+    "shoot_cd": 0.1,
+    "bullet_count": 4,
+    "size": 1,
+    "danger_factor": 5,
+    "get_exp": 10
   }
 ]

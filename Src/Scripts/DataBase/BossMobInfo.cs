@@ -25,6 +25,10 @@ public sealed partial class BossMobInfo : Luban.BeanBase
         Damage = _buf.GetProperty("damage").GetSingle();
         Targeting = _buf.GetProperty("targeting").GetSingle();
         ShootCd = _buf.GetProperty("shoot_cd").GetSingle();
+        BulletCount = _buf.GetProperty("bullet_count").GetSingle();
+        Size = _buf.GetProperty("size").GetSingle();
+        DangerFactor = _buf.GetProperty("danger_factor").GetInt32();
+        GetExp = _buf.GetProperty("get_exp").GetSingle();
     }
 
     public static BossMobInfo DeserializeBossMobInfo(JsonElement _buf)
@@ -57,19 +61,39 @@ public sealed partial class BossMobInfo : Luban.BeanBase
     /// </summary>
     public readonly float Damage;
     /// <summary>
-    /// 转向速度
+    /// 子弹追踪
     /// </summary>
     public readonly float Targeting;
     /// <summary>
     /// 攻击CD
     /// </summary>
     public readonly float ShootCd;
+    /// <summary>
+    /// 子弹数量
+    /// </summary>
+    public readonly float BulletCount;
+    /// <summary>
+    /// 大小
+    /// </summary>
+    public readonly float Size;
+    /// <summary>
+    /// 危险系数
+    /// </summary>
+    public readonly int DangerFactor;
+    /// <summary>
+    /// 获得经验
+    /// </summary>
+    public readonly float GetExp;
    
     public const int __ID__ = 1071955841;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
     {
+        
+        
+        
+        
         
         
         
@@ -91,6 +115,10 @@ public sealed partial class BossMobInfo : Luban.BeanBase
         + "damage:" + Damage + ","
         + "targeting:" + Targeting + ","
         + "shootCd:" + ShootCd + ","
+        + "bulletCount:" + BulletCount + ","
+        + "size:" + Size + ","
+        + "dangerFactor:" + DangerFactor + ","
+        + "getExp:" + GetExp + ","
         + "}";
     }
 }

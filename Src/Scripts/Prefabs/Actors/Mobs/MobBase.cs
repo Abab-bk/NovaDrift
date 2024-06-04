@@ -105,4 +105,19 @@ public partial class MobBase : Actor
         // Velocity = Velocity.MoveToward(targetVelocity, Stats.Acceleration.Value * (float)delta);
         Velocity = targetVelocity;
     }
+
+    public void LookForward(float delta)
+    {
+        Rotation = RotationTo(Velocity.Angle(), delta);
+    }
+    
+    public void LookAtPlayer(float delta)
+    {
+        Rotation = RotationTo(Global.Player.GlobalPosition.AngleToPoint(GlobalPosition), delta);
+    }
+    
+    public void LookBack(float delta)
+    {
+        Rotation = RotationTo(Velocity.Angle() + MathF.PI, delta);
+    }
 }

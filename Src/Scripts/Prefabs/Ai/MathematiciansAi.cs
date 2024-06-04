@@ -22,8 +22,8 @@ public partial class MathematiciansAi : MobAiComponent
 
     protected override void OnMobDied()
     {
-        base.OnMobDied();
         _bank.unload();
+        base.OnMobDied();
     }
 
     protected override void ConnectProcessSignals(State state, float delta)
@@ -39,6 +39,7 @@ public partial class MathematiciansAi : MobAiComponent
                 }
                 break;
             case "Shoot":
+                Mob.TryStop(delta);
                 Mob.Rotate(Mathf.DegToRad(50 * delta));
                 Mob.Shoot();
                 break;
@@ -47,7 +48,7 @@ public partial class MathematiciansAi : MobAiComponent
                 if (Mob.GlobalPosition.DistanceTo(_corner) <= 20)
                 {
                     Mob.Velocity = Vector2.Zero;
-                    Mob.LookAt(Global.Player.GlobalPosition);
+                    Mob.LookAtPlayer(delta);
                     switch (Random.Shared.Next(0, 2))
                     {
                         case 0:
@@ -74,7 +75,7 @@ public partial class MathematiciansAi : MobAiComponent
                 Mob.PlaySound("event:/Mobs/Bosses/Mathematicians/Moving");
                 break;
             
-            case "Shoot": 
+            case "Shoot":
                 Mob.PlaySound("event:/Mobs/Bosses/Mathematicians/Shoot");
                 break;
             

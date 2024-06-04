@@ -11,8 +11,8 @@ namespace NovaDrift.Scripts;
 
 public partial class GameWorld : Node2D
 {
-	[Export] ShakeDirector2D _shakeDirector;
-	[Export] FastNoiseLite _noise;
+	[Export] private ShakeDirector2D _shakeDirector;
+	[Export] private FastNoiseLite _noise;
 	
 	private Joystick _moveJoystick;
 	private Joystick _aimJoystick;
