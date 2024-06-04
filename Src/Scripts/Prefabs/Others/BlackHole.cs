@@ -1,31 +1,30 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using GTweens.Builders;
+using GTweensGodot.Extensions;
 using NovaDrift.Scripts.Prefabs.Actors;
 
 namespace NovaDrift.Scripts.Prefabs.Others;
 public partial class BlackHole : Node2D
 {
-	private float _mass = 30000f;
-	private List<Actor> _actors = new List<Actor>();
+	public event Action<Actor> OnActorEnter;
+	public event Action OnDead;
+	
+	private float _mass = 20000f;
+	
+	public List<Actor> ExceptActors = new();
+	public float Radius = 400f;
+	public int Life = 5;
 	
 	public override void _Ready()
 	{
-		GetTree().NodeAdded += node =>
-		{
-			if (node is Actor actor)
-			{
-				_actors.Add(actor);
-			}
-		};
-
-		foreach (var actor in GetTree().GetNodesInGroup("Actors"))
-		{
-			if (actor is Actor actor1)
-			{
-				_actors.Add(actor1);
-			}
-		}
+		GTweenSequenceBuilder.New()
+			.Append(this.TweenRotation(360f, 1f).SetLoops(Life))
+			.AppendCallback(() => OnDead?.Invoke())
+			.Build()
+			.Play();
+		Scale = new Vector2(Radius / 700f, Radius / 700f);
 	}
 
 	public override void _PhysicsProcess(double delta)
@@ -35,13 +34,21 @@ public partial class BlackHole : Node2D
 
 	private void Apply()
 	{
-		foreach (var actor in _actors)
+		foreach (var actor in GetTree().GetNodesInGroup("Actors"))
 		{
-			var dir = actor.GlobalPosition.DirectionTo(GlobalPosition);
-			var distance = GlobalPosition.DistanceTo(actor.GlobalPosition);
+			if (actor is not Actor node2D) continue;
+			if (ExceptActors.Contains(node2D)) continue;
+			
+			var dir = node2D.GlobalPosition.DirectionTo(GlobalPosition);
+			var distance = GlobalPosition.DistanceTo(node2D.GlobalPosition);
 			var force = _mass / distance;
 			var forceVector = dir * force;
-			actor.Stats.ForceVector = forceVector;
+			node2D.Stats.ForceVector = forceVector;
+
+			if (node2D.GlobalPosition.DistanceTo(GlobalPosition) <= 200)
+			{
+				OnActorEnter?.Invoke(node2D);
+			}
 		}
 	}
 }

@@ -120,19 +120,22 @@ public partial class MathematiciansAi : MobAiComponent
                 
                 Mob.PlaySound("event:/Mobs/Bosses/Mathematicians/CreateBlackHole");
                 
+                blackHole.ExceptActors.Add(Mob);
+                blackHole.Life = 5;
                 GetTree().Root.AddChild(blackHole);
                 blackHole.GlobalPosition = Mob.GetForwardVector2(Mob.Stats.Speed.Value * 0.5f);
-                
-                GTweenSequenceBuilder.New()
-                    .Join(blackHole.TweenRotation(360f, 5f))
-                    .AppendCallback(() =>
-                    {
-                        Machine.SetTrigger("Next");
-                        blackHole.QueueFree();
-                    })
-                    .Build()
-                    .Play();
-                
+
+                blackHole.OnDead += () =>
+                {
+                    Machine.SetTrigger("Next");
+                    blackHole.QueueFree();
+                };
+
+                blackHole.OnActorEnter += actor =>
+                {
+                    actor.TakeDamageWithoutKnockBack(10f);
+                };
+
                 break;
             case "Beam":
                 Mob.LookAt(Global.Player.GlobalPosition);

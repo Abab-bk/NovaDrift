@@ -6,10 +6,11 @@
 [ext_resource type="Script" path="res://Scripts/Prefabs/MobAiComponent.cs" id="3_d6jih"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/Shooter.cs" id="4_02xj6"]
 
-[node name="MobBase" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D") groups=["Mobs"] instance=ExtResource("1_kd23v")]
+[node name="MobBase" node_paths=PackedStringArray("_hurtBox", "Spring", "Sprite", "_visibleOnScreenNotifier2D") groups=["Mobs"] instance=ExtResource("1_kd23v")]
 script = ExtResource("2_e2oe2")
 Sign = ""
 _hurtBox = NodePath("Components/HurtBox")
+Spring = NodePath("Spring")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 

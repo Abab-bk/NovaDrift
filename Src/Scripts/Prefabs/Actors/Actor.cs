@@ -122,6 +122,8 @@ public partial class Actor : CharacterBody2D
 
     public override void _Ready()
     {
+        AddToGroup("Actors");
+        
         ShooterNode = GetNode<Node2D>("%ShooterNode");
         ShieldNode = GetNode<Node2D>("%ShieldNode");
         _bodyArea = GetNode<Area2D>("%BodyArea");
