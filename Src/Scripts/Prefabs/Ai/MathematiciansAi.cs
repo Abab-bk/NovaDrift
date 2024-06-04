@@ -1,6 +1,7 @@
 using System;
 using AcidWallStudio.AcidUtilities;
 using AcidWallStudio.Fmod;
+using AcidWallStudio.SpringSystem;
 using FMOD.Studio;
 using Godot;
 using GTweens.Builders;
@@ -11,18 +12,22 @@ namespace NovaDrift.Scripts.Prefabs.Ai;
 
 public partial class MathematiciansAi : MobAiComponent
 {
-    private Vector2 _corner;
     private Bank _bank;
+    private Node2D _mapCorner;
 
-    public override void _Ready()
+    public override async void _Ready()
     {
         base._Ready();
+        await ToSignal(Owner, Node.SignalName.Ready);
+        Mob.Spring.RemoveTargetPoint(Global.Player);
+        SetMapCorner();
         SoundManager.LoadBank("Mathematicians.bank", out _bank);
     }
 
     protected override void OnMobDied()
     {
         _bank.unload();
+        _mapCorner.QueueFree();
         base.OnMobDied();
     }
 
@@ -32,9 +37,10 @@ public partial class MathematiciansAi : MobAiComponent
         switch (state.GetName())
         {
             case "MovingToCenter":
-                Mob.SetTargetPosAndMove(Wizard.GetScreenCenter(), delta);
-                if (Mob.GlobalPosition.DistanceTo(Wizard.GetScreenCenter()) <= 20)
+                Mob.SetTargetAndMove(_mapCorner, delta);
+                if (Mob.GlobalPosition.DistanceTo(Wizard.GetScreenCenter()) <= 40)
                 {
+                    Mob.CleanTarget();
                     Machine.SetTrigger("Next");
                 }
                 break;
@@ -44,8 +50,8 @@ public partial class MathematiciansAi : MobAiComponent
                 Mob.Shoot();
                 break;
             case "MovingToCorner":
-                Mob.SetTargetPosAndMove(_corner, delta);
-                if (Mob.GlobalPosition.DistanceTo(_corner) <= 20)
+                Mob.SetTargetAndMove(_mapCorner, delta);
+                if (Mob.GlobalPosition.DistanceTo(_mapCorner.GlobalPosition) <= 40)
                 {
                     Mob.Velocity = Vector2.Zero;
                     Mob.LookAtPlayer(delta);
@@ -63,6 +69,12 @@ public partial class MathematiciansAi : MobAiComponent
                     }
                 }
                 break;
+            case "Blink":
+                Mob.TryStop(delta);
+                break;
+            case "CreateBlackHole":
+                Mob.TryStop(delta);
+                break;
         }
     }
 
@@ -72,6 +84,7 @@ public partial class MathematiciansAi : MobAiComponent
         switch (state.GetName())
         {
             case "MovingToCenter":
+                SetToCenter();
                 Mob.PlaySound("event:/Mobs/Bosses/Mathematicians/Moving");
                 break;
             
@@ -80,8 +93,8 @@ public partial class MathematiciansAi : MobAiComponent
                 break;
             
             case "MovingToCorner":
+                SetRandomMapCorner();
                 Mob.PlaySound("event:/Mobs/Bosses/Mathematicians/Moving");
-                _corner = Wizard.GetRandomMapCorner();
                 break;
             
             case "Blink":
@@ -99,6 +112,7 @@ public partial class MathematiciansAi : MobAiComponent
                     .Build()
                     .Play();
                 break;
+            
             case "CreateBlackHole":
                 Mob.LookAt(Global.Player.GlobalPosition);
                 var blackHole = GD.Load<PackedScene>("res://Scenes/Prefabs/Others/BlackHole.tscn").Instantiate() as BlackHole;
@@ -127,5 +141,21 @@ public partial class MathematiciansAi : MobAiComponent
                 break;
         }
     }
+
+    private void SetMapCorner()
+    {
+        _mapCorner = new Node2D();
+        Global.GameWorld.AddChild(_mapCorner);
+        _mapCorner.GlobalPosition = Wizard.GetRandomMapCorner();
+    }
     
+    private void SetRandomMapCorner()
+    {
+        _mapCorner.GlobalPosition = Wizard.GetRandomMapCorner();
+    }
+    
+    private void SetToCenter()
+    {
+        _mapCorner.GlobalPosition = Wizard.GetScreenCenter();
+    }
 }

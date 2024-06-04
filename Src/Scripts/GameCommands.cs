@@ -19,11 +19,8 @@ public sealed class WorldCommands
     public int SomethingId { get; set; } = 1001;
     public void GenerateMobById() => Global.WaveSpawnerController.GenerateAMob(SomethingId);
     public void GenerateBossById() => Global.WaveSpawnerController.GenerateABoss(SomethingId);
-
-    public void GenerateWave()
-    {
-        Global.WaveSpawnerController.GenerateWave();
-    }
+    public void GenerateBossWaveById() => Global.WaveSpawnerController.GenerateBossWave(SomethingId);
+    public void GenerateWave() => Global.WaveSpawnerController.GenerateWave();
 
     public HazardSpawner.HazardType HazardType { get; set; }
     public void SpawnHazard() => Global.HazardSpawner.SpawnHazard(HazardType);

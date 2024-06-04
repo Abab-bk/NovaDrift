@@ -55,10 +55,18 @@ public partial class WaveSpawner : Node2D
 
             mobIndex += 1;
         }
-        
+        RandomMove();
         Logger.Log($"敌人生成数量: {generatedMobs.Count}, 阵型：{spawnType.GetType().Name}");
     }
-    
+
+    public void GenerateABoss(int id)
+    {
+        var mob = new MobBuilder(DataBuilder.BuildBossMobInfoById(id)).Build();
+        Global.GameWorld.AddChild(mob);
+        mob.GlobalPosition = Vector2.Zero;
+        RandomMove();
+    }
+
     private void RandomMove()
     {
         var pos = Wizard.GetRandomScreenPosition();

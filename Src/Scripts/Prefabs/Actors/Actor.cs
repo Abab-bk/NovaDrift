@@ -19,11 +19,11 @@ public partial class Actor : CharacterBody2D
     
     [Export] private HurtBox _hurtBox;
     
-    [Export] protected Spring Spring;
+    [Export] public Spring Spring;
     [Export] protected Sprite2D Sprite;
     
     [Export] private VisibleOnScreenNotifier2D _visibleOnScreenNotifier2D;
-    [Export] public bool IsPlayer = false;
+    [Export] public bool IsPlayer;
 
     [Export] public BaseShooter Shooter
     {
@@ -56,7 +56,7 @@ public partial class Actor : CharacterBody2D
     
     // protected bool IsShooting = false;
     
-    protected bool IsDead = false;
+    protected bool IsDead;
     protected ActorVisual Visual;
     
     
@@ -243,7 +243,7 @@ public partial class Actor : CharacterBody2D
 public class ActorVisual(Node2D target)
 {
     private Color _originalColor;
-    private bool _flashing = false;
+    private bool _flashing;
     public void FlashAndRestore()
     {
         if (_flashing) return;

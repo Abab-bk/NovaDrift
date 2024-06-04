@@ -180,7 +180,7 @@ root_fsm_config = SubResource("FSMConfig_gs236")
 [node name="VisibleOnScreenNotifier2D" parent="." index="4"]
 scale = Vector2(10.9, 14.9435)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="8"]
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
 
 [node name="StateDebugger" parent="CanvasLayer" index="0" instance=ExtResource("4_r7w0v")]
 custom_minimum_size = Vector2(200, 200)
@@ -191,3 +191,6 @@ offset_top = -392.0
 offset_right = 687.0
 grow_horizontal = 1
 grow_vertical = 0
+
+[node name="Spring" parent="." index="8"]
+EnabledDraw = true

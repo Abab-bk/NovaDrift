@@ -98,6 +98,12 @@ public partial class MobBase : Actor
         MoveAndSlide();
     }
 
+    public void CleanTarget()
+    {
+        Spring.RemoveTargetPoint(_target);
+        _target = null;
+    }
+
     public override void TryMoveTo(Vector2 dir, double delta)
     {
         var targetVelocity = Spring.GetMovement() * Stats.Speed.Value;

@@ -52,6 +52,14 @@ public partial class WaveSpawnerController : Node2D
         waveSpawner.GenerateWave();
     }
 
+    public void GenerateBossWave(int id)
+    {
+        var waveSpawner = new WaveSpawner();
+        waveSpawner.Cost = GetCost();
+        AddChild(waveSpawner);
+        waveSpawner.GenerateABoss(id);
+    }
+    
     public void GenerateAMob(int id)
     {
         var mob = new MobBuilder(DataBuilder.BuildMobInfoById(id)).Build();
