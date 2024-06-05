@@ -21,10 +21,21 @@ public partial class BlackHole : Node2D
 	{
 		GTweenSequenceBuilder.New()
 			.Append(this.TweenRotation(360f, 1f).SetLoops(Life))
-			.AppendCallback(() => OnDead?.Invoke())
+			.AppendCallback(() =>
+			{
+				foreach (var actor in GetTree().GetNodesInGroup("Actors"))
+				{
+					if (actor is not Actor node2D) continue;
+					if (ExceptActors.Contains(node2D)) continue;
+					node2D.Stats.ForceVector = Vector2.Zero;
+				}
+				
+				OnDead?.Invoke();
+			})
 			.Build()
 			.Play();
 		Scale = new Vector2(Radius / 700f, Radius / 700f);
+		_mass = Radius * 30f;
 	}
 
 	public override void _PhysicsProcess(double delta)
