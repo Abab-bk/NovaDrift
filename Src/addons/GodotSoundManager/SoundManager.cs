@@ -103,7 +103,11 @@ public static class SoundManager
     public static EventInstance CreateInstanceById(string id)
     {
         var desc = _studioSystem.getEvent(id, out var soundDesc);
-        soundDesc.createInstance(out var instance);
+        if (desc != RESULT.OK) Logger.LogError($"Error loading sound {desc.ToString()}");
+        
+        var instanceResult = soundDesc.createInstance(out var instance);
+        if (instanceResult != RESULT.OK) Logger.LogError($"Error creating instance {instanceResult.ToString()}");
+        
         return instance;
     }
 
@@ -116,7 +120,7 @@ public static class SoundManager
     {
         FMOD.Studio.System.create(out _studioSystem);
         _studioSystem.initialize(FmodConfig.MaxChannels, INITFLAGS.NORMAL, FMOD.INITFLAGS._3D_RIGHTHANDED, IntPtr.Zero);
-        
+
         foreach (var path in FmodConfig.BankPaths)
         {
             _studioSystem.loadBankFile(path, LOAD_BANK_FLAGS.NORMAL, out var bank);
@@ -130,7 +134,8 @@ public static class SoundManager
     
     public static void LoadBank(string fileName, out Bank bank)
     {
-        _studioSystem.loadBankFile(FmodConfig.RootPath + fileName, LOAD_BANK_FLAGS.NORMAL, out bank);
+        var result = _studioSystem.loadBankFile(FmodConfig.RootPath + fileName, LOAD_BANK_FLAGS.NORMAL, out bank);
+        if (result != RESULT.OK) Logger.LogError($"Error loading bank {result.ToString()}");
     }
 
     public static void SetVolume()

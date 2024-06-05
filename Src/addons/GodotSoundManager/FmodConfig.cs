@@ -15,7 +15,7 @@ public static class FmodConfig
         "Assets/Audios/Desktop/Music.bank",
         "Assets/Audios/Desktop/UI.bank",
     };
-    public const string RootPath = "Assets/Audios/Banks/";
+    public const string RootPath = "Assets/Audios/Desktop/";
 
     public static Node2D Listener = Global.Player;
 }

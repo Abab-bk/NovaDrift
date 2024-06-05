@@ -22,7 +22,12 @@ public partial class SoundNode : Node2D
         //     }
         //     return RESULT.OK;
         // } ), EVENT_CALLBACK_TYPE.SOUND_STOPPED);
-        EventInstance.start();
+        var log = EventInstance.start();
+        if (log != RESULT.OK)
+        {
+            Logger.LogError($"Error starting EventInstance {log.ToString()}");
+        }
+
         EventInstance.release();
     }
 
