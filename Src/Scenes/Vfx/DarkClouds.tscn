@@ -1,3 +1,28 @@
-[gd_scene format=3 uid="uid://bgpb7ft5fcsce"]
+[gd_scene load_steps=5 format=3 uid="uid://bgpb7ft5fcsce"]
+
+[ext_resource type="Texture2D" uid="uid://behs0aa3qteuo" path="res://Assets/Textures/Particles/smoke_07.png" id="1_63ujw"]
+
+[sub_resource type="Gradient" id="Gradient_y7vc5"]
+colors = PackedColorArray(0, 0, 0, 1, 0, 0, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_88j27"]
+gradient = SubResource("Gradient_y7vc5")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_mmaca"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1500, 50, 1)
+spread = 0.0
+initial_velocity_min = 30.0
+initial_velocity_max = 30.0
+gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("GradientTexture1D_88j27")
 
 [node name="DarkClouds" type="Node2D"]
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+amount = 100
+process_material = SubResource("ParticleProcessMaterial_mmaca")
+texture = ExtResource("1_63ujw")
+lifetime = 15.0
+speed_scale = 20.0

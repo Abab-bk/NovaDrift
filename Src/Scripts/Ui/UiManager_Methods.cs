@@ -11,6 +11,7 @@ public static partial class UiManager
         public const string AbilityTree = "AbilityTree";
         public const string ActionBtn = "ActionBtn";
         public const string AnimationProgressBar = "AnimationProgressBar";
+        public const string BuffIcon = "BuffIcon";
         public const string DamageLabel = "DamageLabel";
         public const string GalleryBtn = "GalleryBtn";
         public const string GameOver = "GameOver";
@@ -263,6 +264,54 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel[] Get_AnimationProgressBar_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel>(nameof(NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBar));
+    }
+
+    /// <summary>
+    /// 创建 BuffIcon, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.BuffIcon.BuffIconPanel Create_BuffIcon()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.BuffIcon.BuffIconPanel>(UiName.BuffIcon);
+    }
+
+    /// <summary>
+    /// 打开 BuffIcon, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.BuffIcon.BuffIconPanel Open_BuffIcon()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.BuffIcon.BuffIconPanel>(UiName.BuffIcon);
+    }
+
+    /// <summary>
+    /// 隐藏 BuffIcon 的所有实例
+    /// </summary>
+    public static void Hide_BuffIcon()
+    {
+        var uiInstance = Get_BuffIcon_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 BuffIcon 的所有实例
+    /// </summary>
+    public static void Destroy_BuffIcon()
+    {
+        var uiInstance = Get_BuffIcon_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 BuffIcon 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.BuffIcon.BuffIconPanel[] Get_BuffIcon_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.BuffIcon.BuffIconPanel>(nameof(NovaDrift.Scripts.Ui.BuffIcon.BuffIcon));
     }
 
     /// <summary>

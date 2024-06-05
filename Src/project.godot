@@ -65,6 +65,7 @@ enabled=PackedStringArray("res://addons/AcidNodes/plugin.cfg", "res://addons/Bur
 
 folder_colors={
 "res://Assets/Textures/Mobs/": "green",
+"res://Assets/Textures/Particles/": "yellow",
 "res://Scenes/Prefabs/Actors/Mobs/": "red",
 "res://Scripts/": "orange",
 "res://Scripts/Libs/": "gray",

@@ -146,6 +146,7 @@ transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_nd783"), SubResource("VariableConfig_cdnjy"), SubResource("VariableConfig_gviec"), SubResource("VariableConfig_rk352")])
 
 [node name="TheDoctor" node_paths=PackedStringArray("_hurtBox", "Spring", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_bpe63")]
+modulate = Color(0.407843, 1, 0.639216, 1)
 _hurtBox = NodePath("Components/HurtBox")
 Spring = NodePath("Spring")
 Sprite = NodePath("Sprite2D")

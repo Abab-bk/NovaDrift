@@ -54,7 +54,7 @@ public partial class MathematiciansAi : MobAiComponent
                 {
                     Mob.Velocity = Vector2.Zero;
                     Mob.LookAtPlayer(delta);
-                    switch (Random.Shared.Next(0, 2))
+                    switch (Random.Shared.Next(0, 3))
                     {
                         case 0:
                             Machine.SetTrigger("Blink");

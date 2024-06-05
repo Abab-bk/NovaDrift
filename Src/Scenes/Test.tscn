@@ -1,6 +1,10 @@
-[gd_scene load_steps=2 format=3 uid="uid://d1kwbf54qmb76"]
+[gd_scene load_steps=3 format=3 uid="uid://d1kwbf54qmb76"]
 
 [ext_resource type="Script" path="res://Scripts/Test.cs" id="1_kfpb1"]
+[ext_resource type="PackedScene" uid="uid://1fu6tkpmky26" path="res://Scenes/Vfx/LaserBeam.tscn" id="2_dhu5y"]
 
 [node name="Test" type="Node2D"]
 script = ExtResource("1_kfpb1")
+
+[node name="LaserBeam" parent="." instance=ExtResource("2_dhu5y")]
+position = Vector2(157, 443)

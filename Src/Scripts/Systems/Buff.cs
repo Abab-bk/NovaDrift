@@ -58,4 +58,9 @@ public class Buff
         _repeatTimer.QueueFree();
         OnDestroy?.Invoke(this);
     }
+
+    protected virtual void ShowToUi()
+    {
+        
+    }
 }

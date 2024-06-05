@@ -1,0 +1,16 @@
+[gd_scene load_steps=2 format=3 uid="uid://1fu6tkpmky26"]
+
+[ext_resource type="Script" path="res://Scripts/Vfx/LaserBeam.cs" id="1_pcm1i"]
+
+[node name="LaserBeam" type="Node2D"]
+script = ExtResource("1_pcm1i")
+
+[node name="RayCast2D" type="RayCast2D" parent="."]
+unique_name_in_owner = true
+target_position = Vector2(3000, 0)
+
+[node name="Line2D" type="Line2D" parent="."]
+unique_name_in_owner = true
+points = PackedVector2Array(0, 0, 100, 0)
+width = 50.0
+default_color = Color(0.341176, 0.419608, 1, 1)

@@ -2,8 +2,10 @@ using DsUi;
 using GDebugPanelGodot.Core;
 using GDebugPanelGodot.Extensions;
 using Godot;
+using NovaDrift.Scripts.Systems;
 using NovaDrift.Scripts.Ui.ActionBtn;
 using NovaDrift.Scripts.Ui.AnimationProgressBar;
+using NovaDrift.Scripts.Ui.BuffIcon;
 
 namespace NovaDrift.Scripts.Ui.Hud;
 
@@ -41,7 +43,18 @@ public partial class HudPanel : Hud
 		
 		GenerateDebugPanel();
 	}
-	
+
+	public void AddBuffIcon(Buff buff)
+	{
+		// Animation
+		var animationPanel = UiManager.Create_BuffIcon();
+		animationPanel.ShowUi();
+		animationPanel.UpdateUiWithAnimation(buff);
+		
+		var panel = S_BuffIcons.OpenNestedUi<BuffIconPanel>(UiManager.UiName.BuffIcon);
+		panel.UpdateUi(buff);
+	}
+
 	public void UpdateShieldCooldownBar(float ratio)
 	{
 		_shieldCooldownBar.UpdateUi(ratio * 100f);

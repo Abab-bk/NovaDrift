@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://bmp5syg67t6ff"]
+
+[ext_resource type="Script" path="res://Scripts/Vfx/RectDangerZoneIndicator.cs" id="1_q4xpk"]
+
+[sub_resource type="Gradient" id="Gradient_gxj33"]
+colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_5038u"]
+gradient = SubResource("Gradient_gxj33")
+width = 100
+height = 100
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_c6is4"]
+size = Vector2(100, 100)
+
+[node name="RectDangerZoneIndicator" type="Node2D"]
+script = ExtResource("1_q4xpk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = SubResource("GradientTexture2D_5038u")
+centered = false
+
+[node name="Area2D" type="Area2D" parent="."]
+unique_name_in_owner = true
+position = Vector2(50, 50)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_c6is4")
+debug_color = Color(0.731293, 0.232985, 1, 0.42)

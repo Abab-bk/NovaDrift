@@ -21,6 +21,19 @@ public abstract partial class Hud : UiBase
     private MarginContainer _L_MarginContainer;
 
     /// <summary>
+    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: Hud.MarginContainer2
+    /// </summary>
+    public MarginContainer2 L_MarginContainer2
+    {
+        get
+        {
+            if (_L_MarginContainer2 == null) _L_MarginContainer2 = new MarginContainer2((HudPanel)this, GetNode<Godot.MarginContainer>("MarginContainer2"));
+            return _L_MarginContainer2;
+        }
+    }
+    private MarginContainer2 _L_MarginContainer2;
+
+    /// <summary>
     /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Control"/>, 节点路径: Hud.DebugPanel
     /// </summary>
     public DebugPanel L_DebugPanel
@@ -255,6 +268,37 @@ public abstract partial class Hud : UiBase
     }
 
     /// <summary>
+    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: Hud.MarginContainer2.BuffIcons
+    /// </summary>
+    public class BuffIcons : UiNode<HudPanel, Godot.HBoxContainer, BuffIcons>
+    {
+        public BuffIcons(HudPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override BuffIcons Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: Hud.MarginContainer2
+    /// </summary>
+    public class MarginContainer2 : UiNode<HudPanel, Godot.MarginContainer, MarginContainer2>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Hud.BuffIcons
+        /// </summary>
+        public BuffIcons L_BuffIcons
+        {
+            get
+            {
+                if (_L_BuffIcons == null) _L_BuffIcons = new BuffIcons(UiPanel, Instance.GetNode<Godot.HBoxContainer>("BuffIcons"));
+                return _L_BuffIcons;
+            }
+        }
+        private BuffIcons _L_BuffIcons;
+
+        public MarginContainer2(HudPanel uiPanel, Godot.MarginContainer node) : base(uiPanel, node) {  }
+        public override MarginContainer2 Clone() => new (UiPanel, (Godot.MarginContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
     /// 类型: <see cref="Godot.Control"/>, 路径: Hud.DebugPanel
     /// </summary>
     public class DebugPanel : UiNode<HudPanel, Godot.Control, DebugPanel>
@@ -303,6 +347,16 @@ public abstract partial class Hud : UiBase
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: Hud.MarginContainer
     /// </summary>
     public MarginContainer S_MarginContainer => L_MarginContainer;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Hud.MarginContainer2.BuffIcons
+    /// </summary>
+    public BuffIcons S_BuffIcons => L_MarginContainer2.L_BuffIcons;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: Hud.MarginContainer2
+    /// </summary>
+    public MarginContainer2 S_MarginContainer2 => L_MarginContainer2;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Control"/>, 节点路径: Hud.DebugPanel

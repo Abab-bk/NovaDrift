@@ -147,6 +147,16 @@ public static class Wizard
         return MapCorners[Mathf.Min(index, MapCorners.Length - 1)];
     }
 
+    public static float GetScreenCenterX()
+    {
+        return (float)ProjectSettings.GetSetting("display/window/size/viewport_width") / 2;
+    }
+    
+    public static float GetScreenCenterY()
+    {
+        return (float)ProjectSettings.GetSetting("display/window/size/viewport_height") / 2;
+    }
+
     public static Vector2 GetScreenCenter()
     {
         return new Vector2(
