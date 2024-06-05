@@ -106,11 +106,28 @@ public static class Wizard
 
     public static Vector2 GetClosestMapCorner(Vector2 pos)
     {
-        float minDistance = float.MaxValue;
-        Vector2 result = Vector2.Zero;
+        var minDistance = float.MaxValue;
+        var result = Vector2.Zero;
 
-        foreach (Vector2 corner in MapCorners)
+        foreach (var corner in MapCorners)
         {
+            var distance = pos.DistanceTo(corner);
+            if (distance > minDistance) break;
+            minDistance = distance;
+            result = corner;
+        }
+        
+        return result;
+    }
+
+    public static Vector2 GetClosestMapCornerExcept(Vector2 pos, Vector2 except)
+    {
+        var minDistance = float.MaxValue;
+        var result = Vector2.Zero;
+
+        foreach (var corner in MapCorners)
+        {
+            if (corner == except) continue;
             var distance = pos.DistanceTo(corner);
             if (distance > minDistance) break;
             minDistance = distance;

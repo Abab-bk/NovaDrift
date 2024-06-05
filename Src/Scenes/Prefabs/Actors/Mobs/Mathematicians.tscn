@@ -1,9 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://5ruwopryw23m"]
+[gd_scene load_steps=34 format=3 uid="uid://5ruwopryw23m"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_o3i0o"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/MathematiciansAi.cs" id="2_48fg7"]
 [ext_resource type="Texture2D" uid="uid://uxad1tqnouwp" path="res://Assets/Textures/Mobs/Mathematicians.png" id="2_bjkmk"]
-[ext_resource type="PackedScene" uid="uid://drobcpf7g4p2f" path="res://Scenes/StateDebugger.tscn" id="4_r7w0v"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1wip4"]
 size = Vector2(274, 300)
@@ -180,17 +179,5 @@ root_fsm_config = SubResource("FSMConfig_gs236")
 [node name="VisibleOnScreenNotifier2D" parent="." index="4"]
 scale = Vector2(10.9, 14.9435)
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="7"]
-
-[node name="StateDebugger" parent="CanvasLayer" index="0" instance=ExtResource("4_r7w0v")]
-custom_minimum_size = Vector2(200, 200)
-anchors_preset = 2
-anchor_top = 1.0
-anchor_right = 0.0
-offset_top = -392.0
-offset_right = 687.0
-grow_horizontal = 1
-grow_vertical = 0
-
-[node name="Spring" parent="." index="8"]
+[node name="Spring" parent="." index="7"]
 EnabledDraw = true

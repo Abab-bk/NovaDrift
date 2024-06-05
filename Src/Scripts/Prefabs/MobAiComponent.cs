@@ -10,6 +10,8 @@ public partial class MobAiComponent : Node
     [Export] protected MobBase Mob;
     protected HFSM Machine;
 
+    protected Node2D MovePoint;
+
     public override void _Ready()
     {
         if (!_enabled) return;
@@ -27,6 +29,7 @@ public partial class MobAiComponent : Node
 
     protected virtual void OnMobDied()
     {
+        MovePoint.QueueFree();
     }
 
     protected virtual void ConnectTransitedSignals(State from, State to)
@@ -52,5 +55,11 @@ public partial class MobAiComponent : Node
     protected bool PlayerInShootRange()
     {
         return Global.Player.GlobalPosition.DistanceTo(Mob.GlobalPosition) < 300;
+    }
+    
+    protected void SetMovePoint()
+    {
+        MovePoint = new Node2D();
+        Global.GameWorld.AddChild(MovePoint);
     }
 }

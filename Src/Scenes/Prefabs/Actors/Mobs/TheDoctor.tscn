@@ -1,0 +1,192 @@
+[gd_scene load_steps=34 format=3 uid="uid://dpjoth6pr61r4"]
+
+[ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_bpe63"]
+[ext_resource type="Texture2D" uid="uid://dgllwtqj6brhw" path="res://Assets/Textures/Mobs/TheDoctor.png" id="2_7cjq0"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Ai/TheDoctorAi.cs" id="3_q3tdv"]
+[ext_resource type="PackedScene" uid="uid://drobcpf7g4p2f" path="res://Scenes/StateDebugger.tscn" id="4_xs1bm"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_f4htp"]
+size = Vector2(122, 150)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_chu2n"]
+size = Vector2(122, 150)
+
+[sub_resource type="StateConfig" id="StateConfig_l2kjg"]
+state_name = &"Idle"
+type = 1
+editor_offset = Vector2(-20, 120)
+
+[sub_resource type="StateConfig" id="StateConfig_76hkg"]
+state_name = &"WalkingOnEdge"
+editor_offset = Vector2(260, 120)
+
+[sub_resource type="StateConfig" id="StateConfig_m2s1t"]
+state_name = &"ShockThepary1"
+editor_offset = Vector2(700, -40)
+
+[sub_resource type="StateConfig" id="StateConfig_sjho6"]
+state_name = &"ShockThepary2"
+editor_offset = Vector2(780, 300)
+
+[sub_resource type="StateConfig" id="StateConfig_nvhkf"]
+state_name = &"Paralysis"
+editor_offset = Vector2(280, 520)
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_4tv2o"]
+from_state_config = SubResource("StateConfig_l2kjg")
+to_state_config = SubResource("StateConfig_76hkg")
+
+[sub_resource type="VariableConfig" id="VariableConfig_gviec"]
+variable_name = &"ToShockThepary1"
+resource_name = "ToShockThepary1: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_55euu"]
+variable_config = SubResource("VariableConfig_gviec")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_46ohg"]
+from_state_config = SubResource("StateConfig_76hkg")
+to_state_config = SubResource("StateConfig_m2s1t")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_55euu")])
+
+[sub_resource type="VariableConfig" id="VariableConfig_rk352"]
+variable_name = &"ToShockThepary2"
+resource_name = "ToShockThepary2: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_ke2e2"]
+variable_config = SubResource("VariableConfig_rk352")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_y3unn"]
+from_state_config = SubResource("StateConfig_76hkg")
+to_state_config = SubResource("StateConfig_sjho6")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_ke2e2")])
+
+[sub_resource type="VariableConfig" id="VariableConfig_nd783"]
+variable_name = &"Paralysis"
+resource_name = "Paralysis: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_g1va5"]
+variable_config = SubResource("VariableConfig_nd783")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_y3oax"]
+from_state_config = SubResource("StateConfig_76hkg")
+to_state_config = SubResource("StateConfig_nvhkf")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_g1va5")])
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_m840g"]
+variable_config = SubResource("VariableConfig_nd783")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_e8ase"]
+from_state_config = SubResource("StateConfig_m2s1t")
+to_state_config = SubResource("StateConfig_nvhkf")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_m840g")])
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_hcbmg"]
+variable_config = SubResource("VariableConfig_nd783")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_8nnrt"]
+from_state_config = SubResource("StateConfig_sjho6")
+to_state_config = SubResource("StateConfig_nvhkf")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_hcbmg")])
+
+[sub_resource type="VariableConfig" id="VariableConfig_cdnjy"]
+variable_name = &"ToWalking"
+resource_name = "ToWalking: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_wabbq"]
+variable_config = SubResource("VariableConfig_cdnjy")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_bwug0"]
+from_state_config = SubResource("StateConfig_nvhkf")
+to_state_config = SubResource("StateConfig_76hkg")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_wabbq")])
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_nadsp"]
+variable_config = SubResource("VariableConfig_cdnjy")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_ughmb"]
+from_state_config = SubResource("StateConfig_m2s1t")
+to_state_config = SubResource("StateConfig_76hkg")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_nadsp")])
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_5up67"]
+variable_config = SubResource("VariableConfig_cdnjy")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_h5nds"]
+from_state_config = SubResource("StateConfig_sjho6")
+to_state_config = SubResource("StateConfig_76hkg")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_5up67")])
+
+[sub_resource type="FSMConfig" id="FSMConfig_j0kji"]
+state_config_list = Array[StateConfig]([SubResource("StateConfig_l2kjg"), SubResource("StateConfig_76hkg"), SubResource("StateConfig_m2s1t"), SubResource("StateConfig_sjho6"), SubResource("StateConfig_nvhkf")])
+transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_4tv2o"), SubResource("TransitionConfig_46ohg"), SubResource("TransitionConfig_y3unn"), SubResource("TransitionConfig_y3oax"), SubResource("TransitionConfig_e8ase"), SubResource("TransitionConfig_8nnrt"), SubResource("TransitionConfig_bwug0"), SubResource("TransitionConfig_ughmb"), SubResource("TransitionConfig_h5nds")])
+variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_nd783"), SubResource("VariableConfig_cdnjy"), SubResource("VariableConfig_gviec"), SubResource("VariableConfig_rk352")])
+
+[node name="TheDoctor" node_paths=PackedStringArray("_hurtBox", "Spring", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_bpe63")]
+_hurtBox = NodePath("Components/HurtBox")
+Spring = NodePath("Spring")
+Sprite = NodePath("Sprite2D")
+_visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
+Shooter = NodePath("Components/ShooterNode/Shooter")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_7cjq0")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_f4htp")
+
+[node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../..")
+
+[node name="CollisionShape2D" parent="Components/HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_chu2n")
+
+[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("Mob")]
+script = ExtResource("3_q3tdv")
+Mob = NodePath("../..")
+
+[node name="HFSM" parent="State" index="1"]
+root_fsm_config = SubResource("FSMConfig_j0kji")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="4"]
+visible = false
+position = Vector2(0, -1)
+scale = Vector2(1, 0.769231)
+
+[node name="Spring" parent="." index="7"]
+EnabledDraw = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="8"]
+
+[node name="StateDebugger" parent="CanvasLayer" index="0" instance=ExtResource("4_xs1bm")]
+custom_minimum_size = Vector2(200, 200)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -392.0
+offset_right = 687.0
+grow_horizontal = 1
+grow_vertical = 0
