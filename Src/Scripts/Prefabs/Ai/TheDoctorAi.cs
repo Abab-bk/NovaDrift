@@ -44,8 +44,8 @@ public partial class TheDoctorAi : MobAiComponent
             switch (Random.Shared.Next(0, 2))
             {
                 case 0:
-                    // Machine.SetTrigger("ToShockThepary1");
-                    Machine.SetTrigger("ToShockThepary2");
+                    Machine.SetTrigger("ToShockThepary1");
+                    // Machine.SetTrigger("ToShockThepary2");
                     break;
                 case 1:
                     Machine.SetTrigger("ToShockThepary2");
@@ -120,9 +120,10 @@ public partial class TheDoctorAi : MobAiComponent
             GTweenSequenceBuilder.New()
                 .Append(line.TweenModulate(new Color("7b1cf4"), 1f).OnComplete(() =>
                 {
-                    // Need Play Sound
+                    SoundManager.PlayOneShotById("event:/Mobs/Bosses/TheDoctor/Lightning");
                     if (!line.Area2D.OverlapsBody(Global.Player)) return;
                     Global.Player.TakeDamageWithoutKnockBack(Mob.Stats.Damage.Value);
+                    TryToAddBuff();
                 }))
                 .AppendTime(1.0f)
                 .Append(line.TweenModulateAlpha(0f, 0.5f))
@@ -174,27 +175,34 @@ public partial class TheDoctorAi : MobAiComponent
             {
                 var lightning = GD.Load<PackedScene>("res://Scenes/Vfx/Lightning.tscn").Instantiate() as Lightning;
                 if (lightning == null) return;
-
+                
                 lightning.Size = zone.Size;
                 Global.GameWorld.AddChild(lightning);
                 lightning.GlobalPosition = zone.GlobalPosition;
-                    
+                
+                SoundManager.PlayOneShotById("event:/Mobs/Bosses/TheDoctor/Lightning");
+                
                 if (zone.Area2D.OverlapsBody(Global.Player))
                 {
                     Global.Player.TakeDamageWithoutKnockBack(Mob.Stats.Damage.Value);
-                    var checkBuff = Global.Player.Stats.BuffSystem.HasBuffById(1002);
-                    if (checkBuff != null && checkBuff is Madness madness)
-                    {
-                        madness.Strength += 1;
-                        return;
-                    }
-                    Global.Player.Stats.AddBuff(DataBuilder.BuildBuffById(1002));
+                    TryToAddBuff();
                 }
-
+                
                 ToWalkingFromShockThepary1();
             };
             
         }
+    }
+
+    private void TryToAddBuff()
+    {
+        var checkBuff = Global.Player.Stats.BuffSystem.HasBuffById(1002);
+        if (checkBuff != null && checkBuff is Madness madness)
+        {
+            madness.Strength += 1;
+            return;
+        }
+        Global.Player.Stats.AddBuff(DataBuilder.BuildBuffById(1002));
     }
 
     private Task CreateDarkClouds()
