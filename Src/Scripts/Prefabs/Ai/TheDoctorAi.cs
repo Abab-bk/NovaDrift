@@ -5,6 +5,7 @@ using AcidWallStudio.AcidUtilities;
 using AcidWallStudio.Fmod;
 using FMOD.Studio;
 using Godot;
+using GTweens.Builders;
 using GTweens.Extensions;
 using GTweensGodot.Extensions;
 using NovaDrift.Scripts.Prefabs.Components;
@@ -43,11 +44,12 @@ public partial class TheDoctorAi : MobAiComponent
             switch (Random.Shared.Next(0, 2))
             {
                 case 0:
-                    Machine.SetTrigger("ToShockThepary1");
+                    // Machine.SetTrigger("ToShockThepary1");
+                    Machine.SetTrigger("ToShockThepary2");
                     break;
                 case 1:
-                    // Machine.SetTrigger("ToShockThepary2");
-                    Machine.SetTrigger("ToShockThepary1");
+                    Machine.SetTrigger("ToShockThepary2");
+                    // Machine.SetTrigger("ToShockThepary1");
                     break;
             }
         };
@@ -90,21 +92,46 @@ public partial class TheDoctorAi : MobAiComponent
                 ShockThepary1();
                 break;
             case "ShockThepary2":
-                Mob.LookAt(Global.Player.GlobalPosition);
-                for (int i = 0; i < 4; i++)
-                {
-                    var line = new Polyline2D();
-                    Mob.AddChild(line);
-                    if (i == 0)
-                    {
-                        line.OnAnimationEnded += () =>
-                        {
-                            Machine.SetTrigger("ToWalking");
-                        };
-                    }
-                }
-                
+                ShockThepary2();
                 break;
+        }
+    }
+
+    private void ShockThepary2()
+    {
+        void LineCallback(Polyline2D line, int i)
+        {
+            if (i == 0) Machine.SetTrigger("ToWalking");
+            line.QueueFree();
+        }
+
+        Mob.LookAt(Global.Player.GlobalPosition);
+        for (int i = 0; i < 8; i++)
+        {
+            var line = new Polyline2D();
+            line.DefaultColor = new Color("7b1cf4");
+            line.Width = 40f;
+            Mob.AddChild(line);
+            line.Area2D.SetIsPlayer(false);
+            line.Modulate = new Color("7b1cf46a");
+
+            var count = i;
+            
+            GTweenSequenceBuilder.New()
+                .Append(line.TweenModulate(new Color("7b1cf4"), 1f).OnComplete(() =>
+                {
+                    // Need Play Sound
+                    if (!line.Area2D.OverlapsBody(Global.Player)) return;
+                    Global.Player.TakeDamageWithoutKnockBack(Mob.Stats.Damage.Value);
+                }))
+                .AppendTime(1.0f)
+                .Append(line.TweenModulateAlpha(0f, 0.5f))
+                .AppendCallback(() =>
+                {
+                    LineCallback(line, count);
+                })
+                .Build()
+                .Play();
         }
     }
 
