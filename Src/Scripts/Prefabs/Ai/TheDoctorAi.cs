@@ -199,7 +199,7 @@ public partial class TheDoctorAi : MobAiComponent
         var checkBuff = Global.Player.Stats.BuffSystem.HasBuffById(1002);
         if (checkBuff != null && checkBuff is Madness madness)
         {
-            madness.Strength += 1;
+            madness.LevelUp();
             return;
         }
         Global.Player.Stats.AddBuff(DataBuilder.BuildBuffById(1002));

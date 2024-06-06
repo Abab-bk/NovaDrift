@@ -22,10 +22,12 @@ public class BuffSystem
         buff.OnCreate();
         buff.OnDestroy += RemoveBuff;
         _buffs.Add(buff);
+        Logger.Log("[Buff] Add buff: " + buff.Name);
     }
 
     public void RemoveBuff(Buff buff)
     {
+        Logger.Log("[Buff] Remove buff: " + buff.Name);
         buff.OnDestroy -= RemoveBuff;
         _buffs.Remove(buff);
     }

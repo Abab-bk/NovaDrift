@@ -8,19 +8,6 @@ using DsUi;
 public abstract partial class BuffIcon : UiBase
 {
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: BuffIcon.ProgressBar
-    /// </summary>
-    public ProgressBar L_ProgressBar
-    {
-        get
-        {
-            if (_L_ProgressBar == null) _L_ProgressBar = new ProgressBar((BuffIconPanel)this, GetNode<Godot.TextureProgressBar>("ProgressBar"));
-            return _L_ProgressBar;
-        }
-    }
-    private ProgressBar _L_ProgressBar;
-
-    /// <summary>
     /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: BuffIcon.Icon
     /// </summary>
     public Icon L_Icon
@@ -33,6 +20,19 @@ public abstract partial class BuffIcon : UiBase
     }
     private Icon _L_Icon;
 
+    /// <summary>
+    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: BuffIcon.ProgressBar
+    /// </summary>
+    public ProgressBar L_ProgressBar
+    {
+        get
+        {
+            if (_L_ProgressBar == null) _L_ProgressBar = new ProgressBar((BuffIconPanel)this, GetNode<Godot.TextureProgressBar>("ProgressBar"));
+            return _L_ProgressBar;
+        }
+    }
+    private ProgressBar _L_ProgressBar;
+
 
     public BuffIcon() : base(nameof(BuffIcon))
     {
@@ -44,15 +44,6 @@ public abstract partial class BuffIcon : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.TextureProgressBar"/>, 路径: BuffIcon.ProgressBar
-    /// </summary>
-    public class ProgressBar : UiNode<BuffIconPanel, Godot.TextureProgressBar, ProgressBar>
-    {
-        public ProgressBar(BuffIconPanel uiPanel, Godot.TextureProgressBar node) : base(uiPanel, node) {  }
-        public override ProgressBar Clone() => new (UiPanel, (Godot.TextureProgressBar)Instance.Duplicate());
-    }
-
-    /// <summary>
     /// 类型: <see cref="Godot.TextureRect"/>, 路径: BuffIcon.Icon
     /// </summary>
     public class Icon : UiNode<BuffIconPanel, Godot.TextureRect, Icon>
@@ -61,15 +52,24 @@ public abstract partial class BuffIcon : UiBase
         public override Icon Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
     }
 
-
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: BuffIcon.ProgressBar
+    /// 类型: <see cref="Godot.TextureProgressBar"/>, 路径: BuffIcon.ProgressBar
     /// </summary>
-    public ProgressBar S_ProgressBar => L_ProgressBar;
+    public class ProgressBar : UiNode<BuffIconPanel, Godot.TextureProgressBar, ProgressBar>
+    {
+        public ProgressBar(BuffIconPanel uiPanel, Godot.TextureProgressBar node) : base(uiPanel, node) {  }
+        public override ProgressBar Clone() => new (UiPanel, (Godot.TextureProgressBar)Instance.Duplicate());
+    }
+
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: BuffIcon.Icon
     /// </summary>
     public Icon S_Icon => L_Icon;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureProgressBar"/>, 节点路径: BuffIcon.ProgressBar
+    /// </summary>
+    public ProgressBar S_ProgressBar => L_ProgressBar;
 
 }

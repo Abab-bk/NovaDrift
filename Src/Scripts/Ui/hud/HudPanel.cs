@@ -44,15 +44,41 @@ public partial class HudPanel : Hud
 		GenerateDebugPanel();
 	}
 
-	public void AddBuffIcon(Buff buff)
+	public void AddBuffIcon(Buff buff, float initValue = 0f)
 	{
 		// Animation
 		var animationPanel = UiManager.Create_BuffIcon();
+		animationPanel.SetProgressBarValue(initValue);
+		animationPanel.UpdateUi(buff);
 		animationPanel.ShowUi();
 		animationPanel.UpdateUiWithAnimation(buff);
 		
-		var panel = S_BuffIcons.OpenNestedUi<BuffIconPanel>(UiManager.UiName.BuffIcon);
+		BuffIconPanel panel = S_BuffIcons.OpenNestedUi<BuffIconPanel>(UiManager.UiName.BuffIcon);
+		panel.UpdateProgressBar(initValue);
 		panel.UpdateUi(buff);
+	}
+
+	public void RemoveBuffIcon(Buff buff)
+	{
+		foreach (var buffIcon in S_BuffIcons.Instance.GetChildren())
+		{
+			if (buffIcon is not BuffIconPanel buffIconPanel) continue;
+			if (buffIconPanel.Buff == buff)
+			{
+				buffIconPanel.RemoveSelf();
+			}
+		}
+	}
+
+	public BuffIconPanel GetBuffIcon(Buff buff)
+	{
+		foreach (var buffIcon in S_BuffIcons.Instance.GetChildren())
+		{
+			if (buffIcon is not BuffIconPanel buffIconPanel) continue;
+			if (buffIconPanel.Buff == buff) return buffIconPanel;
+		}
+
+		return null;
 	}
 
 	public void UpdateShieldCooldownBar(float ratio)

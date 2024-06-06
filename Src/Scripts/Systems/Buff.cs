@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
+using DsUi;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors;
 
@@ -56,11 +58,23 @@ public class Buff
         _repeatTimer.Stop();
         _durationTimer.QueueFree();
         _repeatTimer.QueueFree();
+        RemoveFromUi();
         OnDestroy?.Invoke(this);
     }
+    
+    protected void RemoveFromUi()
+    {
+        var hud = UiManager.Get_Hud_Instance().First();
+        if (hud == null) return;
+        hud.RemoveBuffIcon(this);
+    }
 
+    public virtual float GetRatio()
+    {
+        return 0f;
+    }
+    
     protected virtual void ShowToUi()
     {
-        
     }
 }
