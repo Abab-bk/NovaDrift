@@ -14,12 +14,11 @@ public partial class RectDangerZoneIndicator : BaseVfx
     {
         Area2D.SetIsPlayer(IsPlayer);
 
-        Scale = Size / 200f;
+        Scale = Size / 100f;
         
         // RED: f8000033 White: ffffff33
         Modulate = new Color("ffffff00");
         
-        GlobalPosition = new Vector2(GlobalPosition.X, GlobalPosition.Y - Size.Y / 2);
         GTweenSequenceBuilder.New()
             .Append(this.TweenModulate(new Color("ffffff33"), 0.5f))
             .Append(this.TweenModulate(new Color("f8000033"), Time))

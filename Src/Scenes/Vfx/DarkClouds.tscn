@@ -26,3 +26,4 @@ process_material = SubResource("ParticleProcessMaterial_mmaca")
 texture = ExtResource("1_63ujw")
 lifetime = 15.0
 speed_scale = 20.0
+local_coords = true

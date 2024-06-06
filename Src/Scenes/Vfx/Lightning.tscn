@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://dbndbap2a4atm"]
+
+[ext_resource type="Texture2D" uid="uid://q4fc6jypmhn5" path="res://Assets/Textures/Particles/spark_05.png" id="1_8ikir"]
+[ext_resource type="Script" path="res://Scripts/Vfx/Lightning.cs" id="1_d77mn"]
+
+[node name="Lightning" type="Node2D"]
+script = ExtResource("1_d77mn")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("1_8ikir")

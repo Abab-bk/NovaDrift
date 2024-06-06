@@ -113,11 +113,13 @@ public partial class TheDoctorAi : MobAiComponent
         await CreateDarkClouds();
 
         var rectCount = 4;
-        var padding = 100f;
+        var padding = 200f;
         
-        Vector2 GetRectPosByIndex(int index)
+        Vector2 GetRectPosByIndex(int index, RectDangerZoneIndicator zone)
         {
-            return new Vector2(0, Wizard.GetMaxScreenY() / rectCount - padding);
+            var pos = new Vector2(0, Wizard.GetMaxScreenY() / rectCount * (index + 1) - padding);
+            pos.X = (zone.Scale * 100f / 2).X;
+            return pos;
         }
         
         async void ToWalkingFromShockThepary1()
@@ -125,7 +127,7 @@ public partial class TheDoctorAi : MobAiComponent
             await DestroyDarkClouds();
             Machine.SetTrigger("ToWalking");
         }
-        
+
         for (int i = 0; i < 4; i++)
         {
             var zone =
@@ -134,32 +136,37 @@ public partial class TheDoctorAi : MobAiComponent
             if (zone == null) return;
 
             zone.IsPlayer = false;
-            zone.Size = new Vector2(Wizard.GetMaxScreenX(), 400f);
+            zone.Size = new Vector2(Wizard.GetMaxScreenX(), 230f);
             zone.Time = 2f;
             
             Global.GameWorld.AddChild(zone);
-
-            zone.GlobalPosition = GetRectPosByIndex(i) * (i + 1);
             
-            if (i == 0)
+            zone.GlobalPosition = GetRectPosByIndex(i, zone);
+            
+            zone.OnAnimationEnd += () =>
             {
-                zone.OnAnimationEnd += () =>
-                {
-                    if (zone.Area2D.OverlapsBody(Global.Player))
-                    {
-                        Global.Player.TakeDamageWithoutKnockBack(Mob.Stats.Damage.Value);
-                        var checkBuff = Global.Player.Stats.BuffSystem.HasBuffById(1002);
-                        if (checkBuff != null && checkBuff is Madness madness)
-                        {
-                            madness.Strength += 1;
-                            return;
-                        }
-                        Global.Player.Stats.AddBuff(DataBuilder.BuildBuffById(1002));
-                    }
+                var lightning = GD.Load<PackedScene>("res://Scenes/Vfx/Lightning.tscn").Instantiate() as Lightning;
+                if (lightning == null) return;
 
-                    ToWalkingFromShockThepary1();
-                };
-            }
+                lightning.Size = zone.Size;
+                Global.GameWorld.AddChild(lightning);
+                lightning.GlobalPosition = zone.GlobalPosition;
+                    
+                if (zone.Area2D.OverlapsBody(Global.Player))
+                {
+                    Global.Player.TakeDamageWithoutKnockBack(Mob.Stats.Damage.Value);
+                    var checkBuff = Global.Player.Stats.BuffSystem.HasBuffById(1002);
+                    if (checkBuff != null && checkBuff is Madness madness)
+                    {
+                        madness.Strength += 1;
+                        return;
+                    }
+                    Global.Player.Stats.AddBuff(DataBuilder.BuildBuffById(1002));
+                }
+
+                ToWalkingFromShockThepary1();
+            };
+            
         }
     }
 
