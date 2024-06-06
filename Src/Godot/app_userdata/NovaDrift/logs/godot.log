@@ -6,6 +6,7 @@ USER ERROR: Can't create shader cache folder, no shader caching will happen: use
 [log][Buff] Add buff: ç¥ç»ç¼­ä¹±
 [log][Buff] Madness level up. Strength: 2
 [log][Buff] Madness level up. Strength: 3
+[log][Buff] Madness level up. Strength: 3
 
 ================================================================
 CrashHandlerException: Program crashed with signal 11

@@ -233,6 +233,7 @@ public static class DataBuilder
             buff.Duration = tbBuff.Duration;
             buff.RepeatTime = tbBuff.RepeatTime;
             buff.Values = tbBuff.Values;
+            buff.IconPath = $"res://Assets/Ui/Icons/Statuses/{tbBuff.ClassName}.tres";
         }
         
         return buff;

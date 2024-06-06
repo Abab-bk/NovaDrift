@@ -14,7 +14,7 @@ public partial class BuffIconPanel : BuffIcon
     public void UpdateUi(Buff buff)
     {
         Buff = buff;
-        // TODO: Add load icon.
+        L_Icon.Instance.Texture = GD.Load<Texture2D>(buff.IconPath);
     }
 
     public void UpdateProgressBar(float value)

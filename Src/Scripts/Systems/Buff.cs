@@ -12,6 +12,7 @@ public class Buff
     public Actor Target;
     public int Id;
     public string Name;
+    public string IconPath;
     
     public event Action<Buff> OnDestroy;
     
