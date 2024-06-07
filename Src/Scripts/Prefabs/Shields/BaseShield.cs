@@ -73,6 +73,11 @@ public partial class BaseShield : Node2D
         Active();
     }
 
+    public void TakeDamage(float value, Node2D source)
+    {
+        OnHurt(value, source);
+    }
+
     protected virtual void Init()
     {
     }

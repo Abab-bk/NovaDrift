@@ -55,9 +55,10 @@ variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_tm6tr"
 [sub_resource type="CircleShape2D" id="CircleShape2D_8or58"]
 radius = 52.0865
 
-[node name="Gyrogun" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_s3e8g")]
-modulate = Color(1, 0.780392, 0.74902, 1)
+[node name="Gyrogun" node_paths=PackedStringArray("_hurtBox", "Spring", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_s3e8g")]
+modulate = Color(1, 0.780392, 0.494118, 1)
 _hurtBox = NodePath("Components/HurtBox")
+Spring = NodePath("Spring")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")

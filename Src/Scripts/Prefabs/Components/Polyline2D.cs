@@ -1,11 +1,12 @@
 ﻿using System;
 using AcidWallStudio.AcidUtilities;
 using Godot;
+using NovaDrift.addons.AcidUtilities;
 
 namespace NovaDrift.Scripts.Prefabs.Components;
 
 [GlobalClass]
-public partial class Polyline2D : Line2D
+public partial class Polyline2D : Line2D, ICollisionLine2D
 {
     [Export] private int _minLength = 4;
     [Export] private int _maxLength = 6;
@@ -18,14 +19,14 @@ public partial class Polyline2D : Line2D
 
     public Area2D Area2D;
 
-    public override async void _Ready()
+    public override void _Ready()
     {
         Area2D = new Area2D();
         AddChild(Area2D);
         Generate();
     }
 
-    public void Generate()
+    private void Generate()
     {
         ClearPoints();
 
@@ -39,24 +40,8 @@ public partial class Polyline2D : Line2D
         {
             AddPoint();
         }
-
-        for (int i = 0; i < GetPoints().Length - 1; i++)
-        {
-            var newShape = new CollisionShape2D();
-            
-            Area2D.AddChild(newShape);
-            var currentPos = GetPointPosition(i);
-            var nextPos = GetPointPosition(i + 1);
-            
-            newShape.Position = (currentPos + nextPos) / 2f;
-            newShape.Rotation = currentPos.DirectionTo(nextPos).Angle();
-            var distance = currentPos.DistanceTo(nextPos);
-            
-            newShape.Shape = new RectangleShape2D()
-            {
-                Size = new Vector2(distance, Width)
-            };
-        }
+        
+        ((ICollisionLine2D)this).GenerateCollision(this, Area2D);
     }
 
     private void AddPoint()

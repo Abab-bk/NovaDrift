@@ -31,8 +31,10 @@ transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hr8fi"]
 size = Vector2(90, 108)
 
-[node name="Swallow" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_cs027")]
+[node name="Swallow" node_paths=PackedStringArray("_hurtBox", "Spring", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_cs027")]
+modulate = Color(0.592157, 0.615686, 1, 1)
 _hurtBox = NodePath("Components/HurtBox")
+Spring = NodePath("Spring")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")

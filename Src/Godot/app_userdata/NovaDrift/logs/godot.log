@@ -3,22 +3,22 @@ Vulkan 1.3.260 - Forward Mobile - Using Device #0: AMD - AMD Radeon RX 580 2048S
 USER ERROR: Can't create shader cache folder, no shader caching will happen: user://
    at: RendererCompositorRD (servers/rendering/renderer_rd/renderer_compositor_rd.cpp:272)
 
-[log][Buff] Add buff: ç¥ç»ç¼­ä¹±
-[log][Buff] Madness level up. Strength: 2
-[log][Ai] CreateDarkClouds: (2860, 720) 90 Final Pos: (2460, 720)
-[log][Buff] Madness level up. Strength: 3
-[log][Buff] Madness level up. Strength: 4
-[log][Buff] Madness level up. Strength: 5
-[log][Ai] CreateDarkClouds: (1280, 1740) 0 Final Pos: (1280, 1340)
-[log][Buff] Madness level up. Strength: 6
-[log][Ai] CreateDarkClouds: (1280, -300) 0 Final Pos: (1280, 100)
-[log][Buff] Madness level up. Strength: 7
-[log][Buff] Madness level up. Strength: 8
-[log][Ai] CreateDarkClouds: (2860, 720) 90 Final Pos: (2460, 720)
-[log][Buff] Madness level up. Strength: 9
-[log][Ai] CreateDarkClouds: (-300, 720) 90 Final Pos: (100, 720)
-[log][Ai] CreateDarkClouds: (-300, 720) 90 Final Pos: (100, 720)
-[log][Ai] CreateDarkClouds: (1280, 1740) 0 Final Pos: (1280, 1340)
+[Log][Ui] Generate debug panel
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Effect System] Add effect: æ¾çµ
+[Log][Global] Try Resume game. Stop count: 0
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Wave Spawner] æäººçææ°é: 2, éµåï¼SpiralSpawnType
+[Log][Global] Try Resume game. Stop count: 0
+[Log][Wave Spawner] æäººçææ°é: 2, éµåï¼RectSpawnType
+[Log][Wave Spawner] Next wave is boss wave.
+[Log][WaveSpawner] Next wave clock: 2s
+[Log][Wave Spawner] Boss wave started, stop clock.
+[Log][Wave Spawner] Boss wave spawned: æ°å­¦å®¶
+[Log][WaveSpawner] Next wave clock: 2s
+[Log][Global] Try Stop game. Stop count: 1
 
 ================================================================
 CrashHandlerException: Program crashed with signal 11

@@ -1,0 +1,22 @@
+[gd_scene load_steps=5 format=3 uid="uid://bvgc1m3qsm6y8"]
+
+[ext_resource type="Script" path="res://Scripts/Prefabs/Components/CircleLine2D.cs" id="1_8lko8"]
+[ext_resource type="Script" path="res://Scripts/Vfx/ElectricArc.cs" id="1_qs76l"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_coxqi"]
+noise_type = 3
+
+[sub_resource type="Curve" id="Curve_4rkdx"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.516204, 0.824176), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[node name="ElectricArc" type="Node2D" node_paths=PackedStringArray("_circleLine2D")]
+script = ExtResource("1_qs76l")
+_circleLine2D = NodePath("CircleLine2D")
+_noise = SubResource("FastNoiseLite_coxqi")
+_curve = SubResource("Curve_4rkdx")
+
+[node name="CircleLine2D" type="Line2D" parent="."]
+closed = true
+default_color = Color(0.482353, 0.996078, 1, 1)
+script = ExtResource("1_8lko8")

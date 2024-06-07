@@ -1,12 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1kwbf54qmb76"]
+[gd_scene load_steps=5 format=3 uid="uid://d1kwbf54qmb76"]
 
 [ext_resource type="Script" path="res://Scripts/Test.cs" id="1_kfpb1"]
-[ext_resource type="Script" path="res://Scripts/Prefabs/Components/Polyline2D.cs" id="2_w62do"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Components/CircleLine2D.cs" id="3_5u11p"]
+[ext_resource type="PackedScene" uid="uid://bvgc1m3qsm6y8" path="res://Scenes/Vfx/ElectricArc.tscn" id="4_c3mjr"]
+[ext_resource type="Environment" uid="uid://dwua3nxtba68l" path="res://Assets/Environments/Default.tres" id="4_r7egi"]
 
-[node name="Test" type="Node2D" node_paths=PackedStringArray("_polyline2D")]
+[node name="Test" type="Node2D"]
 script = ExtResource("1_kfpb1")
-_polyline2D = NodePath("Polyline2D")
 
-[node name="Polyline2D" type="Line2D" parent="."]
-position = Vector2(598, 619)
-script = ExtResource("2_w62do")
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = ExtResource("4_r7egi")
+
+[node name="CircleLine2D" type="Line2D" parent="."]
+position = Vector2(725, 483)
+closed = true
+script = ExtResource("3_5u11p")
+
+[node name="ElectricArc" parent="." node_paths=PackedStringArray("_circleLine2D") instance=ExtResource("4_c3mjr")]
+position = Vector2(993, 742)
+_animationFactor = 3.86
+_circleLine2D = NodePath("CircleLine2D")
