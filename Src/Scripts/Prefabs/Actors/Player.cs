@@ -108,7 +108,6 @@ public partial class Player : Actor
                 if (GlobalPosition.DirectionTo(mousePos) != Vector2.Zero)
                 {
                     TryMoveTo(GlobalPosition.DirectionTo(mousePos), delta);
-                    // _smokeTrail.AddAgePoint(GlobalPosition);
                 }
                 break;
         }

@@ -4,18 +4,14 @@ using NovaDrift.Scripts.Prefabs.Actors;
 
 namespace NovaDrift.Scripts.Prefabs.Components;
 
-public partial class MoveActorToScreenCenter : Node2D
+public partial class MoveActorToScreenCenter(Actor actor) : Node2D
 {
-    private Actor _actor;
-    
-    public MoveActorToScreenCenter(Actor actor) { _actor = actor; }
-
     public override void _PhysicsProcess(double delta)
     {
-        _actor.SetTargetPosAndMove(Wizard.GetScreenCenter(), (float)delta);
-        if (_actor.GlobalPosition.DistanceTo(Wizard.GetScreenCenter()) <= 30)
+        actor.SetTargetPosAndMove(Wizard.GetScreenCenter(), (float)delta);
+        if (actor.GlobalPosition.DistanceTo(Wizard.GetScreenCenter()) <= 30)
         {
-            _actor.Velocity = Vector2.Zero;
+            actor.Velocity = Vector2.Zero;
             QueueFree();
         }
     }

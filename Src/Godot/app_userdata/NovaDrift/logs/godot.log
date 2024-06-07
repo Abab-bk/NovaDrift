@@ -3,10 +3,19 @@ Vulkan 1.3.260 - Forward Mobile - Using Device #0: AMD - AMD Radeon RX 580 2048S
 USER ERROR: Can't create shader cache folder, no shader caching will happen: user://
    at: RendererCompositorRD (servers/rendering/renderer_rd/renderer_compositor_rd.cpp:272)
 
+[log][Ai] CreateDarkClouds: (1280, 1740) 0 Final Pos: (1280, 1340)
+[log][Ai] CreateDarkClouds: (1280, 1740) 0 Final Pos: (1280, 1340)
 [log][Buff] Add buff: ç¥ç»ç¼­ä¹±
+[log][Ai] CreateDarkClouds: (1280, -300) 0 Final Pos: (1280, 100)
 [log][Buff] Madness level up. Strength: 2
+[log][Ai] CreateDarkClouds: (1280, 1740) 0 Final Pos: (1280, 1340)
 [log][Buff] Madness level up. Strength: 3
-[log][Buff] Madness level up. Strength: 3
+[log][Ai] CreateDarkClouds: (2860, 720) 90 Final Pos: (2460, 720)
+[log][Buff] Madness level up. Strength: 4
+[log][Ai] CreateDarkClouds: (1280, 1740) 0 Final Pos: (1280, 1340)
+[log][Buff] Madness level up. Strength: 5
+[log][Ai] CreateDarkClouds: (-300, 720) 90 Final Pos: (100, 720)
+[log][Buff] Madness level up. Strength: 6
 
 ================================================================
 CrashHandlerException: Program crashed with signal 11

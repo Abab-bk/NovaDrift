@@ -78,7 +78,6 @@ public partial class Actor : CharacterBody2D
     {
         Rotation = RotationTo(GlobalPosition.AngleToPoint(pos), delta);
         TryMoveTo(GlobalPosition.DirectionTo(pos), delta);
-        MoveAndSlide();
     }
     
     public virtual void TryMoveTo(Vector2 dir, double delta)

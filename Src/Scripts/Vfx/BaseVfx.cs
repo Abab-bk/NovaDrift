@@ -1,6 +1,7 @@
 ﻿using System;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors;
+using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts.Vfx;
 
@@ -8,6 +9,7 @@ public abstract partial class BaseVfx : Node2D
 {
     public Action OnAnimationEnd;
     public bool IsPlayer;
+    public ActionData ActionData;
 
     public override void _Ready()
     {

@@ -4,14 +4,18 @@ using AcidWallStudio.AcidUtilities;
 using AcidWallStudio.Fmod;
 using DsUi;
 using Godot;
+using NovaDrift.Scripts.Prefabs.Actors.Mobs;
 using NovaDrift.Scripts.Ui.BuffIcon;
 
 namespace NovaDrift.Scripts.Systems.Buffs;
 
 public class Madness : Buff
 {
-    private int _strength = 1; // 实际上是层级
-
+    public MobBase TheDoctor;
+    
+    private int _level = 1; // 实际上是层级
+    private int _maxLevel = 9;
+    
     private Timer _voiceTimer;
     private Timer _scareTimer;
     
@@ -30,11 +34,12 @@ public class Madness : Buff
 
     public void LevelUp()
     {
-        _strength = Mathf.Min(_strength + 1, 3);
-        Logger.Log("[Buff] Madness level up. Strength: " + _strength);
+        if (_level == _maxLevel) return;
+        _level = Mathf.Min(_level + 1, _maxLevel);
+        Logger.Log("[Buff] Madness level up. Strength: " + _level);
         ShowToUi();
         
-        if (_strength == 2)
+        if (_level == 6)
         {
             if (_scareTimer != null) _scareTimer.QueueFree();
             _scareTimer = new Timer()
@@ -47,23 +52,33 @@ public class Madness : Buff
             _scareTimer.Start();
             return;
         }
-        
+
+        if (_level == 9)
+        {
+            TheDoctor.Modulate = TheDoctor.Modulate with {A = 0f};
+        }
+
     }
     
     public void LevelDown()
     {
-        _strength = Mathf.Max(_strength - 1, 0);
-        Logger.Log("[Buff] Madness level down. Strength: " + _strength);
+        _level = Mathf.Max(_level - 1, 0);
+        Logger.Log("[Buff] Madness level down. Strength: " + _level);
         
-        if (_strength == 0)
+        if (_level == 0)
         {
             Destroy();
             return;
         }
 
-        if (_strength < 2)
+        if (_level < 6)
         {
             if (_scareTimer != null) _scareTimer.QueueFree();
+        }
+        
+        if (_level < 9)
+        {
+            TheDoctor.Modulate = TheDoctor.Modulate with {A = 1f};
         }
 
         ShowToUi();
@@ -110,7 +125,7 @@ public class Madness : Buff
         var animationPanel = UiManager.Create_BuffIcon();
         animationPanel.UpdateUi(this);
         animationPanel.ShowUi();
-        animationPanel.UpdateUiWithAnimation(this, GetRatio(), GetRatioByLevel(Mathf.Min(_strength - 1, 1)));
+        animationPanel.UpdateUiWithAnimation(this, GetRatio(), GetRatioByLevel(Mathf.Min(_level - 1, 1)));
         // ----------------
         
         getBuff.UpdateProgressBar(GetRatio());
@@ -118,17 +133,11 @@ public class Madness : Buff
 
     public override float GetRatio()
     {
-        return GetRatioByLevel(_strength);
+        return GetRatioByLevel(_level);
     }
     
     private float GetRatioByLevel(int level)
     {
-        return level switch
-        {
-            1 => 33f,
-            2 => 66f,
-            3 => 100f,
-            _ => 0f
-        };
+        return (float)level / _maxLevel * 100f;
     }
 }
