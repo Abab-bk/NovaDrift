@@ -24,7 +24,8 @@ public static class Wizard
     
     public static bool FileExists(string path)
     {
-        return FileAccess.FileExists(path);
+        // return FileAccess.FileExists(path);
+        return ResourceLoader.Exists(path);
     }
     
     public static string ReadAllText(string path)

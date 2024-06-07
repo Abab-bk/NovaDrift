@@ -61,7 +61,13 @@ public partial class GameWorld : Node2D
 			EventBus.OnGameInit?.Invoke();
 			return;
 		}
-		
+
+		if (OS.HasFeature("template"))
+		{
+			UiManager.Open_StartMenu();
+			return;
+		}
+
 		if (OS.GetEnvironment("ShowStartMenu") == "true")
 		{
 			UiManager.Open_StartMenu();
