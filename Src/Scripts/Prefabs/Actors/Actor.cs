@@ -43,7 +43,7 @@ public partial class Actor : CharacterBody2D
     
     public Action StartShooting;
     public Action StopShooting;
-    public Action OnDied;
+    public event Action OnDied;
     public Action<BulletBase> OnShoot;
     public Action OnShooting;
     
@@ -159,7 +159,10 @@ public partial class Actor : CharacterBody2D
     public virtual void Die()
     {
         if (IsDead) return;
+        OnDied?.Invoke();
         IsDead = true;
+        Stats.BuffSystem.RemoveAllBuffs();
+        Stats.EffectSystem.RemoveAllEffects();
         CallDeferred(Node.MethodName.QueueFree);
     }
     

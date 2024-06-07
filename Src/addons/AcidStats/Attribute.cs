@@ -45,7 +45,11 @@ public class Attribute
 
     public void Increase(float amount)
     {
-        BaseValue += amount;
+        var value = Mathf.Min(BaseValue + amount, MaxValue.Value);
+
+        if (BaseValue.Equals(value)) return;
+
+        BaseValue = value;
         ValueChanged?.Invoke(BaseValue);
         ValueIsMax();
     }

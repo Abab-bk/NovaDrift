@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1001,
+    "name": "测试Build",
+    "desc": "",
+    "abilities": [
+      1001,
+      1002,
+      1003
+    ],
+    "shooter_id": 1002,
+    "body_id": 1002,
+    "shield_id": 1002
+  }
+]

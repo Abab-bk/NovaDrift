@@ -54,7 +54,7 @@ public class Buff
     {
     }
 
-    protected virtual void Destroy()
+    public virtual void Destroy()
     {
         _repeatTimer.Stop();
         _durationTimer.QueueFree();

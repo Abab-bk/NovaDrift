@@ -86,12 +86,14 @@ public static class Global
     {
         _stopCount++;
         GameWorld.GetTree().Paused = _stopCount > 0;
+        Logger.Log($"[Global] Try Stop game. Stop count: {_stopCount}");
     }
 
     public static void ResumeGame()
     {
         _stopCount--;
         GameWorld.GetTree().Paused = _stopCount > 0;
+        Logger.Log($"[Global] Try Resume game. Stop count: {_stopCount}");
     }
 
     public static int GetPlayerLevel()

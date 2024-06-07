@@ -29,6 +29,7 @@ public class BuffSystem
     {
         Logger.Log("[Buff] Remove buff: " + buff.Name);
         buff.OnDestroy -= RemoveBuff;
+        buff.Destroy();
         _buffs.Remove(buff);
     }
 
@@ -49,9 +50,33 @@ public class BuffSystem
 
     public void RemoveBuffById(int id)
     {
+        List<Buff> removed = new List<Buff>();
+        
         foreach (var buff in _buffs)
         {
-            if (buff.Id == id) RemoveBuff(buff);
+            if (buff.Id != id) continue;
+            
+            removed.Add(buff);
+            break;
+        }
+
+        foreach (var buff in removed)
+        {
+            RemoveBuff(buff);
+        }
+    }
+    
+    public void RemoveAllBuffs()
+    {
+        List<Buff> removed = new List<Buff>();
+        foreach (var buff in _buffs)
+        {
+            removed.Add(buff);
+        }
+
+        foreach (var buff in removed)
+        {
+            RemoveBuff(buff);
         }
     }
 }

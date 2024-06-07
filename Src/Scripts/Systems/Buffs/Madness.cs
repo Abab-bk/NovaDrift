@@ -14,7 +14,7 @@ public class Madness : Buff
     public MobBase TheDoctor;
     
     private int _level = 1; // 实际上是层级
-    private int _maxLevel = 9;
+    private readonly int _maxLevel = 9;
     
     private Timer _voiceTimer;
     private Timer _scareTimer;
@@ -84,7 +84,7 @@ public class Madness : Buff
         ShowToUi();
     }
 
-    protected override void Destroy()
+    public override void Destroy()
     {
         base.Destroy();
         _voiceTimer.QueueFree();

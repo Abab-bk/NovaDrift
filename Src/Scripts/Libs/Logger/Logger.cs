@@ -15,7 +15,7 @@ public static class Logger
     /// </summary>
     public static void Log(params object[] message)
     {
-        var str = "[log]";
+        var str = "[Log]";
         foreach (var m in message)
         {
             if (m is null)
@@ -41,7 +41,7 @@ public static class Logger
     /// </summary>
     public static void LogError(params object[] message)
     {
-        var str = "[error]";
+        var str = "[Error]";
         foreach (var m in message)
         {
             if (m is null)

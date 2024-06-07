@@ -38,7 +38,9 @@ public partial class Player : Actor
         Stats.Health.ValueChanged += value =>
         {
             UpdateUi();
-
+            
+            // Logger.Log("[Player] Player health changed: " + value);
+            
             if (value <= Stats.Health.MaxValue.Value * 0.5f && (int)SoundManager.GetMusicParameter(AudioParams.Stage) != (int)BackgroundMusicStage.Stage1)
             {
                 SoundManager.SetMusicParameter(AudioParams.Stage, (int)BackgroundMusicStage.Stage2);
@@ -71,7 +73,8 @@ public partial class Player : Actor
         
         _regenerationTimer.Timeout += () =>
         {
-            Stats.Health.Increase(Stats.Health.MaxValue.Value * (50f / Stats.Regeneration.Value + Stats.Regeneration.Value));
+            Stats.Health.Increase(
+                Stats.Health.MaxValue.Value / 50 * Stats.Regeneration.Value);
         };
         _regenerationTimer.Start();
         
@@ -205,7 +208,13 @@ public partial class Player : Actor
         UiManager.Get_Hud_Instance()[0].UpdateHpBar(Stats.Health.BaseValue / Stats.Health.MaxValue.Value);
     }
 
-
+    public void RemoveSelf()
+    {
+        Stats.BuffSystem.RemoveAllBuffs();
+        Stats.EffectSystem.RemoveAllEffects();
+        CallDeferred(Node.MethodName.QueueFree);
+    }
+    
     public override void _Input(InputEvent @event)
     {
         _movementMachine.SetTrigger(Input.IsActionPressed("Click") ? "GoToRunning" : "GoToIdle");

@@ -29,6 +29,8 @@ public partial class MobAiComponent : Node
 
     protected virtual void OnMobDied()
     {
+        Machine.Active = false;
+        if (MovePoint == null) return;
         MovePoint.QueueFree();
     }
 

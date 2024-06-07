@@ -40,6 +40,7 @@ public partial class TheDoctorAi : MobAiComponent
     public override async void _Ready()
     {
         base._Ready();
+        Mob.IsBoss = true;
         await ToSignal(Owner, Node.SignalName.Ready);
         Mob.Spring.RemoveTargetPoint(Global.Player);
         SetMovePoint();
@@ -62,8 +63,8 @@ public partial class TheDoctorAi : MobAiComponent
                     // Machine.SetTrigger("ToShockThepary2");
                     break;
                 case 1:
-                    // Machine.SetTrigger("ToShockThepary2");
-                    Machine.SetTrigger("ToShockThepary1");
+                    Machine.SetTrigger("ToShockThepary2");
+                    // Machine.SetTrigger("ToShockThepary1");
                     break;
             }
         };

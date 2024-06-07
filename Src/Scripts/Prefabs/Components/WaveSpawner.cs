@@ -5,6 +5,7 @@ using AcidWallStudio.AcidUtilities;
 using Godot;
 using KaimiraGames;
 using NovaDrift.addons.AcidUtilities;
+using NovaDrift.Scripts.Prefabs.Actors.Mobs;
 using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts.Prefabs.Components;
@@ -56,15 +57,16 @@ public partial class WaveSpawner : Node2D
             mobIndex += 1;
         }
         RandomMove();
-        Logger.Log($"敌人生成数量: {generatedMobs.Count}, 阵型：{spawnType.GetType().Name}");
+        Logger.Log($"[Wave Spawner] 敌人生成数量: {generatedMobs.Count}, 阵型：{spawnType.GetType().Name}");
     }
 
-    public void GenerateABoss(int id)
+    public MobBase GenerateABoss(int id)
     {
         var mob = new MobBuilder(DataBuilder.BuildBossMobInfoById(id)).Build();
         Global.GameWorld.AddChild(mob);
         mob.GlobalPosition = Vector2.Zero;
         RandomMove();
+        return mob;
     }
 
     private void RandomMove()

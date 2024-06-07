@@ -18,7 +18,8 @@ public class EffectSystem
     public void AddEffect(Ability ability)
     {
         Abilities.Add(ability);
-        ability.OnDestroyed += RemoveEffect;
+        Logger.Log($"[Effect System] Add effect: {ability.Name}");
+        // ability.OnDestroyed += RemoveEffect;
         
         var effect = ability.Effect;
         
@@ -31,14 +32,16 @@ public class EffectSystem
     
     public void RemoveAllEffects()
     {
-        foreach (var effect in Effects)
+        List<Ability> removed = new List<Ability>();
+        foreach (var ability in Abilities)
         {
-            GD.Print($"Remove {effect.Name}");
-            effect.OnDestroy();
+            removed.Add(ability);
         }
-        
-        Effects.Clear();
-        Abilities.Clear();
+
+        foreach (var ability in removed)
+        {
+            RemoveEffect(ability);
+        }
     }
 
     public void RemoveEffect(Ability ability)
@@ -46,6 +49,7 @@ public class EffectSystem
         ability.Effect.OnDestroy();
         Abilities.Remove(ability);
         Effects.Remove(ability.Effect);
+        Logger.Log($"[Effect System] Remove effect: {ability.Name}");
         OnAbilityRemoved?.Invoke(ability);
     }
 }

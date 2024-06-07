@@ -8,6 +8,7 @@ namespace NovaDrift.Scripts.Prefabs.Actors.Mobs;
 public partial class MobBase : Actor
 {
     public MobInfo MobInfo;
+    public bool IsBoss = false;
 
     private Node2D _target;
     
@@ -23,14 +24,20 @@ public partial class MobBase : Actor
     {
         if (MobInfo == null) throw new Exception("MobInfo 为 Null");
         
-        EventBus.OnMobEnteredTree += AddNodeToSpring;
+        EventBus.OnMobEnteredTree += (node) =>
+        {
+            if (IsBoss) return;
+            AddNodeToSpring(node);
+        };
         
         base._Ready();
         AddToGroup("Mobs");
         
         Spring.AddTargetPoint(new SpringInfo(SpringType.Pull, Global.Player, 1f));
+        
         foreach (var mob in GetTree().GetNodesInGroup("Mobs"))
         {
+            if (IsBoss) break;
             AddNodeToSpring(mob);
         }
 
@@ -73,6 +80,11 @@ public partial class MobBase : Actor
         if (IsDead) return;
         Global.Player.Stats.Exp.Increase(MobInfo.GetExp * Stats.Level);
         EventBus.OnMobDied?.Invoke(this);
+        base.Die();
+    }
+
+    public void RemoveSelf()
+    {
         base.Die();
     }
 

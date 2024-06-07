@@ -1,5 +1,7 @@
+using System.Collections.Generic;
 using DsUi;
 using GDebugPanelGodot.Core;
+using GDebugPanelGodot.DebugActions.Containers;
 using GDebugPanelGodot.Extensions;
 using Godot;
 using NovaDrift.Scripts.Systems;
@@ -17,7 +19,7 @@ public partial class HudPanel : Hud
 	private AnimationProgressBarPanel _shieldCooldownBar;
 	
 	private bool _isDebugPanelOpened;
-	
+
 	[Export] private Control _debugPanel;
 	
 	public override void OnCreateUi()
@@ -40,8 +42,6 @@ public partial class HudPanel : Hud
 		_hpBar = GetNode<AnimationProgressBarPanel>("%HpProgressBar");
 		_shieldBar = GetNode<AnimationProgressBarPanel>("%ShieldProgressBar");
 		_shieldCooldownBar = GetNode<AnimationProgressBarPanel>("%ShieldCooldownProgressBar");
-		
-		GenerateDebugPanel();
 	}
 
 	public void AddBuffIcon(Buff buff, float initValue = 0f)
@@ -103,7 +103,6 @@ public partial class HudPanel : Hud
 
 	public override void OnDestroyUi()
 	{
-		
 	}
 	
 	public override void _Input(InputEvent @event)
@@ -136,34 +135,5 @@ public partial class HudPanel : Hud
 			Global.ResumeGame();
 			GDebugPanel.Hide();
 		}
-	}
-
-	private void GenerateDebugPanel()
-	{
-		// Player
-		GDebugPanel.AddSection("Player", new PlayerCommands());
-
-		
-		// World
-		var worldCommand = new WorldCommands();
-		var worldSection = GDebugPanel.AddSection("World", worldCommand);
-
-		var worldColor = WorldCommands.WorldColors.Red;
-		
-		worldSection.AddEnum("ColorType", val =>
-		{
-			worldColor = val;
-
-			switch (worldColor)
-			{
-				case WorldCommands.WorldColors.Red:
-					Global.SetWorldColor(Constants.Colors.Red);
-					break;
-				case WorldCommands.WorldColors.Blue:
-					Global.SetWorldColor(Constants.Colors.Blue);
-					break;
-			}
-		}, () => worldColor);
-		
 	}
 }

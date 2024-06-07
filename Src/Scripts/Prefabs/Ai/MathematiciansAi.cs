@@ -17,6 +17,7 @@ public partial class MathematiciansAi : MobAiComponent
     public override async void _Ready()
     {
         base._Ready();
+        Mob.IsBoss = true;
         await ToSignal(Owner, Node.SignalName.Ready);
         Mob.Spring.RemoveTargetPoint(Global.Player);
         SetMapCorner();
@@ -54,7 +55,7 @@ public partial class MathematiciansAi : MobAiComponent
                 {
                     Mob.Velocity = Vector2.Zero;
                     Mob.LookAtPlayer(delta);
-                    switch (Random.Shared.Next(0, 3))
+                    switch (Random.Shared.Next(0, 2))
                     {
                         case 0:
                             Machine.SetTrigger("Blink");
@@ -63,7 +64,7 @@ public partial class MathematiciansAi : MobAiComponent
                             Machine.SetTrigger("CreateBlackHole");
                             break;
                         case 2:
-                            Machine.SetTrigger("Beam");
+                            Machine.SetTrigger("Beam"); // TODO: Add beam behavior.
                             break;
                     }
                 }
