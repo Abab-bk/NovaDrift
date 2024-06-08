@@ -5,7 +5,6 @@ using Godot.Collections;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Components;
 using NovaDrift.Scripts.Systems;
-using Array = Godot.Collections.Array;
 using Attribute = NovaDrift.addons.AcidStats.Attribute;
 
 namespace NovaDrift.Scripts.Prefabs.Shields;
