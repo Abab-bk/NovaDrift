@@ -6,6 +6,8 @@ extends Line2D
 @onready var parent : Node2D = get_parent()
 var offset : = Vector2.ZERO
 
+var last_pos:Vector2 = Vector2.ZERO
+
 func _ready() -> void:
 	offset = position
 	top_level = true
@@ -14,6 +16,9 @@ func _physics_process(_delta: float) -> void:
 	global_position = Vector2.ZERO
 
 	var point : = parent.global_position + offset
+	
+	last_pos = point
+
 	add_point(point, 0)
 	
 	if get_point_count() > length:

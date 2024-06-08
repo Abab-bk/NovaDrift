@@ -49,16 +49,22 @@ public class CharacterStats
         Deceleration = new(500f),
         RotationSpeed = new(1f), // 越高越灵敏
         ShootingDeceleration = new(1f),
-        Friction = new (150f), // 摩檫力，应该明显大于加速度 ?? 目前好像被减速度取代
-        
-        DamageResistance = new (0.0f), // 伤害抗性
-        ImpactKnockBackResistance = new (0.0f), // 撞击时获得的击退的抗性
-        ImpactDamage = new (0.0f), // 撞击时造成的伤害
-        
+        Friction = new(150f), // 摩檫力，应该明显大于加速度 ?? 目前好像被减速度取代
+
+        DamageResistance = new(0.0f), // 伤害抗性
+        ImpactKnockBackResistance = new(0.0f), // 撞击时获得的击退的抗性
+        ImpactDamage = new(0.0f), // 撞击时造成的伤害
+
         MaxShield = new Stat(100f), // 护盾血量
-        ShieldCoolDown = new (0.0f), // 护盾恢复冷却时间
-        ShieldPower = new (0.0f), // 护盾除了保护目标外的任何效果的力量
-        ShieldRadius = new (200f); // 护盾半径
+        ShieldCoolDown = new(0.0f), // 护盾恢复冷却时间
+        ShieldDamageResistance = new(0.0f), // 护盾伤害抗性
+        ShieldPower = new(0.0f), // 护盾除了保护目标外的任何效果的力量
+        ShieldRadius = new(200f), // 护盾半径
+        // ShieldAbsorptionRate = new Stat(0.8f),
+
+        Plating = new Stat(0f), // 镀层
+        
+        InjuryFactor = new (1.0f); // 受到的伤害系数
     
     
     // 一般是给玩家用的，无限持续时间，一般是Mod

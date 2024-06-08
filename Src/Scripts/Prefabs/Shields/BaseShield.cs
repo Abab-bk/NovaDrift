@@ -16,6 +16,9 @@ public partial class BaseShield : Node2D
     public event Action OnActive;
     public event Action OnBreak;
     public event Action<Node2D> OnHurtEvent;
+    public event Action<Node2D> OnBodyEntered;
+    public event Action<Node2D> OnBodyExited;
+    
     public Func<float, float> LimitMaxValue = null; 
     
     protected CircleSprite2D CircleSprite2D;
@@ -60,8 +63,8 @@ public partial class BaseShield : Node2D
         Target.Stats.ShieldRadius.ValueChanged += UpdateRadius;
         UpdateRadius(Target.Stats.ShieldRadius.Value);
         
-        ShieldArea.BodyEntered += OnBodyEntered;
-        ShieldArea.BodyExited += OnBodyExited;
+        ShieldArea.BodyEntered += OnBodyEnteredMethod;
+        ShieldArea.BodyExited += OnBodyExitedMethod;
         ShieldArea.AreaEntered += OnAreaEntered;
         ShieldArea.AreaExited += OnAreaExited;
         
@@ -85,16 +88,19 @@ public partial class BaseShield : Node2D
     protected virtual void OnHurt(float value, Node2D node2D)
     {
         var realValue = LimitMaxValue?.Invoke(value) ?? value;
+        // var shieldDamage = realValue * Target.Stats.ShieldAbsorptionRate.Value;
+        // var actorDamage = realValue * (1f - Target.Stats.ShieldAbsorptionRate.Value);
+        
         Health.Decrease(realValue);
+        // Target.TakeDamage(actorDamage);
+        
         OnHurtEvent?.Invoke(node2D);
 
-        if (Health.BaseValue <= 0)
-        {
-            Hide();
-            OnBreak?.Invoke();
-            Break();
-        }
+        if (Health.BaseValue > 0) return;
         
+        Hide();
+        OnBreak?.Invoke();
+        Break();
         CoolDownTimer.Stop();
         CoolDownTimer.Start();
     }
@@ -128,12 +134,14 @@ public partial class BaseShield : Node2D
     {
     }
     
-    protected virtual void OnBodyEntered(Node2D body)
+    protected virtual void OnBodyEnteredMethod(Node2D body)
     {
+        OnBodyEntered?.Invoke(body);
     }
     
-    protected virtual void OnBodyExited(Node2D body)
+    protected virtual void OnBodyExitedMethod(Node2D body)
     {
+        OnBodyExited?.Invoke(body);
     }
 
     private void UpdateRadius(float value)

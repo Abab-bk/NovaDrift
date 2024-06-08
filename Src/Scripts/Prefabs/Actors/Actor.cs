@@ -174,14 +174,19 @@ public partial class Actor : CharacterBody2D
     public void TakeDamage(float value)
     {
         Stats.AddKnockBack(Stats.ShootKnockBack.Value);
-        Stats.Health.Decrease(value);
-        OnHit(value);
+        Stats.Health.Decrease(GetRealDamage(value));
+        OnHit(GetRealDamage(value));
     }
 
     public void TakeDamageWithoutKnockBack(float value)
     {
-        Stats.Health.Decrease(value);
-        OnHit(value);
+        Stats.Health.Decrease(GetRealDamage(value));
+        OnHit(GetRealDamage(value));
+    }
+    
+    public float GetRealDamage(float value)
+    {
+        return Mathf.Max(1f, value * Stats.InjuryFactor.Value - Stats.Plating.Value);
     }
     
     public virtual void OnHit(float value)

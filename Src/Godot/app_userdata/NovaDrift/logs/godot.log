@@ -6,6 +6,3 @@ USER ERROR: Can't create shader cache folder, no shader caching will happen: use
 [Log][Ui] Generate debug panel
 [Log][Global] Try Stop game. Stop count: 1
 [Log][Global] Try Resume game. Stop count: 0
-[Log][Global] Try Stop game. Stop count: 1
-[Log][Effect System] Add effect: æ­»äº¡å¼å¤
-[Log][Global] Try Resume game. Stop count: 0

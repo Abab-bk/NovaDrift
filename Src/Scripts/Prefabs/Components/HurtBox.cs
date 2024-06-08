@@ -25,8 +25,9 @@ public partial class HurtBox : Area2D
         {
             if (area is HitBox hitBox)
             {
-                Actor.Stats.Health.Decrease(hitBox.Damage);
-                OnHit?.Invoke(hitBox.Damage);
+                var damage = Actor.GetRealDamage(hitBox.Damage);
+                Actor.Stats.Health.Decrease(damage);
+                OnHit?.Invoke(damage);
                 hitBox.OnHit?.Invoke((Actor)Owner);
             }
         };

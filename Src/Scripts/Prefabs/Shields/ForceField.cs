@@ -16,15 +16,15 @@ public partial class ForceField : BaseShield
         _accelerationModifier = new StatModifier(Values[0], StatModType.PercentAdd, this);
     }
 
-    protected override void OnBodyEntered(Node2D body)
+    protected override void OnBodyEnteredMethod(Node2D body)
     {
-        base.OnBodyEntered(body);
+        base.OnBodyEnteredMethod(body);
         UpdateDamage();
     }
-    
-    protected override void OnBodyExited(Node2D body)
+
+    protected override void OnBodyExitedMethod(Node2D body)
     {
-        base.OnBodyExited(body);
+        base.OnBodyExitedMethod(body);
         UpdateDamage();
     }
 

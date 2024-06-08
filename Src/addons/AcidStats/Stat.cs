@@ -76,6 +76,11 @@ public class Stat
         _statModifiers.Sort(CompareModifierOrder);
     }
 
+    public bool HasModifier(StatModifier mod)
+    {
+        return _statModifiers.Contains(mod);
+    }
+
     public bool RemoveModifier(StatModifier mod)
     {
         _isDirty = true;

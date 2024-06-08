@@ -22,11 +22,11 @@ public class SiegeWeaponry : Effect
         
         Target.OnShooting += () =>
         {
+            Target.TakeDamage(Target.Stats.Damage.Value * 0.01f);
             if (_shootSpeedModifier.Value >= 1f) return;
 
             _shootSpeedModifier.Value += Values[0];
             Target.Stats.ShootSpeed.ForceCalculate();
-            GD.Print(Target.Stats.ShootSpeed.Value);
         };
 
         Target.StopShooting += RemoveAllModifierFromTarget;
