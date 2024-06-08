@@ -25,6 +25,11 @@ public partial class Pulse : BaseShooter
         AddChild(_shootTimer);
     }
 
+    private float GetRadius()
+    {
+        return 100f + Actor.Stats.BulletSize.Value * (Actor.Stats.BlastRadius.Value * 0.5f);
+    }
+
     public override void Shoot()
     {
         if (!_shootTimer.IsStopped()) return;
@@ -32,6 +37,8 @@ public partial class Pulse : BaseShooter
         
         var circleBlast = GD.Load<PackedScene>("res://Scenes/Vfx/CircleBlast.tscn").Instantiate<CircleBlast>();
         circleBlast.IsPlayer = IsPlayer;
+        circleBlast.Radius = GetRadius();
+        
         circleBlast.OnSomeThingHit += node2D =>
         {
             if (node2D is not Actor actor) return;
