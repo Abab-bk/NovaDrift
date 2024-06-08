@@ -123,6 +123,8 @@ unique_name_in_owner = true
 position = Vector2(2216, 1052)
 scale = Vector2(0.24, 0.24)
 
+[node name="Something" type="Node2D" parent="."]
+
 [node name="WaveSpawnerController" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("10_k5lv0")

@@ -18,5 +18,4 @@ script = ExtResource("3_5u11p")
 
 [node name="ElectricArc" parent="." node_paths=PackedStringArray("_circleLine2D") instance=ExtResource("4_c3mjr")]
 position = Vector2(993, 742)
-_animationFactor = 3.86
 _circleLine2D = NodePath("CircleLine2D")

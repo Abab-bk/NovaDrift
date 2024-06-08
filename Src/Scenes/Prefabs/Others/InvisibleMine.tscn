@@ -1,0 +1,23 @@
+[gd_scene load_steps=5 format=3 uid="uid://5plp2tcqb33t"]
+
+[ext_resource type="PackedScene" uid="uid://c8txa1iq1ppbf" path="res://Scenes/Prefabs/Others/Mine.tscn" id="1_8thms"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Others/InvisibleMine.cs" id="2_ienah"]
+[ext_resource type="Texture2D" uid="uid://dp46t708w75ix" path="res://Assets/Textures/Particles/circle_05.png" id="3_md84b"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_frseb"]
+radius = 35.0143
+
+[node name="InvisibleMine" node_paths=PackedStringArray("_hurtBox", "MonitorArea", "_sprite") instance=ExtResource("1_8thms")]
+script = ExtResource("2_ienah")
+_hurtBox = NodePath("PureHurtBox")
+MonitorArea = NodePath("MonitorArea")
+_sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" parent="." index="0"]
+modulate = Color(1, 0.258824, 0.247059, 1)
+scale = Vector2(0.4, 0.4)
+texture = ExtResource("3_md84b")
+
+[node name="CollisionShape2D" parent="MonitorArea" index="0"]
+shape = SubResource("CircleShape2D_frseb")
+debug_color = Color(5.0056e-06, 0.648916, 0.164158, 0.42)

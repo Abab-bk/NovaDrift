@@ -1,0 +1,21 @@
+[gd_scene load_steps=3 format=3 uid="uid://c8txa1iq1ppbf"]
+
+[ext_resource type="Script" path="res://Scripts/Prefabs/Others/Mine.cs" id="1_qsrd5"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Components/PureHurtBox.cs" id="2_170kp"]
+
+[node name="Mine" type="Node2D" node_paths=PackedStringArray("_hurtBox", "MonitorArea", "_sprite")]
+script = ExtResource("1_qsrd5")
+_hurtBox = NodePath("PureHurtBox")
+MonitorArea = NodePath("MonitorArea")
+_sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+
+[node name="PureHurtBox" type="Area2D" parent="."]
+script = ExtResource("2_170kp")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PureHurtBox"]
+
+[node name="MonitorArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="MonitorArea"]

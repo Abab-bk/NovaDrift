@@ -10,7 +10,7 @@ namespace NovaDrift.Scripts.Prefabs.Actors;
 public partial class Player : Actor
 {
     [GetNode("%RegenerationTimer")] private Timer _regenerationTimer;
-     
+    
     private HFSM _movementMachine;
     private HFSM _actionMachine;
 

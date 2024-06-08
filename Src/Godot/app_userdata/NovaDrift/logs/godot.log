@@ -7,28 +7,5 @@ USER ERROR: Can't create shader cache folder, no shader caching will happen: use
 [Log][Global] Try Stop game. Stop count: 1
 [Log][Global] Try Resume game. Stop count: 0
 [Log][Global] Try Stop game. Stop count: 1
-[Log][Effect System] Add effect: æ¾çµ
+[Log][Effect System] Add effect: æ­»äº¡å¼å¤
 [Log][Global] Try Resume game. Stop count: 0
-[Log][Global] Try Stop game. Stop count: 1
-[Log][Wave Spawner] æäººçææ°é: 2, éµåï¼SpiralSpawnType
-[Log][Global] Try Resume game. Stop count: 0
-[Log][Wave Spawner] æäººçææ°é: 2, éµåï¼RectSpawnType
-[Log][Wave Spawner] Next wave is boss wave.
-[Log][WaveSpawner] Next wave clock: 2s
-[Log][Wave Spawner] Boss wave started, stop clock.
-[Log][Wave Spawner] Boss wave spawned: æ°å­¦å®¶
-[Log][WaveSpawner] Next wave clock: 2s
-[Log][Global] Try Stop game. Stop count: 1
-
-================================================================
-CrashHandlerException: Program crashed with signal 11
-Engine version: Godot Engine v4.3.beta1.mono.official (a4f2ea91a1bd18f70a43ff4c1377db49b56bc3f0)
-Dumping the backtrace. 
-[1] error(-1): no debug info in PE/COFF executable
-[2] error(-1): no debug info in PE/COFF executable
-[3] error(-1): no debug info in PE/COFF executable
-[4] error(-1): no debug info in PE/COFF executable
-[5] error(-1): no debug info in PE/COFF executable
-[6] error(-1): no debug info in PE/COFF executable
--- END OF BACKTRACE --
-================================================================

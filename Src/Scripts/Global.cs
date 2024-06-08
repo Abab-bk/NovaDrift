@@ -32,6 +32,7 @@ public static class Global
     
     public static Player Player;
     public static Node2D PlayerStand;
+    public static Node2D Something;
     public static GameWorld GameWorld;
     public static ShakeDirector2D ShakeDirector;
     public static FastNoiseLite Noise;

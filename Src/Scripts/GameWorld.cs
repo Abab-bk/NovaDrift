@@ -53,6 +53,8 @@ public partial class GameWorld : Node2D
 		EventBus.OnGameOver += GameOver;
 		
 		AcidSaver.LoadAll();
+
+		Global.Something = GetNode<Node2D>("Something");
 		
 		GenerateDebugPanel();
 		
