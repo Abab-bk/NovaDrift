@@ -33,7 +33,7 @@ public partial class MobBase : Actor
         base._Ready();
         AddToGroup("Mobs");
         
-        Spring.AddTargetPoint(new SpringInfo(SpringType.Pull, Global.Player, 1f));
+        if (!IsBoss) Spring.AddTargetPoint(new SpringInfo(SpringType.Pull, Global.Player, 1f));
         
         foreach (var mob in GetTree().GetNodesInGroup("Mobs"))
         {

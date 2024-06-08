@@ -1,0 +1,221 @@
+[gd_scene load_steps=40 format=3 uid="uid://c58ljhki6asen"]
+
+[ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_5irmn"]
+[ext_resource type="Texture2D" uid="uid://dj1a38qxe512e" path="res://Assets/Textures/Mobs/TheKnight.png" id="2_xq6n4"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Ai/TheKnightAi.cs" id="3_r6a3d"]
+[ext_resource type="PackedScene" uid="uid://drobcpf7g4p2f" path="res://Scenes/StateDebugger.tscn" id="4_6yhsu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ebxgc"]
+size = Vector2(200, 194)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_vgybq"]
+size = Vector2(200, 194)
+
+[sub_resource type="StateConfig" id="StateConfig_hje6h"]
+state_name = &"Idle"
+type = 1
+editor_offset = Vector2(-300, 60)
+
+[sub_resource type="StateConfig" id="StateConfig_lu46t"]
+state_name = &"Sword"
+editor_offset = Vector2(60, -320)
+
+[sub_resource type="StateConfig" id="StateConfig_0thdo"]
+state_name = &"PoetPreparation"
+editor_offset = Vector2(560, 60)
+
+[sub_resource type="StateConfig" id="StateConfig_dpn1h"]
+state_name = &"Sprint"
+editor_offset = Vector2(60, 440)
+
+[sub_resource type="StateConfig" id="StateConfig_wg3dg"]
+state_name = &"PoetRecorvery"
+editor_offset = Vector2(1320, 500)
+
+[sub_resource type="StateConfig" id="StateConfig_s4mol"]
+state_name = &"FireBall"
+editor_offset = Vector2(1080, -140)
+
+[sub_resource type="StateConfig" id="StateConfig_bxx4q"]
+state_name = &"Freezy"
+editor_offset = Vector2(1080, 100)
+
+[sub_resource type="StateConfig" id="StateConfig_m8068"]
+state_name = &"Call"
+editor_offset = Vector2(1080, 320)
+
+[sub_resource type="StateConfig" id="StateConfig_qivq6"]
+state_name = &"Walking"
+editor_offset = Vector2(60, 60)
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_b0i1k"]
+from_state_config = SubResource("StateConfig_m8068")
+to_state_config = SubResource("StateConfig_wg3dg")
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_3h4rx"]
+from_state_config = SubResource("StateConfig_bxx4q")
+to_state_config = SubResource("StateConfig_wg3dg")
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_7bieu"]
+from_state_config = SubResource("StateConfig_s4mol")
+to_state_config = SubResource("StateConfig_wg3dg")
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_i1jsl"]
+from_state_config = SubResource("StateConfig_hje6h")
+to_state_config = SubResource("StateConfig_qivq6")
+
+[sub_resource type="VariableConfig" id="VariableConfig_g1x8x"]
+variable_name = &"ToPoet"
+resource_name = "ToPoet: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_sk3lj"]
+variable_config = SubResource("VariableConfig_g1x8x")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_srrag"]
+from_state_config = SubResource("StateConfig_qivq6")
+to_state_config = SubResource("StateConfig_0thdo")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_sk3lj")])
+
+[sub_resource type="VariableConfig" id="VariableConfig_fvbwy"]
+variable_name = &"ToSword"
+resource_name = "ToSword: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_gmc6j"]
+variable_config = SubResource("VariableConfig_fvbwy")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_7xcrl"]
+from_state_config = SubResource("StateConfig_qivq6")
+to_state_config = SubResource("StateConfig_lu46t")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_gmc6j")])
+
+[sub_resource type="VariableConfig" id="VariableConfig_3i2b3"]
+variable_name = &"ToSprint"
+resource_name = "ToSprint: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_88y28"]
+variable_config = SubResource("VariableConfig_3i2b3")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_8gnbd"]
+from_state_config = SubResource("StateConfig_qivq6")
+to_state_config = SubResource("StateConfig_dpn1h")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_88y28")])
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_oaine"]
+from_state_config = SubResource("StateConfig_wg3dg")
+to_state_config = SubResource("StateConfig_qivq6")
+
+[sub_resource type="VariableConfig" id="VariableConfig_aa4v0"]
+variable_name = &"ToMoving"
+resource_name = "ToMoving: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_2fbfm"]
+variable_config = SubResource("VariableConfig_aa4v0")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_4ovsy"]
+from_state_config = SubResource("StateConfig_dpn1h")
+to_state_config = SubResource("StateConfig_qivq6")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_2fbfm")])
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_kgxjy"]
+variable_config = SubResource("VariableConfig_aa4v0")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_8tnnb"]
+from_state_config = SubResource("StateConfig_lu46t")
+to_state_config = SubResource("StateConfig_qivq6")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_kgxjy")])
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_lodyf"]
+from_state_config = SubResource("StateConfig_0thdo")
+to_state_config = SubResource("StateConfig_s4mol")
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_lifjf"]
+from_state_config = SubResource("StateConfig_0thdo")
+to_state_config = SubResource("StateConfig_bxx4q")
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_bkx4s"]
+from_state_config = SubResource("StateConfig_0thdo")
+to_state_config = SubResource("StateConfig_m8068")
+
+[sub_resource type="FSMConfig" id="FSMConfig_xohl3"]
+state_config_list = Array[StateConfig]([SubResource("StateConfig_hje6h"), SubResource("StateConfig_lu46t"), SubResource("StateConfig_0thdo"), SubResource("StateConfig_dpn1h"), SubResource("StateConfig_wg3dg"), SubResource("StateConfig_s4mol"), SubResource("StateConfig_bxx4q"), SubResource("StateConfig_m8068"), SubResource("StateConfig_qivq6")])
+transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_b0i1k"), SubResource("TransitionConfig_3h4rx"), SubResource("TransitionConfig_7bieu"), SubResource("TransitionConfig_i1jsl"), SubResource("TransitionConfig_srrag"), SubResource("TransitionConfig_7xcrl"), SubResource("TransitionConfig_8gnbd"), SubResource("TransitionConfig_oaine"), SubResource("TransitionConfig_4ovsy"), SubResource("TransitionConfig_8tnnb"), SubResource("TransitionConfig_lodyf"), SubResource("TransitionConfig_lifjf"), SubResource("TransitionConfig_bkx4s")])
+variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_fvbwy"), SubResource("VariableConfig_3i2b3"), SubResource("VariableConfig_g1x8x"), SubResource("VariableConfig_aa4v0")])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_b8tbt"]
+size = Vector2(200, 194)
+
+[node name="TheKnight" node_paths=PackedStringArray("_hurtBox", "Spring", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_5irmn")]
+_hurtBox = NodePath("Components/HurtBox")
+Spring = NodePath("Spring")
+Sprite = NodePath("Sprite2D")
+_visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
+Shooter = NodePath("Components/ShooterNode/Shooter")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_xq6n4")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_ebxgc")
+
+[node name="Shooter" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../../..")
+
+[node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../..")
+
+[node name="CollisionShape2D" parent="Components/HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_vgybq")
+
+[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("_swordMarker", "_frontMarker", "Mob")]
+script = ExtResource("3_r6a3d")
+_swordMarker = NodePath("../../SwordMarker")
+_frontMarker = NodePath("../../FrontMarker")
+Mob = NodePath("../..")
+
+[node name="HFSM" parent="State" index="1"]
+root_fsm_config = SubResource("FSMConfig_xohl3")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="4"]
+position = Vector2(-7.7486e-06, -88.5)
+scale = Vector2(5.9, 0.85)
+
+[node name="CollisionShape2D" parent="BodyArea" index="0"]
+shape = SubResource("RectangleShape2D_b8tbt")
+
+[node name="Spring" parent="." index="7"]
+EnabledDraw = true
+
+[node name="SwordMarker" type="Marker2D" parent="." index="8"]
+position = Vector2(392, -308)
+gizmo_extents = 100.0
+
+[node name="FrontMarker" type="Marker2D" parent="." index="9"]
+position = Vector2(392, 0)
+gizmo_extents = 100.0
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." index="10"]
+
+[node name="StateDebugger" parent="CanvasLayer" index="0" instance=ExtResource("4_6yhsu")]
+custom_minimum_size = Vector2(200, 200)
+anchors_preset = 2
+anchor_top = 1.0
+anchor_right = 0.0
+offset_top = -392.0
+offset_right = 687.0
+grow_horizontal = 1
+grow_vertical = 0

@@ -1,9 +1,8 @@
-[gd_scene load_steps=34 format=3 uid="uid://dpjoth6pr61r4"]
+[gd_scene load_steps=33 format=3 uid="uid://dpjoth6pr61r4"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_bpe63"]
 [ext_resource type="Texture2D" uid="uid://dgllwtqj6brhw" path="res://Assets/Textures/Mobs/TheDoctor.png" id="2_7cjq0"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/TheDoctorAi.cs" id="3_q3tdv"]
-[ext_resource type="PackedScene" uid="uid://drobcpf7g4p2f" path="res://Scenes/StateDebugger.tscn" id="4_xs1bm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_f4htp"]
 size = Vector2(122, 150)
@@ -159,6 +158,9 @@ texture = ExtResource("2_7cjq0")
 [node name="CollisionShape2D" parent="." index="1"]
 shape = SubResource("RectangleShape2D_f4htp")
 
+[node name="Shooter" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../../..")
+
 [node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]
 Actor = NodePath("../..")
 
@@ -179,15 +181,3 @@ scale = Vector2(1, 0.769231)
 
 [node name="Spring" parent="." index="7"]
 EnabledDraw = true
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="8"]
-
-[node name="StateDebugger" parent="CanvasLayer" index="0" instance=ExtResource("4_xs1bm")]
-custom_minimum_size = Vector2(200, 200)
-anchors_preset = 2
-anchor_top = 1.0
-anchor_right = 0.0
-offset_top = -392.0
-offset_right = 687.0
-grow_horizontal = 1
-grow_vertical = 0
