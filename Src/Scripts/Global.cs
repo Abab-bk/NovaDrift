@@ -77,6 +77,15 @@ public static class Global
         };
     }
 
+    public static void Shake(float strength)
+    {
+        Global.ShakeDirector.Shake(
+            NoiseShake.CreateWithNoise(Global.Noise)
+                .WithDuration(0.5f)
+                .WithEulersAmount(new Vector3(strength, strength, 0.02f))
+        );
+    }
+
     public static void SetWorldColor(Constants.WorldColor color)
     {
         WorldColor = color;

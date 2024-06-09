@@ -44,9 +44,9 @@ public partial class MagicCircleVfx : BaseVfx
             .Play();
         
         GTweenSequenceBuilder.New()
-            .Append(_part1.TweenScale(Vector2.One, 0.5f).SetEasing(Easing.InOutQuart))
-            .Append(_part2.TweenScale(Vector2.One, 0.5f).SetEasing(Easing.InOutQuart))
-            .Append(_part3.TweenScale(Vector2.One, 0.5f).SetEasing(Easing.InOutQuart))
+            .Append(_part1.TweenScale(Vector2.One, 0.2f).SetEasing(Easing.InOutQuart))
+            .Append(_part2.TweenScale(Vector2.One, 0.2f).SetEasing(Easing.InOutQuart))
+            .Append(_part3.TweenScale(Vector2.One, 0.3f).SetEasing(Easing.InOutQuart))
             .AppendTime(0.5f)
             .AppendCallback(() => { OnAppearEnd?.Invoke(); })
             .Build()

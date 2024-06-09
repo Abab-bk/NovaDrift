@@ -2,6 +2,8 @@ using Godot;
 using System;
 using System.Linq;
 using AcidWallStudio.AcidUtilities;
+using AcidWallStudio.Fmod;
+using FMOD.Studio;
 using GTweens.Builders;
 using GTweensGodot.Extensions;
 using NovaDrift.Scripts.Prefabs.Actors;
@@ -42,9 +44,12 @@ public partial class TheKnightAi : MobAiComponent
     
     private MagicCircleVfx _magicCircleVfx;
     
+    private Bank _bank;
+    
     public override void _Ready()
     {
         base._Ready();
+        SoundManager.LoadBank("TheKnight.bank", out _bank);
         Mob.IsBoss = true;
         Mob.Shooter.GetBulletFunc = _ => new BulletBuilder()
             .SetBulletBase("res://Scenes/Prefabs/Bullets/FireBall2.tscn")
@@ -56,6 +61,12 @@ public partial class TheKnightAi : MobAiComponent
             .SetDegeneration(Mob.Stats.BulletDegeneration.Value)
             .SetSteering(Mob.Stats.Targeting.Value)
             .Build();
+    }
+
+    protected override void OnMobDied()
+    {
+        base.OnMobDied();
+        _bank.unload();
     }
 
     protected override void ConnectProcessSignals(State state, float delta)
@@ -129,7 +140,7 @@ public partial class TheKnightAi : MobAiComponent
                 var laser = GD.Load<PackedScene>("res://Scenes/Vfx/LaserBeam.tscn").Instantiate() as LaserBeam;
                 if (laser == null) return;
                 laser.Life = Random.Shared.FloatRange(3f, 6f);
-                laser.Width = 40f;
+                laser.Width = 50f;
                 Mob.AddChild(laser);
                 laser.OnHitSomething += o =>
                 {
@@ -155,8 +166,14 @@ public partial class TheKnightAi : MobAiComponent
 
     private void JumpTo(Vector2 targetPos)
     {
+        targetPos.X = MathF.Min(Wizard.GetMaxScreenX() - 200f, targetPos.X);
+        targetPos.X = MathF.Max(200f, targetPos.X);
+        targetPos.Y = MathF.Min(Wizard.GetMaxScreenY() - 200f, targetPos.Y);
+        targetPos.Y = MathF.Max(200f, targetPos.Y);
+        
         Logger.Log($"[Boss: The Knight] Jumping to {targetPos}");
         Mob.LookAt(targetPos);
+        SoundManager.PlayOneShotById("event:/Mobs/Bosses/TheKnight/Rora");
         GTweenSequenceBuilder.New()
             .Append(Mob.TweenRotationDegrees(-20f, 0.2f))
             .Append(Mob.TweenModulateAlpha(0f, 0.4f))
@@ -188,11 +205,12 @@ public partial class TheKnightAi : MobAiComponent
         
         sword.RotationDegrees = -45f;
 
+        SoundManager.PlayOneShotById("event:/Mobs/Bosses/TheKnight/SwordWave");
         GTweenSequenceBuilder.New()
-            .Append(sword.TweenModulateAlpha(1f, 0.2f))
-            .Append(sword.TweenRotationDegrees(45f, 0.4f))
+            .Append(sword.TweenModulateAlpha(2f, 0.2f))
+            .Append(sword.TweenRotationDegrees(45f, 0.2f))
                 .Join(sword.TweenPosition(_swordMarker.Position + new Vector2(0f, 600f), 0.4f))
-            .Append(sword.TweenModulateAlpha(0f, 0.2f))
+            .Append(sword.TweenModulateAlpha(0f, 0.4f))
             .AppendCallback(() =>
                 {
                     sword.QueueFree();
@@ -211,6 +229,7 @@ public partial class TheKnightAi : MobAiComponent
         sword.Area2D.BodyEntered += (body) =>
         {
             if (body is not Player player) return;
+            Global.Shake(10f);
             player.TakeDamageWithoutKnockBack(Mob.Stats.Damage.Value);
         };
         

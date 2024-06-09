@@ -1,3 +1,4 @@
+using System;
 using AcidJoystick;
 using AcidWallStudio.Fmod;
 using DsUi;
@@ -140,10 +141,13 @@ public partial class Player : Actor
     public override void OnHit(float value)
     {
         base.OnHit(value);
+
+        var shakeLevel = MathF.Min(10f, value / 10f);
+        
         Global.ShakeDirector.Shake(
             NoiseShake.CreateWithNoise(Global.Noise)
                 .WithDuration(0.5f)
-                .WithEulersAmount(new Vector3(0.02f, 0.02f, 0.02f))
+                .WithEulersAmount(new Vector3(shakeLevel, shakeLevel, 0.02f))
             );
     }
 

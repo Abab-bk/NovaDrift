@@ -5,6 +5,10 @@ Assets/Curves/UpLevelCurve.tres
 - X = 等级
 - Y = 升级所需经验
 
+## Credit:
+Atelier Magicae @Itch
+Creator of Assets: Riria/Ririsaurus
+
 ## Juice
 敌人死亡：红色爆炸
 
