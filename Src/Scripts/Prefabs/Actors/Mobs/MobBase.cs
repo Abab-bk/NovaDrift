@@ -9,6 +9,7 @@ public partial class MobBase : Actor
 {
     public MobInfo MobInfo;
     public bool IsBoss = false;
+    public MobAiComponent Ai;
 
     private Node2D _target;
     
@@ -24,6 +25,8 @@ public partial class MobBase : Actor
     {
         Stats.Recoil.BaseValue = 0f;
         if (MobInfo == null) throw new Exception("MobInfo 为 Null");
+
+        Ai = GetNode<MobAiComponent>("%MobAiComponent");
         
         EventBus.OnMobEnteredTree += (node) =>
         {

@@ -15,36 +15,38 @@ public partial class TheKnightAi : MobAiComponent
     [Export] private Marker2D _swordMarker;
     [Export] private Marker2D _frontMarker;
     
-    private enum Abilities
-    {
-        Sword,
-        Poet,
-        Sprint,
-    }
-    
-    private enum Magics
-    {
-        Fireball,
-        Freezy,
-        Call,
-    }
-    
-    private Timer _walkingTimer;
-    private MagicCircleVfx _magicCircleVfx;
+    private readonly Strategy[] _abilities = [
+        new Strategy("Sword", 300f, @base => { @base.Ai.Machine.SetTrigger("ToSword"); }),
+        new Strategy("Poet", 1000f, @base => { @base.Ai.Machine.SetTrigger("ToPoet"); }),
+        new Strategy("Sprint", 600f, @base => { @base.Ai.Machine.SetTrigger("ToSprint"); }),
+    ];
 
-    private const float SwordAtkDistance = 300f;
-    private const float PoetAtkDistance = 1000f;
-    private const float SprintAtkDistance = 600f;
+    private readonly Strategy[] _magics =
+    [
+        new Strategy("Fireball", 400f, @base =>
+        {
+            @base.Ai.Machine.SetTrigger("ToFireBall");
+            Logger.Log("[Boss: The Knight] Fireball selected");
+        }),
+        new Strategy("Freezy", 800f, @base =>
+        {
+            @base.Ai.Machine.SetTrigger("ToFreezy");
+            Logger.Log("[Boss: The Knight] Freezy selected");
+        }),
+        new Strategy("Call", 200f, @base =>
+        {
+            @base.Ai.Machine.SetTrigger("ToCall");
+            Logger.Log("[Boss: The Knight] Call selected");
+        }),
+    ];
     
-    private const float FireBallAtkDistance = 100f;
-    private const float FreezyAtkDistance = 100f;
-    private const float CallAtkDistance = 100f;
+    private MagicCircleVfx _magicCircleVfx;
     
     public override void _Ready()
     {
         base._Ready();
         Mob.IsBoss = true;
-        Mob.Shooter.GetBulletFunc = (shooter) => new BulletBuilder()
+        Mob.Shooter.GetBulletFunc = _ => new BulletBuilder()
             .SetBulletBase("res://Scenes/Prefabs/Bullets/FireBall2.tscn")
             .SetOwner(Mob)
             .SetIsPlayer(Mob.IsPlayer)
@@ -54,29 +56,6 @@ public partial class TheKnightAi : MobAiComponent
             .SetDegeneration(Mob.Stats.BulletDegeneration.Value)
             .SetSteering(Mob.Stats.Targeting.Value)
             .Build();
-        
-        _walkingTimer = new Timer()
-        {
-            OneShot = true
-        };
-        
-        Mob.CallDeferred(Node.MethodName.AddChild, _walkingTimer);
-        
-        _walkingTimer.Timeout += () =>
-        {
-            switch (SelectAbility())
-            {
-                case Abilities.Sword:
-                    Machine.SetTrigger("ToSword");
-                    break;
-                case Abilities.Poet:
-                    Machine.SetTrigger("ToPoet");
-                    break;
-                case Abilities.Sprint:
-                    Machine.SetTrigger("ToSprint");
-                    break;
-            }
-        };
     }
 
     protected override void ConnectProcessSignals(State state, float delta)
@@ -84,19 +63,14 @@ public partial class TheKnightAi : MobAiComponent
         base.ConnectProcessSignals(state, delta);
         switch (state.GetName())
         {
-            case "Walking":
-                if (Mob.GetDistanceToPlayer() <= 600)
-                {
-                    Mob.CleanTarget();
-                    Mob.Velocity = Vector2.Zero;
-                    return;
-                }
-                Mob.SetTargetAndMove(Global.Player, delta);
-                break;
             case "FireBall":
                 Mob.Velocity = Vector2.Zero;
                 Mob.LookAtPlayer(delta);
                 Mob.Shoot();
+                break;
+            case "Freezy":
+                Mob.Velocity = Vector2.Zero;
+                Mob.LookAtPlayer(delta);
                 break;
         }
     }
@@ -107,8 +81,7 @@ public partial class TheKnightAi : MobAiComponent
         switch (state.GetName())
         {
             case "Walking":
-                _walkingTimer.WaitTime = Random.Shared.FloatRange(2f, 4f);
-                _walkingTimer.Start();
+                JumpTo(Global.Player.GlobalPosition + Wizard.GetRandom8Dir() * 600f);
                 break;
             case "Sword":
                 Sword();
@@ -152,20 +125,53 @@ public partial class TheKnightAi : MobAiComponent
                     _magicCircleVfx.Disappear();
                 }
                 break;
+            case "Freezy":
+                var laser = GD.Load<PackedScene>("res://Scenes/Vfx/LaserBeam.tscn").Instantiate() as LaserBeam;
+                if (laser == null) return;
+                laser.Life = Random.Shared.FloatRange(3f, 6f);
+                laser.Width = 40f;
+                Mob.AddChild(laser);
+                laser.OnHitSomething += o =>
+                {
+                    if (o is not Player player) return;
+                    player.TakeDamage(Mob.Stats.Damage.Value * 0.1f);
+                };
+                laser.OnAnimationEnd += () =>
+                {
+                    Machine.SetTrigger("ToPoetRecovery");
+                };
+                laser.GlobalPosition = _frontMarker.GlobalPosition with { X = _frontMarker.GlobalPosition.X - 200f };
+                break;
+            case "Call":
+                Global.WaveSpawnerController.GenerateWaveWithoutWaveCountAndWithPos(_frontMarker.GlobalPosition);
+                var callTimer = GetTree().CreateTimer(Random.Shared.FloatRange(3f, 5f));
+                callTimer.Timeout += () =>
+                {
+                    Machine.SetTrigger("ToPoetRecovery");
+                };
+                break;
         }
     }
 
     private void JumpTo(Vector2 targetPos)
     {
+        Logger.Log($"[Boss: The Knight] Jumping to {targetPos}");
         Mob.LookAt(targetPos);
         GTweenSequenceBuilder.New()
             .Append(Mob.TweenRotationDegrees(-20f, 0.2f))
             .Append(Mob.TweenModulateAlpha(0f, 0.4f))
             .AppendTime(1f)
+            .Append(Mob.TweenGlobalPosition(targetPos, 0.1f))
             .Append(Mob.TweenModulateAlpha(1f, 0.4f))
             .Append(Mob.TweenRotationDegrees(0f, 0.2f))
+            .AppendCallback(TurnToAbility)
             .Build()
             .Play();
+    }
+
+    private void TurnToAbility()
+    {
+        SelectAbility().Execute(Mob);
     }
 
     private void Sword()
@@ -224,67 +230,31 @@ public partial class TheKnightAi : MobAiComponent
         magicCircle.OnAppearEnd += () =>
         {
             Logger.Log("[Boss: The Knight] Poet ready");
-            switch (SelectMagic())
-            {
-                case Magics.Fireball:
-                    Machine.SetTrigger("ToFireBall");
-                    Logger.Log("[Boss: The Knight] Fireball selected");
-                    break;
-                case Magics.Freezy:
-                    Machine.SetTrigger("ToFreezy");
-                    Logger.Log("[Boss: The Knight] Freezy selected");
-                    break;
-                case Magics.Call:
-                    Machine.SetTrigger("ToCall");
-                    Logger.Log("[Boss: The Knight] Call selected");
-                    break;
-            }
+            SelectMagic().Execute(Mob);
         };
         
         magicCircle.Appear();
     }
 
-    private Abilities SelectAbility()
+    private Strategy SelectAbility()
     {
-        var swordScore = GetAttackScore(SwordAtkDistance);
-        var poetScore = GetAttackScore(PoetAtkDistance);
-        var springScore = GetAttackScore(SprintAtkDistance);
-        
-        var scores = new []
-        {
-            (Abilities.Sword, swordScore),
-            (Abilities.Poet, poetScore),
-            (Abilities.Sprint, springScore),
-        };
-        
-        Logger.Log($"""
-                    [Boss: The Knight] Scores:
-                    Sword: {swordScore}
-                    Poet: {poetScore}
-                    Spring: {springScore}
-                    """);
-        
-        return scores.MaxBy(x => x.Item2).Item1;
-        // return Abilities.Poet;
+//         Logger.Log($"""
+//                     [Boss: The Knight] Scores:
+//                     Sword: {swordScore}
+//                     Poet: {poetScore}
+//                     Spring: {springScore}
+//                     """);
+
+        var best = _abilities.MaxBy(x => x.GetAttackScore(Mob));
+        return best;
     }
     
-    private Magics SelectMagic()
+    private Strategy SelectMagic()
     {
-        var fireballScore = GetAttackScore(FireBallAtkDistance);
-        var freezyScore = GetAttackScore(FreezyAtkDistance);
-        var callScore = GetAttackScore(CallAtkDistance);
-        
-        var scores = new []
-        {
-            (Magics.Fireball, fireballScore),
-            (Magics.Freezy, freezyScore),
-            (Magics.Call, callScore),
-        };
-        
-        // return scores.MaxBy(x => x.Item2).Item1;
-        return Magics.Fireball;
+        var best = _magics.MaxBy(x => x.GetAttackScore(Mob));
+        return best;
     }
-
+    
     private float GetAttackScore(float desiredDistance)
     {
         var distanceDifference = Math.Abs(desiredDistance - Mob.GetDistanceToPlayer());

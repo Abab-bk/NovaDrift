@@ -29,7 +29,7 @@ public partial class WaveSpawner : Node2D
         RandomMove();
     }
     
-    public void GenerateWave()
+    public void GenerateWave(Vector2 pos = default)
     {
         List<MobInfo> generatedMobs = [];
         
@@ -56,7 +56,16 @@ public partial class WaveSpawner : Node2D
 
             mobIndex += 1;
         }
-        RandomMove();
+
+        if (pos == default)
+        {
+            RandomMove();
+        }
+        else
+        {
+            GlobalPosition = pos;
+        }
+
         Logger.Log($"[Wave Spawner] 敌人生成数量: {generatedMobs.Count}, 阵型：{spawnType.GetType().Name}");
     }
 

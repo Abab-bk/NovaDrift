@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using GTweens.Extensions;
 using GTweensGodot.Extensions;
@@ -6,13 +7,17 @@ namespace NovaDrift.Scripts.Vfx;
 
 public partial class LaserBeam : BaseVfx
 {
+    public event Action<GodotObject> OnHitSomething; 
+    
     [GetNode("%Line2D")] private Line2D _line;
     [GetNode("%RayCast2D")] private RayCast2D _cast;
 
     public float Life = 4f;
+    public float Width = 20f;
     
     public override async void _Ready()
     {
+        _line.Width = Width;
         _line.Points[1] = Vector2.Zero;
         Appear();
         await ToSignal(GetTree().CreateTimer(Life), Timer.SignalName.Timeout);
@@ -47,12 +52,14 @@ public partial class LaserBeam : BaseVfx
     public override void _PhysicsProcess(double delta)
     {
         var castPoint = _cast.TargetPosition;
-        // _cast.ForceRaycastUpdate();
+        _cast.ForceRaycastUpdate();
 
-        // if (_cast.IsColliding())
-        // {
-        //     castPoint = ToLocal(_cast.GetCollisionPoint());
-        // }
+        if (_cast.IsColliding())
+        {
+            var collider = _cast.GetCollider();
+            OnHitSomething?.Invoke(collider);
+            castPoint = ToLocal(_cast.GetCollisionPoint());
+        }
 
         _line.SetPointPosition(1, castPoint);
     }

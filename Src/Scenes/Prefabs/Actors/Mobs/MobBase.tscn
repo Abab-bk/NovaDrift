@@ -28,6 +28,7 @@ Actor = NodePath("../..")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtBox" index="0"]
 
 [node name="MobAiComponent" type="Node" parent="State" index="0" node_paths=PackedStringArray("Mob")]
+unique_name_in_owner = true
 script = ExtResource("3_d6jih")
 Mob = NodePath("../..")
 

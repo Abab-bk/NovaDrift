@@ -8,7 +8,7 @@ public partial class MobAiComponent : Node
 {
     [Export] private bool _enabled = true;
     [Export] protected MobBase Mob;
-    protected HFSM Machine;
+    public HFSM Machine;
 
     protected Node2D MovePoint;
 

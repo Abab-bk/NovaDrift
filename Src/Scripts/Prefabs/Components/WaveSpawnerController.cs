@@ -74,6 +74,14 @@ public partial class WaveSpawnerController : Node2D
         AddWaveCount();
     }
 
+    public void GenerateWaveWithoutWaveCountAndWithPos(Vector2 pos)
+    {
+        var waveSpawner = new WaveSpawner();
+        waveSpawner.Cost = GetCost();
+        AddChild(waveSpawner);
+        waveSpawner.GenerateWave();
+    }
+
     public void GenerateBossWave(int id)
     {
         _clock.Stop();

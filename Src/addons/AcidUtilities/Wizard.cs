@@ -33,6 +33,20 @@ public static class Wizard
         return FileAccess.Open(path, FileAccess.ModeFlags.Read).GetAsText();
     }
 
+    public static Vector2 GetRandom8Dir()
+    {
+        List<Vector2> directions = new List<Vector2>();
+
+        for (int i = 0; i < 8; i++)
+        {
+            float angle = i * 45; // 计算每个方向的角度（0, 45, 90, ...）
+            Vector2 direction = Vector2.Right.Rotated(Mathf.DegToRad(angle)); // 使用向量旋转计算方向
+            directions.Add(direction);
+        }
+        
+        return directions.PickRandom();
+    }
+
 
     public static string GetRandomTexturePath(string path)
     {

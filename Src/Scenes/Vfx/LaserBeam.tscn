@@ -3,6 +3,7 @@
 [ext_resource type="Script" path="res://Scripts/Vfx/LaserBeam.cs" id="1_pcm1i"]
 
 [node name="LaserBeam" type="Node2D"]
+z_index = -1
 script = ExtResource("1_pcm1i")
 
 [node name="RayCast2D" type="RayCast2D" parent="."]
