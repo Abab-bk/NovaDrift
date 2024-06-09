@@ -22,6 +22,7 @@ public partial class MobBase : Actor
 
     public override void _Ready()
     {
+        Stats.Recoil.BaseValue = 0f;
         if (MobInfo == null) throw new Exception("MobInfo 为 Null");
         
         EventBus.OnMobEnteredTree += (node) =>
@@ -131,7 +132,7 @@ public partial class MobBase : Actor
     
     public void LookAtPlayer(float delta)
     {
-        Rotation = RotationTo(Global.Player.GlobalPosition.AngleToPoint(GlobalPosition), delta);
+        Rotation = RotationTo(GlobalPosition.AngleToPoint(Global.Player.GlobalPosition), delta);
     }
     
     public void LookBack(float delta)

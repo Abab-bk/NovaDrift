@@ -32,7 +32,7 @@
     "name": "骑士",
     "scene_name": "TheKnight",
     "health": 400,
-    "speed": 800,
+    "speed": 300,
     "damage": 10,
     "targeting": 70,
     "shoot_cd": 0.1,

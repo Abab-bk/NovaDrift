@@ -72,6 +72,6 @@ public partial class BeamcasterShooter : BaseShooter
             SetSize(Actor.Stats.BulletSize.Value).
             SetDegeneration(Actor.Stats.BulletDegeneration.Value).
             SetSteering(Actor.Stats.Targeting.Value).
-            Build();;
+            Build();
     }
 }

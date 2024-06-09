@@ -3,9 +3,9 @@ using System;
 using System.Linq;
 using AcidWallStudio.AcidUtilities;
 using GTweens.Builders;
-using GTweens.Easings;
 using GTweensGodot.Extensions;
 using NovaDrift.Scripts.Prefabs.Actors;
+using NovaDrift.Scripts.Systems;
 using NovaDrift.Scripts.Vfx;
 
 namespace NovaDrift.Scripts.Prefabs.Ai;
@@ -30,15 +30,30 @@ public partial class TheKnightAi : MobAiComponent
     }
     
     private Timer _walkingTimer;
+    private MagicCircleVfx _magicCircleVfx;
 
-    private const float SwordAtkDistance = 100f;
-    private const float PoetAtkDistance = 100f;
-    private const float SprintAtkDistance = 100f;
+    private const float SwordAtkDistance = 300f;
+    private const float PoetAtkDistance = 1000f;
+    private const float SprintAtkDistance = 600f;
+    
+    private const float FireBallAtkDistance = 100f;
+    private const float FreezyAtkDistance = 100f;
+    private const float CallAtkDistance = 100f;
     
     public override void _Ready()
     {
         base._Ready();
         Mob.IsBoss = true;
+        Mob.Shooter.GetBulletFunc = (shooter) => new BulletBuilder()
+            .SetBulletBase("res://Scenes/Prefabs/Bullets/FireBall2.tscn")
+            .SetOwner(Mob)
+            .SetIsPlayer(Mob.IsPlayer)
+            .SetDamage(Mob.Stats.Damage.Value)
+            .SetSpeed(Mob.Stats.BulletSpeed.Value)
+            .SetSize(Mob.Stats.BulletSize.Value)
+            .SetDegeneration(Mob.Stats.BulletDegeneration.Value)
+            .SetSteering(Mob.Stats.Targeting.Value)
+            .Build();
         
         _walkingTimer = new Timer()
         {
@@ -78,7 +93,10 @@ public partial class TheKnightAi : MobAiComponent
                 }
                 Mob.SetTargetAndMove(Global.Player, delta);
                 break;
-            case "Sprint":
+            case "FireBall":
+                Mob.Velocity = Vector2.Zero;
+                Mob.LookAtPlayer(delta);
+                Mob.Shoot();
                 break;
         }
     }
@@ -94,6 +112,9 @@ public partial class TheKnightAi : MobAiComponent
                 break;
             case "Sword":
                 Sword();
+                break;
+            case "PoetPreparation":
+                PoetPreparation();
                 break;
             case "Sprint":
                 Mob.LookAt(Global.Player.GlobalPosition);
@@ -113,9 +134,38 @@ public partial class TheKnightAi : MobAiComponent
                     })
                     .Build()
                     .Play();
-                
+                break;
+            case "FireBall":
+                var timer = GetTree().CreateTimer(Random.Shared.FloatRange(3f, 5f));
+                timer.Timeout += () =>
+                {
+                    Machine.SetTrigger("ToPoetRecovery");
+                };
+                break;
+            case "PoetRecovery":
+                if (_magicCircleVfx != null)
+                {
+                    _magicCircleVfx.OnDisappearEnd += () =>
+                    {
+                        Machine.SetTrigger("ToMoving");
+                    };
+                    _magicCircleVfx.Disappear();
+                }
                 break;
         }
+    }
+
+    private void JumpTo(Vector2 targetPos)
+    {
+        Mob.LookAt(targetPos);
+        GTweenSequenceBuilder.New()
+            .Append(Mob.TweenRotationDegrees(-20f, 0.2f))
+            .Append(Mob.TweenModulateAlpha(0f, 0.4f))
+            .AppendTime(1f)
+            .Append(Mob.TweenModulateAlpha(1f, 0.4f))
+            .Append(Mob.TweenRotationDegrees(0f, 0.2f))
+            .Build()
+            .Play();
     }
 
     private void Sword()
@@ -164,7 +214,34 @@ public partial class TheKnightAi : MobAiComponent
 
     private void PoetPreparation()
     {
+        Mob.Velocity = Vector2.Zero;
+        var magicCircle = GD.Load<PackedScene>("res://Scenes/Vfx/MagicCircleVfx.tscn").Instantiate<MagicCircleVfx>();
+        magicCircle.Radius = 600f;
         
+        Mob.AddChild(magicCircle);
+        _magicCircleVfx = magicCircle;
+        
+        magicCircle.OnAppearEnd += () =>
+        {
+            Logger.Log("[Boss: The Knight] Poet ready");
+            switch (SelectMagic())
+            {
+                case Magics.Fireball:
+                    Machine.SetTrigger("ToFireBall");
+                    Logger.Log("[Boss: The Knight] Fireball selected");
+                    break;
+                case Magics.Freezy:
+                    Machine.SetTrigger("ToFreezy");
+                    Logger.Log("[Boss: The Knight] Freezy selected");
+                    break;
+                case Magics.Call:
+                    Machine.SetTrigger("ToCall");
+                    Logger.Log("[Boss: The Knight] Call selected");
+                    break;
+            }
+        };
+        
+        magicCircle.Appear();
     }
 
     private Abilities SelectAbility()
@@ -180,15 +257,39 @@ public partial class TheKnightAi : MobAiComponent
             (Abilities.Sprint, springScore),
         };
         
+        Logger.Log($"""
+                    [Boss: The Knight] Scores:
+                    Sword: {swordScore}
+                    Poet: {poetScore}
+                    Spring: {springScore}
+                    """);
+        
+        return scores.MaxBy(x => x.Item2).Item1;
+        // return Abilities.Poet;
+    }
+    
+    private Magics SelectMagic()
+    {
+        var fireballScore = GetAttackScore(FireBallAtkDistance);
+        var freezyScore = GetAttackScore(FreezyAtkDistance);
+        var callScore = GetAttackScore(CallAtkDistance);
+        
+        var scores = new []
+        {
+            (Magics.Fireball, fireballScore),
+            (Magics.Freezy, freezyScore),
+            (Magics.Call, callScore),
+        };
+        
         // return scores.MaxBy(x => x.Item2).Item1;
-        return Abilities.Sprint;
+        return Magics.Fireball;
     }
 
     private float GetAttackScore(float desiredDistance)
     {
-        var distance = Mob.GetDistanceToPlayer();
-        var distanceDifference = Mathf.Abs(desiredDistance - distance);
-        var closeness = 1 - distanceDifference;
-        return Mathf.Clamp(closeness, 0f, 1f);
+        var distanceDifference = Math.Abs(desiredDistance - Mob.GetDistanceToPlayer());
+        var normalizedDifference = distanceDifference / 10f;
+        var abilityScore = 1 - normalizedDifference;
+        return abilityScore;
     }
 }

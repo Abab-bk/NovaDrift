@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://iejgrcbnltw2"]
+
+[ext_resource type="PackedScene" uid="uid://diprwfc6e1di5" path="res://Scenes/Prefabs/Bullets/NormalBullet.tscn" id="1_w8lj0"]
+[ext_resource type="Script" path="res://addons/trail_2d/trail_2d.gd" id="2_178lg"]
+[ext_resource type="Texture2D" uid="uid://cxejasd17b4yf" path="res://Assets/Textures/Bullets/FireBall.png" id="3_vjgun"]
+
+[sub_resource type="Curve" id="Curve_1iyvv"]
+_data = [Vector2(0, 0.569231), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="Gradient" id="Gradient_x6jox"]
+offsets = PackedFloat32Array(0.162651, 0.39759, 0.650602, 0.843373, 1)
+colors = PackedColorArray(1, 0.215686, 0, 1, 1, 0.443137, 0.286275, 1, 1, 0.72549, 0.160784, 1, 1, 0.905882, 0.054902, 1, 1, 1, 1, 0)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j7vdh"]
+size = Vector2(40, 40)
+
+[node name="FireBall2" node_paths=PackedStringArray("_hitBox") instance=ExtResource("1_w8lj0")]
+_hitBox = NodePath("HitBox")
+
+[node name="Trail2D" parent="." index="0"]
+default_color = Color(1, 0.337255, 0.0784314, 1)
+
+[node name="Node2D" type="Node2D" parent="." index="1"]
+position = Vector2(0, 19)
+
+[node name="Trail2D2" type="Line2D" parent="Node2D" index="0"]
+width_curve = SubResource("Curve_1iyvv")
+default_color = Color(1, 0.337255, 0.0784314, 1)
+gradient = SubResource("Gradient_x6jox")
+script = ExtResource("2_178lg")
+
+[node name="Node2D2" type="Node2D" parent="." index="2"]
+position = Vector2(0, -19)
+
+[node name="Trail2D2" type="Line2D" parent="Node2D2" index="0"]
+width_curve = SubResource("Curve_1iyvv")
+default_color = Color(1, 0.337255, 0.0784314, 1)
+gradient = SubResource("Gradient_x6jox")
+script = ExtResource("2_178lg")
+
+[node name="Sprite2D" parent="." index="3"]
+texture = ExtResource("3_vjgun")
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_j7vdh")

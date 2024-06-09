@@ -1,4 +1,4 @@
-[gd_scene load_steps=40 format=3 uid="uid://c58ljhki6asen"]
+[gd_scene load_steps=51 format=3 uid="uid://c58ljhki6asen"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_5irmn"]
 [ext_resource type="Texture2D" uid="uid://dj1a38qxe512e" path="res://Assets/Textures/Mobs/TheKnight.png" id="2_xq6n4"]
@@ -29,7 +29,7 @@ state_name = &"Sprint"
 editor_offset = Vector2(60, 440)
 
 [sub_resource type="StateConfig" id="StateConfig_wg3dg"]
-state_name = &"PoetRecorvery"
+state_name = &"PoetRecovery"
 editor_offset = Vector2(1320, 500)
 
 [sub_resource type="StateConfig" id="StateConfig_s4mol"]
@@ -48,17 +48,42 @@ editor_offset = Vector2(1080, 320)
 state_name = &"Walking"
 editor_offset = Vector2(60, 60)
 
+[sub_resource type="VariableConfig" id="VariableConfig_txxak"]
+variable_name = &"ToPoetRecovery"
+resource_name = "ToPoetRecovery: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_078ma"]
+variable_config = SubResource("VariableConfig_txxak")
+trigger_type = 0
+
 [sub_resource type="TransitionConfig" id="TransitionConfig_b0i1k"]
 from_state_config = SubResource("StateConfig_m8068")
 to_state_config = SubResource("StateConfig_wg3dg")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_078ma")])
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_muqoa"]
+variable_config = SubResource("VariableConfig_txxak")
+trigger_type = 0
 
 [sub_resource type="TransitionConfig" id="TransitionConfig_3h4rx"]
 from_state_config = SubResource("StateConfig_bxx4q")
 to_state_config = SubResource("StateConfig_wg3dg")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_muqoa")])
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_0va0a"]
+variable_config = SubResource("VariableConfig_txxak")
+trigger_type = 0
 
 [sub_resource type="TransitionConfig" id="TransitionConfig_7bieu"]
 from_state_config = SubResource("StateConfig_s4mol")
 to_state_config = SubResource("StateConfig_wg3dg")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_0va0a")])
 
 [sub_resource type="TransitionConfig" id="TransitionConfig_i1jsl"]
 from_state_config = SubResource("StateConfig_hje6h")
@@ -109,13 +134,20 @@ type = 2
 and_mode = true
 variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_88y28")])
 
-[sub_resource type="TransitionConfig" id="TransitionConfig_oaine"]
-from_state_config = SubResource("StateConfig_wg3dg")
-to_state_config = SubResource("StateConfig_qivq6")
-
 [sub_resource type="VariableConfig" id="VariableConfig_aa4v0"]
 variable_name = &"ToMoving"
 resource_name = "ToMoving: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_rwolg"]
+variable_config = SubResource("VariableConfig_aa4v0")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_oaine"]
+from_state_config = SubResource("StateConfig_wg3dg")
+to_state_config = SubResource("StateConfig_qivq6")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_rwolg")])
 
 [sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_2fbfm"]
 variable_config = SubResource("VariableConfig_aa4v0")
@@ -139,22 +171,55 @@ type = 2
 and_mode = true
 variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_kgxjy")])
 
+[sub_resource type="VariableConfig" id="VariableConfig_ilo4u"]
+variable_name = &"ToFireBall"
+resource_name = "ToFireBall: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_vfrx3"]
+variable_config = SubResource("VariableConfig_ilo4u")
+trigger_type = 0
+
 [sub_resource type="TransitionConfig" id="TransitionConfig_lodyf"]
 from_state_config = SubResource("StateConfig_0thdo")
 to_state_config = SubResource("StateConfig_s4mol")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_vfrx3")])
+
+[sub_resource type="VariableConfig" id="VariableConfig_pydgg"]
+variable_name = &"ToFreezy"
+resource_name = "ToFreezy: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_dx683"]
+variable_config = SubResource("VariableConfig_pydgg")
+trigger_type = 0
 
 [sub_resource type="TransitionConfig" id="TransitionConfig_lifjf"]
 from_state_config = SubResource("StateConfig_0thdo")
 to_state_config = SubResource("StateConfig_bxx4q")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_dx683")])
+
+[sub_resource type="VariableConfig" id="VariableConfig_k8hxs"]
+variable_name = &"ToCall"
+resource_name = "ToCall: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_5i85l"]
+variable_config = SubResource("VariableConfig_k8hxs")
+trigger_type = 0
 
 [sub_resource type="TransitionConfig" id="TransitionConfig_bkx4s"]
 from_state_config = SubResource("StateConfig_0thdo")
 to_state_config = SubResource("StateConfig_m8068")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_5i85l")])
 
 [sub_resource type="FSMConfig" id="FSMConfig_xohl3"]
 state_config_list = Array[StateConfig]([SubResource("StateConfig_hje6h"), SubResource("StateConfig_lu46t"), SubResource("StateConfig_0thdo"), SubResource("StateConfig_dpn1h"), SubResource("StateConfig_wg3dg"), SubResource("StateConfig_s4mol"), SubResource("StateConfig_bxx4q"), SubResource("StateConfig_m8068"), SubResource("StateConfig_qivq6")])
 transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_b0i1k"), SubResource("TransitionConfig_3h4rx"), SubResource("TransitionConfig_7bieu"), SubResource("TransitionConfig_i1jsl"), SubResource("TransitionConfig_srrag"), SubResource("TransitionConfig_7xcrl"), SubResource("TransitionConfig_8gnbd"), SubResource("TransitionConfig_oaine"), SubResource("TransitionConfig_4ovsy"), SubResource("TransitionConfig_8tnnb"), SubResource("TransitionConfig_lodyf"), SubResource("TransitionConfig_lifjf"), SubResource("TransitionConfig_bkx4s")])
-variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_fvbwy"), SubResource("VariableConfig_3i2b3"), SubResource("VariableConfig_g1x8x"), SubResource("VariableConfig_aa4v0")])
+variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_fvbwy"), SubResource("VariableConfig_3i2b3"), SubResource("VariableConfig_g1x8x"), SubResource("VariableConfig_aa4v0"), SubResource("VariableConfig_ilo4u"), SubResource("VariableConfig_pydgg"), SubResource("VariableConfig_k8hxs"), SubResource("VariableConfig_txxak")])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b8tbt"]
 size = Vector2(200, 194)
