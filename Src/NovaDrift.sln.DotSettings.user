@@ -7,4 +7,5 @@
 	<s:String x:Key="/Default/Environment/AssemblyExplorer/XmlDocument/@EntryValue">&lt;AssemblyExplorer&gt;&#xD;
   &lt;PhysicalFolder Path="C:\Users\14709\.nuget\packages\openrpg.genres.scifi\0.33.129" Loaded="True" /&gt;&#xD;
   &lt;Assembly Path="C:\Users\14709\.nuget\packages\openrpg.genres\0.33.129\lib\netstandard2.1\OpenRpg.Genres.dll" /&gt;&#xD;
-&lt;/AssemblyExplorer&gt;</s:String></wpf:ResourceDictionary>
+&lt;/AssemblyExplorer&gt;</s:String>
+	</wpf:ResourceDictionary>

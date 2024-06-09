@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using AcidWallStudio.AcidUtilities;
 using Godot;
 using NovaDrift.Scripts.Systems;
@@ -17,11 +19,18 @@ public partial class WaveSpawnerController : Node2D
     private float _waitingClock;
     private Timer _clock;
 
+    private int _sawBossCount = 1;
+    private int[] _bossIds;
     private bool _nextIsBoss;
-    private int _currentBossId = 1001;
-    
+
+    private int GetCurrentBossId()
+    {
+        return _bossIds[(_sawBossCount - 1) % _bossIds.Length];
+    }
+
     public override void _Ready()
     {
+        _bossIds = DataBuilder.Tables.TbBossMobInfo.DataMap.Keys.ToArray();
         Global.WaveSpawnerController = this;
         
         _clock = new Timer
@@ -37,7 +46,7 @@ public partial class WaveSpawnerController : Node2D
             
             if (_nextIsBoss)
             {
-                GenerateBossWave(_currentBossId);
+                GenerateBossWave(GetCurrentBossId());
             }
             else
             {
@@ -60,7 +69,7 @@ public partial class WaveSpawnerController : Node2D
             _waitingClock = 5f;
             _clock.WaitTime = _waitingClock;
             _nextIsBoss = false;
-            _currentBossId = 1001;
+            _sawBossCount = 1;
             _clock.Stop();
         };
     }
@@ -94,7 +103,7 @@ public partial class WaveSpawnerController : Node2D
         var boss = waveSpawner.GenerateABoss(id);
         boss.OnDied += () =>
         {
-            _currentBossId += 1;
+            _sawBossCount += 1;
             _nextIsBoss = false; 
             _clock.Start();
             Logger.Log("[Wave Spawner] Boss wave end, start clock.");
@@ -106,16 +115,12 @@ public partial class WaveSpawnerController : Node2D
     private void AddWaveCount()
     {
         _waveCount += 1;
-        
-        switch (_waveCount)
+
+        // 每 20 关为一个 Boss 关
+        if (_waveCount == _sawBossCount * 20)
         {
-            case 2:
-                Logger.Log("[Wave Spawner] Next wave is boss wave.");
-                _nextIsBoss = true;
-                break;
-            case 40:
-                _nextIsBoss = true;
-                break;
+            Logger.Log("[Wave Spawner] Next wave is boss wave.");
+            _nextIsBoss = true;
         }
         
         _clock.Start();

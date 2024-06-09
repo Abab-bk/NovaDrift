@@ -1,4 +1,3 @@
-using AcidWallStudio.AcidUtilities;
 using DsUi;
 using NovaDrift.Scripts.Systems;
 using NovaDrift.Scripts.Ui.AbilityItem;
@@ -24,19 +23,24 @@ public partial class SelectAbilityPanel : SelectAbility
 
         S_CloseBtn.Instance.Pressed += Destroy;
         
-        GenerateAbilityPanel(new AbilityGenerateConfig(5));
+        GenerateAbilityPanel(new AbilityGenerateConfig());
     }
 
     private void GenerateAbilityPanel(AbilityGenerateConfig config)
     {
+        void GenerateAbility(IItemInfo itemInfo, AbilityItemPanel abilityItem)
+        {
+            abilityItem.Item = itemInfo;
+            abilityItem.OnAbilitySelected += _ => { OnAbilitySelected(abilityItem); };
+        }
+
         if (Global.Player.Stats.Body.Id == 1000)
         {
             for (int i = 0; i < 3; i++)
             {
-                var abilityItem = S_ItemRow2.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem);
-                abilityItem.Item = DataBuilder.BuildBodyById(DataBuilder.GetRandomBodyId());
-                
-                abilityItem.OnAbilitySelected += _ => { OnAbilitySelected(abilityItem); };
+                GenerateAbility(
+                    DataBuilder.BuildBodyById(config.SelectBodyId()),
+                    S_ItemRow2.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem));
             }
             return;
         }
@@ -45,10 +49,9 @@ public partial class SelectAbilityPanel : SelectAbility
         {
             for (int i = 0; i < 3; i++)
             {
-                var abilityItem = S_ItemRow2.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem);
-                abilityItem.Item = DataBuilder.BuildWeaponById(DataBuilder.GetRandomWeaponId());
-                
-                abilityItem.OnAbilitySelected += _ => { OnAbilitySelected(abilityItem); };
+                GenerateAbility(
+                    DataBuilder.BuildWeaponById(config.SelectWeaponId()),
+                    S_ItemRow2.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem));
             }
             return;
         }
@@ -57,31 +60,26 @@ public partial class SelectAbilityPanel : SelectAbility
         {
             for (int i = 0; i < 3; i++)
             {
-                var abilityItem = S_ItemRow2.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem);
-                abilityItem.Item = DataBuilder.BuildShieldById(DataBuilder.GetRandomShieldId());
-                
-                abilityItem.OnAbilitySelected += _ => { OnAbilitySelected(abilityItem); };
+                GenerateAbility(
+                    DataBuilder.BuildShieldById(config.SelectShieldId()),
+                    S_ItemRow2.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem));
             }
             return;
         }
-        
+
         // 生成 Items
         for (int i = 0; i < 2; i++)
         {
-            var abilityItem = S_ItemRow1.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem);
-
-            abilityItem.Item = DataBuilder.BuildAbilityById(DataBuilder.AbilityIdPool.PickRandom());
-            
-            abilityItem.OnAbilitySelected += _ => { OnAbilitySelected(abilityItem); };
+            GenerateAbility(
+                DataBuilder.BuildAbilityById(config.SelectAbilityId()),
+                S_ItemRow1.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem));
         }
-        
+
         for (int i = 0; i < 3; i++)
         {
-            var abilityItem = S_ItemRow2.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem);
-
-            abilityItem.Item = DataBuilder.BuildAbilityById(DataBuilder.AbilityIdPool.PickRandom());
-            
-            abilityItem.OnAbilitySelected += _ => { OnAbilitySelected(abilityItem); };
+            GenerateAbility(
+                DataBuilder.BuildAbilityById(config.SelectAbilityId()),
+                S_ItemRow2.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem));   
         }
         
         for (int i = 0; i < 2; i++)
@@ -91,16 +89,16 @@ public partial class SelectAbilityPanel : SelectAbility
             switch (config.ItemTypes.Next())
             {
                 case AbilityGenerateConfig.ItemType.Body:
-                    abilityItem.Item = DataBuilder.BuildBodyById(DataBuilder.GetRandomBodyId());
+                    abilityItem.Item = DataBuilder.BuildBodyById(config.SelectBodyId());
                     break;
                 case AbilityGenerateConfig.ItemType.Weapon:
-                    abilityItem.Item = DataBuilder.BuildWeaponById(DataBuilder.GetRandomWeaponId());
+                    abilityItem.Item = DataBuilder.BuildWeaponById(config.SelectWeaponId());
                     break;
                 case AbilityGenerateConfig.ItemType.Ability:
-                    abilityItem.Item = DataBuilder.BuildAbilityById(DataBuilder.AbilityIdPool.PickRandom());
+                    abilityItem.Item = DataBuilder.BuildAbilityById(config.SelectAbilityId());
                     break;
                 case AbilityGenerateConfig.ItemType.Shield:
-                    abilityItem.Item = DataBuilder.BuildShieldById(DataBuilder.GetRandomShieldId());
+                    abilityItem.Item = DataBuilder.BuildShieldById(config.SelectShieldId());
                     break;
             }
 

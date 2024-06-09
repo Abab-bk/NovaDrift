@@ -25,9 +25,9 @@ public class Ability : IItemInfo
         // 记录已经获得的 Ability
         if (Id == Tree.StartAbilityId)
         {
+            DataBuilder.AbilityIdPool.Remove(Tree.StartAbilityId);
             DataBuilder.AbilityIdPool.Add(Tree.MiddleAbilityIds[0]);
             DataBuilder.AbilityIdPool.Add(Tree.MiddleAbilityIds[1]);
-            DataBuilder.AbilityIdPool.Add(Tree.EndAbilityId);
         } else if (Id == Tree.MiddleAbilityIds[0])
         {
             DataBuilder.AbilityIdPool.Add(Tree.EndAbilityId);

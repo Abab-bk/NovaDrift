@@ -44,5 +44,22 @@
     "acceleration": 1400,
     "deceleration": 500,
     "rotation_speed": 6
+  },
+  {
+    "id": 1003,
+    "name": "猎狗2",
+    "desc": "+3 子弹数量\n+10% 武器射速\n-60% 武器扩散\n你的武器从两门舷侧加农炮发射，你的射弹将在它们之间分开\n-10% 武器伤害、爆炸半径和射弹尺寸",
+    "values": [
+      3,
+      0.1,
+      -0.6,
+      -0.1
+    ],
+    "health": 100,
+    "icon_name": "Courser",
+    "class_name": "Courser",
+    "acceleration": 1400,
+    "deceleration": 500,
+    "rotation_speed": 0
   }
 ]

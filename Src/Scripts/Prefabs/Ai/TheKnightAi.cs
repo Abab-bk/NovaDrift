@@ -257,13 +257,6 @@ public partial class TheKnightAi : MobAiComponent
 
     private Strategy SelectAbility()
     {
-//         Logger.Log($"""
-//                     [Boss: The Knight] Scores:
-//                     Sword: {swordScore}
-//                     Poet: {poetScore}
-//                     Spring: {springScore}
-//                     """);
-
         var best = _abilities.MaxBy(x => x.GetAttackScore(Mob));
         return best;
     }
