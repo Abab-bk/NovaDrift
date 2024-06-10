@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://cjcq5b3lk22pp"]
+
+[ext_resource type="Script" path="res://Scripts/Vfx/RotationTrail.cs" id="1_7pm5q"]
+[ext_resource type="Script" path="res://addons/trail_2d/trail_2d.gd" id="3_aylb6"]
+
+[node name="RotationTrail" type="Node2D"]
+script = ExtResource("1_7pm5q")
+
+[node name="Trail2D" type="Line2D" parent="."]
+script = ExtResource("3_aylb6")

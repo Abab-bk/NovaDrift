@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://c21uw4gykk0ay"]
+
+[ext_resource type="Script" path="res://Scripts/Vfx/IncineratorBeam.cs" id="1_utuiq"]
+
+[node name="IncineratorBeam" type="Node2D"]
+script = ExtResource("1_utuiq")

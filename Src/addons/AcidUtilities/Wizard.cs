@@ -46,6 +46,14 @@ public static class Wizard
         
         return directions.PickRandom();
     }
+    
+    public static Vector2 Bezier(Vector2 p0, Vector2 p1, Vector2 p2, float t)
+    {
+        var q0 = p0.Lerp(p1, t);
+        var q1 = p1.Lerp(p2, t);
+        var r = q0.Lerp(q1, t);
+        return r;
+    }
 
 
     public static string GetRandomTexturePath(string path)
