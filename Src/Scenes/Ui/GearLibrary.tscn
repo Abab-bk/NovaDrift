@@ -41,11 +41,10 @@ theme_override_constants/margin_bottom = 95
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 1
+current_tab = 0
 tabs_visible = false
 
 [node name="Home" type="VBoxContainer" parent="VBoxContainer/Content/Content"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 20
 metadata/_tab_index = 0
@@ -71,9 +70,10 @@ layout_mode = 2
 _id = 1001
 
 [node name="GoodsItem2" parent="VBoxContainer/Content/Content/Home/Goods/VBoxContainer" instance=ExtResource("3_y5l0t")]
-custom_minimum_size = Vector2(0, 160)
+custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
 size_flags_vertical = 1
+_id = 1002
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Content/Content/Home/Goods"]
 custom_minimum_size = Vector2(548, 0)
@@ -82,9 +82,11 @@ theme_override_constants/separation = 30
 
 [node name="GoodsItem" parent="VBoxContainer/Content/Content/Home/Goods/VBoxContainer2" instance=ExtResource("3_y5l0t")]
 layout_mode = 2
+_id = 1003
 
 [node name="GoodsItem2" parent="VBoxContainer/Content/Content/Home/Goods/VBoxContainer2" instance=ExtResource("3_y5l0t")]
 layout_mode = 2
+_id = 1004
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/Content/Content/Home/Goods"]
 custom_minimum_size = Vector2(548, 0)
@@ -93,16 +95,20 @@ theme_override_constants/separation = 30
 
 [node name="GoodsItem" parent="VBoxContainer/Content/Content/Home/Goods/VBoxContainer3" instance=ExtResource("3_y5l0t")]
 layout_mode = 2
+_id = 1005
 
 [node name="GoodsItem2" parent="VBoxContainer/Content/Content/Home/Goods/VBoxContainer3" instance=ExtResource("3_y5l0t")]
 layout_mode = 2
+_id = 1006
 
 [node name="GoodsItem" parent="VBoxContainer/Content/Content/Home/Goods" instance=ExtResource("3_y5l0t")]
 custom_minimum_size = Vector2(314, 0)
 layout_mode = 2
 size_flags_horizontal = 1
+_id = 1007
 
 [node name="UpGrade" type="VBoxContainer" parent="VBoxContainer/Content/Content"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 20
 metadata/_tab_index = 1
@@ -132,7 +138,7 @@ metadata/_tab_index = 2
 [node name="Label" type="Label" parent="VBoxContainer/Content/Content/UiSkin"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "UPGRADE"
+text = "UI"
 
 [node name="Goods" type="HBoxContainer" parent="VBoxContainer/Content/Content/UiSkin"]
 layout_mode = 2
@@ -154,7 +160,7 @@ metadata/_tab_index = 3
 [node name="Label" type="Label" parent="VBoxContainer/Content/Content/Animation"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "UPGRADE"
+text = "ANIMATION"
 
 [node name="Goods" type="HBoxContainer" parent="VBoxContainer/Content/Content/Animation"]
 layout_mode = 2
@@ -182,7 +188,7 @@ metadata/_tab_index = 4
 [node name="Label" type="Label" parent="VBoxContainer/Content/Content/Gear"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
-text = "UPGRADE"
+text = "GEAR"
 
 [node name="Goods" type="HBoxContainer" parent="VBoxContainer/Content/Content/Gear"]
 layout_mode = 2

@@ -1,5 +1,7 @@
 using DsUi;
 using Godot;
+using GTweens.Easings;
+using GTweensGodot.Extensions;
 
 namespace NovaDrift.Scripts.Ui.GearLibrary;
 
@@ -27,7 +29,19 @@ public partial class GearLibraryPanel : GearLibrary
 
     private void ChangePageTo(Page page)
     {
-        L_VBoxContainer.L_Content.L_Content.Instance.CurrentTab = (int)page;
+        var instance = L_VBoxContainer.L_Content.L_Content.Instance;
+        
+        instance.TweenModulateAlpha(0f, 0.1f)
+            .SetEasing(Easing.OutCubic)
+            .OnComplete(() =>
+            {
+                instance.CurrentTab = (int)page;
+                instance
+                    .TweenModulateAlpha(1f, 0.1f)
+                    .SetEasing(Easing.OutCubic)
+                    .Play();
+            })
+            .Play();
     }
 
     public override void OnCreateUi()

@@ -22,6 +22,7 @@ public sealed partial class StoreInfo : Luban.BeanBase
         Desc = _buf.GetProperty("desc").GetString();
         Type = (DataBase.GoodsType)_buf.GetProperty("type").GetInt32();
         Value = _buf.GetProperty("value").GetInt32();
+        IconName = _buf.GetProperty("icon_name").GetString();
     }
 
     public static StoreInfo DeserializeStoreInfo(JsonElement _buf)
@@ -49,12 +50,17 @@ public sealed partial class StoreInfo : Luban.BeanBase
     /// 值
     /// </summary>
     public readonly int Value;
+    /// <summary>
+    /// 图标名
+    /// </summary>
+    public readonly string IconName;
    
     public const int __ID__ = -599353073;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
     {
+        
         
         
         
@@ -70,6 +76,7 @@ public sealed partial class StoreInfo : Luban.BeanBase
         + "desc:" + Desc + ","
         + "type:" + Type + ","
         + "value:" + Value + ","
+        + "iconName:" + IconName + ","
         + "}";
     }
 }

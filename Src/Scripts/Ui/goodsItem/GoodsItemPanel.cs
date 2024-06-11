@@ -1,3 +1,4 @@
+using AcidWallStudio.AcidUtilities;
 using cfg.DataBase;
 using Godot;
 
@@ -23,6 +24,10 @@ public partial class GoodsItemPanel : GoodsItem
             _ => "其他"
         };
         S_NameLabel.Instance.Text = info.Name;
+        if (Wizard.FileExists($"res://Assets/Ui/StoreImages/{info.IconName}.png"))
+        {
+            S_Image.Instance.Texture = GD.Load<Texture2D>($"res://Assets/Ui/StoreImages/{info.IconName}.png");
+        }
     }
 
     public override void OnCreateUi()

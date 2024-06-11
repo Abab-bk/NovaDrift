@@ -31,6 +31,37 @@ public abstract partial class GoodsItem : UiBase
     }
 
     /// <summary>
+    /// 类型: <see cref="Godot.TextureRect"/>, 路径: GoodsItem.PanelContainer.Img.Image
+    /// </summary>
+    public class Image : UiNode<GoodsItemPanel, Godot.TextureRect, Image>
+    {
+        public Image(GoodsItemPanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
+        public override Image Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: GoodsItem.PanelContainer.Img
+    /// </summary>
+    public class Img : UiNode<GoodsItemPanel, Godot.MarginContainer, Img>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: GoodsItem.PanelContainer.Image
+        /// </summary>
+        public Image L_Image
+        {
+            get
+            {
+                if (_L_Image == null) _L_Image = new Image(UiPanel, Instance.GetNode<Godot.TextureRect>("Image"));
+                return _L_Image;
+            }
+        }
+        private Image _L_Image;
+
+        public Img(GoodsItemPanel uiPanel, Godot.MarginContainer node) : base(uiPanel, node) {  }
+        public override Img Clone() => new (UiPanel, (Godot.MarginContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
     /// 类型: <see cref="Godot.Control"/>, 路径: GoodsItem.PanelContainer.MarginContainer.VBoxContainer.Control
     /// </summary>
     public class Control : UiNode<GoodsItemPanel, Godot.Control, Control>
@@ -133,6 +164,19 @@ public abstract partial class GoodsItem : UiBase
     public class PanelContainer : UiNode<GoodsItemPanel, Godot.PanelContainer, PanelContainer>
     {
         /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: GoodsItem.Img
+        /// </summary>
+        public Img L_Img
+        {
+            get
+            {
+                if (_L_Img == null) _L_Img = new Img(UiPanel, Instance.GetNode<Godot.MarginContainer>("Img"));
+                return _L_Img;
+            }
+        }
+        private Img _L_Img;
+
+        /// <summary>
         /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: GoodsItem.MarginContainer
         /// </summary>
         public MarginContainer L_MarginContainer
@@ -149,6 +193,16 @@ public abstract partial class GoodsItem : UiBase
         public override PanelContainer Clone() => new (UiPanel, (Godot.PanelContainer)Instance.Duplicate());
     }
 
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: GoodsItem.PanelContainer.Img.Image
+    /// </summary>
+    public Image S_Image => L_PanelContainer.L_Img.L_Image;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: GoodsItem.PanelContainer.Img
+    /// </summary>
+    public Img S_Img => L_PanelContainer.L_Img;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Control"/>, 节点路径: GoodsItem.PanelContainer.MarginContainer.VBoxContainer.Control
