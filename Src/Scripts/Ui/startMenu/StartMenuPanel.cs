@@ -1,6 +1,6 @@
 using DsUi;
-using Godot;
-using NovaDrift.Scripts.Ui.Setting;
+using GTweens.Builders;
+using GTweensGodot.Extensions;
 
 namespace NovaDrift.Scripts.Ui.StartMenu;
 
@@ -16,18 +16,21 @@ public partial class StartMenuPanel : StartMenu
         {
             GetTree().Quit();
         };
+        
         S_SettingBtn.Instance.OnClick += () =>
         {
-            OpenNextUi(UiManager.UiName.Setting);
+            this.ChangeTo(UiManager.Create_Setting());
         };
         S_GearBtn.Instance.OnClick += () =>
         {
-            OpenNextUi(UiManager.UiName.GearLibrary);
+            this.ChangeTo(UiManager.Create_GearLibrary());
         };
 
         EventBus.OnGameStart += () =>
         {
-            UiManager.Destroy_StartMenu();
+            this.TweenModulateAlpha(0f, 0.2f)
+                .OnComplete(UiManager.Destroy_StartMenu)
+                .Play();
         };
     }
 

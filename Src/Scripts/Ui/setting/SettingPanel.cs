@@ -1,5 +1,9 @@
+using System.Linq;
 using AcidWallStudio.Fmod;
+using DsUi;
 using Godot;
+using GTweens.Builders;
+using GTweensGodot.Extensions;
 using NovaDrift.addons.AcidUtilities;
 
 namespace NovaDrift.Scripts.Ui.Setting;
@@ -9,7 +13,10 @@ public partial class SettingPanel : Setting
     public override void _Ready()
     {
         base._Ready();
-        S_CloseBtn.Instance.Pressed += OpenPrevUi;
+        S_CloseBtn.Instance.Pressed += () =>
+        {
+            this.ChangeTo(UiManager.Get_StartMenu_Instance().First());
+        };
         
         LoadAll();
 
