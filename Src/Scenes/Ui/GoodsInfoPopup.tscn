@@ -1,0 +1,107 @@
+[gd_scene load_steps=5 format=3 uid="uid://cp62bbgmueksk"]
+
+[ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_kjgha"]
+[ext_resource type="Script" path="res://Scripts/Ui/goodsInfoPopup/GoodsInfoPopupPanel.cs" id="1_y2q2k"]
+[ext_resource type="FontFile" uid="uid://my5tlsmfyrkr" path="res://Assets/Fonts/SourceHanSansCN-Bold.otf" id="3_4j6he"]
+[ext_resource type="Texture2D" uid="uid://blne2vbvseb3q" path="res://Assets/Ui/StoreImages/Test1.png" id="4_uddbg"]
+
+[node name="GoodsInfoPopup" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("1_kjgha")
+script = ExtResource("1_y2q2k")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.411765)
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 14
+anchor_top = 0.5
+anchor_right = 1.0
+anchor_bottom = 0.5
+offset_top = -415.0
+offset_bottom = 415.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(1280, 415)
+
+[node name="Content" type="MarginContainer" parent="PanelContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/margin_left = 200
+theme_override_constants/margin_top = 50
+theme_override_constants/margin_right = 200
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Content"]
+layout_mode = 2
+theme_override_constants/separation = 200
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Content/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/Content/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="NameLabel" type="Label" parent="PanelContainer/Content/HBoxContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_4j6he")
+theme_override_font_sizes/font_size = 100
+text = "标题"
+
+[node name="DescLabel" type="Label" parent="PanelContainer/Content/HBoxContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_font_sizes/font_size = 60
+text = "描述描述描述描述描述描述"
+autowrap_mode = 2
+
+[node name="Control" type="Control" parent="PanelContainer/Content/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="PanelContainer/Content/HBoxContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="PriceLabel" type="Label" parent="PanelContainer/Content/HBoxContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 40
+text = "100 酸酸币"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/Content/HBoxContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 50
+
+[node name="BuyBtn" type="Button" parent="PanelContainer/Content/HBoxContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "购买"
+
+[node name="CloseBtn" type="Button" parent="PanelContainer/Content/HBoxContainer/VBoxContainer/VBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 100)
+layout_mode = 2
+size_flags_horizontal = 0
+text = "返回"
+
+[node name="Icon" type="TextureRect" parent="PanelContainer/Content/HBoxContainer"]
+custom_minimum_size = Vector2(600, 0)
+layout_mode = 2
+texture = ExtResource("4_uddbg")
+expand_mode = 1
+stretch_mode = 5

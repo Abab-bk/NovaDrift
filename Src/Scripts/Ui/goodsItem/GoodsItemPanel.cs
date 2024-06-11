@@ -1,5 +1,6 @@
 using AcidWallStudio.AcidUtilities;
 using cfg.DataBase;
+using DsUi;
 using Godot;
 
 namespace NovaDrift.Scripts.Ui.GoodsItem;
@@ -28,6 +29,13 @@ public partial class GoodsItemPanel : GoodsItem
         {
             S_Image.Instance.Texture = GD.Load<Texture2D>($"res://Assets/Ui/StoreImages/{info.IconName}.png");
         }
+
+        S_Button.Instance.Pressed += () =>
+        {
+            var panel = UiManager.Open_GoodsInfoPopup();
+            panel.ShowUi();
+            panel.SetGoods(info);
+        };
     }
 
     public override void OnCreateUi()

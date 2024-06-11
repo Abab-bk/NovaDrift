@@ -16,6 +16,7 @@ public static partial class UiManager
         public const string GalleryBtn = "GalleryBtn";
         public const string GameOver = "GameOver";
         public const string GearLibrary = "GearLibrary";
+        public const string GoodsInfoPopup = "GoodsInfoPopup";
         public const string GoodsItem = "GoodsItem";
         public const string Hud = "Hud";
         public const string Loading = "Loading";
@@ -506,6 +507,54 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.GearLibrary.GearLibraryPanel[] Get_GearLibrary_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.GearLibrary.GearLibraryPanel>(nameof(NovaDrift.Scripts.Ui.GearLibrary.GearLibrary));
+    }
+
+    /// <summary>
+    /// 创建 GoodsInfoPopup, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.GoodsInfoPopup.GoodsInfoPopupPanel Create_GoodsInfoPopup()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.GoodsInfoPopup.GoodsInfoPopupPanel>(UiName.GoodsInfoPopup);
+    }
+
+    /// <summary>
+    /// 打开 GoodsInfoPopup, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.GoodsInfoPopup.GoodsInfoPopupPanel Open_GoodsInfoPopup()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.GoodsInfoPopup.GoodsInfoPopupPanel>(UiName.GoodsInfoPopup);
+    }
+
+    /// <summary>
+    /// 隐藏 GoodsInfoPopup 的所有实例
+    /// </summary>
+    public static void Hide_GoodsInfoPopup()
+    {
+        var uiInstance = Get_GoodsInfoPopup_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 GoodsInfoPopup 的所有实例
+    /// </summary>
+    public static void Destroy_GoodsInfoPopup()
+    {
+        var uiInstance = Get_GoodsInfoPopup_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 GoodsInfoPopup 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.GoodsInfoPopup.GoodsInfoPopupPanel[] Get_GoodsInfoPopup_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.GoodsInfoPopup.GoodsInfoPopupPanel>(nameof(NovaDrift.Scripts.Ui.GoodsInfoPopup.GoodsInfoPopup));
     }
 
     /// <summary>

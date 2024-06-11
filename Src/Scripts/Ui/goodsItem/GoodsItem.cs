@@ -20,6 +20,19 @@ public abstract partial class GoodsItem : UiBase
     }
     private PanelContainer _L_PanelContainer;
 
+    /// <summary>
+    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: GoodsItem.Button
+    /// </summary>
+    public Button L_Button
+    {
+        get
+        {
+            if (_L_Button == null) _L_Button = new Button((GoodsItemPanel)this, GetNode<Godot.Button>("Button"));
+            return _L_Button;
+        }
+    }
+    private Button _L_Button;
+
 
     public GoodsItem() : base(nameof(GoodsItem))
     {
@@ -193,6 +206,15 @@ public abstract partial class GoodsItem : UiBase
         public override PanelContainer Clone() => new (UiPanel, (Godot.PanelContainer)Instance.Duplicate());
     }
 
+    /// <summary>
+    /// 类型: <see cref="Godot.Button"/>, 路径: GoodsItem.Button
+    /// </summary>
+    public class Button : UiNode<GoodsItemPanel, Godot.Button, Button>
+    {
+        public Button(GoodsItemPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
+        public override Button Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
+    }
+
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: GoodsItem.PanelContainer.Img.Image
@@ -233,5 +255,10 @@ public abstract partial class GoodsItem : UiBase
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.PanelContainer"/>, 节点路径: GoodsItem.PanelContainer
     /// </summary>
     public PanelContainer S_PanelContainer => L_PanelContainer;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: GoodsItem.Button
+    /// </summary>
+    public Button S_Button => L_Button;
 
 }
