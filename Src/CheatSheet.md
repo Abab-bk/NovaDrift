@@ -14,6 +14,16 @@ Creator of Assets: Riria/Ririsaurus
 
 子弹击中：子弹颜色的爆炸
 
+## 商店
+商店消费需要货币：酸酸币（一种加密货币，存在于游戏设定）
+
+商品：
+- 新的升级模块
+- 新 UI 皮肤
+- 日卡
+- 玩家动画（死亡、出场）
+- 武器皮肤
+
 ## WaveSpawner
 1. 生成一个 Spawner 实例，包含 cost -> 通过 Controller
 2. Spawner 选择阵型

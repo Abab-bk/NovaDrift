@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://b7g6xk4hko1sg"]
+[gd_resource type="Theme" load_steps=18 format=3 uid="uid://b7g6xk4hko1sg"]
 
 [ext_resource type="FontFile" uid="uid://djmsc2817eku8" path="res://Assets/Fonts/SourceHanSansCN-Medium.otf" id="1_bss3n"]
 
@@ -74,11 +74,28 @@ corner_radius_bottom_left = 100
 expand_margin_top = 24.0
 expand_margin_bottom = 24.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v08lr"]
+bg_color = Color(0.0313726, 0.0509804, 0.054902, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_cdmgo"]
 bg_color = Color(0, 0, 0, 0.317647)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n1uxb"]
 bg_color = Color(0.6, 1, 0.6, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_3yvk8"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_sebsi"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_37bem"]
+bg_color = Color(0.47451, 0.513726, 0.537255, 1)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tiq65"]
 
 [resource]
 default_font = ExtResource("1_bss3n")
@@ -101,5 +118,23 @@ HSlider/icons/tick = SubResource("ImageTexture_4plgt")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_vn3sr")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_vn3sr")
 HSlider/styles/slider = SubResource("StyleBoxFlat_urdej")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_v08lr")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_cdmgo")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_n1uxb")
+StoreBtn/base_type = &"Button"
+StoreBtn/colors/font_color = Color(0.305882, 0.305882, 0.356863, 1)
+StoreBtn/colors/font_hover_color = Color(0.305882, 0.305882, 0.356863, 1)
+StoreBtn/colors/font_hover_pressed_color = Color(0.305882, 0.305882, 0.356863, 1)
+StoreBtn/colors/font_pressed_color = Color(1, 1, 1, 1)
+StoreBtn/styles/disabled = SubResource("StyleBoxEmpty_3yvk8")
+StoreBtn/styles/disabled_mirrored = SubResource("StyleBoxEmpty_3yvk8")
+StoreBtn/styles/focus = SubResource("StyleBoxEmpty_3yvk8")
+StoreBtn/styles/hover = SubResource("StyleBoxFlat_sebsi")
+StoreBtn/styles/hover_mirrored = SubResource("StyleBoxEmpty_3yvk8")
+StoreBtn/styles/hover_pressed = SubResource("StyleBoxFlat_37bem")
+StoreBtn/styles/hover_pressed_mirrored = SubResource("StyleBoxFlat_37bem")
+StoreBtn/styles/normal = SubResource("StyleBoxFlat_sebsi")
+StoreBtn/styles/normal_mirrored = SubResource("StyleBoxEmpty_3yvk8")
+StoreBtn/styles/pressed = SubResource("StyleBoxFlat_37bem")
+StoreBtn/styles/pressed_mirrored = SubResource("StyleBoxEmpty_3yvk8")
+TabContainer/styles/panel = SubResource("StyleBoxEmpty_tiq65")

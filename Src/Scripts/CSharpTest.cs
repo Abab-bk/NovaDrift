@@ -4,28 +4,39 @@ namespace NovaDrift.Scripts;
 
 public class CSharpTest
 {
-    private int _sawBossCount = 1;
-    private int[] _bossIds = [1001, 1002, 1003];
-    
-    public void Test1()
+    public static void Test1()
     {
-        for (int i = 0; i < 20; i++)
+        for (int i = 1; i < 101; i++)
         {
-            var index = (_sawBossCount - 1) % _bossIds.Length;
-
+            var exp = GetNextLevelExp(i);
             Console.WriteLine($"""
-                               目标索引：{index} 目标BossId: {_bossIds[index]} 当前_sawBossCount： {_sawBossCount}
+                               Level {i} exp: {exp}
+                               需要击杀 {exp / (1.5 * MathF.Max(i - 1, 1))} 只怪物
                                """);
-            _sawBossCount += 1;
         }
     }
-}
-
-public static class Tester
-{
-    public static void RunTest()
+    
+    public static float GetNextLevelExp(int level)
     {
-        var t = new CSharpTest();
-        t.Test1();
+        float nextLevelExp = 0;
+        
+        if (level == 1)
+        {
+            nextLevelExp = 5f;
+        }
+        else if (level <= 20)
+        {
+            nextLevelExp = level * 10;
+        }
+        else if (level <= 40)
+        {
+            nextLevelExp = level * 13;
+        }
+        else
+        {
+            nextLevelExp = level * 16;
+        }
+
+        return nextLevelExp;
     }
 }

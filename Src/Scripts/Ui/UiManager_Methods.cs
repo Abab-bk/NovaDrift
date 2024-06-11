@@ -15,6 +15,8 @@ public static partial class UiManager
         public const string DamageLabel = "DamageLabel";
         public const string GalleryBtn = "GalleryBtn";
         public const string GameOver = "GameOver";
+        public const string GearLibrary = "GearLibrary";
+        public const string GoodsItem = "GoodsItem";
         public const string Hud = "Hud";
         public const string Loading = "Loading";
         public const string PausedMenu = "PausedMenu";
@@ -456,6 +458,102 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.GameOver.GameOverPanel[] Get_GameOver_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.GameOver.GameOverPanel>(nameof(NovaDrift.Scripts.Ui.GameOver.GameOver));
+    }
+
+    /// <summary>
+    /// 创建 GearLibrary, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.GearLibrary.GearLibraryPanel Create_GearLibrary()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.GearLibrary.GearLibraryPanel>(UiName.GearLibrary);
+    }
+
+    /// <summary>
+    /// 打开 GearLibrary, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.GearLibrary.GearLibraryPanel Open_GearLibrary()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.GearLibrary.GearLibraryPanel>(UiName.GearLibrary);
+    }
+
+    /// <summary>
+    /// 隐藏 GearLibrary 的所有实例
+    /// </summary>
+    public static void Hide_GearLibrary()
+    {
+        var uiInstance = Get_GearLibrary_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 GearLibrary 的所有实例
+    /// </summary>
+    public static void Destroy_GearLibrary()
+    {
+        var uiInstance = Get_GearLibrary_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 GearLibrary 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.GearLibrary.GearLibraryPanel[] Get_GearLibrary_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.GearLibrary.GearLibraryPanel>(nameof(NovaDrift.Scripts.Ui.GearLibrary.GearLibrary));
+    }
+
+    /// <summary>
+    /// 创建 GoodsItem, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel Create_GoodsItem()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel>(UiName.GoodsItem);
+    }
+
+    /// <summary>
+    /// 打开 GoodsItem, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel Open_GoodsItem()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel>(UiName.GoodsItem);
+    }
+
+    /// <summary>
+    /// 隐藏 GoodsItem 的所有实例
+    /// </summary>
+    public static void Hide_GoodsItem()
+    {
+        var uiInstance = Get_GoodsItem_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 GoodsItem 的所有实例
+    /// </summary>
+    public static void Destroy_GoodsItem()
+    {
+        var uiInstance = Get_GoodsItem_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 GoodsItem 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel[] Get_GoodsItem_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel>(nameof(NovaDrift.Scripts.Ui.GoodsItem.GoodsItem));
     }
 
     /// <summary>

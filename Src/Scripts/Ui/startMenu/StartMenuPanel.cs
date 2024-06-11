@@ -20,6 +20,10 @@ public partial class StartMenuPanel : StartMenu
         {
             OpenNextUi(UiManager.UiName.Setting);
         };
+        S_GearBtn.Instance.OnClick += () =>
+        {
+            OpenNextUi(UiManager.UiName.GearLibrary);
+        };
 
         EventBus.OnGameStart += () =>
         {
