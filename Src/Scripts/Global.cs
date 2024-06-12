@@ -28,6 +28,8 @@ public enum GamePlatform
 
 public static class Global
 {
+    public static event Action OnAcidCoinsChanged;
+    
     public static readonly GamePlatform CurrentPlatform = GamePlatform.Desktop;
     
     public static Player Player;
@@ -37,7 +39,19 @@ public static class Global
     public static ShakeDirector2D ShakeDirector;
     public static FastNoiseLite Noise;
     public static WaveSpawnerController WaveSpawnerController;
-    
+
+    public static int AcidCoins
+    {
+        get => _acidCoins;
+        set
+        {
+            _acidCoins = value;
+            OnAcidCoinsChanged?.Invoke();
+        }
+    }
+
+    private static int _acidCoins;
+
     public static Constants.WorldColor WorldColor = Constants.Colors.Blue;
     
     public static HazardSpawner HazardSpawner;

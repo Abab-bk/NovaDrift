@@ -8,6 +8,19 @@ using DsUi;
 public abstract partial class GearLibrary : UiBase
 {
     /// <summary>
+    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.PanelContainer"/>, 节点路径: GearLibrary.PanelContainer
+    /// </summary>
+    public PanelContainer L_PanelContainer
+    {
+        get
+        {
+            if (_L_PanelContainer == null) _L_PanelContainer = new PanelContainer((GearLibraryPanel)this, GetNode<Godot.PanelContainer>("PanelContainer"));
+            return _L_PanelContainer;
+        }
+    }
+    private PanelContainer _L_PanelContainer;
+
+    /// <summary>
     /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: GearLibrary.VBoxContainer
     /// </summary>
     public VBoxContainer L_VBoxContainer
@@ -111,6 +124,103 @@ public abstract partial class GearLibrary : UiBase
         inst14.L_GoodsItem3.Instance.OnCreateUi();
         inst14.L_GoodsItem3.Instance.OnInitNestedUi();
 
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.TextureRect"/>, 路径: GearLibrary.PanelContainer.MarginContainer.HBoxContainer.TextureRect
+    /// </summary>
+    public class TextureRect : UiNode<GearLibraryPanel, Godot.TextureRect, TextureRect>
+    {
+        public TextureRect(GearLibraryPanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
+        public override TextureRect Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.Label"/>, 路径: GearLibrary.PanelContainer.MarginContainer.HBoxContainer.AcidCoinsLabel
+    /// </summary>
+    public class AcidCoinsLabel : UiNode<GearLibraryPanel, Godot.Label, AcidCoinsLabel>
+    {
+        public AcidCoinsLabel(GearLibraryPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override AcidCoinsLabel Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: GearLibrary.PanelContainer.MarginContainer.HBoxContainer
+    /// </summary>
+    public class HBoxContainer : UiNode<GearLibraryPanel, Godot.HBoxContainer, HBoxContainer>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: GearLibrary.PanelContainer.MarginContainer.TextureRect
+        /// </summary>
+        public TextureRect L_TextureRect
+        {
+            get
+            {
+                if (_L_TextureRect == null) _L_TextureRect = new TextureRect(UiPanel, Instance.GetNode<Godot.TextureRect>("TextureRect"));
+                return _L_TextureRect;
+            }
+        }
+        private TextureRect _L_TextureRect;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: GearLibrary.PanelContainer.MarginContainer.AcidCoinsLabel
+        /// </summary>
+        public AcidCoinsLabel L_AcidCoinsLabel
+        {
+            get
+            {
+                if (_L_AcidCoinsLabel == null) _L_AcidCoinsLabel = new AcidCoinsLabel(UiPanel, Instance.GetNode<Godot.Label>("AcidCoinsLabel"));
+                return _L_AcidCoinsLabel;
+            }
+        }
+        private AcidCoinsLabel _L_AcidCoinsLabel;
+
+        public HBoxContainer(GearLibraryPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override HBoxContainer Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: GearLibrary.PanelContainer.MarginContainer
+    /// </summary>
+    public class MarginContainer : UiNode<GearLibraryPanel, Godot.MarginContainer, MarginContainer>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: GearLibrary.PanelContainer.HBoxContainer
+        /// </summary>
+        public HBoxContainer L_HBoxContainer
+        {
+            get
+            {
+                if (_L_HBoxContainer == null) _L_HBoxContainer = new HBoxContainer(UiPanel, Instance.GetNode<Godot.HBoxContainer>("HBoxContainer"));
+                return _L_HBoxContainer;
+            }
+        }
+        private HBoxContainer _L_HBoxContainer;
+
+        public MarginContainer(GearLibraryPanel uiPanel, Godot.MarginContainer node) : base(uiPanel, node) {  }
+        public override MarginContainer Clone() => new (UiPanel, (Godot.MarginContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.PanelContainer"/>, 路径: GearLibrary.PanelContainer
+    /// </summary>
+    public class PanelContainer : UiNode<GearLibraryPanel, Godot.PanelContainer, PanelContainer>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: GearLibrary.MarginContainer
+        /// </summary>
+        public MarginContainer L_MarginContainer
+        {
+            get
+            {
+                if (_L_MarginContainer == null) _L_MarginContainer = new MarginContainer(UiPanel, Instance.GetNode<Godot.MarginContainer>("MarginContainer"));
+                return _L_MarginContainer;
+            }
+        }
+        private MarginContainer _L_MarginContainer;
+
+        public PanelContainer(GearLibraryPanel uiPanel, Godot.PanelContainer node) : base(uiPanel, node) {  }
+        public override PanelContainer Clone() => new (UiPanel, (Godot.PanelContainer)Instance.Duplicate());
     }
 
     /// <summary>
@@ -994,7 +1104,7 @@ public abstract partial class GearLibrary : UiBase
     /// <summary>
     /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: GearLibrary.VBoxContainer.BottomBar.MarginContainer.HBoxContainer
     /// </summary>
-    public class HBoxContainer : UiNode<GearLibraryPanel, Godot.HBoxContainer, HBoxContainer>
+    public class HBoxContainer_1 : UiNode<GearLibraryPanel, Godot.HBoxContainer, HBoxContainer_1>
     {
         /// <summary>
         /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: GearLibrary.VBoxContainer.BottomBar.MarginContainer.HomeBtn
@@ -1061,30 +1171,30 @@ public abstract partial class GearLibrary : UiBase
         }
         private GearBtn _L_GearBtn;
 
-        public HBoxContainer(GearLibraryPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
-        public override HBoxContainer Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+        public HBoxContainer_1(GearLibraryPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override HBoxContainer_1 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
     /// 类型: <see cref="Godot.MarginContainer"/>, 路径: GearLibrary.VBoxContainer.BottomBar.MarginContainer
     /// </summary>
-    public class MarginContainer : UiNode<GearLibraryPanel, Godot.MarginContainer, MarginContainer>
+    public class MarginContainer_1 : UiNode<GearLibraryPanel, Godot.MarginContainer, MarginContainer_1>
     {
         /// <summary>
         /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: GearLibrary.VBoxContainer.BottomBar.HBoxContainer
         /// </summary>
-        public HBoxContainer L_HBoxContainer
+        public HBoxContainer_1 L_HBoxContainer
         {
             get
             {
-                if (_L_HBoxContainer == null) _L_HBoxContainer = new HBoxContainer(UiPanel, Instance.GetNode<Godot.HBoxContainer>("HBoxContainer"));
+                if (_L_HBoxContainer == null) _L_HBoxContainer = new HBoxContainer_1(UiPanel, Instance.GetNode<Godot.HBoxContainer>("HBoxContainer"));
                 return _L_HBoxContainer;
             }
         }
-        private HBoxContainer _L_HBoxContainer;
+        private HBoxContainer_1 _L_HBoxContainer;
 
-        public MarginContainer(GearLibraryPanel uiPanel, Godot.MarginContainer node) : base(uiPanel, node) {  }
-        public override MarginContainer Clone() => new (UiPanel, (Godot.MarginContainer)Instance.Duplicate());
+        public MarginContainer_1(GearLibraryPanel uiPanel, Godot.MarginContainer node) : base(uiPanel, node) {  }
+        public override MarginContainer_1 Clone() => new (UiPanel, (Godot.MarginContainer)Instance.Duplicate());
     }
 
     /// <summary>
@@ -1095,15 +1205,15 @@ public abstract partial class GearLibrary : UiBase
         /// <summary>
         /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: GearLibrary.VBoxContainer.MarginContainer
         /// </summary>
-        public MarginContainer L_MarginContainer
+        public MarginContainer_1 L_MarginContainer
         {
             get
             {
-                if (_L_MarginContainer == null) _L_MarginContainer = new MarginContainer(UiPanel, Instance.GetNode<Godot.MarginContainer>("MarginContainer"));
+                if (_L_MarginContainer == null) _L_MarginContainer = new MarginContainer_1(UiPanel, Instance.GetNode<Godot.MarginContainer>("MarginContainer"));
                 return _L_MarginContainer;
             }
         }
-        private MarginContainer _L_MarginContainer;
+        private MarginContainer_1 _L_MarginContainer;
 
         public BottomBar(GearLibraryPanel uiPanel, Godot.PanelContainer node) : base(uiPanel, node) {  }
         public override BottomBar Clone() => new (UiPanel, (Godot.PanelContainer)Instance.Duplicate());
@@ -1153,6 +1263,21 @@ public abstract partial class GearLibrary : UiBase
         public override CloseBtn Clone() => new (UiPanel, (Godot.TextureButton)Instance.Duplicate());
     }
 
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: GearLibrary.PanelContainer.MarginContainer.HBoxContainer.TextureRect
+    /// </summary>
+    public TextureRect S_TextureRect => L_PanelContainer.L_MarginContainer.L_HBoxContainer.L_TextureRect;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: GearLibrary.PanelContainer.MarginContainer.HBoxContainer.AcidCoinsLabel
+    /// </summary>
+    public AcidCoinsLabel S_AcidCoinsLabel => L_PanelContainer.L_MarginContainer.L_HBoxContainer.L_AcidCoinsLabel;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.PanelContainer"/>, 节点路径: GearLibrary.PanelContainer
+    /// </summary>
+    public PanelContainer S_PanelContainer => L_PanelContainer;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: GearLibrary.VBoxContainer.Content.Content.Home.Goods.VBoxContainer2
@@ -1218,16 +1343,6 @@ public abstract partial class GearLibrary : UiBase
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: GearLibrary.VBoxContainer.BottomBar.MarginContainer.HBoxContainer.GearBtn
     /// </summary>
     public GearBtn S_GearBtn => L_VBoxContainer.L_BottomBar.L_MarginContainer.L_HBoxContainer.L_GearBtn;
-
-    /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: GearLibrary.VBoxContainer.BottomBar.MarginContainer.HBoxContainer
-    /// </summary>
-    public HBoxContainer S_HBoxContainer => L_VBoxContainer.L_BottomBar.L_MarginContainer.L_HBoxContainer;
-
-    /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: GearLibrary.VBoxContainer.BottomBar.MarginContainer
-    /// </summary>
-    public MarginContainer S_MarginContainer => L_VBoxContainer.L_BottomBar.L_MarginContainer;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.PanelContainer"/>, 节点路径: GearLibrary.VBoxContainer.BottomBar

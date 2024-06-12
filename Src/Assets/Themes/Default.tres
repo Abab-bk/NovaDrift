@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=18 format=3 uid="uid://b7g6xk4hko1sg"]
+[gd_resource type="Theme" load_steps=19 format=3 uid="uid://b7g6xk4hko1sg"]
 
 [ext_resource type="FontFile" uid="uid://djmsc2817eku8" path="res://Assets/Fonts/SourceHanSansCN-Medium.otf" id="1_bss3n"]
 
@@ -97,6 +97,8 @@ bg_color = Color(0.47451, 0.513726, 0.537255, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tiq65"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gmw3i"]
+
 [resource]
 default_font = ExtResource("1_bss3n")
 default_font_size = 30
@@ -138,3 +140,8 @@ StoreBtn/styles/normal_mirrored = SubResource("StyleBoxEmpty_3yvk8")
 StoreBtn/styles/pressed = SubResource("StyleBoxFlat_37bem")
 StoreBtn/styles/pressed_mirrored = SubResource("StyleBoxEmpty_3yvk8")
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_tiq65")
+VScrollBar/styles/grabber = SubResource("StyleBoxEmpty_gmw3i")
+VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_gmw3i")
+VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_gmw3i")
+VScrollBar/styles/scroll = SubResource("StyleBoxEmpty_gmw3i")
+VScrollBar/styles/scroll_focus = SubResource("StyleBoxEmpty_gmw3i")

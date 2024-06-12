@@ -1,7 +1,5 @@
 using System.Linq;
 using DsUi;
-using Godot;
-using GTweens.Builders;
 using GTweens.Easings;
 using GTweensGodot.Extensions;
 
@@ -20,12 +18,19 @@ public partial class GearLibraryPanel : GearLibrary
 
     public override void _Ready()
     {
+        Global.OnAcidCoinsChanged += () =>
+        {
+            S_AcidCoinsLabel.Instance.Text = Global.AcidCoins.ToString();
+        };
+        
+        S_AcidCoinsLabel.Instance.Text = Global.AcidCoins.ToString();
+
         S_HomeBtn.Instance.Pressed += () => ChangePageTo(Page.Home);
         S_UpgradeBtn.Instance.Pressed += () => ChangePageTo(Page.UpGrade);
         S_UiSkinBtn.Instance.Pressed += () => ChangePageTo(Page.UiSkin);
         S_AnimationBtn.Instance.Pressed += () => ChangePageTo(Page.Animation);
         S_GearBtn.Instance.Pressed += () => ChangePageTo(Page.Gear);
-
+        
         S_CloseBtn.Instance.Pressed += () =>
         {
             this.ChangeTo(UiManager.Get_StartMenu_Instance().First());

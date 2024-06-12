@@ -2,6 +2,7 @@ using System;
 using AcidWallStudio.SpringSystem;
 using Godot;
 using NovaDrift.Scripts.Systems;
+using NovaDrift.Scripts.Vfx;
 
 namespace NovaDrift.Scripts.Prefabs.Actors.Mobs;
 
@@ -82,7 +83,12 @@ public partial class MobBase : Actor
     public override void Die()
     {
         if (IsDead) return;
-        Global.Player.Stats.Exp.Increase(MobInfo.GetExp);
+        
+        var expBall = GD.Load<PackedScene>("res://Scenes/Vfx/ExpBall.tscn").Instantiate<ExpBall>();
+        expBall.Pos = GlobalPosition;
+        expBall.Exp = MobInfo.GetExp;
+        Global.GameWorld.AddChild(expBall);
+        
         EventBus.OnMobDied?.Invoke(this);
         base.Die();
     }

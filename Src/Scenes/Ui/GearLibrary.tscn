@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cfvvytcyydqm2"]
+[gd_scene load_steps=9 format=3 uid="uid://cfvvytcyydqm2"]
 
 [ext_resource type="Script" path="res://Scripts/Ui/gearLibrary/GearLibraryPanel.cs" id="1_gvu8f"]
 [ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_ty5j2"]
+[ext_resource type="Texture2D" uid="uid://bxgf6nfesr5ch" path="res://Assets/Ui/AcidCoin.png" id="3_kwh44"]
 [ext_resource type="PackedScene" uid="uid://41abw4lldbif" path="res://Scenes/Ui/GoodsItem.tscn" id="3_y5l0t"]
 [ext_resource type="Texture2D" uid="uid://cn8c0akvxkwx8" path="res://Assets/Ui/Buttons/CloseBtn.png" id="4_b6yji"]
 [ext_resource type="Texture2D" uid="uid://byathwnpybua5" path="res://Assets/Ui/Buttons/CloseBtnPressed.png" id="5_plx3n"]
@@ -20,6 +21,40 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("1_ty5j2")
 script = ExtResource("1_gvu8f")
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -384.0
+offset_top = 74.0
+offset_right = -34.0
+offset_bottom = 148.0
+grow_horizontal = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 30
+theme_override_constants/margin_right = 30
+
+[node name="HBoxContainer" type="HBoxContainer" parent="PanelContainer/MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 2
+
+[node name="TextureRect" type="TextureRect" parent="PanelContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+texture = ExtResource("3_kwh44")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AcidCoinsLabel" type="Label" parent="PanelContainer/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "1234"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 1

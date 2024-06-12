@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://baes6irbtdicw"]
+[gd_scene load_steps=4 format=3 uid="uid://baes6irbtdicw"]
 
 [ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_lc62x"]
 [ext_resource type="Script" path="res://Scripts/Ui/gameOver/GameOverPanel.cs" id="1_vr5sb"]
+[ext_resource type="PackedScene" uid="uid://p7pbjwu7qthd" path="res://Scenes/Ui/ScoreLabel.tscn" id="3_velny"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -13,36 +14,74 @@ grow_vertical = 2
 theme = ExtResource("1_lc62x")
 script = ExtResource("1_vr5sb")
 
-[node name="PanelContainer" type="PanelContainer" parent="."]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_constants/margin_top = 200
+theme_override_constants/margin_bottom = 200
 
-[node name="MarginContainer" type="MarginContainer" parent="PanelContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
-theme_override_constants/margin_left = 200
-theme_override_constants/margin_top = 300
-theme_override_constants/margin_right = 200
-theme_override_constants/margin_bottom = 300
+theme_override_constants/separation = 40
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer"]
-layout_mode = 2
-
-[node name="Label" type="Label" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 1
 theme_override_font_sizes/font_size = 200
 text = "GameOver"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer/MarginContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Items" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2/ScrollContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ScoreLabel" parent="MarginContainer/VBoxContainer/VBoxContainer2/ScrollContainer/Items" instance=ExtResource("3_velny")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="ScoreLabel2" parent="MarginContainer/VBoxContainer/VBoxContainer2/ScrollContainer/Items" instance=ExtResource("3_velny")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="ScoreLabel3" parent="MarginContainer/VBoxContainer/VBoxContainer2/ScrollContainer/Items" instance=ExtResource("3_velny")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="ScoreLabel4" parent="MarginContainer/VBoxContainer/VBoxContainer2/ScrollContainer/Items" instance=ExtResource("3_velny")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="ScoreLabel5" parent="MarginContainer/VBoxContainer/VBoxContainer2/ScrollContainer/Items" instance=ExtResource("3_velny")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="ScoreLabel6" parent="MarginContainer/VBoxContainer/VBoxContainer2/ScrollContainer/Items" instance=ExtResource("3_velny")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="ScoreLabel7" parent="MarginContainer/VBoxContainer/VBoxContainer2/ScrollContainer/Items" instance=ExtResource("3_velny")]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="ReStartBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="ReStartBtn" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 visible = false
 custom_minimum_size = Vector2(1000, 100)
@@ -51,7 +90,7 @@ size_flags_horizontal = 4
 theme_override_font_sizes/font_size = 100
 text = "重新开始"
 
-[node name="BackToMainBtn" type="Button" parent="PanelContainer/MarginContainer/VBoxContainer/VBoxContainer"]
+[node name="BackToMainBtn" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(1000, 100)
 layout_mode = 2

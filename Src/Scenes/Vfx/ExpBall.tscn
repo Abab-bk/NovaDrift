@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://kb1an507abba"]
+
+[ext_resource type="Script" path="res://Scripts/Vfx/ExpBall.cs" id="1_jadrx"]
+[ext_resource type="Texture2D" uid="uid://dbe864h5yf3rc" path="res://Assets/Textures/Particles/star_05.png" id="1_nfmqk"]
+
+[node name="ExpBall" type="Node2D"]
+modulate = Color(0.505882, 0.486275, 1, 1)
+script = ExtResource("1_jadrx")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_nfmqk")
