@@ -21,6 +21,7 @@ public sealed partial class StoreInfo : Luban.BeanBase
         Name = _buf.GetProperty("name").GetString();
         Desc = _buf.GetProperty("desc").GetString();
         Type = (DataBase.GoodsType)_buf.GetProperty("type").GetInt32();
+        Price = _buf.GetProperty("price").GetInt32();
         Value = _buf.GetProperty("value").GetInt32();
         IconName = _buf.GetProperty("icon_name").GetString();
     }
@@ -47,6 +48,10 @@ public sealed partial class StoreInfo : Luban.BeanBase
     /// </summary>
     public readonly DataBase.GoodsType Type;
     /// <summary>
+    /// 价格
+    /// </summary>
+    public readonly int Price;
+    /// <summary>
     /// 值
     /// </summary>
     public readonly int Value;
@@ -66,6 +71,7 @@ public sealed partial class StoreInfo : Luban.BeanBase
         
         
         
+        
     }
 
     public override string ToString()
@@ -75,6 +81,7 @@ public sealed partial class StoreInfo : Luban.BeanBase
         + "name:" + Name + ","
         + "desc:" + Desc + ","
         + "type:" + Type + ","
+        + "price:" + Price + ","
         + "value:" + Value + ","
         + "iconName:" + IconName + ","
         + "}";

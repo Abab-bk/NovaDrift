@@ -1,3 +1,4 @@
+using System.Globalization;
 using AcidWallStudio.AcidUtilities;
 using cfg;
 using Godot;
@@ -33,6 +34,14 @@ public partial class GoodsInfoPopupPanel : GoodsInfoPopup
     public void SetGoods(StoreInfo storeInfo)
     {
         S_NameLabel.Instance.Text = storeInfo.Name;
+
+
+        S_PriceLabel.Instance.Text = storeInfo.Price.ToString();
+        if (DataBuilder.StoreModifiers.TryGetValue(storeInfo.Id, out var modifier))
+        {
+            S_PriceLabel.Instance.Text = (storeInfo.Price * modifier.Discount).ToString(CultureInfo.CurrentCulture);
+        }
+
         if (Wizard.FileExists($"res://Assets/Ui/StoreImages/{storeInfo.IconName}.png"))
         {
             S_Icon.Instance.Texture = GD.Load<Texture2D>($"res://Assets/Ui/StoreImages/{storeInfo.IconName}.png");

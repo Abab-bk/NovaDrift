@@ -11,6 +11,11 @@ using Game = NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts;
 
+public class StoreModifier(float discount)
+{
+    public float Discount = discount;
+}
+
 public static class DataBuilder
 {
     public static Tables Tables;
@@ -20,6 +25,10 @@ public static class DataBuilder
     private static readonly Curve FuncUpLevelCurveBefore20 = GD.Load<Curve>("res://Assets/Curves/UpLevelCurveBefore20.tres");
     private static readonly Curve FuncUpLevelCurveAfter20 = GD.Load<Curve>("res://Assets/Curves/UpLevelCurveAfter20.tres");
 
+    public static Dictionary<int, StoreModifier> StoreModifiers = new()
+    {
+        { 1001, new StoreModifier(0.5f) }
+    };
     public static float GetNextLevelExp(int level)
     {
          // float nextLevelExp = level < 20

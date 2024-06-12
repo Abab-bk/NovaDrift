@@ -10,6 +10,8 @@ layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 theme = ExtResource("1_kjgha")
 script = ExtResource("1_y2q2k")
 
@@ -77,6 +79,7 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="PriceLabel" type="Label" parent="PanelContainer/Content/HBoxContainer/VBoxContainer/VBoxContainer2"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 40
 text = "100 酸酸币"

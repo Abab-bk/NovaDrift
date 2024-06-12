@@ -68,12 +68,14 @@ theme_override_constants/separation = 30
 [node name="GoodsItem" parent="VBoxContainer/Content/Content/Home/Goods/VBoxContainer" instance=ExtResource("3_y5l0t")]
 layout_mode = 2
 _id = 1001
+_showPrice = false
 
 [node name="GoodsItem2" parent="VBoxContainer/Content/Content/Home/Goods/VBoxContainer" instance=ExtResource("3_y5l0t")]
 custom_minimum_size = Vector2(0, 180)
 layout_mode = 2
 size_flags_vertical = 1
 _id = 1002
+_showPrice = false
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/Content/Content/Home/Goods"]
 custom_minimum_size = Vector2(548, 0)
@@ -83,10 +85,12 @@ theme_override_constants/separation = 30
 [node name="GoodsItem" parent="VBoxContainer/Content/Content/Home/Goods/VBoxContainer2" instance=ExtResource("3_y5l0t")]
 layout_mode = 2
 _id = 1003
+_showPrice = false
 
 [node name="GoodsItem2" parent="VBoxContainer/Content/Content/Home/Goods/VBoxContainer2" instance=ExtResource("3_y5l0t")]
 layout_mode = 2
 _id = 1004
+_showPrice = false
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/Content/Content/Home/Goods"]
 custom_minimum_size = Vector2(548, 0)
@@ -96,16 +100,19 @@ theme_override_constants/separation = 30
 [node name="GoodsItem" parent="VBoxContainer/Content/Content/Home/Goods/VBoxContainer3" instance=ExtResource("3_y5l0t")]
 layout_mode = 2
 _id = 1005
+_showPrice = false
 
 [node name="GoodsItem2" parent="VBoxContainer/Content/Content/Home/Goods/VBoxContainer3" instance=ExtResource("3_y5l0t")]
 layout_mode = 2
 _id = 1006
+_showPrice = false
 
 [node name="GoodsItem" parent="VBoxContainer/Content/Content/Home/Goods" instance=ExtResource("3_y5l0t")]
 custom_minimum_size = Vector2(314, 0)
 layout_mode = 2
 size_flags_horizontal = 1
 _id = 1007
+_showPrice = false
 
 [node name="UpGrade" type="VBoxContainer" parent="VBoxContainer/Content/Content"]
 visible = false
