@@ -66,11 +66,11 @@ public partial class WaveSpawnerController : Node2D
         };
         EventBus.OnGameOver += () =>
         {
+            _clock.Stop();
             _waitingClock = 5f;
             _clock.WaitTime = _waitingClock;
             _nextIsBoss = false;
             _sawBossCount = 1;
-            _clock.Stop();
         };
     }
 

@@ -28,45 +28,10 @@ public abstract partial class GameOver : UiBase
     public sealed override void OnInitNestedUi()
     {
 
-        var inst1 = L_MarginContainer.L_VBoxContainer.L_VBoxContainer2.L_ScrollContainer.L_Items;
-        RecordNestedUi(inst1.L_ScoreLabel.Instance, inst1, UiManager.RecordType.Open);
-        inst1.L_ScoreLabel.Instance.OnCreateUi();
-        inst1.L_ScoreLabel.Instance.OnInitNestedUi();
-
-        var inst2 = L_MarginContainer.L_VBoxContainer.L_VBoxContainer2.L_ScrollContainer.L_Items;
-        RecordNestedUi(inst2.L_ScoreLabel2.Instance, inst2, UiManager.RecordType.Open);
-        inst2.L_ScoreLabel2.Instance.OnCreateUi();
-        inst2.L_ScoreLabel2.Instance.OnInitNestedUi();
-
-        var inst3 = L_MarginContainer.L_VBoxContainer.L_VBoxContainer2.L_ScrollContainer.L_Items;
-        RecordNestedUi(inst3.L_ScoreLabel3.Instance, inst3, UiManager.RecordType.Open);
-        inst3.L_ScoreLabel3.Instance.OnCreateUi();
-        inst3.L_ScoreLabel3.Instance.OnInitNestedUi();
-
-        var inst4 = L_MarginContainer.L_VBoxContainer.L_VBoxContainer2.L_ScrollContainer.L_Items;
-        RecordNestedUi(inst4.L_ScoreLabel4.Instance, inst4, UiManager.RecordType.Open);
-        inst4.L_ScoreLabel4.Instance.OnCreateUi();
-        inst4.L_ScoreLabel4.Instance.OnInitNestedUi();
-
-        var inst5 = L_MarginContainer.L_VBoxContainer.L_VBoxContainer2.L_ScrollContainer.L_Items;
-        RecordNestedUi(inst5.L_ScoreLabel5.Instance, inst5, UiManager.RecordType.Open);
-        inst5.L_ScoreLabel5.Instance.OnCreateUi();
-        inst5.L_ScoreLabel5.Instance.OnInitNestedUi();
-
-        var inst6 = L_MarginContainer.L_VBoxContainer.L_VBoxContainer2.L_ScrollContainer.L_Items;
-        RecordNestedUi(inst6.L_ScoreLabel6.Instance, inst6, UiManager.RecordType.Open);
-        inst6.L_ScoreLabel6.Instance.OnCreateUi();
-        inst6.L_ScoreLabel6.Instance.OnInitNestedUi();
-
-        var inst7 = L_MarginContainer.L_VBoxContainer.L_VBoxContainer2.L_ScrollContainer.L_Items;
-        RecordNestedUi(inst7.L_ScoreLabel7.Instance, inst7, UiManager.RecordType.Open);
-        inst7.L_ScoreLabel7.Instance.OnCreateUi();
-        inst7.L_ScoreLabel7.Instance.OnInitNestedUi();
-
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.Label
+    /// 类型: <see cref="Godot.Label"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.VBoxContainer2.Label
     /// </summary>
     public class Label : UiNode<GameOverPanel, Godot.Label, Label>
     {
@@ -75,224 +40,21 @@ public abstract partial class GameOver : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.Items.ScoreLabel
-    /// </summary>
-    public class ScoreLabel : UiNode<GameOverPanel, NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel, ScoreLabel>
-    {
-        public ScoreLabel(GameOverPanel uiPanel, NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel node) : base(uiPanel, node) {  }
-        public override ScoreLabel Clone()
-        {
-            var uiNode = new ScoreLabel(UiPanel, (NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel)Instance.Duplicate());
-            UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
-            uiNode.Instance.OnCreateUi();
-            uiNode.Instance.OnInitNestedUi();
-            return uiNode;
-        }
-    }
-
-    /// <summary>
-    /// 类型: <see cref="NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.Items.ScoreLabel2
-    /// </summary>
-    public class ScoreLabel2 : UiNode<GameOverPanel, NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel, ScoreLabel2>
-    {
-        public ScoreLabel2(GameOverPanel uiPanel, NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel node) : base(uiPanel, node) {  }
-        public override ScoreLabel2 Clone()
-        {
-            var uiNode = new ScoreLabel2(UiPanel, (NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel)Instance.Duplicate());
-            UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
-            uiNode.Instance.OnCreateUi();
-            uiNode.Instance.OnInitNestedUi();
-            return uiNode;
-        }
-    }
-
-    /// <summary>
-    /// 类型: <see cref="NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.Items.ScoreLabel3
-    /// </summary>
-    public class ScoreLabel3 : UiNode<GameOverPanel, NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel, ScoreLabel3>
-    {
-        public ScoreLabel3(GameOverPanel uiPanel, NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel node) : base(uiPanel, node) {  }
-        public override ScoreLabel3 Clone()
-        {
-            var uiNode = new ScoreLabel3(UiPanel, (NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel)Instance.Duplicate());
-            UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
-            uiNode.Instance.OnCreateUi();
-            uiNode.Instance.OnInitNestedUi();
-            return uiNode;
-        }
-    }
-
-    /// <summary>
-    /// 类型: <see cref="NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.Items.ScoreLabel4
-    /// </summary>
-    public class ScoreLabel4 : UiNode<GameOverPanel, NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel, ScoreLabel4>
-    {
-        public ScoreLabel4(GameOverPanel uiPanel, NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel node) : base(uiPanel, node) {  }
-        public override ScoreLabel4 Clone()
-        {
-            var uiNode = new ScoreLabel4(UiPanel, (NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel)Instance.Duplicate());
-            UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
-            uiNode.Instance.OnCreateUi();
-            uiNode.Instance.OnInitNestedUi();
-            return uiNode;
-        }
-    }
-
-    /// <summary>
-    /// 类型: <see cref="NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.Items.ScoreLabel5
-    /// </summary>
-    public class ScoreLabel5 : UiNode<GameOverPanel, NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel, ScoreLabel5>
-    {
-        public ScoreLabel5(GameOverPanel uiPanel, NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel node) : base(uiPanel, node) {  }
-        public override ScoreLabel5 Clone()
-        {
-            var uiNode = new ScoreLabel5(UiPanel, (NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel)Instance.Duplicate());
-            UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
-            uiNode.Instance.OnCreateUi();
-            uiNode.Instance.OnInitNestedUi();
-            return uiNode;
-        }
-    }
-
-    /// <summary>
-    /// 类型: <see cref="NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.Items.ScoreLabel6
-    /// </summary>
-    public class ScoreLabel6 : UiNode<GameOverPanel, NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel, ScoreLabel6>
-    {
-        public ScoreLabel6(GameOverPanel uiPanel, NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel node) : base(uiPanel, node) {  }
-        public override ScoreLabel6 Clone()
-        {
-            var uiNode = new ScoreLabel6(UiPanel, (NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel)Instance.Duplicate());
-            UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
-            uiNode.Instance.OnCreateUi();
-            uiNode.Instance.OnInitNestedUi();
-            return uiNode;
-        }
-    }
-
-    /// <summary>
-    /// 类型: <see cref="NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.Items.ScoreLabel7
-    /// </summary>
-    public class ScoreLabel7 : UiNode<GameOverPanel, NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel, ScoreLabel7>
-    {
-        public ScoreLabel7(GameOverPanel uiPanel, NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel node) : base(uiPanel, node) {  }
-        public override ScoreLabel7 Clone()
-        {
-            var uiNode = new ScoreLabel7(UiPanel, (NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel)Instance.Duplicate());
-            UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
-            uiNode.Instance.OnCreateUi();
-            uiNode.Instance.OnInitNestedUi();
-            return uiNode;
-        }
-    }
-
-    /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.Items
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.VBoxContainer2.ScrollContainer.Items
     /// </summary>
     public class Items : UiNode<GameOverPanel, Godot.VBoxContainer, Items>
     {
-        /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.ScoreLabel
-        /// </summary>
-        public ScoreLabel L_ScoreLabel
-        {
-            get
-            {
-                if (_L_ScoreLabel == null) _L_ScoreLabel = new ScoreLabel(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel>("ScoreLabel"));
-                return _L_ScoreLabel;
-            }
-        }
-        private ScoreLabel _L_ScoreLabel;
-
-        /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.ScoreLabel2
-        /// </summary>
-        public ScoreLabel2 L_ScoreLabel2
-        {
-            get
-            {
-                if (_L_ScoreLabel2 == null) _L_ScoreLabel2 = new ScoreLabel2(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel>("ScoreLabel2"));
-                return _L_ScoreLabel2;
-            }
-        }
-        private ScoreLabel2 _L_ScoreLabel2;
-
-        /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.ScoreLabel3
-        /// </summary>
-        public ScoreLabel3 L_ScoreLabel3
-        {
-            get
-            {
-                if (_L_ScoreLabel3 == null) _L_ScoreLabel3 = new ScoreLabel3(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel>("ScoreLabel3"));
-                return _L_ScoreLabel3;
-            }
-        }
-        private ScoreLabel3 _L_ScoreLabel3;
-
-        /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.ScoreLabel4
-        /// </summary>
-        public ScoreLabel4 L_ScoreLabel4
-        {
-            get
-            {
-                if (_L_ScoreLabel4 == null) _L_ScoreLabel4 = new ScoreLabel4(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel>("ScoreLabel4"));
-                return _L_ScoreLabel4;
-            }
-        }
-        private ScoreLabel4 _L_ScoreLabel4;
-
-        /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.ScoreLabel5
-        /// </summary>
-        public ScoreLabel5 L_ScoreLabel5
-        {
-            get
-            {
-                if (_L_ScoreLabel5 == null) _L_ScoreLabel5 = new ScoreLabel5(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel>("ScoreLabel5"));
-                return _L_ScoreLabel5;
-            }
-        }
-        private ScoreLabel5 _L_ScoreLabel5;
-
-        /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.ScoreLabel6
-        /// </summary>
-        public ScoreLabel6 L_ScoreLabel6
-        {
-            get
-            {
-                if (_L_ScoreLabel6 == null) _L_ScoreLabel6 = new ScoreLabel6(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel>("ScoreLabel6"));
-                return _L_ScoreLabel6;
-            }
-        }
-        private ScoreLabel6 _L_ScoreLabel6;
-
-        /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.ScoreLabel7
-        /// </summary>
-        public ScoreLabel7 L_ScoreLabel7
-        {
-            get
-            {
-                if (_L_ScoreLabel7 == null) _L_ScoreLabel7 = new ScoreLabel7(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel>("ScoreLabel7"));
-                return _L_ScoreLabel7;
-            }
-        }
-        private ScoreLabel7 _L_ScoreLabel7;
-
         public Items(GameOverPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
         public override Items Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer
+    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.VBoxContainer2.ScrollContainer
     /// </summary>
     public class ScrollContainer : UiNode<GameOverPanel, Godot.ScrollContainer, ScrollContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.Items
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.VBoxContainer2.Items
         /// </summary>
         public Items L_Items
         {
@@ -309,12 +71,12 @@ public abstract partial class GameOver : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.VBoxContainer2
     /// </summary>
     public class VBoxContainer2 : UiNode<GameOverPanel, Godot.VBoxContainer, VBoxContainer2>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.Label
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.Label
         /// </summary>
         public Label L_Label
         {
@@ -327,7 +89,7 @@ public abstract partial class GameOver : UiBase
         private Label _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.ScrollContainer
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.ScrollContainer
         /// </summary>
         public ScrollContainer L_ScrollContainer
         {
@@ -341,6 +103,116 @@ public abstract partial class GameOver : UiBase
 
         public VBoxContainer2(GameOverPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
         public override VBoxContainer2 Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.Label"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.HBoxContainer.Label
+    /// </summary>
+    public class Label_1 : UiNode<GameOverPanel, Godot.Label, Label_1>
+    {
+        public Label_1(GameOverPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Label_1 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.TextureRect"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.HBoxContainer.TextureRect
+    /// </summary>
+    public class TextureRect : UiNode<GameOverPanel, Godot.TextureRect, TextureRect>
+    {
+        public TextureRect(GameOverPanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
+        public override TextureRect Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.Label"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.HBoxContainer.AcidCoinsLabel
+    /// </summary>
+    public class AcidCoinsLabel : UiNode<GameOverPanel, Godot.Label, AcidCoinsLabel>
+    {
+        public AcidCoinsLabel(GameOverPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override AcidCoinsLabel Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.HBoxContainer
+    /// </summary>
+    public class HBoxContainer : UiNode<GameOverPanel, Godot.HBoxContainer, HBoxContainer>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.Label
+        /// </summary>
+        public Label_1 L_Label
+        {
+            get
+            {
+                if (_L_Label == null) _L_Label = new Label_1(UiPanel, Instance.GetNode<Godot.Label>("Label"));
+                return _L_Label;
+            }
+        }
+        private Label_1 _L_Label;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.TextureRect
+        /// </summary>
+        public TextureRect L_TextureRect
+        {
+            get
+            {
+                if (_L_TextureRect == null) _L_TextureRect = new TextureRect(UiPanel, Instance.GetNode<Godot.TextureRect>("TextureRect"));
+                return _L_TextureRect;
+            }
+        }
+        private TextureRect _L_TextureRect;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.AcidCoinsLabel
+        /// </summary>
+        public AcidCoinsLabel L_AcidCoinsLabel
+        {
+            get
+            {
+                if (_L_AcidCoinsLabel == null) _L_AcidCoinsLabel = new AcidCoinsLabel(UiPanel, Instance.GetNode<Godot.Label>("AcidCoinsLabel"));
+                return _L_AcidCoinsLabel;
+            }
+        }
+        private AcidCoinsLabel _L_AcidCoinsLabel;
+
+        public HBoxContainer(GameOverPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override HBoxContainer Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3
+    /// </summary>
+    public class VBoxContainer3 : UiNode<GameOverPanel, Godot.VBoxContainer, VBoxContainer3>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2
+        /// </summary>
+        public VBoxContainer2 L_VBoxContainer2
+        {
+            get
+            {
+                if (_L_VBoxContainer2 == null) _L_VBoxContainer2 = new VBoxContainer2(UiPanel, Instance.GetNode<Godot.VBoxContainer>("VBoxContainer2"));
+                return _L_VBoxContainer2;
+            }
+        }
+        private VBoxContainer2 _L_VBoxContainer2;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.HBoxContainer
+        /// </summary>
+        public HBoxContainer L_HBoxContainer
+        {
+            get
+            {
+                if (_L_HBoxContainer == null) _L_HBoxContainer = new HBoxContainer(UiPanel, Instance.GetNode<Godot.HBoxContainer>("HBoxContainer"));
+                return _L_HBoxContainer;
+            }
+        }
+        private HBoxContainer _L_HBoxContainer;
+
+        public VBoxContainer3(GameOverPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
+        public override VBoxContainer3 Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
@@ -402,17 +274,17 @@ public abstract partial class GameOver : UiBase
     public class VBoxContainer : UiNode<GameOverPanel, Godot.VBoxContainer, VBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer2
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer3
         /// </summary>
-        public VBoxContainer2 L_VBoxContainer2
+        public VBoxContainer3 L_VBoxContainer3
         {
             get
             {
-                if (_L_VBoxContainer2 == null) _L_VBoxContainer2 = new VBoxContainer2(UiPanel, Instance.GetNode<Godot.VBoxContainer>("VBoxContainer2"));
-                return _L_VBoxContainer2;
+                if (_L_VBoxContainer3 == null) _L_VBoxContainer3 = new VBoxContainer3(UiPanel, Instance.GetNode<Godot.VBoxContainer>("VBoxContainer3"));
+                return _L_VBoxContainer3;
             }
         }
-        private VBoxContainer2 _L_VBoxContainer2;
+        private VBoxContainer3 _L_VBoxContainer3;
 
         /// <summary>
         /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer
@@ -455,59 +327,39 @@ public abstract partial class GameOver : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.Label
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.VBoxContainer2.ScrollContainer.Items
     /// </summary>
-    public Label S_Label => L_MarginContainer.L_VBoxContainer.L_VBoxContainer2.L_Label;
+    public Items S_Items => L_MarginContainer.L_VBoxContainer.L_VBoxContainer3.L_VBoxContainer2.L_ScrollContainer.L_Items;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.Items.ScoreLabel
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.VBoxContainer2.ScrollContainer
     /// </summary>
-    public ScoreLabel S_ScoreLabel => L_MarginContainer.L_VBoxContainer.L_VBoxContainer2.L_ScrollContainer.L_Items.L_ScoreLabel;
+    public ScrollContainer S_ScrollContainer => L_MarginContainer.L_VBoxContainer.L_VBoxContainer3.L_VBoxContainer2.L_ScrollContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.Items.ScoreLabel2
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.VBoxContainer2
     /// </summary>
-    public ScoreLabel2 S_ScoreLabel2 => L_MarginContainer.L_VBoxContainer.L_VBoxContainer2.L_ScrollContainer.L_Items.L_ScoreLabel2;
+    public VBoxContainer2 S_VBoxContainer2 => L_MarginContainer.L_VBoxContainer.L_VBoxContainer3.L_VBoxContainer2;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.Items.ScoreLabel3
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.HBoxContainer.TextureRect
     /// </summary>
-    public ScoreLabel3 S_ScoreLabel3 => L_MarginContainer.L_VBoxContainer.L_VBoxContainer2.L_ScrollContainer.L_Items.L_ScoreLabel3;
+    public TextureRect S_TextureRect => L_MarginContainer.L_VBoxContainer.L_VBoxContainer3.L_HBoxContainer.L_TextureRect;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.Items.ScoreLabel4
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.HBoxContainer.AcidCoinsLabel
     /// </summary>
-    public ScoreLabel4 S_ScoreLabel4 => L_MarginContainer.L_VBoxContainer.L_VBoxContainer2.L_ScrollContainer.L_Items.L_ScoreLabel4;
+    public AcidCoinsLabel S_AcidCoinsLabel => L_MarginContainer.L_VBoxContainer.L_VBoxContainer3.L_HBoxContainer.L_AcidCoinsLabel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.Items.ScoreLabel5
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.HBoxContainer
     /// </summary>
-    public ScoreLabel5 S_ScoreLabel5 => L_MarginContainer.L_VBoxContainer.L_VBoxContainer2.L_ScrollContainer.L_Items.L_ScoreLabel5;
+    public HBoxContainer S_HBoxContainer => L_MarginContainer.L_VBoxContainer.L_VBoxContainer3.L_HBoxContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.Items.ScoreLabel6
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3
     /// </summary>
-    public ScoreLabel6 S_ScoreLabel6 => L_MarginContainer.L_VBoxContainer.L_VBoxContainer2.L_ScrollContainer.L_Items.L_ScoreLabel6;
-
-    /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.ScoreLabel.ScoreLabelPanel"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.Items.ScoreLabel7
-    /// </summary>
-    public ScoreLabel7 S_ScoreLabel7 => L_MarginContainer.L_VBoxContainer.L_VBoxContainer2.L_ScrollContainer.L_Items.L_ScoreLabel7;
-
-    /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer.Items
-    /// </summary>
-    public Items S_Items => L_MarginContainer.L_VBoxContainer.L_VBoxContainer2.L_ScrollContainer.L_Items;
-
-    /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2.ScrollContainer
-    /// </summary>
-    public ScrollContainer S_ScrollContainer => L_MarginContainer.L_VBoxContainer.L_VBoxContainer2.L_ScrollContainer;
-
-    /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer2
-    /// </summary>
-    public VBoxContainer2 S_VBoxContainer2 => L_MarginContainer.L_VBoxContainer.L_VBoxContainer2;
+    public VBoxContainer3 S_VBoxContainer3 => L_MarginContainer.L_VBoxContainer.L_VBoxContainer3;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer.ReStartBtn

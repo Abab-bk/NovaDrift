@@ -83,11 +83,14 @@ public partial class MobBase : Actor
     public override void Die()
     {
         if (IsDead) return;
-        
-        var expBall = GD.Load<PackedScene>("res://Scenes/Vfx/ExpBall.tscn").Instantiate<ExpBall>();
-        expBall.Pos = GlobalPosition;
-        expBall.Exp = MobInfo.GetExp;
-        Global.GameWorld.AddChild(expBall);
+
+        var temp = new Vector2(10f, 10f);
+        for (int i = 0; i < MobInfo.GetExp; i++)
+        {
+            var expBall = GD.Load<PackedScene>("res://Scenes/Vfx/ExpBall.tscn").Instantiate<ExpBall>();
+            expBall.Pos = GlobalPosition + temp * i;
+            Global.GameWorld.AddChild(expBall);
+        }
         
         EventBus.OnMobDied?.Invoke(this);
         base.Die();

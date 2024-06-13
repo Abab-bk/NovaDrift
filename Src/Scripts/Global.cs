@@ -26,6 +26,25 @@ public enum GamePlatform
     Mobile,
 }
 
+public class GameContext
+{
+    public int Score;
+
+    public GameContext()
+    {
+        EventBus.OnMobDied += @base =>
+        {
+            var info = @base.MobInfo;
+            AddScore((int)(info.DangerFactor * info.Health));
+        };
+    }
+
+    public void AddScore(int amount)
+    {
+        Score += amount;
+    }
+}
+
 public static class Global
 {
     public static event Action OnAcidCoinsChanged;
@@ -39,6 +58,7 @@ public static class Global
     public static ShakeDirector2D ShakeDirector;
     public static FastNoiseLite Noise;
     public static WaveSpawnerController WaveSpawnerController;
+    public static GameContext GameContext = new GameContext();
 
     public static int AcidCoins
     {

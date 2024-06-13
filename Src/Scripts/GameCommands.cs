@@ -1,6 +1,60 @@
+using GDebugPanelGodot.Core;
+using GDebugPanelGodot.DebugActions.Containers;
+using GDebugPanelGodot.Extensions;
 using NovaDrift.Scripts.Prefabs.Components;
 
 namespace NovaDrift.Scripts;
+
+public class GameCommands
+{
+    private IDebugActionsSection _player;
+    private IDebugActionsSection _world;
+    
+    public GameCommands()
+    {
+        EventBus.OnGameStart += Generate;
+        // EventBus.OnGameOver += Remove;
+        Logger.Log("[Ui] Init debug panel class.");
+    }
+
+    private void Generate()
+    {
+        if (_player != null) return;
+        
+        Logger.Log("[Ui] Generate debug panel");
+        // Player
+        _player = GDebugPanel.AddSection("Player", new PlayerCommands());
+		
+        // World
+        var worldCommand = new WorldCommands();
+        var worldSection = GDebugPanel.AddSection("World", worldCommand);
+        _world = worldSection;
+		
+        var worldColor = WorldCommands.WorldColors.Red;
+		
+        worldSection.AddEnum("ColorType", val =>
+        {
+            worldColor = val;
+
+            switch (worldColor)
+            {
+                case WorldCommands.WorldColors.Red:
+                    Global.SetWorldColor(Constants.Colors.Red);
+                    break;
+                case WorldCommands.WorldColors.Blue:
+                    Global.SetWorldColor(Constants.Colors.Blue);
+                    break;
+            }
+        }, () => worldColor);
+    }
+
+    private void Remove()
+    {
+        Logger.Log("[Ui] Remove debug panel");
+        GDebugPanel.RemoveSection(_player);
+        GDebugPanel.RemoveSection(_world);
+    }
+}
 
 public sealed class PlayerCommands
 {
@@ -11,6 +65,13 @@ public sealed class PlayerCommands
     public void UseShieldById() => DataBuilder.BuildShieldById(SomethingId).Use();
     public void LevelUp() => Global.Player.UpLevel();
     public void RemoveAllEffects() => Global.Player.Stats.EffectSystem.RemoveAllEffects();
+    public void PrintAllAbilities()
+    {
+        foreach (var ability in Global.Player.Stats.EffectSystem.Abilities)
+        {
+            Logger.Log("[Player] Has ability: " + ability.Name);
+        }
+    }
 
     public void ApplyBuildById()
     {

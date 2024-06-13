@@ -12,6 +12,6 @@ public class MobInfo
     public float BulletCount;
     public float Size;
     public int DangerFactor; // and is cost for the wave
-    public float GetExp;
+    public int GetExp;
     public string ScenePath;
 }

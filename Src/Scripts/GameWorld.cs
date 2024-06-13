@@ -19,6 +19,8 @@ public partial class GameWorld : Node2D
 	private Joystick _moveJoystick;
 	private Joystick _aimJoystick;
 	
+	private GameCommands _gameCommands;
+	
 	public override void _Ready()
 	{
 		SoundManager.Initialize();
@@ -56,7 +58,7 @@ public partial class GameWorld : Node2D
 
 		Global.Something = GetNode<Node2D>("Something");
 		
-		GenerateDebugPanel();
+		_gameCommands = new GameCommands();
 		
 		if (Global.CurrentPlatform != GamePlatform.Desktop)
 		{
@@ -134,33 +136,5 @@ public partial class GameWorld : Node2D
 		
 		Global.Player.RemoveSelf();
 		UiManager.Open_GameOver();
-	}
-	
-	private void GenerateDebugPanel()
-	{
-		Logger.Log("[Ui] Generate debug panel");
-		// Player
-		GDebugPanel.AddSection("Player", new PlayerCommands());
-		
-		// World
-		var worldCommand = new WorldCommands();
-		var worldSection = GDebugPanel.AddSection("World", worldCommand);
-		
-		var worldColor = WorldCommands.WorldColors.Red;
-		
-		worldSection.AddEnum("ColorType", val =>
-		{
-			worldColor = val;
-
-			switch (worldColor)
-			{
-				case WorldCommands.WorldColors.Red:
-					Global.SetWorldColor(Constants.Colors.Red);
-					break;
-				case WorldCommands.WorldColors.Blue:
-					Global.SetWorldColor(Constants.Colors.Blue);
-					break;
-			}
-		}, () => worldColor);
 	}
 }

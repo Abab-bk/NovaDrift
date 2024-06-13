@@ -2,7 +2,7 @@
 
 [ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_lc62x"]
 [ext_resource type="Script" path="res://Scripts/Ui/gameOver/GameOverPanel.cs" id="1_vr5sb"]
-[ext_resource type="PackedScene" uid="uid://p7pbjwu7qthd" path="res://Scenes/Ui/ScoreLabel.tscn" id="3_velny"]
+[ext_resource type="Texture2D" uid="uid://bxgf6nfesr5ch" path="res://Assets/Ui/AcidCoin.png" id="3_1vboj"]
 
 [node name="GameOver" type="Control"]
 layout_mode = 3
@@ -28,54 +28,58 @@ theme_override_constants/margin_bottom = 200
 layout_mode = 2
 theme_override_constants/separation = 40
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer3"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 1
 theme_override_font_sizes/font_size = 200
 text = "GameOver"
 horizontal_alignment = 1
 
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer2"]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Items" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer2/ScrollContainer"]
+[node name="Items" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer3/VBoxContainer2/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="ScoreLabel" parent="MarginContainer/VBoxContainer/VBoxContainer2/ScrollContainer/Items" instance=ExtResource("3_velny")]
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer3"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+theme_override_constants/separation = 10
+alignment = 1
 
-[node name="ScoreLabel2" parent="MarginContainer/VBoxContainer/VBoxContainer2/ScrollContainer/Items" instance=ExtResource("3_velny")]
-custom_minimum_size = Vector2(0, 100)
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 50
+text = "获得："
+vertical_alignment = 1
 
-[node name="ScoreLabel3" parent="MarginContainer/VBoxContainer/VBoxContainer2/ScrollContainer/Items" instance=ExtResource("3_velny")]
-custom_minimum_size = Vector2(0, 100)
+[node name="TextureRect" type="TextureRect" parent="MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
 layout_mode = 2
+texture = ExtResource("3_1vboj")
+expand_mode = 1
+stretch_mode = 5
 
-[node name="ScoreLabel4" parent="MarginContainer/VBoxContainer/VBoxContainer2/ScrollContainer/Items" instance=ExtResource("3_velny")]
-custom_minimum_size = Vector2(0, 100)
+[node name="AcidCoinsLabel" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer3/HBoxContainer"]
+unique_name_in_owner = true
 layout_mode = 2
-
-[node name="ScoreLabel5" parent="MarginContainer/VBoxContainer/VBoxContainer2/ScrollContainer/Items" instance=ExtResource("3_velny")]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="ScoreLabel6" parent="MarginContainer/VBoxContainer/VBoxContainer2/ScrollContainer/Items" instance=ExtResource("3_velny")]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
-
-[node name="ScoreLabel7" parent="MarginContainer/VBoxContainer/VBoxContainer2/ScrollContainer/Items" instance=ExtResource("3_velny")]
-custom_minimum_size = Vector2(0, 100)
-layout_mode = 2
+size_flags_vertical = 1
+theme_override_font_sizes/font_size = 50
+text = "1234"
+vertical_alignment = 1
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2

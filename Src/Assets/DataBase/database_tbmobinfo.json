@@ -11,7 +11,7 @@
     "bullet_count": 4,
     "size": 0.5,
     "danger_factor": 1,
-    "get_exp": 1.5
+    "get_exp": 1
   },
   {
     "id": 1002,
@@ -25,7 +25,7 @@
     "bullet_count": 1,
     "size": 1,
     "danger_factor": 1,
-    "get_exp": 1.5
+    "get_exp": 1
   },
   {
     "id": 1003,
@@ -67,7 +67,7 @@
     "bullet_count": 1,
     "size": 1,
     "danger_factor": 4,
-    "get_exp": 3.5
+    "get_exp": 3
   },
   {
     "id": 1006,

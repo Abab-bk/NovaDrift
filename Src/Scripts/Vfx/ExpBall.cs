@@ -6,7 +6,6 @@ namespace NovaDrift.Scripts.Vfx;
 public partial class ExpBall : BaseVfx
 {
     public Vector2 Pos;
-    public float Exp;
     
     public override void _Ready()
     {
@@ -15,7 +14,7 @@ public partial class ExpBall : BaseVfx
         this.TweenGlobalPosition(Global.Player.GlobalPosition, 0.2f)
             .OnComplete(() =>
             {
-                Global.Player.Stats.Exp.Increase(Exp);
+                Global.Player.Stats.Exp.Increase(1);
                 OnAnimationEnd?.Invoke();
             })
             .Play();

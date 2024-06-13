@@ -208,6 +208,7 @@ public partial class Player : Actor
 
     private void UpdateUi(float value = 0)
     {
+        if (UiManager.Get_Hud_Instance().Length <= 0) return;
         UiManager.Get_Hud_Instance()[0].UpdateExpBar(Stats.Exp.BaseValue / Stats.Exp.MaxValue.Value);
         UiManager.Get_Hud_Instance()[0].UpdateHpBar(Stats.Health.BaseValue / Stats.Health.MaxValue.Value);
     }
@@ -216,6 +217,7 @@ public partial class Player : Actor
     {
         Stats.BuffSystem.RemoveAllBuffs();
         Stats.EffectSystem.RemoveAllEffects();
+        Global.Player = null;
         CallDeferred(Node.MethodName.QueueFree);
     }
     
