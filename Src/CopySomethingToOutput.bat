@@ -1,0 +1,5 @@
+﻿xcopy /E /I "E:\Dev\Godot\NovaDrift\Src\Assets\Audios" "E:\Dev\Godot\Export\NovaDrift\Assets\Audios"
+copy "E:\Dev\Godot\NovaDrift\Src\fmod.dll" "E:\Dev\Godot\Export\NovaDrift"
+copy "E:\Dev\Godot\NovaDrift\Src\fmodstudio.dll" "E:\Dev\Godot\Export\NovaDrift"
+copy "E:\Dev\Godot\NovaDrift\Src\fmodL.dll" "E:\Dev\Godot\Export\NovaDrift"
+copy "E:\Dev\Godot\NovaDrift\Src\fmodstudioL.dll" "E:\Dev\Godot\Export\NovaDrift"
