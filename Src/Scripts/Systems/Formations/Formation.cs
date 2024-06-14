@@ -12,13 +12,16 @@ public class Formation
     public List<Vector2> UnitPoints = new List<Vector2>();
 
     private FormationPainter _painter;
-    private float _averageSpeed = 0f;
+    private float _averageSpeed;
+    private float _averageAcceleration;
 
     public void Move(Vector2 dir, float delta)
     {
         foreach (var unit in Units)
         {
-            unit.Velocity = _averageSpeed * dir * delta;
+            var targetVelocity = _averageSpeed * dir;
+            unit.Velocity = unit.Velocity.MoveToward(targetVelocity, _averageAcceleration * delta);
+            
             unit.MoveAndSlide();
         }
     }
@@ -36,17 +39,22 @@ public class Formation
 
     public void GenerateLeader()
     {
-        _painter = new FormationPainter() { UnitPoints = UnitPoints};
-        Global.GameWorld.AddChild(_painter);
         Leader = Units[Units.Count / 2];
+
+        // _painter = new FormationPainter() { UnitPoints = UnitPoints};
+        // Leader.AddChild(_painter);
 
         _averageSpeed = Units
             .SelectMany(mob => Enumerable.Repeat(mob.Stats.Speed.Value, 1))
+            .Average();
+        _averageAcceleration = Units
+            .SelectMany(mob => Enumerable.Repeat(mob.Stats.Acceleration.Value, 1))
             .Average();
         
         Logger.Log($"""
                     [Formation] Leader: {Leader.Name}
                                 Average Speed: {_averageSpeed}
+                                Average Acceleration: {_averageAcceleration}
                     """);
     }
 }

@@ -1,5 +1,3 @@
-using Godot;
-using System;
 using NovaDrift.Scripts.Prefabs.Components;
 using NovaDrift.Scripts.Systems;
 
@@ -7,6 +5,11 @@ namespace NovaDrift.Scripts.Prefabs.Weapons;
 
 public partial class GrenadeShooter : Shooter
 {
+    public override void SetShootCd(float value)
+    {
+        base.SetShootCd(value * 2f);
+    }
+
     public override void _Ready()
     {
         GetBulletFunc = (shooter) => new BulletBuilder(BulletBuilder.BulletType.Grenade)

@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://pdmytcktxyd4"]
 
 [ext_resource type="Script" path="res://Scripts/Prefabs/Bullets/Grenade.cs" id="1_w6nxe"]
-[ext_resource type="Texture2D" uid="uid://8dr0nt368qv8" path="res://Assets/Textures/Circle.png" id="2_6ns1w"]
+[ext_resource type="Texture2D" uid="uid://cxejasd17b4yf" path="res://Assets/Textures/Bullets/FireBall.png" id="2_vihny"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HitBox.cs" id="3_v32kf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_u0mna"]
@@ -12,7 +12,7 @@ script = ExtResource("1_w6nxe")
 _hitBox = NodePath("HitBox")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_6ns1w")
+texture = ExtResource("2_vihny")
 
 [node name="HitBox" type="Area2D" parent="."]
 script = ExtResource("3_v32kf")

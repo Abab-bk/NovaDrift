@@ -10,7 +10,17 @@ USER ERROR: Parent node is busy adding/removing children, `remove_child()` can't
 [Log][Global] Try Resume game. Stop count: 0
 [Log][Ui] Generate debug panel
 [Log][Global] Try Stop game. Stop count: 1
-[Log][Formation] Leader: Pulsar
-            Average Speed: 325
-[Log][Wave Spawner] æäººçææ°é: 2, éµåï¼CircleSpawnType
 [Log][Global] Try Resume game. Stop count: 0
+
+================================================================
+CrashHandlerException: Program crashed with signal 11
+Engine version: Godot Engine v4.3.beta1.mono.official (a4f2ea91a1bd18f70a43ff4c1377db49b56bc3f0)
+Dumping the backtrace. 
+[1] error(-1): no debug info in PE/COFF executable
+[2] error(-1): no debug info in PE/COFF executable
+[3] error(-1): no debug info in PE/COFF executable
+[4] error(-1): no debug info in PE/COFF executable
+[5] error(-1): no debug info in PE/COFF executable
+[6] error(-1): no debug info in PE/COFF executable
+-- END OF BACKTRACE --
+================================================================

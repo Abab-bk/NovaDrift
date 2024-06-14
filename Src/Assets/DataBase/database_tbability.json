@@ -409,7 +409,9 @@
     "id": 1038,
     "name": "反射护盾",
     "desc": "当你受到盾牌击中时，你的盾牌会向攻击者的方向释放能量，造成爆炸伤害\n+5% 最大护盾",
-    "values": [],
+    "values": [
+      0.05
+    ],
     "class_name": "ReflexiveShields",
     "tree_id": 1010
   },
@@ -484,7 +486,10 @@
     "id": 1045,
     "name": "护盾效果半径",
     "desc": "+25% 护盾效果半径\n+10% 护盾效果强度\n增强护盾效果和攻击",
-    "values": [],
+    "values": [
+      0.25,
+      0.1
+    ],
     "class_name": "ShieldEffectRadius",
     "tree_id": 1012
   },

@@ -15,7 +15,7 @@ public partial class BulletBase : Node2D
 
     public Actor Target;
     
-    public event Action<float> OnMove;
+    public Action<float> OnMove;
     public event Action<Actor> OnHit;
     
     public bool IsPlayer = false;
@@ -24,7 +24,7 @@ public partial class BulletBase : Node2D
     public float Size = 1f;
     public float Degeneration = 0.8f;
 
-    private Vector2 _velocity = Vector2.Zero;
+    protected Vector2 Velocity = Vector2.Zero;
 
     public float Damage
     {
@@ -36,13 +36,13 @@ public partial class BulletBase : Node2D
         }
     }
 
-    private Stat _damage = new Stat(1f);
-    private Vector2 _lastPosition = new Vector2();
+    protected Stat _damage = new Stat(1f);
+    protected Vector2 LastPosition = new Vector2();
     public Vector2 Direction = Vector2.Right;
 
     public float Steering;
-    private Node2D _targetingActor;
-    private Vector2 _acceleration = Vector2.Zero;
+    protected Node2D TargetingActor;
+    protected Vector2 Acceleration = Vector2.Zero;
 
     protected void TakeOnHitEvent(Actor obj)
     {
@@ -51,7 +51,7 @@ public partial class BulletBase : Node2D
 
     public override void _Ready()
     {
-        _velocity = Direction * Speed;
+        Velocity = Direction * Speed;
         Rotation = Direction.Angle();
         
         _hitBox.SetIsPlayer(IsPlayer);
@@ -63,7 +63,7 @@ public partial class BulletBase : Node2D
 
         if (Steering > 0)
         {
-            _targetingActor = Wizard.GetClosestTarget(this, IsPlayer ? "Mobs" : "Players");
+            TargetingActor = Wizard.GetClosestTarget(this, IsPlayer ? "Mobs" : "Players");
         }
     }
 
@@ -81,9 +81,9 @@ public partial class BulletBase : Node2D
 
     private Vector2 Seek()
     {
-        if (!IsInstanceValid(_targetingActor)) return Vector2.Zero;
-        var desired = GlobalPosition.DirectionTo(_targetingActor.GlobalPosition) * Speed;
-        return (desired - _velocity).Normalized() * Steering;
+        if (!IsInstanceValid(TargetingActor)) return Vector2.Zero;
+        var desired = GlobalPosition.DirectionTo(TargetingActor.GlobalPosition) * Speed;
+        return (desired - Velocity).Normalized() * Steering;
     }
 
     protected virtual void Degenerate()
@@ -106,16 +106,16 @@ public partial class BulletBase : Node2D
 
     protected virtual void Move(double delta)
     {
-        OnMove?.Invoke(GlobalPosition.DistanceTo(_lastPosition));
+        OnMove?.Invoke(GlobalPosition.DistanceTo(LastPosition));
 
-        _acceleration += Seek();
+        Acceleration += Seek();
         
-        _velocity += _acceleration * (float)delta;
-        _velocity = _velocity.LimitLength(Speed);
-        Rotation = _velocity.Angle();
+        Velocity += Acceleration * (float)delta;
+        Velocity = Velocity.LimitLength(Speed);
+        Rotation = Velocity.Angle();
         
-        Position += _velocity * (float)delta;
+        Position += Velocity * (float)delta;
         
-        _lastPosition = GlobalPosition;
+        LastPosition = GlobalPosition;
     }
 }

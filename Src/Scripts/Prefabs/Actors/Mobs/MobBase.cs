@@ -1,5 +1,4 @@
 using System;
-using AcidWallStudio.SpringSystem;
 using Godot;
 using NovaDrift.Scripts.Systems;
 using NovaDrift.Scripts.Systems.Formations;
@@ -60,7 +59,7 @@ public partial class MobBase : Actor
         
         // if (Shooter != null) Shooter.Init();
         // Set position by formation.
-        GlobalPosition = Formation.GetPoint(this);
+        GlobalPosition = ToGlobal(Formation.GetPoint(this));
     }
     
     protected override void InitStats()
@@ -114,12 +113,12 @@ public partial class MobBase : Actor
     {
         Rotation = RotationTo(GlobalPosition.AngleToPoint(target.GlobalPosition), delta);
 
-        if (this == Formation.Leader)
-        {
-            Formation.Move(GlobalPosition.DirectionTo(target.GlobalPosition), delta);
-            return;
-        }
-        return;
+        // if (this == Formation.Leader)
+        // {
+        //     Formation.Move(GlobalPosition.DirectionTo(target.GlobalPosition), delta);
+        //     return;
+        // }
+        // return;
 
         TryMoveTo(GlobalPosition.DirectionTo(target.GlobalPosition), delta);
     }
@@ -128,12 +127,12 @@ public partial class MobBase : Actor
     {
         Rotation = RotationTo(GlobalPosition.AngleToPoint(dir), delta);
 
-        if (this == Formation.Leader)
-        {
-            Formation.Move(dir, (float)delta);
-            return;
-        }
-        return;
+        // if (this == Formation.Leader)
+        // {
+        //     Formation.Move(dir, (float)delta);
+        //     return;
+        // }
+        // return;
         
         var targetVelocity = dir * Stats.Speed.Value;
         Velocity = Velocity.MoveToward(targetVelocity, Stats.Acceleration.Value * (float)delta);

@@ -12,7 +12,7 @@ public partial class Pulse : BaseShooter
     
     public override void SetShootCd(float value)
     {
-        _shootTimer.WaitTime = value;
+        _shootTimer.WaitTime = value * 2f;
     }
 
     public override void Init()
