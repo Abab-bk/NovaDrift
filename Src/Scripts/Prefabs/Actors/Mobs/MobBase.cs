@@ -2,6 +2,7 @@ using System;
 using AcidWallStudio.SpringSystem;
 using Godot;
 using NovaDrift.Scripts.Systems;
+using NovaDrift.Scripts.Systems.Formations;
 using NovaDrift.Scripts.Vfx;
 
 namespace NovaDrift.Scripts.Prefabs.Actors.Mobs;
@@ -11,16 +12,17 @@ public partial class MobBase : Actor
     public MobInfo MobInfo;
     public bool IsBoss = false;
     public MobAiComponent Ai;
+    public Formation Formation;
 
     private Node2D _target;
     
     [Export] public string Sign;
 
-    private void AddNodeToSpring(Node node)
-    {
-        if (node is not Node2D node2D) return;
-        Spring.AddTargetPoint(new SpringInfo(SpringType.Push, node2D, 1000f));
-    }
+    // private void AddNodeToSpring(Node node)
+    // {
+    //     if (node is not Node2D node2D) return;
+    //     Spring.AddTargetPoint(new SpringInfo(SpringType.Push, node2D, 1000f));
+    // }
 
     public override void _Ready()
     {
@@ -29,24 +31,24 @@ public partial class MobBase : Actor
 
         Ai = GetNode<MobAiComponent>("%MobAiComponent");
         
-        EventBus.OnMobEnteredTree += (node) =>
-        {
-            if (IsBoss) return;
-            AddNodeToSpring(node);
-        };
+        // EventBus.OnMobEnteredTree += (node) =>
+        // {
+        //     if (IsBoss) return;
+        //     AddNodeToSpring(node);
+        // };
         
         base._Ready();
         AddToGroup("Mobs");
         
-        if (!IsBoss) Spring.AddTargetPoint(new SpringInfo(SpringType.Pull, Global.Player, 1f));
+        // if (!IsBoss) Spring.AddTargetPoint(new SpringInfo(SpringType.Pull, Global.Player, 1f));
         
-        foreach (var mob in GetTree().GetNodesInGroup("Mobs"))
-        {
-            if (IsBoss) break;
-            AddNodeToSpring(mob);
-        }
+        // foreach (var mob in GetTree().GetNodesInGroup("Mobs"))
+        // {
+        //     if (IsBoss) break;
+        //     AddNodeToSpring(mob);
+        // }
 
-        EventBus.OnMobDied += Spring.RemoveTargetPoint;
+        // EventBus.OnMobDied += Spring.RemoveTargetPoint;
 
         Stats.Health.ValueChanged += (value) =>
         {
@@ -57,6 +59,8 @@ public partial class MobBase : Actor
         };
         
         // if (Shooter != null) Shooter.Init();
+        // Set position by formation.
+        GlobalPosition = Formation.GetPoint(this);
     }
     
     protected override void InitStats()
@@ -109,32 +113,30 @@ public partial class MobBase : Actor
     public void SetTargetAndMove(Node2D target, float delta)
     {
         Rotation = RotationTo(GlobalPosition.AngleToPoint(target.GlobalPosition), delta);
-        // LookAt(target.GlobalPosition);
-        // TryMoveTo(GlobalPosition.DirectionTo(target.GlobalPosition), delta);
 
-        if (target != _target)
+        if (this == Formation.Leader)
         {
-            Spring.RemoveTargetPoint(_target);
-            _target = target;
-            Spring.AddTargetPoint(new SpringInfo(SpringType.Pull, _target, 1f));
+            Formation.Move(GlobalPosition.DirectionTo(target.GlobalPosition), delta);
+            return;
         }
+        return;
 
         TryMoveTo(GlobalPosition.DirectionTo(target.GlobalPosition), delta);
-        MoveAndSlide();
-    }
-
-    public void CleanTarget()
-    {
-        Spring.RemoveTargetPoint(_target);
-        _target = null;
     }
 
     public override void TryMoveTo(Vector2 dir, double delta)
     {
-        var targetVelocity = Spring.GetMovement() * Stats.Speed.Value;
-        // var targetVelocity = dir * Stats.Speed.Value;
-        // Velocity = Velocity.MoveToward(targetVelocity, Stats.Acceleration.Value * (float)delta);
-        Velocity = targetVelocity;
+        Rotation = RotationTo(GlobalPosition.AngleToPoint(dir), delta);
+
+        if (this == Formation.Leader)
+        {
+            Formation.Move(dir, (float)delta);
+            return;
+        }
+        return;
+        
+        var targetVelocity = dir * Stats.Speed.Value;
+        Velocity = Velocity.MoveToward(targetVelocity, Stats.Acceleration.Value * (float)delta);
     }
 
     public void LookForward(float delta)

@@ -42,7 +42,7 @@ public partial class TheDoctorAi : MobAiComponent
         base._Ready();
         Mob.IsBoss = true;
         await ToSignal(Owner, Node.SignalName.Ready);
-        Mob.Spring.RemoveTargetPoint(Global.Player);
+        // Mob.Spring.RemoveTargetPoint(Global.Player);
         SetMovePoint();
 
         SoundManager.LoadBank("TheDoctor.bank", out _bank);
@@ -280,7 +280,7 @@ public partial class TheDoctorAi : MobAiComponent
         switch (state.GetName())
         {
             case "WalkingOnEdge":
-                Mob.CleanTarget();
+                // Mob.CleanTarget();
                 Mob.Velocity = Vector2.Zero;
                 break;
         }

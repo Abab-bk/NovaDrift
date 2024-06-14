@@ -7,6 +7,7 @@ using KaimiraGames;
 using NovaDrift.addons.AcidUtilities;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
 using NovaDrift.Scripts.Systems;
+using NovaDrift.Scripts.Systems.Formations;
 
 namespace NovaDrift.Scripts.Prefabs.Components;
 
@@ -32,6 +33,7 @@ public partial class WaveSpawner : Node2D
     public void GenerateWave(Vector2 pos = default)
     {
         List<MobInfo> generatedMobs = [];
+        List<MobBase> generatedUnits = [];
         
         while (Cost > 0)
         {
@@ -45,18 +47,23 @@ public partial class WaveSpawner : Node2D
         var spawnType = FuncSpawnTypeList.Next();
         spawnType.SetMobCount(generatedMobs.Count);
         
-        var mobIndex = 0;
+        var formation = new Formation()
+        {
+            Units = generatedUnits,
+            UnitPoints = spawnType.GetPoints()
+        };
         
         foreach (var mobInfo in generatedMobs)
         {
             var mob = new MobBuilder(mobInfo).Build();
-            Global.GameWorld.AddChild(mob);
-            
-            mob.GlobalPosition = ToGlobal(spawnType.GetSpawnPosition(mobIndex));
+            generatedUnits.Add(mob);
 
-            mobIndex += 1;
+            mob.Formation = formation;
+            Global.GameWorld.AddChild(mob);
         }
 
+        formation.GenerateLeader();
+        
         if (pos == default)
         {
             RandomMove();
@@ -111,7 +118,12 @@ public class SpawnType
     {
         return Shape.GetPosByIndex(mobCount);
     }
-    
+
+    public List<Vector2> GetPoints()
+    {
+        return Shape.Points;
+    }
+
     public virtual void SetMobCount(int mobCount)
     {
     }

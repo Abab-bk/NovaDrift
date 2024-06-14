@@ -13,11 +13,10 @@ _data = {
 "RESET": SubResource("Animation_b5fuf")
 }
 
-[node name="ActorBase" type="CharacterBody2D" node_paths=PackedStringArray("_hurtBox", "Spring", "_visibleOnScreenNotifier2D")]
+[node name="ActorBase" type="CharacterBody2D" node_paths=PackedStringArray("_hurtBox", "_visibleOnScreenNotifier2D")]
 motion_mode = 1
 script = ExtResource("1_s858g")
 _hurtBox = NodePath("Components/HurtBox")
-Spring = NodePath("Spring")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

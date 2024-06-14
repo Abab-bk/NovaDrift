@@ -19,7 +19,7 @@ public partial class MathematiciansAi : MobAiComponent
         base._Ready();
         Mob.IsBoss = true;
         await ToSignal(Owner, Node.SignalName.Ready);
-        Mob.Spring.RemoveTargetPoint(Global.Player);
+        // Mob.Spring.RemoveTargetPoint(Global.Player);
         SetMapCorner();
         SoundManager.LoadBank("Mathematicians.bank", out _bank);
     }
@@ -40,7 +40,7 @@ public partial class MathematiciansAi : MobAiComponent
                 Mob.SetTargetAndMove(_mapCorner, delta);
                 if (Mob.GlobalPosition.DistanceTo(Wizard.GetScreenCenter()) <= 40)
                 {
-                    Mob.CleanTarget();
+                    // Mob.CleanTarget();
                     Machine.SetTrigger("Next");
                 }
                 break;

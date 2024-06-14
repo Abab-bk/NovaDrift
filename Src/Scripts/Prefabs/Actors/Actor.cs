@@ -19,7 +19,7 @@ public partial class Actor : CharacterBody2D
     
     [Export] private HurtBox _hurtBox;
     
-    [Export] public Spring Spring;
+    // [Export] public Spring Spring;
     [Export] protected Sprite2D Sprite;
     
     [Export] private VisibleOnScreenNotifier2D _visibleOnScreenNotifier2D;

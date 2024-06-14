@@ -76,6 +76,7 @@ public partial class WaveSpawnerController : Node2D
 
     public void GenerateWave()
     {
+        if (GetTree().GetNodesInGroup("Mobs").Count >= 20) return;
         var waveSpawner = new WaveSpawner();
         waveSpawner.Cost = GetCost();
         AddChild(waveSpawner);
@@ -105,6 +106,7 @@ public partial class WaveSpawnerController : Node2D
         {
             _sawBossCount += 1;
             _nextIsBoss = false; 
+            if (!_enabled) return;
             _clock.Start();
             Logger.Log("[Wave Spawner] Boss wave end, start clock.");
         };
@@ -123,6 +125,7 @@ public partial class WaveSpawnerController : Node2D
             _nextIsBoss = true;
         }
         
+        if (!_enabled) return;
         _clock.Start();
     }
 
