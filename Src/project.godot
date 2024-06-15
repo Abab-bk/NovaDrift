@@ -28,7 +28,7 @@ DSP/dsp_buffer_count=4
 
 [application]
 
-config/name="NovaDrift"
+config/name="The Last Breath of Gemini"
 config/tags=PackedStringArray("acidwall")
 run/main_scene="res://Scenes/BootSplash.tscn"
 config/features=PackedStringArray("4.3", "C#", "Mobile")
@@ -135,4 +135,4 @@ viewport/hdr_2d=true
 [run_configs]
 
 data/configs=["{\"custom_scene\":\"\",\"environment_variables\":{\"ShowStartMenu\":\"false\"},\"name\":\"Debug\",\"play_mode\":0}", "{\"custom_scene\":\"\",\"environment_variables\":{\"ShowStartMenu\":\"true\"},\"name\":\"Release\",\"play_mode\":0}"]
-data/current=-1
+data/current=1

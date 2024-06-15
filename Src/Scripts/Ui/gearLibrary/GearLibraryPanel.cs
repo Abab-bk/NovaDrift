@@ -40,6 +40,8 @@ public partial class GearLibraryPanel : GearLibrary
     private void ChangePageTo(Page page)
     {
         var instance = L_VBoxContainer.L_Content.L_Content.Instance;
+     
+        if (instance.CurrentTab == (int)page) return;
         
         instance.TweenModulateAlpha(0f, 0.1f)
             .SetEasing(Easing.OutCubic)
