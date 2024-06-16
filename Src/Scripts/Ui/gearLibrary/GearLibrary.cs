@@ -961,6 +961,15 @@ public abstract partial class GearLibrary : UiBase
     }
 
     /// <summary>
+    /// 类型: <see cref="Godot.Control"/>, 路径: GearLibrary.VBoxContainer.Content.Content.Inventory
+    /// </summary>
+    public class Inventory : UiNode<GearLibraryPanel, Godot.Control, Inventory>
+    {
+        public Inventory(GearLibraryPanel uiPanel, Godot.Control node) : base(uiPanel, node) {  }
+        public override Inventory Clone() => new (UiPanel, (Godot.Control)Instance.Duplicate());
+    }
+
+    /// <summary>
     /// 类型: <see cref="Godot.TabContainer"/>, 路径: GearLibrary.VBoxContainer.Content.Content
     /// </summary>
     public class Content_1 : UiNode<GearLibraryPanel, Godot.TabContainer, Content_1>
@@ -1029,6 +1038,19 @@ public abstract partial class GearLibrary : UiBase
             }
         }
         private Gear _L_Gear;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Control"/>, 节点路径: GearLibrary.VBoxContainer.Content.Inventory
+        /// </summary>
+        public Inventory L_Inventory
+        {
+            get
+            {
+                if (_L_Inventory == null) _L_Inventory = new Inventory(UiPanel, Instance.GetNode<Godot.Control>("Inventory"));
+                return _L_Inventory;
+            }
+        }
+        private Inventory _L_Inventory;
 
         public Content_1(GearLibraryPanel uiPanel, Godot.TabContainer node) : base(uiPanel, node) {  }
         public override Content_1 Clone() => new (UiPanel, (Godot.TabContainer)Instance.Duplicate());
@@ -1102,6 +1124,15 @@ public abstract partial class GearLibrary : UiBase
     }
 
     /// <summary>
+    /// 类型: <see cref="Godot.Button"/>, 路径: GearLibrary.VBoxContainer.BottomBar.MarginContainer.HBoxContainer.InventoryBtn
+    /// </summary>
+    public class InventoryBtn : UiNode<GearLibraryPanel, Godot.Button, InventoryBtn>
+    {
+        public InventoryBtn(GearLibraryPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
+        public override InventoryBtn Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
+    }
+
+    /// <summary>
     /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: GearLibrary.VBoxContainer.BottomBar.MarginContainer.HBoxContainer
     /// </summary>
     public class HBoxContainer_1 : UiNode<GearLibraryPanel, Godot.HBoxContainer, HBoxContainer_1>
@@ -1170,6 +1201,19 @@ public abstract partial class GearLibrary : UiBase
             }
         }
         private GearBtn _L_GearBtn;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: GearLibrary.VBoxContainer.BottomBar.MarginContainer.InventoryBtn
+        /// </summary>
+        public InventoryBtn L_InventoryBtn
+        {
+            get
+            {
+                if (_L_InventoryBtn == null) _L_InventoryBtn = new InventoryBtn(UiPanel, Instance.GetNode<Godot.Button>("InventoryBtn"));
+                return _L_InventoryBtn;
+            }
+        }
+        private InventoryBtn _L_InventoryBtn;
 
         public HBoxContainer_1(GearLibraryPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
         public override HBoxContainer_1 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
@@ -1320,6 +1364,11 @@ public abstract partial class GearLibrary : UiBase
     public Gear S_Gear => L_VBoxContainer.L_Content.L_Content.L_Gear;
 
     /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Control"/>, 节点路径: GearLibrary.VBoxContainer.Content.Content.Inventory
+    /// </summary>
+    public Inventory S_Inventory => L_VBoxContainer.L_Content.L_Content.L_Inventory;
+
+    /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: GearLibrary.VBoxContainer.BottomBar.MarginContainer.HBoxContainer.HomeBtn
     /// </summary>
     public HomeBtn S_HomeBtn => L_VBoxContainer.L_BottomBar.L_MarginContainer.L_HBoxContainer.L_HomeBtn;
@@ -1343,6 +1392,11 @@ public abstract partial class GearLibrary : UiBase
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: GearLibrary.VBoxContainer.BottomBar.MarginContainer.HBoxContainer.GearBtn
     /// </summary>
     public GearBtn S_GearBtn => L_VBoxContainer.L_BottomBar.L_MarginContainer.L_HBoxContainer.L_GearBtn;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: GearLibrary.VBoxContainer.BottomBar.MarginContainer.HBoxContainer.InventoryBtn
+    /// </summary>
+    public InventoryBtn S_InventoryBtn => L_VBoxContainer.L_BottomBar.L_MarginContainer.L_HBoxContainer.L_InventoryBtn;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.PanelContainer"/>, 节点路径: GearLibrary.VBoxContainer.BottomBar

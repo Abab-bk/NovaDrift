@@ -1,17 +1,31 @@
 ﻿using System;
+using AcidWallStudio.AcidUtilities;
 using Godot;
 
 namespace NovaDrift.Scripts.Prefabs.Ai;
 
 public partial class Beamcaster : MobAiComponent
 {
+    [Export] private Timer _timer;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        _timer.Timeout += () => { Machine.SetTrigger("Next"); };
+    }
+
     protected override void ConnectProcessSignals(State state, float delta)
     {
         base.ConnectProcessSignals(state, delta);
         switch (state.GetName())
         {
-            case "GoingToPlayer": _OnGoingToPlayerProcess(delta); break;
-            case "Shoot": _OnShootStateProcess(delta); break;
+            case "Moving":
+                var dir = Wizard.GetRandom8Dir();
+                Mob.TryMoveTo(dir, delta);
+                break;
+            case "Idle":
+                Mob.TryStop(delta);
+                break;
         }
     }
 
@@ -20,28 +34,14 @@ public partial class Beamcaster : MobAiComponent
         base.ConnectEnteredSignals(state);
         switch (state.GetName())
         {
-            case "Idle": _OnIdleStateEntered(); break;
+            case "Moving":
+                _timer.WaitTime = Random.Shared.FloatRange(3f, 7f);
+                _timer.Start();
+                break;
+            case "Idle":
+                _timer.WaitTime = Random.Shared.FloatRange(1f, 2f);
+                _timer.Start();
+                break;
         }
-    }
-    
-    
-    private void _OnShootStateProcess(float delta)
-    {
-        Machine.SetBoolean("PlayerInShootRange", PlayerInShootRange());
-        Mob.Shoot();
-        
-        Mob.Velocity = (Mob.GlobalPosition - Global.Player.GlobalPosition).Normalized().Rotated(MathF.PI / 2) *
-                       Mob.Stats.Speed.Value;
-        Mob.Rotation = Mob.RotationTo(Mob.Velocity.Angle(), delta);
-    }
-    private void _OnGoingToPlayerProcess(float delta)
-    {
-        Machine.SetBoolean("PlayerInShootRange", PlayerInShootRange());
-        Mob.SetTargetAndMove(Global.Player, delta);
-    }
-    
-    private void _OnIdleStateEntered()
-    {
-        Machine.SetBoolean("PlayerInShootRange", PlayerInShootRange());
     }
 }

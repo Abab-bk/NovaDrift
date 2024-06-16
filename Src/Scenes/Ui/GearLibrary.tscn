@@ -1,10 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://cfvvytcyydqm2"]
+[gd_scene load_steps=10 format=3 uid="uid://cfvvytcyydqm2"]
 
 [ext_resource type="Script" path="res://Scripts/Ui/gearLibrary/GearLibraryPanel.cs" id="1_gvu8f"]
 [ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_ty5j2"]
 [ext_resource type="Texture2D" uid="uid://bxgf6nfesr5ch" path="res://Assets/Ui/AcidCoin.png" id="3_kwh44"]
 [ext_resource type="PackedScene" uid="uid://41abw4lldbif" path="res://Scenes/Ui/GoodsItem.tscn" id="3_y5l0t"]
 [ext_resource type="Texture2D" uid="uid://cn8c0akvxkwx8" path="res://Assets/Ui/Buttons/CloseBtn.png" id="4_b6yji"]
+[ext_resource type="PackedScene" uid="uid://bka24mbwy5opj" path="res://Scenes/Ui/Inventory.tscn" id="5_0dskv"]
 [ext_resource type="Texture2D" uid="uid://byathwnpybua5" path="res://Assets/Ui/Buttons/CloseBtnPressed.png" id="5_plx3n"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7wgcd"]
@@ -76,10 +77,11 @@ theme_override_constants/margin_bottom = 95
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 0
+current_tab = 5
 tabs_visible = false
 
 [node name="Home" type="VBoxContainer" parent="VBoxContainer/Content/Content"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 20
 metadata/_tab_index = 0
@@ -255,6 +257,10 @@ layout_mode = 2
 size_flags_horizontal = 1
 _id = 1007
 
+[node name="Inventory" parent="VBoxContainer/Content/Content" instance=ExtResource("5_0dskv")]
+visible = true
+layout_mode = 2
+
 [node name="BottomBar" type="PanelContainer" parent="VBoxContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
@@ -312,6 +318,15 @@ theme_type_variation = &"StoreBtn"
 toggle_mode = true
 button_group = SubResource("ButtonGroup_ffk7i")
 text = "装备皮肤"
+
+[node name="InventoryBtn" type="Button" parent="VBoxContainer/BottomBar/MarginContainer/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 0)
+layout_mode = 2
+theme_type_variation = &"StoreBtn"
+toggle_mode = true
+button_group = SubResource("ButtonGroup_ffk7i")
+text = "已拥有"
 
 [node name="CloseBtn" type="TextureButton" parent="."]
 unique_name_in_owner = true

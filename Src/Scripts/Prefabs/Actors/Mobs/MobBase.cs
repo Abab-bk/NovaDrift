@@ -1,7 +1,6 @@
 using System;
 using Godot;
 using NovaDrift.Scripts.Systems;
-using NovaDrift.Scripts.Systems.Formations;
 using NovaDrift.Scripts.Vfx;
 
 namespace NovaDrift.Scripts.Prefabs.Actors.Mobs;
@@ -11,17 +10,10 @@ public partial class MobBase : Actor
     public MobInfo MobInfo;
     public bool IsBoss = false;
     public MobAiComponent Ai;
-    public Formation Formation;
 
     private Node2D _target;
     
     [Export] public string Sign;
-
-    // private void AddNodeToSpring(Node node)
-    // {
-    //     if (node is not Node2D node2D) return;
-    //     Spring.AddTargetPoint(new SpringInfo(SpringType.Push, node2D, 1000f));
-    // }
 
     public override void _Ready()
     {
@@ -30,25 +22,9 @@ public partial class MobBase : Actor
 
         Ai = GetNode<MobAiComponent>("%MobAiComponent");
         
-        // EventBus.OnMobEnteredTree += (node) =>
-        // {
-        //     if (IsBoss) return;
-        //     AddNodeToSpring(node);
-        // };
-        
         base._Ready();
         AddToGroup("Mobs");
         
-        // if (!IsBoss) Spring.AddTargetPoint(new SpringInfo(SpringType.Pull, Global.Player, 1f));
-        
-        // foreach (var mob in GetTree().GetNodesInGroup("Mobs"))
-        // {
-        //     if (IsBoss) break;
-        //     AddNodeToSpring(mob);
-        // }
-
-        // EventBus.OnMobDied += Spring.RemoveTargetPoint;
-
         Stats.Health.ValueChanged += (value) =>
         {
             if (value <= 0)
@@ -57,9 +33,7 @@ public partial class MobBase : Actor
             }
         };
         
-        // if (Shooter != null) Shooter.Init();
-        // Set position by formation.
-        GlobalPosition = ToGlobal(Formation.GetPoint(this));
+        if (Shooter != null) Shooter.Init();
     }
     
     protected override void InitStats()
@@ -112,28 +86,13 @@ public partial class MobBase : Actor
     public void SetTargetAndMove(Node2D target, float delta)
     {
         Rotation = RotationTo(GlobalPosition.AngleToPoint(target.GlobalPosition), delta);
-
-        // if (this == Formation.Leader)
-        // {
-        //     Formation.Move(GlobalPosition.DirectionTo(target.GlobalPosition), delta);
-        //     return;
-        // }
-        // return;
-
+        
         TryMoveTo(GlobalPosition.DirectionTo(target.GlobalPosition), delta);
     }
 
     public override void TryMoveTo(Vector2 dir, double delta)
     {
         Rotation = RotationTo(GlobalPosition.AngleToPoint(dir), delta);
-
-        // if (this == Formation.Leader)
-        // {
-        //     Formation.Move(dir, (float)delta);
-        //     return;
-        // }
-        // return;
-        
         var targetVelocity = dir * Stats.Speed.Value;
         Velocity = Velocity.MoveToward(targetVelocity, Stats.Acceleration.Value * (float)delta);
     }

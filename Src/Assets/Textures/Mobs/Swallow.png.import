@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bprp1wniehwt4"
-path="res://.godot/imported/Beamcaster2.png-298451fdf95c7abfa0777a0350f5b0f8.ctex"
+uid="uid://c3kxn0hjlim77"
+path="res://.godot/imported/Swallow.png-3ba170300802e656e3f1c40ce51c7fbc.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/Textures/Mobs/Beamcaster2.png"
-dest_files=["res://.godot/imported/Beamcaster2.png-298451fdf95c7abfa0777a0350f5b0f8.ctex"]
+source_file="res://Assets/Textures/Mobs/Swallow.png"
+dest_files=["res://.godot/imported/Swallow.png-3ba170300802e656e3f1c40ce51c7fbc.ctex"]
 
 [params]
 

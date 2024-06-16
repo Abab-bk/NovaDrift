@@ -10,6 +10,8 @@ namespace AcidWallStudio.AcidUtilities;
 public static class Wizard
 {
     const float MapPadding = 100f;
+    
+    public static List<Vector2> EightDirs = new List<Vector2>();
     private static readonly Vector2[] MapCorners = new []
     {
         // 右下
@@ -21,7 +23,17 @@ public static class Wizard
         // 右上
         new Vector2((float)ProjectSettings.GetSetting("display/window/size/viewport_width") - MapPadding, MapPadding)
     };
-    
+
+    static Wizard()
+    {
+        for (int i = 0; i < 8; i++)
+        {
+            float angle = i * 45; // 计算每个方向的角度（0, 45, 90, ...）
+            Vector2 direction = Vector2.Right.Rotated(Mathf.DegToRad(angle)); // 使用向量旋转计算方向
+            EightDirs.Add(direction);
+        }
+    }
+
     public static bool FileExists(string path)
     {
         // return FileAccess.FileExists(path);
@@ -35,16 +47,7 @@ public static class Wizard
 
     public static Vector2 GetRandom8Dir()
     {
-        List<Vector2> directions = new List<Vector2>();
-
-        for (int i = 0; i < 8; i++)
-        {
-            float angle = i * 45; // 计算每个方向的角度（0, 45, 90, ...）
-            Vector2 direction = Vector2.Right.Rotated(Mathf.DegToRad(angle)); // 使用向量旋转计算方向
-            directions.Add(direction);
-        }
-        
-        return directions.PickRandom();
+        return EightDirs.PickRandom();
     }
     
     public static Vector2 Bezier(Vector2 p0, Vector2 p1, Vector2 p2, float t)

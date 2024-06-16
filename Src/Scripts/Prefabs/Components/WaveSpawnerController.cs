@@ -132,7 +132,8 @@ public partial class WaveSpawnerController : Node2D
     public void GenerateAMob(int id)
     {
         var mob = new MobBuilder(DataBuilder.BuildMobInfoById(id)).Build();
-        Global.GameWorld.AddChild(mob);
+        Global.GameWorld.CallDeferred(Node.MethodName.AddChild, mob);
+        // Global.GameWorld.AddChild(mob);
         mob.GlobalPosition = Wizard.GetScreenCenter();
     }
     

@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://dai2k1wuc6y38"]
+[gd_scene load_steps=15 format=3 uid="uid://dai2k1wuc6y38"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_yrrya"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/Beamcaster.cs" id="2_libbv"]
@@ -17,80 +17,43 @@ type = 1
 editor_offset = Vector2(-60, -120)
 
 [sub_resource type="StateConfig" id="StateConfig_x6cuv"]
-state_name = &"GoingToPlayer"
-editor_offset = Vector2(380, -120)
+state_name = &"Moving"
+editor_offset = Vector2(660, -120)
 
-[sub_resource type="StateConfig" id="StateConfig_0toy3"]
-state_name = &"Shoot"
-editor_offset = Vector2(380, 320)
+[sub_resource type="VariableConfig" id="VariableConfig_uvbq5"]
+variable_name = &"Next"
+resource_name = "Next: Trigger"
 
-[sub_resource type="VariableConfig" id="VariableConfig_wca6e"]
-variable_name = &"PlayerInShootRange"
-type = 1
-default_value = null
-resource_name = "PlayerInShootRange: Bool"
-
-[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_64jsv"]
-variable_config = SubResource("VariableConfig_wca6e")
-comparator = 0
-variable_as_value = false
-value = false
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_m5mo2"]
+variable_config = SubResource("VariableConfig_uvbq5")
+trigger_type = 0
 
 [sub_resource type="TransitionConfig" id="TransitionConfig_4plgd"]
 from_state_config = SubResource("StateConfig_r1dwg")
 to_state_config = SubResource("StateConfig_x6cuv")
 type = 2
 and_mode = true
-variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_64jsv")])
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_m5mo2")])
 
-[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_2fxhb"]
-variable_config = SubResource("VariableConfig_wca6e")
-comparator = 0
-variable_as_value = false
-value = true
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_7i0eq"]
+variable_config = SubResource("VariableConfig_uvbq5")
+trigger_type = 0
 
-[sub_resource type="TransitionConfig" id="TransitionConfig_u0os2"]
-from_state_config = SubResource("StateConfig_r1dwg")
-to_state_config = SubResource("StateConfig_0toy3")
-type = 2
-and_mode = true
-variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_2fxhb")])
-
-[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_qdpy6"]
-variable_config = SubResource("VariableConfig_wca6e")
-comparator = 0
-variable_as_value = false
-value = true
-
-[sub_resource type="TransitionConfig" id="TransitionConfig_udvxp"]
+[sub_resource type="TransitionConfig" id="TransitionConfig_oq18d"]
 from_state_config = SubResource("StateConfig_x6cuv")
-to_state_config = SubResource("StateConfig_0toy3")
+to_state_config = SubResource("StateConfig_r1dwg")
 type = 2
 and_mode = true
-variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_qdpy6")])
-
-[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_acg6h"]
-variable_config = SubResource("VariableConfig_wca6e")
-comparator = 0
-variable_as_value = false
-value = false
-
-[sub_resource type="TransitionConfig" id="TransitionConfig_o67p8"]
-from_state_config = SubResource("StateConfig_0toy3")
-to_state_config = SubResource("StateConfig_x6cuv")
-type = 2
-and_mode = true
-variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_acg6h")])
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_7i0eq")])
 
 [sub_resource type="FSMConfig" id="FSMConfig_xi2o7"]
-state_config_list = Array[StateConfig]([SubResource("StateConfig_r1dwg"), SubResource("StateConfig_x6cuv"), SubResource("StateConfig_0toy3")])
-transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_4plgd"), SubResource("TransitionConfig_u0os2"), SubResource("TransitionConfig_udvxp"), SubResource("TransitionConfig_o67p8")])
-variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_wca6e")])
+state_config_list = Array[StateConfig]([SubResource("StateConfig_r1dwg"), SubResource("StateConfig_x6cuv")])
+transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_4plgd"), SubResource("TransitionConfig_oq18d")])
+variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_uvbq5")])
 
-[node name="Beamcaster" node_paths=PackedStringArray("_hurtBox", "Spring", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_yrrya")]
+[node name="Beamcaster" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_yrrya")]
 modulate = Color(0.972549, 0.560784, 1, 1)
 _hurtBox = NodePath("Components/HurtBox")
-Spring = NodePath("Spring")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")
@@ -114,9 +77,13 @@ Actor = NodePath("../..")
 position = Vector2(-3, 0)
 shape = SubResource("RectangleShape2D_2qs4m")
 
-[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("Mob")]
+[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("_timer", "Mob")]
 script = ExtResource("2_libbv")
+_timer = NodePath("Timer")
 Mob = NodePath("../..")
+
+[node name="Timer" type="Timer" parent="State/MobAiComponent" index="0"]
+one_shot = true
 
 [node name="HFSM" parent="State" index="1"]
 root_fsm_config = SubResource("FSMConfig_xi2o7")

@@ -1,10 +1,8 @@
-[gd_scene load_steps=23 format=3 uid="uid://duok4mn4qkth7"]
+[gd_scene load_steps=13 format=3 uid="uid://duok4mn4qkth7"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_0ifgw"]
-[ext_resource type="Script" path="res://Scripts/Prefabs/Components/FreeSelfWhenExitScreen.cs" id="2_06ekw"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/Boltthrower.cs" id="2_ayrbs"]
 [ext_resource type="Texture2D" uid="uid://f85rk3b33uwb" path="res://Assets/Textures/Mobs/Boltthrower.png" id="2_jdy2l"]
-[ext_resource type="PackedScene" uid="uid://ddh1yqvil5l6g" path="res://Scenes/Vfx/LightBall.tscn" id="5_gd3g6"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ym3x2"]
 size = Vector2(112, 56)
@@ -15,79 +13,36 @@ size = Vector2(114, 58)
 [sub_resource type="StateConfig" id="StateConfig_kpjtb"]
 state_name = &"Idle"
 type = 1
-editor_offset = Vector2(40, 60)
+editor_offset = Vector2(20, 60)
 
-[sub_resource type="StateConfig" id="StateConfig_1y83d"]
-state_name = &"GoingToOpposite"
-editor_offset = Vector2(420, 60)
+[sub_resource type="StateConfig" id="StateConfig_6qiwe"]
+state_name = &"Moving"
+editor_offset = Vector2(340, 60)
 
-[sub_resource type="StateConfig" id="StateConfig_h8p8w"]
-state_name = &"Shoot"
-editor_offset = Vector2(940, 60)
-
-[sub_resource type="StateConfig" id="StateConfig_s5rwj"]
-state_name = &"RunAway"
-editor_offset = Vector2(440, 480)
-
-[sub_resource type="TransitionConfig" id="TransitionConfig_xpxag"]
+[sub_resource type="TransitionConfig" id="TransitionConfig_8nr7l"]
 from_state_config = SubResource("StateConfig_kpjtb")
-to_state_config = SubResource("StateConfig_1y83d")
-auto_delay_msec = 500
-
-[sub_resource type="VariableConfig" id="VariableConfig_2wuef"]
-variable_name = &"ArriveOpposite"
-resource_name = "ArriveOpposite: Trigger"
-
-[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_ompt8"]
-variable_config = SubResource("VariableConfig_2wuef")
-trigger_type = 0
-
-[sub_resource type="TransitionConfig" id="TransitionConfig_bngl8"]
-from_state_config = SubResource("StateConfig_1y83d")
-to_state_config = SubResource("StateConfig_h8p8w")
-type = 2
-and_mode = true
-variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_ompt8")])
-
-[sub_resource type="VariableConfig" id="VariableConfig_lkd4l"]
-variable_name = &"ShootDone"
-resource_name = "ShootDone: Trigger"
-
-[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_3eknp"]
-variable_config = SubResource("VariableConfig_lkd4l")
-trigger_type = 0
-
-[sub_resource type="TransitionConfig" id="TransitionConfig_os404"]
-from_state_config = SubResource("StateConfig_h8p8w")
-to_state_config = SubResource("StateConfig_1y83d")
-type = 2
-and_mode = true
-variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_3eknp")])
+to_state_config = SubResource("StateConfig_6qiwe")
 
 [sub_resource type="VariableConfig" id="VariableConfig_dgcdw"]
 variable_name = &"RunAway"
 resource_name = "RunAway: Trigger"
 
-[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_aemcn"]
-variable_config = SubResource("VariableConfig_dgcdw")
-trigger_type = 0
+[sub_resource type="VariableConfig" id="VariableConfig_lkd4l"]
+variable_name = &"ShootDone"
+resource_name = "ShootDone: Trigger"
 
-[sub_resource type="TransitionConfig" id="TransitionConfig_pk2e2"]
-from_state_config = SubResource("StateConfig_1y83d")
-to_state_config = SubResource("StateConfig_s5rwj")
-type = 2
-and_mode = true
-variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_aemcn")])
+[sub_resource type="VariableConfig" id="VariableConfig_2wuef"]
+variable_name = &"ArriveOpposite"
+resource_name = "ArriveOpposite: Trigger"
 
 [sub_resource type="FSMConfig" id="FSMConfig_v8u54"]
-state_config_list = Array[StateConfig]([SubResource("StateConfig_kpjtb"), SubResource("StateConfig_1y83d"), SubResource("StateConfig_h8p8w"), SubResource("StateConfig_s5rwj")])
-transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_xpxag"), SubResource("TransitionConfig_bngl8"), SubResource("TransitionConfig_os404"), SubResource("TransitionConfig_pk2e2")])
+state_config_list = Array[StateConfig]([SubResource("StateConfig_kpjtb"), SubResource("StateConfig_6qiwe")])
+transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_8nr7l")])
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_dgcdw"), SubResource("VariableConfig_lkd4l"), SubResource("VariableConfig_2wuef")])
 
-[node name="Boltthrower" node_paths=PackedStringArray("_hurtBox", "Spring", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_0ifgw")]
+[node name="Boltthrower" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_0ifgw")]
 modulate = Color(0.972549, 0.560784, 1, 1)
 _hurtBox = NodePath("Components/HurtBox")
-Spring = NodePath("Spring")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")
@@ -120,12 +75,3 @@ root_fsm_config = SubResource("FSMConfig_v8u54")
 [node name="VisibleOnScreenNotifier2D" parent="." index="4"]
 position = Vector2(49, 0.951601)
 scale = Vector2(0.85, 3.19516)
-
-[node name="FreeSelfWhenExitScreen" type="VisibleOnScreenNotifier2D" parent="." index="5"]
-script = ExtResource("2_06ekw")
-
-[node name="LightBall" parent="." index="6" instance=ExtResource("5_gd3g6")]
-unique_name_in_owner = true
-visible = false
-position = Vector2(54, 0)
-scale = Vector2(0.3, 0.3)
