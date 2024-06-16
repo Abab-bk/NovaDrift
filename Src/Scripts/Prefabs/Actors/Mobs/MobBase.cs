@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using NovaDrift.Scripts.Prefabs.Components;
 using NovaDrift.Scripts.Systems;
 using NovaDrift.Scripts.Vfx;
 
@@ -14,6 +15,7 @@ public partial class MobBase : Actor
     private Node2D _target;
     
     [Export] public string Sign;
+    [Export] private HitBox _hitBox;
 
     public override void _Ready()
     {
@@ -24,6 +26,9 @@ public partial class MobBase : Actor
         
         base._Ready();
         AddToGroup("Mobs");
+
+        _hitBox.Damage = Stats.Damage.Value;
+        _hitBox.SetIsPlayer(false);
         
         Stats.Health.ValueChanged += (value) =>
         {
@@ -32,8 +37,19 @@ public partial class MobBase : Actor
                 Die();
             }
         };
+
+        Stats.Damage.ValueChanged += (value) =>
+        {
+            _hitBox.Damage = Stats.Damage.Value;
+        };
         
         if (Shooter != null) Shooter.Init();
+        
+        if (_hitBox.GetChild(0) is CollisionShape2D collisionShape2D)
+        {
+            if (GetNode("CollisionShape2D") is not CollisionShape2D collision) return;
+            collisionShape2D.Shape = collision.Shape;
+        }
     }
     
     protected override void InitStats()
@@ -95,6 +111,25 @@ public partial class MobBase : Actor
         Rotation = RotationTo(GlobalPosition.AngleToPoint(dir), delta);
         var targetVelocity = dir * Stats.Speed.Value;
         Velocity = Velocity.MoveToward(targetVelocity, Stats.Acceleration.Value * (float)delta);
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
+        base._PhysicsProcess(delta);
+
+        var sep = Vector2.Zero;
+        
+        foreach (var node in GetTree().GetNodesInGroup("Mobs"))
+        {
+            if (node is not MobBase mobBase) continue;
+
+            var distance = GlobalPosition.DistanceTo(mobBase.GlobalPosition);
+            if (distance > 20f) continue;
+
+            sep -= GlobalPosition.DirectionTo(mobBase.GlobalPosition) * (20f / distance * Stats.Speed.Value) * (float)delta;
+        }
+        
+        Velocity += sep;
     }
 
     public void LookForward(float delta)

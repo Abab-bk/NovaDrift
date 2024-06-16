@@ -10,7 +10,7 @@
     "player_knock_back": 10,
     "player_burst_fire": 1,
     "player_bullet_size": 1,
-    "player_bullet_degeneration": 2.5,
+    "player_bullet_degeneration": 1,
     "player_recoil": 50,
     "player_bullet_count": 1,
     "player_blast_damage": 20,

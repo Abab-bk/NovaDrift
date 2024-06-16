@@ -13,7 +13,7 @@ size = Vector2(62, 110)
 [sub_resource type="StateConfig" id="StateConfig_htxyx"]
 state_name = &"Idle"
 type = 1
-editor_offset = Vector2(140, -20)
+editor_offset = Vector2(100, -40)
 
 [sub_resource type="StateConfig" id="StateConfig_up511"]
 state_name = &"Moving"
@@ -27,24 +27,25 @@ editor_offset = Vector2(400, -40)
 from_state_config = SubResource("StateConfig_htxyx")
 to_state_config = SubResource("StateConfig_bmcmr")
 
-[sub_resource type="TransitionConfig" id="TransitionConfig_k56em"]
-from_state_config = SubResource("StateConfig_up511")
-to_state_config = SubResource("StateConfig_bmcmr")
-
 [sub_resource type="VariableConfig" id="VariableConfig_0sf7c"]
 variable_name = &"Next"
 resource_name = "Next: Trigger"
 
-[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_ex7c3"]
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_17fbl"]
 variable_config = SubResource("VariableConfig_0sf7c")
 trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_k56em"]
+from_state_config = SubResource("StateConfig_up511")
+to_state_config = SubResource("StateConfig_bmcmr")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_17fbl")])
 
 [sub_resource type="TransitionConfig" id="TransitionConfig_8bc36"]
 from_state_config = SubResource("StateConfig_bmcmr")
 to_state_config = SubResource("StateConfig_up511")
-type = 2
-and_mode = true
-variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_ex7c3")])
+auto_delay_msec = 2000
 
 [sub_resource type="FSMConfig" id="FSMConfig_lt2to"]
 state_config_list = Array[StateConfig]([SubResource("StateConfig_htxyx"), SubResource("StateConfig_up511"), SubResource("StateConfig_bmcmr")])
@@ -54,8 +55,9 @@ variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_0sf7c"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_03sbt"]
 size = Vector2(62, 110)
 
-[node name="Pulsar" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_nhejf")]
+[node name="Pulsar" node_paths=PackedStringArray("_hitBox", "_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_nhejf")]
 modulate = Color(0.521569, 1, 0.537255, 1)
+_hitBox = NodePath("HitBox")
 _hurtBox = NodePath("Components/HurtBox")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")

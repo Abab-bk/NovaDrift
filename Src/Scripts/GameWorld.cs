@@ -59,25 +59,22 @@ public partial class GameWorld : Node2D
 		Global.Something = GetNode<Node2D>("Something");
 		
 		_gameCommands = new GameCommands();
-		
-		if (Global.CurrentPlatform != GamePlatform.Desktop)
-		{
-			EventBus.OnGameInit?.Invoke();
-			return;
-		}
 
 		if (OS.HasFeature("template"))
 		{
+			Logger.Log("[Game] Has export template, open start menu.");
 			UiManager.Open_StartMenu();
 			return;
 		}
 
-		if (OS.GetEnvironment("ShowStartMenu") == "true")
+		if (OS.GetEnvironment("DebugMode") == "false" || OS.GetEnvironment("DebugMode") == "")
 		{
+			Logger.Log("[Game] No debug mode, open start menu.");
 			UiManager.Open_StartMenu();
 			return;
 		}
 		
+		Logger.Log("[Game] Debug mode, enter world.");
 		EventBus.OnGameInit?.Invoke();
 	}
 

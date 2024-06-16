@@ -18,11 +18,14 @@ public partial class BootSplash : Control
     
     public override void _Ready()
     {
-        if (OS.GetEnvironment("ShowStartMenu") != "true")
+        if (OS.GetEnvironment("DebugMode") == "true")
         {
+            Logger.Log("[BootSplash] Debug mode, change scene to: " + Path);
             GetTree().ChangeSceneToFile(Path);
             return;
         }
+        
+        Logger.Log("[BootSplash] Booting...");
         
         _progressBar.Value = 0;
         _animationPlayer.AnimationFinished += _ =>

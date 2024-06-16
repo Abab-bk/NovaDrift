@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using AcidWallStudio.AcidUtilities;
 using Godot;
@@ -76,22 +75,22 @@ public partial class WaveSpawner : Node2D
     private void RandomMove()
     {
         var pos = Wizard.GetRandomScreenPosition();
-
-        switch (Random.Shared.Next(1, 2))
-        {
-            case 1:
-                // From random top or bottom
-                var y = Wizard.GetRandomScreenY();
-                pos.X = Wizard.GetRandomScreenX();
-                pos.Y = pos.Y > y / 2f ? 0 - 100f : Wizard.GetMaxScreenY() + 100f;
-                break;
-            case 2:
-                // From random left or right
-                var x = Wizard.GetRandomScreenX();
-                pos.Y = Wizard.GetRandomScreenY();
-                pos.X = pos.X > x / 2f ? 0 - 100f : Wizard.GetMaxScreenX() + 100f;
-                break;
-        }
+        //
+        // switch (Random.Shared.Next(1, 2))
+        // {
+        //     case 1:
+        //         // From random top or bottom
+        //         var y = Wizard.GetRandomScreenY();
+        //         pos.X = Wizard.GetRandomScreenX();
+        //         pos.Y = pos.Y > y / 2f ? 0 - 100f : Wizard.GetMaxScreenY() + 100f;
+        //         break;
+        //     case 2:
+        //         // From random left or right
+        //         var x = Wizard.GetRandomScreenX();
+        //         pos.Y = Wizard.GetRandomScreenY();
+        //         pos.X = pos.X > x / 2f ? 0 - 100f : Wizard.GetMaxScreenX() + 100f;
+        //         break;
+        // }
         
         GlobalPosition = pos;
     }

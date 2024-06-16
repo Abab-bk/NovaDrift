@@ -40,8 +40,9 @@ state_config_list = Array[StateConfig]([SubResource("StateConfig_kpjtb"), SubRes
 transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_8nr7l")])
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_dgcdw"), SubResource("VariableConfig_lkd4l"), SubResource("VariableConfig_2wuef")])
 
-[node name="Boltthrower" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_0ifgw")]
+[node name="Boltthrower" node_paths=PackedStringArray("_hitBox", "_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_0ifgw")]
 modulate = Color(0.972549, 0.560784, 1, 1)
+_hitBox = NodePath("HitBox")
 _hurtBox = NodePath("Components/HurtBox")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
@@ -65,9 +66,14 @@ Actor = NodePath("../..")
 [node name="CollisionShape2D" parent="Components/HurtBox" index="0"]
 shape = SubResource("RectangleShape2D_mei0v")
 
-[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("Mob")]
+[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("_timer", "Mob")]
 script = ExtResource("2_ayrbs")
+_timer = NodePath("Timer")
 Mob = NodePath("../..")
+
+[node name="Timer" type="Timer" parent="State/MobAiComponent" index="0"]
+wait_time = 6.0
+one_shot = true
 
 [node name="HFSM" parent="State" index="1"]
 root_fsm_config = SubResource("FSMConfig_v8u54")
