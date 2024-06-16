@@ -1,9 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://b1vmhmtmuma0x"]
+[gd_scene load_steps=6 format=3 uid="uid://b1vmhmtmuma0x"]
 
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Actor.cs" id="1_s858g"]
 [ext_resource type="Texture2D" uid="uid://c3i8wr1dlwymr" path="res://Assets/Textures/Bodies/Default.png" id="2_44451"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HurtBox.cs" id="4_lb4uu"]
-[ext_resource type="Script" path="res://Scripts/Libs/SpringSystem/Spring.cs" id="5_de5sx"]
 
 [sub_resource type="Animation" id="Animation_b5fuf"]
 length = 0.001
@@ -51,6 +50,3 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_o8qb3")
 }
-
-[node name="Spring" type="Node2D" parent="."]
-script = ExtResource("5_de5sx")

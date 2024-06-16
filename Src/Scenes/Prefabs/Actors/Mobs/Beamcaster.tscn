@@ -1,9 +1,10 @@
-[gd_scene load_steps=15 format=3 uid="uid://dai2k1wuc6y38"]
+[gd_scene load_steps=16 format=3 uid="uid://dai2k1wuc6y38"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_yrrya"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/Beamcaster.cs" id="2_libbv"]
 [ext_resource type="Texture2D" uid="uid://dherwc0evanuk" path="res://Assets/Textures/Mobs/Beamcaster.png" id="2_y3saf"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/MobWeapons/BeamcasterShooter.cs" id="3_6phtf"]
+[ext_resource type="Script" path="res://Scripts/Libs/SpringSystem/Spring.cs" id="5_g6jbc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blio1"]
 size = Vector2(89, 104)
@@ -91,3 +92,6 @@ root_fsm_config = SubResource("FSMConfig_xi2o7")
 [node name="VisibleOnScreenNotifier2D" parent="." index="4"]
 position = Vector2(17, 1.37097)
 scale = Vector2(1.6, 2.05645)
+
+[node name="Spring" type="Node2D" parent="." index="7"]
+script = ExtResource("5_g6jbc")

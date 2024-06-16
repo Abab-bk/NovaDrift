@@ -1,6 +1,5 @@
 using Godot;
-using System;
-using NovaDrift.Scripts.Prefabs;
+using NovaDrift.Scripts.Prefabs.Actors.Mobs;
 
 namespace NovaDrift.Scripts.Prefabs.Ai;
 
@@ -11,22 +10,38 @@ public partial class CelestialAi : MobAiComponent
         base.ConnectProcessSignals(state, delta);
         switch (state.GetName())
         {
-            case "GoingToPlayer":
+            case "Moving":
                 Mob.SetTargetAndMove(Global.Player, delta);
-                if (Mob.GetDistanceToPlayer() <= 300)
+                break;
+        }
+    }
+
+    protected override void ConnectEnteredSignals(State state)
+    {
+        base.ConnectEnteredSignals(state);
+        switch (state.GetName())
+        {
+            case "Clone":
+                Mob.Velocity = Vector2.Zero;
+
+                for (int i = 0; i < 3; i++)
                 {
-                    Machine.SetTrigger("Next");
+                    var mob = GetTree().GetNodesInGroup("Mobs").PickRandom() as MobBase;
+                    if (mob == null) break;
+
+                    var clone = mob.Duplicate((int)DuplicateFlags.UseInstantiation) as MobBase;
+                    if (clone == null) break;
+                    
+                    clone.MobInfo = mob.MobInfo;
+                    clone.GlobalPosition = Mob.GlobalPosition;
+                    var ai = new MobAiComponent();
+                    ai.SetScript(GD.Load<GodotObject>("res://Scripts/Prefabs/Ai/CloneMobAi.cs"));
+                    clone.Ai = ai;
+                    
+                    Global.GameWorld.CallDeferred(Node.MethodName.AddChild, clone);
+                    clone.AddChild(ai);
                 }
-                break;
-            case "CirclingPlayer":
-                Mob.Velocity = (Mob.GlobalPosition - Global.Player.GlobalPosition).Normalized().Rotated(MathF.PI / 2) *
-                               Mob.Stats.Speed.Value;
-                Mob.MoveAndSlide();
-                Mob.Rotation = Mob.RotationTo(Global.Player.GlobalPosition.Angle(), delta);
-                break;
-            case "Shoot":
-                Mob.Rotation = Mob.RotationTo(Global.Player.GlobalPosition.Angle(), delta);
-                Mob.Shoot();
+                
                 break;
         }
     }

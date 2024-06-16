@@ -2,21 +2,8 @@ using Godot;
 
 namespace NovaDrift.Scripts.Prefabs.Ai;
 
-public partial class GyrogunAi : MobAiComponent
+public partial class CloneMobAi : MobAiComponent
 {
-    public override void _Ready()
-    {
-        base._Ready();
-        Mob.OnDied += () =>
-        {
-            var pos = Mob.GlobalPosition;
-            for (int i = 0; i < 2; i++)
-            {
-                Global.WaveSpawnerController.GenerateAMob(Mob.MobInfo.Id, pos);
-            }
-        };
-    }
-
     protected override void ConnectProcessSignals(State state, float delta)
     {
         base.ConnectProcessSignals(state, delta);

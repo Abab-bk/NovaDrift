@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://plutyrpe4xxs"]
+[gd_scene load_steps=15 format=3 uid="uid://plutyrpe4xxs"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_pbe1d"]
 [ext_resource type="Texture2D" uid="uid://cuo5dvpcu4h88" path="res://Assets/Textures/Mobs/Celestial.png" id="2_d1si5"]
@@ -16,55 +16,45 @@ type = 1
 editor_offset = Vector2(-80, -140)
 
 [sub_resource type="StateConfig" id="StateConfig_mpen5"]
-state_name = &"GoingToPlayer"
-editor_offset = Vector2(280, -140)
+state_name = &"Moving"
+editor_offset = Vector2(240, -140)
 
-[sub_resource type="StateConfig" id="StateConfig_b00d6"]
-state_name = &"CirclingPlayer"
-editor_offset = Vector2(660, -120)
-
-[sub_resource type="StateConfig" id="StateConfig_hw8bt"]
-state_name = &"Shoot"
-editor_offset = Vector2(460, 240)
-
-[sub_resource type="VariableConfig" id="VariableConfig_4y5mh"]
-variable_name = &"Next"
-resource_name = "Next: Trigger"
-
-[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_2hwnm"]
-variable_config = SubResource("VariableConfig_4y5mh")
-trigger_type = 0
-
-[sub_resource type="TransitionConfig" id="TransitionConfig_mo5et"]
-from_state_config = SubResource("StateConfig_mpen5")
-to_state_config = SubResource("StateConfig_b00d6")
-type = 2
-and_mode = true
-variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_2hwnm")])
-
-[sub_resource type="TransitionConfig" id="TransitionConfig_icujs"]
-from_state_config = SubResource("StateConfig_b00d6")
-to_state_config = SubResource("StateConfig_hw8bt")
-auto_delay_msec = 4000
-
-[sub_resource type="TransitionConfig" id="TransitionConfig_2v7qa"]
-from_state_config = SubResource("StateConfig_hw8bt")
-to_state_config = SubResource("StateConfig_mpen5")
-auto_delay_msec = 3000
+[sub_resource type="StateConfig" id="StateConfig_tgp05"]
+state_name = &"Clone"
+editor_offset = Vector2(620, -160)
 
 [sub_resource type="TransitionConfig" id="TransitionConfig_fi3s3"]
 from_state_config = SubResource("StateConfig_31rmu")
 to_state_config = SubResource("StateConfig_mpen5")
 
+[sub_resource type="VariableConfig" id="VariableConfig_4y5mh"]
+variable_name = &"Next"
+resource_name = "Next: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_e2fp8"]
+variable_config = SubResource("VariableConfig_4y5mh")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_2mfv1"]
+from_state_config = SubResource("StateConfig_mpen5")
+to_state_config = SubResource("StateConfig_tgp05")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_e2fp8")])
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_3rgh4"]
+from_state_config = SubResource("StateConfig_tgp05")
+to_state_config = SubResource("StateConfig_mpen5")
+auto_delay_msec = 3000
+
 [sub_resource type="FSMConfig" id="FSMConfig_ihhjg"]
-state_config_list = Array[StateConfig]([SubResource("StateConfig_31rmu"), SubResource("StateConfig_mpen5"), SubResource("StateConfig_b00d6"), SubResource("StateConfig_hw8bt")])
-transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_mo5et"), SubResource("TransitionConfig_icujs"), SubResource("TransitionConfig_2v7qa"), SubResource("TransitionConfig_fi3s3")])
+state_config_list = Array[StateConfig]([SubResource("StateConfig_31rmu"), SubResource("StateConfig_mpen5"), SubResource("StateConfig_tgp05")])
+transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_fi3s3"), SubResource("TransitionConfig_2mfv1"), SubResource("TransitionConfig_3rgh4")])
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_4y5mh")])
 
-[node name="Celestial" node_paths=PackedStringArray("_hurtBox", "Spring", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_pbe1d")]
+[node name="Celestial" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_pbe1d")]
 modulate = Color(1, 0.968627, 0.541176, 1)
 _hurtBox = NodePath("Components/HurtBox")
-Spring = NodePath("Spring")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")

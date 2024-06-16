@@ -129,12 +129,12 @@ public partial class WaveSpawnerController : Node2D
         _clock.Start();
     }
 
-    public void GenerateAMob(int id)
+    public void GenerateAMob(int id, Vector2 pos = default)
     {
         var mob = new MobBuilder(DataBuilder.BuildMobInfoById(id)).Build();
         Global.GameWorld.CallDeferred(Node.MethodName.AddChild, mob);
         // Global.GameWorld.AddChild(mob);
-        mob.GlobalPosition = Wizard.GetScreenCenter();
+        mob.GlobalPosition = pos == default ? Wizard.GetScreenCenter() : pos;
     }
     
     public void GenerateABoss(int id)

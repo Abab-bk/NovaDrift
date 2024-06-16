@@ -265,6 +265,7 @@ public static class DataBuilder
             DangerFactor = tbMobInfo.DangerFactor,
             GetExp = tbMobInfo.GetExp,
             ScenePath = $"res://Scenes/Prefabs/Actors/Mobs/{tbMobInfo.SceneName}.tscn".Trim(),
+            IconPath = $"res://Assets/Textures/Mobs/{tbMobInfo.SceneName}.png".Trim(),
         };
         
         return mobInfo;

@@ -14,4 +14,5 @@ public class MobInfo
     public int DangerFactor; // and is cost for the wave
     public int GetExp;
     public string ScenePath;
+    public string IconPath;
 }

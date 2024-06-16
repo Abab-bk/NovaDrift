@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://bc77hp2vrekdo"]
+[gd_scene load_steps=12 format=3 uid="uid://bc77hp2vrekdo"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_s3e8g"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/GyrogunAi.cs" id="2_5u3nq"]
@@ -16,12 +16,8 @@ type = 1
 editor_offset = Vector2(260, -100)
 
 [sub_resource type="StateConfig" id="StateConfig_7if41"]
-state_name = &"RunningToCenter"
+state_name = &"Moving"
 editor_offset = Vector2(560, -100)
-
-[sub_resource type="StateConfig" id="StateConfig_64vtu"]
-state_name = &"RunningToPlayer"
-editor_offset = Vector2(560, 280)
 
 [sub_resource type="TransitionConfig" id="TransitionConfig_64rvy"]
 from_state_config = SubResource("StateConfig_qngsh")
@@ -31,34 +27,17 @@ to_state_config = SubResource("StateConfig_7if41")
 variable_name = &"Next"
 resource_name = "Next: Trigger"
 
-[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_i8wpa"]
-variable_config = SubResource("VariableConfig_tm6tr")
-trigger_type = 0
-
-[sub_resource type="TransitionConfig" id="TransitionConfig_kbtl4"]
-from_state_config = SubResource("StateConfig_7if41")
-to_state_config = SubResource("StateConfig_64vtu")
-type = 2
-and_mode = true
-variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_i8wpa")])
-
-[sub_resource type="TransitionConfig" id="TransitionConfig_274i5"]
-from_state_config = SubResource("StateConfig_64vtu")
-to_state_config = SubResource("StateConfig_7if41")
-auto_delay_msec = 4000
-
 [sub_resource type="FSMConfig" id="FSMConfig_oo42e"]
-state_config_list = Array[StateConfig]([SubResource("StateConfig_qngsh"), SubResource("StateConfig_7if41"), SubResource("StateConfig_64vtu")])
-transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_64rvy"), SubResource("TransitionConfig_kbtl4"), SubResource("TransitionConfig_274i5")])
+state_config_list = Array[StateConfig]([SubResource("StateConfig_qngsh"), SubResource("StateConfig_7if41")])
+transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_64rvy")])
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_tm6tr")])
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_8or58"]
 radius = 52.0865
 
-[node name="Gyrogun" node_paths=PackedStringArray("_hurtBox", "Spring", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_s3e8g")]
+[node name="Gyrogun" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_s3e8g")]
 modulate = Color(1, 0.780392, 0.494118, 1)
 _hurtBox = NodePath("Components/HurtBox")
-Spring = NodePath("Spring")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")
