@@ -109,27 +109,24 @@ public partial class MobBase : Actor
     public override void TryMoveTo(Vector2 dir, double delta)
     {
         Rotation = RotationTo(GlobalPosition.AngleToPoint(dir), delta);
-        var targetVelocity = dir * Stats.Speed.Value;
+        var targetVelocity = HandleDir(dir) * Stats.Speed.Value;
         Velocity = Velocity.MoveToward(targetVelocity, Stats.Acceleration.Value * (float)delta);
     }
-
-    public override void _PhysicsProcess(double delta)
+    
+    private Vector2 HandleDir(Vector2 movement)
     {
-        base._PhysicsProcess(delta);
-
-        var sep = Vector2.Zero;
-        
         foreach (var node in GetTree().GetNodesInGroup("Mobs"))
         {
+            if (node == this) continue;
             if (node is not MobBase mobBase) continue;
-
-            var distance = GlobalPosition.DistanceTo(mobBase.GlobalPosition);
-            if (distance > 20f) continue;
-
-            sep -= GlobalPosition.DirectionTo(mobBase.GlobalPosition) * (20f / distance * Stats.Speed.Value) * (float)delta;
+            
+            if (GlobalPosition.DistanceTo(mobBase.GlobalPosition) > 100f) continue;
+            
+            var ratio = (mobBase.GlobalPosition - GlobalPosition).Length() / 20f > 0f ? 1f : 0f;
+            movement -= ratio * (mobBase.GlobalPosition - GlobalPosition);
         }
-        
-        Velocity += sep;
+
+        return movement.Normalized();
     }
 
     public void LookForward(float delta)

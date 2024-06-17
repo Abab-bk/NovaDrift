@@ -1,13 +1,11 @@
-using System.Collections.Generic;
 using DsUi;
 using GDebugPanelGodot.Core;
-using GDebugPanelGodot.DebugActions.Containers;
-using GDebugPanelGodot.Extensions;
 using Godot;
 using NovaDrift.Scripts.Systems;
 using NovaDrift.Scripts.Ui.ActionBtn;
 using NovaDrift.Scripts.Ui.AnimationProgressBar;
 using NovaDrift.Scripts.Ui.BuffIcon;
+using NovaDrift.Scripts.Ui.Slogan;
 
 namespace NovaDrift.Scripts.Ui.Hud;
 
@@ -37,6 +35,11 @@ public partial class HudPanel : Hud
 			return node;
 		};
 		EventBus.OnGameOver += Destroy;
+
+		EventBus.OnGameStart += () =>
+		{
+			OpenNestedUi<SloganPanel>(UiManager.UiName.Slogan);
+		};
 
 		_expBar = GetNode<AnimationProgressBarPanel>("%ExpProgressBar");
 		_hpBar = GetNode<AnimationProgressBarPanel>("%HpProgressBar");

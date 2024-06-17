@@ -25,6 +25,7 @@ public static partial class UiManager
         public const string ScoreLabel = "ScoreLabel";
         public const string SelectAbility = "SelectAbility";
         public const string Setting = "Setting";
+        public const string Slogan = "Slogan";
         public const string StartMenu = "StartMenu";
         public const string StatsMonitor = "StatsMonitor";
         public const string StatsMonitorItem = "StatsMonitorItem";
@@ -940,6 +941,54 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.Setting.SettingPanel[] Get_Setting_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.Setting.SettingPanel>(nameof(NovaDrift.Scripts.Ui.Setting.Setting));
+    }
+
+    /// <summary>
+    /// 创建 Slogan, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Slogan.SloganPanel Create_Slogan()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.Slogan.SloganPanel>(UiName.Slogan);
+    }
+
+    /// <summary>
+    /// 打开 Slogan, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Slogan.SloganPanel Open_Slogan()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.Slogan.SloganPanel>(UiName.Slogan);
+    }
+
+    /// <summary>
+    /// 隐藏 Slogan 的所有实例
+    /// </summary>
+    public static void Hide_Slogan()
+    {
+        var uiInstance = Get_Slogan_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 Slogan 的所有实例
+    /// </summary>
+    public static void Destroy_Slogan()
+    {
+        var uiInstance = Get_Slogan_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 Slogan 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Slogan.SloganPanel[] Get_Slogan_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.Slogan.SloganPanel>(nameof(NovaDrift.Scripts.Ui.Slogan.Slogan));
     }
 
     /// <summary>
