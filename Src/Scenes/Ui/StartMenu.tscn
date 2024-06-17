@@ -1,9 +1,48 @@
-[gd_scene load_steps=5 format=3 uid="uid://dp1lufp6n177m"]
+[gd_scene load_steps=9 format=3 uid="uid://dp1lufp6n177m"]
 
 [ext_resource type="Script" path="res://Scripts/Ui/startMenu/StartMenuPanel.cs" id="1_swjtv"]
+[ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_tq1sc"]
 [ext_resource type="Texture2D" uid="uid://c3ghsg6q155v1" path="res://Assets/Ui/GameLogo.png" id="2_doph4"]
 [ext_resource type="PackedScene" uid="uid://uc70gqh6gl7b" path="res://Scenes/Ui/GalleryBtn.tscn" id="2_rwks5"]
 [ext_resource type="PackedScene" uid="uid://boy3trvjwidtw" path="res://Scenes/Ui/Setting.tscn" id="3_khrum"]
+
+[sub_resource type="Animation" id="Animation_ahg5w"]
+resource_name = "Tip"
+loop_mode = 2
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.109804)]
+}
+
+[sub_resource type="Animation" id="Animation_h8vb4"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Label:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o26vd"]
+_data = {
+"RESET": SubResource("Animation_h8vb4"),
+"Tip": SubResource("Animation_ahg5w")
+}
 
 [node name="StartMenu" type="Control"]
 layout_mode = 3
@@ -12,9 +51,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_tq1sc")
 script = ExtResource("1_swjtv")
 
-[node name="MarginContainer" type="MarginContainer" parent="."]
+[node name="Content" type="MarginContainer" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -26,48 +66,80 @@ theme_override_constants/margin_top = 80
 theme_override_constants/margin_right = 80
 theme_override_constants/margin_bottom = 80
 
-[node name="TextureRect" type="TextureRect" parent="MarginContainer"]
-layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 0
-texture = ExtResource("2_doph4")
-stretch_mode = 5
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+[node name="CenterContainer" type="CenterContainer" parent="Content"]
 layout_mode = 2
 
-[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Content/CenterContainer"]
 custom_minimum_size = Vector2(0, 400)
 layout_mode = 2
 theme_override_constants/separation = 24
 
-[node name="StartGameBtn" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_rwks5")]
+[node name="StartGameBtn" parent="Content/CenterContainer/HBoxContainer" instance=ExtResource("2_rwks5")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(624, 325)
 layout_mode = 2
 _labelText = "开始游戏"
 
-[node name="GearBtn" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_rwks5")]
+[node name="GearBtn" parent="Content/CenterContainer/HBoxContainer" instance=ExtResource("2_rwks5")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(334, 325)
 layout_mode = 2
 _labelText = "装备库"
 
-[node name="SettingBtn" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_rwks5")]
+[node name="SettingBtn" parent="Content/CenterContainer/HBoxContainer" instance=ExtResource("2_rwks5")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(190, 325)
 layout_mode = 2
 _labelText = "设置"
 
-[node name="ExitBtn" parent="MarginContainer/VBoxContainer/HBoxContainer" instance=ExtResource("2_rwks5")]
+[node name="ExitBtn" parent="Content/CenterContainer/HBoxContainer" instance=ExtResource("2_rwks5")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(190, 325)
 layout_mode = 2
 _labelText = "退出"
+
+[node name="GameLogo" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_vertical = 3
+texture = ExtResource("2_doph4")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="GameLogo"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -267.0
+offset_bottom = -208.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "点击屏幕继续"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="GameLogo"]
+libraries = {
+"": SubResource("AnimationLibrary_o26vd")
+}
+autoplay = "Tip"
+
+[node name="GameLogoTouch" type="Button" parent="GameLogo"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"EmptyBtn"
 
 [node name="Setting" parent="." instance=ExtResource("3_khrum")]
 visible = false

@@ -28,7 +28,7 @@ DSP/dsp_buffer_count=4
 
 [application]
 
-config/name="The Last Breath of Gemini"
+config/name="双子座的最后一口气"
 config/tags=PackedStringArray("acidwall")
 run/main_scene="res://Scenes/BootSplash.tscn"
 config/features=PackedStringArray("4.3", "C#", "Mobile")
