@@ -12,6 +12,7 @@ public static partial class UiManager
         public const string ActionBtn = "ActionBtn";
         public const string AnimationProgressBar = "AnimationProgressBar";
         public const string BuffIcon = "BuffIcon";
+        public const string DailyQuests = "DailyQuests";
         public const string DamageLabel = "DamageLabel";
         public const string GalleryBtn = "GalleryBtn";
         public const string GameOver = "GameOver";
@@ -21,6 +22,7 @@ public static partial class UiManager
         public const string Hud = "Hud";
         public const string Loading = "Loading";
         public const string PausedMenu = "PausedMenu";
+        public const string QuestItem = "QuestItem";
         public const string SalvoBulletCount = "SalvoBulletCount";
         public const string ScoreLabel = "ScoreLabel";
         public const string SelectAbility = "SelectAbility";
@@ -317,6 +319,54 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.BuffIcon.BuffIconPanel[] Get_BuffIcon_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.BuffIcon.BuffIconPanel>(nameof(NovaDrift.Scripts.Ui.BuffIcon.BuffIcon));
+    }
+
+    /// <summary>
+    /// 创建 DailyQuests, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.DailyQuests.DailyQuestsPanel Create_DailyQuests()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.DailyQuests.DailyQuestsPanel>(UiName.DailyQuests);
+    }
+
+    /// <summary>
+    /// 打开 DailyQuests, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.DailyQuests.DailyQuestsPanel Open_DailyQuests()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.DailyQuests.DailyQuestsPanel>(UiName.DailyQuests);
+    }
+
+    /// <summary>
+    /// 隐藏 DailyQuests 的所有实例
+    /// </summary>
+    public static void Hide_DailyQuests()
+    {
+        var uiInstance = Get_DailyQuests_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 DailyQuests 的所有实例
+    /// </summary>
+    public static void Destroy_DailyQuests()
+    {
+        var uiInstance = Get_DailyQuests_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 DailyQuests 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.DailyQuests.DailyQuestsPanel[] Get_DailyQuests_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.DailyQuests.DailyQuestsPanel>(nameof(NovaDrift.Scripts.Ui.DailyQuests.DailyQuests));
     }
 
     /// <summary>
@@ -749,6 +799,54 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.PausedMenu.PausedMenuPanel[] Get_PausedMenu_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.PausedMenu.PausedMenuPanel>(nameof(NovaDrift.Scripts.Ui.PausedMenu.PausedMenu));
+    }
+
+    /// <summary>
+    /// 创建 QuestItem, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.QuestItem.QuestItemPanel Create_QuestItem()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.QuestItem.QuestItemPanel>(UiName.QuestItem);
+    }
+
+    /// <summary>
+    /// 打开 QuestItem, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.QuestItem.QuestItemPanel Open_QuestItem()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.QuestItem.QuestItemPanel>(UiName.QuestItem);
+    }
+
+    /// <summary>
+    /// 隐藏 QuestItem 的所有实例
+    /// </summary>
+    public static void Hide_QuestItem()
+    {
+        var uiInstance = Get_QuestItem_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 QuestItem 的所有实例
+    /// </summary>
+    public static void Destroy_QuestItem()
+    {
+        var uiInstance = Get_QuestItem_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 QuestItem 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.QuestItem.QuestItemPanel[] Get_QuestItem_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.QuestItem.QuestItemPanel>(nameof(NovaDrift.Scripts.Ui.QuestItem.QuestItem));
     }
 
     /// <summary>

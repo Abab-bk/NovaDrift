@@ -4,24 +4,12 @@ using Godot;
 
 namespace NovaDrift.Scripts.Prefabs.Components;
 
-[Tool]
 [GlobalClass]
 public partial class SpawnPoint : Marker2D
 {
     private static Dictionary<string, List<Vector2>> _points = new ();
-
-    [Export]
-    private string Category
-    {
-        set
-        {
-            _category = value;
-            UpdateConfigurationWarnings();
-        }
-        get => _category;
-    }
-
-    private string _category;
+    
+    [Export] private string _category;
 
     public static Vector2 GetPoint(string category)
     {
@@ -47,14 +35,5 @@ public partial class SpawnPoint : Marker2D
         }
 
         QueueFree();
-    }
-
-    public override string[] _GetConfigurationWarnings()
-    {
-        if (_category == "")
-        {
-            return new[] { "Category 为空" };
-        }
-        return new string[0];
     }
 }

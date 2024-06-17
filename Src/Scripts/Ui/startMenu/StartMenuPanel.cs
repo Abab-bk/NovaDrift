@@ -6,6 +6,8 @@ namespace NovaDrift.Scripts.Ui.StartMenu;
 
 public partial class StartMenuPanel : StartMenu
 {
+    private bool _isClicked = false;
+    
     public override void _Ready()
     {
         S_StartGameBtn.Instance.OnClick += () =>
@@ -38,6 +40,8 @@ public partial class StartMenuPanel : StartMenu
 
         S_GameLogoTouch.Instance.Pressed += () =>
         {
+            if (_isClicked) return;
+            _isClicked = true;
             GTweenSequenceBuilder.New()
                 .Append(L_GameLogo.Instance
                     .TweenModulateAlpha(0f, 0.5f)

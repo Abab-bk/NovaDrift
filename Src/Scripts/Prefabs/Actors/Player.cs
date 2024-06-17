@@ -231,6 +231,7 @@ public partial class Player : Actor
     {
         base._Process(delta);
         if (!_updateShieldCooldown) return;
+        if (UiManager.Get_Hud_Instance().Length <= 0) return;
         UiManager.Get_Hud_Instance()[0].UpdateShieldCooldownBar(Shield.GetCooldownRatio());
     }
 

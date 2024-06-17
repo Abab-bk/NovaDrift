@@ -130,66 +130,137 @@ scale = Vector2(0.24, 0.24)
 [node name="WaveSpawnerController" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("10_k5lv0")
+_enabled = true
 
-[node name="SpawnPoint" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(0, 400)
-script = ExtResource("11_euylg")
-Category = "RandomLeft"
-
-[node name="SpawnPoint6" type="Marker2D" parent="WaveSpawnerController"]
+[node name="Left" type="Marker2D" parent="WaveSpawnerController"]
 position = Vector2(0, 200)
 script = ExtResource("11_euylg")
-Category = "RandomLeft"
+_category = "RandomLeft"
 
-[node name="SpawnPoint2" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(0, 1000)
+[node name="Left2" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(0, 400)
 script = ExtResource("11_euylg")
-Category = "RandomLeft"
+_category = "RandomLeft"
 
-[node name="SpawnPoint4" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(0, 800)
-script = ExtResource("11_euylg")
-Category = "RandomLeft"
-
-[node name="SpawnPoint5" type="Marker2D" parent="WaveSpawnerController"]
+[node name="Left3" type="Marker2D" parent="WaveSpawnerController"]
 position = Vector2(0, 600)
 script = ExtResource("11_euylg")
-Category = "RandomLeft"
+_category = "RandomLeft"
 
-[node name="SpawnPoint3" type="Marker2D" parent="WaveSpawnerController"]
+[node name="Left4" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(0, 800)
+script = ExtResource("11_euylg")
+_category = "RandomLeft"
+
+[node name="Left5" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(0, 1000)
+script = ExtResource("11_euylg")
+_category = "RandomLeft"
+
+[node name="Left6" type="Marker2D" parent="WaveSpawnerController"]
 position = Vector2(0, 1200)
 script = ExtResource("11_euylg")
-Category = "RandomLeft"
+_category = "RandomLeft"
 
-[node name="SpawnPoint7" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(2560, 410)
+[node name="Right" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(2570, 200)
 script = ExtResource("11_euylg")
-Category = "RandomRight"
+_category = "RandomRight"
 
-[node name="SpawnPoint8" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(2560, 210)
+[node name="Right2" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(2570, 400)
 script = ExtResource("11_euylg")
-Category = "RandomRight"
+_category = "RandomRight"
 
-[node name="SpawnPoint9" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(2560, 1010)
+[node name="Right3" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(2570, 600)
 script = ExtResource("11_euylg")
-Category = "RandomRight"
+_category = "RandomRight"
 
-[node name="SpawnPoint10" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(2560, 810)
+[node name="Right4" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(2570, 800)
 script = ExtResource("11_euylg")
-Category = "RandomRight"
+_category = "RandomRight"
 
-[node name="SpawnPoint11" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(2560, 610)
+[node name="Right5" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(2570, 1000)
 script = ExtResource("11_euylg")
-Category = "RandomRight"
+_category = "RandomRight"
 
-[node name="SpawnPoint12" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(2560, 1210)
+[node name="Right6" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(2570, 1200)
 script = ExtResource("11_euylg")
-Category = "RandomRight"
+_category = "RandomRight"
+
+[node name="Up" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(348, 0)
+script = ExtResource("11_euylg")
+_category = "RandomUp"
+
+[node name="Up2" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(648, 0)
+script = ExtResource("11_euylg")
+_category = "RandomUp"
+
+[node name="Up3" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(948, 0)
+script = ExtResource("11_euylg")
+_category = "RandomUp"
+
+[node name="Up4" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(1252, 0)
+script = ExtResource("11_euylg")
+_category = "RandomUp"
+
+[node name="Up5" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(1548, 0)
+script = ExtResource("11_euylg")
+_category = "RandomUp"
+
+[node name="Up6" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(1848, 0)
+script = ExtResource("11_euylg")
+_category = "RandomUp"
+
+[node name="Up7" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(2148, 0)
+script = ExtResource("11_euylg")
+_category = "RandomUp"
+
+[node name="Down" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(348, 1450)
+script = ExtResource("11_euylg")
+_category = "RandomDown"
+
+[node name="Down2" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(648, 1450)
+script = ExtResource("11_euylg")
+_category = "RandomDown"
+
+[node name="Down3" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(948, 1450)
+script = ExtResource("11_euylg")
+_category = "RandomDown"
+
+[node name="Down4" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(1252, 1450)
+script = ExtResource("11_euylg")
+_category = "RandomDown"
+
+[node name="Down5" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(1548, 1450)
+script = ExtResource("11_euylg")
+_category = "RandomDown"
+
+[node name="Down6" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(1848, 1450)
+script = ExtResource("11_euylg")
+_category = "RandomDown"
+
+[node name="Down7" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(2148, 1450)
+script = ExtResource("11_euylg")
+_category = "RandomDown"
 
 [node name="HazardSpawner" type="Node2D" parent="."]
 script = ExtResource("5_2fkc6")

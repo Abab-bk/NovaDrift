@@ -1,0 +1,89 @@
+[gd_scene load_steps=5 format=3 uid="uid://b7wwiw4qw2jv3"]
+
+[ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_a3cxg"]
+[ext_resource type="Script" path="res://Scripts/Ui/dailyQuests/DailyQuestsPanel.cs" id="1_as8by"]
+[ext_resource type="LabelSettings" uid="uid://kllykcd3b5f6" path="res://Assets/LabelSettings/BoldGray44.tres" id="3_1fw40"]
+[ext_resource type="LabelSettings" uid="uid://cnabg1bgvdj1o" path="res://Assets/LabelSettings/WeightTitle.tres" id="3_8a8co"]
+
+[node name="DailyQuests" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_a3cxg")
+script = ExtResource("1_as8by")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 100
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 100
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "每日任务"
+label_settings = ExtResource("3_8a8co")
+
+[node name="Control" type="Control" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 40
+
+[node name="FinishedContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Control/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Control/VBoxContainer/FinishedContainer"]
+layout_mode = 2
+text = "已完成"
+label_settings = ExtResource("3_1fw40")
+
+[node name="FinishedQuests" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Control/VBoxContainer/FinishedContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="UnfinishedContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Control/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/Control/VBoxContainer/UnfinishedContainer"]
+layout_mode = 2
+text = "未完成"
+label_settings = ExtResource("3_1fw40")
+
+[node name="UnfinishedQuests" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Control/VBoxContainer/UnfinishedContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "返回"

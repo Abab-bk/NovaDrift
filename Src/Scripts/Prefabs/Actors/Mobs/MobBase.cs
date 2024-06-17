@@ -91,7 +91,15 @@ public partial class MobBase : Actor
 
     public void RemoveSelf()
     {
-        base.Die();
+        if (IsDead) return;
+       
+        SetProcessMode(ProcessModeEnum.Disabled);
+        Logger.Log($"[MobBase] Game over, remove self: {Name}");
+        
+        IsDead = true;
+        Stats.BuffSystem.RemoveAllBuffs();
+        Stats.EffectSystem.RemoveAllEffects();
+        QueueFree();
     }
 
     public float GetDistanceToPlayer()

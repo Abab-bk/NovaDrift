@@ -38,7 +38,8 @@ public partial class HudPanel : Hud
 
 		EventBus.OnGameStart += () =>
 		{
-			OpenNestedUi<SloganPanel>(UiManager.UiName.Slogan);
+			// OpenNestedUi<SloganPanel>(UiManager.UiName.Slogan);
+			UiManager.Open_Slogan();
 		};
 
 		_expBar = GetNode<AnimationProgressBarPanel>("%ExpProgressBar");

@@ -54,35 +54,45 @@ public abstract partial class StartMenu : UiBase
     public sealed override void OnInitNestedUi()
     {
 
-        var inst1 = L_Content.L_CenterContainer.L_HBoxContainer;
+        var inst1 = L_Content.L_VBoxContainer.L_HBoxContainer;
         RecordNestedUi(inst1.L_StartGameBtn.Instance, inst1, UiManager.RecordType.Open);
         inst1.L_StartGameBtn.Instance.OnCreateUi();
         inst1.L_StartGameBtn.Instance.OnInitNestedUi();
 
-        var inst2 = L_Content.L_CenterContainer.L_HBoxContainer;
-        RecordNestedUi(inst2.L_GearBtn.Instance, inst2, UiManager.RecordType.Open);
-        inst2.L_GearBtn.Instance.OnCreateUi();
-        inst2.L_GearBtn.Instance.OnInitNestedUi();
+        var inst2 = L_Content.L_VBoxContainer.L_HBoxContainer;
+        RecordNestedUi(inst2.L_PartGame.Instance, inst2, UiManager.RecordType.Open);
+        inst2.L_PartGame.Instance.OnCreateUi();
+        inst2.L_PartGame.Instance.OnInitNestedUi();
 
-        var inst3 = L_Content.L_CenterContainer.L_HBoxContainer;
-        RecordNestedUi(inst3.L_SettingBtn.Instance, inst3, UiManager.RecordType.Open);
-        inst3.L_SettingBtn.Instance.OnCreateUi();
-        inst3.L_SettingBtn.Instance.OnInitNestedUi();
+        var inst3 = L_Content.L_VBoxContainer.L_HBoxContainer2;
+        RecordNestedUi(inst3.L_GearBtn.Instance, inst3, UiManager.RecordType.Open);
+        inst3.L_GearBtn.Instance.OnCreateUi();
+        inst3.L_GearBtn.Instance.OnInitNestedUi();
 
-        var inst4 = L_Content.L_CenterContainer.L_HBoxContainer;
-        RecordNestedUi(inst4.L_ExitBtn.Instance, inst4, UiManager.RecordType.Open);
-        inst4.L_ExitBtn.Instance.OnCreateUi();
-        inst4.L_ExitBtn.Instance.OnInitNestedUi();
+        var inst4 = L_Content.L_VBoxContainer.L_HBoxContainer2;
+        RecordNestedUi(inst4.L_DailyQuestsBtn.Instance, inst4, UiManager.RecordType.Open);
+        inst4.L_DailyQuestsBtn.Instance.OnCreateUi();
+        inst4.L_DailyQuestsBtn.Instance.OnInitNestedUi();
 
-        var inst5 = this;
-        RecordNestedUi(inst5.L_Setting.Instance, null, UiManager.RecordType.Open);
-        inst5.L_Setting.Instance.OnCreateUi();
-        inst5.L_Setting.Instance.OnInitNestedUi();
+        var inst5 = L_Content.L_VBoxContainer.L_HBoxContainer2;
+        RecordNestedUi(inst5.L_SettingBtn.Instance, inst5, UiManager.RecordType.Open);
+        inst5.L_SettingBtn.Instance.OnCreateUi();
+        inst5.L_SettingBtn.Instance.OnInitNestedUi();
+
+        var inst6 = L_Content.L_VBoxContainer.L_HBoxContainer2;
+        RecordNestedUi(inst6.L_ExitBtn.Instance, inst6, UiManager.RecordType.Open);
+        inst6.L_ExitBtn.Instance.OnCreateUi();
+        inst6.L_ExitBtn.Instance.OnInitNestedUi();
+
+        var inst7 = this;
+        RecordNestedUi(inst7.L_Setting.Instance, null, UiManager.RecordType.Open);
+        inst7.L_Setting.Instance.OnCreateUi();
+        inst7.L_Setting.Instance.OnInitNestedUi();
 
     }
 
     /// <summary>
-    /// 类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 路径: StartMenu.Content.CenterContainer.HBoxContainer.StartGameBtn
+    /// 类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 路径: StartMenu.Content.VBoxContainer.HBoxContainer.StartGameBtn
     /// </summary>
     public class StartGameBtn : UiNode<StartMenuPanel, NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel, StartGameBtn>
     {
@@ -98,7 +108,58 @@ public abstract partial class StartMenu : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 路径: StartMenu.Content.CenterContainer.HBoxContainer.GearBtn
+    /// 类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 路径: StartMenu.Content.VBoxContainer.HBoxContainer.PartGame
+    /// </summary>
+    public class PartGame : UiNode<StartMenuPanel, NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel, PartGame>
+    {
+        public PartGame(StartMenuPanel uiPanel, NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel node) : base(uiPanel, node) {  }
+        public override PartGame Clone()
+        {
+            var uiNode = new PartGame(UiPanel, (NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel)Instance.Duplicate());
+            UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
+            uiNode.Instance.OnCreateUi();
+            uiNode.Instance.OnInitNestedUi();
+            return uiNode;
+        }
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: StartMenu.Content.VBoxContainer.HBoxContainer
+    /// </summary>
+    public class HBoxContainer : UiNode<StartMenuPanel, Godot.HBoxContainer, HBoxContainer>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.VBoxContainer.StartGameBtn
+        /// </summary>
+        public StartGameBtn L_StartGameBtn
+        {
+            get
+            {
+                if (_L_StartGameBtn == null) _L_StartGameBtn = new StartGameBtn(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel>("StartGameBtn"));
+                return _L_StartGameBtn;
+            }
+        }
+        private StartGameBtn _L_StartGameBtn;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.VBoxContainer.PartGame
+        /// </summary>
+        public PartGame L_PartGame
+        {
+            get
+            {
+                if (_L_PartGame == null) _L_PartGame = new PartGame(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel>("PartGame"));
+                return _L_PartGame;
+            }
+        }
+        private PartGame _L_PartGame;
+
+        public HBoxContainer(StartMenuPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override HBoxContainer Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 路径: StartMenu.Content.VBoxContainer.HBoxContainer2.GearBtn
     /// </summary>
     public class GearBtn : UiNode<StartMenuPanel, NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel, GearBtn>
     {
@@ -114,7 +175,23 @@ public abstract partial class StartMenu : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 路径: StartMenu.Content.CenterContainer.HBoxContainer.SettingBtn
+    /// 类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 路径: StartMenu.Content.VBoxContainer.HBoxContainer2.DailyQuestsBtn
+    /// </summary>
+    public class DailyQuestsBtn : UiNode<StartMenuPanel, NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel, DailyQuestsBtn>
+    {
+        public DailyQuestsBtn(StartMenuPanel uiPanel, NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel node) : base(uiPanel, node) {  }
+        public override DailyQuestsBtn Clone()
+        {
+            var uiNode = new DailyQuestsBtn(UiPanel, (NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel)Instance.Duplicate());
+            UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
+            uiNode.Instance.OnCreateUi();
+            uiNode.Instance.OnInitNestedUi();
+            return uiNode;
+        }
+    }
+
+    /// <summary>
+    /// 类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 路径: StartMenu.Content.VBoxContainer.HBoxContainer2.SettingBtn
     /// </summary>
     public class SettingBtn : UiNode<StartMenuPanel, NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel, SettingBtn>
     {
@@ -130,7 +207,7 @@ public abstract partial class StartMenu : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 路径: StartMenu.Content.CenterContainer.HBoxContainer.ExitBtn
+    /// 类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 路径: StartMenu.Content.VBoxContainer.HBoxContainer2.ExitBtn
     /// </summary>
     public class ExitBtn : UiNode<StartMenuPanel, NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel, ExitBtn>
     {
@@ -146,25 +223,12 @@ public abstract partial class StartMenu : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: StartMenu.Content.CenterContainer.HBoxContainer
+    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: StartMenu.Content.VBoxContainer.HBoxContainer2
     /// </summary>
-    public class HBoxContainer : UiNode<StartMenuPanel, Godot.HBoxContainer, HBoxContainer>
+    public class HBoxContainer2 : UiNode<StartMenuPanel, Godot.HBoxContainer, HBoxContainer2>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.CenterContainer.StartGameBtn
-        /// </summary>
-        public StartGameBtn L_StartGameBtn
-        {
-            get
-            {
-                if (_L_StartGameBtn == null) _L_StartGameBtn = new StartGameBtn(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel>("StartGameBtn"));
-                return _L_StartGameBtn;
-            }
-        }
-        private StartGameBtn _L_StartGameBtn;
-
-        /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.CenterContainer.GearBtn
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.VBoxContainer.GearBtn
         /// </summary>
         public GearBtn L_GearBtn
         {
@@ -177,7 +241,20 @@ public abstract partial class StartMenu : UiBase
         private GearBtn _L_GearBtn;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.CenterContainer.SettingBtn
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.VBoxContainer.DailyQuestsBtn
+        /// </summary>
+        public DailyQuestsBtn L_DailyQuestsBtn
+        {
+            get
+            {
+                if (_L_DailyQuestsBtn == null) _L_DailyQuestsBtn = new DailyQuestsBtn(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel>("DailyQuestsBtn"));
+                return _L_DailyQuestsBtn;
+            }
+        }
+        private DailyQuestsBtn _L_DailyQuestsBtn;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.VBoxContainer.SettingBtn
         /// </summary>
         public SettingBtn L_SettingBtn
         {
@@ -190,7 +267,7 @@ public abstract partial class StartMenu : UiBase
         private SettingBtn _L_SettingBtn;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.CenterContainer.ExitBtn
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.VBoxContainer.ExitBtn
         /// </summary>
         public ExitBtn L_ExitBtn
         {
@@ -202,14 +279,14 @@ public abstract partial class StartMenu : UiBase
         }
         private ExitBtn _L_ExitBtn;
 
-        public HBoxContainer(StartMenuPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
-        public override HBoxContainer Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+        public HBoxContainer2(StartMenuPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override HBoxContainer2 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.CenterContainer"/>, 路径: StartMenu.Content.CenterContainer
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: StartMenu.Content.VBoxContainer
     /// </summary>
-    public class CenterContainer : UiNode<StartMenuPanel, Godot.CenterContainer, CenterContainer>
+    public class VBoxContainer : UiNode<StartMenuPanel, Godot.VBoxContainer, VBoxContainer>
     {
         /// <summary>
         /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: StartMenu.Content.HBoxContainer
@@ -224,8 +301,21 @@ public abstract partial class StartMenu : UiBase
         }
         private HBoxContainer _L_HBoxContainer;
 
-        public CenterContainer(StartMenuPanel uiPanel, Godot.CenterContainer node) : base(uiPanel, node) {  }
-        public override CenterContainer Clone() => new (UiPanel, (Godot.CenterContainer)Instance.Duplicate());
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: StartMenu.Content.HBoxContainer2
+        /// </summary>
+        public HBoxContainer2 L_HBoxContainer2
+        {
+            get
+            {
+                if (_L_HBoxContainer2 == null) _L_HBoxContainer2 = new HBoxContainer2(UiPanel, Instance.GetNode<Godot.HBoxContainer>("HBoxContainer2"));
+                return _L_HBoxContainer2;
+            }
+        }
+        private HBoxContainer2 _L_HBoxContainer2;
+
+        public VBoxContainer(StartMenuPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
+        public override VBoxContainer Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
@@ -234,17 +324,17 @@ public abstract partial class StartMenu : UiBase
     public class Content : UiNode<StartMenuPanel, Godot.MarginContainer, Content>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.CenterContainer"/>, 节点路径: StartMenu.CenterContainer
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: StartMenu.VBoxContainer
         /// </summary>
-        public CenterContainer L_CenterContainer
+        public VBoxContainer L_VBoxContainer
         {
             get
             {
-                if (_L_CenterContainer == null) _L_CenterContainer = new CenterContainer(UiPanel, Instance.GetNode<Godot.CenterContainer>("CenterContainer"));
-                return _L_CenterContainer;
+                if (_L_VBoxContainer == null) _L_VBoxContainer = new VBoxContainer(UiPanel, Instance.GetNode<Godot.VBoxContainer>("VBoxContainer"));
+                return _L_VBoxContainer;
             }
         }
-        private CenterContainer _L_CenterContainer;
+        private VBoxContainer _L_VBoxContainer;
 
         public Content(StartMenuPanel uiPanel, Godot.MarginContainer node) : base(uiPanel, node) {  }
         public override Content Clone() => new (UiPanel, (Godot.MarginContainer)Instance.Duplicate());
@@ -343,34 +433,49 @@ public abstract partial class StartMenu : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.CenterContainer.HBoxContainer.StartGameBtn
+    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.VBoxContainer.HBoxContainer.StartGameBtn
     /// </summary>
-    public StartGameBtn S_StartGameBtn => L_Content.L_CenterContainer.L_HBoxContainer.L_StartGameBtn;
+    public StartGameBtn S_StartGameBtn => L_Content.L_VBoxContainer.L_HBoxContainer.L_StartGameBtn;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.CenterContainer.HBoxContainer.GearBtn
+    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.VBoxContainer.HBoxContainer.PartGame
     /// </summary>
-    public GearBtn S_GearBtn => L_Content.L_CenterContainer.L_HBoxContainer.L_GearBtn;
+    public PartGame S_PartGame => L_Content.L_VBoxContainer.L_HBoxContainer.L_PartGame;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.CenterContainer.HBoxContainer.SettingBtn
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: StartMenu.Content.VBoxContainer.HBoxContainer
     /// </summary>
-    public SettingBtn S_SettingBtn => L_Content.L_CenterContainer.L_HBoxContainer.L_SettingBtn;
+    public HBoxContainer S_HBoxContainer => L_Content.L_VBoxContainer.L_HBoxContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.CenterContainer.HBoxContainer.ExitBtn
+    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.VBoxContainer.HBoxContainer2.GearBtn
     /// </summary>
-    public ExitBtn S_ExitBtn => L_Content.L_CenterContainer.L_HBoxContainer.L_ExitBtn;
+    public GearBtn S_GearBtn => L_Content.L_VBoxContainer.L_HBoxContainer2.L_GearBtn;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: StartMenu.Content.CenterContainer.HBoxContainer
+    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.VBoxContainer.HBoxContainer2.DailyQuestsBtn
     /// </summary>
-    public HBoxContainer S_HBoxContainer => L_Content.L_CenterContainer.L_HBoxContainer;
+    public DailyQuestsBtn S_DailyQuestsBtn => L_Content.L_VBoxContainer.L_HBoxContainer2.L_DailyQuestsBtn;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.CenterContainer"/>, 节点路径: StartMenu.Content.CenterContainer
+    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.VBoxContainer.HBoxContainer2.SettingBtn
     /// </summary>
-    public CenterContainer S_CenterContainer => L_Content.L_CenterContainer;
+    public SettingBtn S_SettingBtn => L_Content.L_VBoxContainer.L_HBoxContainer2.L_SettingBtn;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.VBoxContainer.HBoxContainer2.ExitBtn
+    /// </summary>
+    public ExitBtn S_ExitBtn => L_Content.L_VBoxContainer.L_HBoxContainer2.L_ExitBtn;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: StartMenu.Content.VBoxContainer.HBoxContainer2
+    /// </summary>
+    public HBoxContainer2 S_HBoxContainer2 => L_Content.L_VBoxContainer.L_HBoxContainer2;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: StartMenu.Content.VBoxContainer
+    /// </summary>
+    public VBoxContainer S_VBoxContainer => L_Content.L_VBoxContainer;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: StartMenu.Content
