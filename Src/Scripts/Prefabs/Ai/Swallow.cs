@@ -1,24 +1,25 @@
-using System.Collections.Generic;
 using AcidWallStudio.AcidUtilities;
 using Godot;
+using NovaDrift.Scripts.Prefabs.Components;
 
 namespace NovaDrift.Scripts.Prefabs.Ai;
 
 public partial class Swallow : MobAiComponent
 {
     private Vector2 _target;
-    private (float, float) _xPoses;
-    private float _padding = 20f;
+    private Vector2 _leftPoint;
+    private Vector2 _rightPoint;
+    private float _padding = 40f;
 
     public override void _Ready()
     {
         base._Ready();
 
-        _xPoses = new()
-        {
-            Item1 = _padding,
-            Item2 = Wizard.GetMaxScreenX() - _padding,
-        };
+        _leftPoint = SpawnPoint.GetPoint(Constants.Points.RandomLeft);
+        _rightPoint = _leftPoint with { X = Wizard.GetMaxScreenX() };
+
+        _leftPoint.X += _padding;
+        _rightPoint.X -= _padding;
         
         SetTargetPos();
     }
@@ -55,9 +56,12 @@ public partial class Swallow : MobAiComponent
     {
         if (Mob.GlobalPosition.X > Wizard.GetScreenCenterX())
         {
-            _target = new Vector2(_xPoses.Item1, Mob.GlobalPosition.Y);
+            // 在右侧，往左走
+            _target = _leftPoint;
             return;
         }
-        _target = new Vector2(_xPoses.Item2, Mob.GlobalPosition.Y);
+
+        // 在左侧，往右走
+        _target = _rightPoint;
     }
 }

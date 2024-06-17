@@ -56,8 +56,9 @@ variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_xfgil"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hr8fi"]
 size = Vector2(126, 88)
 
-[node name="Swallow" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_cs027")]
+[node name="Swallow" node_paths=PackedStringArray("_hitBox", "_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_cs027")]
 modulate = Color(0.592157, 0.615686, 1, 1)
+_hitBox = NodePath("HitBox")
 _hurtBox = NodePath("Components/HurtBox")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
@@ -86,6 +87,9 @@ Mob = NodePath("../..")
 
 [node name="HFSM" parent="State" index="1"]
 root_fsm_config = SubResource("FSMConfig_12vmv")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="4"]
+visible = false
 
 [node name="CollisionShape2D" parent="BodyArea" index="0"]
 position = Vector2(-4, 0)

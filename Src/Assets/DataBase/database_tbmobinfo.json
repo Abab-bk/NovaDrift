@@ -46,7 +46,7 @@
     "name": "燕子",
     "scene_name": "Swallow",
     "health": 200,
-    "speed": 1000,
+    "speed": 3000,
     "damage": 10,
     "targeting": 0,
     "shoot_cd": 1,

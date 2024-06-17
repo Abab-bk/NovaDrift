@@ -1,0 +1,17 @@
+Godot Engine v4.3.beta1.mono.official.a4f2ea91a - https://godotengine.org
+Vulkan 1.3.260 - Forward Mobile - Using Device #0: AMD - AMD Radeon RX 580 2048SP
+USER ERROR: Can't create shader cache folder, no shader caching will happen: user://
+   at: RendererCompositorRD (servers/rendering/renderer_rd/renderer_compositor_rd.cpp:272)
+
+[Log][BootSplash] Debug mode, change scene to: res://Scenes/World.tscn
+USER ERROR: Parent node is busy adding/removing children, `remove_child()` can't be called at this time. Consider using `remove_child.call_deferred(child)` instead.
+   at: remove_child (scene/main/node.cpp:1595)
+[Log][Ui] Init debug panel class.
+[Log][Game] Debug mode, enter world.
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+[Log][Ui] Generate debug panel
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0

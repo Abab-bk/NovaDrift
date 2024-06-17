@@ -8,6 +8,23 @@ namespace NovaDrift.Scripts;
 
 public static class Constants
 {
+    public static class Points
+    {
+        public const string
+            LeftUp = "LeftUp",
+            Left = "Left",
+            LeftDown = "LeftDown",
+            Down = "Down",
+            RightDown = "RightDown",
+            Right = "Right",
+            RightUp = "RightUp",
+            Up = "Up",
+            RandomLeft = "RandomLeft",
+            RandomRight = "RandomRight",
+            RandomUp = "RandomUp",
+            RandomDown = "RandomDown";
+    }
+    
     public static class Colors
     {
         public static readonly WorldColor Red = new WorldColor
