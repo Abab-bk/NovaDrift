@@ -29,6 +29,7 @@ theme_override_constants/margin_bottom = 100
 
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
+theme_override_constants/separation = 20
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -59,9 +60,14 @@ layout_mode = 2
 text = "已完成"
 label_settings = ExtResource("3_1fw40")
 
-[node name="FinishedQuests" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Control/VBoxContainer/FinishedContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Control/VBoxContainer/FinishedContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="FinishedQuests" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Control/VBoxContainer/FinishedContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 20
 
@@ -76,9 +82,14 @@ layout_mode = 2
 text = "未完成"
 label_settings = ExtResource("3_1fw40")
 
-[node name="UnfinishedQuests" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Control/VBoxContainer/UnfinishedContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Control/VBoxContainer/UnfinishedContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="UnfinishedQuests" type="VBoxContainer" parent="MarginContainer/VBoxContainer/Control/VBoxContainer/UnfinishedContainer/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 theme_override_constants/separation = 20
 

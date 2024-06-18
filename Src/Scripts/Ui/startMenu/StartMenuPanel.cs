@@ -28,6 +28,11 @@ public partial class StartMenuPanel : StartMenu
             this.ChangeTo(UiManager.Create_GearLibrary());
         };
 
+        S_DailyQuestsBtn.Instance.OnClick += () =>
+        {
+            this.ChangeTo(UiManager.Create_DailyQuests());
+        };
+
         EventBus.OnGameStart += () =>
         {
             this.TweenModulateAlpha(0f, 0.2f)

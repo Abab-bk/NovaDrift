@@ -49,12 +49,34 @@ public abstract partial class DailyQuests : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: DailyQuests.MarginContainer.VBoxContainer.Control.VBoxContainer.FinishedContainer.FinishedQuests
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: DailyQuests.MarginContainer.VBoxContainer.Control.VBoxContainer.FinishedContainer.ScrollContainer.FinishedQuests
     /// </summary>
     public class FinishedQuests : UiNode<DailyQuestsPanel, Godot.VBoxContainer, FinishedQuests>
     {
         public FinishedQuests(DailyQuestsPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
         public override FinishedQuests Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: DailyQuests.MarginContainer.VBoxContainer.Control.VBoxContainer.FinishedContainer.ScrollContainer
+    /// </summary>
+    public class ScrollContainer : UiNode<DailyQuestsPanel, Godot.ScrollContainer, ScrollContainer>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: DailyQuests.MarginContainer.VBoxContainer.Control.VBoxContainer.FinishedContainer.FinishedQuests
+        /// </summary>
+        public FinishedQuests L_FinishedQuests
+        {
+            get
+            {
+                if (_L_FinishedQuests == null) _L_FinishedQuests = new FinishedQuests(UiPanel, Instance.GetNode<Godot.VBoxContainer>("FinishedQuests"));
+                return _L_FinishedQuests;
+            }
+        }
+        private FinishedQuests _L_FinishedQuests;
+
+        public ScrollContainer(DailyQuestsPanel uiPanel, Godot.ScrollContainer node) : base(uiPanel, node) {  }
+        public override ScrollContainer Clone() => new (UiPanel, (Godot.ScrollContainer)Instance.Duplicate());
     }
 
     /// <summary>
@@ -76,17 +98,17 @@ public abstract partial class DailyQuests : UiBase
         private Label_1 _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: DailyQuests.MarginContainer.VBoxContainer.Control.VBoxContainer.FinishedQuests
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: DailyQuests.MarginContainer.VBoxContainer.Control.VBoxContainer.ScrollContainer
         /// </summary>
-        public FinishedQuests L_FinishedQuests
+        public ScrollContainer L_ScrollContainer
         {
             get
             {
-                if (_L_FinishedQuests == null) _L_FinishedQuests = new FinishedQuests(UiPanel, Instance.GetNode<Godot.VBoxContainer>("FinishedQuests"));
-                return _L_FinishedQuests;
+                if (_L_ScrollContainer == null) _L_ScrollContainer = new ScrollContainer(UiPanel, Instance.GetNode<Godot.ScrollContainer>("ScrollContainer"));
+                return _L_ScrollContainer;
             }
         }
-        private FinishedQuests _L_FinishedQuests;
+        private ScrollContainer _L_ScrollContainer;
 
         public FinishedContainer(DailyQuestsPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
         public override FinishedContainer Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
@@ -102,12 +124,34 @@ public abstract partial class DailyQuests : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: DailyQuests.MarginContainer.VBoxContainer.Control.VBoxContainer.UnfinishedContainer.UnfinishedQuests
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: DailyQuests.MarginContainer.VBoxContainer.Control.VBoxContainer.UnfinishedContainer.ScrollContainer.UnfinishedQuests
     /// </summary>
     public class UnfinishedQuests : UiNode<DailyQuestsPanel, Godot.VBoxContainer, UnfinishedQuests>
     {
         public UnfinishedQuests(DailyQuestsPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
         public override UnfinishedQuests Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: DailyQuests.MarginContainer.VBoxContainer.Control.VBoxContainer.UnfinishedContainer.ScrollContainer
+    /// </summary>
+    public class ScrollContainer_1 : UiNode<DailyQuestsPanel, Godot.ScrollContainer, ScrollContainer_1>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: DailyQuests.MarginContainer.VBoxContainer.Control.VBoxContainer.UnfinishedContainer.UnfinishedQuests
+        /// </summary>
+        public UnfinishedQuests L_UnfinishedQuests
+        {
+            get
+            {
+                if (_L_UnfinishedQuests == null) _L_UnfinishedQuests = new UnfinishedQuests(UiPanel, Instance.GetNode<Godot.VBoxContainer>("UnfinishedQuests"));
+                return _L_UnfinishedQuests;
+            }
+        }
+        private UnfinishedQuests _L_UnfinishedQuests;
+
+        public ScrollContainer_1(DailyQuestsPanel uiPanel, Godot.ScrollContainer node) : base(uiPanel, node) {  }
+        public override ScrollContainer_1 Clone() => new (UiPanel, (Godot.ScrollContainer)Instance.Duplicate());
     }
 
     /// <summary>
@@ -129,17 +173,17 @@ public abstract partial class DailyQuests : UiBase
         private Label_2 _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: DailyQuests.MarginContainer.VBoxContainer.Control.VBoxContainer.UnfinishedQuests
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: DailyQuests.MarginContainer.VBoxContainer.Control.VBoxContainer.ScrollContainer
         /// </summary>
-        public UnfinishedQuests L_UnfinishedQuests
+        public ScrollContainer_1 L_ScrollContainer
         {
             get
             {
-                if (_L_UnfinishedQuests == null) _L_UnfinishedQuests = new UnfinishedQuests(UiPanel, Instance.GetNode<Godot.VBoxContainer>("UnfinishedQuests"));
-                return _L_UnfinishedQuests;
+                if (_L_ScrollContainer == null) _L_ScrollContainer = new ScrollContainer_1(UiPanel, Instance.GetNode<Godot.ScrollContainer>("ScrollContainer"));
+                return _L_ScrollContainer;
             }
         }
-        private UnfinishedQuests _L_UnfinishedQuests;
+        private ScrollContainer_1 _L_ScrollContainer;
 
         public UnfinishedContainer(DailyQuestsPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
         public override UnfinishedContainer Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
@@ -283,9 +327,9 @@ public abstract partial class DailyQuests : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: DailyQuests.MarginContainer.VBoxContainer.Control.VBoxContainer.FinishedContainer.FinishedQuests
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: DailyQuests.MarginContainer.VBoxContainer.Control.VBoxContainer.FinishedContainer.ScrollContainer.FinishedQuests
     /// </summary>
-    public FinishedQuests S_FinishedQuests => L_MarginContainer.L_VBoxContainer.L_Control.L_VBoxContainer.L_FinishedContainer.L_FinishedQuests;
+    public FinishedQuests S_FinishedQuests => L_MarginContainer.L_VBoxContainer.L_Control.L_VBoxContainer.L_FinishedContainer.L_ScrollContainer.L_FinishedQuests;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: DailyQuests.MarginContainer.VBoxContainer.Control.VBoxContainer.FinishedContainer
@@ -293,9 +337,9 @@ public abstract partial class DailyQuests : UiBase
     public FinishedContainer S_FinishedContainer => L_MarginContainer.L_VBoxContainer.L_Control.L_VBoxContainer.L_FinishedContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: DailyQuests.MarginContainer.VBoxContainer.Control.VBoxContainer.UnfinishedContainer.UnfinishedQuests
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: DailyQuests.MarginContainer.VBoxContainer.Control.VBoxContainer.UnfinishedContainer.ScrollContainer.UnfinishedQuests
     /// </summary>
-    public UnfinishedQuests S_UnfinishedQuests => L_MarginContainer.L_VBoxContainer.L_Control.L_VBoxContainer.L_UnfinishedContainer.L_UnfinishedQuests;
+    public UnfinishedQuests S_UnfinishedQuests => L_MarginContainer.L_VBoxContainer.L_Control.L_VBoxContainer.L_UnfinishedContainer.L_ScrollContainer.L_UnfinishedQuests;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: DailyQuests.MarginContainer.VBoxContainer.Control.VBoxContainer.UnfinishedContainer
