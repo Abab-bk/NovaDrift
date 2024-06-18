@@ -247,12 +247,12 @@ public abstract partial class DailyQuests : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: DailyQuests.MarginContainer.VBoxContainer.Button
+    /// 类型: <see cref="Godot.Button"/>, 路径: DailyQuests.MarginContainer.VBoxContainer.CloseBtn
     /// </summary>
-    public class Button : UiNode<DailyQuestsPanel, Godot.Button, Button>
+    public class CloseBtn : UiNode<DailyQuestsPanel, Godot.Button, CloseBtn>
     {
-        public Button(DailyQuestsPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
-        public override Button Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
+        public CloseBtn(DailyQuestsPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
+        public override CloseBtn Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
     }
 
     /// <summary>
@@ -287,17 +287,17 @@ public abstract partial class DailyQuests : UiBase
         private Control _L_Control;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: DailyQuests.MarginContainer.Button
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: DailyQuests.MarginContainer.CloseBtn
         /// </summary>
-        public Button L_Button
+        public CloseBtn L_CloseBtn
         {
             get
             {
-                if (_L_Button == null) _L_Button = new Button(UiPanel, Instance.GetNode<Godot.Button>("Button"));
-                return _L_Button;
+                if (_L_CloseBtn == null) _L_CloseBtn = new CloseBtn(UiPanel, Instance.GetNode<Godot.Button>("CloseBtn"));
+                return _L_CloseBtn;
             }
         }
-        private Button _L_Button;
+        private CloseBtn _L_CloseBtn;
 
         public VBoxContainer(DailyQuestsPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
         public override VBoxContainer Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
@@ -352,9 +352,9 @@ public abstract partial class DailyQuests : UiBase
     public Control S_Control => L_MarginContainer.L_VBoxContainer.L_Control;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: DailyQuests.MarginContainer.VBoxContainer.Button
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: DailyQuests.MarginContainer.VBoxContainer.CloseBtn
     /// </summary>
-    public Button S_Button => L_MarginContainer.L_VBoxContainer.L_Button;
+    public CloseBtn S_CloseBtn => L_MarginContainer.L_VBoxContainer.L_CloseBtn;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: DailyQuests.MarginContainer

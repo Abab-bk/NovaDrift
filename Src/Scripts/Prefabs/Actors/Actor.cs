@@ -19,7 +19,6 @@ public partial class Actor : CharacterBody2D
     
     [Export] private HurtBox _hurtBox;
     
-    // [Export] public Spring Spring;
     [Export] protected Sprite2D Sprite;
     
     [Export] private VisibleOnScreenNotifier2D _visibleOnScreenNotifier2D;
@@ -132,7 +131,7 @@ public partial class Actor : CharacterBody2D
         InitStats();
         InitCollision();
 
-        Scale = new Vector2(Stats.Size.Value, Stats.Size.Value);
+        UpdateScale();
         
         Stats.SetTarget(this);
         Stats.OnBodyChanged += () =>
@@ -149,6 +148,12 @@ public partial class Actor : CharacterBody2D
         
         _bodyArea.SetIsPlayer(IsPlayer);
         _bodyArea.BodyEntered += (body) => OnHitSomeThing?.Invoke(body);
+    }
+
+    protected void UpdateScale()
+    {
+        if (Stats.Size.Value == 0) return;
+        Scale = new Vector2(Stats.Size.Value, Stats.Size.Value);
     }
 
     public override void _ExitTree()

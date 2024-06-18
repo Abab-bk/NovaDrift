@@ -13,5 +13,15 @@ USER ERROR: Parent node is busy adding/removing children, `remove_child()` can't
 [Log][Ui] Generate debug panel
 [Log][Global] Try Stop game. Stop count: 1
 [Log][Global] Try Resume game. Stop count: 0
+[Log][AbilityGenerate] Generating Random Ability Ids
+[Log][AbilityGenerate] Generated Random Ability Ids
+[Log][AbilityGenerate] Generating Random Gear Ids
+[Log][AbilityGenerate] Generated Random Gear Ids
+[Log][AbilityGenerate] Generating Random Shield Ids
+[Log][AbilityGenerate] Generated Random Shield Ids
+[Log][AbilityGenerate] Generating Random Body Ids
+[Log][AbilityGenerate] Generated Random Body Ids
+[Log][AbilityGenerate] Generating Random Weapon Ids
+[Log][AbilityGenerate] Generated Random Weapon Ids
 [Log][Global] Try Stop game. Stop count: 1
 [Log][Global] Try Resume game. Stop count: 0

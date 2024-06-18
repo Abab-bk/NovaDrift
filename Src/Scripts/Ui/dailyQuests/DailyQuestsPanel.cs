@@ -1,3 +1,4 @@
+using System.Linq;
 using DsUi;
 using Godot;
 using NovaDrift.Scripts.Systems.QuestSystem;
@@ -26,6 +27,11 @@ public partial class DailyQuestsPanel : DailyQuests
             S_UnfinishedContainer.Instance.Show();
             S_UnfinishedQuests.AddChild(CreateQuestItem(quest));
         }
+        
+        S_CloseBtn.Instance.Pressed += () =>
+        {
+            this.ChangeTo(UiManager.Get_StartMenu_Instance().First());
+        };
     }
 
     private QuestItemPanel CreateQuestItem(Quest quest)

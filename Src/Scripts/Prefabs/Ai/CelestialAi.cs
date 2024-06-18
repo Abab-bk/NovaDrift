@@ -32,7 +32,7 @@ public partial class CelestialAi : MobAiComponent
                     var clone = mob.Duplicate((int)DuplicateFlags.UseInstantiation) as MobBase;
                     if (clone == null) break;
                     
-                    clone.MobInfo = mob.MobInfo;
+                    clone.MobInfo = DataBuilder.BuildMobInfoById(mob.MobInfo.Id);
                     clone.GlobalPosition = Mob.GlobalPosition;
                     var ai = new MobAiComponent();
                     ai.SetScript(GD.Load<GodotObject>("res://Scripts/Prefabs/Ai/CloneMobAi.cs"));

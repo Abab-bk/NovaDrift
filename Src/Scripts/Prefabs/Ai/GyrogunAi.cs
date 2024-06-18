@@ -12,7 +12,14 @@ public partial class GyrogunAi : MobAiComponent
             var pos = Mob.GlobalPosition;
             for (int i = 0; i < 2; i++)
             {
-                Global.WaveSpawnerController.GenerateAMob(Mob.MobInfo.Id, pos);
+                if (Mob.Tags.Contains("IsClone")) continue;
+
+                var info = DataBuilder.BuildMobInfoById(Mob.MobInfo.Id);
+                info.Size = 0.7f;
+                
+                var mob = Global.WaveSpawnerController.GenerateAMob(info, pos);
+                
+                mob.Tags.Add("IsClone");
             }
         };
     }

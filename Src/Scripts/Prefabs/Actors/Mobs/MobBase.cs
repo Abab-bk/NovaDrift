@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Components;
 using NovaDrift.Scripts.Systems;
@@ -13,6 +14,7 @@ public partial class MobBase : Actor
     public MobAiComponent Ai;
 
     private Node2D _target;
+    public List<string> Tags = new List<string>();
     
     [Export] public string Sign;
     [Export] private HitBox _hitBox;
@@ -38,9 +40,15 @@ public partial class MobBase : Actor
             }
         };
 
-        Stats.Damage.ValueChanged += (value) =>
+        Stats.Damage.ValueChanged += _ =>
         {
             _hitBox.Damage = Stats.Damage.Value;
+        };
+
+        Stats.Size.ValueChanged += _ =>
+        {
+            Logger.Log($"[MobBase] Size changed: {Stats.Size.Value}");
+            UpdateScale();
         };
         
         if (Shooter != null) Shooter.Init();

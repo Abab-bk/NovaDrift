@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using AcidWallStudio.AcidUtilities;
 using Godot;
+using NovaDrift.Scripts.Prefabs.Actors.Mobs;
 using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts.Prefabs.Components;
@@ -129,12 +130,22 @@ public partial class WaveSpawnerController : Node2D
         _clock.Start();
     }
 
-    public void GenerateAMob(int id, Vector2 pos = default)
+    public MobBase GenerateAMob(int id, Vector2 pos = default)
     {
         var mob = new MobBuilder(DataBuilder.BuildMobInfoById(id)).Build();
         Global.GameWorld.CallDeferred(Node.MethodName.AddChild, mob);
         // Global.GameWorld.AddChild(mob);
         mob.GlobalPosition = pos == default ? Wizard.GetScreenCenter() : pos;
+        return mob;
+    }
+    
+    public MobBase GenerateAMob(MobInfo mobInfo, Vector2 pos = default)
+    {
+        var mob = new MobBuilder(mobInfo).Build();
+        Global.GameWorld.CallDeferred(Node.MethodName.AddChild, mob);
+        // Global.GameWorld.AddChild(mob);
+        mob.GlobalPosition = pos == default ? Wizard.GetScreenCenter() : pos;
+        return mob;
     }
     
     public void GenerateABoss(int id)
