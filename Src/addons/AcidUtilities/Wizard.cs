@@ -39,7 +39,12 @@ public static class Wizard
         // return FileAccess.FileExists(path);
         return ResourceLoader.Exists(path);
     }
-    
+
+    public static float GetChance()
+    {
+        return Random.Shared.FloatRange(0f, 1f);
+    }
+
     public static string ReadAllText(string path)
     {
         return FileAccess.Open(path, FileAccess.ModeFlags.Read).GetAsText();

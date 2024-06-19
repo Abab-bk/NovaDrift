@@ -118,5 +118,25 @@
       1047
     ],
     "end_ability_id": 1048
+  },
+  {
+    "id": 1013,
+    "name": "狂怒",
+    "start_ability_id": 1049,
+    "middle_ability_ids": [
+      1050,
+      1051
+    ],
+    "end_ability_id": 1052
+  },
+  {
+    "id": 1014,
+    "name": "连锁反应",
+    "start_ability_id": 1053,
+    "middle_ability_ids": [
+      1054,
+      1055
+    ],
+    "end_ability_id": 1056
   }
 ]

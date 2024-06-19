@@ -82,6 +82,8 @@ public partial class Actor : CharacterBody2D
     public virtual void TryMoveTo(Vector2 dir, double delta)
     {
         var targetVelocity = dir * Stats.Speed.Value;
+        Velocity = Velocity.MoveToward(targetVelocity, Stats.Acceleration.Value * (float)delta);
+        
         // TODO
         // if (IsShooting)
         // {
@@ -91,8 +93,6 @@ public partial class Actor : CharacterBody2D
         //         (float)delta);
         //     return;
         // }
-        
-        Velocity = Velocity.MoveToward(targetVelocity, Stats.Acceleration.Value * (float)delta);
     }
 
     public void TryStop(double delta)

@@ -11,8 +11,12 @@ USER ERROR: Parent node is busy adding/removing children, `remove_child()` can't
 [Log][Global] Try Stop game. Stop count: 1
 [Log][Global] Try Resume game. Stop count: 0
 [Log][Ui] Generate debug panel
-[Log][Global] Try Stop game. Stop count: 1
-[Log][Global] Try Resume game. Stop count: 0
+[Log][Wave Spawner] æäººçææ°é: 3, éµåï¼RectSpawnType
+[Log][WaveSpawner] Next wave clock: 2s
+[Log][Wave Spawner] æäººçææ°é: 2, éµåï¼SpiralSpawnType
+[Log][WaveSpawner] Next wave clock: 2s
+[Log][Wave Spawner] æäººçææ°é: 2, éµåï¼RectSpawnType
+[Log][WaveSpawner] Next wave clock: 2s
 [Log][AbilityGenerate] Generating Random Ability Ids
 [Log][AbilityGenerate] Generated Random Ability Ids
 [Log][AbilityGenerate] Generating Random Gear Ids
@@ -23,5 +27,57 @@ USER ERROR: Parent node is busy adding/removing children, `remove_child()` can't
 [Log][AbilityGenerate] Generated Random Body Ids
 [Log][AbilityGenerate] Generating Random Weapon Ids
 [Log][AbilityGenerate] Generated Random Weapon Ids
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+[Log][Wave Spawner] æäººçææ°é: 9, éµåï¼CircleSpawnType
+[Log][WaveSpawner] Next wave clock: 4s
+[Log][Wave Spawner] æäººçææ°é: 5, éµåï¼SpiralSpawnType
+[Log][WaveSpawner] Next wave clock: 4s
+[Log][Wave Spawner] æäººçææ°é: 4, éµåï¼SpiralSpawnType
+[Log][WaveSpawner] Next wave clock: 4s
+[Log][AbilityGenerate] Generating Random Ability Ids
+[Log][AbilityGenerate] Generated Random Ability Ids
+[Log][AbilityGenerate] Generating Random Gear Ids
+[Log][AbilityGenerate] Generated Random Gear Ids
+[Log][AbilityGenerate] Generating Random Shield Ids
+[Log][AbilityGenerate] Generated Random Shield Ids
+[Log][AbilityGenerate] Generating Random Body Ids
+[Log][AbilityGenerate] Generated Random Body Ids
+[Log][AbilityGenerate] Generating Random Weapon Ids
+[Log][AbilityGenerate] Generated Random Weapon Ids
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+[Log][Wave Spawner] æäººçææ°é: 9, éµåï¼CircleSpawnType
+[Log][WaveSpawner] Next wave clock: 6s
+[Log][AbilityGenerate] Generating Random Ability Ids
+[Log][AbilityGenerate] Generated Random Ability Ids
+[Log][AbilityGenerate] Generating Random Gear Ids
+[Log][AbilityGenerate] Generated Random Gear Ids
+[Log][AbilityGenerate] Generating Random Shield Ids
+[Log][AbilityGenerate] Generated Random Shield Ids
+[Log][AbilityGenerate] Generating Random Body Ids
+[Log][AbilityGenerate] Generated Random Body Ids
+[Log][AbilityGenerate] Generating Random Weapon Ids
+[Log][AbilityGenerate] Generated Random Weapon Ids
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+[Log][Wave Spawner] æäººçææ°é: 11, éµåï¼SpiralSpawnType
+[Log][WaveSpawner] Next wave clock: 8s
+[Log][Wave Spawner] æäººçææ°é: 13, éµåï¼CircleSpawnType
+[Log][WaveSpawner] Next wave clock: 8s
+[Log][WaveSpawner] Next wave clock: 8s
+[Log][AbilityGenerate] Generating Random Ability Ids
+[Log][AbilityGenerate] Generated Random Ability Ids
+[Log][AbilityGenerate] Generating Random Gear Ids
+[Log][AbilityGenerate] Generated Random Gear Ids
+[Log][AbilityGenerate] Generating Random Shield Ids
+[Log][AbilityGenerate] Generated Random Shield Ids
+[Log][AbilityGenerate] Generating Random Body Ids
+[Log][AbilityGenerate] Generated Random Body Ids
+[Log][AbilityGenerate] Generating Random Weapon Ids
+[Log][AbilityGenerate] Generated Random Weapon Ids
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Effect System] Add effect: è¡éå¢å¼º
+[Log][Global] Try Resume game. Stop count: 0
 [Log][Global] Try Stop game. Stop count: 1
 [Log][Global] Try Resume game. Stop count: 0

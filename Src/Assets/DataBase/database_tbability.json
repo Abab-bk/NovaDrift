@@ -527,5 +527,69 @@
     ],
     "class_name": "WeaponizedShields",
     "tree_id": 1012
+  },
+  {
+    "id": 1049,
+    "name": "火力全开",
+    "desc": "武器伤害 +20%",
+    "values": [],
+    "class_name": "",
+    "tree_id": 0
+  },
+  {
+    "id": 1050,
+    "name": "破坏力场",
+    "desc": "20% 的概率使子弹穿透",
+    "values": [],
+    "class_name": "",
+    "tree_id": 0
+  },
+  {
+    "id": 1051,
+    "name": "增幅器",
+    "desc": "高速移动时，50% 的概率使子弹穿透",
+    "values": [],
+    "class_name": "",
+    "tree_id": 0
+  },
+  {
+    "id": 1052,
+    "name": "狂暴",
+    "desc": "击杀敌人有 20% 的概率进入狂暴状态\n狂暴状态：+ 50% 的伤害",
+    "values": [],
+    "class_name": "",
+    "tree_id": 0
+  },
+  {
+    "id": 1053,
+    "name": "连锁反应",
+    "desc": "击杀一名敌人后，10% 的概率释放出脉冲，眩晕附近的敌人 2s",
+    "values": [],
+    "class_name": "",
+    "tree_id": 0
+  },
+  {
+    "id": 1054,
+    "name": "进化理论",
+    "desc": "子弹退化速度 -20%",
+    "values": [],
+    "class_name": "",
+    "tree_id": 0
+  },
+  {
+    "id": 1055,
+    "name": "加速弹道",
+    "desc": "射速 +10%",
+    "values": [],
+    "class_name": "",
+    "tree_id": 0
+  },
+  {
+    "id": 1056,
+    "name": "扭曲",
+    "desc": "击杀一名敌人后，10% 的概率减速附近敌人，持续 3s",
+    "values": [],
+    "class_name": "",
+    "tree_id": 0
   }
 ]

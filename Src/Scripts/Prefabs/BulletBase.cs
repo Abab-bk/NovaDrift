@@ -23,6 +23,7 @@ public partial class BulletBase : Node2D
     public float Speed = 1300f;
     public float Size = 1f;
     public float Degeneration = 0.8f;
+    public int CanPenetrate = 0;
 
     protected Vector2 Velocity = Vector2.Zero;
 
@@ -76,6 +77,14 @@ public partial class BulletBase : Node2D
     {
         SoundManager.PlayOneShotById("event:/OnBulletHit");
         OnHit?.Invoke(actor);
+        if (CanPenetrate > 0)
+        {
+            CanPenetrate--;
+            if (CanPenetrate == 0)
+            {
+                QueueFree();
+            }
+        }
         QueueFree();
     }
 

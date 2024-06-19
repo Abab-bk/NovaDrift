@@ -1,6 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://d1kwbf54qmb76"]
+[gd_scene load_steps=4 format=3 uid="uid://d1kwbf54qmb76"]
 
 [ext_resource type="Script" path="res://Scripts/Test.cs" id="1_kfpb1"]
+[ext_resource type="PackedScene" uid="uid://quytab3avo1p" path="res://Scenes/Vfx/SacredSword.tscn" id="3_ehjd7"]
 [ext_resource type="Environment" uid="uid://dwua3nxtba68l" path="res://Assets/Environments/Default.tres" id="4_r7egi"]
 
 [node name="Test" type="Node2D"]
@@ -8,3 +9,11 @@ script = ExtResource("1_kfpb1")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("4_r7egi")
+
+[node name="SacredSword" parent="." node_paths=PackedStringArray("_circle1", "_circle2", "_circle3", "_sword") instance=ExtResource("3_ehjd7")]
+position = Vector2(1194, 737)
+scale = Vector2(2, 2)
+_circle1 = NodePath("Circle1")
+_circle2 = NodePath("Circle2")
+_circle3 = NodePath("Circle3")
+_sword = NodePath("Sword")

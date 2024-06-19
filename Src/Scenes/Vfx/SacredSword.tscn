@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://quytab3avo1p"]
+
+[ext_resource type="Texture2D" uid="uid://cevg6eka2cdm0" path="res://Assets/Textures/Objects/MagicCircles/MagicCircle1/MagicCirclePart3.png" id="1_3tlmg"]
+[ext_resource type="Script" path="res://Scripts/Vfx/SacredSword.cs" id="1_hjd0w"]
+[ext_resource type="Texture2D" uid="uid://c3x1agyfrwx8v" path="res://Assets/Textures/Weapons/Sword.png" id="3_qwfkh"]
+[ext_resource type="Texture2D" uid="uid://di7rjlndvbjiu" path="res://Assets/Textures/Particles/circle_03.png" id="4_1ngcv"]
+
+[node name="SacredSword" type="Node2D" node_paths=PackedStringArray("_circle1", "_circle2", "_circle3", "_sword")]
+script = ExtResource("1_hjd0w")
+_circle1 = NodePath("Circle1")
+_circle2 = NodePath("Circle2")
+_circle3 = NodePath("Circle3")
+_sword = NodePath("Sword")
+
+[node name="Circle1" type="Sprite2D" parent="."]
+scale = Vector2(0.15, 0.15)
+texture = ExtResource("1_3tlmg")
+
+[node name="Circle2" type="Sprite2D" parent="."]
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("1_3tlmg")
+
+[node name="Sword" type="Sprite2D" parent="."]
+position = Vector2(0, -95)
+rotation = -1.5708
+texture = ExtResource("3_qwfkh")
+
+[node name="Circle3" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("4_1ngcv")
