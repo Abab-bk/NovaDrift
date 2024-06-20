@@ -19,7 +19,14 @@ public class Ability : IItemInfo
     public void Use()
     {
         Global.Player.Stats.AddEffect(this);
-        
+        Effect.OnDestroyed += effect => { OnDestroyed?.Invoke(this); };
+
+        if (Effect.IsMutationAbility)
+        {
+            DataBuilder.MutationAbilityIdPool.Remove(Id);
+            return;
+        }
+
         DataBuilder.AbilityIdPool.Remove(Id);
         
         // 记录已经获得的 Ability
@@ -37,7 +44,5 @@ public class Ability : IItemInfo
             DataBuilder.AbilityIdPool.Add(Tree.EndAbilityId);
             DataBuilder.AbilityIdPool.Remove(Tree.MiddleAbilityIds[0]);
         }
-        
-        Effect.OnDestroyed += effect => { OnDestroyed?.Invoke(this); };
     }
 }

@@ -172,6 +172,12 @@ layout_mode = 2
 size_flags_horizontal = 1
 _id = 1001
 
+[node name="GoodsItem2" parent="VBoxContainer/Content/Content/UpGrade/Goods" instance=ExtResource("3_y5l0t")]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+size_flags_horizontal = 1
+_id = 1008
+
 [node name="UiSkin" type="VBoxContainer" parent="VBoxContainer/Content/Content"]
 visible = false
 layout_mode = 2

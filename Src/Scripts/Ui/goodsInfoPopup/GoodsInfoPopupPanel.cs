@@ -4,6 +4,7 @@ using cfg;
 using Godot;
 using GTweens.Builders;
 using GTweensGodot.Extensions;
+using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts.Ui.GoodsInfoPopup;
 
@@ -15,6 +16,12 @@ public partial class GoodsInfoPopupPanel : GoodsInfoPopup
     {
         S_Content.Instance.Modulate = S_Content.Instance.Modulate with { A = 0f };
         L_PanelContainer.Instance.Scale = new Vector2(0, 1);
+
+        var cancelAnimation = GTweenSequenceBuilder.New()
+            .Append(L_PanelContainer.Instance.TweenScale(new Vector2(0, 1), 0.5f))
+            .Join(S_Content.Instance.TweenModulateAlpha(0f, 0.2f))
+            .AppendCallback(QueueFree)
+            .Build();
         
         GTweenSequenceBuilder.New()
             .Append(L_PanelContainer.Instance.TweenScale(Vector2.One, 0.2f))
@@ -24,12 +31,7 @@ public partial class GoodsInfoPopupPanel : GoodsInfoPopup
 
         S_CloseBtn.Instance.Pressed += () =>
         {
-            GTweenSequenceBuilder.New()
-                .Append(L_PanelContainer.Instance.TweenScale(new Vector2(0, 1), 0.5f))
-                    .Join(S_Content.Instance.TweenModulateAlpha(0f, 0.2f))
-                .AppendCallback(QueueFree)
-                .Build()
-                .Play();
+            cancelAnimation.Play();
         };
 
         S_BuyBtn.Instance.Pressed += () =>
@@ -43,6 +45,10 @@ public partial class GoodsInfoPopupPanel : GoodsInfoPopup
 
             if (Global.AcidCoins < price) return;
             Global.AcidCoins -= price;
+            
+            GoodsHandle.GetReward(_storeInfo);
+            
+            cancelAnimation.Play();
         };
     }
 

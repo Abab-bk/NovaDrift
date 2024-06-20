@@ -3,7 +3,7 @@ using AcidWallStudio.AcidUtilities;
 
 namespace NovaDrift.Scripts.Systems.Effects;
 
-public class Ampil : Effect
+public class Ampli : Effect
 {
     public override void OnCreate()
     {

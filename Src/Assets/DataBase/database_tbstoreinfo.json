@@ -1,11 +1,11 @@
 [
   {
     "id": 1001,
-    "name": "芙拉吉尔重装",
-    "desc": "最专业的重装。",
+    "name": "烈焰风暴",
+    "desc": "烈焰风暴可以为你提供强大的火力和战斗能力",
     "type": 0,
     "price": 188,
-    "value": 1012,
+    "value": 1013,
     "icon_name": "Test1"
   },
   {
@@ -61,5 +61,14 @@
     "price": 1688,
     "value": 1012,
     "icon_name": ""
+  },
+  {
+    "id": 1008,
+    "name": "时间裂痕",
+    "desc": "",
+    "type": 0,
+    "price": 188,
+    "value": 1013,
+    "icon_name": "Test1"
   }
 ]

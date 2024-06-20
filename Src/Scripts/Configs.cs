@@ -57,7 +57,7 @@ public class AbilityGenerateConfig
         _weaponIds = list;
         Logger.Log($"[AbilityGenerate] Generated Random Weapon Ids");
     }
-
+    
     private void GenerateRandomBodyIds()
     {
         Logger.Log($"[AbilityGenerate] Generating Random Body Ids");
@@ -141,7 +141,12 @@ public class AbilityGenerateConfig
         _gearIds = list;
         Logger.Log($"[AbilityGenerate] Generated Random Gear Ids");
     }
-    
+
+
+    public int SelectMutationAbilityId()
+    {
+        return DataBuilder.MutationAbilityIdPool.PickRandom();
+    }
 
     public int SelectAbilityId()
     {

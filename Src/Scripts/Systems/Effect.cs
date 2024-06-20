@@ -16,6 +16,7 @@ public class Effect
     public bool Infinite = false;
     // 是否自动开启
     public bool AutoStart = false;
+    public bool IsMutationAbility = false;
     
     public Action<Effect> OnDestroyed;
 

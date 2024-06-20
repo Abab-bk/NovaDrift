@@ -3,6 +3,7 @@ Vulkan 1.3.260 - Forward Mobile - Using Device #0: AMD - AMD Radeon RX 580 2048S
 USER ERROR: Can't create shader cache folder, no shader caching will happen: user://
    at: RendererCompositorRD (servers/rendering/renderer_rd/renderer_compositor_rd.cpp:272)
 
+[Run Config] Applied environment variables from the Debug config.
 [Log][BootSplash] Debug mode, change scene to: res://Scenes/World.tscn
 USER ERROR: Parent node is busy adding/removing children, `remove_child()` can't be called at this time. Consider using `remove_child.call_deferred(child)` instead.
    at: remove_child (scene/main/node.cpp:1595)
@@ -11,73 +12,40 @@ USER ERROR: Parent node is busy adding/removing children, `remove_child()` can't
 [Log][Global] Try Stop game. Stop count: 1
 [Log][Global] Try Resume game. Stop count: 0
 [Log][Ui] Generate debug panel
-[Log][Wave Spawner] æäººçææ°é: 3, éµåï¼RectSpawnType
-[Log][WaveSpawner] Next wave clock: 2s
-[Log][Wave Spawner] æäººçææ°é: 2, éµåï¼SpiralSpawnType
-[Log][WaveSpawner] Next wave clock: 2s
-[Log][Wave Spawner] æäººçææ°é: 2, éµåï¼RectSpawnType
-[Log][WaveSpawner] Next wave clock: 2s
-[Log][AbilityGenerate] Generating Random Ability Ids
-[Log][AbilityGenerate] Generated Random Ability Ids
-[Log][AbilityGenerate] Generating Random Gear Ids
-[Log][AbilityGenerate] Generated Random Gear Ids
-[Log][AbilityGenerate] Generating Random Shield Ids
-[Log][AbilityGenerate] Generated Random Shield Ids
-[Log][AbilityGenerate] Generating Random Body Ids
-[Log][AbilityGenerate] Generated Random Body Ids
-[Log][AbilityGenerate] Generating Random Weapon Ids
-[Log][AbilityGenerate] Generated Random Weapon Ids
 [Log][Global] Try Stop game. Stop count: 1
+[Log][Weapon: Sword] Wave
 [Log][Global] Try Resume game. Stop count: 0
-[Log][Wave Spawner] æäººçææ°é: 9, éµåï¼CircleSpawnType
-[Log][WaveSpawner] Next wave clock: 4s
-[Log][Wave Spawner] æäººçææ°é: 5, éµåï¼SpiralSpawnType
-[Log][WaveSpawner] Next wave clock: 4s
-[Log][Wave Spawner] æäººçææ°é: 4, éµåï¼SpiralSpawnType
-[Log][WaveSpawner] Next wave clock: 4s
-[Log][AbilityGenerate] Generating Random Ability Ids
-[Log][AbilityGenerate] Generated Random Ability Ids
-[Log][AbilityGenerate] Generating Random Gear Ids
-[Log][AbilityGenerate] Generated Random Gear Ids
-[Log][AbilityGenerate] Generating Random Shield Ids
-[Log][AbilityGenerate] Generated Random Shield Ids
-[Log][AbilityGenerate] Generating Random Body Ids
-[Log][AbilityGenerate] Generated Random Body Ids
-[Log][AbilityGenerate] Generating Random Weapon Ids
-[Log][AbilityGenerate] Generated Random Weapon Ids
-[Log][Global] Try Stop game. Stop count: 1
-[Log][Global] Try Resume game. Stop count: 0
-[Log][Wave Spawner] æäººçææ°é: 9, éµåï¼CircleSpawnType
-[Log][WaveSpawner] Next wave clock: 6s
-[Log][AbilityGenerate] Generating Random Ability Ids
-[Log][AbilityGenerate] Generated Random Ability Ids
-[Log][AbilityGenerate] Generating Random Gear Ids
-[Log][AbilityGenerate] Generated Random Gear Ids
-[Log][AbilityGenerate] Generating Random Shield Ids
-[Log][AbilityGenerate] Generated Random Shield Ids
-[Log][AbilityGenerate] Generating Random Body Ids
-[Log][AbilityGenerate] Generated Random Body Ids
-[Log][AbilityGenerate] Generating Random Weapon Ids
-[Log][AbilityGenerate] Generated Random Weapon Ids
-[Log][Global] Try Stop game. Stop count: 1
-[Log][Global] Try Resume game. Stop count: 0
-[Log][Wave Spawner] æäººçææ°é: 11, éµåï¼SpiralSpawnType
-[Log][WaveSpawner] Next wave clock: 8s
-[Log][Wave Spawner] æäººçææ°é: 13, éµåï¼CircleSpawnType
-[Log][WaveSpawner] Next wave clock: 8s
-[Log][WaveSpawner] Next wave clock: 8s
-[Log][AbilityGenerate] Generating Random Ability Ids
-[Log][AbilityGenerate] Generated Random Ability Ids
-[Log][AbilityGenerate] Generating Random Gear Ids
-[Log][AbilityGenerate] Generated Random Gear Ids
-[Log][AbilityGenerate] Generating Random Shield Ids
-[Log][AbilityGenerate] Generated Random Shield Ids
-[Log][AbilityGenerate] Generating Random Body Ids
-[Log][AbilityGenerate] Generated Random Body Ids
-[Log][AbilityGenerate] Generating Random Weapon Ids
-[Log][AbilityGenerate] Generated Random Weapon Ids
-[Log][Global] Try Stop game. Stop count: 1
-[Log][Effect System] Add effect: è¡éå¢å¼º
-[Log][Global] Try Resume game. Stop count: 0
-[Log][Global] Try Stop game. Stop count: 1
-[Log][Global] Try Resume game. Stop count: 0
+[Log][Weapon: Sword] Wave
+[Log][Weapon: Sword] Wave
+[Log][Weapon: Sword] Wave
+[Log][Weapon: Sword] Wave
+[Log][Weapon: Sword] Wave
+[Log][Weapon: Sword] Wave
+[Log][Weapon: Sword] Wave
+[Log][Weapon: Sword] Wave
+[Log][Weapon: Sword] Wave
+[Log][Weapon: Sword] Wave
+[Log][Weapon: Sword] Wave
+[Log][Weapon: Sword] Wave
+[Log][Weapon: Sword] Wave
+[Log][Weapon: Sword] Wave
+[Log][Weapon: Sword] Wave
+[Log][Weapon: Sword] Wave
+[Log][Weapon: Sword] Wave
+[Log][Weapon: Sword] Wave
+[Log][Weapon: Sword] Wave
+[Log][Weapon: Sword] Wave
+[Log][Weapon: Sword] Wave
+
+================================================================
+CrashHandlerException: Program crashed with signal 11
+Engine version: Godot Engine v4.3.beta1.mono.official (a4f2ea91a1bd18f70a43ff4c1377db49b56bc3f0)
+Dumping the backtrace. 
+[1] error(-1): no debug info in PE/COFF executable
+[2] error(-1): no debug info in PE/COFF executable
+[3] error(-1): no debug info in PE/COFF executable
+[4] error(-1): no debug info in PE/COFF executable
+[5] error(-1): no debug info in PE/COFF executable
+[6] error(-1): no debug info in PE/COFF executable
+-- END OF BACKTRACE --
+================================================================

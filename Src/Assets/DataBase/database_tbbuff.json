@@ -20,5 +20,25 @@
     "duration": 60,
     "repeat_time": 1,
     "class_name": "Madness"
+  },
+  {
+    "id": 1003,
+    "name": "眩晕",
+    "desc": "",
+    "values": [],
+    "duration": 3,
+    "repeat_time": 1,
+    "class_name": "Dizziness"
+  },
+  {
+    "id": 1004,
+    "name": "减速",
+    "desc": "除 2 是减速",
+    "values": [
+      2
+    ],
+    "duration": 3,
+    "repeat_time": 1,
+    "class_name": "SlowDown"
   }
 ]

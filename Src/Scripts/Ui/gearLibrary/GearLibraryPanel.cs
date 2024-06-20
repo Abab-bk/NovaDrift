@@ -35,6 +35,8 @@ public partial class GearLibraryPanel : GearLibrary
         {
             this.ChangeTo(UiManager.Get_StartMenu_Instance().First());
         };
+        
+        ChangePageTo(Page.Home);
     }
 
     private void ChangePageTo(Page page)

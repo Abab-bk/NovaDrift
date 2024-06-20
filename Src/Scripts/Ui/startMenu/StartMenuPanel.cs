@@ -6,7 +6,7 @@ namespace NovaDrift.Scripts.Ui.StartMenu;
 
 public partial class StartMenuPanel : StartMenu
 {
-    private bool _isClicked = false;
+    private bool _isClicked;
     
     public override void _Ready()
     {

@@ -21,7 +21,11 @@ public static class DataBuilder
     public static Tables Tables;
     public static TbConstants Constants => Tables.TbConstants;
     public static readonly List<int> AbilityIdPool = new List<int>();
+    public static readonly List<int> MutationAbilityIdPool = new List<int>();
 
+    public const int DefaultMaxAbilityTreeId = 1012;
+    public static readonly List<int> UnlockedAbilityTreeIds = new List<int>();
+    
     private static readonly Curve FuncUpLevelCurveBefore20 = GD.Load<Curve>("res://Assets/Curves/UpLevelCurveBefore20.tres");
     private static readonly Curve FuncUpLevelCurveAfter20 = GD.Load<Curve>("res://Assets/Curves/UpLevelCurveAfter20.tres");
 
@@ -63,6 +67,13 @@ public static class DataBuilder
         AbilityIdPool.Clear();
         foreach (var map in Tables.TbAbilityTree.DataMap)
         {
+            if (map.Value.Id > DefaultMaxAbilityTreeId)
+            {
+                if (!UnlockedAbilityTreeIds.Contains(map.Value.Id)) continue;
+                AbilityIdPool.Add(map.Value.StartAbilityId);
+                continue;
+            }
+
             AbilityIdPool.Add(map.Value.StartAbilityId);
         }
     }
@@ -82,6 +93,12 @@ public static class DataBuilder
         return new StatModifier(value, StatModType.PercentMult);
     }
     
+    public static int UnlockAbilityTreeId(int id)
+    {
+        UnlockedAbilityTreeIds.Add(id);
+        Logger.Log($"[AbilityGenerate] Unlocked Ability Tree Id: {id}");
+        return id;
+    }
     
     public static int GetRandomAbilityId()
     {

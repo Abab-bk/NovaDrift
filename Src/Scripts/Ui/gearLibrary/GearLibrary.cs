@@ -94,35 +94,40 @@ public abstract partial class GearLibrary : UiBase
         inst8.L_GoodsItem.Instance.OnCreateUi();
         inst8.L_GoodsItem.Instance.OnInitNestedUi();
 
-        var inst9 = L_VBoxContainer.L_Content.L_Content.L_UiSkin.L_Goods;
-        RecordNestedUi(inst9.L_GoodsItem.Instance, inst9, UiManager.RecordType.Open);
-        inst9.L_GoodsItem.Instance.OnCreateUi();
-        inst9.L_GoodsItem.Instance.OnInitNestedUi();
+        var inst9 = L_VBoxContainer.L_Content.L_Content.L_UpGrade.L_Goods;
+        RecordNestedUi(inst9.L_GoodsItem2.Instance, inst9, UiManager.RecordType.Open);
+        inst9.L_GoodsItem2.Instance.OnCreateUi();
+        inst9.L_GoodsItem2.Instance.OnInitNestedUi();
 
-        var inst10 = L_VBoxContainer.L_Content.L_Content.L_Animation.L_Goods;
+        var inst10 = L_VBoxContainer.L_Content.L_Content.L_UiSkin.L_Goods;
         RecordNestedUi(inst10.L_GoodsItem.Instance, inst10, UiManager.RecordType.Open);
         inst10.L_GoodsItem.Instance.OnCreateUi();
         inst10.L_GoodsItem.Instance.OnInitNestedUi();
 
         var inst11 = L_VBoxContainer.L_Content.L_Content.L_Animation.L_Goods;
-        RecordNestedUi(inst11.L_GoodsItem2.Instance, inst11, UiManager.RecordType.Open);
-        inst11.L_GoodsItem2.Instance.OnCreateUi();
-        inst11.L_GoodsItem2.Instance.OnInitNestedUi();
+        RecordNestedUi(inst11.L_GoodsItem.Instance, inst11, UiManager.RecordType.Open);
+        inst11.L_GoodsItem.Instance.OnCreateUi();
+        inst11.L_GoodsItem.Instance.OnInitNestedUi();
 
-        var inst12 = L_VBoxContainer.L_Content.L_Content.L_Gear.L_Goods;
-        RecordNestedUi(inst12.L_GoodsItem.Instance, inst12, UiManager.RecordType.Open);
-        inst12.L_GoodsItem.Instance.OnCreateUi();
-        inst12.L_GoodsItem.Instance.OnInitNestedUi();
+        var inst12 = L_VBoxContainer.L_Content.L_Content.L_Animation.L_Goods;
+        RecordNestedUi(inst12.L_GoodsItem2.Instance, inst12, UiManager.RecordType.Open);
+        inst12.L_GoodsItem2.Instance.OnCreateUi();
+        inst12.L_GoodsItem2.Instance.OnInitNestedUi();
 
         var inst13 = L_VBoxContainer.L_Content.L_Content.L_Gear.L_Goods;
-        RecordNestedUi(inst13.L_GoodsItem2.Instance, inst13, UiManager.RecordType.Open);
-        inst13.L_GoodsItem2.Instance.OnCreateUi();
-        inst13.L_GoodsItem2.Instance.OnInitNestedUi();
+        RecordNestedUi(inst13.L_GoodsItem.Instance, inst13, UiManager.RecordType.Open);
+        inst13.L_GoodsItem.Instance.OnCreateUi();
+        inst13.L_GoodsItem.Instance.OnInitNestedUi();
 
         var inst14 = L_VBoxContainer.L_Content.L_Content.L_Gear.L_Goods;
-        RecordNestedUi(inst14.L_GoodsItem3.Instance, inst14, UiManager.RecordType.Open);
-        inst14.L_GoodsItem3.Instance.OnCreateUi();
-        inst14.L_GoodsItem3.Instance.OnInitNestedUi();
+        RecordNestedUi(inst14.L_GoodsItem2.Instance, inst14, UiManager.RecordType.Open);
+        inst14.L_GoodsItem2.Instance.OnCreateUi();
+        inst14.L_GoodsItem2.Instance.OnInitNestedUi();
+
+        var inst15 = L_VBoxContainer.L_Content.L_Content.L_Gear.L_Goods;
+        RecordNestedUi(inst15.L_GoodsItem3.Instance, inst15, UiManager.RecordType.Open);
+        inst15.L_GoodsItem3.Instance.OnCreateUi();
+        inst15.L_GoodsItem3.Instance.OnInitNestedUi();
 
     }
 
@@ -571,6 +576,22 @@ public abstract partial class GearLibrary : UiBase
     }
 
     /// <summary>
+    /// 类型: <see cref="NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel"/>, 路径: GearLibrary.VBoxContainer.Content.Content.UpGrade.Goods.GoodsItem2
+    /// </summary>
+    public class GoodsItem2_3 : UiNode<GearLibraryPanel, NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel, GoodsItem2_3>
+    {
+        public GoodsItem2_3(GearLibraryPanel uiPanel, NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel node) : base(uiPanel, node) {  }
+        public override GoodsItem2_3 Clone()
+        {
+            var uiNode = new GoodsItem2_3(UiPanel, (NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel)Instance.Duplicate());
+            UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
+            uiNode.Instance.OnCreateUi();
+            uiNode.Instance.OnInitNestedUi();
+            return uiNode;
+        }
+    }
+
+    /// <summary>
     /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: GearLibrary.VBoxContainer.Content.Content.UpGrade.Goods
     /// </summary>
     public class Goods_1 : UiNode<GearLibraryPanel, Godot.HBoxContainer, Goods_1>
@@ -587,6 +608,19 @@ public abstract partial class GearLibrary : UiBase
             }
         }
         private GoodsItem_4 _L_GoodsItem;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel"/>, 节点路径: GearLibrary.VBoxContainer.Content.Content.UpGrade.GoodsItem2
+        /// </summary>
+        public GoodsItem2_3 L_GoodsItem2
+        {
+            get
+            {
+                if (_L_GoodsItem2 == null) _L_GoodsItem2 = new GoodsItem2_3(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel>("GoodsItem2"));
+                return _L_GoodsItem2;
+            }
+        }
+        private GoodsItem2_3 _L_GoodsItem2;
 
         public Goods_1(GearLibraryPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
         public override Goods_1 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
@@ -737,12 +771,12 @@ public abstract partial class GearLibrary : UiBase
     /// <summary>
     /// 类型: <see cref="NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel"/>, 路径: GearLibrary.VBoxContainer.Content.Content.Animation.Goods.GoodsItem2
     /// </summary>
-    public class GoodsItem2_3 : UiNode<GearLibraryPanel, NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel, GoodsItem2_3>
+    public class GoodsItem2_4 : UiNode<GearLibraryPanel, NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel, GoodsItem2_4>
     {
-        public GoodsItem2_3(GearLibraryPanel uiPanel, NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel node) : base(uiPanel, node) {  }
-        public override GoodsItem2_3 Clone()
+        public GoodsItem2_4(GearLibraryPanel uiPanel, NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel node) : base(uiPanel, node) {  }
+        public override GoodsItem2_4 Clone()
         {
-            var uiNode = new GoodsItem2_3(UiPanel, (NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel)Instance.Duplicate());
+            var uiNode = new GoodsItem2_4(UiPanel, (NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel)Instance.Duplicate());
             UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
             uiNode.Instance.OnCreateUi();
             uiNode.Instance.OnInitNestedUi();
@@ -771,15 +805,15 @@ public abstract partial class GearLibrary : UiBase
         /// <summary>
         /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel"/>, 节点路径: GearLibrary.VBoxContainer.Content.Content.Animation.GoodsItem2
         /// </summary>
-        public GoodsItem2_3 L_GoodsItem2
+        public GoodsItem2_4 L_GoodsItem2
         {
             get
             {
-                if (_L_GoodsItem2 == null) _L_GoodsItem2 = new GoodsItem2_3(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel>("GoodsItem2"));
+                if (_L_GoodsItem2 == null) _L_GoodsItem2 = new GoodsItem2_4(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel>("GoodsItem2"));
                 return _L_GoodsItem2;
             }
         }
-        private GoodsItem2_3 _L_GoodsItem2;
+        private GoodsItem2_4 _L_GoodsItem2;
 
         public Goods_3(GearLibraryPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
         public override Goods_3 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
@@ -848,12 +882,12 @@ public abstract partial class GearLibrary : UiBase
     /// <summary>
     /// 类型: <see cref="NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel"/>, 路径: GearLibrary.VBoxContainer.Content.Content.Gear.Goods.GoodsItem2
     /// </summary>
-    public class GoodsItem2_4 : UiNode<GearLibraryPanel, NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel, GoodsItem2_4>
+    public class GoodsItem2_5 : UiNode<GearLibraryPanel, NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel, GoodsItem2_5>
     {
-        public GoodsItem2_4(GearLibraryPanel uiPanel, NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel node) : base(uiPanel, node) {  }
-        public override GoodsItem2_4 Clone()
+        public GoodsItem2_5(GearLibraryPanel uiPanel, NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel node) : base(uiPanel, node) {  }
+        public override GoodsItem2_5 Clone()
         {
-            var uiNode = new GoodsItem2_4(UiPanel, (NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel)Instance.Duplicate());
+            var uiNode = new GoodsItem2_5(UiPanel, (NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel)Instance.Duplicate());
             UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
             uiNode.Instance.OnCreateUi();
             uiNode.Instance.OnInitNestedUi();
@@ -898,15 +932,15 @@ public abstract partial class GearLibrary : UiBase
         /// <summary>
         /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel"/>, 节点路径: GearLibrary.VBoxContainer.Content.Content.Gear.GoodsItem2
         /// </summary>
-        public GoodsItem2_4 L_GoodsItem2
+        public GoodsItem2_5 L_GoodsItem2
         {
             get
             {
-                if (_L_GoodsItem2 == null) _L_GoodsItem2 = new GoodsItem2_4(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel>("GoodsItem2"));
+                if (_L_GoodsItem2 == null) _L_GoodsItem2 = new GoodsItem2_5(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel>("GoodsItem2"));
                 return _L_GoodsItem2;
             }
         }
-        private GoodsItem2_4 _L_GoodsItem2;
+        private GoodsItem2_5 _L_GoodsItem2;
 
         /// <summary>
         /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.GoodsItem.GoodsItemPanel"/>, 节点路径: GearLibrary.VBoxContainer.Content.Content.Gear.GoodsItem3
