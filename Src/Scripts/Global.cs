@@ -18,6 +18,8 @@ public enum Layer
     MobHitBox = 5,
     MobHurtBox = 6,
     Object = 7,
+    PlayerBullet = 8,
+    MobBullet = 9,
 }
 
 public enum GamePlatform

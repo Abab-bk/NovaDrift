@@ -45,6 +45,11 @@ public partial class BulletBase : Node2D
     protected Node2D TargetingActor;
     protected Vector2 Acceleration = Vector2.Zero;
 
+    public void Destroy()
+    {
+        QueueFree();
+    }
+
     protected void TakeOnHitEvent(Actor obj)
     {
         OnHit?.Invoke(obj);
@@ -58,6 +63,15 @@ public partial class BulletBase : Node2D
         _hitBox.SetIsPlayer(IsPlayer);
         _hitBox.OnHit += OnHitHandle;
         _hitBox.OnHitOthers += OnHitOthersHandle;
+        
+        if (IsPlayer)
+        {
+            _hitBox.CallDeferred(CollisionObject2D.MethodName.SetCollisionLayerValue, (int)Layer.PlayerBullet, true);
+        }
+        else
+        {
+            _hitBox.CallDeferred(CollisionObject2D.MethodName.SetCollisionLayerValue, (int)Layer.MobBullet, true);
+        }
 
         Scale = new Vector2(Size, Size);
         Degenerate();

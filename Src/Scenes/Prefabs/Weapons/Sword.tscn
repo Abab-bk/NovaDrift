@@ -16,7 +16,6 @@ position = Vector2(-140, -120)
 rotation = 0.959931
 
 [node name="Sprite2D" type="Sprite2D" parent="Sword1"]
-modulate = Color(1, 1, 0, 1)
 position = Vector2(-69, 0)
 texture = ExtResource("2_ov5o2")
 

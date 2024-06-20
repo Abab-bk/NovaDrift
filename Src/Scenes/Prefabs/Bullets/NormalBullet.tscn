@@ -5,7 +5,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_luklo"]
 size = Vector2(49, 14)
 
-[node name="NormalBullet" instance=ExtResource("1_3llyd")]
+[node name="NormalBullet" node_paths=PackedStringArray("_hitBox") instance=ExtResource("1_3llyd")]
+_hitBox = NodePath("HitBox")
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 shape = SubResource("RectangleShape2D_luklo")

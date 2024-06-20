@@ -125,6 +125,8 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_5="MobHitBox"
 2d_physics/layer_6="MobHurtBox"
 2d_physics/layer_7="Object"
+2d_physics/layer_8="PlayerBullet"
+2d_physics/layer_9="MobBullet"
 
 [rendering]
 
@@ -135,4 +137,4 @@ viewport/hdr_2d=true
 [run_configs]
 
 data/configs=["{\"custom_scene\":\"\",\"environment_variables\":{\"DebugMode\":\"true\"},\"name\":\"Debug\",\"play_mode\":0}", "{\"custom_scene\":\"\",\"environment_variables\":{\"DebugMode\":\"false\"},\"name\":\"Release\",\"play_mode\":0}"]
-data/current=1
+data/current=0
