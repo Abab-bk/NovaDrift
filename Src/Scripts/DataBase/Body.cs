@@ -26,7 +26,6 @@ public sealed partial class Body : Luban.BeanBase
         ClassName = _buf.GetProperty("class_name").GetString();
         Acceleration = _buf.GetProperty("acceleration").GetSingle();
         Deceleration = _buf.GetProperty("deceleration").GetSingle();
-        RotationSpeed = _buf.GetProperty("rotation_speed").GetSingle();
     }
 
     public static Body DeserializeBody(JsonElement _buf)
@@ -70,17 +69,12 @@ public sealed partial class Body : Luban.BeanBase
     /// 减速度
     /// </summary>
     public readonly float Deceleration;
-    /// <summary>
-    /// 旋转速度
-    /// </summary>
-    public readonly float RotationSpeed;
    
     public const int __ID__ = 2076098;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
     {
-        
         
         
         
@@ -104,7 +98,6 @@ public sealed partial class Body : Luban.BeanBase
         + "className:" + ClassName + ","
         + "acceleration:" + Acceleration + ","
         + "deceleration:" + Deceleration + ","
-        + "rotationSpeed:" + RotationSpeed + ","
         + "}";
     }
 }

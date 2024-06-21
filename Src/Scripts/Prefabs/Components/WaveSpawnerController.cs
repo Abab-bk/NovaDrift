@@ -105,18 +105,23 @@ public partial class WaveSpawnerController : Node2D
         var boss = waveSpawner.GenerateABoss(id);
         boss.OnDied += () =>
         {
+            if (!_enabled) return;
             _sawBossCount += 1;
             _nextIsBoss = false; 
-            if (!_enabled) return;
             _clock.Start();
             Logger.Log("[Wave Spawner] Boss wave end, start clock.");
         };
+        
+        waveSpawner.QueueFree();
         
         Logger.Log($"[Wave Spawner] Boss wave spawned: {boss.MobInfo.Name}");
     }
 
     private void AddWaveCount()
     {
+        if (!_enabled) return;
+
+        Logger.Log("[Wave Spawner] Add wave count.");
         _waveCount += 1;
 
         // 每 20 关为一个 Boss 关
@@ -126,7 +131,6 @@ public partial class WaveSpawnerController : Node2D
             _nextIsBoss = true;
         }
         
-        if (!_enabled) return;
         _clock.Start();
     }
 

@@ -117,8 +117,6 @@ public partial class MobBase : Actor
 
     public void SetTargetAndMove(Node2D target, float delta)
     {
-        Rotation = RotationTo(GlobalPosition.AngleToPoint(target.GlobalPosition), delta);
-        
         TryMoveTo(GlobalPosition.DirectionTo(target.GlobalPosition), delta);
     }
 

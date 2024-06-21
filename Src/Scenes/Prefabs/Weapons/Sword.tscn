@@ -5,15 +5,15 @@
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HitBox.cs" id="4_b77qm"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h04xg"]
-size = Vector2(271.412, 52)
+size = Vector2(347.218, 52)
 
 [node name="Sword" type="Node2D"]
 script = ExtResource("1_pwhl6")
 
 [node name="Sword1" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-140, -120)
-rotation = 0.959931
+position = Vector2(-140, -150)
+rotation = 0.872665
 
 [node name="Sprite2D" type="Sprite2D" parent="Sword1"]
 position = Vector2(-69, 0)
@@ -24,13 +24,13 @@ unique_name_in_owner = true
 script = ExtResource("4_b77qm")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Sword1/HitBox1"]
-position = Vector2(-68.5, 0)
+position = Vector2(-68.5, -2.28882e-05)
 shape = SubResource("RectangleShape2D_h04xg")
 
 [node name="Sword2" type="Node2D" parent="."]
 unique_name_in_owner = true
-position = Vector2(-140, 120)
-rotation = -0.959931
+position = Vector2(-140, 150)
+rotation = -0.872665
 
 [node name="Sprite2D" type="Sprite2D" parent="Sword2"]
 position = Vector2(-69, 0)

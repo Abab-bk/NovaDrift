@@ -45,5 +45,17 @@
     "health": 50,
     "cool_down": 6,
     "scene_name": "ForceField"
+  },
+  {
+    "id": 1004,
+    "name": "量子叠加外壳",
+    "desc": "受到伤害时，有 50% 的机会不受到伤害，也可能会受到双倍伤害。",
+    "values": [
+      0.5,
+      1
+    ],
+    "health": 100,
+    "cool_down": 6,
+    "scene_name": "QuantumOverlay"
   }
 ]

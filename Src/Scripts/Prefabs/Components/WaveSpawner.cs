@@ -61,6 +61,8 @@ public partial class WaveSpawner : Node2D
         }
 
         Logger.Log($"[Wave Spawner] 敌人生成数量: {generatedMobs.Count}, 阵型：{spawnType.GetType().Name}");
+        
+        QueueFree();
     }
 
     public MobBase GenerateABoss(int id)

@@ -29,13 +29,18 @@ public static class Constants
     {
         public static readonly WorldColor Red = new WorldColor
         {
-            Level1 = new Color("E84157")
+            Level1 = new Color("ff7578")
         };
 
         public static readonly WorldColor Blue = new WorldColor
         {
-            Level1 = new Color(0.5f, 0.5f, 1f)
-        };   
+            Level1 = new Color("7591ff")
+        };
+
+        public static readonly WorldColor Green = new WorldColor
+        {
+            Level1 = new Color("75ffac")
+        };
     }
     
     public class WorldColor
