@@ -45,6 +45,7 @@ color = Color(0.168468, 0.112248, 0.339585, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxBackground" type="Node2D" parent="."]
+visible = false
 z_index = -1
 
 [node name="BgStarNear" type="Parallax2D" parent="ParallaxBackground"]

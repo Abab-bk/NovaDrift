@@ -4,6 +4,7 @@ using cfg;
 using cfg.DataBase;
 using DsUi;
 using Godot;
+using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts.Ui.GoodsItem;
 
@@ -42,9 +43,50 @@ public partial class GoodsItemPanel : GoodsItem
 
         S_Button.Instance.Pressed += () =>
         {
-            var panel = UiManager.Open_GoodsInfoPopup();
-            panel.ShowUi();
-            panel.SetGoods(info);
+            // var panel = UiManager.Open_GoodsInfoPopup();
+            // panel.ShowUi();
+            // panel.SetGoods(info);
+
+            var price = info.Price;
+            
+            if (DataBuilder.StoreModifiers.TryGetValue(info.Id, out var value))
+            {
+                price = (int)(info.Price * value.Discount);
+            }
+            
+            UiManager.Open_Popup()
+                .SetConfig(
+                    "购买物品",
+                    $"""
+                     是否购买 {info.Name} ?
+                     这将花费 {price} 酸酸币
+                     """,
+                    true,
+                    () => { },
+                    () =>
+                    {
+                        if (Global.AcidCoins < price)
+                        {
+                            UiManager
+                                .Open_Popup()
+                                .SetConfig(
+                                    "购买失败",
+                                    "酸酸币不足，无法购买"
+                                    );
+                            return;
+                        }
+                        Global.AcidCoins -= price;
+                        GoodsHandle.GetReward(info);
+                        
+                        UiManager
+                            .Open_Popup()
+                            .SetConfig(
+                                "购买成功",
+                                $"{info.Name} 购买成功"
+                                );
+                    }
+                    );
+            
         };
     }
 

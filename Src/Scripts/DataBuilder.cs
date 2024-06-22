@@ -5,7 +5,6 @@ using System.Text.Json;
 using AcidWallStudio.AcidUtilities;
 using cfg;
 using cfg.DataBase;
-using Godot;
 using NovaDrift.addons.AcidStats;
 using Game = NovaDrift.Scripts.Systems;
 
@@ -13,23 +12,20 @@ namespace NovaDrift.Scripts;
 
 public class StoreModifier(float discount)
 {
-    public float Discount = discount;
+    public readonly float Discount = discount;
 }
 
 public static class DataBuilder
 {
-    public static Tables Tables;
+    public static readonly Tables Tables;
     public static TbConstants Constants => Tables.TbConstants;
     public static readonly List<int> AbilityIdPool = new List<int>();
     public static readonly List<int> MutationAbilityIdPool = new List<int>();
 
-    public const int DefaultMaxAbilityTreeId = 1012;
-    public static readonly List<int> UnlockedAbilityTreeIds = new List<int>();
+    private const int DefaultMaxAbilityTreeId = 1012;
+    private static readonly List<int> UnlockedAbilityTreeIds = new List<int>();
     
-    private static readonly Curve FuncUpLevelCurveBefore20 = GD.Load<Curve>("res://Assets/Curves/UpLevelCurveBefore20.tres");
-    private static readonly Curve FuncUpLevelCurveAfter20 = GD.Load<Curve>("res://Assets/Curves/UpLevelCurveAfter20.tres");
-
-    public static Dictionary<int, StoreModifier> StoreModifiers = new()
+    public static readonly Dictionary<int, StoreModifier> StoreModifiers = new()
     {
         { 1001, new StoreModifier(0.5f) }
     };
@@ -39,7 +35,7 @@ public static class DataBuilder
          //    ? FuncUpLevelCurveBefore20.Sample(level / 20f) * 100
          //    : FuncUpLevelCurveAfter20.Sample((level - 20) / Constants.MaxLevel - 20f) * 100;
 
-        float nextLevelExp = 0;
+        float nextLevelExp;
         
         if (level == 1)
         {

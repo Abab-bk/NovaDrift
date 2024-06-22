@@ -1,6 +1,5 @@
 ﻿using Godot;
 using NovaDrift.Scripts.Prefabs;
-using NovaDrift.Scripts.Prefabs.Actors;
 
 namespace NovaDrift.Scripts.Systems.Effects;
 
@@ -37,10 +36,10 @@ public class Splinter : Effect
                     {
                         float arcRad = Mathf.DegToRad(360f);
                         float increment = arcRad / (miniBulletCount - 1);
-                        bullet.Direction = bullet.Direction.Rotated(bullet.GlobalRotation + increment * i - arcRad / 2);
+                        miniBullet.Direction = miniBullet.Direction.Rotated(miniBullet.GlobalRotation + increment * i - arcRad / 2);
                     }
 
-                    Global.GameWorld.AddChild(bullet);
+                    Global.GameWorld.CallDeferred(Node.MethodName.AddChild, miniBullet);
                     // OnShoot?.Invoke(bullet);
                     // bullet.OnHit += actor => { OnHit?.Invoke(actor); };
                 }

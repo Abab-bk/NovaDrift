@@ -1,6 +1,7 @@
 using System.Globalization;
 using AcidWallStudio.AcidUtilities;
 using cfg;
+using DsUi;
 using Godot;
 using GTweens.Builders;
 using GTweensGodot.Extensions;
@@ -43,7 +44,18 @@ public partial class GoodsInfoPopupPanel : GoodsInfoPopup
                 price = (int)(_storeInfo.Price * value.Discount);
             }
 
-            if (Global.AcidCoins < price) return;
+            if (Global.AcidCoins < price)
+            {
+                UiManager
+                    .Open_Popup()
+                    .SetConfig(
+                        "购买失败",
+                        "酸酸币不足，无法购买"
+                        );
+                cancelAnimation.Play();
+                return;
+            }
+            
             Global.AcidCoins -= price;
             
             GoodsHandle.GetReward(_storeInfo);

@@ -54,7 +54,7 @@ public partial class WaveSpawnerController : Node2D
             }
             
             OnNextClockChanged?.Invoke(_waitingClock);
-            Logger.Log($"[WaveSpawner] Next wave clock: {_waitingClock}s");
+            Logger.Log($"[Wave Spawner] Next wave clock: {_waitingClock}s");
         };
 
         AddChild(_clock);
@@ -76,7 +76,13 @@ public partial class WaveSpawnerController : Node2D
 
     public void GenerateWave()
     {
-        if (GetTree().GetNodesInGroup("Mobs").Count >= 20) return;
+        if (GetTree().GetNodesInGroup("Mobs").Count >= 20)
+        {
+            Logger.Log("[Wave Spawner] Max mobs reached, stop spawn and add clock.");
+            _clock.Start();
+            return;
+        }
+        
         var waveSpawner = new WaveSpawner();
         waveSpawner.Cost = GetCost();
         AddChild(waveSpawner);

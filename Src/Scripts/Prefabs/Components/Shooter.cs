@@ -12,7 +12,7 @@ public partial class Shooter : BaseShooter
     
     private Timer _burstIntervalTimer;
     private Timer _burstCooldownTimer;
-    private bool _isBursting = false;
+    private bool _isBursting;
     
     public override void _EnterTree()
     {

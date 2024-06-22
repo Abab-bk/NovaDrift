@@ -92,6 +92,10 @@ public partial class MobBase : Actor
             expBall.Pos = GlobalPosition + temp * i;
             Global.GameWorld.AddChild(expBall);
         }
+
+        var dieVfx = GD.Load<PackedScene>("res://Scenes/Vfx/DieVfx.tscn").Instantiate<DieVfx>();
+        dieVfx.GlobalPosition = GlobalPosition;
+        Global.GameWorld.CallDeferred(Node.MethodName.AddChild, dieVfx);
         
         EventBus.OnMobDied?.Invoke(this);
         base.Die();

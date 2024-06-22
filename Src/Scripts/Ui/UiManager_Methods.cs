@@ -22,6 +22,7 @@ public static partial class UiManager
         public const string Hud = "Hud";
         public const string Loading = "Loading";
         public const string PausedMenu = "PausedMenu";
+        public const string Popup = "Popup";
         public const string QuestItem = "QuestItem";
         public const string SalvoBulletCount = "SalvoBulletCount";
         public const string ScoreLabel = "ScoreLabel";
@@ -799,6 +800,54 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.PausedMenu.PausedMenuPanel[] Get_PausedMenu_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.PausedMenu.PausedMenuPanel>(nameof(NovaDrift.Scripts.Ui.PausedMenu.PausedMenu));
+    }
+
+    /// <summary>
+    /// 创建 Popup, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Popup.PopupPanel Create_Popup()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.Popup.PopupPanel>(UiName.Popup);
+    }
+
+    /// <summary>
+    /// 打开 Popup, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Popup.PopupPanel Open_Popup()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.Popup.PopupPanel>(UiName.Popup);
+    }
+
+    /// <summary>
+    /// 隐藏 Popup 的所有实例
+    /// </summary>
+    public static void Hide_Popup()
+    {
+        var uiInstance = Get_Popup_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 Popup 的所有实例
+    /// </summary>
+    public static void Destroy_Popup()
+    {
+        var uiInstance = Get_Popup_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 Popup 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Popup.PopupPanel[] Get_Popup_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.Popup.PopupPanel>(nameof(NovaDrift.Scripts.Ui.Popup.Popup));
     }
 
     /// <summary>

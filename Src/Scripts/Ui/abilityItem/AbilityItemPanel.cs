@@ -41,6 +41,7 @@ public partial class AbilityItemPanel : AbilityItem
         {
             if (!Wizard.FileExists(Item.IconPath2)) return;
             S_IconTexture.Instance.Texture = GD.Load<Texture2D>(Item.IconPath2);
+            return;
         }
         
         S_IconTexture.Instance.Texture = GD.Load<Texture2D>(Item.IconPath);

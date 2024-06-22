@@ -1,15 +1,22 @@
 [
   {
     "id": 1001,
-    "name": "测试Build",
+    "name": "HypoerMode",
     "desc": "",
     "abilities": [
-      1001,
-      1002,
-      1003
+      1045,
+      1046,
+      1048,
+      1033,
+      1035,
+      1029,
+      1030,
+      1032,
+      1041,
+      10434
     ],
-    "shooter_id": 1002,
+    "shooter_id": 1000,
     "body_id": 1002,
-    "shield_id": 1002
+    "shield_id": 1000
   }
 ]

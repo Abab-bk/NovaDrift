@@ -1,5 +1,7 @@
 using System.Globalization;
 using Godot;
+using GTweens.Builders;
+using GTweensGodot.Extensions;
 
 namespace NovaDrift.Scripts.Ui.DamageLabel;
 
@@ -17,23 +19,25 @@ public partial class DamageLabelPanel : DamageLabel
         bool critical = false)
     {
         GlobalPosition = pos;
-
-        Vector2 travel = new Vector2(0, -80);
+        Scale = Vector2.Zero;
         
         L_Label.Instance.Text = value.ToString(CultureInfo.CurrentCulture);
-        Vector2 movement = travel.Rotated((float)GD.RandRange( (double)-spread / 2f, (double)spread / 2f));
         
-        Tween t = CreateTween();
-        t.TweenProperty(this, "global_position", GlobalPosition + movement, duration);
-        t.TweenProperty(this, "modulate:a", 0.0, duration);
+        GTweenSequenceBuilder.New()
+            .Append(this.TweenScale(Vector2.One, 0.1f))
+            .AppendTime(0.5f)
+            .Append(this.TweenScale(Vector2.Zero, 0.1f))
+            .AppendCallback(QueueFree)
+            .Build()
+            .Play();
 
-        if (critical)
-        {
-            Modulate = new Color(1, 0, 0);
-            t.TweenProperty(this, "scale", Scale * 2, duration);
-        }
-        
-        t.Finished += QueueFree;
+        // if (critical)
+        // {
+        //     Modulate = new Color(1, 0, 0);
+        //     t.TweenProperty(this, "scale", Scale * 2, duration);
+        // }
+        //
+        // t.Finished += QueueFree;
     }
 
     public override void OnDestroyUi()
