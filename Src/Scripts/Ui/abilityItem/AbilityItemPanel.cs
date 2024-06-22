@@ -37,7 +37,12 @@ public partial class AbilityItemPanel : AbilityItem
     private void UpdateUi()
     {
         if (Item == null) return;
-        if (!Wizard.FileExists(Item.IconPath)) return;
+        if (!Wizard.FileExists(Item.IconPath))
+        {
+            if (!Wizard.FileExists(Item.IconPath2)) return;
+            S_IconTexture.Instance.Texture = GD.Load<Texture2D>(Item.IconPath2);
+        }
+        
         S_IconTexture.Instance.Texture = GD.Load<Texture2D>(Item.IconPath);
         
         if (!Wizard.FileExists(Item.IconPath2)) return;

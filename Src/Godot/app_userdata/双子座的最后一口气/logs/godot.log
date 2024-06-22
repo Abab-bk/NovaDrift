@@ -13,39 +13,73 @@ USER ERROR: Parent node is busy adding/removing children, `remove_child()` can't
 [Log][Global] Try Resume game. Stop count: 0
 [Log][Ui] Generate debug panel
 [Log][Global] Try Stop game. Stop count: 1
-[Log][Weapon: Sword] Wave
+[Log][AbilityGenerate] Generating Random Ability Ids
+[Log][AbilityGenerate] Generated Random Ability Ids
+[Log][AbilityGenerate] Generating Random Gear Ids
+[Log][AbilityGenerate] Generated Random Gear Ids
+[Log][AbilityGenerate] Generating Random Shield Ids
+[Log][AbilityGenerate] Generated Random Shield Ids
+[Log][AbilityGenerate] Generating Random Body Ids
+[Log][AbilityGenerate] Generated Random Body Ids
+[Log][AbilityGenerate] Generating Random Weapon Ids
+[Log][AbilityGenerate] Generated Random Weapon Ids
+[Log][Global] Try Stop game. Stop count: 2
+[Log][Global] Try Resume game. Stop count: 1
 [Log][Global] Try Resume game. Stop count: 0
-[Log][Weapon: Sword] Wave
-[Log][Weapon: Sword] Wave
-[Log][Weapon: Sword] Wave
-[Log][Weapon: Sword] Wave
-[Log][Weapon: Sword] Wave
-[Log][Weapon: Sword] Wave
-[Log][Weapon: Sword] Wave
-[Log][Weapon: Sword] Wave
-[Log][Weapon: Sword] Wave
-[Log][Weapon: Sword] Wave
-[Log][Weapon: Sword] Wave
-[Log][Weapon: Sword] Wave
-[Log][Weapon: Sword] Wave
-[Log][Weapon: Sword] Wave
-[Log][Weapon: Sword] Wave
-[Log][Weapon: Sword] Wave
-[Log][Weapon: Sword] Wave
-[Log][Weapon: Sword] Wave
-[Log][Weapon: Sword] Wave
-[Log][Weapon: Sword] Wave
-[Log][Weapon: Sword] Wave
-
-================================================================
-CrashHandlerException: Program crashed with signal 11
-Engine version: Godot Engine v4.3.beta1.mono.official (a4f2ea91a1bd18f70a43ff4c1377db49b56bc3f0)
-Dumping the backtrace. 
-[1] error(-1): no debug info in PE/COFF executable
-[2] error(-1): no debug info in PE/COFF executable
-[3] error(-1): no debug info in PE/COFF executable
-[4] error(-1): no debug info in PE/COFF executable
-[5] error(-1): no debug info in PE/COFF executable
-[6] error(-1): no debug info in PE/COFF executable
--- END OF BACKTRACE --
-================================================================
+[Log][Global] Try Stop game. Stop count: 1
+[Log][AbilityGenerate] Generating Random Ability Ids
+[Log][AbilityGenerate] Generated Random Ability Ids
+[Log][AbilityGenerate] Generating Random Gear Ids
+[Log][AbilityGenerate] Generated Random Gear Ids
+[Log][AbilityGenerate] Generating Random Shield Ids
+[Log][AbilityGenerate] Generated Random Shield Ids
+[Log][AbilityGenerate] Generating Random Body Ids
+[Log][AbilityGenerate] Generated Random Body Ids
+[Log][AbilityGenerate] Generating Random Weapon Ids
+[Log][AbilityGenerate] Generated Random Weapon Ids
+USER ERROR: Resource file not found: res:// (expected type: )
+   at: _load (core/io/resource_loader.cpp:286)
+USER ERROR: Resource file not found: res:// (expected type: )
+   at: _load (core/io/resource_loader.cpp:286)
+USER ERROR: Resource file not found: res:// (expected type: )
+   at: _load (core/io/resource_loader.cpp:286)
+[Log][Global] Try Stop game. Stop count: 2
+[Log][Global] Try Resume game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+[Log][Global] Try Stop game. Stop count: 1
+[Log][AbilityGenerate] Generating Random Ability Ids
+[Log][AbilityGenerate] Generated Random Ability Ids
+[Log][AbilityGenerate] Generating Random Gear Ids
+[Log][AbilityGenerate] Generated Random Gear Ids
+[Log][AbilityGenerate] Generating Random Shield Ids
+[Log][AbilityGenerate] Generated Random Shield Ids
+[Log][AbilityGenerate] Generating Random Body Ids
+[Log][AbilityGenerate] Generated Random Body Ids
+[Log][AbilityGenerate] Generating Random Weapon Ids
+[Log][AbilityGenerate] Generated Random Weapon Ids
+USER ERROR: Resource file not found: res:// (expected type: )
+   at: _load (core/io/resource_loader.cpp:286)
+USER ERROR: Resource file not found: res:// (expected type: )
+   at: _load (core/io/resource_loader.cpp:286)
+USER ERROR: Resource file not found: res:// (expected type: )
+   at: _load (core/io/resource_loader.cpp:286)
+[Log][Global] Try Stop game. Stop count: 2
+[Log][Global] Try Resume game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+[Log][Global] Try Stop game. Stop count: 1
+[Log][AbilityGenerate] Generating Random Ability Ids
+[Log][AbilityGenerate] Generated Random Ability Ids
+[Log][AbilityGenerate] Generating Random Gear Ids
+[Log][AbilityGenerate] Generated Random Gear Ids
+[Log][AbilityGenerate] Generating Random Shield Ids
+[Log][AbilityGenerate] Generated Random Shield Ids
+[Log][AbilityGenerate] Generating Random Body Ids
+[Log][AbilityGenerate] Generated Random Body Ids
+[Log][AbilityGenerate] Generating Random Weapon Ids
+[Log][AbilityGenerate] Generated Random Weapon Ids
+USER ERROR: Resource file not found: res:// (expected type: )
+   at: _load (core/io/resource_loader.cpp:286)
+USER ERROR: Resource file not found: res:// (expected type: )
+   at: _load (core/io/resource_loader.cpp:286)
+[Log][Global] Try Stop game. Stop count: 2
+[Log][Global] Try Resume game. Stop count: 1

@@ -182,6 +182,7 @@ public static class DataBuilder
             Name = tbWeapon.Name,
             Desc = tbWeapon.Desc,
             SceneName = tbWeapon.SceneName,
+            IconPath2 = $"res://Assets/Ui/Icons/WeaponIcons/{tbWeapon.SceneName}Icon.png",
         };
         
         return weapon;
@@ -199,6 +200,7 @@ public static class DataBuilder
             Values = tbShield.Values,
             Health = tbShield.Health,
             CoolDown = tbShield.CoolDown,
+            IconPath2 = $"res://Assets/Ui/Icons/ShieldIcons/{tbShield.SceneName}Icon.png",
         };
         
         return shield;

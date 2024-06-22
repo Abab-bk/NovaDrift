@@ -12,12 +12,21 @@ public partial class SnakeContainer : Node2D
     
     public Actor Actor;
 
-    private List<SnakeBody> _snakeBodies = new List<SnakeBody>();
+    private readonly List<SnakeBody> _snakeBodies = new List<SnakeBody>();
     
     public void AddPart()
     {
         var snakeBody = GD.Load<PackedScene>("res://Scenes/Prefabs/Others/SnakeBody.tscn").Instantiate<SnakeBody>();
-        snakeBody.Actor = Actor;
+
+        if (_snakeBodies.Count == 0)
+        {
+            snakeBody.Target = Actor;
+        }
+        else
+        {
+            snakeBody.Target = _snakeBodies.Last();
+        }
+        
         _snakeBodies.Add(snakeBody);
         Global.GameWorld.AddChild(snakeBody);
         snakeBody.GlobalPosition = ToGlobal(SnakeBodySize * _snakeBodies.Count);

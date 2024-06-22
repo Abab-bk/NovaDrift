@@ -44,17 +44,15 @@
   },
   {
     "id": 1003,
-    "name": "眼镜蛇",
-    "desc": "获得 10 个基础身体\n每升一级，+1 身体\n每个身体受到的伤害为原始伤害的 75%\n每个身体 +0.5% 的总伤害",
+    "name": "恶魔粉碎机",
+    "desc": "受到伤害时额外发射一枚子弹\n+5 %伤害",
     "values": [
-      10,
       1,
-      0.75,
       0.05
     ],
     "health": 100,
-    "icon_name": "Snake",
-    "class_name": "Snake",
+    "icon_name": "Breaker",
+    "class_name": "Breaker",
     "acceleration": 1400,
     "deceleration": 500
   }

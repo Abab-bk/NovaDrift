@@ -45,6 +45,7 @@ public partial class Actor : CharacterBody2D
     public event Action OnDied;
     public Action<BulletBase> OnShoot;
     public Action OnShooting;
+    public event Action<float> OnHurt;
     
     private BaseShooter _shooter;
 
@@ -196,6 +197,7 @@ public partial class Actor : CharacterBody2D
     
     public virtual void OnHit(float value)
     {
+        OnHurt?.Invoke(value);
         Visual.FlashAndRestore();
         UiManager.Open_DamageLabel().ShowValue(value, GetGlobalTransformWithCanvas().Origin);
     }
