@@ -5,6 +5,7 @@ using FMOD.Studio;
 using Godot;
 using GTweens.Builders;
 using GTweensGodot.Extensions;
+using NovaDrift.Scripts.Prefabs.Components;
 using NovaDrift.Scripts.Prefabs.Others;
 
 namespace NovaDrift.Scripts.Prefabs.Ai;
@@ -19,7 +20,6 @@ public partial class MathematiciansAi : MobAiComponent
         base._Ready();
         Mob.IsBoss = true;
         await ToSignal(Owner, Node.SignalName.Ready);
-        // Mob.Spring.RemoveTargetPoint(Global.Player);
         SetMapCorner();
         SoundManager.LoadBank("Mathematicians.bank", out _bank);
     }
@@ -37,10 +37,9 @@ public partial class MathematiciansAi : MobAiComponent
         switch (state.GetName())
         {
             case "MovingToCenter":
-                Mob.SetTargetAndMove(_mapCorner, delta);
+                Mob.SetTargetPosAndMove(SpawnPoint.GetPoint(Constants.Points.Center), delta);
                 if (Mob.GlobalPosition.DistanceTo(Wizard.GetScreenCenter()) <= 40)
                 {
-                    // Mob.CleanTarget();
                     Machine.SetTrigger("Next");
                 }
                 break;
@@ -84,7 +83,6 @@ public partial class MathematiciansAi : MobAiComponent
         switch (state.GetName())
         {
             case "MovingToCenter":
-                SetToCenter();
                 Mob.PlaySound("event:/Mobs/Bosses/Mathematicians/Moving");
                 break;
             
@@ -149,16 +147,11 @@ public partial class MathematiciansAi : MobAiComponent
     {
         _mapCorner = new Node2D();
         Global.GameWorld.AddChild(_mapCorner);
-        _mapCorner.GlobalPosition = Wizard.GetRandomMapCorner();
+        SetRandomMapCorner();
     }
     
     private void SetRandomMapCorner()
     {
-        _mapCorner.GlobalPosition = Wizard.GetRandomMapCorner();
-    }
-    
-    private void SetToCenter()
-    {
-        _mapCorner.GlobalPosition = Wizard.GetScreenCenter();
+        _mapCorner.GlobalPosition = SpawnPoint.GetPoint(Constants.Points.RandomCorner);
     }
 }

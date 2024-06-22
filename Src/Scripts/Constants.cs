@@ -11,6 +11,7 @@ public static class Constants
     public static class Points
     {
         public const string
+            RandomCorner = "RandomCorner",
             LeftUp = "LeftUp",
             Left = "Left",
             LeftDown = "LeftDown",
@@ -22,7 +23,8 @@ public static class Constants
             RandomLeft = "RandomLeft",
             RandomRight = "RandomRight",
             RandomUp = "RandomUp",
-            RandomDown = "RandomDown";
+            RandomDown = "RandomDown",
+            Center = "Center";
     }
     
     public static class Colors

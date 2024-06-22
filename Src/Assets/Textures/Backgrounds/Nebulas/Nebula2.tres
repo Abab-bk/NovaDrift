@@ -1,7 +1,0 @@
-[gd_resource type="AtlasTexture" load_steps=2 format=3 uid="uid://bkrnxlkdrg2it"]
-
-[ext_resource type="Texture2D" uid="uid://dxm871gfwwymr" path="res://Assets/Textures/Backgrounds/PurpleNebulas.png" id="1_dhe6h"]
-
-[resource]
-atlas = ExtResource("1_dhe6h")
-region = Rect2(2599, 1194, 1453, 969)

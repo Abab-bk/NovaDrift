@@ -1,16 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://d25jyaf2cexon"]
+[gd_scene load_steps=10 format=3 uid="uid://d25jyaf2cexon"]
 
 [ext_resource type="Script" path="res://Scripts/GameWorld.cs" id="1_xxmb6"]
-[ext_resource type="Texture2D" uid="uid://dnhr4p4esadrx" path="res://Assets/Textures/Backgrounds/BgStarsNear.png" id="2_vw5cp"]
-[ext_resource type="Texture2D" uid="uid://ctjwbswajgyik" path="res://Assets/Textures/Backgrounds/BgStarsMid.png" id="3_wfgd1"]
-[ext_resource type="Texture2D" uid="uid://u0tycejtltpc" path="res://Assets/Textures/Backgrounds/BgStarsFar.png" id="4_qp3ym"]
+[ext_resource type="Texture2D" uid="uid://ecv33h0gvcog" path="res://Assets/Textures/Grid.png" id="2_iakxi"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HazardSpawner.cs" id="5_2fkc6"]
-[ext_resource type="Texture2D" uid="uid://b48ahd5gch65u" path="res://Assets/Textures/Backgrounds/Nebulas/Nebula1.tres" id="5_210am"]
 [ext_resource type="PackedScene" uid="uid://drcoa0ndbt6te" path="res://addons/AcidJoystick/Joystick.tscn" id="6_6ip1o"]
-[ext_resource type="Texture2D" uid="uid://bkrnxlkdrg2it" path="res://Assets/Textures/Backgrounds/Nebulas/Nebula2.tres" id="6_fgtpv"]
-[ext_resource type="Texture2D" uid="uid://dqjypil3nt3vv" path="res://Assets/Textures/Backgrounds/Stars/Star1.tres" id="7_n7hc1"]
 [ext_resource type="Script" path="res://Scripts/Libs/DwarfImpulse/Runtime/ShakeDirector2D.cs" id="7_y53n8"]
-[ext_resource type="Texture2D" uid="uid://basuit8t43mj" path="res://Assets/Textures/Backgrounds/Stars/Star2.tres" id="8_qi8fl"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/WaveSpawnerController.cs" id="10_k5lv0"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/SpawnPoint.cs" id="11_euylg"]
 [ext_resource type="Environment" uid="uid://dwua3nxtba68l" path="res://Assets/Environments/Default.tres" id="12_ltxuf"]
@@ -48,70 +42,15 @@ metadata/_edit_use_anchors_ = true
 visible = false
 z_index = -1
 
-[node name="BgStarNear" type="Parallax2D" parent="ParallaxBackground"]
-repeat_size = Vector2(2048, 2048)
-autoscroll = Vector2(150, 100)
-repeat_times = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BgStarNear"]
-texture = ExtResource("2_vw5cp")
-centered = false
-
-[node name="BgStarMid" type="Parallax2D" parent="ParallaxBackground"]
-repeat_size = Vector2(2048, 2048)
-autoscroll = Vector2(100, 50)
-repeat_times = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BgStarMid"]
-texture = ExtResource("3_wfgd1")
-centered = false
-
-[node name="BgStarFar" type="Parallax2D" parent="ParallaxBackground"]
-repeat_size = Vector2(2048, 2048)
-autoscroll = Vector2(50, 10)
-repeat_times = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/BgStarFar"]
-texture = ExtResource("4_qp3ym")
-centered = false
-
 [node name="Background" type="Node2D" parent="ParallaxBackground"]
 
-[node name="Plant" type="Parallax2D" parent="ParallaxBackground/Background"]
-repeat_size = Vector2(3000, 3000)
-autoscroll = Vector2(-4, 4)
-repeat_times = 3
-
-[node name="Plant" type="Sprite2D" parent="ParallaxBackground/Background/Plant"]
-position = Vector2(1986, 414)
-texture = ExtResource("8_qi8fl")
-
-[node name="Nebula" type="Parallax2D" parent="ParallaxBackground/Background"]
-repeat_size = Vector2(3000, 3000)
-autoscroll = Vector2(-6, 6)
-repeat_times = 3
-
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background/Nebula"]
-position = Vector2(269, 1052)
-texture = ExtResource("5_210am")
-
-[node name="Nebula2" type="Parallax2D" parent="ParallaxBackground/Background"]
-repeat_size = Vector2(3000, 3000)
-autoscroll = Vector2(-8, 8)
-repeat_times = 3
-
-[node name="Sprite2D2" type="Sprite2D" parent="ParallaxBackground/Background/Nebula2"]
-position = Vector2(1204, 549)
-texture = ExtResource("6_fgtpv")
-
-[node name="Star" type="Parallax2D" parent="ParallaxBackground/Background"]
-repeat_size = Vector2(3000, 3000)
-autoscroll = Vector2(-5, 6)
-repeat_times = 3
-
-[node name="Sprite2D3" type="Sprite2D" parent="ParallaxBackground/Background/Star"]
-position = Vector2(1509, 528)
-texture = ExtResource("7_n7hc1")
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
+modulate = Color(1, 1, 1, 0.105882)
+texture_repeat = 2
+position = Vector2(1280, 720)
+texture = ExtResource("2_iakxi")
+region_enabled = true
+region_rect = Rect2(0, 0, 2600, 1600)
 
 [node name="Hud" type="CanvasLayer" parent="."]
 
@@ -130,7 +69,6 @@ scale = Vector2(0.24, 0.24)
 [node name="WaveSpawnerController" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("10_k5lv0")
-_enabled = true
 
 [node name="Left" type="Marker2D" parent="WaveSpawnerController"]
 position = Vector2(0, 200)
@@ -261,6 +199,30 @@ _category = "RandomDown"
 position = Vector2(2148, 1450)
 script = ExtResource("11_euylg")
 _category = "RandomDown"
+
+[node name="Center" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(1280, 720)
+script = ExtResource("11_euylg")
+_category = "Center"
+
+[node name="RandomCorner" type="Marker2D" parent="WaveSpawnerController"]
+script = ExtResource("11_euylg")
+_category = "RandomCorner"
+
+[node name="RandomCorner2" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(0, 1440)
+script = ExtResource("11_euylg")
+_category = "RandomCorner"
+
+[node name="RandomCorner3" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(2560, 1440)
+script = ExtResource("11_euylg")
+_category = "RandomCorner"
+
+[node name="RandomCorner4" type="Marker2D" parent="WaveSpawnerController"]
+position = Vector2(2560, 0)
+script = ExtResource("11_euylg")
+_category = "RandomCorner"
 
 [node name="HazardSpawner" type="Node2D" parent="."]
 script = ExtResource("5_2fkc6")

@@ -95,6 +95,7 @@ public partial class MobBase : Actor
 
         var dieVfx = GD.Load<PackedScene>("res://Scenes/Vfx/DieVfx.tscn").Instantiate<DieVfx>();
         dieVfx.GlobalPosition = GlobalPosition;
+        dieVfx.Modulate = Modulate;
         Global.GameWorld.CallDeferred(Node.MethodName.AddChild, dieVfx);
         
         EventBus.OnMobDied?.Invoke(this);
