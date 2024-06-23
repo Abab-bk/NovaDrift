@@ -123,11 +123,12 @@ public partial class MobBase : Actor
     public void SetTargetAndMove(Node2D target, float delta)
     {
         TryMoveTo(GlobalPosition.DirectionTo(target.GlobalPosition), delta);
+        LookAt(target.GlobalPosition);
     }
 
     public override void TryMoveTo(Vector2 dir, double delta)
     {
-        Rotation = RotationTo(GlobalPosition.AngleToPoint(dir), delta);
+        // Rotation = RotationTo(GlobalPosition.AngleToPoint(dir), delta);
         var targetVelocity = HandleDir(dir) * Stats.Speed.Value;
         Velocity = Velocity.MoveToward(targetVelocity, Stats.Acceleration.Value * (float)delta);
     }

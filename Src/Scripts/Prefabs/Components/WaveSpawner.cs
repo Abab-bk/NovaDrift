@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using AcidWallStudio.AcidUtilities;
 using Godot;
@@ -30,6 +31,15 @@ public partial class WaveSpawner : Node2D
     
     public void GenerateWave(Vector2 pos = default)
     {
+        if (pos == default)
+        {
+            RandomMove();
+        }
+        else
+        {
+            GlobalPosition = pos;
+        }
+        
         List<MobInfo> generatedMobs = [];
         
         while (Cost > 0)
@@ -47,17 +57,9 @@ public partial class WaveSpawner : Node2D
         foreach (var mobInfo in generatedMobs)
         {
             var mob = new MobBuilder(mobInfo).Build();
+            mob.GlobalPosition = GlobalPosition;
             Global.GameWorld.CallDeferred(Node.MethodName.AddChild, mob);
             // Global.GameWorld.AddChild(mob);
-        }
-        
-        if (pos == default)
-        {
-            RandomMove();
-        }
-        else
-        {
-            GlobalPosition = pos;
         }
 
         Logger.Log($"[Wave Spawner] 敌人生成数量: {generatedMobs.Count}, 阵型：{spawnType.GetType().Name}");
@@ -77,24 +79,25 @@ public partial class WaveSpawner : Node2D
     private void RandomMove()
     {
         var pos = Wizard.GetRandomScreenPosition();
-        //
-        // switch (Random.Shared.Next(1, 2))
-        // {
-        //     case 1:
-        //         // From random top or bottom
-        //         var y = Wizard.GetRandomScreenY();
-        //         pos.X = Wizard.GetRandomScreenX();
-        //         pos.Y = pos.Y > y / 2f ? 0 - 100f : Wizard.GetMaxScreenY() + 100f;
-        //         break;
-        //     case 2:
-        //         // From random left or right
-        //         var x = Wizard.GetRandomScreenX();
-        //         pos.Y = Wizard.GetRandomScreenY();
-        //         pos.X = pos.X > x / 2f ? 0 - 100f : Wizard.GetMaxScreenX() + 100f;
-        //         break;
-        // }
+        
+        switch (Random.Shared.Next(0, 4))
+        {
+            case 0:
+                pos = SpawnPoint.GetPoint(Constants.Points.RandomLeft) + new Vector2(-200f, 0);
+                break;
+            case 1:
+                pos = SpawnPoint.GetPoint(Constants.Points.RandomRight) + new Vector2(200f, 0);
+                break;
+            case 2:
+                pos = SpawnPoint.GetPoint(Constants.Points.RandomUp) + new Vector2(0, -200f);
+                break;
+            case 3:
+                pos = SpawnPoint.GetPoint(Constants.Points.RandomDown) + new Vector2(0, 200f);
+                break;
+        }
         
         GlobalPosition = pos;
+        Logger.Log($"[Wave Spawner] Random move to: {GlobalPosition}");
     }
 }
 

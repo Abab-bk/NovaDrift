@@ -1,0 +1,64 @@
+[gd_scene load_steps=11 format=3 uid="uid://b4iwsd80kotvt"]
+
+[ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_l25oy"]
+[ext_resource type="Texture2D" uid="uid://bt2ichpcqra11" path="res://Assets/Textures/Mobs/TheHero.png" id="2_3ahlj"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Ai/TheHeroAi.cs" id="3_qphco"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xtk8h"]
+size = Vector2(222, 196)
+
+[sub_resource type="StateConfig" id="StateConfig_65ct8"]
+state_name = &"Idle"
+type = 1
+editor_offset = Vector2(60, 160)
+
+[sub_resource type="StateConfig" id="StateConfig_an0ho"]
+state_name = &"MovingToPlayer"
+editor_offset = Vector2(340, 140)
+
+[sub_resource type="StateConfig" id="StateConfig_12ixd"]
+state_name = &"Save"
+editor_offset = Vector2(560, 140)
+
+[sub_resource type="StateConfig" id="StateConfig_32d7a"]
+state_name = &"Verdict"
+editor_offset = Vector2(732.009, 112.986)
+
+[sub_resource type="FSMConfig" id="FSMConfig_f6fks"]
+state_config_list = Array[StateConfig]([SubResource("StateConfig_65ct8"), SubResource("StateConfig_an0ho"), SubResource("StateConfig_12ixd"), SubResource("StateConfig_32d7a")])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_27rae"]
+size = Vector2(218, 194)
+
+[node name="TheHero" node_paths=PackedStringArray("_hitBox", "_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_l25oy")]
+_hitBox = NodePath("HitBox")
+_hurtBox = NodePath("Components/HurtBox")
+Sprite = NodePath("Sprite2D")
+_visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
+Shooter = NodePath("Components/ShooterNode/Shooter")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_3ahlj")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_xtk8h")
+
+[node name="Shooter" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../../..")
+
+[node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../..")
+
+[node name="MobAiComponent" parent="State" index="0"]
+script = ExtResource("3_qphco")
+
+[node name="HFSM" parent="State" index="1"]
+root_fsm_config = SubResource("FSMConfig_f6fks")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="4"]
+visible = false
+position = Vector2(-0.500004, -87.4516)
+scale = Vector2(5.05, 0.94516)
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("RectangleShape2D_27rae")
