@@ -38,6 +38,7 @@ public partial class BootSplash : Control
         
         if (OS.GetName() == "Windows" || OS.GetName() == "macOS" || OS.GetName() == "Linux")
         {
+            Global.AcidCoins += 1000;
             Global.CurrentPlatform = GamePlatform.Desktop;
         } else if (OS.GetName() == "Android" || OS.GetName() == "iOS")
         {

@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1vmhmtmuma0x"]
+[gd_scene load_steps=7 format=3 uid="uid://b1vmhmtmuma0x"]
 
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Actor.cs" id="1_s858g"]
 [ext_resource type="Texture2D" uid="uid://c3i8wr1dlwymr" path="res://Assets/Textures/Bodies/Default.png" id="2_44451"]
+[ext_resource type="Texture2D" uid="uid://cxfgjfel27nur" path="res://Assets/Textures/Particles/light_01.png" id="4_agxmf"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HurtBox.cs" id="4_lb4uu"]
 
 [sub_resource type="Animation" id="Animation_b5fuf"]
@@ -50,3 +51,8 @@ unique_name_in_owner = true
 libraries = {
 "": SubResource("AnimationLibrary_o8qb3")
 }
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+color = Color(0.46, 0.568, 1, 1)
+range_item_cull_mask = 2
+texture = ExtResource("4_agxmf")

@@ -1,5 +1,6 @@
+using AcidWallStudio.Fmod;
+using FMOD.Studio;
 using Godot;
-using System;
 using GTweens.Easings;
 using GTweensGodot.Extensions;
 
@@ -15,6 +16,8 @@ public partial class GetNewItemVfx : Node2D
     
     public override void _Ready()
     {
+        var instance = SoundManager.PlayUiSound("event:/UI/GetNewItem");
+        
         _label.Hide();
         _sprite.Hide();
         _gpuParticles2D.Hide();
@@ -36,6 +39,7 @@ public partial class GetNewItemVfx : Node2D
         {
             if (@event is InputEventMouseButton)
             {
+                instance.stop(STOP_MODE.IMMEDIATE);
                 QueueFree();
             }
         };

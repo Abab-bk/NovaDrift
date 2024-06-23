@@ -98,7 +98,7 @@ public partial class WaveSpawner : Node2D
         }
         
         GlobalPosition = pos;
-        Logger.Log($"[Wave Spawner] Random move to: {GlobalPosition}");
+        // Logger.Log($"[Wave Spawner] Random move to: {GlobalPosition}");
     }
 }
 

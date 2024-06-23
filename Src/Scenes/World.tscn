@@ -1,4 +1,4 @@
-[gd_scene load_steps=10 format=3 uid="uid://d25jyaf2cexon"]
+[gd_scene load_steps=11 format=3 uid="uid://d25jyaf2cexon"]
 
 [ext_resource type="Script" path="res://Scripts/GameWorld.cs" id="1_xxmb6"]
 [ext_resource type="Texture2D" uid="uid://ecv33h0gvcog" path="res://Assets/Textures/Grid.png" id="2_iakxi"]
@@ -10,6 +10,9 @@
 [ext_resource type="Environment" uid="uid://dwua3nxtba68l" path="res://Assets/Environments/Default.tres" id="12_ltxuf"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_34d4f"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6fb3h"]
+light_mode = 2
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("_shakeDirector")]
 script = ExtResource("1_xxmb6")
@@ -39,14 +42,23 @@ color = Color(0.168468, 0.112248, 0.339585, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="ParallaxBackground" type="Node2D" parent="."]
-visible = false
 z_index = -1
 
 [node name="Background" type="Node2D" parent="ParallaxBackground"]
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/Background"]
-modulate = Color(1, 1, 1, 0.105882)
+[node name="Background" type="Sprite2D" parent="ParallaxBackground/Background"]
+modulate = Color(0.36, 0.3564, 0.3573, 0.0941176)
 texture_repeat = 2
+position = Vector2(1280, 720)
+texture = ExtResource("2_iakxi")
+region_enabled = true
+region_rect = Rect2(0, 0, 2600, 1600)
+
+[node name="LightMask" type="Sprite2D" parent="ParallaxBackground/Background"]
+modulate = Color(1, 1, 1, 0.364706)
+light_mask = 2
+texture_repeat = 2
+material = SubResource("CanvasItemMaterial_6fb3h")
 position = Vector2(1280, 720)
 texture = ExtResource("2_iakxi")
 region_enabled = true

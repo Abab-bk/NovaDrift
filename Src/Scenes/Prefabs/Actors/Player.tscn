@@ -180,3 +180,6 @@ unique_name_in_owner = true
 
 [node name="RegenerationTimer" type="Timer" parent="." index="12"]
 unique_name_in_owner = true
+
+[node name="PointLight2D" parent="." index="13"]
+color = Color(1, 0.26, 0.457333, 1)

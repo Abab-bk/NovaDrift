@@ -22,11 +22,12 @@ public static class SoundManager
     
     private static EventInstance _currentMusicInstance;
     
-    public static void PlayOneShotById(string id)
+    public static EventInstance PlayOneShotById(string id)
     {
         var instance = CreateInstanceById(id);
         instance.start();
         instance.release();
+        return instance;
     }
 
     public static void PlayMusic(string id)
@@ -54,9 +55,9 @@ public static class SoundManager
         return 0;
     }
 
-    public static void PlayUiSound(string id)
+    public static EventInstance PlayUiSound(string id)
     {
-        PlayOneShotById(id);
+        return PlayOneShotById(id);
     }
     
     public static ATTRIBUTES_3D ToFmodAttribute3D(this Vector2 source)
@@ -121,6 +122,7 @@ public static class SoundManager
         foreach (var path in FmodConfig.BankPaths)
         {
             _studioSystem.loadBankFile(path, LOAD_BANK_FLAGS.NORMAL, out var bank);
+            Logger.Log($"[SoundManager] Load bank {path} {bank.isValid()}");
         }
         
         _studioSystem.getBus("bus:/", out _masterBus);
