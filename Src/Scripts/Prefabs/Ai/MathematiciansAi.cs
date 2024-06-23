@@ -1,6 +1,7 @@
 using System;
 using AcidWallStudio.AcidUtilities;
 using AcidWallStudio.Fmod;
+using FMOD;
 using FMOD.Studio;
 using Godot;
 using GTweens.Builders;
@@ -83,16 +84,16 @@ public partial class MathematiciansAi : MobAiComponent
         switch (state.GetName())
         {
             case "MovingToCenter":
-                Mob.PlaySound("event:/Mobs/Bosses/Mathematicians/Moving");
+                SoundManager.PlaySound("event:/Mobs/Bosses/Mathematicians/Moving");
                 break;
             
             case "Shoot":
-                Mob.PlaySound("event:/Mobs/Bosses/Mathematicians/Shoot");
+                SoundManager.PlaySound("event:/Mobs/Bosses/Mathematicians/Shoot");
                 break;
             
             case "MovingToCorner":
                 SetRandomMapCorner();
-                Mob.PlaySound("event:/Mobs/Bosses/Mathematicians/Moving");
+                SoundManager.PlaySound("event:/Mobs/Bosses/Mathematicians/Moving");
                 break;
             
             case "Blink":
@@ -116,7 +117,7 @@ public partial class MathematiciansAi : MobAiComponent
                 var blackHole = GD.Load<PackedScene>("res://Scenes/Prefabs/Others/BlackHole.tscn").Instantiate() as BlackHole;
                 if (blackHole == null) return;
                 
-                Mob.PlaySound("event:/Mobs/Bosses/Mathematicians/CreateBlackHole");
+                SoundManager.PlaySound("event:/Mobs/Bosses/Mathematicians/CreateBlackHole");
                 
                 blackHole.ExceptActors.Add(Mob);
                 blackHole.Life = 5;

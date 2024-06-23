@@ -28,6 +28,13 @@ public enum GamePlatform
     Mobile,
 }
 
+public enum InputDevice
+{
+    Keyboard,
+    Joystick,
+    VirtualJoystick,
+}
+
 public class GameContext
 {
     public int Score;
@@ -51,7 +58,8 @@ public static class Global
 {
     public static event Action OnAcidCoinsChanged;
     
-    public static readonly GamePlatform CurrentPlatform = GamePlatform.Desktop;
+    public static GamePlatform CurrentPlatform = GamePlatform.Desktop;
+    public static InputDevice CurrentInputDevice = InputDevice.Keyboard;
     
     public static Player Player;
     public static Node2D PlayerStand;

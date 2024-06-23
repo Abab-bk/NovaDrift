@@ -58,17 +58,7 @@ public static class SoundManager
     {
         PlayOneShotById(id);
     }
-
-    public static SoundNode PlaySound(this Node2D source, string id)
-    {
-        var soundNode = new SoundNode
-        {
-            EventInstance = CreateInstanceById(id)
-        };
-        source.AddChild(soundNode);
-        return soundNode;
-    }
-
+    
     public static ATTRIBUTES_3D ToFmodAttribute3D(this Vector2 source)
     {
         return new ATTRIBUTES_3D
@@ -96,6 +86,13 @@ public static class SoundManager
     {
         var instance = CreateInstanceById(id);
         instance.set3DAttributes(position.ToFmodAttribute3D());
+        instance.start();
+        return instance;
+    }
+    
+    public static EventInstance PlaySound(string id)
+    {
+        var instance = CreateInstanceById(id);
         instance.start();
         return instance;
     }

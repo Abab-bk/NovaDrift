@@ -19,8 +19,6 @@ public partial class Player : Actor
     
     public Joystick JoystickNode;
 
-    // private SmokeTrail _smokeTrail;
-    
     public override void _Ready()
     {
         base._Ready();
@@ -29,8 +27,6 @@ public partial class Player : Actor
         DataBuilder.BuildBodyById(1000).Use();
         DataBuilder.BuildWeaponById(1000).Use();
         DataBuilder.BuildShieldById(1000).Use();
-        
-        // _smokeTrail = GetNode<SmokeTrail>("%SmokeTrail");
         
         EventBus.OnMobDied += _ => { UpdateUi(); };
         EventBus.OnWorldColorChanged += ChangeColor;
@@ -108,10 +104,22 @@ public partial class Player : Actor
                 TryStop(delta);
                 break;
             case "Running":
-                var mousePos = GetGlobalMousePosition();
-                if (GlobalPosition.DirectionTo(mousePos) != Vector2.Zero)
+                switch (Global.CurrentInputDevice)
                 {
-                    TryMoveTo(GlobalPosition.DirectionTo(mousePos), delta);
+                    case InputDevice.Joystick:
+                        var dir = new Vector2(
+                            -Input.GetActionStrength("Left") + Input.GetActionStrength("Right"),
+                            +Input.GetActionStrength("Down") - Input.GetActionStrength("Up")
+                            ).Normalized();
+                        TryMoveTo(dir, delta);
+                        break;
+                    case InputDevice.Keyboard:
+                        var mousePos = GetGlobalMousePosition();
+                        if (GlobalPosition.DirectionTo(mousePos) != Vector2.Zero)
+                        {
+                            TryMoveTo(GlobalPosition.DirectionTo(mousePos), delta);
+                        }
+                        break;
                 }
                 break;
         }
@@ -221,11 +229,11 @@ public partial class Player : Actor
         CallDeferred(Node.MethodName.QueueFree);
     }
     
-    public override void _Input(InputEvent @event)
-    {
-        _movementMachine.SetTrigger(Input.IsActionPressed("Click") ? "GoToRunning" : "GoToIdle");
-        _actionMachine.SetTrigger(Input.IsActionPressed("RClick") ? "GoToShooting" : "GoToIdle");
-    }
+    // public override void _Input(InputEvent @event)
+    // {
+    //     _actionMachine.SetTrigger(Input.IsActionPressed("RClick") ? "GoToShooting" : "GoToIdle");
+    //     _movementMachine.SetTrigger(Input.IsActionPressed("Click") ? "GoToRunning" : "GoToIdle");
+    // }
 
     public override void _Process(double delta)
     {
@@ -238,25 +246,47 @@ public partial class Player : Actor
     public override void _PhysicsProcess(double delta)
     {
         Vector2 mousePos = GetGlobalMousePosition();
+        
+        _actionMachine.SetTrigger(Input.IsActionPressed("RClick") ? "GoToShooting" : "GoToIdle");
+        _movementMachine.SetTrigger(Input.IsActionPressed("Click") ? "GoToRunning" : "GoToIdle");
 
-        if (Global.CurrentPlatform == GamePlatform.Desktop)
+        switch (Global.CurrentInputDevice)
         {
-            Rotation = RotationTo(GlobalPosition.AngleToPoint(mousePos), delta);
+            case InputDevice.Keyboard:
+                Rotation = RotationTo(GlobalPosition.AngleToPoint(mousePos), delta);
+                break;
+            case InputDevice.Joystick:
+                Rotation = RotationTo(GlobalPosition.AngleToPoint(GetControllerDir() * 100f), delta);
+                break;
         }
-        else
-        {
-            Rotation = RotationTo(JoystickNode.TargetPos.Angle(), delta);
-            if (JoystickNode.TargetPos != Vector2.Zero)
-            {
-                TryMoveTo(JoystickNode.TargetPos, delta);
-                // _smokeTrail.AddAgePoint(GlobalPosition);
-            }
-            else
-            {
-                TryStop(delta);
-            }
-        }
+        Rotation = RotationTo(GlobalPosition.AngleToPoint(mousePos), delta);
+        
+        // if (Global.CurrentPlatform == GamePlatform.Desktop)
+        // {
+        //     
+        // }
+        // else
+        // {
+        //     Rotation = RotationTo(JoystickNode.TargetPos.Angle(), delta);
+        //     if (JoystickNode.TargetPos != Vector2.Zero)
+        //     {
+        //         TryMoveTo(JoystickNode.TargetPos, delta);
+        //         // _smokeTrail.AddAgePoint(GlobalPosition);
+        //     }
+        //     else
+        //     {
+        //         TryStop(delta);
+        //     }
+        // }
         
         base._PhysicsProcess(delta);
+    }
+
+    private Vector2 GetControllerDir()
+    {
+        return new Vector2(
+            -Input.GetActionStrength("Left") + Input.GetActionStrength("Right"),
+            +Input.GetActionStrength("Down") - Input.GetActionStrength("Up")
+        ).Normalized();
     }
 }

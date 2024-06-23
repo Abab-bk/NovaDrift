@@ -3,6 +3,7 @@ using Godot;
 using GTweens.Builders;
 using GTweens.Extensions;
 using GTweensGodot.Extensions;
+using NathanHoad;
 using Array = Godot.Collections.Array;
 using Timer = Godot.Timer;
 
@@ -18,6 +19,31 @@ public partial class BootSplash : Control
     
     public override void _Ready()
     {
+        InputHelper.Instance.Connect("device_changed", Callable.From((string device, int index) =>
+        {
+            Logger.Log($"[Device]: {device} (in slot ${index})");
+            switch (device)
+            {
+                case InputHelper.DEVICE_XBOX_CONTROLLER:
+                    Global.CurrentInputDevice = InputDevice.Joystick;
+                    break;
+                case InputHelper.DEVICE_KEYBOARD:
+                    Global.CurrentInputDevice = InputDevice.Keyboard;
+                    break;
+                case InputHelper.DEVICE_GENERIC:
+                    Global.CurrentInputDevice = InputDevice.VirtualJoystick;
+                    break;
+            }
+        }));
+        
+        if (OS.GetName() == "Windows" || OS.GetName() == "macOS" || OS.GetName() == "Linux")
+        {
+            Global.CurrentPlatform = GamePlatform.Desktop;
+        } else if (OS.GetName() == "Android" || OS.GetName() == "iOS")
+        {
+            Global.CurrentPlatform = GamePlatform.Mobile;
+        }
+
         if (OS.GetEnvironment("DebugMode") == "true")
         {
             Logger.Log("[BootSplash] Debug mode, change scene to: " + Path);
