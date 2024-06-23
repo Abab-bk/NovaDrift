@@ -56,6 +56,7 @@ public partial class WaveSpawner : Node2D
         
         foreach (var mobInfo in generatedMobs)
         {
+            RandomMove();
             var mob = new MobBuilder(mobInfo).Build();
             mob.GlobalPosition = GlobalPosition;
             Global.GameWorld.CallDeferred(Node.MethodName.AddChild, mob);

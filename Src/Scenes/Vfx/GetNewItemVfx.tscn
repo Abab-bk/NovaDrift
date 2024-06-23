@@ -1,0 +1,124 @@
+[gd_scene load_steps=10 format=3 uid="uid://d150vccjx67h2"]
+
+[ext_resource type="Texture2D" uid="uid://bkatyjmnskl5u" path="res://Assets/Ui/Icons/AbilityIcons/ChainReaction.tres" id="1_8ui24"]
+[ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_ev0b8"]
+[ext_resource type="Script" path="res://Scripts/Vfx/GetNewItemVfx.cs" id="1_t6gks"]
+[ext_resource type="FontFile" uid="uid://my5tlsmfyrkr" path="res://Assets/Fonts/SourceHanSansCN-Bold.otf" id="2_3aa01"]
+[ext_resource type="Texture2D" uid="uid://b51oi01rq88w4" path="res://Assets/Textures/CircleWhite.png" id="2_55ihq"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_m7nll"]
+particle_flag_disable_z = true
+direction = Vector3(0, -1, 0)
+spread = 180.0
+initial_velocity_min = 75.76
+initial_velocity_max = 135.76
+gravity = Vector3(0, -98, 0)
+scale_min = 7.58
+scale_max = 18.95
+
+[sub_resource type="Animation" id="Animation_dp0kh"]
+resource_name = "Floating"
+length = 2.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite2D:position")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.4995, 0.999, 1.4985, 1.998),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(0, 0), Vector2(0, 60), Vector2(0, -60), Vector2(0, 60), Vector2(0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xqbqn"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D/Sprite2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_vhtqx"]
+_data = {
+"Floating": SubResource("Animation_dp0kh"),
+"RESET": SubResource("Animation_xqbqn")
+}
+
+[node name="GetNewItemVfx" type="Node2D" node_paths=PackedStringArray("_sprite", "_label", "_gpuParticles2D", "_animationPlayer", "_control")]
+script = ExtResource("1_t6gks")
+_sprite = NodePath("Node2D/Sprite2D")
+_label = NodePath("Control/Label")
+_gpuParticles2D = NodePath("Node2D/GPUParticles2D")
+_animationPlayer = NodePath("Node2D/AnimationPlayer")
+_control = NodePath("Control")
+
+[node name="Mask" type="Sprite2D" parent="."]
+clip_children = 1
+position = Vector2(1280, 720)
+scale = Vector2(10, 10)
+texture = ExtResource("2_55ihq")
+
+[node name="Control" type="Control" parent="."]
+custom_minimum_size = Vector2(2560, 1440)
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 2560.0
+offset_bottom = 1440.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_ev0b8")
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(1, 0.46, 0.469, 1)
+
+[node name="Label" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -240.0
+offset_top = 927.0
+offset_right = 240.0
+offset_bottom = 1044.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_3aa01")
+theme_override_font_sizes/font_size = 80
+text = "烈焰风暴"
+horizontal_alignment = 1
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(1280, 720)
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="Node2D"]
+scale = Vector2(6.545, 6.545)
+amount = 50
+process_material = SubResource("ParticleProcessMaterial_m7nll")
+lifetime = 0.8
+
+[node name="Sprite2D" type="Sprite2D" parent="Node2D"]
+texture = ExtResource("1_8ui24")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Node2D"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_vhtqx")
+}

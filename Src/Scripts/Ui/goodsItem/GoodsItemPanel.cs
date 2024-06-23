@@ -82,8 +82,16 @@ public partial class GoodsItemPanel : GoodsItem
                             .Open_Popup()
                             .SetConfig(
                                 "购买成功",
-                                $"{info.Name} 购买成功"
-                                );
+                                $"{info.Name} 购买成功",
+                                false,
+                                null,
+                                () =>
+                                {
+                                    var vfx = GD.Load<PackedScene>("res://Scenes/Vfx/GetNewItemVfx.tscn")
+                                        .Instantiate<Node2D>();
+                                    UiManager.GetUiLayer(UiLayer.Pop).AddChild(vfx);
+                                }
+                            );
                     }
                     );
             

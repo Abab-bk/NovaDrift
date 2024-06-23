@@ -59,6 +59,14 @@ public partial class WaveSpawnerController : Node2D
 
         AddChild(_clock);
 
+        EventBus.OnMobDied += _ =>
+        {
+            if (GetTree().GetNodesInGroup("Mobs").Count <= 0)
+            {
+                GenerateWave();
+            }
+        };
+
         EventBus.OnGameStart += () =>
         {
             if (!_enabled) return;
