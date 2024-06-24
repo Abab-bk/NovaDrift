@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Linq;
 using AcidWallStudio.AcidUtilities;
+using DsUi;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
 using NovaDrift.Scripts.Systems;
+using NovaDrift.Scripts.Vfx;
 
 namespace NovaDrift.Scripts.Prefabs.Components;
 
@@ -111,23 +113,36 @@ public partial class WaveSpawnerController : Node2D
         _clock.Stop();
         Logger.Log("[Wave Spawner] Boss wave started, stop clock.");
         
-        var waveSpawner = new WaveSpawner();
-        
-        AddChild(waveSpawner);
-        
-        var boss = waveSpawner.GenerateABoss(id);
-        boss.OnDied += () =>
+        Logger.Log("[Wave Spawner] Play boss appear animation.");
+
+        var animation = GD.Load<PackedScene>("res://Scenes/Vfx/BossAppearVfx.tscn").Instantiate<BossAppearVfx>();
+        animation.Title = DataBuilder.Tables.TbBossMobInfo.DataMap[id].Name;
+        animation.IconPath = $"res://Assets/Textures/Mobs/{DataBuilder.Tables.TbBossMobInfo.DataMap[id].SceneName}.png";
+        UiManager.GetUiLayer(UiLayer.Pop).AddChild(animation);
+        Global.StopGame();
+
+        animation.OnAnimationEnd += () =>
         {
-            if (!_enabled) return;
-            _sawBossCount += 1;
-            _nextIsBoss = false; 
-            _clock.Start();
-            Logger.Log("[Wave Spawner] Boss wave end, start clock.");
+            Global.ResumeGame();
+            
+            var waveSpawner = new WaveSpawner();
+        
+            AddChild(waveSpawner);
+        
+            var boss = waveSpawner.GenerateABoss(id);
+            boss.OnDied += () =>
+            {
+                if (!_enabled) return;
+                _sawBossCount += 1;
+                _nextIsBoss = false; 
+                _clock.Start();
+                Logger.Log("[Wave Spawner] Boss wave end, start clock.");
+            };
+        
+            waveSpawner.QueueFree();
+        
+            Logger.Log($"[Wave Spawner] Boss wave spawned: {boss.MobInfo.Name}");  
         };
-        
-        waveSpawner.QueueFree();
-        
-        Logger.Log($"[Wave Spawner] Boss wave spawned: {boss.MobInfo.Name}");
     }
 
     private void AddWaveCount()

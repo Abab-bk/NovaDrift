@@ -45,6 +45,7 @@ public partial class GameWorld : Node2D
 		Global.SceneTree = GetTree();
 		Global.ShakeDirector = _shakeDirector;
 		Global.Noise = _noise;
+		Global.Camera = GetNode<Camera2D>("%Camera2D");
 		
 		SoundManager.PlayMusic(AudioEvents.BackgroundMusic);
 		

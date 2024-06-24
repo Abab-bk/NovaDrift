@@ -66,6 +66,7 @@ public static class Global
     public static Node2D Something;
     public static GameWorld GameWorld;
     public static ShakeDirector2D ShakeDirector;
+    public static Camera2D Camera;
     public static FastNoiseLite Noise;
     public static WaveSpawnerController WaveSpawnerController;
     public static GameContext GameContext = new GameContext();
