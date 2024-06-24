@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://b1hvfrsat441r"]
+[gd_scene load_steps=35 format=3 uid="uid://b1hvfrsat441r"]
 
 [ext_resource type="PackedScene" uid="uid://b1vmhmtmuma0x" path="res://Scenes/Prefabs/Actors/ActorBase.tscn" id="1_0c8c2"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Player.cs" id="2_15kon"]
@@ -7,6 +7,8 @@
 [ext_resource type="Curve" uid="uid://bfftvhg22hmgf" path="res://Assets/Resources/BaseTrail.tres" id="5_o1eaj"]
 [ext_resource type="Texture2D" uid="uid://6208j2u77orx" path="res://Assets/Textures/Indicator.png" id="6_ig50u"]
 [ext_resource type="Script" path="res://addons/trail_2d/trail_2d.gd" id="7_6dhtg"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="8_7ba0m"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_25cp4"]
 
 [sub_resource type="Curve" id="Curve_veys5"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -115,6 +117,12 @@ state_config_list = Array[StateConfig]([SubResource("StateConfig_f52yo"), SubRes
 transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_hck3y"), SubResource("TransitionConfig_ad1ll")])
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_mu8jh"), SubResource("VariableConfig_01o2x")])
 
+[sub_resource type="Resource" id="Resource_g4wph"]
+script = ExtResource("9_25cp4")
+duration = 1.0
+transition = 0
+ease = 2
+
 [node name="Player" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") groups=["Players"] instance=ExtResource("1_0c8c2")]
 script = ExtResource("2_15kon")
 _hurtBox = NodePath("Components/HurtBox")
@@ -184,6 +192,7 @@ unique_name_in_owner = true
 [node name="PointLight2D" parent="." index="13"]
 color = Color(1, 0.26, 0.457333, 1)
 
-[node name="Camera2D" type="Camera2D" parent="." index="14"]
-enabled = false
-zoom = Vector2(0.8, 0.8)
+[node name="PhantomCamera2D" type="Node2D" parent="." index="14"]
+script = ExtResource("8_7ba0m")
+priority = 1
+tween_resource = SubResource("Resource_g4wph")

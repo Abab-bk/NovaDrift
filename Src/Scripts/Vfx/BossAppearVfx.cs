@@ -40,7 +40,7 @@ public partial class BossAppearVfx : Node2D
         _redSprite.Position = _originSprite.Position;
         _blueSprite.Position = _originSprite.Position;
         
-        Global.Shake(10f);
+        // Global.Shake(10f);
         
         GTweenSequenceBuilder.New()
             .Append(_sprites.TweenPositionX(1280f, 0.5f))
@@ -50,7 +50,7 @@ public partial class BossAppearVfx : Node2D
             .Append(_redSprite.TweenPositionX(100f, 0.2f))
             .Append(_blueSprite.TweenPositionX(150f, 0.2f))
             
-            .AppendTime(1f)
+            .AppendTime(2f)
             .AppendCallback(() =>
             {
                 OnAnimationEnd?.Invoke();

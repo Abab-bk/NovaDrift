@@ -204,28 +204,28 @@ public partial class Actor : CharacterBody2D
 
     private void MoveToWorldEdge()
     {
-        Vector2 newPos = GlobalPosition;
-        if (GlobalPosition.X < 0)
-        {
-            newPos.X = 2560;
-        }
-
-        if (GlobalPosition.X > 2560)
-        {
-            newPos.X = 0;
-        }
-        
-        if (GlobalPosition.Y < 0)
-        {
-            newPos.Y = 1440;
-        }
-        
-        if (GlobalPosition.Y > 1440)
-        {
-            newPos.Y = 0;
-        }
-
-        GlobalPosition = newPos;
+        // Vector2 newPos = GlobalPosition;
+        // if (GlobalPosition.X < 0)
+        // {
+        //     newPos.X = 2560;
+        // }
+        //
+        // if (GlobalPosition.X > 2560)
+        // {
+        //     newPos.X = 0;
+        // }
+        //
+        // if (GlobalPosition.Y < 0)
+        // {
+        //     newPos.Y = 1440;
+        // }
+        //
+        // if (GlobalPosition.Y > 1440)
+        // {
+        //     newPos.Y = 0;
+        // }
+        //
+        // GlobalPosition = newPos;
     }
 
     protected virtual void InitStats()

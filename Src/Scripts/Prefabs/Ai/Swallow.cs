@@ -16,7 +16,7 @@ public partial class Swallow : MobAiComponent
         base._Ready();
 
         _leftPoint = SpawnPoint.GetPoint(Constants.Points.RandomLeft);
-        _rightPoint = _leftPoint with { X = Wizard.GetMaxScreenX() };
+        _rightPoint = SpawnPoint.GetPoint(Constants.Points.RandomRight);
 
         _leftPoint.X += _padding;
         _rightPoint.X -= _padding;

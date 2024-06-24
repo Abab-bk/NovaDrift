@@ -4,6 +4,8 @@ USER ERROR: Can't create shader cache folder, no shader caching will happen: use
    at: RendererCompositorRD (servers/rendering/renderer_rd/renderer_compositor_rd.cpp:272)
 
 [Log][BootSplash] Debug mode, change scene to: res://Scenes/World.tscn
+USER ERROR: Parameter "data.tree" is null.
+   at: get_tree (./scene/main/node.h:446)
 USER ERROR: Parent node is busy adding/removing children, `remove_child()` can't be called at this time. Consider using `remove_child.call_deferred(child)` instead.
    at: remove_child (scene/main/node.cpp:1595)
 [Log][SoundManager] Load bank Assets/Audios/Desktop/Master.strings.bank True
@@ -16,14 +18,52 @@ USER ERROR: Parent node is busy adding/removing children, `remove_child()` can't
 [Log][Global] Try Stop game. Stop count: 1
 [Log][Global] Try Resume game. Stop count: 0
 [Log][Ui] Generate debug panel
-[Log][Global] Try Stop game. Stop count: 1
-[Log][Wave Spawner] Boss wave started, stop clock.
-[Log][Wave Spawner] Play boss appear animation.
-[Log][Global] Try Stop game. Stop count: 2
-[Log][Global] Try Resume game. Stop count: 1
-USER WARNING: Node './Spring' was modified from inside an instance, but it has vanished.
-   at: instantiate (scene/resources/packed_scene.cpp:254)
-[Log][Wave Spawner] Boss wave spawned: éªå£«
+[Log][Wave Spawner] æäººçææ°é: 4, éµåï¼CircleSpawnType
+[Log][Wave Spawner] Add wave count.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] æäººçææ°é: 2, éµåï¼CircleSpawnType
+[Log][Wave Spawner] Add wave count.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] æäººçææ°é: 3, éµåï¼RectSpawnType
+[Log][Wave Spawner] Add wave count.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] æäººçææ°é: 2, éµåï¼RectSpawnType
+[Log][Wave Spawner] Add wave count.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] æäººçææ°é: 2, éµåï¼SpiralSpawnType
+[Log][Wave Spawner] Add wave count.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] æäººçææ°é: 4, éµåï¼SpiralSpawnType
+[Log][Wave Spawner] Add wave count.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] æäººçææ°é: 2, éµåï¼RectSpawnType
+[Log][Wave Spawner] Add wave count.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] æäººçææ°é: 3, éµåï¼SpiralSpawnType
+[Log][Wave Spawner] Add wave count.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] Max mobs reached, stop spawn and add clock.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] Max mobs reached, stop spawn and add clock.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] Max mobs reached, stop spawn and add clock.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] Max mobs reached, stop spawn and add clock.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] Max mobs reached, stop spawn and add clock.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] Max mobs reached, stop spawn and add clock.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] Max mobs reached, stop spawn and add clock.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] Max mobs reached, stop spawn and add clock.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] Max mobs reached, stop spawn and add clock.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] Max mobs reached, stop spawn and add clock.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] Max mobs reached, stop spawn and add clock.
+[Log][Wave Spawner] Next wave clock: 2s
 
 ================================================================
 CrashHandlerException: Program crashed with signal 11

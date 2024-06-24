@@ -28,7 +28,7 @@ public partial class WaveSpawner : Node2D
     {
         RandomMove();
     }
-    
+
     public void GenerateWave(Vector2 pos = default)
     {
         if (pos == default)
