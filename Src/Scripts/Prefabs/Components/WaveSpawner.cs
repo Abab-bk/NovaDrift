@@ -84,16 +84,16 @@ public partial class WaveSpawner : Node2D
         switch (Random.Shared.Next(0, 4))
         {
             case 0:
-                pos = SpawnPoint.GetPoint(Constants.Points.RandomLeft) + new Vector2(-200f, 0);
+                pos = SpawnPoint.GetPoint(Constants.Points.RandomLeft) + new Vector2(200f, 0);
                 break;
             case 1:
-                pos = SpawnPoint.GetPoint(Constants.Points.RandomRight) + new Vector2(200f, 0);
+                pos = SpawnPoint.GetPoint(Constants.Points.RandomRight) + new Vector2(-200f, 0);
                 break;
             case 2:
-                pos = SpawnPoint.GetPoint(Constants.Points.RandomUp) + new Vector2(0, -200f);
+                pos = SpawnPoint.GetPoint(Constants.Points.RandomUp) + new Vector2(0, 200f);
                 break;
             case 3:
-                pos = SpawnPoint.GetPoint(Constants.Points.RandomDown) + new Vector2(0, 200f);
+                pos = SpawnPoint.GetPoint(Constants.Points.RandomDown) + new Vector2(0, -200f);
                 break;
         }
         

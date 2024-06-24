@@ -12,14 +12,14 @@ public partial class Pulse : BaseShooter
     
     public override void SetShootCd(float value)
     {
-        _shootTimer.WaitTime = value * 2f;
+        _shootTimer.WaitTime = Actor.Stats.ShootSpeed.Value * 4f;
     }
 
     public override void Init()
     {
         _shootTimer = new Timer
         {
-            WaitTime = Actor.Stats.ShootSpeed.Value,
+            WaitTime = Actor.Stats.ShootSpeed.Value * 4f,
             OneShot = true
         };
         AddChild(_shootTimer);
@@ -27,7 +27,7 @@ public partial class Pulse : BaseShooter
 
     private float GetRadius()
     {
-        return 100f + Actor.Stats.BulletSize.Value * (Actor.Stats.BlastRadius.Value * 0.5f);
+        return 1f + Actor.Stats.BulletSize.Value * 0.5f * (Actor.Stats.BlastRadius.Value * 0.5f);
     }
 
     public override void Shoot()

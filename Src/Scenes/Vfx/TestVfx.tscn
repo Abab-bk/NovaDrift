@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cgtc1xepnv4ya"]
+
+[ext_resource type="Script" path="res://Scripts/Vfx/TestVfx.cs" id="1_ybpuv"]
+
+[node name="TestVfx" type="Node2D"]
+script = ExtResource("1_ybpuv")

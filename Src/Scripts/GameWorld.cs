@@ -111,8 +111,10 @@ public partial class GameWorld : Node2D
 		player.JoystickNode = _moveJoystick;
 		AddChild(player);
 
-		MoveActorToScreenCenter mover = new MoveActorToScreenCenter(player);
-		AddChild(mover);
+		player.GlobalPosition = SpawnPoint.GetPoint(Constants.Points.Center);
+		
+		// MoveActorToScreenCenter mover = new MoveActorToScreenCenter(player);
+		// AddChild(mover);
 		
 		// UiManager.Get_Hud_Instance()[0].OpenNestedUi(UiManager.UiName.StatsMonitor);
 		

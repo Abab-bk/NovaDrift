@@ -183,3 +183,7 @@ unique_name_in_owner = true
 
 [node name="PointLight2D" parent="." index="13"]
 color = Color(1, 0.26, 0.457333, 1)
+
+[node name="Camera2D" type="Camera2D" parent="." index="14"]
+enabled = false
+zoom = Vector2(0.8, 0.8)
