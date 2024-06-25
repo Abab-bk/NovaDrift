@@ -73,7 +73,7 @@ public partial class WaveSpawner : Node2D
         var mob = new MobBuilder(DataBuilder.BuildBossMobInfoById(id)).Build();
         mob.IsBoss = true;
         Global.GameWorld.AddChild(mob);
-        mob.GlobalPosition = Vector2.Zero;
+        mob.GlobalPosition = SpawnPoint.GetPoint(Constants.Points.Center);
         RandomMove();
         return mob;
     }

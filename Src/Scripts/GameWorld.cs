@@ -19,9 +19,14 @@ public partial class GameWorld : Node2D
 	private Joystick _moveJoystick;
 	private Joystick _aimJoystick;
 	
+	// GameStart 时 Init，不要删除
+	private GameCommands _gameCommands;
+	
 	public override void _Ready()
 	{
 		SoundManager.Initialize();
+		
+		_gameCommands = new GameCommands();
 		
 		AcidSaver.OnLoaded += () =>
 		{

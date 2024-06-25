@@ -12,11 +12,16 @@ USER ERROR: Parameter "data.tree" is null.
 [Log][SoundManager] Load bank Assets/Audios/Desktop/SFX.bank True
 [Log][SoundManager] Load bank Assets/Audios/Desktop/Music.bank True
 [Log][SoundManager] Load bank Assets/Audios/Desktop/UI.bank True
-[Log][Ui] Init debug panel class.
 [Log][Game] Debug mode, enter world.
 [Log][Global] Try Stop game. Stop count: 1
 [Log][Global] Try Resume game. Stop count: 0
-[Log][Ui] Generate debug panel
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+[Log][Global] Try Stop game. Stop count: 1
 
 ================================================================
 CrashHandlerException: Program crashed with signal 11
