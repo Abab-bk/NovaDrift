@@ -11,6 +11,10 @@ public static class Constants
     public static class Points
     {
         public const string
+            TopLimit = "TopLimit",
+            BottomLimit = "BottomLimit",
+            LeftLimit = "LeftLimit",
+            RightLimit = "RightLimit",
             RandomCorner = "RandomCorner",
             LeftUp = "LeftUp",
             Left = "Left",

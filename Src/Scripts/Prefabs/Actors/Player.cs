@@ -4,6 +4,7 @@ using AcidWallStudio.Fmod;
 using DsUi;
 using DwarfImpulse;
 using Godot;
+using NovaDrift.Scripts.Prefabs.Components;
 using NovaDrift.Scripts.Prefabs.Shields;
 
 namespace NovaDrift.Scripts.Prefabs.Actors;
@@ -76,6 +77,11 @@ public partial class Player : Actor
         _regenerationTimer.Start();
         
         Global.GameContext.SetCamera(GetNode<Node2D>("PhantomCamera2D"));
+        
+        // Global.GameContext.SetLimits(
+        //     SpawnPoint.GetPoint(Constants.Points.LeftLimit)
+        //     );
+        // Global.GameContext.PrintLimits();
         
         UpdateUi();
     }

@@ -57,6 +57,27 @@ public class GameContext
         _camera.Call("erase_follow_targets", target);
     }
 
+    public void SetLimits(float left, float right, float top, float bottom)
+    {
+        if (_camera == null) return;
+        _camera.Call("set_limit_top", top);
+        _camera.Call("set_limit_bottom", bottom);
+        _camera.Call("set_limit_left", left);
+        _camera.Call("set_limit_right", right);
+    }
+
+    public void PrintLimits()
+    {
+        if (_camera == null) return;
+        Logger.Log($"""
+                    [Camera Limits]:
+                    Top: {_camera.Call("get_limit_top")}
+                    Bottom: {_camera.Call("get_limit_bottom")}
+                    Left: {_camera.Call("get_limit_left")}
+                    Right: {_camera.Call("get_limit_right")}
+                    """);
+    }
+
     public GameContext()
     {
         EventBus.OnMobDied += @base =>
