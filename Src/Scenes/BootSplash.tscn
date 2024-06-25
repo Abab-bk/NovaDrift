@@ -204,7 +204,8 @@ grow_vertical = 2
 theme_override_constants/separation = 60
 alignment = 1
 
-[node name="Label" type="Label" parent="Loading"]
+[node name="LoadingLabel" type="Label" parent="Loading"]
+unique_name_in_owner = true
 layout_mode = 2
 theme_override_font_sizes/font_size = 50
 text = "加载中...."

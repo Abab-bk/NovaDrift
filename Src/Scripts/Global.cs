@@ -193,4 +193,14 @@ public static class Global
         if (Player == null) return 1;
         return Player.Stats.Level;
     }
+
+    public static bool IsDebugMode()
+    {
+        if (OS.GetEnvironment("DebugMode") == "false" || OS.GetEnvironment("DebugMode") == "")
+        {
+            return false;
+        }
+
+        return true;
+    }
 }

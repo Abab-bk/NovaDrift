@@ -45,7 +45,6 @@ public partial class GameWorld : Node2D
 		Global.SceneTree = GetTree();
 		Global.ShakeDirector = _shakeDirector;
 		Global.Noise = _noise;
-		// Global.Camera = GetNode<Camera2D>("%Camera2D");
 		
 		SoundManager.PlayMusic(AudioEvents.BackgroundMusic);
 		
@@ -68,7 +67,7 @@ public partial class GameWorld : Node2D
 			return;
 		}
 
-		if (OS.GetEnvironment("DebugMode") == "false" || OS.GetEnvironment("DebugMode") == "")
+		if (!Global.IsDebugMode())
 		{
 			Logger.Log("[Game] No debug mode, open start menu.");
 			UiManager.Open_StartMenu();
