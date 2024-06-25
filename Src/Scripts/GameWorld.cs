@@ -2,9 +2,8 @@ using AcidJoystick;
 using AcidWallStudio.Fmod;
 using DsUi;
 using DwarfImpulse;
-using GDebugPanelGodot.Core;
-using GDebugPanelGodot.Extensions;
 using Godot;
+using GTweensGodot.Extensions;
 using NovaDrift.addons.AcidUtilities;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Components;
@@ -15,11 +14,10 @@ public partial class GameWorld : Node2D
 {
 	[Export] private ShakeDirector2D _shakeDirector;
 	[Export] private FastNoiseLite _noise;
+	[Export] private Node2D _background;
 	
 	private Joystick _moveJoystick;
 	private Joystick _aimJoystick;
-	
-	private GameCommands _gameCommands;
 	
 	public override void _Ready()
 	{
@@ -58,24 +56,26 @@ public partial class GameWorld : Node2D
 
 		Global.Something = GetNode<Node2D>("Something");
 		
-		_gameCommands = new GameCommands();
-
-		if (OS.HasFeature("template"))
+		if (!Global.IsDebugMode() || OS.HasFeature("template"))
 		{
-			Logger.Log("[Game] Has export template, open start menu.");
-			UiManager.Open_StartMenu();
-			return;
-		}
-
-		if (!Global.IsDebugMode())
-		{
-			Logger.Log("[Game] No debug mode, open start menu.");
+			Logger.Log("[Game] No debug mode or has export template, open start menu.");
+			HideBackground();
 			UiManager.Open_StartMenu();
 			return;
 		}
 		
 		Logger.Log("[Game] Debug mode, enter world.");
 		EventBus.OnGameInit?.Invoke();
+	}
+
+	private void ShowBackground()
+	{
+		_background.TweenModulateAlpha(1f, 0.2f).Play();
+	}
+
+	private void HideBackground()
+	{
+		_background.TweenModulateAlpha(0f, 0.2f).Play();
 	}
 
 	public override void _Notification(int what)
@@ -120,6 +120,8 @@ public partial class GameWorld : Node2D
 		
 		UiManager.Open_PausedMenu();
 		UiManager.Hide_PausedMenu();
+		
+		ShowBackground();
 		
 		EventBus.OnGameStart?.Invoke();
 		

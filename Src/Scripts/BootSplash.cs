@@ -105,10 +105,11 @@ public partial class BootSplash : Control
         
         loader.OnResourceLoad += path =>
         {
-            _loadingLabel.Text = $"正在加载" + path switch
+            _loadingLabel.Text = "正在加载" + path switch
             {
                 "res://Scenes/World.tscn" => "世界场景",
-                _ => "神秘资源"};
+                _ => "神秘资源"
+            };
         };
 
         loader.OnProgressChanged += f =>

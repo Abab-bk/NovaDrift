@@ -29,10 +29,11 @@ duration = 1.0
 transition = 0
 ease = 2
 
-[node name="World" type="Node2D" node_paths=PackedStringArray("_shakeDirector")]
+[node name="World" type="Node2D" node_paths=PackedStringArray("_shakeDirector", "_background")]
 script = ExtResource("1_xxmb6")
 _shakeDirector = NodePath("ShakeDirector2D")
 _noise = SubResource("FastNoiseLite_34d4f")
+_background = NodePath("Background")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -101
@@ -58,12 +59,13 @@ grow_vertical = 2
 color = Color(0.168468, 0.112248, 0.339585, 1)
 metadata/_edit_use_anchors_ = true
 
-[node name="ParallaxBackground" type="Node2D" parent="."]
+[node name="Background" type="Node2D" parent="."]
+unique_name_in_owner = true
 z_index = -1
 
-[node name="Background" type="Node2D" parent="ParallaxBackground"]
+[node name="Background" type="Node2D" parent="Background"]
 
-[node name="Background" type="Sprite2D" parent="ParallaxBackground/Background"]
+[node name="Background" type="Sprite2D" parent="Background/Background"]
 modulate = Color(0.36, 0.3564, 0.3573, 0.0941176)
 texture_repeat = 2
 position = Vector2(2560, 1440)
@@ -71,7 +73,7 @@ texture = ExtResource("2_iakxi")
 region_enabled = true
 region_rect = Rect2(0, 0, 5200, 3200)
 
-[node name="LightMask" type="Sprite2D" parent="ParallaxBackground/Background"]
+[node name="LightMask" type="Sprite2D" parent="Background/Background"]
 modulate = Color(1, 1, 1, 0.364706)
 light_mask = 2
 texture_repeat = 2
@@ -81,44 +83,44 @@ texture = ExtResource("2_iakxi")
 region_enabled = true
 region_rect = Rect2(0, 0, 5200, 3200)
 
-[node name="Border" type="Node2D" parent="ParallaxBackground"]
+[node name="Border" type="Node2D" parent="Background"]
 
-[node name="Line2D" type="Line2D" parent="ParallaxBackground/Border"]
+[node name="Line2D" type="Line2D" parent="Background/Border"]
 points = PackedVector2Array(0, 0, 5121, 1, 5122, 2877, 0, 2885)
 closed = true
 width = 20.0
 
-[node name="StaticBody2D" type="StaticBody2D" parent="ParallaxBackground/Border/Line2D"]
+[node name="StaticBody2D" type="StaticBody2D" parent="Background/Border/Line2D"]
 collision_layer = 67
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ParallaxBackground/Border/Line2D/StaticBody2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Border/Line2D/StaticBody2D"]
 position = Vector2(2560.5, 0)
 shape = SubResource("RectangleShape2D_ilgvf")
 
-[node name="StaticBody2D2" type="StaticBody2D" parent="ParallaxBackground/Border/Line2D"]
+[node name="StaticBody2D2" type="StaticBody2D" parent="Background/Border/Line2D"]
 position = Vector2(0, 2890)
 collision_layer = 67
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ParallaxBackground/Border/Line2D/StaticBody2D2"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Border/Line2D/StaticBody2D2"]
 position = Vector2(2560.5, -5)
 shape = SubResource("RectangleShape2D_ilgvf")
 
-[node name="StaticBody2D3" type="StaticBody2D" parent="ParallaxBackground/Border/Line2D"]
+[node name="StaticBody2D3" type="StaticBody2D" parent="Background/Border/Line2D"]
 collision_layer = 67
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ParallaxBackground/Border/Line2D/StaticBody2D3"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Border/Line2D/StaticBody2D3"]
 position = Vector2(0, 1442.5)
 shape = SubResource("RectangleShape2D_tdua6")
 
-[node name="StaticBody2D4" type="StaticBody2D" parent="ParallaxBackground/Border/Line2D"]
+[node name="StaticBody2D4" type="StaticBody2D" parent="Background/Border/Line2D"]
 position = Vector2(5120, 0)
 collision_layer = 67
 collision_mask = 3
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="ParallaxBackground/Border/Line2D/StaticBody2D4"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Background/Border/Line2D/StaticBody2D4"]
 position = Vector2(0, 1442.5)
 shape = SubResource("RectangleShape2D_tdua6")
 
