@@ -58,6 +58,11 @@ public partial class MobBase : Actor
             if (GetNode("CollisionShape2D") is not CollisionShape2D collision) return;
             collisionShape2D.Shape = collision.Shape;
         }
+
+        if (IsBoss)
+        {
+            Global.GameContext.AppendFollowTarget(this);
+        }
     }
     
     protected override void InitStats()
@@ -99,6 +104,12 @@ public partial class MobBase : Actor
         Global.GameWorld.CallDeferred(Node.MethodName.AddChild, dieVfx);
         
         EventBus.OnMobDied?.Invoke(this);
+        
+        if (IsBoss)
+        {
+            Global.GameContext.RemoveFollowTarget(this);
+        }
+        
         base.Die();
     }
 

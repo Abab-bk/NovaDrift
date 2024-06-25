@@ -38,6 +38,24 @@ public enum InputDevice
 public class GameContext
 {
     public int Score;
+    private Node2D _camera;
+
+    public void SetCamera(Node2D camera)
+    {
+        _camera = camera;
+    }
+
+    public void AppendFollowTarget(Node2D target)
+    {
+        if (_camera == null) return;
+        _camera.Call("append_follow_targets", target);
+    }
+
+    public void RemoveFollowTarget(Node2D target)
+    {
+        if (_camera == null) return;
+        _camera.Call("erase_follow_targets", target);
+    }
 
     public GameContext()
     {
@@ -62,11 +80,9 @@ public static class Global
     public static InputDevice CurrentInputDevice = InputDevice.Keyboard;
     
     public static Player Player;
-    public static Node2D PlayerStand;
     public static Node2D Something;
     public static GameWorld GameWorld;
     public static ShakeDirector2D ShakeDirector;
-    public static Camera2D Camera;
     public static FastNoiseLite Noise;
     public static WaveSpawnerController WaveSpawnerController;
     public static GameContext GameContext = new GameContext();

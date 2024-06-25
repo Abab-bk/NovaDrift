@@ -75,6 +75,8 @@ public partial class Player : Actor
         };
         _regenerationTimer.Start();
         
+        Global.GameContext.SetCamera(GetNode<Node2D>("PhantomCamera2D"));
+        
         UpdateUi();
     }
 
