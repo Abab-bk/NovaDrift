@@ -1,3 +1,4 @@
+using AcidWallStudio.Fmod;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
@@ -42,6 +43,7 @@ public partial class Pulse : BaseShooter
         circleBlast.OnSomeThingHit += node2D =>
         {
             if (node2D is not Actor actor) return;
+            SoundManager.PlayOneShotById("event:/OnBulletHit");
             if (Actor.IsPlayer && actor is MobBase)
             {
                 actor.TakeDamageWithoutKnockBack(Actor.Stats.Damage.Value);

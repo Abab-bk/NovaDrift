@@ -193,11 +193,12 @@ unique_name_in_owner = true
 color = Color(1, 0.26, 0.457333, 1)
 
 [node name="PhantomCamera2D" type="Node2D" parent="." index="14" node_paths=PackedStringArray("follow_targets")]
-position = Vector2(925, 488)
+position = Vector2(1245, 668)
 script = ExtResource("8_7ba0m")
 priority = 1
 follow_mode = 3
 follow_targets = [NodePath("..")]
+zoom = Vector2(0.8, 0.8)
 tween_resource = SubResource("Resource_g4wph")
 limit_left = -355
 limit_top = -232

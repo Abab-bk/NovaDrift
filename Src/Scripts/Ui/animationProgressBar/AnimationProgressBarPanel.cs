@@ -1,7 +1,4 @@
 using Godot;
-using GTweens.Builders;
-using GTweens.Extensions;
-using GTweensGodot.Extensions;
 
 namespace NovaDrift.Scripts.Ui.AnimationProgressBar;
 
@@ -24,15 +21,10 @@ public partial class AnimationProgressBarPanel : AnimationProgressBar
     {
         if (_bar == null) return;
         _bar.Value = value;
-        GTweenSequenceBuilder.New()
-            .Append(GTweenExtensions.Tween(
-                () => (float)_easedBar.Value,
-                v => _easedBar.Value = v,
-                value,
-                0.3f
-            ))
-            .Build()
-            .Play();
+
+        var tween = CreateTween();
+        tween.TweenProperty(_easedBar, "value", value, 0.1f);
+        tween.Play();
     }
 
     public override void OnCreateUi()

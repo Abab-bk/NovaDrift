@@ -12,16 +12,58 @@ USER ERROR: Parameter "data.tree" is null.
 [Log][SoundManager] Load bank Assets/Audios/Desktop/SFX.bank True
 [Log][SoundManager] Load bank Assets/Audios/Desktop/Music.bank True
 [Log][SoundManager] Load bank Assets/Audios/Desktop/UI.bank True
+[Log][Ui] Init debug panel class.
 [Log][Game] Debug mode, enter world.
 [Log][Global] Try Stop game. Stop count: 1
 [Log][Global] Try Resume game. Stop count: 0
+[Log][Ui] Generate debug panel
+[Log][Wave Spawner] æäººçææ°é: 3, éµåï¼CircleSpawnType
+[Log][Wave Spawner] Add wave count.
+[Log][Wave Spawner] Next wave clock: 2s
 [Log][Global] Try Stop game. Stop count: 1
 [Log][Global] Try Resume game. Stop count: 0
+[Log][Wave Spawner] æäººçææ°é: 4, éµåï¼SpiralSpawnType
+[Log][Wave Spawner] Add wave count.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] æäººçææ°é: 4, éµåï¼RectSpawnType
+[Log][Wave Spawner] Add wave count.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] æäººçææ°é: 2, éµåï¼SpiralSpawnType
+[Log][Wave Spawner] Add wave count.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] æäººçææ°é: 5, éµåï¼RectSpawnType
+[Log][Wave Spawner] Add wave count.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] æäººçææ°é: 2, éµåï¼RectSpawnType
+[Log][Wave Spawner] Add wave count.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] Max mobs reached, stop spawn and add clock.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] Max mobs reached, stop spawn and add clock.
+[Log][Wave Spawner] Next wave clock: 2s
 [Log][Global] Try Stop game. Stop count: 1
 [Log][Global] Try Resume game. Stop count: 0
-[Log][Global] Try Stop game. Stop count: 1
-[Log][Global] Try Resume game. Stop count: 0
-[Log][Global] Try Stop game. Stop count: 1
+[Log][MobBase] Game over, remove self: Swallow
+[Log][MobBase] Game over, remove self: Wardens
+[Log][MobBase] Game over, remove self: @CharacterBody2D@35
+[Log][MobBase] Game over, remove self: @CharacterBody2D@74
+[Log][MobBase] Game over, remove self: @CharacterBody2D@81
+[Log][MobBase] Game over, remove self: @CharacterBody2D@88
+[Log][MobBase] Game over, remove self: Beamcaster
+[Log][MobBase] Game over, remove self: Boltthrower
+[Log][MobBase] Game over, remove self: Pulsar
+[Log][MobBase] Game over, remove self: @CharacterBody2D@114
+[Log][MobBase] Game over, remove self: @CharacterBody2D@121
+[Log][MobBase] Game over, remove self: @CharacterBody2D@126
+[Log][MobBase] Game over, remove self: Gyrogun
+[Log][MobBase] Game over, remove self: @CharacterBody2D@144
+[Log][MobBase] Game over, remove self: @CharacterBody2D@151
+[Log][MobBase] Game over, remove self: @CharacterBody2D@158
+[Log][MobBase] Game over, remove self: @CharacterBody2D@161
+[Log][MobBase] Game over, remove self: @CharacterBody2D@164
+[Log][MobBase] Game over, remove self: @CharacterBody2D@172
+[Log][MobBase] Game over, remove self: Celestial
+[Log][UI: GameOver] Ready | RestartBtn: <Button#468335988270> | BackToMainBtn: <Button#468386318063>
 
 ================================================================
 CrashHandlerException: Program crashed with signal 11

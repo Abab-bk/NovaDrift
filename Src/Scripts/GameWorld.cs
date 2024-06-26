@@ -135,6 +135,8 @@ public partial class GameWorld : Node2D
 
 	private void GameOver()
 	{
+        HideBackground();
+        
 		GetTree().CallGroup("Mobs", "RemoveSelf");
 		
 		UiManager.Destroy_Hud();
