@@ -142,8 +142,6 @@ public static class Global
                     case MobBase mobBase:
                         EventBus.EnteredMob(mobBase);
                         break;
-                    default:
-                        break;
                 }
             };
         }
