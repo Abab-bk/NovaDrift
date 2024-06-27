@@ -17,6 +17,7 @@ public static partial class UiManager
         public const string GalleryBtn = "GalleryBtn";
         public const string GameOver = "GameOver";
         public const string GearLibrary = "GearLibrary";
+        public const string GoodsDetails = "GoodsDetails";
         public const string GoodsInfoPopup = "GoodsInfoPopup";
         public const string GoodsItem = "GoodsItem";
         public const string Hud = "Hud";
@@ -560,6 +561,54 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.GearLibrary.GearLibraryPanel[] Get_GearLibrary_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.GearLibrary.GearLibraryPanel>(nameof(NovaDrift.Scripts.Ui.GearLibrary.GearLibrary));
+    }
+
+    /// <summary>
+    /// 创建 GoodsDetails, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.GoodsDetails.GoodsDetailsPanel Create_GoodsDetails()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.GoodsDetails.GoodsDetailsPanel>(UiName.GoodsDetails);
+    }
+
+    /// <summary>
+    /// 打开 GoodsDetails, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.GoodsDetails.GoodsDetailsPanel Open_GoodsDetails()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.GoodsDetails.GoodsDetailsPanel>(UiName.GoodsDetails);
+    }
+
+    /// <summary>
+    /// 隐藏 GoodsDetails 的所有实例
+    /// </summary>
+    public static void Hide_GoodsDetails()
+    {
+        var uiInstance = Get_GoodsDetails_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 GoodsDetails 的所有实例
+    /// </summary>
+    public static void Destroy_GoodsDetails()
+    {
+        var uiInstance = Get_GoodsDetails_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 GoodsDetails 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.GoodsDetails.GoodsDetailsPanel[] Get_GoodsDetails_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.GoodsDetails.GoodsDetailsPanel>(nameof(NovaDrift.Scripts.Ui.GoodsDetails.GoodsDetails));
     }
 
     /// <summary>

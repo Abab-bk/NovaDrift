@@ -157,10 +157,10 @@ public static class Global
         };
     }
 
-    public static void Shake(float strength)
+    public static void Shake(float strength, float duration = 0.5f)
     {
-        Global.ShakeDirector.Shake(
-            NoiseShake.CreateWithNoise(Global.Noise)
+        ShakeDirector.Shake(
+            NoiseShake.CreateWithNoise(Noise)
                 .WithDuration(0.5f)
                 .WithEulersAmount(new Vector3(strength, strength, 0.02f))
         );

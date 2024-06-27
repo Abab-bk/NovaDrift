@@ -158,13 +158,9 @@ public partial class Player : Actor
     {
         base.OnHit(value);
 
-        var shakeLevel = MathF.Min(10f, value / 10f);
+        var shakeLevel = MathF.Max(10f, value / 10f);
         
-        Global.ShakeDirector.Shake(
-            NoiseShake.CreateWithNoise(Global.Noise)
-                .WithDuration(0.5f)
-                .WithEulersAmount(new Vector3(shakeLevel, shakeLevel, 0.02f))
-            );
+        Global.Shake(shakeLevel);
     }
 
     protected override void InitStats()

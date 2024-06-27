@@ -161,6 +161,10 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_8="PlayerBullet"
 2d_physics/layer_9="MobBullet"
 
+[physics]
+
+common/physics_interpolation=true
+
 [rendering]
 
 renderer/rendering_method="mobile"

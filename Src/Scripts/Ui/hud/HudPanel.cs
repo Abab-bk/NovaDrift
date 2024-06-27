@@ -5,7 +5,6 @@ using NovaDrift.Scripts.Systems;
 using NovaDrift.Scripts.Ui.ActionBtn;
 using NovaDrift.Scripts.Ui.AnimationProgressBar;
 using NovaDrift.Scripts.Ui.BuffIcon;
-using NovaDrift.Scripts.Ui.Slogan;
 
 namespace NovaDrift.Scripts.Ui.Hud;
 
@@ -27,6 +26,7 @@ public partial class HudPanel : Hud
 			OpenNestedUi(UiManager.UiName.SelectAbility);
 			Global.StopGame();
 		};
+		// ActionButton -> “按 R 闪现”
 		EventBus.AddActionButton += (prompt, action) =>
 		{
 			var node = S_ActionButtons.OpenNestedUi<ActionBtnPanel>(UiManager.UiName.ActionBtn);
@@ -38,7 +38,6 @@ public partial class HudPanel : Hud
 
 		EventBus.OnGameStart += () =>
 		{
-			// OpenNestedUi<SloganPanel>(UiManager.UiName.Slogan);
 			UiManager.Open_Slogan();
 		};
 

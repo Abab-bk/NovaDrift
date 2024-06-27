@@ -17,63 +17,242 @@ USER ERROR: Parameter "data.tree" is null.
 [Log][Global] Try Stop game. Stop count: 1
 [Log][Global] Try Resume game. Stop count: 0
 [Log][Ui] Generate debug panel
+[Log][Wave Spawner] æäººçææ°é: 3, éµåï¼SpiralSpawnType
+[Log][Wave Spawner] Add wave count.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] æäººçææ°é: 2, éµåï¼CircleSpawnType
+[Log][Wave Spawner] Add wave count.
+[Log][Wave Spawner] Next wave clock: 2s
 [Log][Wave Spawner] æäººçææ°é: 3, éµåï¼CircleSpawnType
 [Log][Wave Spawner] Add wave count.
 [Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] æäººçææ°é: 3, éµåï¼SpiralSpawnType
+[Log][Wave Spawner] Add wave count.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] æäººçææ°é: 5, éµåï¼SpiralSpawnType
+[Log][Wave Spawner] Add wave count.
+[Log][Wave Spawner] Next wave clock: 2s
+[Log][AbilityGenerate] Generating Random Ability Ids
+[Log][AbilityGenerate] Generated Random Ability Ids
+[Log][AbilityGenerate] Generating Random Gear Ids
+[Log][AbilityGenerate] Generated Random Gear Ids
+[Log][AbilityGenerate] Generating Random Shield Ids
+[Log][AbilityGenerate] Generated Random Shield Ids
+[Log][AbilityGenerate] Generating Random Body Ids
+[Log][AbilityGenerate] Generated Random Body Ids
+[Log][AbilityGenerate] Generating Random Weapon Ids
+[Log][AbilityGenerate] Generated Random Weapon Ids
 [Log][Global] Try Stop game. Stop count: 1
 [Log][Global] Try Resume game. Stop count: 0
-[Log][Wave Spawner] æäººçææ°é: 4, éµåï¼SpiralSpawnType
+[Log][Wave Spawner] æäººçææ°é: 6, éµåï¼CircleSpawnType
 [Log][Wave Spawner] Add wave count.
-[Log][Wave Spawner] Next wave clock: 2s
-[Log][Wave Spawner] æäººçææ°é: 4, éµåï¼RectSpawnType
-[Log][Wave Spawner] Add wave count.
-[Log][Wave Spawner] Next wave clock: 2s
-[Log][Wave Spawner] æäººçææ°é: 2, éµåï¼SpiralSpawnType
-[Log][Wave Spawner] Add wave count.
-[Log][Wave Spawner] Next wave clock: 2s
-[Log][Wave Spawner] æäººçææ°é: 5, éµåï¼RectSpawnType
-[Log][Wave Spawner] Add wave count.
-[Log][Wave Spawner] Next wave clock: 2s
-[Log][Wave Spawner] æäººçææ°é: 2, éµåï¼RectSpawnType
-[Log][Wave Spawner] Add wave count.
-[Log][Wave Spawner] Next wave clock: 2s
-[Log][Wave Spawner] Max mobs reached, stop spawn and add clock.
-[Log][Wave Spawner] Next wave clock: 2s
-[Log][Wave Spawner] Max mobs reached, stop spawn and add clock.
-[Log][Wave Spawner] Next wave clock: 2s
+[Log][Wave Spawner] Next wave clock: 4s
+[Log][AbilityGenerate] Generating Random Ability Ids
+[Log][AbilityGenerate] Generated Random Ability Ids
+[Log][AbilityGenerate] Generating Random Gear Ids
+[Log][AbilityGenerate] Generated Random Gear Ids
+[Log][AbilityGenerate] Generating Random Shield Ids
+[Log][AbilityGenerate] Generated Random Shield Ids
+[Log][AbilityGenerate] Generating Random Body Ids
+[Log][AbilityGenerate] Generated Random Body Ids
+[Log][AbilityGenerate] Generating Random Weapon Ids
+[Log][AbilityGenerate] Generated Random Weapon Ids
 [Log][Global] Try Stop game. Stop count: 1
 [Log][Global] Try Resume game. Stop count: 0
-[Log][MobBase] Game over, remove self: Swallow
-[Log][MobBase] Game over, remove self: Wardens
-[Log][MobBase] Game over, remove self: @CharacterBody2D@35
-[Log][MobBase] Game over, remove self: @CharacterBody2D@74
-[Log][MobBase] Game over, remove self: @CharacterBody2D@81
-[Log][MobBase] Game over, remove self: @CharacterBody2D@88
-[Log][MobBase] Game over, remove self: Beamcaster
-[Log][MobBase] Game over, remove self: Boltthrower
-[Log][MobBase] Game over, remove self: Pulsar
-[Log][MobBase] Game over, remove self: @CharacterBody2D@114
-[Log][MobBase] Game over, remove self: @CharacterBody2D@121
-[Log][MobBase] Game over, remove self: @CharacterBody2D@126
-[Log][MobBase] Game over, remove self: Gyrogun
-[Log][MobBase] Game over, remove self: @CharacterBody2D@144
-[Log][MobBase] Game over, remove self: @CharacterBody2D@151
-[Log][MobBase] Game over, remove self: @CharacterBody2D@158
-[Log][MobBase] Game over, remove self: @CharacterBody2D@161
-[Log][MobBase] Game over, remove self: @CharacterBody2D@164
-[Log][MobBase] Game over, remove self: @CharacterBody2D@172
-[Log][MobBase] Game over, remove self: Celestial
-[Log][UI: GameOver] Ready | RestartBtn: <Button#468335988270> | BackToMainBtn: <Button#468386318063>
-
-================================================================
-CrashHandlerException: Program crashed with signal 11
-Engine version: Godot Engine v4.3.beta1.mono.official (a4f2ea91a1bd18f70a43ff4c1377db49b56bc3f0)
-Dumping the backtrace. 
-[1] error(-1): no debug info in PE/COFF executable
-[2] error(-1): no debug info in PE/COFF executable
-[3] error(-1): no debug info in PE/COFF executable
-[4] error(-1): no debug info in PE/COFF executable
-[5] error(-1): no debug info in PE/COFF executable
-[6] error(-1): no debug info in PE/COFF executable
--- END OF BACKTRACE --
-================================================================
+[Log][Wave Spawner] æäººçææ°é: 10, éµåï¼CircleSpawnType
+[Log][Wave Spawner] Add wave count.
+[Log][Wave Spawner] Next wave clock: 6s
+USER ERROR: System.NullReferenceException: Object reference not set to an instance of an object.
+   at NovaDrift.Scripts.Systems.Bodies.Breaker.<Use>b__0_0(Single _) in D:\Dev\Godot\NovaDrift\Src\Scripts\Systems\Bodies\Breaker.cs:line 13
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 200
+   at NovaDrift.Scripts.Prefabs.Actors.Player.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Player.cs:line 159
+   at NovaDrift.Scripts.Prefabs.Components.HurtBox.<_Ready>b__6_0(Area2D area) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Components\HurtBox.cs:line 30
+   at Godot.Area2D.AreaEnteredTrampoline(Object delegateObj, NativeVariantPtrArgs args, godot_variant& ret) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Area2D.cs:line 770
+   at Godot.DelegateUtils.InvokeWithVariantArgs(IntPtr delegateGCHandle, Void* trampoline, godot_variant** args, Int32 argc, godot_variant* outRet) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:line 86
+   at: void Godot.NativeInterop.ExceptionUtils.LogException(System.Exception) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:113)
+USER ERROR: System.NullReferenceException: Object reference not set to an instance of an object.
+   at NovaDrift.Scripts.Systems.Bodies.Breaker.<Use>b__0_0(Single _) in D:\Dev\Godot\NovaDrift\Src\Scripts\Systems\Bodies\Breaker.cs:line 13
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 200
+   at NovaDrift.Scripts.Prefabs.Actors.Player.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Player.cs:line 159
+   at NovaDrift.Scripts.Prefabs.Components.HurtBox.<_Ready>b__6_0(Area2D area) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Components\HurtBox.cs:line 30
+   at Godot.Area2D.AreaEnteredTrampoline(Object delegateObj, NativeVariantPtrArgs args, godot_variant& ret) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Area2D.cs:line 770
+   at Godot.DelegateUtils.InvokeWithVariantArgs(IntPtr delegateGCHandle, Void* trampoline, godot_variant** args, Int32 argc, godot_variant* outRet) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:line 86
+   at: void Godot.NativeInterop.ExceptionUtils.LogException(System.Exception) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:113)
+USER ERROR: System.NullReferenceException: Object reference not set to an instance of an object.
+   at NovaDrift.Scripts.Systems.Bodies.Breaker.<Use>b__0_0(Single _) in D:\Dev\Godot\NovaDrift\Src\Scripts\Systems\Bodies\Breaker.cs:line 13
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 200
+   at NovaDrift.Scripts.Prefabs.Actors.Player.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Player.cs:line 159
+   at NovaDrift.Scripts.Prefabs.Components.HurtBox.<_Ready>b__6_0(Area2D area) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Components\HurtBox.cs:line 30
+   at Godot.Area2D.AreaEnteredTrampoline(Object delegateObj, NativeVariantPtrArgs args, godot_variant& ret) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Area2D.cs:line 770
+   at Godot.DelegateUtils.InvokeWithVariantArgs(IntPtr delegateGCHandle, Void* trampoline, godot_variant** args, Int32 argc, godot_variant* outRet) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:line 86
+   at: void Godot.NativeInterop.ExceptionUtils.LogException(System.Exception) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:113)
+USER ERROR: System.NullReferenceException: Object reference not set to an instance of an object.
+   at NovaDrift.Scripts.Systems.Bodies.Breaker.<Use>b__0_0(Single _) in D:\Dev\Godot\NovaDrift\Src\Scripts\Systems\Bodies\Breaker.cs:line 13
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 200
+   at NovaDrift.Scripts.Prefabs.Actors.Player.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Player.cs:line 159
+   at NovaDrift.Scripts.Prefabs.Components.HurtBox.<_Ready>b__6_0(Area2D area) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Components\HurtBox.cs:line 30
+   at Godot.Area2D.AreaEnteredTrampoline(Object delegateObj, NativeVariantPtrArgs args, godot_variant& ret) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Area2D.cs:line 770
+   at Godot.DelegateUtils.InvokeWithVariantArgs(IntPtr delegateGCHandle, Void* trampoline, godot_variant** args, Int32 argc, godot_variant* outRet) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:line 86
+   at: void Godot.NativeInterop.ExceptionUtils.LogException(System.Exception) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:113)
+USER ERROR: System.NullReferenceException: Object reference not set to an instance of an object.
+   at NovaDrift.Scripts.Systems.Bodies.Breaker.<Use>b__0_0(Single _) in D:\Dev\Godot\NovaDrift\Src\Scripts\Systems\Bodies\Breaker.cs:line 13
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 200
+   at NovaDrift.Scripts.Prefabs.Actors.Player.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Player.cs:line 159
+   at NovaDrift.Scripts.Prefabs.Components.HurtBox.<_Ready>b__6_0(Area2D area) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Components\HurtBox.cs:line 30
+   at Godot.Area2D.AreaEnteredTrampoline(Object delegateObj, NativeVariantPtrArgs args, godot_variant& ret) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Area2D.cs:line 770
+   at Godot.DelegateUtils.InvokeWithVariantArgs(IntPtr delegateGCHandle, Void* trampoline, godot_variant** args, Int32 argc, godot_variant* outRet) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:line 86
+   at: void Godot.NativeInterop.ExceptionUtils.LogException(System.Exception) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:113)
+USER ERROR: System.NullReferenceException: Object reference not set to an instance of an object.
+   at NovaDrift.Scripts.Systems.Bodies.Breaker.<Use>b__0_0(Single _) in D:\Dev\Godot\NovaDrift\Src\Scripts\Systems\Bodies\Breaker.cs:line 13
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 200
+   at NovaDrift.Scripts.Prefabs.Actors.Player.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Player.cs:line 159
+   at NovaDrift.Scripts.Prefabs.Components.HurtBox.<_Ready>b__6_0(Area2D area) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Components\HurtBox.cs:line 30
+   at Godot.Area2D.AreaEnteredTrampoline(Object delegateObj, NativeVariantPtrArgs args, godot_variant& ret) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Area2D.cs:line 770
+   at Godot.DelegateUtils.InvokeWithVariantArgs(IntPtr delegateGCHandle, Void* trampoline, godot_variant** args, Int32 argc, godot_variant* outRet) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:line 86
+   at: void Godot.NativeInterop.ExceptionUtils.LogException(System.Exception) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:113)
+[Log][Wave Spawner] Max mobs reached, stop spawn and add clock.
+[Log][Wave Spawner] Next wave clock: 6s
+USER ERROR: System.NullReferenceException: Object reference not set to an instance of an object.
+   at NovaDrift.Scripts.Systems.Bodies.Breaker.<Use>b__0_0(Single _) in D:\Dev\Godot\NovaDrift\Src\Scripts\Systems\Bodies\Breaker.cs:line 13
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 200
+   at NovaDrift.Scripts.Prefabs.Actors.Player.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Player.cs:line 159
+   at NovaDrift.Scripts.Prefabs.Components.HurtBox.<_Ready>b__6_0(Area2D area) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Components\HurtBox.cs:line 30
+   at Godot.Area2D.AreaEnteredTrampoline(Object delegateObj, NativeVariantPtrArgs args, godot_variant& ret) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Area2D.cs:line 770
+   at Godot.DelegateUtils.InvokeWithVariantArgs(IntPtr delegateGCHandle, Void* trampoline, godot_variant** args, Int32 argc, godot_variant* outRet) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:line 86
+   at: void Godot.NativeInterop.ExceptionUtils.LogException(System.Exception) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:113)
+[Log][Wave Spawner] æäººçææ°é: 9, éµåï¼CircleSpawnType
+[Log][Wave Spawner] Add wave count.
+[Log][Wave Spawner] Next wave clock: 6s
+USER ERROR: System.NullReferenceException: Object reference not set to an instance of an object.
+   at NovaDrift.Scripts.Systems.Bodies.Breaker.<Use>b__0_0(Single _) in D:\Dev\Godot\NovaDrift\Src\Scripts\Systems\Bodies\Breaker.cs:line 13
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 200
+   at NovaDrift.Scripts.Prefabs.Actors.Player.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Player.cs:line 159
+   at NovaDrift.Scripts.Prefabs.Components.HurtBox.<_Ready>b__6_0(Area2D area) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Components\HurtBox.cs:line 30
+   at Godot.Area2D.AreaEnteredTrampoline(Object delegateObj, NativeVariantPtrArgs args, godot_variant& ret) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Area2D.cs:line 770
+   at Godot.DelegateUtils.InvokeWithVariantArgs(IntPtr delegateGCHandle, Void* trampoline, godot_variant** args, Int32 argc, godot_variant* outRet) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:line 86
+   at: void Godot.NativeInterop.ExceptionUtils.LogException(System.Exception) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:113)
+USER ERROR: System.NullReferenceException: Object reference not set to an instance of an object.
+   at NovaDrift.Scripts.Systems.Bodies.Breaker.<Use>b__0_0(Single _) in D:\Dev\Godot\NovaDrift\Src\Scripts\Systems\Bodies\Breaker.cs:line 13
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 200
+   at NovaDrift.Scripts.Prefabs.Actors.Player.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Player.cs:line 159
+   at NovaDrift.Scripts.Prefabs.Components.HurtBox.<_Ready>b__6_0(Area2D area) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Components\HurtBox.cs:line 30
+   at Godot.Area2D.AreaEnteredTrampoline(Object delegateObj, NativeVariantPtrArgs args, godot_variant& ret) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Area2D.cs:line 770
+   at Godot.DelegateUtils.InvokeWithVariantArgs(IntPtr delegateGCHandle, Void* trampoline, godot_variant** args, Int32 argc, godot_variant* outRet) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:line 86
+   at: void Godot.NativeInterop.ExceptionUtils.LogException(System.Exception) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:113)
+USER ERROR: System.NullReferenceException: Object reference not set to an instance of an object.
+   at NovaDrift.Scripts.Systems.Bodies.Breaker.<Use>b__0_0(Single _) in D:\Dev\Godot\NovaDrift\Src\Scripts\Systems\Bodies\Breaker.cs:line 13
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 200
+   at NovaDrift.Scripts.Prefabs.Actors.Player.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Player.cs:line 159
+   at NovaDrift.Scripts.Prefabs.Components.HurtBox.<_Ready>b__6_0(Area2D area) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Components\HurtBox.cs:line 30
+   at Godot.Area2D.AreaEnteredTrampoline(Object delegateObj, NativeVariantPtrArgs args, godot_variant& ret) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Area2D.cs:line 770
+   at Godot.DelegateUtils.InvokeWithVariantArgs(IntPtr delegateGCHandle, Void* trampoline, godot_variant** args, Int32 argc, godot_variant* outRet) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:line 86
+   at: void Godot.NativeInterop.ExceptionUtils.LogException(System.Exception) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:113)
+[Log][AbilityGenerate] Generating Random Ability Ids
+[Log][AbilityGenerate] Generated Random Ability Ids
+[Log][AbilityGenerate] Generating Random Gear Ids
+[Log][AbilityGenerate] Generated Random Gear Ids
+[Log][AbilityGenerate] Generating Random Shield Ids
+[Log][AbilityGenerate] Generated Random Shield Ids
+[Log][AbilityGenerate] Generating Random Body Ids
+[Log][AbilityGenerate] Generated Random Body Ids
+[Log][AbilityGenerate] Generating Random Weapon Ids
+[Log][AbilityGenerate] Generated Random Weapon Ids
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+[Log][Wave Spawner] Max mobs reached, stop spawn and add clock.
+[Log][Wave Spawner] Next wave clock: 8s
+USER ERROR: System.NullReferenceException: Object reference not set to an instance of an object.
+   at NovaDrift.Scripts.Systems.Bodies.Breaker.<Use>b__0_0(Single _) in D:\Dev\Godot\NovaDrift\Src\Scripts\Systems\Bodies\Breaker.cs:line 13
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 200
+   at NovaDrift.Scripts.Prefabs.Actors.Player.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Player.cs:line 159
+   at NovaDrift.Scripts.Prefabs.Components.HurtBox.<_Ready>b__6_0(Area2D area) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Components\HurtBox.cs:line 30
+   at Godot.Area2D.AreaEnteredTrampoline(Object delegateObj, NativeVariantPtrArgs args, godot_variant& ret) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Area2D.cs:line 770
+   at Godot.DelegateUtils.InvokeWithVariantArgs(IntPtr delegateGCHandle, Void* trampoline, godot_variant** args, Int32 argc, godot_variant* outRet) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:line 86
+   at: void Godot.NativeInterop.ExceptionUtils.LogException(System.Exception) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:113)
+USER ERROR: System.NullReferenceException: Object reference not set to an instance of an object.
+   at NovaDrift.Scripts.Systems.Bodies.Breaker.<Use>b__0_0(Single _) in D:\Dev\Godot\NovaDrift\Src\Scripts\Systems\Bodies\Breaker.cs:line 13
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 200
+   at NovaDrift.Scripts.Prefabs.Actors.Player.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Player.cs:line 159
+   at NovaDrift.Scripts.Prefabs.Components.HurtBox.<_Ready>b__6_0(Area2D area) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Components\HurtBox.cs:line 30
+   at Godot.Area2D.AreaEnteredTrampoline(Object delegateObj, NativeVariantPtrArgs args, godot_variant& ret) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Area2D.cs:line 770
+   at Godot.DelegateUtils.InvokeWithVariantArgs(IntPtr delegateGCHandle, Void* trampoline, godot_variant** args, Int32 argc, godot_variant* outRet) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:line 86
+   at: void Godot.NativeInterop.ExceptionUtils.LogException(System.Exception) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:113)
+USER ERROR: System.NullReferenceException: Object reference not set to an instance of an object.
+   at NovaDrift.Scripts.Systems.Bodies.Breaker.<Use>b__0_0(Single _) in D:\Dev\Godot\NovaDrift\Src\Scripts\Systems\Bodies\Breaker.cs:line 13
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 200
+   at NovaDrift.Scripts.Prefabs.Actors.Player.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Player.cs:line 159
+   at NovaDrift.Scripts.Prefabs.Components.HurtBox.<_Ready>b__6_0(Area2D area) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Components\HurtBox.cs:line 30
+   at Godot.Area2D.AreaEnteredTrampoline(Object delegateObj, NativeVariantPtrArgs args, godot_variant& ret) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Area2D.cs:line 770
+   at Godot.DelegateUtils.InvokeWithVariantArgs(IntPtr delegateGCHandle, Void* trampoline, godot_variant** args, Int32 argc, godot_variant* outRet) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:line 86
+   at: void Godot.NativeInterop.ExceptionUtils.LogException(System.Exception) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:113)
+USER ERROR: System.NullReferenceException: Object reference not set to an instance of an object.
+   at NovaDrift.Scripts.Systems.Bodies.Breaker.<Use>b__0_0(Single _) in D:\Dev\Godot\NovaDrift\Src\Scripts\Systems\Bodies\Breaker.cs:line 13
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 200
+   at NovaDrift.Scripts.Prefabs.Actors.Player.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Player.cs:line 159
+   at NovaDrift.Scripts.Prefabs.Components.HurtBox.<_Ready>b__6_0(Area2D area) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Components\HurtBox.cs:line 30
+   at Godot.Area2D.AreaEnteredTrampoline(Object delegateObj, NativeVariantPtrArgs args, godot_variant& ret) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Area2D.cs:line 770
+   at Godot.DelegateUtils.InvokeWithVariantArgs(IntPtr delegateGCHandle, Void* trampoline, godot_variant** args, Int32 argc, godot_variant* outRet) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:line 86
+   at: void Godot.NativeInterop.ExceptionUtils.LogException(System.Exception) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:113)
+[Log][Wave Spawner] æäººçææ°é: 12, éµåï¼SpiralSpawnType
+[Log][Wave Spawner] Add wave count.
+[Log][Wave Spawner] Next wave clock: 8s
+USER ERROR: System.NullReferenceException: Object reference not set to an instance of an object.
+   at NovaDrift.Scripts.Systems.Bodies.Breaker.<Use>b__0_0(Single _) in D:\Dev\Godot\NovaDrift\Src\Scripts\Systems\Bodies\Breaker.cs:line 13
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 200
+   at NovaDrift.Scripts.Prefabs.Actors.Player.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Player.cs:line 159
+   at NovaDrift.Scripts.Prefabs.Components.HurtBox.<_Ready>b__6_0(Area2D area) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Components\HurtBox.cs:line 30
+   at Godot.Area2D.AreaEnteredTrampoline(Object delegateObj, NativeVariantPtrArgs args, godot_variant& ret) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Area2D.cs:line 770
+   at Godot.DelegateUtils.InvokeWithVariantArgs(IntPtr delegateGCHandle, Void* trampoline, godot_variant** args, Int32 argc, godot_variant* outRet) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:line 86
+   at: void Godot.NativeInterop.ExceptionUtils.LogException(System.Exception) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:113)
+USER ERROR: System.NullReferenceException: Object reference not set to an instance of an object.
+   at NovaDrift.Scripts.Systems.Bodies.Breaker.<Use>b__0_0(Single _) in D:\Dev\Godot\NovaDrift\Src\Scripts\Systems\Bodies\Breaker.cs:line 13
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 200
+   at NovaDrift.Scripts.Prefabs.Actors.Player.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Player.cs:line 159
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.TakeDamageWithoutKnockBack(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 190
+   at NovaDrift.Scripts.Prefabs.Shields.Halo.<_Ready>b__1_0() in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Shields\Halo.cs:line 28
+   at Godot.Callable.<From>g__Trampoline|1_0(Object delegateObj, NativeVariantPtrArgs args, godot_variant& ret) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Callable.generics.cs:line 39
+   at Godot.DelegateUtils.InvokeWithVariantArgs(IntPtr delegateGCHandle, Void* trampoline, godot_variant** args, Int32 argc, godot_variant* outRet) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:line 86
+   at: void Godot.NativeInterop.ExceptionUtils.LogException(System.Exception) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:113)
+USER ERROR: System.NullReferenceException: Object reference not set to an instance of an object.
+   at NovaDrift.Scripts.Systems.Bodies.Breaker.<Use>b__0_0(Single _) in D:\Dev\Godot\NovaDrift\Src\Scripts\Systems\Bodies\Breaker.cs:line 13
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 200
+   at NovaDrift.Scripts.Prefabs.Actors.Player.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Player.cs:line 159
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.TakeDamageWithoutKnockBack(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 190
+   at NovaDrift.Scripts.Prefabs.Shields.Halo.<_Ready>b__1_0() in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Shields\Halo.cs:line 28
+   at Godot.Callable.<From>g__Trampoline|1_0(Object delegateObj, NativeVariantPtrArgs args, godot_variant& ret) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/Callable.generics.cs:line 39
+   at Godot.DelegateUtils.InvokeWithVariantArgs(IntPtr delegateGCHandle, Void* trampoline, godot_variant** args, Int32 argc, godot_variant* outRet) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:line 86
+   at: void Godot.NativeInterop.ExceptionUtils.LogException(System.Exception) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:113)
+USER ERROR: System.NullReferenceException: Object reference not set to an instance of an object.
+   at NovaDrift.Scripts.Systems.Bodies.Breaker.<Use>b__0_0(Single _) in D:\Dev\Godot\NovaDrift\Src\Scripts\Systems\Bodies\Breaker.cs:line 13
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 200
+   at NovaDrift.Scripts.Prefabs.Actors.Player.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Player.cs:line 159
+   at NovaDrift.Scripts.Prefabs.Components.HurtBox.<_Ready>b__6_0(Area2D area) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Components\HurtBox.cs:line 30
+   at Godot.Area2D.AreaEnteredTrampoline(Object delegateObj, NativeVariantPtrArgs args, godot_variant& ret) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Area2D.cs:line 770
+   at Godot.DelegateUtils.InvokeWithVariantArgs(IntPtr delegateGCHandle, Void* trampoline, godot_variant** args, Int32 argc, godot_variant* outRet) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:line 86
+   at: void Godot.NativeInterop.ExceptionUtils.LogException(System.Exception) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:113)
+[Log][Wave Spawner] Max mobs reached, stop spawn and add clock.
+[Log][Wave Spawner] Next wave clock: 8s
+USER ERROR: System.NullReferenceException: Object reference not set to an instance of an object.
+   at NovaDrift.Scripts.Systems.Bodies.Breaker.<Use>b__0_0(Single _) in D:\Dev\Godot\NovaDrift\Src\Scripts\Systems\Bodies\Breaker.cs:line 13
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 200
+   at NovaDrift.Scripts.Prefabs.Actors.Player.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Player.cs:line 159
+   at NovaDrift.Scripts.Prefabs.Components.HurtBox.<_Ready>b__6_0(Area2D area) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Components\HurtBox.cs:line 30
+   at Godot.Area2D.AreaEnteredTrampoline(Object delegateObj, NativeVariantPtrArgs args, godot_variant& ret) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Area2D.cs:line 770
+   at Godot.DelegateUtils.InvokeWithVariantArgs(IntPtr delegateGCHandle, Void* trampoline, godot_variant** args, Int32 argc, godot_variant* outRet) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:line 86
+   at: void Godot.NativeInterop.ExceptionUtils.LogException(System.Exception) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:113)
+USER ERROR: System.NullReferenceException: Object reference not set to an instance of an object.
+   at NovaDrift.Scripts.Systems.Bodies.Breaker.<Use>b__0_0(Single _) in D:\Dev\Godot\NovaDrift\Src\Scripts\Systems\Bodies\Breaker.cs:line 13
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 200
+   at NovaDrift.Scripts.Prefabs.Actors.Player.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Player.cs:line 159
+   at NovaDrift.Scripts.Prefabs.Components.HurtBox.<_Ready>b__6_0(Area2D area) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Components\HurtBox.cs:line 30
+   at Godot.Area2D.AreaEnteredTrampoline(Object delegateObj, NativeVariantPtrArgs args, godot_variant& ret) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Area2D.cs:line 770
+   at Godot.DelegateUtils.InvokeWithVariantArgs(IntPtr delegateGCHandle, Void* trampoline, godot_variant** args, Int32 argc, godot_variant* outRet) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:line 86
+   at: void Godot.NativeInterop.ExceptionUtils.LogException(System.Exception) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:113)
+USER ERROR: System.NullReferenceException: Object reference not set to an instance of an object.
+   at NovaDrift.Scripts.Systems.Bodies.Breaker.<Use>b__0_0(Single _) in D:\Dev\Godot\NovaDrift\Src\Scripts\Systems\Bodies\Breaker.cs:line 13
+   at NovaDrift.Scripts.Prefabs.Actors.Actor.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Actor.cs:line 200
+   at NovaDrift.Scripts.Prefabs.Actors.Player.OnHit(Single value) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Actors\Player.cs:line 159
+   at NovaDrift.Scripts.Prefabs.Components.HurtBox.<_Ready>b__6_0(Area2D area) in D:\Dev\Godot\NovaDrift\Src\Scripts\Prefabs\Components\HurtBox.cs:line 30
+   at Godot.Area2D.AreaEnteredTrampoline(Object delegateObj, NativeVariantPtrArgs args, godot_variant& ret) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Generated/GodotObjects/Area2D.cs:line 770
+   at Godot.DelegateUtils.InvokeWithVariantArgs(IntPtr delegateGCHandle, Void* trampoline, godot_variant** args, Int32 argc, godot_variant* outRet) in /root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/DelegateUtils.cs:line 86
+   at: void Godot.NativeInterop.ExceptionUtils.LogException(System.Exception) (/root/godot/modules/mono/glue/GodotSharp/GodotSharp/Core/NativeInterop/ExceptionUtils.cs:113)

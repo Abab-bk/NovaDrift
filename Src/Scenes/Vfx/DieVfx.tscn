@@ -1,13 +1,14 @@
-[gd_scene load_steps=7 format=3 uid="uid://c6ur2qnnvpg8a"]
+[gd_scene load_steps=8 format=3 uid="uid://c6ur2qnnvpg8a"]
 
 [ext_resource type="Script" path="res://Scripts/Vfx/DieVfx.cs" id="1_4lp7l"]
+[ext_resource type="Texture2D" uid="uid://dm8glle632ejs" path="res://Assets/Textures/Line.png" id="1_5fgoh"]
 
-[sub_resource type="Gradient" id="Gradient_6hrgk"]
-offsets = PackedFloat32Array(0.456522, 1)
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
+[sub_resource type="Curve" id="Curve_fh7ea"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(0.891304, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 3
 
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_4f75m"]
-gradient = SubResource("Gradient_6hrgk")
+[sub_resource type="CurveTexture" id="CurveTexture_54an6"]
+curve = SubResource("Curve_fh7ea")
 
 [sub_resource type="Curve" id="Curve_pacet"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -18,19 +19,25 @@ curve = SubResource("Curve_pacet")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_lex50"]
 lifetime_randomness = 0.5
+particle_flag_align_y = true
 particle_flag_disable_z = true
+angle_min = -720.0
+angle_max = 720.0
+direction = Vector3(0, 0, 0)
 spread = 180.0
-initial_velocity_min = 227.28
-initial_velocity_max = 500.0
+initial_velocity_min = 727.28
+initial_velocity_max = 1000.0
 gravity = Vector3(0, 0, 0)
-scale_max = 20.0
 scale_curve = SubResource("CurveTexture_cjps8")
-color_ramp = SubResource("GradientTexture1D_4f75m")
+alpha_curve = SubResource("CurveTexture_54an6")
+hue_variation_min = 0.86
+hue_variation_max = 0.98
 
 [node name="DieVfx" type="GPUParticles2D"]
 emitting = false
-amount = 50
+amount = 100
 process_material = SubResource("ParticleProcessMaterial_lex50")
+texture = ExtResource("1_5fgoh")
 lifetime = 0.5
 one_shot = true
 explosiveness = 1.0

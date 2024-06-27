@@ -89,7 +89,7 @@ public partial class MobBase : Actor
     public override void Die()
     {
         if (IsDead) return;
-
+        
         var temp = new Vector2(10f, 10f);
         for (int i = 0; i < MobInfo.GetExp; i++)
         {
@@ -109,6 +109,8 @@ public partial class MobBase : Actor
         {
             Global.GameContext.RemoveFollowTarget(this);
         }
+        
+        Global.Shake(10f);
         
         base.Die();
     }
