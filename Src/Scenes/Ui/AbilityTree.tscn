@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://wxgnpvarbhdl"]
+[gd_scene load_steps=4 format=3 uid="uid://wxgnpvarbhdl"]
 
 [ext_resource type="Script" path="res://Scripts/Ui/abilityTree/AbilityTreePanel.cs" id="1_ft4ow"]
 [ext_resource type="PackedScene" uid="uid://dlsmuxwivbahj" path="res://Scenes/Ui/AbilityItem.tscn" id="2_5pnhv"]
+[ext_resource type="Texture2D" uid="uid://dm8glle632ejs" path="res://Assets/Textures/Line.png" id="3_s3hev"]
 
 [node name="AbilityTree" type="Control"]
 custom_minimum_size = Vector2(469, 312)
@@ -12,6 +13,51 @@ offset_bottom = 312.0
 size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_ft4ow")
+metadata/_edit_horizontal_guides_ = [256.0, 54.0]
+
+[node name="Line1" type="TextureRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(0.45268, 0.608908, 0.969502, 1)
+layout_mode = 0
+offset_left = 92.0
+offset_top = 100.0
+offset_right = 192.0
+offset_bottom = 140.0
+rotation = -0.512092
+texture = ExtResource("3_s3hev")
+
+[node name="Line2" type="TextureRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(0.45268, 0.608908, 0.969502, 1)
+layout_mode = 0
+offset_left = 105.0
+offset_top = 170.0
+offset_right = 205.0
+offset_bottom = 210.0
+rotation = 0.511381
+texture = ExtResource("3_s3hev")
+
+[node name="Line3" type="TextureRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(0.45268, 0.608908, 0.969502, 1)
+layout_mode = 0
+offset_left = 268.0
+offset_top = 224.0
+offset_right = 368.0
+offset_bottom = 264.0
+rotation = -0.47822
+texture = ExtResource("3_s3hev")
+
+[node name="Line4" type="TextureRect" parent="."]
+unique_name_in_owner = true
+modulate = Color(0.45268, 0.608908, 0.969502, 1)
+layout_mode = 0
+offset_left = 290.0
+offset_top = 52.0
+offset_right = 390.0
+offset_bottom = 91.9995
+rotation = 0.47822
+texture = ExtResource("3_s3hev")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1

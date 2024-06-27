@@ -355,6 +355,7 @@ _category = "RightLimit"
 
 [node name="HazardSpawner" type="Node2D" parent="."]
 script = ExtResource("5_2fkc6")
+_enabled = false
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("12_ltxuf")

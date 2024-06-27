@@ -8,6 +8,58 @@ using DsUi;
 public abstract partial class AbilityTree : UiBase
 {
     /// <summary>
+    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: AbilityTree.Line1
+    /// </summary>
+    public Line1 L_Line1
+    {
+        get
+        {
+            if (_L_Line1 == null) _L_Line1 = new Line1((AbilityTreePanel)this, GetNode<Godot.TextureRect>("Line1"));
+            return _L_Line1;
+        }
+    }
+    private Line1 _L_Line1;
+
+    /// <summary>
+    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: AbilityTree.Line2
+    /// </summary>
+    public Line2 L_Line2
+    {
+        get
+        {
+            if (_L_Line2 == null) _L_Line2 = new Line2((AbilityTreePanel)this, GetNode<Godot.TextureRect>("Line2"));
+            return _L_Line2;
+        }
+    }
+    private Line2 _L_Line2;
+
+    /// <summary>
+    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: AbilityTree.Line3
+    /// </summary>
+    public Line3 L_Line3
+    {
+        get
+        {
+            if (_L_Line3 == null) _L_Line3 = new Line3((AbilityTreePanel)this, GetNode<Godot.TextureRect>("Line3"));
+            return _L_Line3;
+        }
+    }
+    private Line3 _L_Line3;
+
+    /// <summary>
+    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: AbilityTree.Line4
+    /// </summary>
+    public Line4 L_Line4
+    {
+        get
+        {
+            if (_L_Line4 == null) _L_Line4 = new Line4((AbilityTreePanel)this, GetNode<Godot.TextureRect>("Line4"));
+            return _L_Line4;
+        }
+    }
+    private Line4 _L_Line4;
+
+    /// <summary>
     /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: AbilityTree.HBoxContainer
     /// </summary>
     public HBoxContainer L_HBoxContainer
@@ -61,6 +113,42 @@ public abstract partial class AbilityTree : UiBase
         inst4.L_EndAbility.Instance.OnCreateUi();
         inst4.L_EndAbility.Instance.OnInitNestedUi();
 
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.TextureRect"/>, 路径: AbilityTree.Line1
+    /// </summary>
+    public class Line1 : UiNode<AbilityTreePanel, Godot.TextureRect, Line1>
+    {
+        public Line1(AbilityTreePanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
+        public override Line1 Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.TextureRect"/>, 路径: AbilityTree.Line2
+    /// </summary>
+    public class Line2 : UiNode<AbilityTreePanel, Godot.TextureRect, Line2>
+    {
+        public Line2(AbilityTreePanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
+        public override Line2 Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.TextureRect"/>, 路径: AbilityTree.Line3
+    /// </summary>
+    public class Line3 : UiNode<AbilityTreePanel, Godot.TextureRect, Line3>
+    {
+        public Line3(AbilityTreePanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
+        public override Line3 Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.TextureRect"/>, 路径: AbilityTree.Line4
+    /// </summary>
+    public class Line4 : UiNode<AbilityTreePanel, Godot.TextureRect, Line4>
+    {
+        public Line4(AbilityTreePanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
+        public override Line4 Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
     }
 
     /// <summary>
@@ -219,6 +307,26 @@ public abstract partial class AbilityTree : UiBase
         public override ColorRect Clone() => new (UiPanel, (Godot.ColorRect)Instance.Duplicate());
     }
 
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: AbilityTree.Line1
+    /// </summary>
+    public Line1 S_Line1 => L_Line1;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: AbilityTree.Line2
+    /// </summary>
+    public Line2 S_Line2 => L_Line2;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: AbilityTree.Line3
+    /// </summary>
+    public Line3 S_Line3 => L_Line3;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: AbilityTree.Line4
+    /// </summary>
+    public Line4 S_Line4 => L_Line4;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.AbilityItem.AbilityItemPanel"/>, 节点路径: AbilityTree.HBoxContainer.StartAbility
