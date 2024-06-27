@@ -92,6 +92,10 @@ public partial class TbConstants
     /// 最大等级
     /// </summary>
      public float MaxLevel => _data.MaxLevel;
+    /// <summary>
+    /// 最大同屏怪物数量
+    /// </summary>
+     public int MaxMobCount => _data.MaxMobCount;
     
     public void ResolveRef(Tables tables)
     {

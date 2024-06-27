@@ -17,7 +17,7 @@ metadata/_edit_horizontal_guides_ = [256.0, 54.0]
 
 [node name="Line1" type="TextureRect" parent="."]
 unique_name_in_owner = true
-modulate = Color(0.45268, 0.608908, 0.969502, 1)
+modulate = Color(0.0759348, 0.120304, 0.0953608, 1)
 layout_mode = 0
 offset_left = 92.0
 offset_top = 100.0

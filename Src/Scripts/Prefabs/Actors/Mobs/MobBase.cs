@@ -72,11 +72,11 @@ public partial class MobBase : Actor
 
         Stats.Size.BaseValue = MobInfo.Size;
         
-        Stats.Health.BaseValue = MobInfo.Health * Stats.Level;
-        Stats.Health.MaxValue.BaseValue = MobInfo.Health * Stats.Level;
+        Stats.Health.MaxValue.BaseValue = MobInfo.Health;
+        Stats.Health.BaseValue = MobInfo.Health;
         
-        Stats.Speed.BaseValue = MobInfo.Speed;
-        Stats.Damage.BaseValue = MobInfo.Damage * Stats.Level;
+        Stats.Speed.BaseValue = MobInfo.Speed + Stats.Level * 1;
+        Stats.Damage.BaseValue = MobInfo.Damage + Stats.Level * 4;
         Stats.ShootSpeed.BaseValue = MobInfo.ShootCd;
 
         Stats.Targeting.BaseValue = MobInfo.Targeting;

@@ -86,7 +86,7 @@ region_rect = Rect2(0, 0, 5200, 3200)
 [node name="Border" type="Node2D" parent="Background"]
 
 [node name="Line2D" type="Line2D" parent="Background/Border"]
-points = PackedVector2Array(0, 0, 5121, 1, 5122, 2877, 0, 2885)
+points = PackedVector2Array(0, 0, 3121, 1, 3122, 2877, 0, 2885)
 closed = true
 width = 20.0
 
@@ -116,7 +116,7 @@ position = Vector2(0, 1442.5)
 shape = SubResource("RectangleShape2D_tdua6")
 
 [node name="StaticBody2D4" type="StaticBody2D" parent="Background/Border/Line2D"]
-position = Vector2(5120, 0)
+position = Vector2(3120, 0)
 collision_layer = 67
 collision_mask = 3
 
@@ -180,127 +180,127 @@ script = ExtResource("11_euylg")
 _category = "RandomLeft"
 
 [node name="Right" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(5030, 832)
+position = Vector2(3020, 832)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomRight"
 
 [node name="Right2" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(5030, 1032)
+position = Vector2(3020, 1032)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomRight"
 
 [node name="Right3" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(5030, 1232)
+position = Vector2(3020, 1232)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomRight"
 
 [node name="Right4" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(5030, 1432)
+position = Vector2(3020, 1432)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomRight"
 
 [node name="Right5" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(5030, 1632)
+position = Vector2(3020, 1632)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomRight"
 
 [node name="Right6" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(5030, 1832)
+position = Vector2(3020, 1832)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomRight"
 
 [node name="Up" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(1558, 100)
+position = Vector2(668, 100)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomUp"
 
 [node name="Up2" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(1858, 100)
+position = Vector2(968, 100)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomUp"
 
 [node name="Up3" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(2158, 100)
+position = Vector2(1268, 100)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomUp"
 
 [node name="Up4" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(2462, 100)
+position = Vector2(1572, 100)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomUp"
 
 [node name="Up5" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(2758, 100)
+position = Vector2(1868, 100)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomUp"
 
 [node name="Up6" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(3058, 100)
+position = Vector2(2168, 100)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomUp"
 
 [node name="Up7" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(3358, 100)
+position = Vector2(2468, 100)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomUp"
 
 [node name="Down" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(1568, 2790)
+position = Vector2(668, 2790)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomDown"
 
 [node name="Down2" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(1868, 2790)
+position = Vector2(968, 2790)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomDown"
 
 [node name="Down3" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(2168, 2790)
+position = Vector2(1268, 2790)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomDown"
 
 [node name="Down4" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(2472, 2790)
+position = Vector2(1572, 2790)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomDown"
 
 [node name="Down5" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(2768, 2790)
+position = Vector2(1868, 2790)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomDown"
 
 [node name="Down6" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(3068, 2790)
+position = Vector2(2168, 2790)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomDown"
 
 [node name="Down7" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(3368, 2790)
+position = Vector2(2468, 2790)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomDown"
 
 [node name="Center" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(2560, 1440)
+position = Vector2(1572, 1440)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "Center"
@@ -318,13 +318,13 @@ script = ExtResource("11_euylg")
 _category = "RandomCorner"
 
 [node name="RandomCorner3" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(5020, 100)
+position = Vector2(3020, 100)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomCorner"
 
 [node name="RandomCorner4" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(5020, 2880)
+position = Vector2(3020, 2880)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomCorner"

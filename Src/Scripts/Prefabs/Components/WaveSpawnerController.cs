@@ -86,7 +86,7 @@ public partial class WaveSpawnerController : Node2D
 
     public void GenerateWave()
     {
-        if (GetTree().GetNodesInGroup("Mobs").Count >= 20)
+        if (GetTree().GetNodesInGroup("Mobs").Count >= DataBuilder.Tables.TbConstants.MaxMobCount)
         {
             Logger.Log("[Wave Spawner] Max mobs reached, stop spawn and add clock.");
             _clock.Start();

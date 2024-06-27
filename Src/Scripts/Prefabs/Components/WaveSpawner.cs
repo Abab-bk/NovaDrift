@@ -24,7 +24,7 @@ public partial class WaveSpawner : Node2D
             new (new CircleSpawnType(), 1),
             new (new SpiralSpawnType(), 1),
         });
-
+    
     public override void _Ready()
     {
         RandomMove();
