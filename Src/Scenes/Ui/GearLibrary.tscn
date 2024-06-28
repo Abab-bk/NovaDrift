@@ -76,11 +76,10 @@ theme_override_constants/margin_bottom = 95
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_vertical = 3
-current_tab = 4
+current_tab = 0
 tabs_visible = false
 
 [node name="Home" type="VBoxContainer" parent="VBoxContainer/Content/Content"]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 20
 metadata/_tab_index = 0
@@ -229,6 +228,7 @@ size_flags_horizontal = 1
 _id = 1004
 
 [node name="Gear" type="VBoxContainer" parent="VBoxContainer/Content/Content"]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 20
 metadata/_tab_index = 4

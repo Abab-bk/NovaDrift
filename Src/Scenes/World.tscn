@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d25jyaf2cexon"]
+[gd_scene load_steps=14 format=3 uid="uid://d25jyaf2cexon"]
 
 [ext_resource type="Script" path="res://Scripts/GameWorld.cs" id="1_xxmb6"]
 [ext_resource type="Texture2D" uid="uid://ecv33h0gvcog" path="res://Assets/Textures/Grid.png" id="2_iakxi"]
@@ -6,10 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://drcoa0ndbt6te" path="res://addons/AcidJoystick/Joystick.tscn" id="6_6ip1o"]
 [ext_resource type="Script" path="res://Scripts/Libs/DwarfImpulse/Runtime/ShakeDirector2D.cs" id="7_y53n8"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="9_hiy7p"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="10_j33cl"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/WaveSpawnerController.cs" id="10_k5lv0"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/SpawnPoint.cs" id="11_euylg"]
-[ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="11_ou078"]
 [ext_resource type="Environment" uid="uid://dwua3nxtba68l" path="res://Assets/Environments/Default.tres" id="12_ltxuf"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_34d4f"]
@@ -22,12 +20,6 @@ size = Vector2(5141, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tdua6"]
 size = Vector2(20, 2905)
-
-[sub_resource type="Resource" id="Resource_mic45"]
-script = ExtResource("11_ou078")
-duration = 1.0
-transition = 0
-ease = 2
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("_shakeDirector", "_background")]
 script = ExtResource("1_xxmb6")
@@ -371,9 +363,3 @@ zoom = Vector2(0.45, 0.45)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("9_hiy7p")
-
-[node name="PhantomCamera2D" type="Node2D" parent="."]
-position = Vector2(2561, 1443)
-script = ExtResource("10_j33cl")
-zoom = Vector2(0.45, 0.45)
-tween_resource = SubResource("Resource_mic45")

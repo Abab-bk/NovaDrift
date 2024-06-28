@@ -97,6 +97,9 @@ public static class Global
 {
     public static event Action OnAcidCoinsChanged;
     
+    public static event Action OnGamePaused;
+    public static event Action OnGameResumed;
+    
     public static GamePlatform CurrentPlatform = GamePlatform.Desktop;
     public static InputDevice CurrentInputDevice = InputDevice.Keyboard;
     
@@ -106,7 +109,7 @@ public static class Global
     public static ShakeDirector2D ShakeDirector;
     public static FastNoiseLite Noise;
     public static WaveSpawnerController WaveSpawnerController;
-    public static GameContext GameContext = new GameContext();
+    public static readonly GameContext GameContext = new GameContext();
 
     public static int AcidCoins
     {
@@ -175,6 +178,7 @@ public static class Global
     public static void StopGame()
     {
         _stopCount++;
+        if (_stopCount > 0) OnGamePaused?.Invoke();
         GameWorld.GetTree().Paused = _stopCount > 0;
         Logger.Log($"[Global] Try Stop game. Stop count: {_stopCount}");
     }
@@ -182,6 +186,7 @@ public static class Global
     public static void ResumeGame()
     {
         _stopCount--;
+        if (_stopCount <= 0) OnGameResumed?.Invoke();
         GameWorld.GetTree().Paused = _stopCount > 0;
         Logger.Log($"[Global] Try Resume game. Stop count: {_stopCount}");
     }
