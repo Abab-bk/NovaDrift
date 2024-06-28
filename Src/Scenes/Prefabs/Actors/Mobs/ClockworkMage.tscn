@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dqgj6nt1nqdw4"]
+[gd_scene load_steps=36 format=3 uid="uid://dqgj6nt1nqdw4"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_ng1li"]
 [ext_resource type="DragonBonesFactory" path="res://Assets/Textures/Mobs/DragonBones/ClockworkMage/ClockworkKnightD_ske.dbfactory" id="2_pso6i"]
@@ -17,19 +17,136 @@ size = Vector2(47, 68)
 [sub_resource type="StateConfig" id="StateConfig_q0b1p"]
 state_name = &"Enter"
 type = 1
-editor_offset = Vector2(360, 40)
+editor_offset = Vector2(420, 20)
 
-[sub_resource type="StateConfig" id="StateConfig_2ctgo"]
-state_name = &"Idle"
-editor_offset = Vector2(720, 60)
+[sub_resource type="StateConfig" id="StateConfig_l2t10"]
+state_name = &"Lazer"
+editor_offset = Vector2(620, 400)
 
-[sub_resource type="TransitionConfig" id="TransitionConfig_1rrr0"]
+[sub_resource type="StateConfig" id="StateConfig_wlpmg"]
+state_name = &"Magic"
+editor_offset = Vector2(940, 20)
+
+[sub_resource type="StateConfig" id="StateConfig_lyucw"]
+state_name = &"Rest"
+editor_offset = Vector2(1260, 340)
+
+[sub_resource type="StateConfig" id="StateConfig_yutex"]
+state_name = &"Walking"
+editor_offset = Vector2(680, 20)
+
+[sub_resource type="VariableConfig" id="VariableConfig_xpid6"]
+variable_name = &"GoToLazer"
+resource_name = "GoToLazer: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_63kwq"]
+variable_config = SubResource("VariableConfig_xpid6")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_mg3f4"]
+from_state_config = SubResource("StateConfig_wlpmg")
+to_state_config = SubResource("StateConfig_l2t10")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_63kwq")])
+
+[sub_resource type="VariableConfig" id="VariableConfig_4voac"]
+variable_name = &"GoToRest"
+resource_name = "GoToRest: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_66oqs"]
+variable_config = SubResource("VariableConfig_4voac")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_soxvy"]
+from_state_config = SubResource("StateConfig_wlpmg")
+to_state_config = SubResource("StateConfig_lyucw")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_66oqs")])
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_cjaxn"]
+variable_config = SubResource("VariableConfig_4voac")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_3vted"]
+from_state_config = SubResource("StateConfig_l2t10")
+to_state_config = SubResource("StateConfig_lyucw")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_cjaxn")])
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_gkaut"]
 from_state_config = SubResource("StateConfig_q0b1p")
-to_state_config = SubResource("StateConfig_2ctgo")
+to_state_config = SubResource("StateConfig_yutex")
+
+[sub_resource type="VariableConfig" id="VariableConfig_275mk"]
+variable_name = &"GoToMagic"
+resource_name = "GoToMagic: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_gf4i1"]
+variable_config = SubResource("VariableConfig_275mk")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_11kjd"]
+from_state_config = SubResource("StateConfig_yutex")
+to_state_config = SubResource("StateConfig_wlpmg")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_gf4i1")])
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_54w0p"]
+variable_config = SubResource("VariableConfig_275mk")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_bpagc"]
+from_state_config = SubResource("StateConfig_lyucw")
+to_state_config = SubResource("StateConfig_wlpmg")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_54w0p")])
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_itf4y"]
+variable_config = SubResource("VariableConfig_xpid6")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_bfnw0"]
+from_state_config = SubResource("StateConfig_lyucw")
+to_state_config = SubResource("StateConfig_l2t10")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_itf4y")])
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_yrf1u"]
+variable_config = SubResource("VariableConfig_275mk")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_ctin3"]
+from_state_config = SubResource("StateConfig_l2t10")
+to_state_config = SubResource("StateConfig_wlpmg")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_yrf1u")])
+
+[sub_resource type="VariableConfig" id="VariableConfig_wlmk5"]
+variable_name = &"GoToWalking"
+resource_name = "GoToWalking: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_at2nu"]
+variable_config = SubResource("VariableConfig_wlmk5")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_wcuoo"]
+from_state_config = SubResource("StateConfig_l2t10")
+to_state_config = SubResource("StateConfig_yutex")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_at2nu")])
 
 [sub_resource type="FSMConfig" id="FSMConfig_7ftbs"]
-state_config_list = Array[StateConfig]([SubResource("StateConfig_q0b1p"), SubResource("StateConfig_2ctgo")])
-transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_1rrr0")])
+state_config_list = Array[StateConfig]([SubResource("StateConfig_q0b1p"), SubResource("StateConfig_l2t10"), SubResource("StateConfig_wlpmg"), SubResource("StateConfig_lyucw"), SubResource("StateConfig_yutex")])
+transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_mg3f4"), SubResource("TransitionConfig_soxvy"), SubResource("TransitionConfig_3vted"), SubResource("TransitionConfig_gkaut"), SubResource("TransitionConfig_11kjd"), SubResource("TransitionConfig_bpagc"), SubResource("TransitionConfig_bfnw0"), SubResource("TransitionConfig_ctin3"), SubResource("TransitionConfig_wcuoo")])
+variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_275mk"), SubResource("VariableConfig_xpid6"), SubResource("VariableConfig_4voac"), SubResource("VariableConfig_wlmk5")])
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p53af"]
 size = Vector2(98, 193)
@@ -44,11 +161,12 @@ Shooter = NodePath("Components/ShooterNode/Shooter")
 [node name="DragonBones" type="DragonBones" parent="." index="0"]
 factory = ExtResource("2_pso6i")
 armature_settings = {
-"current_animation": "Attack",
+"current_animation": "Skill",
 "sub_armatures": {},
 "use_parent_material": true
 }
-position = Vector2(0, 104)
+position = Vector2(0, 233)
+scale = Vector2(2, 2)
 
 [node name="Sprite2D" parent="." index="1"]
 visible = false

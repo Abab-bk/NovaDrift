@@ -14,6 +14,7 @@ public partial class MagicCircleVfx : BaseVfx
     [GetNode("Part3")] private Sprite2D _part3;
 
     public float Radius = 470f;
+    public float Duration = 0.5f;
     
     public event Action OnAppearEnd;
     public event Action OnDisappearEnd;
@@ -47,7 +48,7 @@ public partial class MagicCircleVfx : BaseVfx
             .Append(_part1.TweenScale(Vector2.One, 0.2f).SetEasing(Easing.InOutQuart))
             .Append(_part2.TweenScale(Vector2.One, 0.2f).SetEasing(Easing.InOutQuart))
             .Append(_part3.TweenScale(Vector2.One, 0.3f).SetEasing(Easing.InOutQuart))
-            .AppendTime(0.5f)
+            .AppendTime(Duration)
             .AppendCallback(() => { OnAppearEnd?.Invoke(); })
             .Build()
             .Play();
