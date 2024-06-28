@@ -21,4 +21,7 @@
     <PackageReference Include="GodotSharpSome.Drawing2D" Version="0.23.0" />
     <ProjectReference Include="..\GodotGetNode\GodotGetNode.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
   </ItemGroup>
+  <ItemGroup>
+    <Content Include="Scripts\DragonController.gd" />
+  </ItemGroup>
 </Project>

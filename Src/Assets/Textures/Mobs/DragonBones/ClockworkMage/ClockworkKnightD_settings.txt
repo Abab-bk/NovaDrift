@@ -1,0 +1,79 @@
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//-- ClockworkKnightD -- Animations
+---------------------
+Idle, IdleR, IdleWeak, IdleWeakR, Attack, Skill, Damage
+NOTE: IdleR/IdleWeakR is included in-case you use this as a battler, so the clockface rotates in the clockwise direction.
+You'll also need to edit the image in any editing software to mirror the clock so it's the right way for a battler too.
+---------------------
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//-- ClockworkKnightD -- Enemy Settings
+---------------------
+<DragonBone Settings>
+Battler: ClockworkKnightD
+Scalex: 1
+Scaley: 1
+
+Ani Wait: Idle
+Ani Walk: Idle
+Ani Attack: Attack
+Ani Swing: Skill
+Ani Thrust: Attack
+Ani Missile: Attack
+Ani Skill: Skill
+Ani Chant: Idle
+Ani Spell: Attack
+Ani Item: Idle
+Ani Guard: Idle
+Ani Evade: Idle
+Ani Damage: Damage
+Ani Abnormal: Idle
+Ani Sleep: Idle
+Ani Victory: Idle
+Ani Escape: Idle
+Ani Dead: IdleWeak
+
+Replace Sprite
+</DragonBone Settings>
+---------------------
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//-- ClockworkKnightD -- Recommended Attack Action Sequence
+animation [A] - powerup animation
+animation [B] - hit animation
+---------------------
+<target action>
+animation [A]: user
+motion missile: user
+wait: 29
+animation [B]: target
+action effect
+wait: 3
+action effect
+wait: 5
+action effect
+wait for animation
+</target action>
+---------------------
+
+>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+//-- ClockworkKnightD -- Recommended Skill Action Sequence
+animation [A] - powerup animation
+animation [B] - charge animation (located at clockface)
+animation [C] - hit animation
+---------------------
+<Whole Action>
+move user: forward, 48, 20
+motion skill: user
+animation [A]: user
+wait: 15
+animation [B]: user
+wait: 35
+animation [C]: target
+action effect
+shake screen: 6, 9, 8
+wait: 10
+</Whole Action>
+<Target Action>
+</Target Action>
+---------------------

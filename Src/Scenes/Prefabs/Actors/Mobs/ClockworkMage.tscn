@@ -1,0 +1,95 @@
+[gd_scene load_steps=13 format=3 uid="uid://dqgj6nt1nqdw4"]
+
+[ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_ng1li"]
+[ext_resource type="DragonBonesFactory" path="res://Assets/Textures/Mobs/DragonBones/ClockworkMage/ClockworkKnightD_ske.dbfactory" id="2_pso6i"]
+[ext_resource type="Script" path="res://Scripts/DragonController.cs" id="3_cby2l"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Ai/ClockworkMageAi.cs" id="3_uo13j"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_kg3ox"]
+size = Vector2(107, 194)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3v4y5"]
+size = Vector2(102, 193)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_o3w2q"]
+size = Vector2(47, 68)
+
+[sub_resource type="StateConfig" id="StateConfig_q0b1p"]
+state_name = &"Enter"
+type = 1
+editor_offset = Vector2(360, 40)
+
+[sub_resource type="StateConfig" id="StateConfig_2ctgo"]
+state_name = &"Idle"
+editor_offset = Vector2(720, 60)
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_1rrr0"]
+from_state_config = SubResource("StateConfig_q0b1p")
+to_state_config = SubResource("StateConfig_2ctgo")
+
+[sub_resource type="FSMConfig" id="FSMConfig_7ftbs"]
+state_config_list = Array[StateConfig]([SubResource("StateConfig_q0b1p"), SubResource("StateConfig_2ctgo")])
+transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_1rrr0")])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p53af"]
+size = Vector2(98, 193)
+
+[node name="ClockworkMage" node_paths=PackedStringArray("_hitBox", "_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_ng1li")]
+_hitBox = NodePath("HitBox")
+_hurtBox = NodePath("Components/HurtBox")
+Sprite = NodePath("Sprite2D")
+_visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
+Shooter = NodePath("Components/ShooterNode/Shooter")
+
+[node name="DragonBones" type="DragonBones" parent="." index="0"]
+factory = ExtResource("2_pso6i")
+armature_settings = {
+"current_animation": "Attack",
+"sub_armatures": {},
+"use_parent_material": true
+}
+position = Vector2(0, 104)
+
+[node name="Sprite2D" parent="." index="1"]
+visible = false
+
+[node name="CollisionShape2D" parent="." index="2"]
+position = Vector2(-1.5, -7)
+shape = SubResource("RectangleShape2D_kg3ox")
+
+[node name="Shooter" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../../..")
+
+[node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../..")
+
+[node name="CollisionShape2D" parent="Components/HurtBox" index="0"]
+position = Vector2(-1, -7.5)
+shape = SubResource("RectangleShape2D_3v4y5")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Components/HurtBox" index="1"]
+position = Vector2(-79.5, -37)
+shape = SubResource("RectangleShape2D_o3w2q")
+
+[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("_dragonController", "Mob")]
+script = ExtResource("3_uo13j")
+_dragonController = NodePath("../../DragonController")
+Mob = NodePath("../..")
+
+[node name="HFSM" parent="State" index="1"]
+root_fsm_config = SubResource("FSMConfig_7ftbs")
+
+[node name="VisibleOnScreenNotifier2D" parent="." index="5"]
+visible = false
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(2, -6.5)
+shape = SubResource("RectangleShape2D_p53af")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="HitBox" index="1"]
+position = Vector2(-79.5, -37)
+shape = SubResource("RectangleShape2D_o3w2q")
+
+[node name="DragonController" type="Node2D" parent="." index="10" node_paths=PackedStringArray("_dragonBones")]
+script = ExtResource("3_cby2l")
+_dragonBones = NodePath("../DragonBones")

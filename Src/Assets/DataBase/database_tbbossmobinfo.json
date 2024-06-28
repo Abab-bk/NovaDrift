@@ -40,5 +40,19 @@
     "size": 1,
     "danger_factor": 5,
     "get_exp": 10
+  },
+  {
+    "id": 1004,
+    "name": "Timer",
+    "scene_name": "ClockworkMage",
+    "health": 400,
+    "speed": 300,
+    "damage": 40,
+    "targeting": 0,
+    "shoot_cd": 0.1,
+    "bullet_count": 4,
+    "size": 1,
+    "danger_factor": 5,
+    "get_exp": 10
   }
 ]
