@@ -18,11 +18,10 @@ USER ERROR: Parameter "data.tree" is null.
 [Log][Global] Try Resume game. Stop count: 0
 [Log][Ui] Generate debug panel
 [Log][Global] Try Stop game. Stop count: 1
-[Log][DragonController] Ready, get amature: <DragonBonesArmature#97391741420>
+[Log][DragonController] Ready, get amature: <DragonBonesArmature#124671494498>
 [Log][Global] Try Resume game. Stop count: 0
 [Log][MobBase] Game over, remove self: ClockworkMage
-[Log][UI: GameOver] Ready | RestartBtn: <Button#516201388287> | BackToMainBtn: <Button#516251719938>
-[Log][UI: GameOver] BackToMainBtn Pressed
+[Log][UI: GameOver] Ready | RestartBtn: <Button#472614181433> | BackToMainBtn: <Button#472664513084>
 USER WARNING: Camera2D overridden to physics process mode due to use of physics interpolation.
    at: _update_process_callback (scene/2d/camera_2d.cpp:84)
 

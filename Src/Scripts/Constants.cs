@@ -31,6 +31,12 @@ public static class Constants
             Center = "Center";
     }
     
+    public static class Tags
+    {
+        public const string
+            IsDragonBone = "IsDragonBone";
+    }
+    
     public static class Colors
     {
         public static readonly WorldColor Red = new WorldColor

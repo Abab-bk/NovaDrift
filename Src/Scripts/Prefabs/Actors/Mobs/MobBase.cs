@@ -12,7 +12,9 @@ public partial class MobBase : Actor
     public MobInfo MobInfo;
     public bool IsBoss = false;
     public MobAiComponent Ai;
-
+    public DragonController DragonController;
+    
+    
     private Node2D _target;
     public List<string> Tags = new List<string>();
     
@@ -136,6 +138,11 @@ public partial class MobBase : Actor
     public void SetTargetAndMove(Node2D target, float delta)
     {
         TryMoveTo(GlobalPosition.DirectionTo(target.GlobalPosition), delta);
+        if (Tags.Contains(Constants.Tags.IsDragonBone))
+        {
+            DragonController.FlipX(Global.Player.GlobalPosition.X < GlobalPosition.X);
+            return;
+        }
         LookAt(target.GlobalPosition);
     }
 
@@ -175,5 +182,11 @@ public partial class MobBase : Actor
     public void LookBack(float delta)
     {
         Rotation = RotationTo(Velocity.Angle() + MathF.PI, delta);
+    }
+
+    public override float RotationTo(float target, double delta)
+    {
+        if (Tags.Contains(Constants.Tags.IsDragonBone)) return Rotation;
+        return base.RotationTo(target, delta);
     }
 }

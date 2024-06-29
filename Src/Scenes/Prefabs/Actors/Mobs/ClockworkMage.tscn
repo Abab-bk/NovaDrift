@@ -160,8 +160,9 @@ Shooter = NodePath("Components/ShooterNode/Shooter")
 
 [node name="DragonBones" type="DragonBones" parent="." index="0"]
 factory = ExtResource("2_pso6i")
+instantiate_dragon_bones_data_name = "ClockworkKnightD"
 armature_settings = {
-"current_animation": "Skill",
+"current_animation": "Idle",
 "sub_armatures": {},
 "use_parent_material": true
 }

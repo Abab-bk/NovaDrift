@@ -1,5 +1,4 @@
 using Godot;
-using GTweensGodot.Extensions;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Vfx;
 
@@ -9,6 +8,13 @@ public partial class ClockworkMageAi : MobAiComponent
 {
     [Export] private DragonController _dragonController;
     [Export] private Node2D _laserPoints;
+
+    public override void _Ready()
+    {
+        base._Ready();
+        Mob.DragonController = _dragonController;
+        Mob.Tags.Add(Constants.Tags.IsDragonBone);
+    }
     
     protected override void ConnectEnteredSignals(State state)
     {
@@ -16,7 +22,7 @@ public partial class ClockworkMageAi : MobAiComponent
         switch (state.GetName())
         {
             case "Walking":
-                
+                _dragonController.Play("Idle");
                 break;
             case "Magic":
                 CreateMagics();
@@ -27,7 +33,7 @@ public partial class ClockworkMageAi : MobAiComponent
                     if (point is not Marker2D marker) continue;
                     var laser = GD.Load<PackedScene>("res://Scenes/Vfx/LaserBeam.tscn").Instantiate<LaserBeam>();
                     laser.Life = 5f;
-                    laser.Width = 50f;
+                    laser.Width = 70f;
                     
                     laser.OnHitSomething += o =>
                     {
@@ -39,11 +45,10 @@ public partial class ClockworkMageAi : MobAiComponent
                         Machine.SetTrigger("GoToWalking");
                     };
                     
-                    marker.AddChild(laser);
-                    laser.Rotation = Mob.GlobalPosition.AngleToPoint(marker.GlobalPosition);
+                    _laserPoints.AddChild(laser);
+                    laser.LookAt(marker.GlobalPosition);
+                    laser.GlobalPosition = marker.GlobalPosition;
                 }
-                
-                // _laserPoints.TweenRotationDegrees(180f, 5f).Play();
                 break;
         }
     }
@@ -85,6 +90,9 @@ public partial class ClockworkMageAi : MobAiComponent
                 Mob.SetTargetAndMove(Global.Player, delta);
                 if (Mob.GetDistanceToPlayer() > 600f) break;
                 Machine.SetTrigger("GoToMagic");
+                break;
+            case "Magic":
+                Mob.TryStop(delta);
                 break;
             case "Laser":
                 Mob.TryStop(delta);
