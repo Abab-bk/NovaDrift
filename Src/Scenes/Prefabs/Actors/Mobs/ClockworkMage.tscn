@@ -20,7 +20,7 @@ type = 1
 editor_offset = Vector2(420, 20)
 
 [sub_resource type="StateConfig" id="StateConfig_l2t10"]
-state_name = &"Lazer"
+state_name = &"Laser"
 editor_offset = Vector2(620, 400)
 
 [sub_resource type="StateConfig" id="StateConfig_wlpmg"]
@@ -29,15 +29,15 @@ editor_offset = Vector2(940, 20)
 
 [sub_resource type="StateConfig" id="StateConfig_lyucw"]
 state_name = &"Rest"
-editor_offset = Vector2(1260, 340)
+editor_offset = Vector2(1320, 380)
 
 [sub_resource type="StateConfig" id="StateConfig_yutex"]
 state_name = &"Walking"
 editor_offset = Vector2(680, 20)
 
 [sub_resource type="VariableConfig" id="VariableConfig_xpid6"]
-variable_name = &"GoToLazer"
-resource_name = "GoToLazer: Trigger"
+variable_name = &"GoToLaser"
+resource_name = "GoToLaser: Trigger"
 
 [sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_63kwq"]
 variable_config = SubResource("VariableConfig_xpid6")
@@ -189,9 +189,10 @@ shape = SubResource("RectangleShape2D_3v4y5")
 position = Vector2(-79.5, -37)
 shape = SubResource("RectangleShape2D_o3w2q")
 
-[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("_dragonController", "Mob")]
+[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("_dragonController", "_laserPoints", "Mob")]
 script = ExtResource("3_uo13j")
 _dragonController = NodePath("../../DragonController")
+_laserPoints = NodePath("../../LaserPoints")
 Mob = NodePath("../..")
 
 [node name="HFSM" parent="State" index="1"]
@@ -211,3 +212,37 @@ shape = SubResource("RectangleShape2D_o3w2q")
 [node name="DragonController" type="Node2D" parent="." index="10" node_paths=PackedStringArray("_dragonBones")]
 script = ExtResource("3_cby2l")
 _dragonBones = NodePath("../DragonBones")
+
+[node name="LaserPoints" type="Node2D" parent="." index="11"]
+
+[node name="Marker2D" type="Marker2D" parent="LaserPoints" index="0"]
+position = Vector2(0, -323)
+gizmo_extents = 50.0
+
+[node name="Marker2D2" type="Marker2D" parent="LaserPoints" index="1"]
+position = Vector2(0, 328)
+gizmo_extents = 50.0
+
+[node name="Marker2D3" type="Marker2D" parent="LaserPoints" index="2"]
+position = Vector2(296, 0)
+gizmo_extents = 50.0
+
+[node name="Marker2D4" type="Marker2D" parent="LaserPoints" index="3"]
+position = Vector2(-312, 0)
+gizmo_extents = 50.0
+
+[node name="Marker2D5" type="Marker2D" parent="LaserPoints" index="4"]
+position = Vector2(-212, -235)
+gizmo_extents = 50.0
+
+[node name="Marker2D6" type="Marker2D" parent="LaserPoints" index="5"]
+position = Vector2(210, -235)
+gizmo_extents = 50.0
+
+[node name="Marker2D7" type="Marker2D" parent="LaserPoints" index="6"]
+position = Vector2(-212, 173)
+gizmo_extents = 50.0
+
+[node name="Marker2D8" type="Marker2D" parent="LaserPoints" index="7"]
+position = Vector2(210, 173)
+gizmo_extents = 50.0

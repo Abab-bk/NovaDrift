@@ -1,5 +1,6 @@
 using System;
 using Godot;
+using Godot.Collections;
 using GTweens.Builders;
 using GTweens.Easings;
 using GTweensGodot.Extensions;
@@ -12,6 +13,7 @@ public partial class MagicCircleVfx : BaseVfx
     [GetNode("Part1")] private Sprite2D _part1;
     [GetNode("Part2")] private Sprite2D _part2;
     [GetNode("Part3")] private Sprite2D _part3;
+    [GetNode("Area2D")] private Area2D _area;
 
     public float Radius = 470f;
     public float Duration = 0.5f;
@@ -23,11 +25,18 @@ public partial class MagicCircleVfx : BaseVfx
     {
         GetNodes();
         
+        _area.SetIsPlayer(IsPlayer);
+        
         Scale = new Vector2(Radius / 470f, Radius / 470f);
         
         _part1.Scale = Vector2.Zero;
         _part2.Scale = Vector2.Zero;
         _part3.Scale = Vector2.Zero;
+    }
+
+    public Array<Node2D> GetOverlayBodies()
+    {
+        return _area.GetOverlappingBodies();
     }
 
     public void Appear()
@@ -53,7 +62,12 @@ public partial class MagicCircleVfx : BaseVfx
             .Build()
             .Play();
     }
-    
+
+    public void Flash()
+    {
+        
+    }
+
     public void Disappear()
     {
         GTweenSequenceBuilder.New()
