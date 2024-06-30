@@ -20,6 +20,7 @@ public sealed partial class BossMobInfo : Luban.BeanBase
         Id = _buf.GetProperty("id").GetInt32();
         Name = _buf.GetProperty("name").GetString();
         SceneName = _buf.GetProperty("scene_name").GetString();
+        DragonBone = _buf.GetProperty("dragon_bone").GetString();
         Health = _buf.GetProperty("health").GetSingle();
         Speed = _buf.GetProperty("speed").GetSingle();
         Damage = _buf.GetProperty("damage").GetSingle();
@@ -48,6 +49,10 @@ public sealed partial class BossMobInfo : Luban.BeanBase
     /// 场景名
     /// </summary>
     public readonly string SceneName;
+    /// <summary>
+    /// 龙骨名
+    /// </summary>
+    public readonly string DragonBone;
     /// <summary>
     /// 血量
     /// </summary>
@@ -102,6 +107,7 @@ public sealed partial class BossMobInfo : Luban.BeanBase
         
         
         
+        
     }
 
     public override string ToString()
@@ -110,6 +116,7 @@ public sealed partial class BossMobInfo : Luban.BeanBase
         + "id:" + Id + ","
         + "name:" + Name + ","
         + "sceneName:" + SceneName + ","
+        + "dragonBone:" + DragonBone + ","
         + "health:" + Health + ","
         + "speed:" + Speed + ","
         + "damage:" + Damage + ","

@@ -1,36 +1,9 @@
 [
   {
     "id": 1001,
-    "name": "数学家",
-    "scene_name": "Mathematicians",
-    "health": 400,
-    "speed": 800,
-    "damage": 10,
-    "targeting": 70,
-    "shoot_cd": 0.1,
-    "bullet_count": 4,
-    "size": 1,
-    "danger_factor": 5,
-    "get_exp": 10
-  },
-  {
-    "id": 1002,
-    "name": "医生",
-    "scene_name": "TheDoctor",
-    "health": 400,
-    "speed": 800,
-    "damage": 10,
-    "targeting": 70,
-    "shoot_cd": 0.1,
-    "bullet_count": 4,
-    "size": 1,
-    "danger_factor": 5,
-    "get_exp": 10
-  },
-  {
-    "id": 1003,
     "name": "骑士",
     "scene_name": "TheKnight",
+    "dragon_bone": "",
     "health": 400,
     "speed": 300,
     "damage": 40,
@@ -42,9 +15,10 @@
     "get_exp": 10
   },
   {
-    "id": 1004,
+    "id": 1002,
     "name": "Timer",
     "scene_name": "ClockworkMage",
+    "dragon_bone": "ClockworkMage/ClockworkKnightD_ske",
     "health": 400,
     "speed": 300,
     "damage": 40,

@@ -117,7 +117,17 @@ public partial class WaveSpawnerController : Node2D
 
         var animation = GD.Load<PackedScene>("res://Scenes/Vfx/BossAppearVfx.tscn").Instantiate<BossAppearVfx>();
         animation.Title = DataBuilder.Tables.TbBossMobInfo.DataMap[id].Name;
-        animation.IconPath = $"res://Assets/Textures/Mobs/{DataBuilder.Tables.TbBossMobInfo.DataMap[id].SceneName}.png";
+
+        var info = DataBuilder.Tables.TbBossMobInfo.DataMap[id];
+        if (info.DragonBone != "")
+        {
+            animation.DragonPath = $"res://Assets/Textures/Mobs/DragonBones/{info.DragonBone}.dbfactory";
+        }
+        else
+        {
+            animation.IconPath = $"res://Assets/Textures/Mobs/{DataBuilder.Tables.TbBossMobInfo.DataMap[id].SceneName}.png";
+        }
+        
         UiManager.GetUiLayer(UiLayer.Pop).AddChild(animation);
         Global.StopGame();
 

@@ -28,53 +28,6 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.87451, 0.862745, 0.819608, 1)
 
-[node name="Name" type="Control" parent="Control"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_top = 974.0
-offset_right = 40.0
-offset_bottom = 1014.0
-grow_horizontal = 2
-
-[node name="NameLabel" type="Label" parent="Control/Name"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -503.0
-offset_top = -125.0
-offset_right = 528.0
-offset_bottom = 125.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.964706, 0.545098, 0.294118, 1)
-theme_override_fonts/font = ExtResource("2_vsghc")
-theme_override_font_sizes/font_size = 200
-text = "The Knight"
-horizontal_alignment = 1
-
-[node name="NameLabel2" type="Label" parent="Control/Name"]
-unique_name_in_owner = true
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -515.0
-offset_top = -125.0
-offset_right = 516.0
-offset_bottom = 125.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(0.596078, 0.113725, 0.14902, 1)
-theme_override_fonts/font = ExtResource("2_vsghc")
-theme_override_font_sizes/font_size = 200
-text = "The Knight"
-horizontal_alignment = 1
-
 [node name="Sprites" type="Node2D" parent="."]
 unique_name_in_owner = true
 position = Vector2(1280, 550)
@@ -102,3 +55,56 @@ unique_name_in_owner = true
 modulate = Color(0, 0, 0, 1)
 scale = Vector2(3, 3)
 texture = ExtResource("2_gnkoh")
+
+[node name="DragonBones" type="DragonBones" parent="."]
+unique_name_in_owner = true
+position = Vector2(1284, 874)
+scale = Vector2(3, 3)
+
+[node name="Name" type="Control" parent="."]
+unique_name_in_owner = true
+layout_mode = 3
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 1280.0
+offset_top = 974.0
+offset_right = 1320.0
+offset_bottom = 1014.0
+grow_horizontal = 2
+
+[node name="NameLabel" type="Label" parent="Name"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -503.0
+offset_top = -125.0
+offset_right = 528.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.964706, 0.545098, 0.294118, 1)
+theme_override_fonts/font = ExtResource("2_vsghc")
+theme_override_font_sizes/font_size = 200
+text = "The Knight"
+horizontal_alignment = 1
+
+[node name="NameLabel2" type="Label" parent="Name"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -515.0
+offset_top = -125.0
+offset_right = 516.0
+offset_bottom = 125.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(0.596078, 0.113725, 0.14902, 1)
+theme_override_fonts/font = ExtResource("2_vsghc")
+theme_override_font_sizes/font_size = 200
+text = "The Knight"
+horizontal_alignment = 1
