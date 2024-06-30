@@ -11,6 +11,7 @@
     <Compile Remove="script_templates/**/*.cs" />
     <Compile Remove=".godot\**" />
     <Compile Remove="Libs\**" />
+    <Compile Remove="Scripts\Systems\Debugs.cs" />
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Remove=".godot\**" />

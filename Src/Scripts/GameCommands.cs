@@ -1,7 +1,13 @@
 using GDebugPanelGodot.Core;
+using GDebugPanelGodot.DebugActions.Actions;
 using GDebugPanelGodot.DebugActions.Containers;
+using GDebugPanelGodot.DebugActions.Widgets;
 using GDebugPanelGodot.Extensions;
+using GDebugPanelGodot.Nodes;
+using GDebugPanelGodot.Views;
+using Godot;
 using NovaDrift.Scripts.Prefabs.Components;
+using NovaDrift.Scripts.Systems.Debugs;
 
 namespace NovaDrift.Scripts;
 
@@ -24,7 +30,9 @@ public class GameCommands
         Logger.Log("[Ui] Generate debug panel");
         // Player
         _player = GDebugPanel.AddSection("Player", new PlayerCommands());
-		
+
+        _player.AddCustomStat();
+        
         // World
         var worldCommand = new WorldCommands();
         var worldSection = GDebugPanel.AddSection("World", worldCommand);

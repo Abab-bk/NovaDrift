@@ -57,6 +57,8 @@ public partial class BulletBase : Node2D
 
     public override void _Ready()
     {
+        Scale = new Vector2(Size, Size);
+
         Velocity = Direction * Speed;
         Rotation = Direction.Angle();
         
@@ -73,7 +75,6 @@ public partial class BulletBase : Node2D
             _hitBox.CallDeferred(CollisionObject2D.MethodName.SetCollisionLayerValue, (int)Layer.MobBullet, true);
         }
 
-        Scale = new Vector2(Size, Size);
         Degenerate();
 
         if (Steering > 0)

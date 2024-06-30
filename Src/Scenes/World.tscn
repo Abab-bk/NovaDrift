@@ -358,6 +358,5 @@ position = Vector2(2561, 1440)
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("9_hiy7p")
 
-[node name="ShakeDirector2D" type="Node2D" parent="." node_paths=PackedStringArray("Target")]
+[node name="ShakeDirector2D" type="Node2D" parent="."]
 script = ExtResource("7_y53n8")
-Target = NodePath("")

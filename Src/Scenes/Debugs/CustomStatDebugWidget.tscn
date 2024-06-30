@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://bx7f4l7c71gga"]
+
+[ext_resource type="Script" path="res://Scripts/Systems/Debugs/AbilityDebugActionWidget.cs" id="1_kjokl"]
+
+[node name="CustomStatDebugWidget" type="PanelContainer" node_paths=PackedStringArray("Label", "StatButton", "TypeButton", "ValueEdit", "ApplyButton")]
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("1_kjokl")
+Label = NodePath("MarginContainer/HBoxContainer/Label")
+StatButton = NodePath("MarginContainer/HBoxContainer/Stat")
+TypeButton = NodePath("MarginContainer/HBoxContainer/Type")
+ValueEdit = NodePath("MarginContainer/HBoxContainer/Value")
+ApplyButton = NodePath("MarginContainer/HBoxContainer/ApplyButton")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/separation = 10
+alignment = 1
+
+[node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "CustomStat"
+
+[node name="Stat" type="OptionButton" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Type" type="OptionButton" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+
+[node name="Value" type="LineEdit" parent="MarginContainer/HBoxContainer"]
+layout_mode = 2
+placeholder_text = "Value"
+
+[node name="ApplyButton" type="Button" parent="MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(80, 0)
+layout_mode = 2
+text = "Apply"

@@ -125,6 +125,9 @@ public class GameContext
 
 public static class Global
 {
+    // FIXME: 护盾半径好像无效
+    // FIXME: 射击距离越远伤害越高的ability太强了
+    
     public static event Action OnAcidCoinsChanged;
     
     public static event Action OnGamePaused;
