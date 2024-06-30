@@ -57,6 +57,8 @@ public partial class GameWorld : Node2D
 		EventBus.OnGameInit += Init;
 		EventBus.OnGameOver += GameOver;
 		
+		// Global.GameContext.SetCamera(GetNode<Node2D>("PhantomCamera2D"));
+		
 		AcidSaver.LoadAll();
 
 		Global.Something = GetNode<Node2D>("Something");
@@ -114,14 +116,12 @@ public partial class GameWorld : Node2D
 		
 		Player player = GD.Load<PackedScene>("res://Scenes/Prefabs/Actors/Player.tscn").Instantiate<Player>();
 		player.JoystickNode = _moveJoystick;
-		AddChild(player);
-
 		player.GlobalPosition = SpawnPoint.GetPoint(Constants.Points.Center);
+		AddChild(player);
 		
-		// MoveActorToScreenCenter mover = new MoveActorToScreenCenter(player);
-		// AddChild(mover);
-		
-		// UiManager.Get_Hud_Instance()[0].OpenNestedUi(UiManager.UiName.StatsMonitor);
+		// Global.GameContext.SetFollowMode(GameContext.FollowMode.Group);
+		// Global.GameContext.AppendFollowTarget(player);
+		// Global.GameContext.SetZoom(new Vector2(0.7f, 0.7f));
 		
 		UiManager.Open_PausedMenu();
 		UiManager.Hide_PausedMenu();
@@ -142,6 +142,9 @@ public partial class GameWorld : Node2D
 		UiManager.Destroy_Hud();
 		UiManager.Destroy_PausedMenu();
 		
+		// Global.GameContext.RemoveFollowTarget(Global.Player);
+		// Global.GameContext.SetZoom(new Vector2(0.4f, 0.4f));
+		// Global.GameContext.SetFollowMode(GameContext.FollowMode.None);
 		Global.Player.RemoveSelf();
 		UiManager.Open_GameOver();
 	}

@@ -351,14 +351,13 @@ _enabled = false
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = ExtResource("12_ltxuf")
 
-[node name="ShakeDirector2D" type="Node2D" parent="." node_paths=PackedStringArray("Target")]
-script = ExtResource("7_y53n8")
-Target = NodePath("../Camera2D")
-
 [node name="Camera2D" type="Camera2D" parent="."]
 physics_interpolation_mode = 2
-position = Vector2(2561, 1443)
-zoom = Vector2(0.45, 0.45)
+position = Vector2(2561, 1440)
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("9_hiy7p")
+
+[node name="ShakeDirector2D" type="Node2D" parent="." node_paths=PackedStringArray("Target")]
+script = ExtResource("7_y53n8")
+Target = NodePath("")

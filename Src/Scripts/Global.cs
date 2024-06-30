@@ -40,6 +40,16 @@ public class GameContext
     public int Score;
     private Node2D _camera;
 
+    public enum FollowMode
+    {
+        None,
+        Glued,
+        Simple,
+        Group,
+        Path,
+        Framed,
+    }
+    
     public void SetCamera(Node2D camera)
     {
         _camera = camera;
@@ -57,6 +67,26 @@ public class GameContext
         _camera.Call("erase_follow_targets", target);
     }
 
+    public void SetFollowMode(FollowMode followMode)
+    {
+        if (_camera == null) return;
+        _camera.Set("follow_mode", (int)followMode);
+    }
+
+    public void SetZoom(Vector2 zoom)
+    {
+        if (_camera == null) return;
+        var tween = _camera.CreateTween();
+        tween.TweenProperty(_camera, "zoom", zoom, 0.5f).SetEase(Tween.EaseType.OutIn);
+        // _camera.Call("set_zoom", zoom);
+    }
+
+    public void SetFollowTarget(Node2D target)
+    {
+        if (_camera == null) return;
+        _camera.Call("set_follow_target", target);
+    }
+    
     public void SetLimits(float left, float right, float top, float bottom)
     {
         if (_camera == null) return;

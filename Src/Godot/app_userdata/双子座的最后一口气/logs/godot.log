@@ -17,63 +17,18 @@ USER ERROR: Parameter "data.tree" is null.
 [Log][Global] Try Stop game. Stop count: 1
 [Log][Global] Try Resume game. Stop count: 0
 [Log][Ui] Generate debug panel
-[Log][Global] Try Stop game. Stop count: 1
-[Log][DragonController] Ready, get amature: <DragonBonesArmature#98180270471>
-[Log][Wave Spawner] Boss wave started, stop clock.
-[Log][Wave Spawner] Play boss appear animation.
-[Log][Global] Try Stop game. Stop count: 2
-[Log][Global] Try Resume game. Stop count: 1
-[Log][DragonController] Ready, get amature: <DragonBonesArmature#129083902676>
-[Log][Wave Spawner] Boss wave spawned: Timer
-[Log][Global] Try Resume game. Stop count: 0
-[Log][MobBase] Game over, remove self: ClockworkMage
-[Log][MobBase] Game over, remove self: @CharacterBody2D@49
-[Log][UI: GameOver] Ready | RestartBtn: <Button#459980940197> | BackToMainBtn: <Button#460031271848>
-USER ERROR: BUG: Unreferenced static string to 0: luminance_buffers
-   at: unref (core/string/string_name.cpp:127)
-USER ERROR: BUG: Unreferenced static string to 0: color_upscaled
-   at: unref (core/string/string_name.cpp:127)
-USER ERROR: BUG: Unreferenced static string to 0: back_color
-   at: unref (core/string/string_name.cpp:127)
-USER ERROR: BUG: Unreferenced static string to 0: back_depth
-   at: unref (core/string/string_name.cpp:127)
-USER ERROR: BUG: Unreferenced static string to 0: VRS
-   at: unref (core/string/string_name.cpp:127)
-USER ERROR: BUG: Unreferenced static string to 0: Physics2DConstraintSolveIslands
-   at: unref (core/string/string_name.cpp:127)
-USER ERROR: BUG: Unreferenced static string to 0: Physics2DConstraintSetup
-   at: unref (core/string/string_name.cpp:127)
-USER ERROR: BUG: Unreferenced static string to 0: _compression
-   at: unref (core/string/string_name.cpp:127)
-USER ERROR: BUG: Unreferenced static string to 0: Variant
-   at: unref (core/string/string_name.cpp:127)
-USER ERROR: BUG: Unreferenced static string to 0: ShaderCompilation
-   at: unref (core/string/string_name.cpp:127)
-USER ERROR: BUG: Unreferenced static string to 0: @export_range
-   at: unref (core/string/string_name.cpp:129)
-USER ERROR: BUG: Unreferenced static string to 0: @export_multiline
-   at: unref (core/string/string_name.cpp:129)
-USER ERROR: BUG: Unreferenced static string to 0: @export_enum
-   at: unref (core/string/string_name.cpp:129)
-USER ERROR: BUG: Unreferenced static string to 0: @export_node_path
-   at: unref (core/string/string_name.cpp:129)
-USER ERROR: BUG: Unreferenced static string to 0: @export
-   at: unref (core/string/string_name.cpp:129)
-USER ERROR: BUG: Unreferenced static string to 0: @export_subgroup
-   at: unref (core/string/string_name.cpp:129)
-USER ERROR: BUG: Unreferenced static string to 0: @export_category
-   at: unref (core/string/string_name.cpp:129)
-USER ERROR: BUG: Unreferenced static string to 0: @export_flags
-   at: unref (core/string/string_name.cpp:129)
-USER ERROR: BUG: Unreferenced static string to 0: @tool
-   at: unref (core/string/string_name.cpp:129)
-USER ERROR: BUG: Unreferenced static string to 0: @export_group
-   at: unref (core/string/string_name.cpp:129)
-USER ERROR: BUG: Unreferenced static string to 0: @export_placeholder
-   at: unref (core/string/string_name.cpp:129)
-USER ERROR: BUG: Unreferenced static string to 0: @warning_ignore
-   at: unref (core/string/string_name.cpp:129)
-USER ERROR: BUG: Unreferenced static string to 0: @icon
-   at: unref (core/string/string_name.cpp:129)
-USER ERROR: Pages in use exist at exit in PagedAllocator: N7Variant5Pools11BucketLargeE
-   at: ~PagedAllocator (./core/templates/paged_allocator.h:170)
+USER WARNING: Camera2D overridden to physics process mode due to use of physics interpolation.
+   at: _update_process_callback (scene/2d/camera_2d.cpp:84)
+
+================================================================
+CrashHandlerException: Program crashed with signal 11
+Engine version: Godot Engine v4.3.beta1.mono.official (a4f2ea91a1bd18f70a43ff4c1377db49b56bc3f0)
+Dumping the backtrace. 
+[1] error(-1): no debug info in PE/COFF executable
+[2] error(-1): no debug info in PE/COFF executable
+[3] error(-1): no debug info in PE/COFF executable
+[4] error(-1): no debug info in PE/COFF executable
+[5] error(-1): no debug info in PE/COFF executable
+[6] error(-1): no debug info in PE/COFF executable
+-- END OF BACKTRACE --
+================================================================

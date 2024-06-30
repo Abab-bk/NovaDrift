@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://b1hvfrsat441r"]
+[gd_scene load_steps=36 format=3 uid="uid://b1hvfrsat441r"]
 
 [ext_resource type="PackedScene" uid="uid://b1vmhmtmuma0x" path="res://Scenes/Prefabs/Actors/ActorBase.tscn" id="1_0c8c2"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Player.cs" id="2_15kon"]
@@ -117,11 +117,14 @@ state_config_list = Array[StateConfig]([SubResource("StateConfig_f52yo"), SubRes
 transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_hck3y"), SubResource("TransitionConfig_ad1ll")])
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_mu8jh"), SubResource("VariableConfig_01o2x")])
 
-[sub_resource type="Resource" id="Resource_g4wph"]
+[sub_resource type="Resource" id="Resource_w330d"]
 script = ExtResource("9_25cp4")
 duration = 1.0
 transition = 0
 ease = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5ar5p"]
+size = Vector2(4750, 3284)
 
 [node name="Player" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") groups=["Players"] instance=ExtResource("1_0c8c2")]
 script = ExtResource("2_15kon")
@@ -198,4 +201,9 @@ priority = 1
 follow_mode = 3
 follow_targets = [NodePath("..")]
 zoom = Vector2(0.7, 0.7)
-tween_resource = SubResource("Resource_g4wph")
+tween_resource = SubResource("Resource_w330d")
+limit_target = NodePath("../CollisionShape2D2")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="15"]
+shape = SubResource("RectangleShape2D_5ar5p")
+disabled = true
