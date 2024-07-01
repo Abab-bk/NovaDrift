@@ -63,9 +63,25 @@ public partial class MagicCircleVfx : BaseVfx
             .Play();
     }
 
-    public void Flash()
+    public void Flash(Color color, float duration = 0.5f, Action callback = null)
     {
+        GTweenSequenceBuilder.New()
+            .Append(this.TweenModulate(color, duration))
+            .AppendTime(0.2f)
+            .AppendCallback(() =>
+            {
+                if (callback == null) return;
+                callback?.Invoke();
+            })
+            .Build()
+            .Play();
         
+        // this.TweenModulate(color, duration)
+        //     .OnComplete(() => { 
+        //         if (callback == null) return;
+        //         callback?.Invoke();
+        //     })
+        //     .Play();
     }
 
     public void Disappear()

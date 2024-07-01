@@ -66,11 +66,14 @@ public partial class ClockworkMageAi : MobAiComponent
 
             magicCircle.OnAppearEnd += () =>
             {
-                if (magicCircle.GetOverlayBodies().Contains(Global.Player))
+                magicCircle.Flash(new Color("ff4545"), 0.5f, () =>
                 {
-                    Global.Player.TakeDamageWithoutKnockBack(Mob.Stats.Damage.Value);
-                }
-                magicCircle.Disappear();
+                    if (magicCircle.GetOverlayBodies().Contains(Global.Player))
+                    {
+                        Global.Player.TakeDamageWithoutKnockBack(Mob.Stats.Damage.Value);
+                    }
+                    magicCircle.Disappear(); 
+                });
             };
 
             magicCircle.Appear();

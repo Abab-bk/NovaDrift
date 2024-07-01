@@ -11,11 +11,14 @@ public class Snipe : Effect
         
         Target.OnShoot += bullet =>
         {
+            var totalDistance = 0f;
+            
             bullet.AddModifierToDamage(modifier);
 
             bullet.OnMove += distance =>
             {
-                modifier.Value += Math.Min(distance/1000f, Values[0]);
+                totalDistance += distance;
+                modifier.Value = Math.Min(totalDistance / 1000f, Values[0]);
             };
         };
         

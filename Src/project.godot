@@ -33,7 +33,7 @@ config/tags=PackedStringArray("acidwall")
 run/main_scene="res://Scenes/BootSplash.tscn"
 config/features=PackedStringArray("4.3", "C#", "Mobile")
 boot_splash/show_image=false
-config/icon="res://icon.svg"
+config/icon="res://Icon.png"
 
 [autoload]
 

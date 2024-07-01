@@ -1,12 +1,20 @@
-[gd_scene load_steps=3 format=3 uid="uid://diprwfc6e1di5"]
+[gd_scene load_steps=4 format=3 uid="uid://diprwfc6e1di5"]
 
 [ext_resource type="PackedScene" uid="uid://dopw3ixphjmh7" path="res://Scenes/Prefabs/BulletBase.tscn" id="1_3llyd"]
+[ext_resource type="Texture2D" uid="uid://dherwc0evanuk" path="res://Assets/Textures/Mobs/Beamcaster.png" id="2_c1qem"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_luklo"]
-size = Vector2(49, 14)
+size = Vector2(37, 44)
 
 [node name="NormalBullet" node_paths=PackedStringArray("_hitBox") instance=ExtResource("1_3llyd")]
 _hitBox = NodePath("HitBox")
 
+[node name="Sprite2D" parent="." index="1"]
+texture = ExtResource("2_c1qem")
+
+[node name="HitBox" parent="." index="2"]
+position = Vector2(13, 0)
+
 [node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(-14.5, 0)
 shape = SubResource("RectangleShape2D_luklo")

@@ -1,11 +1,6 @@
 using GDebugPanelGodot.Core;
-using GDebugPanelGodot.DebugActions.Actions;
 using GDebugPanelGodot.DebugActions.Containers;
-using GDebugPanelGodot.DebugActions.Widgets;
 using GDebugPanelGodot.Extensions;
-using GDebugPanelGodot.Nodes;
-using GDebugPanelGodot.Views;
-using Godot;
 using NovaDrift.Scripts.Prefabs.Components;
 using NovaDrift.Scripts.Systems.Debugs;
 
@@ -98,7 +93,7 @@ public sealed class PlayerCommands
 
 public sealed class WorldCommands
 {
-    public int SomethingId { get; set; } = 1004;
+    public int SomethingId { get; set; } = 1002;
     public void GenerateMobById() => Global.WaveSpawnerController.GenerateAMob(SomethingId);
     public void GenerateBossById() => Global.WaveSpawnerController.GenerateABoss(SomethingId);
     public void GenerateBossWaveById() => Global.WaveSpawnerController.GenerateBossWave(SomethingId);

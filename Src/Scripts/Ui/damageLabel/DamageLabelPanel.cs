@@ -21,7 +21,7 @@ public partial class DamageLabelPanel : DamageLabel
         GlobalPosition = pos;
         Scale = Vector2.Zero;
         
-        L_Label.Instance.Text = value.ToString(CultureInfo.CurrentCulture);
+        L_Label.Instance.Text = value.ToString("0.", CultureInfo.InvariantCulture);
         
         GTweenSequenceBuilder.New()
             .Append(this.TweenScale(Vector2.One, 0.1f))
