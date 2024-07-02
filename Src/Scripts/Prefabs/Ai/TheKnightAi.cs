@@ -137,11 +137,13 @@ public partial class TheKnightAi : MobAiComponent
                 }
                 break;
             case "Freezy":
-                var laser = GD.Load<PackedScene>("res://Scenes/Vfx/LaserBeam.tscn").Instantiate() as LaserBeam;
-                if (laser == null) return;
+                var laser = GD.Load<PackedScene>("res://Scenes/Vfx/LaserBeam.tscn").Instantiate<LaserBeam>();
+                
                 laser.Life = Random.Shared.FloatRange(3f, 6f);
-                laser.Width = 50f;
+                laser.Width = 150f;
+                
                 Mob.AddChild(laser);
+                
                 laser.OnHitSomething += o =>
                 {
                     if (o is not Player player) return;

@@ -1,4 +1,6 @@
 using System;
+using AcidWallStudio.Fmod;
+using FMOD.Studio;
 using Godot;
 using GTweens.Extensions;
 using GTweensGodot.Extensions;
@@ -7,17 +9,19 @@ namespace NovaDrift.Scripts.Vfx;
 
 public partial class LaserBeam : BaseVfx
 {
-    public event Action<GodotObject> OnHitSomething; 
+    public event Action<GodotObject> OnHitSomething;
     
     [GetNode("%Line2D")] private Line2D _line;
     [GetNode("%RayCast2D")] private RayCast2D _cast;
 
     public float Life = 4f;
     public float Width = 20f;
+
+    private EventInstance _sound;
     
     public override async void _Ready()
     {
-        _line.Width = Width;
+        _line.Width = 20f;
         _line.Points[1] = Vector2.Zero;
         Appear();
         await ToSignal(GetTree().CreateTimer(Life), Timer.SignalName.Timeout);
@@ -26,10 +30,11 @@ public partial class LaserBeam : BaseVfx
 
     private void Appear()
     {
+        _sound = SoundManager.PlaySound("event:/Weapons/Laser/Laser");
         GTweenExtensions.Tween(
             () => _line.Width,
             w => _line.Width = w,
-            50f,
+            Width,
             0.2f)
             .Play();
     }
@@ -43,6 +48,7 @@ public partial class LaserBeam : BaseVfx
             0.2f)
             .OnComplete(() =>
             {
+                _sound.stop(STOP_MODE.ALLOWFADEOUT);
                 OnAnimationEnd?.Invoke();
                 QueueFree();
             })

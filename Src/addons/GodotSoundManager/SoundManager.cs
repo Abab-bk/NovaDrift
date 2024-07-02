@@ -121,7 +121,9 @@ public static class SoundManager
 
         foreach (var path in FmodConfig.BankPaths)
         {
-            _studioSystem.loadBankFile(path, LOAD_BANK_FLAGS.NORMAL, out var bank);
+            var buffer = FileAccess.GetFileAsBytes(path);
+            Logger.Log($"[SoundManager] Load bank buffer {path} {FileAccess.GetOpenError()}");
+            _studioSystem.loadBankMemory(buffer, LOAD_BANK_FLAGS.NORMAL, out var bank);
             Logger.Log($"[SoundManager] Load bank {path} {bank.isValid()}");
         }
         

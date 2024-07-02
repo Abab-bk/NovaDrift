@@ -12,7 +12,7 @@ public partial class GrenadeShooter : Shooter
 
     public override void _Ready()
     {
-        GetBulletFunc = (shooter) => new BulletBuilder(BulletBuilder.BulletType.Grenade)
+        GetBulletFunc = _ => new BulletBuilder(BulletBuilder.BulletType.Grenade)
             .SetIsPlayer(IsPlayer)
             .SetOwner(Actor)
             .SetDamage(Actor.Stats.Damage.Value)

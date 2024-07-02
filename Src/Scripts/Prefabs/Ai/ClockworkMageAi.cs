@@ -31,23 +31,34 @@ public partial class ClockworkMageAi : MobAiComponent
                 foreach (var point in _laserPoints.GetChildren())
                 {
                     if (point is not Marker2D marker) continue;
-                    var laser = GD.Load<PackedScene>("res://Scenes/Vfx/LaserBeam.tscn").Instantiate<LaserBeam>();
-                    laser.Life = 5f;
-                    laser.Width = 70f;
-                    
-                    laser.OnHitSomething += o =>
+
+                    var chargeBall = GD
+                        .Load<PackedScene>("res://Scenes/Vfx/ChargeBall.tscn")
+                        .Instantiate<ChargeBall>();
+                    marker.AddChild(chargeBall);
+
+                    chargeBall.OnAnimationEnd += () =>
                     {
-                        if (o is not Player player) return;
-                        player.TakeDamage(Mob.Stats.Damage.Value * 0.1f);
-                    };
-                    laser.OnAnimationEnd += () =>
-                    {
-                        Machine.SetTrigger("GoToWalking");
-                    };
+                        var laser = GD
+                            .Load<PackedScene>("res://Scenes/Vfx/LaserBeam.tscn")
+                            .Instantiate<LaserBeam>();
+                        laser.Life = 5f;
+                        laser.Width = 70f;
                     
-                    _laserPoints.AddChild(laser);
-                    laser.LookAt(marker.GlobalPosition);
-                    laser.GlobalPosition = marker.GlobalPosition;
+                        laser.OnHitSomething += o =>
+                        {
+                            if (o is not Player player) return;
+                            player.TakeDamage(Mob.Stats.Damage.Value * 0.1f);
+                        };
+                        laser.OnAnimationEnd += () =>
+                        {
+                            Machine.SetTrigger("GoToWalking");
+                        };
+                    
+                        _laserPoints.AddChild(laser);
+                        laser.LookAt(marker.GlobalPosition);
+                        laser.GlobalPosition = marker.GlobalPosition;  
+                    };
                 }
                 break;
         }

@@ -9,13 +9,19 @@ public static class FmodConfig
  
     public static readonly string[] BankPaths = new[]
     {
-        "Assets/Audios/Desktop/Master.strings.bank",
-        "Assets/Audios/Desktop/Master.bank",
-        "Assets/Audios/Desktop/SFX.bank",
-        "Assets/Audios/Desktop/Music.bank",
-        "Assets/Audios/Desktop/UI.bank",
+        "res://Assets/Audios/Desktop/Master.strings.bank",
+        "res://Assets/Audios/Desktop/Master.bank",
+        "res://Assets/Audios/Desktop/SFX.bank",
+        "res://Assets/Audios/Desktop/Music.bank",
+        "res://Assets/Audios/Desktop/UI.bank",
     };
-    public const string RootPath = "Assets/Audios/Desktop/";
+    public const string RootPath = "res://Assets/Audios/Desktop/";
 
     public static Node2D Listener = Global.Player;
+
+    // public static void GenerateBankPaths()
+    // {
+    //     var banksDir = DirAccess.Open(RootPath);
+    //     
+    // }
 }
