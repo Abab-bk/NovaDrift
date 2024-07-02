@@ -121,6 +121,7 @@ public static class SoundManager
 
         foreach (var path in FmodConfig.BankPaths)
         {
+            // TODO: 加一层 buffer 可能造成额外内存消耗，出问题就改成 stream
             var buffer = FileAccess.GetFileAsBytes(path);
             Logger.Log($"[SoundManager] Load bank buffer {path} {FileAccess.GetOpenError()}");
             _studioSystem.loadBankMemory(buffer, LOAD_BANK_FLAGS.NORMAL, out var bank);

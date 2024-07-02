@@ -50,9 +50,9 @@ public partial class AbilityTreePanel : AbilityTree
             S_Line4.Instance.Modulate = _lineUnlockedColor;
             S_Line3.Instance.Modulate = _lockedColor;
 
-            S_MiddleAbility2.Instance.Modulate = _lockedColor;
+            // S_MiddleAbility2.Instance.Modulate = _lockedColor;
             
-            S_EndAbility.Instance.Modulate = _lockedColor;
+            // S_EndAbility.Instance.Modulate = _lockedColor;
         } else if (ability.Id == abilityTree.MiddleAbilityIds[1])
         {
             S_Line1.Instance.Modulate = _lineLockedColor;
@@ -61,9 +61,9 @@ public partial class AbilityTreePanel : AbilityTree
             S_Line3.Instance.Modulate = _lineUnlockedColor;
             S_Line4.Instance.Modulate = _lockedColor;
             
-            S_MiddleAbility1.Instance.Modulate = _lockedColor;
+            // S_MiddleAbility1.Instance.Modulate = _lockedColor;
             
-            S_EndAbility.Instance.Modulate = _lockedColor;
+            // S_EndAbility.Instance.Modulate = _lockedColor;
         }
     }
 

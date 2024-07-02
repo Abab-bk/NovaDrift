@@ -38,11 +38,11 @@ public class Ability : IItemInfo
         } else if (Id == Tree.MiddleAbilityIds[0])
         {
             DataBuilder.AbilityIdPool.Add(Tree.EndAbilityId);
-            DataBuilder.AbilityIdPool.Remove(Tree.MiddleAbilityIds[1]);
+            // DataBuilder.AbilityIdPool.Remove(Tree.MiddleAbilityIds[1]);
         } else if (Id == Tree.MiddleAbilityIds[1])
         {
             DataBuilder.AbilityIdPool.Add(Tree.EndAbilityId);
-            DataBuilder.AbilityIdPool.Remove(Tree.MiddleAbilityIds[0]);
+            // DataBuilder.AbilityIdPool.Remove(Tree.MiddleAbilityIds[0]);
         }
     }
 }
