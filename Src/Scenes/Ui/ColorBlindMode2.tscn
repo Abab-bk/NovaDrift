@@ -1,0 +1,27 @@
+[gd_scene load_steps=4 format=3 uid="uid://dcr8hjf8yf0tc"]
+
+[ext_resource type="Script" path="res://Scripts/Ui/colorBlindMode2/ColorBlindMode2Panel.cs" id="1_msp58"]
+[ext_resource type="Shader" path="res://Assets/Shaders/ColorBlindMode2.gdshader" id="2_snndp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_d02at"]
+shader = ExtResource("2_snndp")
+
+[node name="ColorBlindMode2" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_msp58")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+material = SubResource("ShaderMaterial_d02at")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2

@@ -40,7 +40,7 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.UiVolum.Label
+    /// 类型: <see cref="Godot.Label"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer.UiVolum.Label
     /// </summary>
     public class Label_1 : UiNode<SettingPanel, Godot.Label, Label_1>
     {
@@ -49,7 +49,7 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HSlider"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.UiVolum.UiVolumeSlider
+    /// 类型: <see cref="Godot.HSlider"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer.UiVolum.UiVolumeSlider
     /// </summary>
     public class UiVolumeSlider : UiNode<SettingPanel, Godot.HSlider, UiVolumeSlider>
     {
@@ -58,12 +58,12 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.UiVolum
+    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer.UiVolum
     /// </summary>
     public class UiVolum : UiNode<SettingPanel, Godot.HBoxContainer, UiVolum>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.Label
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer.Label
         /// </summary>
         public Label_1 L_Label
         {
@@ -76,7 +76,7 @@ public abstract partial class Setting : UiBase
         private Label_1 _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.UiVolumeSlider
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer.UiVolumeSlider
         /// </summary>
         public UiVolumeSlider L_UiVolumeSlider
         {
@@ -93,7 +93,7 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.MusicVolum.Label
+    /// 类型: <see cref="Godot.Label"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer.MusicVolum.Label
     /// </summary>
     public class Label_2 : UiNode<SettingPanel, Godot.Label, Label_2>
     {
@@ -102,7 +102,7 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HSlider"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.MusicVolum.MusicVolumeSlider
+    /// 类型: <see cref="Godot.HSlider"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer.MusicVolum.MusicVolumeSlider
     /// </summary>
     public class MusicVolumeSlider : UiNode<SettingPanel, Godot.HSlider, MusicVolumeSlider>
     {
@@ -111,12 +111,12 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.MusicVolum
+    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer.MusicVolum
     /// </summary>
     public class MusicVolum : UiNode<SettingPanel, Godot.HBoxContainer, MusicVolum>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.Label
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer.Label
         /// </summary>
         public Label_2 L_Label
         {
@@ -129,7 +129,7 @@ public abstract partial class Setting : UiBase
         private Label_2 _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.MusicVolumeSlider
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer.MusicVolumeSlider
         /// </summary>
         public MusicVolumeSlider L_MusicVolumeSlider
         {
@@ -146,7 +146,7 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.SoundVolum.Label
+    /// 类型: <see cref="Godot.Label"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer.SoundVolum.Label
     /// </summary>
     public class Label_3 : UiNode<SettingPanel, Godot.Label, Label_3>
     {
@@ -155,7 +155,7 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HSlider"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.SoundVolum.SoundVolumeSlider
+    /// 类型: <see cref="Godot.HSlider"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer.SoundVolum.SoundVolumeSlider
     /// </summary>
     public class SoundVolumeSlider : UiNode<SettingPanel, Godot.HSlider, SoundVolumeSlider>
     {
@@ -164,12 +164,12 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.SoundVolum
+    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer.SoundVolum
     /// </summary>
     public class SoundVolum : UiNode<SettingPanel, Godot.HBoxContainer, SoundVolum>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.Label
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer.Label
         /// </summary>
         public Label_3 L_Label
         {
@@ -182,7 +182,7 @@ public abstract partial class Setting : UiBase
         private Label_3 _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.SoundVolumeSlider
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer.SoundVolumeSlider
         /// </summary>
         public SoundVolumeSlider L_SoundVolumeSlider
         {
@@ -199,12 +199,12 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer
     /// </summary>
     public class VBoxContainer_2 : UiNode<SettingPanel, Godot.VBoxContainer, VBoxContainer_2>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.UiVolum
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.UiVolum
         /// </summary>
         public UiVolum L_UiVolum
         {
@@ -217,7 +217,7 @@ public abstract partial class Setting : UiBase
         private UiVolum _L_UiVolum;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.MusicVolum
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.MusicVolum
         /// </summary>
         public MusicVolum L_MusicVolum
         {
@@ -230,7 +230,7 @@ public abstract partial class Setting : UiBase
         private MusicVolum _L_MusicVolum;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.SoundVolum
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.SoundVolum
         /// </summary>
         public SoundVolum L_SoundVolum
         {
@@ -247,12 +247,153 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer
+    /// 类型: <see cref="Godot.Label"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer2.Label
     /// </summary>
-    public class MarginContainer_1 : UiNode<SettingPanel, Godot.MarginContainer, MarginContainer_1>
+    public class Label_4 : UiNode<SettingPanel, Godot.Label, Label_4>
+    {
+        public Label_4(SettingPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Label_4 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.Button"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer2.HBoxContainer.ColorBlindMode0
+    /// </summary>
+    public class ColorBlindMode0 : UiNode<SettingPanel, Godot.Button, ColorBlindMode0>
+    {
+        public ColorBlindMode0(SettingPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
+        public override ColorBlindMode0 Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.Button"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer2.HBoxContainer.ColorBlindMode1
+    /// </summary>
+    public class ColorBlindMode1 : UiNode<SettingPanel, Godot.Button, ColorBlindMode1>
+    {
+        public ColorBlindMode1(SettingPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
+        public override ColorBlindMode1 Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.Button"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer2.HBoxContainer.ColorBlindMode2
+    /// </summary>
+    public class ColorBlindMode2 : UiNode<SettingPanel, Godot.Button, ColorBlindMode2>
+    {
+        public ColorBlindMode2(SettingPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
+        public override ColorBlindMode2 Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.Button"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer2.HBoxContainer.ColorBlindMode3
+    /// </summary>
+    public class ColorBlindMode3 : UiNode<SettingPanel, Godot.Button, ColorBlindMode3>
+    {
+        public ColorBlindMode3(SettingPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
+        public override ColorBlindMode3 Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer2.HBoxContainer
+    /// </summary>
+    public class HBoxContainer : UiNode<SettingPanel, Godot.HBoxContainer, HBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.VBoxContainer
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer2.ColorBlindMode0
+        /// </summary>
+        public ColorBlindMode0 L_ColorBlindMode0
+        {
+            get
+            {
+                if (_L_ColorBlindMode0 == null) _L_ColorBlindMode0 = new ColorBlindMode0(UiPanel, Instance.GetNode<Godot.Button>("ColorBlindMode0"));
+                return _L_ColorBlindMode0;
+            }
+        }
+        private ColorBlindMode0 _L_ColorBlindMode0;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer2.ColorBlindMode1
+        /// </summary>
+        public ColorBlindMode1 L_ColorBlindMode1
+        {
+            get
+            {
+                if (_L_ColorBlindMode1 == null) _L_ColorBlindMode1 = new ColorBlindMode1(UiPanel, Instance.GetNode<Godot.Button>("ColorBlindMode1"));
+                return _L_ColorBlindMode1;
+            }
+        }
+        private ColorBlindMode1 _L_ColorBlindMode1;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer2.ColorBlindMode2
+        /// </summary>
+        public ColorBlindMode2 L_ColorBlindMode2
+        {
+            get
+            {
+                if (_L_ColorBlindMode2 == null) _L_ColorBlindMode2 = new ColorBlindMode2(UiPanel, Instance.GetNode<Godot.Button>("ColorBlindMode2"));
+                return _L_ColorBlindMode2;
+            }
+        }
+        private ColorBlindMode2 _L_ColorBlindMode2;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer2.ColorBlindMode3
+        /// </summary>
+        public ColorBlindMode3 L_ColorBlindMode3
+        {
+            get
+            {
+                if (_L_ColorBlindMode3 == null) _L_ColorBlindMode3 = new ColorBlindMode3(UiPanel, Instance.GetNode<Godot.Button>("ColorBlindMode3"));
+                return _L_ColorBlindMode3;
+            }
+        }
+        private ColorBlindMode3 _L_ColorBlindMode3;
+
+        public HBoxContainer(SettingPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override HBoxContainer Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer2
+    /// </summary>
+    public class VBoxContainer2_1 : UiNode<SettingPanel, Godot.VBoxContainer, VBoxContainer2_1>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.Label
+        /// </summary>
+        public Label_4 L_Label
+        {
+            get
+            {
+                if (_L_Label == null) _L_Label = new Label_4(UiPanel, Instance.GetNode<Godot.Label>("Label"));
+                return _L_Label;
+            }
+        }
+        private Label_4 _L_Label;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.HBoxContainer
+        /// </summary>
+        public HBoxContainer L_HBoxContainer
+        {
+            get
+            {
+                if (_L_HBoxContainer == null) _L_HBoxContainer = new HBoxContainer(UiPanel, Instance.GetNode<Godot.HBoxContainer>("HBoxContainer"));
+                return _L_HBoxContainer;
+            }
+        }
+        private HBoxContainer _L_HBoxContainer;
+
+        public VBoxContainer2_1(SettingPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
+        public override VBoxContainer2_1 Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2
+    /// </summary>
+    public class VBoxContainer2 : UiNode<SettingPanel, Godot.VBoxContainer, VBoxContainer2>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer
         /// </summary>
         public VBoxContainer_2 L_VBoxContainer
         {
@@ -263,6 +404,41 @@ public abstract partial class Setting : UiBase
             }
         }
         private VBoxContainer_2 _L_VBoxContainer;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2
+        /// </summary>
+        public VBoxContainer2_1 L_VBoxContainer2
+        {
+            get
+            {
+                if (_L_VBoxContainer2 == null) _L_VBoxContainer2 = new VBoxContainer2_1(UiPanel, Instance.GetNode<Godot.VBoxContainer>("VBoxContainer2"));
+                return _L_VBoxContainer2;
+            }
+        }
+        private VBoxContainer2_1 _L_VBoxContainer2;
+
+        public VBoxContainer2(SettingPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
+        public override VBoxContainer2 Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer
+    /// </summary>
+    public class MarginContainer_1 : UiNode<SettingPanel, Godot.MarginContainer, MarginContainer_1>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.VBoxContainer2
+        /// </summary>
+        public VBoxContainer2 L_VBoxContainer2
+        {
+            get
+            {
+                if (_L_VBoxContainer2 == null) _L_VBoxContainer2 = new VBoxContainer2(UiPanel, Instance.GetNode<Godot.VBoxContainer>("VBoxContainer2"));
+                return _L_VBoxContainer2;
+            }
+        }
+        private VBoxContainer2 _L_VBoxContainer2;
 
         public MarginContainer_1(SettingPanel uiPanel, Godot.MarginContainer node) : base(uiPanel, node) {  }
         public override MarginContainer_1 Clone() => new (UiPanel, (Godot.MarginContainer)Instance.Duplicate());
@@ -371,34 +547,59 @@ public abstract partial class Setting : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.UiVolum.UiVolumeSlider
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer.UiVolum.UiVolumeSlider
     /// </summary>
-    public UiVolumeSlider S_UiVolumeSlider => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer.L_UiVolum.L_UiVolumeSlider;
+    public UiVolumeSlider S_UiVolumeSlider => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer2.L_VBoxContainer.L_UiVolum.L_UiVolumeSlider;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.UiVolum
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer.UiVolum
     /// </summary>
-    public UiVolum S_UiVolum => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer.L_UiVolum;
+    public UiVolum S_UiVolum => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer2.L_VBoxContainer.L_UiVolum;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.MusicVolum.MusicVolumeSlider
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer.MusicVolum.MusicVolumeSlider
     /// </summary>
-    public MusicVolumeSlider S_MusicVolumeSlider => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer.L_MusicVolum.L_MusicVolumeSlider;
+    public MusicVolumeSlider S_MusicVolumeSlider => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer2.L_VBoxContainer.L_MusicVolum.L_MusicVolumeSlider;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.MusicVolum
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer.MusicVolum
     /// </summary>
-    public MusicVolum S_MusicVolum => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer.L_MusicVolum;
+    public MusicVolum S_MusicVolum => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer2.L_VBoxContainer.L_MusicVolum;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.SoundVolum.SoundVolumeSlider
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HSlider"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer.SoundVolum.SoundVolumeSlider
     /// </summary>
-    public SoundVolumeSlider S_SoundVolumeSlider => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer.L_SoundVolum.L_SoundVolumeSlider;
+    public SoundVolumeSlider S_SoundVolumeSlider => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer2.L_VBoxContainer.L_SoundVolum.L_SoundVolumeSlider;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer.SoundVolum
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer.SoundVolum
     /// </summary>
-    public SoundVolum S_SoundVolum => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer.L_SoundVolum;
+    public SoundVolum S_SoundVolum => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer2.L_VBoxContainer.L_SoundVolum;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer2.HBoxContainer.ColorBlindMode0
+    /// </summary>
+    public ColorBlindMode0 S_ColorBlindMode0 => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer2.L_VBoxContainer2.L_HBoxContainer.L_ColorBlindMode0;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer2.HBoxContainer.ColorBlindMode1
+    /// </summary>
+    public ColorBlindMode1 S_ColorBlindMode1 => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer2.L_VBoxContainer2.L_HBoxContainer.L_ColorBlindMode1;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer2.HBoxContainer.ColorBlindMode2
+    /// </summary>
+    public ColorBlindMode2 S_ColorBlindMode2 => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer2.L_VBoxContainer2.L_HBoxContainer.L_ColorBlindMode2;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer2.HBoxContainer.ColorBlindMode3
+    /// </summary>
+    public ColorBlindMode3 S_ColorBlindMode3 => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer2.L_VBoxContainer2.L_HBoxContainer.L_ColorBlindMode3;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer2.HBoxContainer
+    /// </summary>
+    public HBoxContainer S_HBoxContainer => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer2.L_VBoxContainer2.L_HBoxContainer;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.CloseBtn

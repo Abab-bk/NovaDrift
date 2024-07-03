@@ -1,9 +1,98 @@
-[gd_scene load_steps=5 format=3 uid="uid://boy3trvjwidtw"]
+[gd_scene load_steps=17 format=3 uid="uid://boy3trvjwidtw"]
 
 [ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_rotgw"]
 [ext_resource type="Script" path="res://Scripts/Ui/setting/SettingPanel.cs" id="1_ubno3"]
 [ext_resource type="LabelSettings" uid="uid://cnabg1bgvdj1o" path="res://Assets/LabelSettings/WeightTitle.tres" id="2_hlirx"]
 [ext_resource type="LabelSettings" uid="uid://kllykcd3b5f6" path="res://Assets/LabelSettings/BoldGray44.tres" id="4_87fsr"]
+[ext_resource type="LabelSettings" uid="uid://c6d3f67ue8afv" path="res://Assets/LabelSettings/SubTitleWhite.tres" id="5_daprf"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_0gh56"]
+bg_color = Color(1, 1, 1, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v25wk"]
+bg_color = Color(0.908811, 0.908811, 0.908811, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wgyc7"]
+bg_color = Color(0.482353, 1, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_idyis"]
+bg_color = Color(0.469104, 0.973986, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u4fis"]
+bg_color = Color(0.482353, 1, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_r30ib"]
+bg_color = Color(1, 0, 0.482353, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4lw4e"]
+bg_color = Color(0.880982, 0, 0.421732, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7tp14"]
+bg_color = Color(1, 0, 0.482353, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7u0y7"]
+bg_color = Color(1, 0.482353, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_8soqo"]
+bg_color = Color(0.866558, 0.414385, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ytl4w"]
+bg_color = Color(1, 0.482353, 0, 1)
+border_width_left = 8
+border_width_top = 8
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0, 0, 0, 1)
 
 [node name="Setting" type="Control"]
 layout_mode = 3
@@ -44,26 +133,31 @@ size_flags_vertical = 3
 [node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
-theme_override_constants/margin_right = 600
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer"]
 layout_mode = 2
-size_flags_vertical = 3
+theme_override_constants/separation = 50
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
 theme_override_constants/separation = 20
 
-[node name="UiVolum" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="UiVolum" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(1400, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 40
+alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/UiVolum"]
-custom_minimum_size = Vector2(800, 0)
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer/UiVolum"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "Ui音量"
 label_settings = ExtResource("4_87fsr")
 horizontal_alignment = 2
 
-[node name="UiVolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/UiVolum"]
+[node name="UiVolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer/UiVolum"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -72,19 +166,22 @@ max_value = 1.0
 step = 0.1
 value = 0.8
 
-[node name="MusicVolum" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="MusicVolum" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(1400, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 40
+alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/MusicVolum"]
-custom_minimum_size = Vector2(800, 0)
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer/MusicVolum"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "音乐音量"
 label_settings = ExtResource("4_87fsr")
 horizontal_alignment = 2
 
-[node name="MusicVolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/MusicVolum"]
+[node name="MusicVolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer/MusicVolum"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -93,19 +190,22 @@ max_value = 1.0
 step = 0.1
 value = 0.8
 
-[node name="SoundVolum" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer"]
+[node name="SoundVolum" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer"]
+custom_minimum_size = Vector2(1400, 0)
 layout_mode = 2
+size_flags_horizontal = 4
 theme_override_constants/separation = 40
+alignment = 1
 
-[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/SoundVolum"]
-custom_minimum_size = Vector2(800, 0)
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer/SoundVolum"]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 text = "音效音量"
 label_settings = ExtResource("4_87fsr")
 horizontal_alignment = 2
 
-[node name="SoundVolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer/SoundVolum"]
+[node name="SoundVolumeSlider" type="HSlider" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer/SoundVolum"]
 unique_name_in_owner = true
 layout_mode = 2
 size_flags_horizontal = 3
@@ -113,6 +213,53 @@ size_flags_vertical = 1
 max_value = 1.0
 step = 0.1
 value = 0.8
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+text = "色盲模式"
+label_settings = ExtResource("5_daprf")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 30
+alignment = 1
+
+[node name="ColorBlindMode0" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_0gh56")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_v25wk")
+theme_override_styles/normal = SubResource("StyleBoxFlat_0gh56")
+
+[node name="ColorBlindMode1" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_wgyc7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_idyis")
+theme_override_styles/normal = SubResource("StyleBoxFlat_u4fis")
+
+[node name="ColorBlindMode2" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_r30ib")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_4lw4e")
+theme_override_styles/normal = SubResource("StyleBoxFlat_7tp14")
+
+[node name="ColorBlindMode3" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer2/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(100, 100)
+layout_mode = 2
+theme_override_styles/hover = SubResource("StyleBoxFlat_7u0y7")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_8soqo")
+theme_override_styles/normal = SubResource("StyleBoxFlat_ytl4w")
 
 [node name="CloseBtn" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true

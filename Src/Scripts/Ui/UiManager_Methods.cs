@@ -12,6 +12,9 @@ public static partial class UiManager
         public const string ActionBtn = "ActionBtn";
         public const string AnimationProgressBar = "AnimationProgressBar";
         public const string BuffIcon = "BuffIcon";
+        public const string ColorBlindMode1 = "ColorBlindMode1";
+        public const string ColorBlindMode2 = "ColorBlindMode2";
+        public const string ColorBlindMode3 = "ColorBlindMode3";
         public const string DailyQuests = "DailyQuests";
         public const string DamageLabel = "DamageLabel";
         public const string GalleryBtn = "GalleryBtn";
@@ -321,6 +324,150 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.BuffIcon.BuffIconPanel[] Get_BuffIcon_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.BuffIcon.BuffIconPanel>(nameof(NovaDrift.Scripts.Ui.BuffIcon.BuffIcon));
+    }
+
+    /// <summary>
+    /// 创建 ColorBlindMode1, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.ColorBlindMode1.ColorBlindMode1Panel Create_ColorBlindMode1()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.ColorBlindMode1.ColorBlindMode1Panel>(UiName.ColorBlindMode1);
+    }
+
+    /// <summary>
+    /// 打开 ColorBlindMode1, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.ColorBlindMode1.ColorBlindMode1Panel Open_ColorBlindMode1()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.ColorBlindMode1.ColorBlindMode1Panel>(UiName.ColorBlindMode1);
+    }
+
+    /// <summary>
+    /// 隐藏 ColorBlindMode1 的所有实例
+    /// </summary>
+    public static void Hide_ColorBlindMode1()
+    {
+        var uiInstance = Get_ColorBlindMode1_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 ColorBlindMode1 的所有实例
+    /// </summary>
+    public static void Destroy_ColorBlindMode1()
+    {
+        var uiInstance = Get_ColorBlindMode1_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 ColorBlindMode1 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.ColorBlindMode1.ColorBlindMode1Panel[] Get_ColorBlindMode1_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.ColorBlindMode1.ColorBlindMode1Panel>(nameof(NovaDrift.Scripts.Ui.ColorBlindMode1.ColorBlindMode1));
+    }
+
+    /// <summary>
+    /// 创建 ColorBlindMode2, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.ColorBlindMode2.ColorBlindMode2Panel Create_ColorBlindMode2()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.ColorBlindMode2.ColorBlindMode2Panel>(UiName.ColorBlindMode2);
+    }
+
+    /// <summary>
+    /// 打开 ColorBlindMode2, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.ColorBlindMode2.ColorBlindMode2Panel Open_ColorBlindMode2()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.ColorBlindMode2.ColorBlindMode2Panel>(UiName.ColorBlindMode2);
+    }
+
+    /// <summary>
+    /// 隐藏 ColorBlindMode2 的所有实例
+    /// </summary>
+    public static void Hide_ColorBlindMode2()
+    {
+        var uiInstance = Get_ColorBlindMode2_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 ColorBlindMode2 的所有实例
+    /// </summary>
+    public static void Destroy_ColorBlindMode2()
+    {
+        var uiInstance = Get_ColorBlindMode2_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 ColorBlindMode2 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.ColorBlindMode2.ColorBlindMode2Panel[] Get_ColorBlindMode2_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.ColorBlindMode2.ColorBlindMode2Panel>(nameof(NovaDrift.Scripts.Ui.ColorBlindMode2.ColorBlindMode2));
+    }
+
+    /// <summary>
+    /// 创建 ColorBlindMode3, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.ColorBlindMode3.ColorBlindMode3Panel Create_ColorBlindMode3()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.ColorBlindMode3.ColorBlindMode3Panel>(UiName.ColorBlindMode3);
+    }
+
+    /// <summary>
+    /// 打开 ColorBlindMode3, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.ColorBlindMode3.ColorBlindMode3Panel Open_ColorBlindMode3()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.ColorBlindMode3.ColorBlindMode3Panel>(UiName.ColorBlindMode3);
+    }
+
+    /// <summary>
+    /// 隐藏 ColorBlindMode3 的所有实例
+    /// </summary>
+    public static void Hide_ColorBlindMode3()
+    {
+        var uiInstance = Get_ColorBlindMode3_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 ColorBlindMode3 的所有实例
+    /// </summary>
+    public static void Destroy_ColorBlindMode3()
+    {
+        var uiInstance = Get_ColorBlindMode3_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 ColorBlindMode3 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.ColorBlindMode3.ColorBlindMode3Panel[] Get_ColorBlindMode3_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.ColorBlindMode3.ColorBlindMode3Panel>(nameof(NovaDrift.Scripts.Ui.ColorBlindMode3.ColorBlindMode3));
     }
 
     /// <summary>
