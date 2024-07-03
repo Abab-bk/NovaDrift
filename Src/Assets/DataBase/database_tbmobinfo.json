@@ -35,7 +35,7 @@
     "speed": 200,
     "damage": 10,
     "targeting": 0,
-    "shoot_cd": 1,
+    "shoot_cd": 0.8,
     "bullet_count": 1,
     "size": 1,
     "danger_factor": 2,

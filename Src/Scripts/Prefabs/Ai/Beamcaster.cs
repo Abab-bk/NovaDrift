@@ -1,17 +1,46 @@
-﻿using System;
-using AcidWallStudio.AcidUtilities;
+﻿using System.Collections.Generic;
 using Godot;
+using NovaDrift.Scripts.Prefabs.Actors.Mobs;
+using NovaDrift.Scripts.Prefabs.Components;
+using NovaDrift.Scripts.Vfx;
 
 namespace NovaDrift.Scripts.Prefabs.Ai;
 
 public partial class Beamcaster : MobAiComponent
 {
-    [Export] private Timer _timer;
-
+    [Export] private CircleSprite2D _circleSprite;
+    [Export] private Area2D _area;
+    
+    private readonly Dictionary<MobBase, LineVfx> _lines = new ();
+    
     public override void _Ready()
     {
         base._Ready();
-        _timer.Timeout += () => { Machine.SetTrigger("Next"); };
+        _circleSprite.UpdateRadius(200f);
+        _area.BodyEntered += body =>
+        {
+            if (body == Mob) return;
+            if (body is not MobBase mobBase) return;
+            if (mobBase.Ai is Beamcaster) return;
+
+            var lineVfx = new LineVfx();
+            lineVfx.Target = mobBase;
+            lineVfx.Width = 50f;
+            Mob.AddChild(lineVfx);
+            
+            _lines.Add(mobBase, lineVfx);
+        };
+
+        _area.BodyExited += body =>
+        {
+            if (body == Mob) return;
+            if (body is not MobBase mobBase) return;
+            if (mobBase.Ai is Beamcaster) return;
+
+            if (_lines.ContainsKey(mobBase) == false) return;
+            _lines[mobBase].QueueFree();
+            _lines.Remove(mobBase);
+        };
     }
 
     protected override void ConnectProcessSignals(State state, float delta)
@@ -20,8 +49,9 @@ public partial class Beamcaster : MobAiComponent
         switch (state.GetName())
         {
             case "Moving":
-                var dir = Wizard.GetRandom8Dir();
-                Mob.TryMoveTo(dir, delta);
+            //     var dir = Wizard.GetRandom8Dir();
+            //     Mob.TryMoveTo(dir, delta);
+                Mob.SetTargetAndMove(Global.Player, delta);
                 break;
             case "Idle":
                 Mob.TryStop(delta);
@@ -35,12 +65,8 @@ public partial class Beamcaster : MobAiComponent
         switch (state.GetName())
         {
             case "Moving":
-                _timer.WaitTime = Random.Shared.FloatRange(3f, 7f);
-                _timer.Start();
                 break;
             case "Idle":
-                _timer.WaitTime = Random.Shared.FloatRange(1f, 2f);
-                _timer.Start();
                 break;
         }
     }

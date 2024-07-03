@@ -1,10 +1,15 @@
-[gd_scene load_steps=16 format=3 uid="uid://dai2k1wuc6y38"]
+[gd_scene load_steps=18 format=3 uid="uid://dai2k1wuc6y38"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_yrrya"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/Beamcaster.cs" id="2_libbv"]
 [ext_resource type="Texture2D" uid="uid://dherwc0evanuk" path="res://Assets/Textures/Mobs/Beamcaster.png" id="2_y3saf"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/MobWeapons/BeamcasterShooter.cs" id="3_6phtf"]
 [ext_resource type="Script" path="res://Scripts/Libs/SpringSystem/Spring.cs" id="5_g6jbc"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Components/CircleSprite2D.cs" id="6_1w80e"]
+[ext_resource type="Texture2D" uid="uid://hxannpomw2b1" path="res://Assets/Textures/Particles/circle_01.png" id="6_n8weo"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_ywikk"]
+radius = 188.024
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_blio1"]
 size = Vector2(89, 104)
@@ -21,20 +26,13 @@ editor_offset = Vector2(-60, -120)
 state_name = &"Moving"
 editor_offset = Vector2(660, -120)
 
-[sub_resource type="VariableConfig" id="VariableConfig_uvbq5"]
-variable_name = &"Next"
-resource_name = "Next: Trigger"
-
-[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_m5mo2"]
-variable_config = SubResource("VariableConfig_uvbq5")
-trigger_type = 0
-
 [sub_resource type="TransitionConfig" id="TransitionConfig_4plgd"]
 from_state_config = SubResource("StateConfig_r1dwg")
 to_state_config = SubResource("StateConfig_x6cuv")
-type = 2
-and_mode = true
-variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_m5mo2")])
+
+[sub_resource type="VariableConfig" id="VariableConfig_uvbq5"]
+variable_name = &"Next"
+resource_name = "Next: Trigger"
 
 [sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_7i0eq"]
 variable_config = SubResource("VariableConfig_uvbq5")
@@ -52,17 +50,31 @@ state_config_list = Array[StateConfig]([SubResource("StateConfig_r1dwg"), SubRes
 transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_4plgd"), SubResource("TransitionConfig_oq18d")])
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_uvbq5")])
 
-[node name="Beamcaster" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_yrrya")]
+[node name="Beamcaster" node_paths=PackedStringArray("_hitBox", "_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_yrrya")]
 modulate = Color(0.972549, 0.560784, 1, 1)
+_hitBox = NodePath("HitBox")
 _hurtBox = NodePath("Components/HurtBox")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")
 
-[node name="Sprite2D" parent="." index="0"]
+[node name="Node2D" type="Node2D" parent="." index="0"]
+
+[node name="CircleSprite2D" type="Sprite2D" parent="Node2D" index="0"]
+texture = ExtResource("6_n8weo")
+script = ExtResource("6_1w80e")
+
+[node name="Area2D" type="Area2D" parent="Node2D/CircleSprite2D" index="0"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D/CircleSprite2D/Area2D" index="0"]
+shape = SubResource("CircleShape2D_ywikk")
+
+[node name="Sprite2D" parent="." index="1"]
 texture = ExtResource("2_y3saf")
 
-[node name="CollisionShape2D" parent="." index="1"]
+[node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(-3.5, 0)
 shape = SubResource("RectangleShape2D_blio1")
 
@@ -78,20 +90,18 @@ Actor = NodePath("../..")
 position = Vector2(-3, 0)
 shape = SubResource("RectangleShape2D_2qs4m")
 
-[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("_timer", "Mob")]
+[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("_circleSprite", "_area", "Mob")]
 script = ExtResource("2_libbv")
-_timer = NodePath("Timer")
+_circleSprite = NodePath("../../Node2D/CircleSprite2D")
+_area = NodePath("../../Node2D/CircleSprite2D/Area2D")
 Mob = NodePath("../..")
-
-[node name="Timer" type="Timer" parent="State/MobAiComponent" index="0"]
-one_shot = true
 
 [node name="HFSM" parent="State" index="1"]
 root_fsm_config = SubResource("FSMConfig_xi2o7")
 
-[node name="VisibleOnScreenNotifier2D" parent="." index="4"]
+[node name="VisibleOnScreenNotifier2D" parent="." index="5"]
 position = Vector2(17, 1.37097)
 scale = Vector2(1.6, 2.05645)
 
-[node name="Spring" type="Node2D" parent="." index="7"]
+[node name="Spring" type="Node2D" parent="." index="8"]
 script = ExtResource("5_g6jbc")
