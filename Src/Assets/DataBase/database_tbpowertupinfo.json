@@ -1,0 +1,9 @@
+[
+  {
+    "id": 1001,
+    "name": "射手",
+    "class_name": "PowerGunman",
+    "desc": "召唤一架无人机，朝你射击的方向射击",
+    "icon_name": "PowerGunman"
+  }
+]

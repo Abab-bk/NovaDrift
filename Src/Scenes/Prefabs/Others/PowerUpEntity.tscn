@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://cj6vrc04eeupa"]
+
+[ext_resource type="Texture2D" uid="uid://dxcetcd5cmn18" path="res://Assets/Ui/Icons/PowerUpsIcon/PowerGunman.png" id="1_gemww"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Others/PowerUpEntity.cs" id="1_wl6xe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_wunxg"]
+size = Vector2(70, 70)
+
+[node name="PowerUpEntity" type="Node2D"]
+script = ExtResource("1_wl6xe")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.3, 0.3)
+texture = ExtResource("1_gemww")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 512
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+rotation = 0.785398
+shape = SubResource("RectangleShape2D_wunxg")

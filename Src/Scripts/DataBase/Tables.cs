@@ -25,6 +25,8 @@ public partial class Tables
     public DataBase.TbBossMobInfo TbBossMobInfo {get; }
     public DataBase.TbPlayerBuild TbPlayerBuild {get; }
     public DataBase.TbStoreInfo TbStoreInfo {get; }
+    public DataBase.TbDroneInfo TbDroneInfo {get; }
+    public DataBase.TbPowertUpInfo TbPowertUpInfo {get; }
 
     public Tables(System.Func<string, JsonElement> loader)
     {
@@ -39,6 +41,8 @@ public partial class Tables
         TbBossMobInfo = new DataBase.TbBossMobInfo(loader("database_tbbossmobinfo"));
         TbPlayerBuild = new DataBase.TbPlayerBuild(loader("database_tbplayerbuild"));
         TbStoreInfo = new DataBase.TbStoreInfo(loader("database_tbstoreinfo"));
+        TbDroneInfo = new DataBase.TbDroneInfo(loader("database_tbdroneinfo"));
+        TbPowertUpInfo = new DataBase.TbPowertUpInfo(loader("database_tbpowertupinfo"));
         ResolveRef();
     }
     
@@ -55,6 +59,8 @@ public partial class Tables
         TbBossMobInfo.ResolveRef(this);
         TbPlayerBuild.ResolveRef(this);
         TbStoreInfo.ResolveRef(this);
+        TbDroneInfo.ResolveRef(this);
+        TbPowertUpInfo.ResolveRef(this);
     }
 }
 

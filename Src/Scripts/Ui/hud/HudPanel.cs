@@ -5,6 +5,7 @@ using NovaDrift.Scripts.Systems;
 using NovaDrift.Scripts.Ui.ActionBtn;
 using NovaDrift.Scripts.Ui.AnimationProgressBar;
 using NovaDrift.Scripts.Ui.BuffIcon;
+using NovaDrift.Scripts.Ui.PowerUpBtn;
 
 namespace NovaDrift.Scripts.Ui.Hud;
 
@@ -39,6 +40,13 @@ public partial class HudPanel : Hud
 		EventBus.OnGameStart += () =>
 		{
 			UiManager.Open_Slogan();
+		};
+
+		EventBus.OnPlayerGetPowerUp += power =>
+		{
+			S_PowerUps
+				.OpenNestedUi<PowerUpBtnPanel>(UiManager.UiName.PowerUpBtn)
+				.UpdateUi(power);
 		};
 
 		_expBar = GetNode<AnimationProgressBarPanel>("%ExpProgressBar");

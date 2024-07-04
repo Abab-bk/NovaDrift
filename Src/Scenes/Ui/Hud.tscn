@@ -47,6 +47,11 @@ layout_mode = 2
 size_flags_vertical = 3
 alignment = 1
 
+[node name="PowerUps" type="HBoxContainer" parent="MarginContainer/VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+alignment = 1
+
 [node name="ProgressBars" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
 unique_name_in_owner = true
 layout_mode = 2
@@ -98,3 +103,4 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2

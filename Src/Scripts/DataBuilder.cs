@@ -6,6 +6,7 @@ using AcidWallStudio.AcidUtilities;
 using cfg;
 using cfg.DataBase;
 using NovaDrift.addons.AcidStats;
+using NovaDrift.Scripts.Systems.PowerUps;
 using Game = NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts;
@@ -322,6 +323,21 @@ public static class DataBuilder
         };
         
         return abilityTree;
+    }
+    
+    public static PowerUp BuildPowerUpById(int id)
+    {
+        var tbPowerUpInfo = Tables.TbPowertUpInfo.Get(id);
+        
+        var name = tbPowerUpInfo.ClassName;
+        var classType = Type.GetType("NovaDrift.Scripts.Systems.PowerUps." + name);
+        if (classType == null) { throw new Exception("无法找到类：" + name); }
+        
+        var powerUp = (PowerUp) Activator.CreateInstance(classType);
+        if (powerUp == null) return null;
+        
+        powerUp.PowerUpInfo = tbPowerUpInfo;
+        return powerUp;
     }
 
     static DataBuilder()

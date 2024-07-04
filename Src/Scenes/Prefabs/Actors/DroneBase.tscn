@@ -1,0 +1,33 @@
+[gd_scene load_steps=5 format=3 uid="uid://dwbwolfn6eerf"]
+
+[ext_resource type="Script" path="res://Scripts/Prefabs/Actors/DroneBase.cs" id="1_vqxbj"]
+[ext_resource type="Texture2D" uid="uid://dcpix187w4k33" path="res://Assets/Textures/Mobs/Gyrogun.png" id="1_woc2e"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Components/PureHurtBox.cs" id="2_fknt7"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/DroneAiComponent.cs" id="4_gc4su"]
+
+[node name="DroneBase" type="CharacterBody2D"]
+script = ExtResource("1_vqxbj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_woc2e")
+
+[node name="PureHurtBox" type="Area2D" parent="."]
+unique_name_in_owner = true
+script = ExtResource("2_fknt7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PureHurtBox"]
+
+[node name="HFSM" type="HFSM" parent="."]
+unique_name_in_owner = true
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+
+[node name="DroneAiComponent" type="Node" parent="." node_paths=PackedStringArray("Drone")]
+script = ExtResource("4_gc4su")
+Drone = NodePath("..")
+
+[node name="ShootTimer" type="Timer" parent="."]
+one_shot = true
+
+[node name="FrontMarker" type="Marker2D" parent="."]
+position = Vector2(60, 0)

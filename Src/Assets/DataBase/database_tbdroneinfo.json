@@ -1,0 +1,15 @@
+[
+  {
+    "id": 1001,
+    "name": "射手",
+    "scene_name": "Gunman",
+    "desc": "朝你射击的方向射击",
+    "health": 200,
+    "speed": 300,
+    "damage": 10,
+    "targeting": 0,
+    "shoot_cd": 3,
+    "bullet_count": 1,
+    "bullet_speed": 100
+  }
+]

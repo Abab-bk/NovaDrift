@@ -1,5 +1,6 @@
 ﻿using System;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
+using NovaDrift.Scripts.Systems.PowerUps;
 using NovaDrift.Scripts.Ui.ActionBtn;
 
 namespace NovaDrift.Scripts;
@@ -12,6 +13,7 @@ public static class EventBus
     public static Action OnGameOver;
     public static Action OnGameInit;
     public static Action OnGameStart;
+    public static Action<PowerUp> OnPlayerGetPowerUp;
 
     public static event Action<MobBase> OnMobEnteredTree;
 

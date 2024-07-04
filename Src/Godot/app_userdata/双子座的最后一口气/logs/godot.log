@@ -22,3 +22,5 @@ USER ERROR: Parameter "data.tree" is null.
 [Log][Global] Try Stop game. Stop count: 1
 [Log][Global] Try Resume game. Stop count: 0
 [Log][Ui] Generate debug panel
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0

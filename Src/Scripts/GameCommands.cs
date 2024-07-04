@@ -1,7 +1,9 @@
 using GDebugPanelGodot.Core;
 using GDebugPanelGodot.DebugActions.Containers;
 using GDebugPanelGodot.Extensions;
+using Godot;
 using NovaDrift.Scripts.Prefabs.Components;
+using NovaDrift.Scripts.Prefabs.Others;
 using NovaDrift.Scripts.Systems.Debugs;
 
 namespace NovaDrift.Scripts;
@@ -98,6 +100,15 @@ public sealed class WorldCommands
     public void GenerateBossById() => Global.WaveSpawnerController.GenerateABoss(SomethingId);
     public void GenerateBossWaveById() => Global.WaveSpawnerController.GenerateBossWave(SomethingId);
     public void GenerateWave() => Global.WaveSpawnerController.GenerateWave();
+
+    public void SpawnPowerUpEntity()
+    {
+        var powerUp = GD.Load<PackedScene>("res://Scenes/Prefabs/Others/PowerUpEntity.tscn")
+            .Instantiate<PowerUpEntity>();
+        powerUp.PowerUp = DataBuilder.BuildPowerUpById(SomethingId);
+        Global.GameWorld.AddChild(powerUp);
+        powerUp.GlobalPosition = SpawnPoint.GetPoint(Constants.Points.Center);
+    }
 
     public void GameOver()
     {

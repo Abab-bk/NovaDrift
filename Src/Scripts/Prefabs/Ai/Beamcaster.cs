@@ -10,6 +10,7 @@ public partial class Beamcaster : MobAiComponent
 {
     [Export] private CircleSprite2D _circleSprite;
     [Export] private Area2D _area;
+    [Export] private Timer _healingTimer;
     
     private readonly Dictionary<MobBase, LineVfx> _lines = new ();
     
@@ -25,7 +26,7 @@ public partial class Beamcaster : MobAiComponent
 
             var lineVfx = new LineVfx();
             lineVfx.Target = mobBase;
-            lineVfx.Width = 50f;
+            lineVfx.Width = 10f;
             Mob.AddChild(lineVfx);
             
             _lines.Add(mobBase, lineVfx);
@@ -41,6 +42,14 @@ public partial class Beamcaster : MobAiComponent
             _lines[mobBase].QueueFree();
             _lines.Remove(mobBase);
         };
+
+        _healingTimer.Timeout += () =>
+        {
+            foreach (var line in _lines)
+            {
+                line.Key.Stats.Health.Increase(line.Key.Stats.Health.MaxValue.Value * 0.015f);
+            }
+        };
     }
 
     protected override void ConnectProcessSignals(State state, float delta)
@@ -49,8 +58,6 @@ public partial class Beamcaster : MobAiComponent
         switch (state.GetName())
         {
             case "Moving":
-            //     var dir = Wizard.GetRandom8Dir();
-            //     Mob.TryMoveTo(dir, delta);
                 Mob.SetTargetAndMove(Global.Player, delta);
                 break;
             case "Idle":

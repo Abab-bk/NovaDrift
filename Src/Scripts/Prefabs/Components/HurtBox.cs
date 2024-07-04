@@ -1,6 +1,5 @@
 ﻿using System;
 using Godot;
-using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Prefabs.Actors;
 
 namespace NovaDrift.Scripts.Prefabs.Components;

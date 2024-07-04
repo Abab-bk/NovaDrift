@@ -86,6 +86,15 @@ public abstract partial class Hud : UiBase
     }
 
     /// <summary>
+    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: Hud.MarginContainer.VBoxContainer2.PowerUps
+    /// </summary>
+    public class PowerUps : UiNode<HudPanel, Godot.HBoxContainer, PowerUps>
+    {
+        public PowerUps(HudPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override PowerUps Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
     /// 类型: <see cref="NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel"/>, 路径: Hud.MarginContainer.VBoxContainer2.ProgressBars.ExpProgressBar
     /// </summary>
     public class ExpProgressBar : UiNode<HudPanel, NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel, ExpProgressBar>
@@ -216,6 +225,19 @@ public abstract partial class Hud : UiBase
         private ActionButtons _L_ActionButtons;
 
         /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Hud.MarginContainer.PowerUps
+        /// </summary>
+        public PowerUps L_PowerUps
+        {
+            get
+            {
+                if (_L_PowerUps == null) _L_PowerUps = new PowerUps(UiPanel, Instance.GetNode<Godot.HBoxContainer>("PowerUps"));
+                return _L_PowerUps;
+            }
+        }
+        private PowerUps _L_PowerUps;
+
+        /// <summary>
         /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Hud.MarginContainer.ProgressBars
         /// </summary>
         public ProgressBars L_ProgressBars
@@ -312,6 +334,11 @@ public abstract partial class Hud : UiBase
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.ActionButtons
     /// </summary>
     public ActionButtons S_ActionButtons => L_MarginContainer.L_VBoxContainer2.L_ActionButtons;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.PowerUps
+    /// </summary>
+    public PowerUps S_PowerUps => L_MarginContainer.L_VBoxContainer2.L_PowerUps;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.AnimationProgressBar.AnimationProgressBarPanel"/>, 节点路径: Hud.MarginContainer.VBoxContainer2.ProgressBars.ExpProgressBar

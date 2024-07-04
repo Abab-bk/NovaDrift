@@ -1,0 +1,65 @@
+[gd_scene load_steps=14 format=3 uid="uid://dy38rfonuffij"]
+
+[ext_resource type="PackedScene" uid="uid://dwbwolfn6eerf" path="res://Scenes/Prefabs/Actors/DroneBase.tscn" id="1_f4epo"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/DronesAi/GunmanAi.cs" id="2_qkssv"]
+
+[sub_resource type="StateConfig" id="StateConfig_ksvnp"]
+state_name = &"Running"
+editor_offset = Vector2(280, 180)
+
+[sub_resource type="StateConfig" id="StateConfig_l1jum"]
+state_name = &"Shoot"
+editor_offset = Vector2(700, 180)
+
+[sub_resource type="StateConfig" id="StateConfig_dao05"]
+state_name = &"Idle"
+type = 1
+editor_offset = Vector2(-20, 180)
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_o7fxh"]
+from_state_config = SubResource("StateConfig_dao05")
+to_state_config = SubResource("StateConfig_ksvnp")
+
+[sub_resource type="VariableConfig" id="VariableConfig_6i6n3"]
+variable_name = &"ToShoot"
+resource_name = "ToShoot: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_ibqwu"]
+variable_config = SubResource("VariableConfig_6i6n3")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_q38d6"]
+from_state_config = SubResource("StateConfig_ksvnp")
+to_state_config = SubResource("StateConfig_l1jum")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_ibqwu")])
+
+[sub_resource type="VariableConfig" id="VariableConfig_vlbu3"]
+variable_name = &"ToRunning"
+resource_name = "ToRunning: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_pioaw"]
+variable_config = SubResource("VariableConfig_vlbu3")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_c4rsf"]
+from_state_config = SubResource("StateConfig_l1jum")
+to_state_config = SubResource("StateConfig_ksvnp")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_pioaw")])
+
+[sub_resource type="FSMConfig" id="FSMConfig_88l7m"]
+state_config_list = Array[StateConfig]([SubResource("StateConfig_ksvnp"), SubResource("StateConfig_l1jum"), SubResource("StateConfig_dao05")])
+transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_o7fxh"), SubResource("TransitionConfig_q38d6"), SubResource("TransitionConfig_c4rsf")])
+variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_vlbu3"), SubResource("VariableConfig_6i6n3")])
+
+[node name="Gunman" instance=ExtResource("1_f4epo")]
+
+[node name="HFSM" parent="." index="2"]
+root_fsm_config = SubResource("FSMConfig_88l7m")
+
+[node name="DroneAiComponent" parent="." index="4" node_paths=PackedStringArray("Drone")]
+script = ExtResource("2_qkssv")
+Drone = NodePath("..")

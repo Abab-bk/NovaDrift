@@ -2,9 +2,8 @@ using System;
 using AcidJoystick;
 using AcidWallStudio.Fmod;
 using DsUi;
-using DwarfImpulse;
 using Godot;
-using NovaDrift.Scripts.Prefabs.Components;
+using NovaDrift.Scripts.Prefabs.Others;
 using NovaDrift.Scripts.Prefabs.Shields;
 
 namespace NovaDrift.Scripts.Prefabs.Actors;
@@ -12,6 +11,7 @@ namespace NovaDrift.Scripts.Prefabs.Actors;
 public partial class Player : Actor
 {
     [GetNode("%RegenerationTimer")] private Timer _regenerationTimer;
+    [GetNode("AreaMonitor")] private Area2D _areaMonitor;
     
     private HFSM _movementMachine;
     private HFSM _actionMachine;
@@ -75,14 +75,20 @@ public partial class Player : Actor
                 Stats.Health.MaxValue.Value / 50 * Stats.Regeneration.Value);
         };
         _regenerationTimer.Start();
-        
+
+        _areaMonitor.AreaEntered += OnAreaMonitorAreaEntered;
+
         Global.GameContext.SetCamera(GetNode<Node2D>("PhantomCamera2D"));
-        // Global.GameContext.SetLimits(
-        //     SpawnPoint.GetPoint(Constants.Points.LeftLimit)
-        //     );
-        // Global.GameContext.PrintLimits();
         
         UpdateUi();
+    }
+
+    private void OnAreaMonitorAreaEntered(Area2D area)
+    {
+        if (area.Owner is PowerUpEntity powerUp)
+        {
+            powerUp.Get();
+        }
     }
 
 
