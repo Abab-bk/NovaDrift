@@ -3,6 +3,7 @@ Vulkan 1.3.260 - Forward Mobile - Using Device #0: AMD - AMD Radeon RX 580 2048S
 USER ERROR: Can't create shader cache folder, no shader caching will happen: user://
    at: RendererCompositorRD (servers/rendering/renderer_rd/renderer_compositor_rd.cpp:272)
 
+[Run Config] Applied environment variables from the Debug config.
 [Log][BootSplash] Booting...
 [Log][BootSplash] Debug mode, change scene to: res://Scenes/World.tscn
 USER ERROR: Parameter "data.tree" is null.

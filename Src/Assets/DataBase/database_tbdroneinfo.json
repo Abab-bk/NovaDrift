@@ -8,8 +8,8 @@
     "speed": 300,
     "damage": 10,
     "targeting": 0,
-    "shoot_cd": 3,
+    "shoot_cd": 0.5,
     "bullet_count": 1,
-    "bullet_speed": 100
+    "bullet_speed": 1500
   }
 ]

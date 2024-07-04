@@ -31,9 +31,15 @@ public partial class DroneBase : CharacterBody2D
     public void TryMoveTo(Vector2 dir, double delta)
     {
         var targetVelocity = dir * DroneInfo.Speed;
-        Velocity = Velocity.MoveToward(targetVelocity, (float)delta);
+        Velocity = targetVelocity;
     }
 
+    public void SetTargetPosAndMove(Vector2 pos, float delta)
+    {
+        // LookAt(pos);
+        TryMoveTo(GlobalPosition.DirectionTo(pos), delta);
+    }
+    
     public void TryMoveToPlayer(float delta)
     {
         var player = Global.Player;
@@ -43,7 +49,7 @@ public partial class DroneBase : CharacterBody2D
 
     public void TryStop(double delta)
     {
-        Velocity = Velocity.MoveToward(Vector2.Zero, (float)delta);
+        Velocity = Vector2.Zero;
     }
     
     public BulletBase GetBullet()
@@ -53,18 +59,33 @@ public partial class DroneBase : CharacterBody2D
             SetDamage(DroneInfo.Damage).
             SetSpeed(DroneInfo.BulletSpeed).
             SetSize(1f).
-            SetDegeneration(4f).
+            SetDegeneration(10f).
             SetSteering(DroneInfo.Targeting).
             Build();
     }
     
     public void Shoot()
     {
-        // TODO: 无人机多发子弹
         if (!_shootTimer.IsStopped()) return;
-        var bullet = GetBullet();
-        bullet.GlobalPosition = FrontMarker.GlobalPosition;
-        bullet.GlobalRotation = FrontMarker.GlobalRotation;
         _shootTimer.Start();
+
+        for (int i = 0; i < DroneInfo.BulletCount; i++)
+        {
+            var bullet = GetBullet();
+                
+            bullet.GlobalPosition = FrontMarker.GlobalPosition;
+            if (DroneInfo.BulletCount == 1)
+            {
+                bullet.Direction = bullet.Direction.Rotated(GlobalRotation);
+            }
+            else
+            {
+                float arcRad = Mathf.DegToRad(Global.Player.Stats.ShootSpread.Value);
+                float increment = arcRad / (DroneInfo.BulletCount - 1);
+                bullet.Direction = bullet.Direction.Rotated(GlobalRotation + increment * i - arcRad / 2);
+            }
+
+            Global.GameWorld.AddChild(bullet);
+        }
     }
 }

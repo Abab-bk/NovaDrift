@@ -208,6 +208,7 @@ tween_resource = SubResource("Resource_w330d")
 limit_target = NodePath("../CollisionShape2D2")
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="15"]
+visible = false
 shape = SubResource("RectangleShape2D_5ar5p")
 disabled = true
 
@@ -217,3 +218,29 @@ collision_mask = 512
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaMonitor" index="0"]
 shape = SubResource("RectangleShape2D_ln1bs")
+
+[node name="Node2D" type="Node2D" parent="." index="17"]
+
+[node name="Marker2D" type="Marker2D" parent="Node2D" index="0"]
+position = Vector2(120, 0)
+
+[node name="Marker2D2" type="Marker2D" parent="Node2D" index="1"]
+position = Vector2(120, 114)
+
+[node name="Marker2D3" type="Marker2D" parent="Node2D" index="2"]
+position = Vector2(0, 114)
+
+[node name="Marker2D4" type="Marker2D" parent="Node2D" index="3"]
+position = Vector2(-106, 114)
+
+[node name="Marker2D6" type="Marker2D" parent="Node2D" index="4"]
+position = Vector2(120, -98)
+
+[node name="Marker2D7" type="Marker2D" parent="Node2D" index="5"]
+position = Vector2(0, -98)
+
+[node name="Marker2D8" type="Marker2D" parent="Node2D" index="6"]
+position = Vector2(-106, -98)
+
+[node name="Marker2D5" type="Marker2D" parent="Node2D" index="7"]
+position = Vector2(-106, 0)

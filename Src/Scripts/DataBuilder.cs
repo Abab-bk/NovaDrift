@@ -5,7 +5,9 @@ using System.Text.Json;
 using AcidWallStudio.AcidUtilities;
 using cfg;
 using cfg.DataBase;
+using Godot;
 using NovaDrift.addons.AcidStats;
+using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Systems.PowerUps;
 using Game = NovaDrift.Scripts.Systems;
 
@@ -338,6 +340,17 @@ public static class DataBuilder
         
         powerUp.PowerUpInfo = tbPowerUpInfo;
         return powerUp;
+    }
+    
+    public static DroneBase BuildDroneById(int id)
+    {
+        var info = Tables.TbDroneInfo.Get(id);
+        
+        var drone = GD
+            .Load<PackedScene>($"res://Scenes/Prefabs/Actors/Drones/{info.SceneName}.tscn")
+            .Instantiate<DroneBase>();
+        drone.DroneInfo = info;
+        return drone;
     }
 
     static DataBuilder()

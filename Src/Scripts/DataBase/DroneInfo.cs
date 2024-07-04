@@ -26,7 +26,7 @@ public sealed partial class DroneInfo : Luban.BeanBase
         Damage = _buf.GetProperty("damage").GetSingle();
         Targeting = _buf.GetProperty("targeting").GetSingle();
         ShootCd = _buf.GetProperty("shoot_cd").GetSingle();
-        BulletCount = _buf.GetProperty("bullet_count").GetSingle();
+        BulletCount = _buf.GetProperty("bullet_count").GetInt32();
         BulletSpeed = _buf.GetProperty("bullet_speed").GetSingle();
     }
 
@@ -74,7 +74,7 @@ public sealed partial class DroneInfo : Luban.BeanBase
     /// <summary>
     /// 子弹数量
     /// </summary>
-    public readonly float BulletCount;
+    public readonly int BulletCount;
     /// <summary>
     /// 子弹速度
     /// </summary>
