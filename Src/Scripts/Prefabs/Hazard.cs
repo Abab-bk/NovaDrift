@@ -4,7 +4,7 @@ using NovaDrift.Scripts.Prefabs.Components;
 namespace NovaDrift.Scripts.Prefabs;
 
 
-public abstract partial class Hazard : Node2D
+public abstract partial class Hazard : Node2D, IHazard
 {
     [Export] private float _damage;
     [Export] private float _scale = 1f;
@@ -15,4 +15,8 @@ public abstract partial class Hazard : Node2D
         _hitBox.Damage = _damage * _scale;
         _hitBox.SetIsPlayer(false);
     }
+}
+
+public interface IHazard
+{
 }

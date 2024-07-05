@@ -18,7 +18,7 @@
     "scene_name": "Collector",
     "desc": "帮助你收集经验",
     "health": 200,
-    "speed": 300,
+    "speed": 700,
     "damage": 10,
     "targeting": 0,
     "shoot_cd": 0.5,

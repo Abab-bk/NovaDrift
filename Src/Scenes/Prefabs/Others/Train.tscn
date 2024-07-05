@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://uw7l5u2k2buv"]
+
+[ext_resource type="Script" path="res://Scripts/Prefabs/Others/Train.cs" id="1_wfurj"]
+
+[node name="Train" type="Node2D"]
+script = ExtResource("1_wfurj")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+one_shot = true

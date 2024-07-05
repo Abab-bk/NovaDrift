@@ -3,6 +3,7 @@ using AcidWallStudio.AcidUtilities;
 using GDebugPanelGodot.Core;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Hazards;
+using NovaDrift.Scripts.Prefabs.Others;
 
 namespace NovaDrift.Scripts.Prefabs.Components;
 
@@ -16,6 +17,7 @@ public partial class HazardSpawner : Node2D
         AsteroidSmall,
         AsteroidMedium,
         AsteroidLarge,
+        Train,
     }
     
     private Timer _timer;
@@ -44,14 +46,17 @@ public partial class HazardSpawner : Node2D
 
     public void SpawnHazard(HazardType type)
     {
-        Hazard hazard = GetHazard(type);
-        AddChild(hazard);
-        hazard.GlobalPosition = Wizard.GetRandomScreenPosition();
+        IHazard hazard = GetHazard(type);
+
+        if (hazard is not Node2D node) return;
+        
+        AddChild(node);
+        node.GlobalPosition = Wizard.GetRandomScreenPosition();
     }
 
     private HazardType GetRandomHazardType() { return Random.Shared.GetRandomEnum<HazardType>(); }
 
-    private Hazard GetHazard(HazardType type)
+    private IHazard GetHazard(HazardType type)
     {
         switch (type)
         {
@@ -61,6 +66,8 @@ public partial class HazardSpawner : Node2D
                 return GD.Load<PackedScene>("res://Scenes/Prefabs/Hazards/AsteroidMedium.tscn").Instantiate<AsteroidBase>();
             case HazardType.AsteroidLarge:
                 return GD.Load<PackedScene>("res://Scenes/Prefabs/Hazards/AsteroidLarge.tscn").Instantiate<AsteroidBase>();
+            case HazardType.Train:
+                return GD.Load<PackedScene>("res://Scenes/Prefabs/Others/Train.tscn").Instantiate<Train>();
             default:
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
         }

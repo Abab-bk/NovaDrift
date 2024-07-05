@@ -1,0 +1,29 @@
+[gd_scene load_steps=6 format=3 uid="uid://bmu5chw6yh1vs"]
+
+[ext_resource type="Texture2D" uid="uid://ddvmv27to2f6s" path="res://Assets/Textures/Objects/Train.png" id="1_gl51w"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Others/TrainBody.cs" id="1_t7iqb"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Components/PureHurtBox.cs" id="2_f3sla"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Components/HitBox.cs" id="4_xrfla"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7x243"]
+size = Vector2(166, 124)
+
+[node name="TrainBody" type="Node2D"]
+script = ExtResource("1_t7iqb")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_gl51w")
+
+[node name="PureHurtBox" type="Area2D" parent="."]
+collision_layer = 32
+collision_mask = 0
+script = ExtResource("2_f3sla")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PureHurtBox"]
+shape = SubResource("RectangleShape2D_7x243")
+
+[node name="HitBox" type="Area2D" parent="."]
+script = ExtResource("4_xrfla")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+shape = SubResource("RectangleShape2D_7x243")
