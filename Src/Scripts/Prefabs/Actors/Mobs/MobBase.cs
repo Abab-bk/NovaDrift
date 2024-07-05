@@ -97,7 +97,7 @@ public partial class MobBase : Actor
         {
             var expBall = GD.Load<PackedScene>("res://Scenes/Vfx/ExpBall.tscn").Instantiate<ExpBall>();
             expBall.Pos = GlobalPosition + temp * i;
-            Global.GameWorld.AddChild(expBall);
+            Global.GameWorld.CallDeferred(Node.MethodName.AddChild, expBall);
         }
 
         var dieVfx = GD.Load<PackedScene>("res://Scenes/Vfx/DieVfx.tscn").Instantiate<DieVfx>();

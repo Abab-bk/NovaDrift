@@ -214,7 +214,7 @@ disabled = true
 
 [node name="AreaMonitor" type="Area2D" parent="." index="16"]
 collision_layer = 0
-collision_mask = 512
+collision_mask = 1536
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaMonitor" index="0"]
 shape = SubResource("RectangleShape2D_ln1bs")

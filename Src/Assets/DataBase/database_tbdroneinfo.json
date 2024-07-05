@@ -11,5 +11,18 @@
     "shoot_cd": 0.5,
     "bullet_count": 1,
     "bullet_speed": 1500
+  },
+  {
+    "id": 1002,
+    "name": "收藏家",
+    "scene_name": "Collector",
+    "desc": "帮助你收集经验",
+    "health": 200,
+    "speed": 300,
+    "damage": 10,
+    "targeting": 0,
+    "shoot_cd": 0.5,
+    "bullet_count": 1,
+    "bullet_speed": 1500
   }
 ]

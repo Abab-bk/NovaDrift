@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://kb1an507abba"]
+[gd_scene load_steps=4 format=3 uid="uid://kb1an507abba"]
 
 [ext_resource type="Script" path="res://Scripts/Vfx/ExpBall.cs" id="1_jadrx"]
 [ext_resource type="Texture2D" uid="uid://dbe864h5yf3rc" path="res://Assets/Textures/Particles/star_05.png" id="1_nfmqk"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pbeln"]
+radius = 22.0
 
 [node name="ExpBall" type="Node2D"]
 modulate = Color(0.505882, 0.486275, 1, 1)
@@ -10,3 +13,10 @@ script = ExtResource("1_jadrx")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("1_nfmqk")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 1024
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_pbeln")

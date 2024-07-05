@@ -1,22 +1,25 @@
+using System;
+using AcidWallStudio.AcidUtilities;
 using Godot;
-using GTweensGodot.Extensions;
 
 namespace NovaDrift.Scripts.Vfx;
 
-public partial class ExpBall : BaseVfx
+public partial class ExpBall : Node2D
 {
+    [GetNode("Area2D")] private Area2D _area;
     public Vector2 Pos;
     
     public override void _Ready()
     {
-        base._Ready();
-        GlobalPosition = Pos;
-        this.TweenGlobalPosition(Global.Player.GlobalPosition, 0.2f)
-            .OnComplete(() =>
-            {
-                Global.Player.Stats.Exp.Increase(1);
-                OnAnimationEnd?.Invoke();
-            })
-            .Play();
+        AddToGroup("ExpBalls");
+        GlobalPosition = Pos + new Vector2(
+            Random.Shared.FloatRange(-100f, 100f),
+            Random.Shared.FloatRange(-100f, 100f));
+    }
+
+    public void Get()
+    {
+        Global.Player.Stats.Exp.Increase(1);
+        QueueFree();
     }
 }

@@ -1,6 +1,7 @@
-[gd_scene load_steps=14 format=3 uid="uid://dy38rfonuffij"]
+[gd_scene load_steps=15 format=3 uid="uid://dy38rfonuffij"]
 
 [ext_resource type="PackedScene" uid="uid://dwbwolfn6eerf" path="res://Scenes/Prefabs/Actors/DroneBase.tscn" id="1_f4epo"]
+[ext_resource type="Texture2D" uid="uid://cl3erovg3bw15" path="res://Assets/Textures/Drones/Gunman.png" id="2_ehy8k"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/DronesAi/GunmanAi.cs" id="2_qkssv"]
 
 [sub_resource type="StateConfig" id="StateConfig_ksvnp"]
@@ -56,6 +57,9 @@ transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_vlbu3"), SubResource("VariableConfig_6i6n3")])
 
 [node name="Gunman" instance=ExtResource("1_f4epo")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_ehy8k")
 
 [node name="HFSM" parent="." index="2"]
 root_fsm_config = SubResource("FSMConfig_88l7m")

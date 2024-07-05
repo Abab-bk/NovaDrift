@@ -1,0 +1,51 @@
+[gd_scene load_steps=10 format=3 uid="uid://dcfqivmkvbo4r"]
+
+[ext_resource type="PackedScene" uid="uid://dwbwolfn6eerf" path="res://Scenes/Prefabs/Actors/DroneBase.tscn" id="1_mx2n4"]
+[ext_resource type="Texture2D" uid="uid://bcnuq63tbagc8" path="res://Assets/Textures/Drones/Collector.png" id="2_sqlvr"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/DronesAi/CollectorAi.cs" id="3_od5l2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2a4xm"]
+radius = 52.2398
+
+[sub_resource type="StateConfig" id="StateConfig_sgpvp"]
+state_name = &"Running"
+editor_offset = Vector2(380, 100)
+
+[sub_resource type="StateConfig" id="StateConfig_y5d4d"]
+state_name = &"Idle"
+type = 1
+editor_offset = Vector2(100, 100)
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_dotvv"]
+from_state_config = SubResource("StateConfig_y5d4d")
+to_state_config = SubResource("StateConfig_sgpvp")
+
+[sub_resource type="FSMConfig" id="FSMConfig_ustws"]
+state_config_list = Array[StateConfig]([SubResource("StateConfig_sgpvp"), SubResource("StateConfig_y5d4d")])
+transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_dotvv")])
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pbsj1"]
+radius = 53.0
+
+[node name="Collector" instance=ExtResource("1_mx2n4")]
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_sqlvr")
+
+[node name="CollisionShape2D" parent="PureHurtBox" index="0"]
+shape = SubResource("CircleShape2D_2a4xm")
+
+[node name="HFSM" parent="." index="2"]
+root_fsm_config = SubResource("FSMConfig_ustws")
+
+[node name="DroneAiComponent" parent="." index="4" node_paths=PackedStringArray("Drone")]
+script = ExtResource("3_od5l2")
+Drone = NodePath("..")
+
+[node name="Area2D" type="Area2D" parent="." index="7"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 1024
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
+shape = SubResource("CircleShape2D_pbsj1")

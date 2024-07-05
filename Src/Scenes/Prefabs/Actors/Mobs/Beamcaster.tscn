@@ -90,11 +90,14 @@ Actor = NodePath("../..")
 position = Vector2(-3, 0)
 shape = SubResource("RectangleShape2D_2qs4m")
 
-[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("_circleSprite", "_area", "Mob")]
+[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("_circleSprite", "_area", "_healingTimer", "Mob")]
 script = ExtResource("2_libbv")
 _circleSprite = NodePath("../../Node2D/CircleSprite2D")
 _area = NodePath("../../Node2D/CircleSprite2D/Area2D")
+_healingTimer = NodePath("HealingTimer")
 Mob = NodePath("../..")
+
+[node name="HealingTimer" type="Timer" parent="State/MobAiComponent" index="0"]
 
 [node name="HFSM" parent="State" index="1"]
 root_fsm_config = SubResource("FSMConfig_xi2o7")

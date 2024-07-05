@@ -160,6 +160,7 @@ pointing/emulate_touch_from_mouse=true
 2d_physics/layer_8="PlayerBullet"
 2d_physics/layer_9="MobBullet"
 2d_physics/layer_10="PowerUps"
+2d_physics/layer_11="ExpBall"
 
 [physics]
 

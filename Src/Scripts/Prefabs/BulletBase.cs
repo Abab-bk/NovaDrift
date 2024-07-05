@@ -79,7 +79,7 @@ public partial class BulletBase : Node2D
 
         if (Steering > 0)
         {
-            TargetingActor = Wizard.GetClosestTarget(this, IsPlayer ? "Mobs" : "Players");
+            TargetingActor = this.GetClosestTarget(IsPlayer ? "Mobs" : "Players");
         }
     }
 

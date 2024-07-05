@@ -5,5 +5,12 @@
     "class_name": "PowerGunman",
     "desc": "召唤一架无人机，朝你射击的方向射击",
     "icon_name": "PowerGunman"
+  },
+  {
+    "id": 1002,
+    "name": "收藏家",
+    "class_name": "PowerCollector",
+    "desc": "召唤一架无人机，帮助你收集经验",
+    "icon_name": "PowerCollector"
   }
 ]

@@ -24,4 +24,34 @@ USER ERROR: Parameter "data.tree" is null.
 [Log][Global] Try Resume game. Stop count: 0
 [Log][Ui] Generate debug panel
 [Log][Global] Try Stop game. Stop count: 1
+[Log][Wave Spawner] æäººçææ°é: 3, éµåï¼CircleSpawnType
 [Log][Global] Try Resume game. Stop count: 0
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+[Log][AbilityGenerate] Generating Random Ability Ids
+[Log][AbilityGenerate] Generated Random Ability Ids
+[Log][AbilityGenerate] Generating Random Gear Ids
+[Log][AbilityGenerate] Generated Random Gear Ids
+[Log][AbilityGenerate] Generating Random Shield Ids
+[Log][AbilityGenerate] Generated Random Shield Ids
+[Log][AbilityGenerate] Generating Random Body Ids
+[Log][AbilityGenerate] Generated Random Body Ids
+[Log][AbilityGenerate] Generating Random Weapon Ids
+[Log][AbilityGenerate] Generated Random Weapon Ids
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+USER WARNING: Camera2D overridden to physics process mode due to use of physics interpolation.
+   at: _update_process_callback (scene/2d/camera_2d.cpp:84)
+
+================================================================
+CrashHandlerException: Program crashed with signal 11
+Engine version: Godot Engine v4.3.beta1.mono.official (a4f2ea91a1bd18f70a43ff4c1377db49b56bc3f0)
+Dumping the backtrace. 
+[1] error(-1): no debug info in PE/COFF executable
+[2] error(-1): no debug info in PE/COFF executable
+[3] error(-1): no debug info in PE/COFF executable
+[4] error(-1): no debug info in PE/COFF executable
+[5] error(-1): no debug info in PE/COFF executable
+[6] error(-1): no debug info in PE/COFF executable
+-- END OF BACKTRACE --
+================================================================

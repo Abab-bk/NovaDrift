@@ -5,6 +5,7 @@ using DsUi;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Others;
 using NovaDrift.Scripts.Prefabs.Shields;
+using NovaDrift.Scripts.Vfx;
 
 namespace NovaDrift.Scripts.Prefabs.Actors;
 
@@ -88,6 +89,13 @@ public partial class Player : Actor
         if (area.Owner is PowerUpEntity powerUp)
         {
             powerUp.Get();
+            return;
+        }
+        
+        if (area.Owner is ExpBall expBall)
+        {
+            expBall.Get();
+            return;
         }
     }
 
