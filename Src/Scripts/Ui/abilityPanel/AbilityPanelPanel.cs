@@ -1,5 +1,4 @@
 using System;
-using Godot;
 using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts.Ui.AbilityPanel;
@@ -15,6 +14,11 @@ public partial class AbilityPanelPanel : AbilityPanel
     public override void _Ready()
     {
         S_YesBtn.Instance.Pressed += () => OnClickYesBtn?.Invoke();
+    }
+
+    public void HideYesBtn()
+    {
+        S_YesBtn.Instance.Hide();
     }
 
     public void UpdateUi(IItemInfo item)

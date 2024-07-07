@@ -1,6 +1,13 @@
-[gd_scene load_steps=2 format=3 uid="uid://bm5gbg3nlp6it"]
+[gd_scene load_steps=6 format=3 uid="uid://bm5gbg3nlp6it"]
 
 [ext_resource type="Script" path="res://Scripts/Ui/pausedMenu/PausedMenuPanel.cs" id="1_1mrom"]
+[ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_fgujn"]
+[ext_resource type="PackedScene" uid="uid://gwdeh4n41an7" path="res://Scenes/Ui/AbilityPanel.tscn" id="3_d61x3"]
+[ext_resource type="Texture2D" uid="uid://cnfpkl0hd4frk" path="res://Assets/Ui/Icons/Mods.png" id="4_r1tvs"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6vu67"]
+atlas = ExtResource("4_r1tvs")
+region = Rect2(3900, 0, 300, 300)
 
 [node name="PausedMenu" type="Control"]
 process_mode = 3
@@ -10,6 +17,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_fgujn")
 script = ExtResource("1_1mrom")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -33,35 +41,58 @@ theme_override_constants/margin_top = 100
 theme_override_constants/margin_right = 100
 theme_override_constants/margin_bottom = 100
 
-[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer"]
-layout_mode = 2
-
-[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Abilities" type="GridContainer" parent="MarginContainer/HBoxContainer/ScrollContainer"]
-unique_name_in_owner = true
-layout_mode = 2
-size_flags_horizontal = 2
-size_flags_vertical = 3
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 theme_override_constants/separation = 100
 
-[node name="Label" type="Label" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme_override_font_sizes/font_size = 100
 text = "暂停"
 horizontal_alignment = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/HBoxContainer/VBoxContainer"]
+[node name="Content" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
+size_flags_vertical = 3
 
-[node name="ReStartBtn" type="Button" parent="MarginContainer/HBoxContainer/VBoxContainer/VBoxContainer"]
+[node name="ScrollContainer" type="ScrollContainer" parent="MarginContainer/VBoxContainer/Content"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="Abilities" type="HFlowContainer" parent="MarginContainer/VBoxContainer/Content/ScrollContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-theme_override_font_sizes/font_size = 100
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="AbilityPanel" parent="MarginContainer/VBoxContainer/Content" instance=ExtResource("3_d61x3")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(900, 0)
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="ReStartBtn" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 text = "继续"
+
+[node name="BackToMainBtn" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+text = "返回主菜单"
+
+[node name="Indicator" type="TextureRect" parent="."]
+unique_name_in_owner = true
+layout_mode = 0
+texture = SubResource("AtlasTexture_6vu67")

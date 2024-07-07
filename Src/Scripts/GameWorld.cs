@@ -145,6 +145,7 @@ public partial class GameWorld : Node2D
 		// Global.GameContext.RemoveFollowTarget(Global.Player);
 		// Global.GameContext.SetZoom(new Vector2(0.4f, 0.4f));
 		// Global.GameContext.SetFollowMode(GameContext.FollowMode.None);
+		
 		Global.Player.RemoveSelf();
 		UiManager.Open_GameOver();
 	}

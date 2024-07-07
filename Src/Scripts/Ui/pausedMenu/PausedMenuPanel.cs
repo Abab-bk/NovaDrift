@@ -7,19 +7,30 @@ namespace NovaDrift.Scripts.Ui.PausedMenu;
 
 public partial class PausedMenuPanel : PausedMenu
 {
-    private GridContainer _abilities;
-    
     public override void OnCreateUi()
     {
-        _abilities = S_Abilities.Instance;
-
         S_ReStartBtn.Instance.Pressed += UiManager.Hide_PausedMenu;
 
-        OnShowUiEvent += Global.StopGame;
+        OnShowUiEvent += () =>
+        {
+            Global.StopGame();
+            S_Indicator.Instance.Hide();
+            S_AbilityPanel.Instance.Hide();
+        };
         OnHideUiEvent += Global.ResumeGame;
 
         Global.Player.Stats.EffectSystem.OnAbilityAdded += AddAbility;
-        Global.Player.Stats.EffectSystem.OnAbilityRemoved += _ => UpdateUi();
+        // Global.Player.Stats.EffectSystem.OnAbilityRemoved += _ => UpdateUi();
+        
+        S_AbilityPanel.Instance.HideYesBtn();
+
+        EventBus.OnGameOver += () =>
+        {
+            foreach (var node in S_Abilities.Instance.GetChildren())
+            {
+                node.QueueFree();
+            }
+        };
     }
     
     private void AddAbility(Ability ability)
@@ -27,17 +38,19 @@ public partial class PausedMenuPanel : PausedMenu
         var itemPanel = S_Abilities.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem);
         itemPanel.Item = ability;
         itemPanel.ShowUi();
+        itemPanel.OnAbilitySelected += info =>
+        {
+            S_AbilityPanel.Instance.Show();
+            S_AbilityPanel.Instance.UpdateUi(info);
+            MoveIndicator(itemPanel.GlobalPosition);
+        };
     }
     
-    private void UpdateUi()
+    private void MoveIndicator(Vector2 pos)
     {
-        foreach (var node in _abilities.GetChildren()) { node.QueueFree(); }
-        
-        foreach (var ability in Global.Player.Stats.EffectSystem.Abilities)
-        {
-            var itemPanel = S_Abilities.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem);
-            itemPanel.Item = ability;
-        }
+        S_Indicator.Instance.Show();
+        var tw = CreateTween();
+        tw.TweenProperty(S_Indicator.Instance, "global_position", pos, 0.1f);
     }
 
     public override void OnDestroyUi()

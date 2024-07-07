@@ -23,6 +23,7 @@ public class Weapon : IItemInfo
     public void Use()
     {
         Actor = Global.Player;
+        Actor.Stats.Weapon = this;
         
         BaseShooter shooter = GD.Load<PackedScene>($"res://Scenes/Prefabs/Weapons/{SceneName}.tscn").Instantiate<BaseShooter>();
         shooter.Weapon = this;

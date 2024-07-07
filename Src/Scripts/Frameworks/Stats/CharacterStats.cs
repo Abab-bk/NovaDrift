@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Godot;
 using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Prefabs.Actors;
@@ -16,6 +17,9 @@ public class CharacterStats
 
     public Body Body = new Body();
     public Shield Shield = new Shield();
+    // 仅仅是做 Info 用
+    public Weapon Weapon = new Weapon();
+    public List<IItemInfo> Gears = [];
 
     public Attribute Health;
     public readonly Stat Speed = new Stat(1000);
@@ -154,5 +158,7 @@ public class CharacterStats
         {
             Level += 1;
         };
+
+        Gears = [Body, Weapon, Shield];
     }
 }

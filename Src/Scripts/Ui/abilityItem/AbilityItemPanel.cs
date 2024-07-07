@@ -25,6 +25,7 @@ public partial class AbilityItemPanel : AbilityItem
     {
         S_Button.Instance.Pressed += () =>
         {
+            if (OnAbilitySelected == null) Logger.Log("[AbilityItem] Func is Null");
             OnAbilitySelected?.Invoke(Item);
         };
 

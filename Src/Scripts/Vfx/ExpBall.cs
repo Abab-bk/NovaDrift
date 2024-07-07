@@ -15,6 +15,7 @@ public partial class ExpBall : Node2D
         GlobalPosition = Pos + new Vector2(
             Random.Shared.FloatRange(-100f, 100f),
             Random.Shared.FloatRange(-100f, 100f));
+        EventBus.OnGameOver += QueueFree;
     }
 
     public void Get()
