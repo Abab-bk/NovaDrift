@@ -50,6 +50,7 @@ window/size/viewport_height=1440
 window/size/window_width_override=1280
 window/size/window_height_override=720
 window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
 
 [dotnet]
 
@@ -169,6 +170,7 @@ common/physics_interpolation=true
 [rendering]
 
 renderer/rendering_method="mobile"
+textures/vram_compression/import_etc2_astc=true
 environment/defaults/default_clear_color=Color(0.28485, 0.28485, 0.28485, 1)
 viewport/hdr_2d=true
 
