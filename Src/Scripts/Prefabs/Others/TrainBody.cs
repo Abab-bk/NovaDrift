@@ -52,8 +52,8 @@ public partial class TrainBody : Node2D
                         var powerUp = GD.Load<PackedScene>("res://Scenes/Prefabs/Others/PowerUpEntity.tscn")
                             .Instantiate<PowerUpEntity>();
                         powerUp.PowerUp = DataBuilder.BuildPowerUpById(DataBuilder.Tables.TbPowertUpInfo.DataMap.Keys.PickRandom());
-                        Global.GameWorld.AddChild(powerUp);
                         powerUp.GlobalPosition = GlobalPosition + powerTemp * i;
+                        Global.GameWorld.CallDeferred(Node.MethodName.AddChild, powerUp);
                     }
                     break;
             }

@@ -1,3 +1,4 @@
+using DsUi;
 using Godot;
 using NovaDrift.Scripts.Systems.PowerUps;
 
@@ -10,6 +11,8 @@ public partial class PowerUpEntity : Node2D
     
     public PowerUp PowerUp;
 
+    private static int _currentPowerUpCount = 0;
+    
     public override void _Ready()
     {
         _timer.Timeout += QueueFree;
@@ -20,6 +23,13 @@ public partial class PowerUpEntity : Node2D
 
     public void Get()
     {
+        if (_currentPowerUpCount >= PlayerGrowth.MaxPowerUpCount)
+        {
+            UiManager.Open_Tip().Text = "超能力数量达到上限！";
+            return;
+        }
+
+        _currentPowerUpCount++;
         EventBus.OnPlayerGetPowerUp?.Invoke(PowerUp);
         QueueFree();
     }

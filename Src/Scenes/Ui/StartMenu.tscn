@@ -104,6 +104,13 @@ custom_minimum_size = Vector2(400, 325)
 layout_mode = 2
 _labelText = "每日任务"
 
+[node name="CreditBtn" parent="Content/VBoxContainer/HBoxContainer2" instance=ExtResource("2_rwks5")]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(250, 325)
+layout_mode = 2
+size_flags_horizontal = 3
+_labelText = "制作名单"
+
 [node name="SettingBtn" parent="Content/VBoxContainer/HBoxContainer2" instance=ExtResource("2_rwks5")]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(190, 325)

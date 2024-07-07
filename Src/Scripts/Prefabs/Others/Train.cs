@@ -29,6 +29,6 @@ public partial class Train : Node2D, IHazard
 
     public override void _PhysicsProcess(double delta)
     {
-        Position += _direction * 300f * (float)delta;
+        Position += _direction * 600f * (float)delta;
     }
 }

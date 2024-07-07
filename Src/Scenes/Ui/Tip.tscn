@@ -1,0 +1,29 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6oymbx5suhbb"]
+
+[ext_resource type="Script" path="res://Scripts/Ui/tip/TipPanel.cs" id="1_8ahpf"]
+[ext_resource type="FontFile" uid="uid://djmsc2817eku8" path="res://Assets/Fonts/SourceHanSansCN-Medium.otf" id="2_bg8xk"]
+
+[node name="Tip" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+mouse_filter = 2
+script = ExtResource("1_8ahpf")
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 147.0
+offset_bottom = 170.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_bg8xk")
+theme_override_font_sizes/font_size = 60
+text = "Tip"
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+autostart = true

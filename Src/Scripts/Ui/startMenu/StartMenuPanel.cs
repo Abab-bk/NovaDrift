@@ -32,6 +32,11 @@ public partial class StartMenuPanel : StartMenu
         {
             this.ChangeTo(UiManager.Create_DailyQuests());
         };
+        
+        S_CreditBtn.Instance.OnClick += () =>
+        {
+            this.ChangeTo(UiManager.Create_Credit());
+        };
 
         EventBus.OnGameStart += () =>
         {

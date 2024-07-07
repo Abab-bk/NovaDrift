@@ -15,6 +15,7 @@ public static partial class UiManager
         public const string ColorBlindMode1 = "ColorBlindMode1";
         public const string ColorBlindMode2 = "ColorBlindMode2";
         public const string ColorBlindMode3 = "ColorBlindMode3";
+        public const string Credit = "Credit";
         public const string DailyQuests = "DailyQuests";
         public const string DamageLabel = "DamageLabel";
         public const string GalleryBtn = "GalleryBtn";
@@ -37,6 +38,7 @@ public static partial class UiManager
         public const string StartMenu = "StartMenu";
         public const string StatsMonitor = "StatsMonitor";
         public const string StatsMonitorItem = "StatsMonitorItem";
+        public const string Tip = "Tip";
     }
 
     /// <summary>
@@ -469,6 +471,54 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.ColorBlindMode3.ColorBlindMode3Panel[] Get_ColorBlindMode3_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.ColorBlindMode3.ColorBlindMode3Panel>(nameof(NovaDrift.Scripts.Ui.ColorBlindMode3.ColorBlindMode3));
+    }
+
+    /// <summary>
+    /// 创建 Credit, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Credit.CreditPanel Create_Credit()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.Credit.CreditPanel>(UiName.Credit);
+    }
+
+    /// <summary>
+    /// 打开 Credit, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Credit.CreditPanel Open_Credit()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.Credit.CreditPanel>(UiName.Credit);
+    }
+
+    /// <summary>
+    /// 隐藏 Credit 的所有实例
+    /// </summary>
+    public static void Hide_Credit()
+    {
+        var uiInstance = Get_Credit_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 Credit 的所有实例
+    /// </summary>
+    public static void Destroy_Credit()
+    {
+        var uiInstance = Get_Credit_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 Credit 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Credit.CreditPanel[] Get_Credit_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.Credit.CreditPanel>(nameof(NovaDrift.Scripts.Ui.Credit.Credit));
     }
 
     /// <summary>
@@ -1525,6 +1575,54 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.StatsMonitorItem.StatsMonitorItemPanel[] Get_StatsMonitorItem_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.StatsMonitorItem.StatsMonitorItemPanel>(nameof(NovaDrift.Scripts.Ui.StatsMonitorItem.StatsMonitorItem));
+    }
+
+    /// <summary>
+    /// 创建 Tip, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Tip.TipPanel Create_Tip()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.Tip.TipPanel>(UiName.Tip);
+    }
+
+    /// <summary>
+    /// 打开 Tip, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Tip.TipPanel Open_Tip()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.Tip.TipPanel>(UiName.Tip);
+    }
+
+    /// <summary>
+    /// 隐藏 Tip 的所有实例
+    /// </summary>
+    public static void Hide_Tip()
+    {
+        var uiInstance = Get_Tip_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 Tip 的所有实例
+    /// </summary>
+    public static void Destroy_Tip()
+    {
+        var uiInstance = Get_Tip_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 Tip 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Tip.TipPanel[] Get_Tip_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.Tip.TipPanel>(nameof(NovaDrift.Scripts.Ui.Tip.Tip));
     }
 
 }

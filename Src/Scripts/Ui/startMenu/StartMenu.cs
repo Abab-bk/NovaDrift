@@ -75,19 +75,24 @@ public abstract partial class StartMenu : UiBase
         inst4.L_DailyQuestsBtn.Instance.OnInitNestedUi();
 
         var inst5 = L_Content.L_VBoxContainer.L_HBoxContainer2;
-        RecordNestedUi(inst5.L_SettingBtn.Instance, inst5, UiManager.RecordType.Open);
-        inst5.L_SettingBtn.Instance.OnCreateUi();
-        inst5.L_SettingBtn.Instance.OnInitNestedUi();
+        RecordNestedUi(inst5.L_CreditBtn.Instance, inst5, UiManager.RecordType.Open);
+        inst5.L_CreditBtn.Instance.OnCreateUi();
+        inst5.L_CreditBtn.Instance.OnInitNestedUi();
 
         var inst6 = L_Content.L_VBoxContainer.L_HBoxContainer2;
-        RecordNestedUi(inst6.L_ExitBtn.Instance, inst6, UiManager.RecordType.Open);
-        inst6.L_ExitBtn.Instance.OnCreateUi();
-        inst6.L_ExitBtn.Instance.OnInitNestedUi();
+        RecordNestedUi(inst6.L_SettingBtn.Instance, inst6, UiManager.RecordType.Open);
+        inst6.L_SettingBtn.Instance.OnCreateUi();
+        inst6.L_SettingBtn.Instance.OnInitNestedUi();
 
-        var inst7 = this;
-        RecordNestedUi(inst7.L_Setting.Instance, null, UiManager.RecordType.Open);
-        inst7.L_Setting.Instance.OnCreateUi();
-        inst7.L_Setting.Instance.OnInitNestedUi();
+        var inst7 = L_Content.L_VBoxContainer.L_HBoxContainer2;
+        RecordNestedUi(inst7.L_ExitBtn.Instance, inst7, UiManager.RecordType.Open);
+        inst7.L_ExitBtn.Instance.OnCreateUi();
+        inst7.L_ExitBtn.Instance.OnInitNestedUi();
+
+        var inst8 = this;
+        RecordNestedUi(inst8.L_Setting.Instance, null, UiManager.RecordType.Open);
+        inst8.L_Setting.Instance.OnCreateUi();
+        inst8.L_Setting.Instance.OnInitNestedUi();
 
     }
 
@@ -191,6 +196,22 @@ public abstract partial class StartMenu : UiBase
     }
 
     /// <summary>
+    /// 类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 路径: StartMenu.Content.VBoxContainer.HBoxContainer2.CreditBtn
+    /// </summary>
+    public class CreditBtn : UiNode<StartMenuPanel, NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel, CreditBtn>
+    {
+        public CreditBtn(StartMenuPanel uiPanel, NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel node) : base(uiPanel, node) {  }
+        public override CreditBtn Clone()
+        {
+            var uiNode = new CreditBtn(UiPanel, (NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel)Instance.Duplicate());
+            UiPanel.RecordNestedUi(uiNode.Instance, this, UiManager.RecordType.Open);
+            uiNode.Instance.OnCreateUi();
+            uiNode.Instance.OnInitNestedUi();
+            return uiNode;
+        }
+    }
+
+    /// <summary>
     /// 类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 路径: StartMenu.Content.VBoxContainer.HBoxContainer2.SettingBtn
     /// </summary>
     public class SettingBtn : UiNode<StartMenuPanel, NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel, SettingBtn>
@@ -252,6 +273,19 @@ public abstract partial class StartMenu : UiBase
             }
         }
         private DailyQuestsBtn _L_DailyQuestsBtn;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.VBoxContainer.CreditBtn
+        /// </summary>
+        public CreditBtn L_CreditBtn
+        {
+            get
+            {
+                if (_L_CreditBtn == null) _L_CreditBtn = new CreditBtn(UiPanel, Instance.GetNode<NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel>("CreditBtn"));
+                return _L_CreditBtn;
+            }
+        }
+        private CreditBtn _L_CreditBtn;
 
         /// <summary>
         /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.VBoxContainer.SettingBtn
@@ -456,6 +490,11 @@ public abstract partial class StartMenu : UiBase
     /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.VBoxContainer.HBoxContainer2.DailyQuestsBtn
     /// </summary>
     public DailyQuestsBtn S_DailyQuestsBtn => L_Content.L_VBoxContainer.L_HBoxContainer2.L_DailyQuestsBtn;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.VBoxContainer.HBoxContainer2.CreditBtn
+    /// </summary>
+    public CreditBtn S_CreditBtn => L_Content.L_VBoxContainer.L_HBoxContainer2.L_CreditBtn;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.GalleryBtn.GalleryBtnPanel"/>, 节点路径: StartMenu.Content.VBoxContainer.HBoxContainer2.SettingBtn
