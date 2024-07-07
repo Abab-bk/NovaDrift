@@ -6,7 +6,7 @@ namespace NovaDrift.Scripts.Vfx;
 public partial class WarningVfx : Node2D
 {
     public event Action OnAnimationEnd;
-    public float WarningTime;
+    public float WarningTime = 4f;
     
     [GetNode("Timer")] private Timer _timer;
     

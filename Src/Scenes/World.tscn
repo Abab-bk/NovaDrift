@@ -321,28 +321,28 @@ script = ExtResource("11_euylg")
 _category = "RandomCorner"
 
 [node name="TopLimit" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(2561, -807)
+position = Vector2(-600, -807)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
-_category = "TopLimit"
+_category = "LeftUpLimit"
 
 [node name="BottomLimit" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(2561, 3687)
+position = Vector2(3600, 3687)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
-_category = "BottomLimit"
+_category = "RightDownLimit"
 
 [node name="LeftLimit" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(-600, 1443)
+position = Vector2(-600, 3687)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
-_category = "LeftLimit"
+_category = "LeftDownLimit"
 
 [node name="RightLimit" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(5720, 1443)
+position = Vector2(3600, -807)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
-_category = "RightLimit"
+_category = "RightUpLimit"
 
 [node name="HazardSpawner" type="Node2D" parent="."]
 script = ExtResource("5_2fkc6")

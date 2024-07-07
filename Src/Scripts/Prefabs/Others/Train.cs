@@ -12,6 +12,8 @@ public partial class Train : Node2D, IHazard
 
     public override void _Ready()
     {
+        _direction = Vector2.Right.Rotated(Rotation);
+        
         for (int i = 0; i < Length; i++)
         {
             var body = GD

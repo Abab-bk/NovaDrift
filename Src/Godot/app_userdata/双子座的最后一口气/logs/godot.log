@@ -2,3 +2,168 @@ Godot Engine v4.3.beta1.mono.official.a4f2ea91a - https://godotengine.org
 Vulkan 1.3.260 - Forward Mobile - Using Device #0: AMD - AMD Radeon RX 580 2048SP
 USER ERROR: Can't create shader cache folder, no shader caching will happen: user://
    at: RendererCompositorRD (servers/rendering/renderer_rd/renderer_compositor_rd.cpp:272)
+
+[Run Config] Applied environment variables from the Debug config.
+[Log][BootSplash] Booting...
+[Log][BootSplash] Debug mode, change scene to: res://Scenes/World.tscn
+USER ERROR: Parameter "data.tree" is null.
+   at: get_tree (./scene/main/node.h:446)
+[Log][SoundManager] Load bank buffer res://Assets/Audios/Desktop/Master.strings.bank Ok
+[Log][SoundManager] Load bank res://Assets/Audios/Desktop/Master.strings.bank True
+[Log][SoundManager] Load bank buffer res://Assets/Audios/Desktop/Master.bank Ok
+[Log][SoundManager] Load bank res://Assets/Audios/Desktop/Master.bank True
+[Log][SoundManager] Load bank buffer res://Assets/Audios/Desktop/SFX.bank Ok
+[Log][SoundManager] Load bank res://Assets/Audios/Desktop/SFX.bank True
+[Log][SoundManager] Load bank buffer res://Assets/Audios/Desktop/Music.bank Ok
+[Log][SoundManager] Load bank res://Assets/Audios/Desktop/Music.bank True
+[Log][SoundManager] Load bank buffer res://Assets/Audios/Desktop/UI.bank Ok
+[Log][SoundManager] Load bank res://Assets/Audios/Desktop/UI.bank True
+[Log][Ui] Init debug panel class.
+[Log][Game] Debug mode, enter world.
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+[Log][Ui] Generate debug panel
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
+   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
+[Log][AbilityGenerate] Generating Random Ability Ids
+[Log][AbilityGenerate] Generated Random Ability Ids
+[Log][AbilityGenerate] Generating Random Gear Ids
+[Log][AbilityGenerate] Generated Random Gear Ids
+[Log][AbilityGenerate] Generating Random Shield Ids
+[Log][AbilityGenerate] Generated Random Shield Ids
+[Log][AbilityGenerate] Generating Random Body Ids
+[Log][AbilityGenerate] Generated Random Body Ids
+[Log][AbilityGenerate] Generating Random Weapon Ids
+[Log][AbilityGenerate] Generated Random Weapon Ids
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
+   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
+USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
+   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
+USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
+   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
+   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
+USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
+   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
+   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
+   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
+   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
+   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
+[Log][AbilityGenerate] Generating Random Ability Ids
+[Log][AbilityGenerate] Generated Random Ability Ids
+[Log][AbilityGenerate] Generating Random Gear Ids
+[Log][AbilityGenerate] Generated Random Gear Ids
+[Log][AbilityGenerate] Generating Random Shield Ids
+[Log][AbilityGenerate] Generated Random Shield Ids
+[Log][AbilityGenerate] Generating Random Body Ids
+[Log][AbilityGenerate] Generated Random Body Ids
+[Log][AbilityGenerate] Generating Random Weapon Ids
+[Log][AbilityGenerate] Generated Random Weapon Ids
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
+   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
+USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
+   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
+USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
+   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
+USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
+   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
+USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
+   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
+USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
+   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
+USER ERROR: Can't change this state while flushing queries. Use call_deferred() or set_deferred() to change monitoring state instead.
+   at: area_set_shape_disabled (servers/physics_2d/godot_physics_server_2d.cpp:355)
+[Log][AbilityGenerate] Generating Random Ability Ids
+[Log][AbilityGenerate] Generated Random Ability Ids
+[Log][AbilityGenerate] Generating Random Gear Ids
+[Log][AbilityGenerate] Generated Random Gear Ids
+[Log][AbilityGenerate] Generating Random Shield Ids
+[Log][AbilityGenerate] Generated Random Shield Ids
+[Log][AbilityGenerate] Generating Random Body Ids
+[Log][AbilityGenerate] Generated Random Body Ids
+[Log][AbilityGenerate] Generating Random Weapon Ids
+[Log][AbilityGenerate] Generated Random Weapon Ids
+[Log][Global] Try Stop game. Stop count: 1
+[Log][Global] Try Resume game. Stop count: 0
+USER ERROR: BUG: Unreferenced static string to 0: luminance_buffers
+   at: unref (core/string/string_name.cpp:127)
+USER ERROR: BUG: Unreferenced static string to 0: color_upscaled
+   at: unref (core/string/string_name.cpp:127)
+USER ERROR: BUG: Unreferenced static string to 0: back_color
+   at: unref (core/string/string_name.cpp:127)
+USER ERROR: BUG: Unreferenced static string to 0: back_depth
+   at: unref (core/string/string_name.cpp:127)
+USER ERROR: BUG: Unreferenced static string to 0: VRS
+   at: unref (core/string/string_name.cpp:127)
+USER ERROR: BUG: Unreferenced static string to 0: Physics2DConstraintSolveIslands
+   at: unref (core/string/string_name.cpp:127)
+USER ERROR: BUG: Unreferenced static string to 0: Physics2DConstraintSetup
+   at: unref (core/string/string_name.cpp:127)
+USER ERROR: BUG: Unreferenced static string to 0: _compression
+   at: unref (core/string/string_name.cpp:127)
+USER ERROR: BUG: Unreferenced static string to 0: Variant
+   at: unref (core/string/string_name.cpp:127)
+USER ERROR: BUG: Unreferenced static string to 0: ShaderCompilation
+   at: unref (core/string/string_name.cpp:127)
+USER ERROR: BUG: Unreferenced static string to 0: @export_range
+   at: unref (core/string/string_name.cpp:129)
+USER ERROR: BUG: Unreferenced static string to 0: @export_multiline
+   at: unref (core/string/string_name.cpp:129)
+USER ERROR: BUG: Unreferenced static string to 0: @export_enum
+   at: unref (core/string/string_name.cpp:129)
+USER ERROR: BUG: Unreferenced static string to 0: @export_node_path
+   at: unref (core/string/string_name.cpp:129)
+USER ERROR: BUG: Unreferenced static string to 0: @export
+   at: unref (core/string/string_name.cpp:129)
+USER ERROR: BUG: Unreferenced static string to 0: @export_subgroup
+   at: unref (core/string/string_name.cpp:129)
+USER ERROR: BUG: Unreferenced static string to 0: @export_category
+   at: unref (core/string/string_name.cpp:129)
+USER ERROR: BUG: Unreferenced static string to 0: @export_flags
+   at: unref (core/string/string_name.cpp:129)
+USER ERROR: BUG: Unreferenced static string to 0: @tool
+   at: unref (core/string/string_name.cpp:129)
+USER ERROR: BUG: Unreferenced static string to 0: @export_group
+   at: unref (core/string/string_name.cpp:129)
+USER ERROR: BUG: Unreferenced static string to 0: @export_placeholder
+   at: unref (core/string/string_name.cpp:129)
+USER ERROR: BUG: Unreferenced static string to 0: @warning_ignore
+   at: unref (core/string/string_name.cpp:129)
+USER ERROR: BUG: Unreferenced static string to 0: @icon
+   at: unref (core/string/string_name.cpp:129)
+USER ERROR: Pages in use exist at exit in PagedAllocator: N7Variant5Pools11BucketLargeE
+   at: ~PagedAllocator (./core/templates/paged_allocator.h:170)

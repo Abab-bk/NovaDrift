@@ -16,13 +16,15 @@ texture = ExtResource("1_gl51w")
 
 [node name="PureHurtBox" type="Area2D" parent="."]
 collision_layer = 32
-collision_mask = 0
+collision_mask = 4
 script = ExtResource("2_f3sla")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PureHurtBox"]
 shape = SubResource("RectangleShape2D_7x243")
 
 [node name="HitBox" type="Area2D" parent="."]
+collision_layer = 16
+collision_mask = 8
 script = ExtResource("4_xrfla")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]

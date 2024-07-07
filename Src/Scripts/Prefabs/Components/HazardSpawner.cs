@@ -1,9 +1,10 @@
 ﻿using System;
 using AcidWallStudio.AcidUtilities;
-using GDebugPanelGodot.Core;
+using DsUi;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Hazards;
 using NovaDrift.Scripts.Prefabs.Others;
+using NovaDrift.Scripts.Vfx;
 
 namespace NovaDrift.Scripts.Prefabs.Components;
 
@@ -46,12 +47,39 @@ public partial class HazardSpawner : Node2D
 
     public void SpawnHazard(HazardType type)
     {
+        // var pos = new Vector2(
+        //     Random.Shared.FloatRange(
+        //         SpawnPoint.GetPoint(Constants.Points.LeftUpLimit).X,
+        //         SpawnPoint.GetPoint(Constants.Points.RightUpLimit).X
+        //         ),
+        //     Random.Shared.FloatRange(
+        //         SpawnPoint.GetPoint(Constants.Points.LeftUpLimit).Y,
+        //         SpawnPoint.GetPoint(Constants.Points.LeftDownLimit).Y
+        //     )
+        //     );
+        var pos = Wizard.GetRandomScreenPosition();
+        
         IHazard hazard = GetHazard(type);
 
         if (hazard is not Node2D node) return;
         
         AddChild(node);
-        node.GlobalPosition = Wizard.GetRandomScreenPosition();
+        node.GlobalPosition = pos;
+        
+        return;
+        var warning = GD.Load<PackedScene>("res://Scenes/Vfx/WarningVfx.tscn").Instantiate<WarningVfx>();
+        // UiManager.Get_Hud_Instance()[0].AddChild(warning);
+        UiManager.GetUiLayer(UiLayer.Middle).AddChild(warning);
+        warning.GlobalPosition = pos;
+        warning.OnAnimationEnd += () =>
+        {
+            IHazard hazard = GetHazard(type);
+
+            if (hazard is not Node2D node) return;
+            
+            AddChild(node);
+            node.GlobalPosition = pos;
+        };
     }
 
     private HazardType GetRandomHazardType() { return Random.Shared.GetRandomEnum<HazardType>(); }
@@ -67,7 +95,9 @@ public partial class HazardSpawner : Node2D
             case HazardType.AsteroidLarge:
                 return GD.Load<PackedScene>("res://Scenes/Prefabs/Hazards/AsteroidLarge.tscn").Instantiate<AsteroidBase>();
             case HazardType.Train:
-                return GD.Load<PackedScene>("res://Scenes/Prefabs/Others/Train.tscn").Instantiate<Train>();
+                var train = GD.Load<PackedScene>("res://Scenes/Prefabs/Others/Train.tscn").Instantiate<Train>();
+                train.Rotation = Random.Shared.NextSingle() * MathF.Tau;
+                return train;
             default:
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
         }
