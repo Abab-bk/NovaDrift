@@ -1,37 +1,58 @@
 using Godot;
+using GTweens.Easings;
+using GTweens.Extensions;
+using GTweens.Tweens;
+using GTweensGodot.Extensions;
 
 namespace NovaDrift.Scripts.Ui.ScoreItem;
 
 public partial class ScoreItemPanel : ScoreItem
 {
-    public string Text;
-    public int Score;
+    private string _text;
+    
+    private int _targetScore;
+    private int _currentScore;
+    
+    private GTween _tween;
 
-    public override void OnCreateUi()
+    public void SetContext(string text, int score)
     {
-        SetProcess(false);
-        S_TextLabel.Instance.Text = Text;
-        S_ScoreLabel.Instance.Text = "0";
+        _text = text;
+        _targetScore = score;
+        
+        S_TextLabel.Instance.Text = _text;
+        S_ScoreLabel.Instance.Text = _currentScore.ToString();
     }
 
     public void PlayAnimation()
     {
-        SetProcess(true);
+        _tween = GTweenExtensions.Tween(
+            () => _currentScore,
+            score =>
+            {
+                _currentScore = score;
+                S_ScoreLabel.Instance.Text = _currentScore.ToString();
+            },
+            _targetScore,
+            2f
+            );
+        _tween
+            .SetEasing(Easing.OutCubic)
+            .Play();
     }
 
-    public override void Process(float delta)
+    private void Skip()
     {
-        var currentValue = int.Parse(S_ScoreLabel.Instance.Text);
-        if (currentValue > Score) return;
-        
-        currentValue++;
-        S_ScoreLabel.Instance.Text = currentValue.ToString();
+        _tween.Kill();
+        S_ScoreLabel.Instance.Text = _targetScore.ToString();
     }
 
-    public void Skip()
+    public override void _GuiInput(InputEvent @event)
     {
-        SetProcess(false);
-        S_ScoreLabel.Instance.Text = Score.ToString();
+        if (@event.IsActionPressed("Click"))
+        {
+            Skip();
+        }
     }
 
     public override void OnDestroyUi()
