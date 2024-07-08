@@ -225,6 +225,7 @@ variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_fvbwy"
 size = Vector2(200, 194)
 
 [node name="TheKnight" node_paths=PackedStringArray("_hitBox", "_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_5irmn")]
+modulate = Color(1, 0.235294, 0.266667, 1)
 rotation = 0.00323143
 _hitBox = NodePath("HitBox")
 _hurtBox = NodePath("Components/HurtBox")

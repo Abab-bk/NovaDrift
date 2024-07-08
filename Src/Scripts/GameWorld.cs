@@ -48,6 +48,7 @@ public partial class GameWorld : Node2D
 		Global.SceneTree = GetTree();
 		Global.ShakeDirector = _shakeDirector;
 		Global.Noise = _noise;
+		Global.WorldEnvironment = GetNode<WorldEnvironment>("%WorldEnvironment");
 		
 		SoundManager.PlayMusic(AudioEvents.BackgroundMusic);
 		
@@ -149,6 +150,9 @@ public partial class GameWorld : Node2D
 		// Global.GameContext.SetFollowMode(GameContext.FollowMode.None);
 		
 		Global.Player.RemoveSelf();
+		
+		Global.CleanWorldCorrection();
+		
 		UiManager.Open_GameOver();
 	}
 }

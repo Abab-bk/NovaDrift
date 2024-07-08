@@ -349,11 +349,17 @@ _category = "RightUpLimit"
 script = ExtResource("5_2fkc6")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+unique_name_in_owner = true
 environment = ExtResource("12_ltxuf")
 
 [node name="Camera2D" type="Camera2D" parent="."]
-physics_interpolation_mode = 2
-position = Vector2(2561, 1440)
+physics_interpolation_mode = 1
+position = Vector2(853, 1282)
+zoom = Vector2(0.7, 0.7)
+limit_left = -1522
+limit_top = -360
+limit_right = 3228
+limit_bottom = 2924
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D"]
 script = ExtResource("9_hiy7p")

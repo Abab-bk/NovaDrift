@@ -154,6 +154,7 @@ public static class Global
     public static ShakeDirector2D ShakeDirector;
     public static FastNoiseLite Noise;
     public static WaveSpawnerController WaveSpawnerController;
+    public static WorldEnvironment WorldEnvironment;
     public static readonly GameContext GameContext = new GameContext();
 
     public static int AcidCoins
@@ -218,6 +219,16 @@ public static class Global
     {
         WorldColor = color;
         EventBus.OnWorldColorChanged();
+    }
+
+    public static void SetWorldCorrection(GradientTexture2D color)
+    {
+        WorldEnvironment.Environment.AdjustmentColorCorrection = color;
+    }
+
+    public static void CleanWorldCorrection()
+    {
+        WorldEnvironment.Environment.AdjustmentColorCorrection = null;
     }
 
     public static void StopGame()

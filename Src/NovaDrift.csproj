@@ -1,4 +1,5 @@
 <Project Sdk="Godot.NET.Sdk/4.3.0-beta.1">
+  
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <TargetFramework Condition=" '$(GodotTargetPlatform)' == 'android' ">net8.0</TargetFramework>
@@ -7,22 +8,20 @@
     <LangVersion>12.0</LangVersion>
     <AllowUnsafeBlocks>true</AllowUnsafeBlocks>
   </PropertyGroup>
+  
   <ItemGroup>
     <Compile Remove="script_templates/**/*.cs" />
     <Compile Remove=".godot\**" />
-    <Compile Remove="Libs\**" />
-    <Compile Remove="Scripts\Systems\Debugs.cs" />
   </ItemGroup>
+  
   <ItemGroup>
     <EmbeddedResource Remove=".godot\**" />
-    <EmbeddedResource Remove="Libs\**" />
   </ItemGroup>
+  
   <ItemGroup>
     <PackageReference Include="GDTask" Version="1.2.2" />
     <PackageReference Include="GodotSharpSome.Drawing2D" Version="0.23.0" />
     <ProjectReference Include="..\GodotGetNode\GodotGetNode.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
   </ItemGroup>
-  <ItemGroup>
-    <Content Include="Scripts\DragonController.gd" />
-  </ItemGroup>
+
 </Project>
