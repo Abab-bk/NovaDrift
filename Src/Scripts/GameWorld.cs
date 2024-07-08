@@ -133,11 +133,13 @@ public partial class GameWorld : Node2D
 		Global.SetWorldColor(Constants.Colors.Red);
 	}
 
-	private void GameOver()
+	private async void GameOver()
 	{
         HideBackground();
         
 		GetTree().CallGroup("Mobs", "RemoveSelf");
+
+		await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
 		
 		UiManager.Destroy_Hud();
 		UiManager.Destroy_PausedMenu();

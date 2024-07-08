@@ -23,6 +23,12 @@ public partial class MobBase : Actor
 
     public override void _Ready()
     {
+        if (Global.GameContext.IsGameOver)
+        {
+            QueueFree();
+            return;
+        }
+
         Stats.Recoil.BaseValue = 0f;
         if (MobInfo == null) throw new Exception("MobInfo 为 Null");
 
@@ -52,6 +58,8 @@ public partial class MobBase : Actor
             Logger.Log($"[MobBase] Size changed: {Stats.Size.Value}");
             UpdateScale();
         };
+
+        // EventBus.OnGameOver += RemoveSelf;
         
         if (Shooter != null) Shooter.Init();
         

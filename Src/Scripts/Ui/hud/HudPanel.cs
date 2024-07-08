@@ -49,6 +49,8 @@ public partial class HudPanel : Hud
 				.UpdateUi(power);
 		};
 
+		L_SettingBtn.Instance.Pressed += OnPressedEsc;
+
 		_expBar = GetNode<AnimationProgressBarPanel>("%ExpProgressBar");
 		_hpBar = GetNode<AnimationProgressBarPanel>("%HpProgressBar");
 		_shieldBar = GetNode<AnimationProgressBarPanel>("%ShieldProgressBar");
@@ -120,19 +122,7 @@ public partial class HudPanel : Hud
 	{
 		if (@event.IsActionPressed("Esc"))
 		{
-			if (UiManager.Get_PausedMenu_Instance().Length <= 0)
-			{
-				return;
-			}
-
-			if (UiManager.Get_PausedMenu_Instance()[0].Visible)
-			{
-				UiManager.Hide_PausedMenu();
-			}
-			else
-			{
-				UiManager.Get_PausedMenu_Instance()[0].ShowUi();
-			}
+			OnPressedEsc();
 		}
 		if (@event.IsActionPressed("OpenConsole"))
 		{
@@ -145,6 +135,23 @@ public partial class HudPanel : Hud
 			}
 			Global.ResumeGame();
 			GDebugPanel.Hide();
+		}
+	}
+
+	private void OnPressedEsc()
+	{
+		if (UiManager.Get_PausedMenu_Instance().Length <= 0)
+		{
+			return;
+		}
+
+		if (UiManager.Get_PausedMenu_Instance()[0].Visible)
+		{
+			UiManager.Hide_PausedMenu();
+		}
+		else
+		{
+			UiManager.Get_PausedMenu_Instance()[0].ShowUi();
 		}
 	}
 }

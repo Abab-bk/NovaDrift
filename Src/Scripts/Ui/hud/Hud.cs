@@ -34,6 +34,19 @@ public abstract partial class Hud : UiBase
     private MarginContainer2 _L_MarginContainer2;
 
     /// <summary>
+    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureButton"/>, 节点路径: Hud.SettingBtn
+    /// </summary>
+    public SettingBtn L_SettingBtn
+    {
+        get
+        {
+            if (_L_SettingBtn == null) _L_SettingBtn = new SettingBtn((HudPanel)this, GetNode<Godot.TextureButton>("SettingBtn"));
+            return _L_SettingBtn;
+        }
+    }
+    private SettingBtn _L_SettingBtn;
+
+    /// <summary>
     /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Control"/>, 节点路径: Hud.DebugPanel
     /// </summary>
     public DebugPanel L_DebugPanel
@@ -321,6 +334,15 @@ public abstract partial class Hud : UiBase
     }
 
     /// <summary>
+    /// 类型: <see cref="Godot.TextureButton"/>, 路径: Hud.SettingBtn
+    /// </summary>
+    public class SettingBtn : UiNode<HudPanel, Godot.TextureButton, SettingBtn>
+    {
+        public SettingBtn(HudPanel uiPanel, Godot.TextureButton node) : base(uiPanel, node) {  }
+        public override SettingBtn Clone() => new (UiPanel, (Godot.TextureButton)Instance.Duplicate());
+    }
+
+    /// <summary>
     /// 类型: <see cref="Godot.Control"/>, 路径: Hud.DebugPanel
     /// </summary>
     public class DebugPanel : UiNode<HudPanel, Godot.Control, DebugPanel>
@@ -384,6 +406,11 @@ public abstract partial class Hud : UiBase
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: Hud.MarginContainer2
     /// </summary>
     public MarginContainer2 S_MarginContainer2 => L_MarginContainer2;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureButton"/>, 节点路径: Hud.SettingBtn
+    /// </summary>
+    public SettingBtn S_SettingBtn => L_SettingBtn;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Control"/>, 节点路径: Hud.DebugPanel

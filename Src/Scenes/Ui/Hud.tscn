@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dx2jdufhf6krx"]
+[gd_scene load_steps=11 format=3 uid="uid://dx2jdufhf6krx"]
 
 [ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_2tvmv"]
 [ext_resource type="Script" path="res://Scripts/Ui/hud/HudPanel.cs" id="1_jvtg7"]
@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dn158oeev4i6y" path="res://Assets/Textures/Ui/ExpBar.tres" id="3_tfhba"]
 [ext_resource type="Texture2D" uid="uid://c1xx73goajw8f" path="res://Assets/Textures/Ui/ShieldBar.tres" id="4_nh7k7"]
 [ext_resource type="Texture2D" uid="uid://b6jrw5201bblr" path="res://Assets/Textures/Ui/HpBar.tres" id="4_r2lu1"]
+[ext_resource type="Texture2D" uid="uid://bkn5gtgj1ogp" path="res://Assets/Ui/Buttons/SettingBtn.png" id="7_lhmc0"]
+[ext_resource type="Texture2D" uid="uid://cgg3gqrjfyixo" path="res://Assets/Ui/Buttons/SettingBtnPressed.png" id="8_kun4y"]
 
 [sub_resource type="Gradient" id="Gradient_qhgao"]
 colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 1)
@@ -95,6 +97,19 @@ grow_horizontal = 2
 unique_name_in_owner = true
 layout_mode = 2
 alignment = 1
+
+[node name="SettingBtn" type="TextureButton" parent="."]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -170.0
+offset_top = 84.0
+offset_right = -70.0
+offset_bottom = 184.0
+grow_horizontal = 0
+texture_normal = ExtResource("7_lhmc0")
+texture_pressed = ExtResource("8_kun4y")
 
 [node name="DebugPanel" type="Control" parent="."]
 layout_mode = 1

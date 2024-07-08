@@ -38,6 +38,7 @@ public enum InputDevice
 public class GameContext
 {
     public int Score;
+    public bool IsGameOver;
     private Node2D _camera;
 
     public enum FollowMode
@@ -115,6 +116,17 @@ public class GameContext
             var info = @base.MobInfo;
             AddScore((int)(info.DangerFactor * info.Health));
         };
+        EventBus.OnGameOver += () =>
+        {
+            IsGameOver = true;
+        };
+        EventBus.OnGameStart += Clear;
+    }
+
+    private void Clear()
+    {
+        Score = 0;
+        IsGameOver = false;
     }
 
     public void AddScore(int amount)
