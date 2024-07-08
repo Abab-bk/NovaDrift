@@ -1,4 +1,4 @@
-[gd_scene load_steps=37 format=3 uid="uid://b1hvfrsat441r"]
+[gd_scene load_steps=47 format=3 uid="uid://b1hvfrsat441r"]
 
 [ext_resource type="PackedScene" uid="uid://b1vmhmtmuma0x" path="res://Scenes/Prefabs/Actors/ActorBase.tscn" id="1_0c8c2"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Player.cs" id="2_15kon"]
@@ -82,6 +82,14 @@ editor_offset = Vector2(-340, 80)
 state_name = &"Shooting"
 editor_offset = Vector2(140, 80)
 
+[sub_resource type="StateConfig" id="StateConfig_gyfm3"]
+state_name = &"Charging"
+editor_offset = Vector2(-480, 380)
+
+[sub_resource type="StateConfig" id="StateConfig_85tqr"]
+state_name = &"Charged"
+editor_offset = Vector2(60, 380)
+
 [sub_resource type="VariableConfig" id="VariableConfig_mu8jh"]
 variable_name = &"GoToShooting"
 resource_name = "GoToShooting: Trigger"
@@ -112,10 +120,51 @@ type = 2
 and_mode = true
 variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_q42x5")])
 
+[sub_resource type="VariableConfig" id="VariableConfig_ptfoi"]
+variable_name = &"GoToCharged"
+resource_name = "GoToCharged: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_mu4k8"]
+variable_config = SubResource("VariableConfig_ptfoi")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_aybc7"]
+from_state_config = SubResource("StateConfig_gyfm3")
+to_state_config = SubResource("StateConfig_85tqr")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_mu4k8")])
+
+[sub_resource type="VariableConfig" id="VariableConfig_go1hi"]
+variable_name = &"GoToCharging"
+resource_name = "GoToCharging: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_6ybn8"]
+variable_config = SubResource("VariableConfig_go1hi")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_2s0gg"]
+from_state_config = SubResource("StateConfig_f52yo")
+to_state_config = SubResource("StateConfig_gyfm3")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_6ybn8")])
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_5n63r"]
+variable_config = SubResource("VariableConfig_01o2x")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_fdfdy"]
+from_state_config = SubResource("StateConfig_85tqr")
+to_state_config = SubResource("StateConfig_f52yo")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_5n63r")])
+
 [sub_resource type="FSMConfig" id="FSMConfig_xyrl7"]
-state_config_list = Array[StateConfig]([SubResource("StateConfig_f52yo"), SubResource("StateConfig_38u7l")])
-transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_hck3y"), SubResource("TransitionConfig_ad1ll")])
-variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_mu8jh"), SubResource("VariableConfig_01o2x")])
+state_config_list = Array[StateConfig]([SubResource("StateConfig_f52yo"), SubResource("StateConfig_38u7l"), SubResource("StateConfig_gyfm3"), SubResource("StateConfig_85tqr")])
+transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_hck3y"), SubResource("TransitionConfig_ad1ll"), SubResource("TransitionConfig_aybc7"), SubResource("TransitionConfig_2s0gg"), SubResource("TransitionConfig_fdfdy")])
+variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_mu8jh"), SubResource("VariableConfig_01o2x"), SubResource("VariableConfig_go1hi"), SubResource("VariableConfig_ptfoi")])
 
 [sub_resource type="Resource" id="Resource_w330d"]
 script = ExtResource("9_25cp4")

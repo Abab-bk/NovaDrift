@@ -13,6 +13,9 @@ public partial class Player : Actor
 {
     [GetNode("%RegenerationTimer")] private Timer _regenerationTimer;
     [GetNode("AreaMonitor")] private Area2D _areaMonitor;
+
+    public event Action OnCharging;
+    public event Action OnStopCharging;
     
     private HFSM _movementMachine;
     private HFSM _actionMachine;
@@ -20,6 +23,9 @@ public partial class Player : Actor
     private bool _updateShieldCooldown;
     
     public Joystick JoystickNode;
+
+    // 为了 ChargedShot Ability 添加的，Hack
+    public bool IsCharge = false;
 
     public override void _Ready()
     {
@@ -156,8 +162,7 @@ public partial class Player : Actor
                 break;
         }
     }
-
-
+    
     public void SetShield(BaseShield shield)
     {
         Shield = shield;
@@ -269,8 +274,25 @@ public partial class Player : Actor
     public override void _PhysicsProcess(double delta)
     {
         Vector2 mousePos = GetGlobalMousePosition();
+
+        if (Input.IsActionPressed("RClick"))
+        {
+            if (IsCharge)
+            {
+                OnCharging?.Invoke();
+            }
+            else
+            {
+                _actionMachine.SetTrigger("GoToShooting");
+            }
+        }
+        else
+        {
+            _actionMachine.SetTrigger("GoToIdle");
+        }
+
+        if (Input.IsActionJustReleased("RClick") && IsCharge) OnStopCharging?.Invoke();
         
-        _actionMachine.SetTrigger(Input.IsActionPressed("RClick") ? "GoToShooting" : "GoToIdle");
         _movementMachine.SetTrigger(Input.IsActionPressed("Click") ? "GoToRunning" : "GoToIdle");
 
         switch (Global.CurrentInputDevice)
