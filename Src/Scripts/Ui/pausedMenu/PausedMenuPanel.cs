@@ -23,6 +23,13 @@ public partial class PausedMenuPanel : PausedMenu
         // Global.Player.Stats.EffectSystem.OnAbilityRemoved += _ => UpdateUi();
         
         S_AbilityPanel.Instance.HideYesBtn();
+        S_BackToMainBtn.Instance.Pressed += () =>
+        {
+            UiManager.Hide_PausedMenu();
+            Global.ResumeGame();
+            EventBus.OnPlayerDead?.Invoke();
+            EventBus.OnGameOver?.Invoke();
+        };
 
         EventBus.OnGameOver += () =>
         {

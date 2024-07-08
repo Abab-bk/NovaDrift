@@ -31,6 +31,7 @@ public static partial class UiManager
         public const string PowerUpBtn = "PowerUpBtn";
         public const string QuestItem = "QuestItem";
         public const string SalvoBulletCount = "SalvoBulletCount";
+        public const string ScoreItem = "ScoreItem";
         public const string ScoreLabel = "ScoreLabel";
         public const string SelectAbility = "SelectAbility";
         public const string Setting = "Setting";
@@ -1239,6 +1240,54 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.SalvoBulletCount.SalvoBulletCountPanel[] Get_SalvoBulletCount_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.SalvoBulletCount.SalvoBulletCountPanel>(nameof(NovaDrift.Scripts.Ui.SalvoBulletCount.SalvoBulletCount));
+    }
+
+    /// <summary>
+    /// 创建 ScoreItem, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.ScoreItem.ScoreItemPanel Create_ScoreItem()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.ScoreItem.ScoreItemPanel>(UiName.ScoreItem);
+    }
+
+    /// <summary>
+    /// 打开 ScoreItem, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.ScoreItem.ScoreItemPanel Open_ScoreItem()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.ScoreItem.ScoreItemPanel>(UiName.ScoreItem);
+    }
+
+    /// <summary>
+    /// 隐藏 ScoreItem 的所有实例
+    /// </summary>
+    public static void Hide_ScoreItem()
+    {
+        var uiInstance = Get_ScoreItem_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 ScoreItem 的所有实例
+    /// </summary>
+    public static void Destroy_ScoreItem()
+    {
+        var uiInstance = Get_ScoreItem_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 ScoreItem 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.ScoreItem.ScoreItemPanel[] Get_ScoreItem_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.ScoreItem.ScoreItemPanel>(nameof(NovaDrift.Scripts.Ui.ScoreItem.ScoreItem));
     }
 
     /// <summary>

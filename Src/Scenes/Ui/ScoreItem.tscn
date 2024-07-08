@@ -1,0 +1,35 @@
+[gd_scene load_steps=3 format=3 uid="uid://crkxynej7vkw3"]
+
+[ext_resource type="Script" path="res://Scripts/Ui/scoreItem/ScoreItemPanel.cs" id="1_px188"]
+[ext_resource type="LabelSettings" uid="uid://c6d3f67ue8afv" path="res://Assets/LabelSettings/SubTitleWhite.tres" id="2_1c67f"]
+
+[node name="ScoreItem" type="Control"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 3
+script = ExtResource("1_px188")
+
+[node name="ScoreItem" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="TextLabel" type="Label" parent="ScoreItem"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+text = "击杀敌人"
+label_settings = ExtResource("2_1c67f")
+
+[node name="ScoreLabel" type="Label" parent="ScoreItem"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "100"
+label_settings = ExtResource("2_1c67f")
+horizontal_alignment = 2

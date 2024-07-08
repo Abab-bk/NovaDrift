@@ -40,7 +40,7 @@ public abstract partial class GameOver : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.VBoxContainer2.ScrollContainer.Items
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.VBoxContainer2.MarginContainer.ScrollContainer.Items
     /// </summary>
     public class Items : UiNode<GameOverPanel, Godot.VBoxContainer, Items>
     {
@@ -49,12 +49,12 @@ public abstract partial class GameOver : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.VBoxContainer2.ScrollContainer
+    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.VBoxContainer2.MarginContainer.ScrollContainer
     /// </summary>
     public class ScrollContainer : UiNode<GameOverPanel, Godot.ScrollContainer, ScrollContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.VBoxContainer2.Items
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.VBoxContainer2.MarginContainer.Items
         /// </summary>
         public Items L_Items
         {
@@ -68,6 +68,28 @@ public abstract partial class GameOver : UiBase
 
         public ScrollContainer(GameOverPanel uiPanel, Godot.ScrollContainer node) : base(uiPanel, node) {  }
         public override ScrollContainer Clone() => new (UiPanel, (Godot.ScrollContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.VBoxContainer2.MarginContainer
+    /// </summary>
+    public class MarginContainer_1 : UiNode<GameOverPanel, Godot.MarginContainer, MarginContainer_1>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.VBoxContainer2.ScrollContainer
+        /// </summary>
+        public ScrollContainer L_ScrollContainer
+        {
+            get
+            {
+                if (_L_ScrollContainer == null) _L_ScrollContainer = new ScrollContainer(UiPanel, Instance.GetNode<Godot.ScrollContainer>("ScrollContainer"));
+                return _L_ScrollContainer;
+            }
+        }
+        private ScrollContainer _L_ScrollContainer;
+
+        public MarginContainer_1(GameOverPanel uiPanel, Godot.MarginContainer node) : base(uiPanel, node) {  }
+        public override MarginContainer_1 Clone() => new (UiPanel, (Godot.MarginContainer)Instance.Duplicate());
     }
 
     /// <summary>
@@ -89,17 +111,17 @@ public abstract partial class GameOver : UiBase
         private Label _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.ScrollContainer
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.MarginContainer
         /// </summary>
-        public ScrollContainer L_ScrollContainer
+        public MarginContainer_1 L_MarginContainer
         {
             get
             {
-                if (_L_ScrollContainer == null) _L_ScrollContainer = new ScrollContainer(UiPanel, Instance.GetNode<Godot.ScrollContainer>("ScrollContainer"));
-                return _L_ScrollContainer;
+                if (_L_MarginContainer == null) _L_MarginContainer = new MarginContainer_1(UiPanel, Instance.GetNode<Godot.MarginContainer>("MarginContainer"));
+                return _L_MarginContainer;
             }
         }
-        private ScrollContainer _L_ScrollContainer;
+        private MarginContainer_1 _L_MarginContainer;
 
         public VBoxContainer2(GameOverPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
         public override VBoxContainer2 Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
@@ -327,14 +349,14 @@ public abstract partial class GameOver : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.VBoxContainer2.ScrollContainer.Items
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.VBoxContainer2.MarginContainer.ScrollContainer.Items
     /// </summary>
-    public Items S_Items => L_MarginContainer.L_VBoxContainer.L_VBoxContainer3.L_VBoxContainer2.L_ScrollContainer.L_Items;
+    public Items S_Items => L_MarginContainer.L_VBoxContainer.L_VBoxContainer3.L_VBoxContainer2.L_MarginContainer.L_ScrollContainer.L_Items;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.VBoxContainer2.ScrollContainer
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.VBoxContainer2.MarginContainer.ScrollContainer
     /// </summary>
-    public ScrollContainer S_ScrollContainer => L_MarginContainer.L_VBoxContainer.L_VBoxContainer3.L_VBoxContainer2.L_ScrollContainer;
+    public ScrollContainer S_ScrollContainer => L_MarginContainer.L_VBoxContainer.L_VBoxContainer3.L_VBoxContainer2.L_MarginContainer.L_ScrollContainer;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer3.VBoxContainer2
@@ -370,10 +392,5 @@ public abstract partial class GameOver : UiBase
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: GameOver.MarginContainer.VBoxContainer.VBoxContainer.BackToMainBtn
     /// </summary>
     public BackToMainBtn S_BackToMainBtn => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_BackToMainBtn;
-
-    /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: GameOver.MarginContainer
-    /// </summary>
-    public MarginContainer S_MarginContainer => L_MarginContainer;
 
 }
