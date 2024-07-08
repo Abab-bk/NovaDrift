@@ -213,8 +213,14 @@ public partial class Player : Actor
 
     public override void Die()
     {
-        EventBus.OnPlayerDead?.Invoke();
-        EventBus.OnGameOver?.Invoke();
+        if (Global.GameContext.ReliveCount > 0)
+        {
+            EventBus.OnPlayerDead?.Invoke();
+            EventBus.OnGameOver?.Invoke();
+            return;
+        }
+        Global.StopGame();
+        UiManager.Open_Relife();
     }
 
     public void UpLevel(float value = 0f)

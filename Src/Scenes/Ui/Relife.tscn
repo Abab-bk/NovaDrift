@@ -1,0 +1,60 @@
+[gd_scene load_steps=4 format=3 uid="uid://bty2rr5h4psj4"]
+
+[ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_32vi5"]
+[ext_resource type="Script" path="res://Scripts/Ui/relife/RelifePanel.cs" id="1_qoam1"]
+[ext_resource type="LabelSettings" uid="uid://cnabg1bgvdj1o" path="res://Assets/LabelSettings/WeightTitle.tres" id="3_1a43x"]
+
+[node name="Relife" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("1_32vi5")
+script = ExtResource("1_qoam1")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.278431)
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "5"
+label_settings = ExtResource("3_1a43x")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 30
+
+[node name="RelifeBtn" type="Button" parent="VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "观看广告复活"
+
+[node name="ContinueBtn" type="Button" parent="VBoxContainer2/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(600, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "放弃"
+
+[node name="Timer" type="Timer" parent="."]

@@ -90,6 +90,7 @@ public partial class GameWorld : Node2D
 	{
 		if (what == NotificationExitTree)
 		{
+			SoundManager.Shutdown();
 			AudioServer.Unlock();
 		}
 	}

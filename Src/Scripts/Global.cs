@@ -39,6 +39,7 @@ public class GameContext
 {
     public int Score;
     public bool IsGameOver;
+    public int ReliveCount;
     private Node2D _camera;
 
     public enum FollowMode
@@ -126,6 +127,7 @@ public class GameContext
     private void Clear()
     {
         Score = 0;
+        ReliveCount = 0;
         IsGameOver = false;
     }
 

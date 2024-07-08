@@ -30,6 +30,7 @@ public static partial class UiManager
         public const string Popup = "Popup";
         public const string PowerUpBtn = "PowerUpBtn";
         public const string QuestItem = "QuestItem";
+        public const string Relife = "Relife";
         public const string SalvoBulletCount = "SalvoBulletCount";
         public const string ScoreItem = "ScoreItem";
         public const string ScoreLabel = "ScoreLabel";
@@ -1192,6 +1193,54 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.QuestItem.QuestItemPanel[] Get_QuestItem_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.QuestItem.QuestItemPanel>(nameof(NovaDrift.Scripts.Ui.QuestItem.QuestItem));
+    }
+
+    /// <summary>
+    /// 创建 Relife, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Relife.RelifePanel Create_Relife()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.Relife.RelifePanel>(UiName.Relife);
+    }
+
+    /// <summary>
+    /// 打开 Relife, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Relife.RelifePanel Open_Relife()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.Relife.RelifePanel>(UiName.Relife);
+    }
+
+    /// <summary>
+    /// 隐藏 Relife 的所有实例
+    /// </summary>
+    public static void Hide_Relife()
+    {
+        var uiInstance = Get_Relife_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 Relife 的所有实例
+    /// </summary>
+    public static void Destroy_Relife()
+    {
+        var uiInstance = Get_Relife_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 Relife 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Relife.RelifePanel[] Get_Relife_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.Relife.RelifePanel>(nameof(NovaDrift.Scripts.Ui.Relife.Relife));
     }
 
     /// <summary>

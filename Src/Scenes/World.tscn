@@ -316,7 +316,7 @@ script = ExtResource("11_euylg")
 _category = "RandomCorner"
 
 [node name="RandomCorner4" type="Marker2D" parent="WaveSpawnerController"]
-position = Vector2(3020, 2880)
+position = Vector2(3020, 2790)
 gizmo_extents = 100.0
 script = ExtResource("11_euylg")
 _category = "RandomCorner"

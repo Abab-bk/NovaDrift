@@ -28,6 +28,11 @@ public partial class LaserBeam : BaseVfx
         Disappear();
     }
 
+    public override void _ExitTree()
+    {
+        _sound.stop(STOP_MODE.ALLOWFADEOUT);
+    }
+
     private void Appear()
     {
         _sound = SoundManager.PlaySound("event:/Weapons/Laser/Laser");
@@ -48,7 +53,6 @@ public partial class LaserBeam : BaseVfx
             0.2f)
             .OnComplete(() =>
             {
-                _sound.stop(STOP_MODE.ALLOWFADEOUT);
                 OnAnimationEnd?.Invoke();
                 QueueFree();
             })
