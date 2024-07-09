@@ -32,6 +32,7 @@ public class CharacterStats
     public readonly Stat
         Size = new(1f),
         Recovery = new(1f), // TODO 所有类型的治疗
+        // Regeneration 默认值 1 就是 1/50 的 1
         Regeneration = new(1f), // TODO 一种特定类型的治疗。被动再生。默认情况下，只有您的船体会以每秒最大船体的 1/50 的速度再生。可以修改再生以应用于护盾。
 
         ShootSpeed = new(0.5f), // 射击速度，单位为秒，越低越快

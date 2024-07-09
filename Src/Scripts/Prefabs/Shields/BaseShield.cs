@@ -25,6 +25,7 @@ public partial class BaseShield : Node2D
     protected PureHurtBox HurtBox;
     protected Timer CoolDownTimer;
     
+    public bool IsActive;
     public Shield Shield;
     public Actor Target;
     public List<float> Values;
@@ -106,6 +107,7 @@ public partial class BaseShield : Node2D
 
     protected virtual void Break()
     {
+        IsActive = false;
         ShieldArea.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Disabled);
         HurtBox.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Disabled);
         OnCharge?.Invoke();
@@ -113,6 +115,7 @@ public partial class BaseShield : Node2D
 
     protected virtual void Active()
     {
+        IsActive = true;
         OnActive?.Invoke();
     }
 
