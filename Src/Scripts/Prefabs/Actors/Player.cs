@@ -300,29 +300,23 @@ public partial class Player : Actor
             case InputDevice.Keyboard:
                 Rotation = RotationTo(GlobalPosition.AngleToPoint(mousePos), delta);
                 break;
-            case InputDevice.Joystick:
-                Rotation = RotationTo(GlobalPosition.AngleToPoint(GetControllerDir() * 100f), delta);
-                break;
+            // case InputDevice.Joystick:
+            //     Rotation = RotationTo(GlobalPosition.AngleToPoint(GetControllerDir() * 100f), delta);
+            //     break;
         }
-        Rotation = RotationTo(GlobalPosition.AngleToPoint(mousePos), delta);
-        
-        // if (Global.CurrentPlatform == GamePlatform.Desktop)
-        // {
-        //     
-        // }
-        // else
-        // {
-        //     Rotation = RotationTo(JoystickNode.TargetPos.Angle(), delta);
-        //     if (JoystickNode.TargetPos != Vector2.Zero)
-        //     {
-        //         TryMoveTo(JoystickNode.TargetPos, delta);
-        //         // _smokeTrail.AddAgePoint(GlobalPosition);
-        //     }
-        //     else
-        //     {
-        //         TryStop(delta);
-        //     }
-        // }
+
+        if (Global.CurrentPlatform == GamePlatform.Mobile)
+        {
+            Rotation = RotationTo(JoystickNode.TargetPos.Angle(), delta);
+            if (JoystickNode.TargetPos != Vector2.Zero)
+            {
+                TryMoveTo(JoystickNode.TargetPos, delta);
+            }
+            else
+            {
+                TryStop(delta);
+            }
+        }
         
         base._PhysicsProcess(delta);
     }

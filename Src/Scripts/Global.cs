@@ -149,7 +149,7 @@ public static class Global
     
     public static GamePlatform CurrentPlatform = GamePlatform.Desktop;
     public static InputDevice CurrentInputDevice = InputDevice.Keyboard;
-    
+
     public static Player Player;
     public static Node2D Something;
     public static GameWorld GameWorld;
