@@ -53,8 +53,8 @@ public class CharacterStats
         Acceleration = new(1000f),
         Deceleration = new(500f),
         RotationSpeed = new(1f), // 越高越灵敏
-        ShootingDeceleration = new(1f),
-        Friction = new(150f), // 摩檫力，应该明显大于加速度 ?? 目前好像被减速度取代
+        ShootingDeceleration = new(0.5f),
+        // Friction = new(150f), // 摩檫力，应该明显大于加速度 ?? 目前好像被减速度取代
 
         DamageResistance = new(0.0f), // 伤害抗性
         ImpactKnockBackResistance = new(0.0f), // 撞击时获得的击退的抗性
@@ -70,6 +70,44 @@ public class CharacterStats
         Plating = new Stat(0f), // 镀层
         
         InjuryFactor = new (1.0f); // 受到的伤害系数
+    
+    public (Stat, string)[] GetAllStats()
+    {
+        var stats = new (Stat, string)[]
+        {
+            (Health.MaxValue, "最大血量"),
+            (Speed, "速度"),
+            (Damage, "伤害"),
+            (Recovery, "恢复"),
+            (Regeneration, "再生"),
+            (ShootSpeed, "射速"),
+            (BulletSpeed, "子弹速度"),
+            (ShootSpread, "子弹散布"),
+            (ShootKnockBack, "击退"),
+            (BurstFire, "连射"),
+            (Targeting, "追踪"),
+            (BulletSize, "子弹大小"),
+            (BulletDegeneration, "子弹退化"),
+            (Recoil, "自身击退"),
+            (BulletCount, "子弹数量"),
+            (BlastDamage, "爆炸伤害"),
+            (BlastRadius, "爆炸半径"),
+            (Acceleration, "加速度"),
+            (Deceleration, "减速度"),
+            (RotationSpeed, "转速"),
+            (ShootingDeceleration, "射击减速度"),
+            (DamageResistance, "伤害抗性"),
+            (ImpactKnockBackResistance, "击退抗性"),
+            (ImpactDamage, "伤害"),
+            (MaxShield, "最大护盾"),
+            (ShieldCoolDown, "护盾恢复"),
+            (ShieldDamageResistance, "护盾伤害抗性"),
+            (ShieldPower, "护盾效果"),
+            (ShieldRadius, "护盾半径"),
+            // (Plating, "镀层"),
+        };
+        return stats;
+    }
     
     
     // 一般是给玩家用的，无限持续时间，一般是Mod

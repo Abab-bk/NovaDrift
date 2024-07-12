@@ -86,6 +86,11 @@ public static class Wizard
         return path + list.PickRandom();
     }
 
+    /// <summary>
+    /// 根据 chance 返回 bool，做随机概率使用
+    /// </summary>
+    /// <param name="chance"> 概率, 0 - 100 </param>
+    /// <returns></returns>
     public static bool ChanceOverThreshold(int chance)
     {
         WeightedList<bool> list = new WeightedList<bool>();

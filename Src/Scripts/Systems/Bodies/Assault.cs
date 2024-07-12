@@ -11,31 +11,17 @@ public class Assault : Body
         
         Actor.Shooter.OnShoot += bullet =>
         {
-            if (!Wizard.ChanceOverThreshold(8))
+            if (!Wizard.ChanceOverThreshold((int)(Values[0] * 100f)))
             {
                 return;
             }
             bullet.Damage += Actor.Stats.Damage.Value;
         };
         
-        AddModifierToTarget(
-            new StatModifier(0.15f, StatModType.PercentAdd, this),
-            Actor.Stats.ShootingDeceleration
-            );
-
-        AddModifierToTarget(
-            new StatModifier(0.15f, StatModType.PercentAdd, this),
-            Actor.Stats.BulletSpeed
-            );
-        
-        AddModifierToTarget(
-            new StatModifier(-0.15f, StatModType.PercentAdd, this),
-            Actor.Stats.ShootSpread
-            );
-        
-        AddModifierToTarget(
-            new StatModifier(0.15f, StatModType.PercentAdd),
-            Actor.Stats.ShootSpread
-            );
+        AddModifierToTarget(DataBuilder.BuildPercentAddModifier(Values[1]), Actor.Stats.ShootSpeed);
+        AddModifierToTarget(DataBuilder.BuildPercentAddModifier(Values[1]), Actor.Stats.ShootSpread);
+        AddModifierToTarget(DataBuilder.BuildPercentAddModifier(Values[1]), Actor.Stats.BulletSpeed);
+        AddModifierToTarget(DataBuilder.BuildPercentAddModifier(Values[2]), Actor.Stats.ShootingDeceleration);
+        AddModifierToTarget(DataBuilder.BuildPercentAddModifier(Values[3]), Actor.Stats.MaxShield);
     }
 }

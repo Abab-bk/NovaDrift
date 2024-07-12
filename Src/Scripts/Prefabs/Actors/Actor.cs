@@ -53,12 +53,11 @@ public partial class Actor : CharacterBody2D
     public readonly CharacterStats Stats = new CharacterStats();
     public float ShootCd = 1f;
     
-    // protected bool IsShooting = false;
+    public bool IsShooting = false;
     
     protected bool IsDead;
     protected ActorVisual Visual;
-    
-    
+
     private Area2D _bodyArea;
     
     protected virtual void _OnShoot(BulletBase bullet)
@@ -81,18 +80,9 @@ public partial class Actor : CharacterBody2D
     
     public virtual void TryMoveTo(Vector2 dir, double delta)
     {
-        var targetVelocity = dir * Stats.Speed.Value;
-        Velocity = Velocity.MoveToward(targetVelocity, Stats.Acceleration.Value * (float)delta);
+        var targetVelocity = dir * (Stats.Speed.Value * (IsShooting ? 1f - Stats.ShootingDeceleration.Value : 1f));
         
-        // TODO
-        // if (IsShooting)
-        // {
-        //     Velocity = Velocity.MoveToward(
-        //         targetVelocity,
-        //         (Stats.Acceleration.Value - Stats.ShootingDeceleration.Value) *
-        //         (float)delta);
-        //     return;
-        // }
+        Velocity = Velocity.MoveToward(targetVelocity, Stats.Acceleration.Value * (float)delta);
     }
 
     public void TryStop(double delta)
@@ -138,6 +128,9 @@ public partial class Actor : CharacterBody2D
         {
             Sprite.Texture = GD.Load<Texture2D>(Stats.Body.IconPath);
         };
+
+        StartShooting += () => IsShooting = true;
+        StopShooting += () => IsShooting = false;
         
         this.SetIsPlayer(IsPlayer);
         

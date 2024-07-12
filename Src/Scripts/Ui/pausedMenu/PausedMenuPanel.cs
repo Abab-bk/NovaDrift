@@ -2,6 +2,7 @@ using DsUi;
 using Godot;
 using NovaDrift.Scripts.Systems;
 using NovaDrift.Scripts.Ui.AbilityItem;
+using NovaDrift.Scripts.Ui.StatMonitorLabel;
 
 namespace NovaDrift.Scripts.Ui.PausedMenu;
 
@@ -38,8 +39,34 @@ public partial class PausedMenuPanel : PausedMenu
                 node.QueueFree();
             }
         };
+        
+        GenerateStats();
     }
-    
+
+    private void GenerateStats()
+    {
+        var count = 0;
+        HBoxContainer lastBox = null;
+        foreach (var statContainer in Global.Player.Stats.GetAllStats())
+        {
+            if (count >= 4) count = 0;
+            
+            if (count == 0)
+            {
+                var hBox = new HBoxContainer();
+                S_Stats.AddChild(hBox);
+                lastBox = hBox;
+            }
+
+            var panel = UiManager.Create_StatMonitorLabel();
+            panel.Reparent(lastBox);
+            panel.StatName = statContainer.Item2;
+            panel.Stat = statContainer.Item1;
+            panel.Show();
+            count++;
+        }
+    }
+
     private void AddAbility(Ability ability)
     {
         var itemPanel = S_Abilities.OpenNestedUi<AbilityItemPanel>(UiManager.UiName.AbilityItem);

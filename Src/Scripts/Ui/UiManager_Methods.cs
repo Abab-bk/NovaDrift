@@ -38,6 +38,7 @@ public static partial class UiManager
         public const string Setting = "Setting";
         public const string Slogan = "Slogan";
         public const string StartMenu = "StartMenu";
+        public const string StatMonitorLabel = "StatMonitorLabel";
         public const string StatsMonitor = "StatsMonitor";
         public const string StatsMonitorItem = "StatsMonitorItem";
         public const string Tip = "Tip";
@@ -1577,6 +1578,54 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.StartMenu.StartMenuPanel[] Get_StartMenu_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.StartMenu.StartMenuPanel>(nameof(NovaDrift.Scripts.Ui.StartMenu.StartMenu));
+    }
+
+    /// <summary>
+    /// 创建 StatMonitorLabel, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.StatMonitorLabel.StatMonitorLabelPanel Create_StatMonitorLabel()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.StatMonitorLabel.StatMonitorLabelPanel>(UiName.StatMonitorLabel);
+    }
+
+    /// <summary>
+    /// 打开 StatMonitorLabel, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.StatMonitorLabel.StatMonitorLabelPanel Open_StatMonitorLabel()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.StatMonitorLabel.StatMonitorLabelPanel>(UiName.StatMonitorLabel);
+    }
+
+    /// <summary>
+    /// 隐藏 StatMonitorLabel 的所有实例
+    /// </summary>
+    public static void Hide_StatMonitorLabel()
+    {
+        var uiInstance = Get_StatMonitorLabel_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 StatMonitorLabel 的所有实例
+    /// </summary>
+    public static void Destroy_StatMonitorLabel()
+    {
+        var uiInstance = Get_StatMonitorLabel_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 StatMonitorLabel 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.StatMonitorLabel.StatMonitorLabelPanel[] Get_StatMonitorLabel_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.StatMonitorLabel.StatMonitorLabelPanel>(nameof(NovaDrift.Scripts.Ui.StatMonitorLabel.StatMonitorLabel));
     }
 
     /// <summary>

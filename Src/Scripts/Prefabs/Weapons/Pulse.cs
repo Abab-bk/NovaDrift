@@ -2,6 +2,7 @@ using AcidWallStudio.Fmod;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
+using NovaDrift.Scripts.Systems;
 using NovaDrift.Scripts.Vfx;
 
 namespace NovaDrift.Scripts.Prefabs.Weapons;
@@ -24,6 +25,16 @@ public partial class Pulse : BaseShooter
             OneShot = true
         };
         AddChild(_shootTimer);
+        GetBulletFunc = _ =>
+            new BulletBuilder().
+            SetOwner(Actor).
+            SetIsPlayer(IsPlayer).
+            SetDamage(Actor.Stats.Damage.Value * 0.5f).
+            SetSpeed(Actor.Stats.BulletSpeed.Value).
+            SetSize(Actor.Stats.BulletSize.Value).
+            SetDegeneration(Actor.Stats.BulletDegeneration.Value).
+            SetSteering(Actor.Stats.Targeting.Value).
+            Build();
     }
 
     private float GetRadius()
@@ -55,6 +66,31 @@ public partial class Pulse : BaseShooter
         };
         
         AddChild(circleBlast);
+        
+        
+        for (int i = 0; i < Actor.Stats.BulletCount.Value; i++)
+        {
+            BulletBase bullet = GetBulletFunc?.Invoke(this);
+                
+            if (bullet == null) continue;
+                
+            bullet.GlobalPosition = GlobalPosition;
+            if ((int)Actor.Stats.BulletCount.Value == 1)
+            {
+                bullet.Direction = bullet.Direction.Rotated(GlobalRotation);
+            }
+            else
+            {
+                float arcRad = Mathf.DegToRad(Actor.Stats.ShootSpread.Value);
+                float increment = arcRad / (Actor.Stats.BulletCount.Value - 1);
+                bullet.Direction = bullet.Direction.Rotated(Actor.GlobalRotation + increment * i - arcRad / 2);
+            }
+
+            Global.GameWorld.AddChild(bullet);
+                
+            OnShoot?.Invoke(bullet);
+            bullet.OnHit += body => { OnHit?.Invoke(body); };
+        }
     }
 
     public override void Destroy()

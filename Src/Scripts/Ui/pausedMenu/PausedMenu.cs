@@ -54,7 +54,7 @@ public abstract partial class PausedMenu : UiBase
     public sealed override void OnInitNestedUi()
     {
 
-        var inst1 = L_MarginContainer.L_VBoxContainer.L_Content;
+        var inst1 = L_MarginContainer.L_VBoxContainer.L_ScrollContainer.L_VBoxContainer.L_Content;
         RecordNestedUi(inst1.L_AbilityPanel.Instance, inst1, UiManager.RecordType.Open);
         inst1.L_AbilityPanel.Instance.OnCreateUi();
         inst1.L_AbilityPanel.Instance.OnInitNestedUi();
@@ -80,7 +80,16 @@ public abstract partial class PausedMenu : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HFlowContainer"/>, 路径: PausedMenu.MarginContainer.VBoxContainer.Content.ScrollContainer.Abilities
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: PausedMenu.MarginContainer.VBoxContainer.ScrollContainer.VBoxContainer.Stats
+    /// </summary>
+    public class Stats : UiNode<PausedMenuPanel, Godot.VBoxContainer, Stats>
+    {
+        public Stats(PausedMenuPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
+        public override Stats Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.HFlowContainer"/>, 路径: PausedMenu.MarginContainer.VBoxContainer.ScrollContainer.VBoxContainer.Content.ScrollContainer.Abilities
     /// </summary>
     public class Abilities : UiNode<PausedMenuPanel, Godot.HFlowContainer, Abilities>
     {
@@ -89,12 +98,12 @@ public abstract partial class PausedMenu : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: PausedMenu.MarginContainer.VBoxContainer.Content.ScrollContainer
+    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: PausedMenu.MarginContainer.VBoxContainer.ScrollContainer.VBoxContainer.Content.ScrollContainer
     /// </summary>
-    public class ScrollContainer : UiNode<PausedMenuPanel, Godot.ScrollContainer, ScrollContainer>
+    public class ScrollContainer_1 : UiNode<PausedMenuPanel, Godot.ScrollContainer, ScrollContainer_1>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HFlowContainer"/>, 节点路径: PausedMenu.MarginContainer.VBoxContainer.Content.Abilities
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HFlowContainer"/>, 节点路径: PausedMenu.MarginContainer.VBoxContainer.ScrollContainer.VBoxContainer.Content.Abilities
         /// </summary>
         public Abilities L_Abilities
         {
@@ -106,12 +115,12 @@ public abstract partial class PausedMenu : UiBase
         }
         private Abilities _L_Abilities;
 
-        public ScrollContainer(PausedMenuPanel uiPanel, Godot.ScrollContainer node) : base(uiPanel, node) {  }
-        public override ScrollContainer Clone() => new (UiPanel, (Godot.ScrollContainer)Instance.Duplicate());
+        public ScrollContainer_1(PausedMenuPanel uiPanel, Godot.ScrollContainer node) : base(uiPanel, node) {  }
+        public override ScrollContainer_1 Clone() => new (UiPanel, (Godot.ScrollContainer)Instance.Duplicate());
     }
 
     /// <summary>
-    /// 类型: <see cref="NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel"/>, 路径: PausedMenu.MarginContainer.VBoxContainer.Content.AbilityPanel
+    /// 类型: <see cref="NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel"/>, 路径: PausedMenu.MarginContainer.VBoxContainer.ScrollContainer.VBoxContainer.Content.AbilityPanel
     /// </summary>
     public class AbilityPanel : UiNode<PausedMenuPanel, NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel, AbilityPanel>
     {
@@ -127,25 +136,25 @@ public abstract partial class PausedMenu : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: PausedMenu.MarginContainer.VBoxContainer.Content
+    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: PausedMenu.MarginContainer.VBoxContainer.ScrollContainer.VBoxContainer.Content
     /// </summary>
     public class Content : UiNode<PausedMenuPanel, Godot.HBoxContainer, Content>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: PausedMenu.MarginContainer.VBoxContainer.ScrollContainer
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: PausedMenu.MarginContainer.VBoxContainer.ScrollContainer.VBoxContainer.ScrollContainer
         /// </summary>
-        public ScrollContainer L_ScrollContainer
+        public ScrollContainer_1 L_ScrollContainer
         {
             get
             {
-                if (_L_ScrollContainer == null) _L_ScrollContainer = new ScrollContainer(UiPanel, Instance.GetNode<Godot.ScrollContainer>("ScrollContainer"));
+                if (_L_ScrollContainer == null) _L_ScrollContainer = new ScrollContainer_1(UiPanel, Instance.GetNode<Godot.ScrollContainer>("ScrollContainer"));
                 return _L_ScrollContainer;
             }
         }
-        private ScrollContainer _L_ScrollContainer;
+        private ScrollContainer_1 _L_ScrollContainer;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel"/>, 节点路径: PausedMenu.MarginContainer.VBoxContainer.AbilityPanel
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel"/>, 节点路径: PausedMenu.MarginContainer.VBoxContainer.ScrollContainer.VBoxContainer.AbilityPanel
         /// </summary>
         public AbilityPanel L_AbilityPanel
         {
@@ -159,6 +168,63 @@ public abstract partial class PausedMenu : UiBase
 
         public Content(PausedMenuPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
         public override Content Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: PausedMenu.MarginContainer.VBoxContainer.ScrollContainer.VBoxContainer
+    /// </summary>
+    public class VBoxContainer_1 : UiNode<PausedMenuPanel, Godot.VBoxContainer, VBoxContainer_1>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: PausedMenu.MarginContainer.VBoxContainer.ScrollContainer.Stats
+        /// </summary>
+        public Stats L_Stats
+        {
+            get
+            {
+                if (_L_Stats == null) _L_Stats = new Stats(UiPanel, Instance.GetNode<Godot.VBoxContainer>("Stats"));
+                return _L_Stats;
+            }
+        }
+        private Stats _L_Stats;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: PausedMenu.MarginContainer.VBoxContainer.ScrollContainer.Content
+        /// </summary>
+        public Content L_Content
+        {
+            get
+            {
+                if (_L_Content == null) _L_Content = new Content(UiPanel, Instance.GetNode<Godot.HBoxContainer>("Content"));
+                return _L_Content;
+            }
+        }
+        private Content _L_Content;
+
+        public VBoxContainer_1(PausedMenuPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
+        public override VBoxContainer_1 Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: PausedMenu.MarginContainer.VBoxContainer.ScrollContainer
+    /// </summary>
+    public class ScrollContainer : UiNode<PausedMenuPanel, Godot.ScrollContainer, ScrollContainer>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: PausedMenu.MarginContainer.VBoxContainer.VBoxContainer
+        /// </summary>
+        public VBoxContainer_1 L_VBoxContainer
+        {
+            get
+            {
+                if (_L_VBoxContainer == null) _L_VBoxContainer = new VBoxContainer_1(UiPanel, Instance.GetNode<Godot.VBoxContainer>("VBoxContainer"));
+                return _L_VBoxContainer;
+            }
+        }
+        private VBoxContainer_1 _L_VBoxContainer;
+
+        public ScrollContainer(PausedMenuPanel uiPanel, Godot.ScrollContainer node) : base(uiPanel, node) {  }
+        public override ScrollContainer Clone() => new (UiPanel, (Godot.ScrollContainer)Instance.Duplicate());
     }
 
     /// <summary>
@@ -182,7 +248,7 @@ public abstract partial class PausedMenu : UiBase
     /// <summary>
     /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: PausedMenu.MarginContainer.VBoxContainer.VBoxContainer
     /// </summary>
-    public class VBoxContainer_1 : UiNode<PausedMenuPanel, Godot.VBoxContainer, VBoxContainer_1>
+    public class VBoxContainer_2 : UiNode<PausedMenuPanel, Godot.VBoxContainer, VBoxContainer_2>
     {
         /// <summary>
         /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: PausedMenu.MarginContainer.VBoxContainer.ReStartBtn
@@ -210,8 +276,8 @@ public abstract partial class PausedMenu : UiBase
         }
         private BackToMainBtn _L_BackToMainBtn;
 
-        public VBoxContainer_1(PausedMenuPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
-        public override VBoxContainer_1 Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
+        public VBoxContainer_2(PausedMenuPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
+        public override VBoxContainer_2 Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
@@ -233,30 +299,30 @@ public abstract partial class PausedMenu : UiBase
         private Label _L_Label;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: PausedMenu.MarginContainer.Content
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: PausedMenu.MarginContainer.ScrollContainer
         /// </summary>
-        public Content L_Content
+        public ScrollContainer L_ScrollContainer
         {
             get
             {
-                if (_L_Content == null) _L_Content = new Content(UiPanel, Instance.GetNode<Godot.HBoxContainer>("Content"));
-                return _L_Content;
+                if (_L_ScrollContainer == null) _L_ScrollContainer = new ScrollContainer(UiPanel, Instance.GetNode<Godot.ScrollContainer>("ScrollContainer"));
+                return _L_ScrollContainer;
             }
         }
-        private Content _L_Content;
+        private ScrollContainer _L_ScrollContainer;
 
         /// <summary>
         /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: PausedMenu.MarginContainer.VBoxContainer
         /// </summary>
-        public VBoxContainer_1 L_VBoxContainer
+        public VBoxContainer_2 L_VBoxContainer
         {
             get
             {
-                if (_L_VBoxContainer == null) _L_VBoxContainer = new VBoxContainer_1(UiPanel, Instance.GetNode<Godot.VBoxContainer>("VBoxContainer"));
+                if (_L_VBoxContainer == null) _L_VBoxContainer = new VBoxContainer_2(UiPanel, Instance.GetNode<Godot.VBoxContainer>("VBoxContainer"));
                 return _L_VBoxContainer;
             }
         }
-        private VBoxContainer_1 _L_VBoxContainer;
+        private VBoxContainer_2 _L_VBoxContainer;
 
         public VBoxContainer(PausedMenuPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
         public override VBoxContainer Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
@@ -305,24 +371,24 @@ public abstract partial class PausedMenu : UiBase
     public Label S_Label => L_MarginContainer.L_VBoxContainer.L_Label;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HFlowContainer"/>, 节点路径: PausedMenu.MarginContainer.VBoxContainer.Content.ScrollContainer.Abilities
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: PausedMenu.MarginContainer.VBoxContainer.ScrollContainer.VBoxContainer.Stats
     /// </summary>
-    public Abilities S_Abilities => L_MarginContainer.L_VBoxContainer.L_Content.L_ScrollContainer.L_Abilities;
+    public Stats S_Stats => L_MarginContainer.L_VBoxContainer.L_ScrollContainer.L_VBoxContainer.L_Stats;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: PausedMenu.MarginContainer.VBoxContainer.Content.ScrollContainer
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HFlowContainer"/>, 节点路径: PausedMenu.MarginContainer.VBoxContainer.ScrollContainer.VBoxContainer.Content.ScrollContainer.Abilities
     /// </summary>
-    public ScrollContainer S_ScrollContainer => L_MarginContainer.L_VBoxContainer.L_Content.L_ScrollContainer;
+    public Abilities S_Abilities => L_MarginContainer.L_VBoxContainer.L_ScrollContainer.L_VBoxContainer.L_Content.L_ScrollContainer.L_Abilities;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel"/>, 节点路径: PausedMenu.MarginContainer.VBoxContainer.Content.AbilityPanel
+    /// 场景中唯一名称的节点, 节点类型: <see cref="NovaDrift.Scripts.Ui.AbilityPanel.AbilityPanelPanel"/>, 节点路径: PausedMenu.MarginContainer.VBoxContainer.ScrollContainer.VBoxContainer.Content.AbilityPanel
     /// </summary>
-    public AbilityPanel S_AbilityPanel => L_MarginContainer.L_VBoxContainer.L_Content.L_AbilityPanel;
+    public AbilityPanel S_AbilityPanel => L_MarginContainer.L_VBoxContainer.L_ScrollContainer.L_VBoxContainer.L_Content.L_AbilityPanel;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: PausedMenu.MarginContainer.VBoxContainer.Content
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: PausedMenu.MarginContainer.VBoxContainer.ScrollContainer.VBoxContainer.Content
     /// </summary>
-    public Content S_Content => L_MarginContainer.L_VBoxContainer.L_Content;
+    public Content S_Content => L_MarginContainer.L_VBoxContainer.L_ScrollContainer.L_VBoxContainer.L_Content;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: PausedMenu.MarginContainer.VBoxContainer.VBoxContainer.ReStartBtn
