@@ -30,7 +30,7 @@ public partial class DailyQuestsPanel : DailyQuests
         
         S_CloseBtn.Instance.Pressed += () =>
         {
-            this.ChangeTo(UiManager.Get_StartMenu_Instance().First());
+            this.ChangeTo(UiManager.Create_StartMenu());
         };
     }
 

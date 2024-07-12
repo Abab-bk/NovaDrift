@@ -1,5 +1,4 @@
 using System.Globalization;
-using Godot;
 using NovaDrift.addons.AcidStats;
 
 namespace NovaDrift.Scripts.Ui.StatMonitorLabel;

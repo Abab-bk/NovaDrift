@@ -157,6 +157,7 @@ public static class Global
     public static FastNoiseLite Noise;
     public static WaveSpawnerController WaveSpawnerController;
     public static WorldEnvironment WorldEnvironment;
+    public static bool ShowLogo = true;
     public static readonly GameContext GameContext = new GameContext();
 
     public static int AcidCoins

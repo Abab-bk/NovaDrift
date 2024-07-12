@@ -57,7 +57,7 @@ public partial class ScoreItemPanel : ScoreItem
 
     public override void OnDestroyUi()
     {
-        
+        _tween.Kill();
     }
 
 }

@@ -44,9 +44,6 @@ public partial class StartMenuPanel : StartMenu
                 .OnComplete(UiManager.Destroy_StartMenu)
                 .Play();
         };
-        
-        L_Content.Instance.Hide();
-        L_GameLogo.Instance.Show();
 
         S_GameLogoTouch.Instance.Pressed += () =>
         {
@@ -69,6 +66,17 @@ public partial class StartMenuPanel : StartMenu
                 .Build()
                 .Play();
         };
+        
+        if (Global.ShowLogo)
+        {
+            L_Content.Instance.Hide();
+            L_GameLogo.Instance.Show();
+            Global.ShowLogo = false;
+            return;
+        }
+        L_Content.Instance.Show();
+        L_GameLogo.Instance.Hide();
+        _isClicked = true;
     }
 
     public override void OnCreateUi()

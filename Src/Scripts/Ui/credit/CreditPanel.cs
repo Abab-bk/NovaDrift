@@ -23,7 +23,7 @@ public partial class CreditPanel : Credit
         GenerateUi();
         S_CloseBtn.Instance.Pressed += () =>
         {
-            this.ChangeTo(UiManager.Get_StartMenu_Instance().First());
+            this.ChangeTo(UiManager.Create_StartMenu());
         };
         PlayAnimation();
     }
@@ -31,13 +31,13 @@ public partial class CreditPanel : Credit
     private async void PlayAnimation()
     {
         await ToSignal(GetTree().CreateTimer(1.0f), Timer.SignalName.Timeout);
-        GTweenExtensions.Tween(
-                () => S_Scroll.Instance.ScrollVertical,
-                f => S_Scroll.Instance.ScrollVertical = (int)f,
-                (float)S_Scroll.Instance.GetVScrollBar().MaxValue,
-                20f
-            )
-            .Play();
+
+        var tween = CreateTween();
+        tween.TweenProperty(
+            S_Scroll.Instance,
+            "scroll_vertical",
+            (float)S_Scroll.Instance.GetVScrollBar().MaxValue,
+            20f);
     }
 
     private void GenerateUi()

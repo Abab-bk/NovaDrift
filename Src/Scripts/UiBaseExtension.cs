@@ -14,7 +14,7 @@ public static class UiBaseExtension
         GTweenSequenceBuilder.New()
             .Append(source.TweenModulateAlpha(0f, 0.2f))
             .Append(to.TweenModulateAlpha(1f, 0.2f))
-            .AppendCallback(source.HideUi)
+            .AppendCallback(source.Destroy)
             .Build()
             .Play();
     }
