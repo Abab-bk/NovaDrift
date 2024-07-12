@@ -1,9 +1,19 @@
 ﻿using System;
+using AcidWallStudio.AcidUtilities;
+using NovaDrift.addons.AcidUtilities;
 
 namespace NovaDrift.Scripts;
 
 public class CSharpTest
 {
+    public static void EncryptorTest()
+    {
+        var content = "[Coins][1000]";
+        var code = Encryptor.Encode(content);
+        Console.WriteLine($"加密: {code}");
+        Console.WriteLine($"解密: {Encryptor.Decode(code)}");
+    }
+
     public static void Test1()
     {
         for (int i = 1; i < 101; i++)

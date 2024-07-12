@@ -261,6 +261,33 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_7u0y7")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_8soqo")
 theme_override_styles/normal = SubResource("StyleBoxFlat_ytl4w")
 
+[node name="VBoxContainer3" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer3"]
+layout_mode = 2
+text = "其他"
+label_settings = ExtResource("5_daprf")
+horizontal_alignment = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer3"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 60
+alignment = 1
+
+[node name="CdkeyBtn" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer3/HBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "兑换码"
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer3/HBoxContainer"]
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "删除存档"
+
 [node name="CloseBtn" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(900, 100)

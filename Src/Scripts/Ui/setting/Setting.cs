@@ -388,6 +388,103 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
+    /// 类型: <see cref="Godot.Label"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer3.Label
+    /// </summary>
+    public class Label_5 : UiNode<SettingPanel, Godot.Label, Label_5>
+    {
+        public Label_5(SettingPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Label_5 Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.Button"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer3.HBoxContainer.CdkeyBtn
+    /// </summary>
+    public class CdkeyBtn : UiNode<SettingPanel, Godot.Button, CdkeyBtn>
+    {
+        public CdkeyBtn(SettingPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
+        public override CdkeyBtn Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.Button"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer3.HBoxContainer.Button2
+    /// </summary>
+    public class Button2 : UiNode<SettingPanel, Godot.Button, Button2>
+    {
+        public Button2(SettingPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
+        public override Button2 Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer3.HBoxContainer
+    /// </summary>
+    public class HBoxContainer_1 : UiNode<SettingPanel, Godot.HBoxContainer, HBoxContainer_1>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer3.CdkeyBtn
+        /// </summary>
+        public CdkeyBtn L_CdkeyBtn
+        {
+            get
+            {
+                if (_L_CdkeyBtn == null) _L_CdkeyBtn = new CdkeyBtn(UiPanel, Instance.GetNode<Godot.Button>("CdkeyBtn"));
+                return _L_CdkeyBtn;
+            }
+        }
+        private CdkeyBtn _L_CdkeyBtn;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer3.Button2
+        /// </summary>
+        public Button2 L_Button2
+        {
+            get
+            {
+                if (_L_Button2 == null) _L_Button2 = new Button2(UiPanel, Instance.GetNode<Godot.Button>("Button2"));
+                return _L_Button2;
+            }
+        }
+        private Button2 _L_Button2;
+
+        public HBoxContainer_1(SettingPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
+        public override HBoxContainer_1 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer3
+    /// </summary>
+    public class VBoxContainer3 : UiNode<SettingPanel, Godot.VBoxContainer, VBoxContainer3>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.Label
+        /// </summary>
+        public Label_5 L_Label
+        {
+            get
+            {
+                if (_L_Label == null) _L_Label = new Label_5(UiPanel, Instance.GetNode<Godot.Label>("Label"));
+                return _L_Label;
+            }
+        }
+        private Label_5 _L_Label;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.HBoxContainer
+        /// </summary>
+        public HBoxContainer_1 L_HBoxContainer
+        {
+            get
+            {
+                if (_L_HBoxContainer == null) _L_HBoxContainer = new HBoxContainer_1(UiPanel, Instance.GetNode<Godot.HBoxContainer>("HBoxContainer"));
+                return _L_HBoxContainer;
+            }
+        }
+        private HBoxContainer_1 _L_HBoxContainer;
+
+        public VBoxContainer3(SettingPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
+        public override VBoxContainer3 Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
     /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2
     /// </summary>
     public class VBoxContainer2 : UiNode<SettingPanel, Godot.VBoxContainer, VBoxContainer2>
@@ -417,6 +514,19 @@ public abstract partial class Setting : UiBase
             }
         }
         private VBoxContainer2_1 _L_VBoxContainer2;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer3
+        /// </summary>
+        public VBoxContainer3 L_VBoxContainer3
+        {
+            get
+            {
+                if (_L_VBoxContainer3 == null) _L_VBoxContainer3 = new VBoxContainer3(UiPanel, Instance.GetNode<Godot.VBoxContainer>("VBoxContainer3"));
+                return _L_VBoxContainer3;
+            }
+        }
+        private VBoxContainer3 _L_VBoxContainer3;
 
         public VBoxContainer2(SettingPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
         public override VBoxContainer2 Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
@@ -597,9 +707,19 @@ public abstract partial class Setting : UiBase
     public ColorBlindMode3 S_ColorBlindMode3 => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer2.L_VBoxContainer2.L_HBoxContainer.L_ColorBlindMode3;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer2.HBoxContainer
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer3.HBoxContainer.CdkeyBtn
     /// </summary>
-    public HBoxContainer S_HBoxContainer => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer2.L_VBoxContainer2.L_HBoxContainer;
+    public CdkeyBtn S_CdkeyBtn => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer2.L_VBoxContainer3.L_HBoxContainer.L_CdkeyBtn;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer3.HBoxContainer.Button2
+    /// </summary>
+    public Button2 S_Button2 => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer2.L_VBoxContainer3.L_HBoxContainer.L_Button2;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer3
+    /// </summary>
+    public VBoxContainer3 S_VBoxContainer3 => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer2.L_VBoxContainer3;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.CloseBtn

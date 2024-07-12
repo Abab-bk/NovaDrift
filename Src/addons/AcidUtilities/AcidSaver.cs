@@ -1,7 +1,7 @@
 ﻿using System;
 using Godot;
 
-namespace NovaDrift.addons.AcidUtilities;
+namespace AcidWallStudio.AcidUtilities;
 
 public static class AcidSaver
 {

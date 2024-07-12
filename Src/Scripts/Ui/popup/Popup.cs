@@ -84,7 +84,7 @@ public abstract partial class Popup : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: Popup.Panel.VBoxContainer.Content.VBoxContainer.VBoxContainer.MessageLabel
+    /// 类型: <see cref="Godot.Label"/>, 路径: Popup.Panel.VBoxContainer.Content.Nodes.MessageContent.MessageLabel
     /// </summary>
     public class MessageLabel : UiNode<PopupPanel, Godot.Label, MessageLabel>
     {
@@ -93,12 +93,12 @@ public abstract partial class Popup : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: Popup.Panel.VBoxContainer.Content.VBoxContainer.VBoxContainer
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: Popup.Panel.VBoxContainer.Content.Nodes.MessageContent
     /// </summary>
-    public class VBoxContainer_2 : UiNode<PopupPanel, Godot.VBoxContainer, VBoxContainer_2>
+    public class MessageContent : UiNode<PopupPanel, Godot.VBoxContainer, MessageContent>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Popup.Panel.VBoxContainer.Content.VBoxContainer.MessageLabel
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Popup.Panel.VBoxContainer.Content.Nodes.MessageLabel
         /// </summary>
         public MessageLabel L_MessageLabel
         {
@@ -110,30 +110,30 @@ public abstract partial class Popup : UiBase
         }
         private MessageLabel _L_MessageLabel;
 
-        public VBoxContainer_2(PopupPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
-        public override VBoxContainer_2 Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
+        public MessageContent(PopupPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
+        public override MessageContent Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: Popup.Panel.VBoxContainer.Content.VBoxContainer
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: Popup.Panel.VBoxContainer.Content.Nodes
     /// </summary>
-    public class VBoxContainer_1 : UiNode<PopupPanel, Godot.VBoxContainer, VBoxContainer_1>
+    public class Nodes : UiNode<PopupPanel, Godot.VBoxContainer, Nodes>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Popup.Panel.VBoxContainer.Content.VBoxContainer
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Popup.Panel.VBoxContainer.Content.MessageContent
         /// </summary>
-        public VBoxContainer_2 L_VBoxContainer
+        public MessageContent L_MessageContent
         {
             get
             {
-                if (_L_VBoxContainer == null) _L_VBoxContainer = new VBoxContainer_2(UiPanel, Instance.GetNode<Godot.VBoxContainer>("VBoxContainer"));
-                return _L_VBoxContainer;
+                if (_L_MessageContent == null) _L_MessageContent = new MessageContent(UiPanel, Instance.GetNode<Godot.VBoxContainer>("MessageContent"));
+                return _L_MessageContent;
             }
         }
-        private VBoxContainer_2 _L_VBoxContainer;
+        private MessageContent _L_MessageContent;
 
-        public VBoxContainer_1(PopupPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
-        public override VBoxContainer_1 Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
+        public Nodes(PopupPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
+        public override Nodes Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
@@ -142,51 +142,20 @@ public abstract partial class Popup : UiBase
     public class Content : UiNode<PopupPanel, Godot.MarginContainer, Content>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Popup.Panel.VBoxContainer.VBoxContainer
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Popup.Panel.VBoxContainer.Nodes
         /// </summary>
-        public VBoxContainer_1 L_VBoxContainer
+        public Nodes L_Nodes
         {
             get
             {
-                if (_L_VBoxContainer == null) _L_VBoxContainer = new VBoxContainer_1(UiPanel, Instance.GetNode<Godot.VBoxContainer>("VBoxContainer"));
-                return _L_VBoxContainer;
+                if (_L_Nodes == null) _L_Nodes = new Nodes(UiPanel, Instance.GetNode<Godot.VBoxContainer>("Nodes"));
+                return _L_Nodes;
             }
         }
-        private VBoxContainer_1 _L_VBoxContainer;
+        private Nodes _L_Nodes;
 
         public Content(PopupPanel uiPanel, Godot.MarginContainer node) : base(uiPanel, node) {  }
         public override Content Clone() => new (UiPanel, (Godot.MarginContainer)Instance.Duplicate());
-    }
-
-    /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: Popup.Panel.VBoxContainer.HBoxContainer.ConfirmBtn.MarginContainer.TextureRect
-    /// </summary>
-    public class TextureRect : UiNode<PopupPanel, Godot.TextureRect, TextureRect>
-    {
-        public TextureRect(PopupPanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
-        public override TextureRect Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
-    }
-
-    /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: Popup.Panel.VBoxContainer.HBoxContainer.ConfirmBtn.MarginContainer
-    /// </summary>
-    public class MarginContainer : UiNode<PopupPanel, Godot.MarginContainer, MarginContainer>
-    {
-        /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: Popup.Panel.VBoxContainer.HBoxContainer.ConfirmBtn.TextureRect
-        /// </summary>
-        public TextureRect L_TextureRect
-        {
-            get
-            {
-                if (_L_TextureRect == null) _L_TextureRect = new TextureRect(UiPanel, Instance.GetNode<Godot.TextureRect>("TextureRect"));
-                return _L_TextureRect;
-            }
-        }
-        private TextureRect _L_TextureRect;
-
-        public MarginContainer(PopupPanel uiPanel, Godot.MarginContainer node) : base(uiPanel, node) {  }
-        public override MarginContainer Clone() => new (UiPanel, (Godot.MarginContainer)Instance.Duplicate());
     }
 
     /// <summary>
@@ -194,52 +163,8 @@ public abstract partial class Popup : UiBase
     /// </summary>
     public class ConfirmBtn : UiNode<PopupPanel, Godot.Button, ConfirmBtn>
     {
-        /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: Popup.Panel.VBoxContainer.HBoxContainer.MarginContainer
-        /// </summary>
-        public MarginContainer L_MarginContainer
-        {
-            get
-            {
-                if (_L_MarginContainer == null) _L_MarginContainer = new MarginContainer(UiPanel, Instance.GetNode<Godot.MarginContainer>("MarginContainer"));
-                return _L_MarginContainer;
-            }
-        }
-        private MarginContainer _L_MarginContainer;
-
         public ConfirmBtn(PopupPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
         public override ConfirmBtn Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
-    }
-
-    /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: Popup.Panel.VBoxContainer.HBoxContainer.CloseBtn.MarginContainer.TextureRect
-    /// </summary>
-    public class TextureRect_1 : UiNode<PopupPanel, Godot.TextureRect, TextureRect_1>
-    {
-        public TextureRect_1(PopupPanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
-        public override TextureRect_1 Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
-    }
-
-    /// <summary>
-    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: Popup.Panel.VBoxContainer.HBoxContainer.CloseBtn.MarginContainer
-    /// </summary>
-    public class MarginContainer_1 : UiNode<PopupPanel, Godot.MarginContainer, MarginContainer_1>
-    {
-        /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: Popup.Panel.VBoxContainer.HBoxContainer.CloseBtn.TextureRect
-        /// </summary>
-        public TextureRect_1 L_TextureRect
-        {
-            get
-            {
-                if (_L_TextureRect == null) _L_TextureRect = new TextureRect_1(UiPanel, Instance.GetNode<Godot.TextureRect>("TextureRect"));
-                return _L_TextureRect;
-            }
-        }
-        private TextureRect_1 _L_TextureRect;
-
-        public MarginContainer_1(PopupPanel uiPanel, Godot.MarginContainer node) : base(uiPanel, node) {  }
-        public override MarginContainer_1 Clone() => new (UiPanel, (Godot.MarginContainer)Instance.Duplicate());
     }
 
     /// <summary>
@@ -247,19 +172,6 @@ public abstract partial class Popup : UiBase
     /// </summary>
     public class CloseBtn : UiNode<PopupPanel, Godot.Button, CloseBtn>
     {
-        /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: Popup.Panel.VBoxContainer.HBoxContainer.MarginContainer
-        /// </summary>
-        public MarginContainer_1 L_MarginContainer
-        {
-            get
-            {
-                if (_L_MarginContainer == null) _L_MarginContainer = new MarginContainer_1(UiPanel, Instance.GetNode<Godot.MarginContainer>("MarginContainer"));
-                return _L_MarginContainer;
-            }
-        }
-        private MarginContainer_1 _L_MarginContainer;
-
         public CloseBtn(PopupPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
         public override CloseBtn Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
     }
@@ -386,9 +298,19 @@ public abstract partial class Popup : UiBase
     public PanelContainer S_PanelContainer => L_Panel.L_VBoxContainer.L_PanelContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: Popup.Panel.VBoxContainer.Content.VBoxContainer.VBoxContainer.MessageLabel
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: Popup.Panel.VBoxContainer.Content.Nodes.MessageContent.MessageLabel
     /// </summary>
-    public MessageLabel S_MessageLabel => L_Panel.L_VBoxContainer.L_Content.L_VBoxContainer.L_VBoxContainer.L_MessageLabel;
+    public MessageLabel S_MessageLabel => L_Panel.L_VBoxContainer.L_Content.L_Nodes.L_MessageContent.L_MessageLabel;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Popup.Panel.VBoxContainer.Content.Nodes.MessageContent
+    /// </summary>
+    public MessageContent S_MessageContent => L_Panel.L_VBoxContainer.L_Content.L_Nodes.L_MessageContent;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Popup.Panel.VBoxContainer.Content.Nodes
+    /// </summary>
+    public Nodes S_Nodes => L_Panel.L_VBoxContainer.L_Content.L_Nodes;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: Popup.Panel.VBoxContainer.Content
@@ -409,6 +331,11 @@ public abstract partial class Popup : UiBase
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Popup.Panel.VBoxContainer.HBoxContainer
     /// </summary>
     public HBoxContainer S_HBoxContainer => L_Panel.L_VBoxContainer.L_HBoxContainer;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Popup.Panel.VBoxContainer
+    /// </summary>
+    public VBoxContainer S_VBoxContainer => L_Panel.L_VBoxContainer;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.PanelContainer"/>, 节点路径: Popup.Panel

@@ -12,10 +12,12 @@
   <ItemGroup>
     <Compile Remove="script_templates/**/*.cs" />
     <Compile Remove=".godot\**" />
+    <Compile Remove="android\**" />
   </ItemGroup>
   
   <ItemGroup>
     <EmbeddedResource Remove=".godot\**" />
+    <EmbeddedResource Remove="android\**" />
   </ItemGroup>
   
   <ItemGroup>

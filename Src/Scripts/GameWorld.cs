@@ -1,10 +1,10 @@
 using AcidJoystick;
+using AcidWallStudio.AcidUtilities;
 using AcidWallStudio.Fmod;
 using DsUi;
 using DwarfImpulse;
 using Godot;
 using GTweensGodot.Extensions;
-using NovaDrift.addons.AcidUtilities;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Components;
 

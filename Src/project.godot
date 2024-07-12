@@ -62,7 +62,7 @@ naming/scene_name_casing=1
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/ds_ui/plugin.cfg", "res://addons/input_helper/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/post_processing/plugin.cfg", "res://addons/run-configs/plugin.cfg", "res://addons/trail_2d/plugin.cfg", "res://addons/wiggly_appendage_2d/plugin.cfg")
+enabled=PackedStringArray("res://addons/AcidEditorPlugins/plugin.cfg", "res://addons/ds_ui/plugin.cfg", "res://addons/input_helper/plugin.cfg", "res://addons/phantom_camera/plugin.cfg", "res://addons/post_processing/plugin.cfg", "res://addons/run-configs/plugin.cfg", "res://addons/trail_2d/plugin.cfg", "res://addons/wiggly_appendage_2d/plugin.cfg")
 
 [file_customization]
 

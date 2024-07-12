@@ -1,8 +1,9 @@
 using System.Linq;
+using AcidWallStudio.AcidUtilities;
 using AcidWallStudio.Fmod;
 using DsUi;
 using Godot;
-using NovaDrift.addons.AcidUtilities;
+using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts.Ui.Setting;
 
@@ -29,6 +30,61 @@ public partial class SettingPanel : Setting
         S_ColorBlindMode1.Instance.Pressed += () => { ChangeColorBlindMode(1); };
         S_ColorBlindMode2.Instance.Pressed += () => { ChangeColorBlindMode(2); };
         S_ColorBlindMode3.Instance.Pressed += () => { ChangeColorBlindMode(3); };
+        
+        // TODO: 存档用过的兑换码
+        S_CdkeyBtn.Instance.Pressed += () =>
+        {
+            var lineEdit = new LineEdit()
+            {
+                PlaceholderText = "请输入兑换码",
+                Alignment = HorizontalAlignment.Center,
+                SizeFlagsHorizontal = SizeFlags.ShrinkCenter,
+                CustomMinimumSize = new Vector2(1500f, 100f),
+            };
+            
+            UiManager
+                .Open_Popup()
+                .SetConfig(
+                    "兑换码",
+                    "",
+                    lineEdit,
+                    true,
+                    () => { },
+                    () =>
+                    {
+                        if (lineEdit.Text.Trim() == "")
+                        {
+                            UiManager
+                                .Open_Popup()
+                                .SetConfig(
+                                    "兑换码",
+                                    "兑换码不能为空"
+                                );
+                            return;
+                        }
+
+                        var content = Encryptor.Decode(lineEdit.Text.Trim());
+
+                        if (!Reward.ParseReward(content, out var reward))
+                        {
+                            UiManager
+                                .Open_Popup()
+                                .SetConfig(
+                                    "兑换失败",
+                                    "兑换码无效"
+                                );
+                            return;
+                        }
+
+                        UiManager
+                            .Open_Popup()
+                            .SetConfig(
+                                "兑换成功",
+                                reward.GetReward()
+                            );
+                    }
+                );
+        };
     }
 
     private void ChangeColorBlindMode(int mode)

@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=19 format=3 uid="uid://b7g6xk4hko1sg"]
+[gd_resource type="Theme" load_steps=20 format=3 uid="uid://b7g6xk4hko1sg"]
 
 [ext_resource type="FontFile" uid="uid://djmsc2817eku8" path="res://Assets/Fonts/SourceHanSansCN-Medium.otf" id="1_bss3n"]
 
@@ -74,6 +74,21 @@ corner_radius_bottom_left = 100
 expand_margin_top = 24.0
 expand_margin_bottom = 24.0
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h0318"]
+content_margin_left = 50.0
+content_margin_right = 50.0
+bg_color = Color(0.0235294, 0.0509804, 0.0509804, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.596078, 0.643137, 0.67451, 1)
+corner_radius_top_left = 100
+corner_radius_top_right = 100
+corner_radius_bottom_right = 100
+corner_radius_bottom_left = 100
+corner_detail = 20
+
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_v08lr"]
 bg_color = Color(0.0313726, 0.0509804, 0.054902, 1)
 border_width_left = 4
@@ -132,6 +147,8 @@ HSlider/icons/tick = SubResource("ImageTexture_4plgt")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_vn3sr")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_vn3sr")
 HSlider/styles/slider = SubResource("StyleBoxFlat_urdej")
+LineEdit/styles/focus = SubResource("StyleBoxFlat_h0318")
+LineEdit/styles/normal = SubResource("StyleBoxFlat_h0318")
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_v08lr")
 ProgressBar/styles/background = SubResource("StyleBoxFlat_vithv")
 ProgressBar/styles/fill = SubResource("StyleBoxFlat_pyv48")

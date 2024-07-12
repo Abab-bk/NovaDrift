@@ -2,6 +2,8 @@
 using Godot;
 using System;
 
+namespace AcidWallStudio.AcidUtilities;
+
 [Tool]
 public partial class Plugin : EditorPlugin
 {

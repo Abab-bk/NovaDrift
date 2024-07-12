@@ -28,6 +28,26 @@ public partial class PopupPanel : Popup
         
         UpdateUi();
     }
+    
+    public void SetConfig(
+        string title,
+        string message,
+        Node node,
+        bool showCloseButton = false,
+        Action closeAction = null,
+        Action confirmAction = null
+    )
+    {
+        SetConfig(
+            title,
+            message,
+            showCloseButton,
+            closeAction,
+            confirmAction
+            );
+        
+        S_MessageContent.AddChild(node);
+    }
 
     private void UpdateUi()
     {
