@@ -60,15 +60,16 @@ public partial class WaveSpawner : Node2D
             RandomMove();
             var mob = new MobBuilder(mobInfo).Build();
             mob.GlobalPosition = GlobalPosition;
-
-            var spawnVfx = GD.Load<PackedScene>("res://Scenes/Vfx/SpawnVfx.tscn").Instantiate<SpawnVfx>();
-            spawnVfx.OnAnimationEnd += () =>
-            {
-                Global.GameWorld.CallDeferred(Node.MethodName.AddChild, mob);
-            };
+            Global.GameWorld.CallDeferred(Node.MethodName.AddChild, mob);
             
-            spawnVfx.GlobalPosition = GlobalPosition;
-            Global.GameWorld.CallDeferred(Node.MethodName.AddChild, spawnVfx);
+            // var spawnVfx = GD.Load<PackedScene>("res://Scenes/Vfx/SpawnVfx.tscn").Instantiate<SpawnVfx>();
+            // spawnVfx.OnAnimationEnd += () =>
+            // {
+            //     Global.GameWorld.CallDeferred(Node.MethodName.AddChild, mob);
+            // };
+            //
+            // spawnVfx.GlobalPosition = GlobalPosition;
+            // Global.GameWorld.CallDeferred(Node.MethodName.AddChild, spawnVfx);
         }
 
         Logger.Log($"[Wave Spawner] 敌人生成数量: {generatedMobs.Count}, 阵型：{spawnType.GetType().Name}");

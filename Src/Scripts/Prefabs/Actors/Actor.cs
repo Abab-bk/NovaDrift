@@ -248,10 +248,11 @@ public partial class Actor : CharacterBody2D
 }
 
 
-public class ActorVisual(Node2D target)
+public class ActorVisual(Actor target)
 {
     private Color _originalColor;
     private bool _flashing;
+    
     public void FlashAndRestore()
     {
         if (_flashing) return;
@@ -263,5 +264,32 @@ public class ActorVisual(Node2D target)
             .AppendCallback(() => _flashing = false)
             .Build()
             .Play();
+    }
+
+    public void Appear()
+    {
+        target.SelfModulate = target.SelfModulate with { A = 0f };
+        target.ProcessMode = Node.ProcessModeEnum.Disabled;
+        
+        var focusVfx = GD
+            .Load<PackedScene>("res://Scenes/Vfx/FocusParticles.tscn")
+            .Instantiate<FocusParticles>();
+        focusVfx.OneShot = true;
+        focusVfx.ProcessMode = Node.ProcessModeEnum.Pausable;
+        
+        target.AddChild(focusVfx);
+        focusVfx.OnAnimationEnd += () =>
+        {
+            var blastVfx = GD
+                .Load<PackedScene>("res://Scenes/Vfx/Blast.tscn")
+                .Instantiate<BlastVfx>();
+
+            blastVfx.PlaySound = false;
+            blastVfx.Modulate = target.Modulate;
+            target.AddChild(blastVfx);
+            
+            target.SelfModulate = target.SelfModulate with { A = 1f };
+            target.ProcessMode = Node.ProcessModeEnum.Inherit;
+        };
     }
 }

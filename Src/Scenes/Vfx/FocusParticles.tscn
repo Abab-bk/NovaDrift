@@ -1,18 +1,48 @@
-[gd_scene load_steps=2 format=3 uid="uid://xpx6m6sl01x6"]
+[gd_scene load_steps=8 format=3 uid="uid://xpx6m6sl01x6"]
 
-[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_euad0"]
+[ext_resource type="Script" path="res://Scripts/Vfx/FocusParticles.cs" id="1_eewdu"]
+[ext_resource type="Texture2D" uid="uid://b51oi01rq88w4" path="res://Assets/Textures/CircleWhite.png" id="1_yv7s8"]
+
+[sub_resource type="Gradient" id="Gradient_teamm"]
+offsets = PackedFloat32Array(0, 0.15493, 0.855634, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_jiovc"]
+gradient = SubResource("Gradient_teamm")
+
+[sub_resource type="Curve" id="Curve_kfa3q"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.130094, 1), 0.0, 0.0, 0, 0, Vector2(0.910658, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 4
+
+[sub_resource type="CurveTexture" id="CurveTexture_hiwyw"]
+curve = SubResource("Curve_kfa3q")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_7esgv"]
 particle_flag_disable_z = true
-angle_min = 37.9
-angle_max = 101.1
-direction = Vector3(0, 0, 0)
-spread = 180.0
-initial_velocity_min = 149.12
-initial_velocity_max = 201.75
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 1.0
+emission_ring_radius = 100.0
+emission_ring_inner_radius = 90.0
+orbit_velocity_min = 9.49949e-08
+orbit_velocity_max = 0.0990001
 gravity = Vector3(0, 0, 0)
-scale_min = 3.0
-scale_max = 4.0
+radial_accel_min = -100.0
+radial_accel_max = -87.91
+scale_min = 0.06
+scale_max = 0.19
+scale_curve = SubResource("CurveTexture_hiwyw")
+color_ramp = SubResource("GradientTexture1D_jiovc")
 
 [node name="FocusParticles" type="Node2D"]
+script = ExtResource("1_eewdu")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-process_material = SubResource("ParticleProcessMaterial_euad0")
+emitting = false
+amount = 40
+process_material = SubResource("ParticleProcessMaterial_7esgv")
+texture = ExtResource("1_yv7s8")
+lifetime = 1.4
+speed_scale = 1.6
+explosiveness = 0.71
+randomness = 0.12

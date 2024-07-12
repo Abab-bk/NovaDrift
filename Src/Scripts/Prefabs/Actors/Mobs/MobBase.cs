@@ -14,7 +14,6 @@ public partial class MobBase : Actor
     public MobAiComponent Ai;
     public DragonController DragonController;
     
-    
     private Node2D _target;
     public List<string> Tags = new List<string>();
     
@@ -33,7 +32,6 @@ public partial class MobBase : Actor
         if (MobInfo == null) throw new Exception("MobInfo 为 Null");
 
         Ai = GetNode<MobAiComponent>("%MobAiComponent");
-        
         base._Ready();
         AddToGroup("Mobs");
 
@@ -73,6 +71,9 @@ public partial class MobBase : Actor
         {
             Global.GameContext.AppendFollowTarget(this);
         }
+        
+        UpdateScale();
+        Visual.Appear();
     }
     
     protected override void InitStats()
