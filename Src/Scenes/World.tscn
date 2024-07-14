@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://d25jyaf2cexon"]
+[gd_scene load_steps=18 format=3 uid="uid://d25jyaf2cexon"]
 
 [ext_resource type="Script" path="res://Scripts/GameWorld.cs" id="1_xxmb6"]
 [ext_resource type="Texture2D" uid="uid://ecv33h0gvcog" path="res://Assets/Textures/Grid.png" id="2_iakxi"]
@@ -11,6 +11,7 @@
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/WaveSpawnerController.cs" id="10_k5lv0"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/SpawnPoint.cs" id="11_euylg"]
 [ext_resource type="Environment" uid="uid://dwua3nxtba68l" path="res://Assets/Environments/Default.tres" id="12_ltxuf"]
+[ext_resource type="Script" path="res://Scripts/TracyNode.cs" id="12_qw58i"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_34d4f"]
 
@@ -123,23 +124,43 @@ shape = SubResource("RectangleShape2D_tdua6")
 
 [node name="Hud" type="CanvasLayer" parent="."]
 
-[node name="MoveJoystick" parent="Hud" instance=ExtResource("6_6ip1o")]
-unique_name_in_owner = true
-position = Vector2(338, 1052)
-scale = Vector2(0.24, 0.24)
-
 [node name="AimJoystick" parent="Hud" instance=ExtResource("6_6ip1o")]
 unique_name_in_owner = true
 position = Vector2(1268, -2529)
 scale = Vector2(0.24, 0.24)
 
-[node name="ShootBtn" type="TouchScreenButton" parent="Hud"]
+[node name="Control" type="Control" parent="Hud"]
+layout_mode = 3
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -462.0
+offset_top = -466.0
+grow_horizontal = 0
+grow_vertical = 0
+
+[node name="ShootBtn" type="TouchScreenButton" parent="Hud/Control"]
 unique_name_in_owner = true
-position = Vector2(2248, 1121)
 texture_normal = ExtResource("4_848ec")
 texture_pressed = ExtResource("5_2ut0l")
 shape = SubResource("RectangleShape2D_7mbmr")
 action = "RClick"
+
+[node name="Control2" type="Control" parent="Hud"]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -525.0
+offset_right = 512.0
+grow_vertical = 0
+
+[node name="MoveJoystick" parent="Hud/Control2" instance=ExtResource("6_6ip1o")]
+unique_name_in_owner = true
+position = Vector2(330, 200)
+scale = Vector2(0.24, 0.24)
 
 [node name="Something" type="Node2D" parent="."]
 
@@ -379,3 +400,6 @@ script = ExtResource("9_hiy7p")
 
 [node name="ShakeDirector2D" type="Node2D" parent="."]
 script = ExtResource("7_y53n8")
+
+[node name="TracyNode" type="Node" parent="."]
+script = ExtResource("12_qw58i")

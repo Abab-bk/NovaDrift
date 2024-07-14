@@ -178,11 +178,9 @@ size = Vector2(4750, 3284)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ln1bs"]
 size = Vector2(74, 102)
 
-[node name="Player" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") groups=["Players"] instance=ExtResource("1_0c8c2")]
+[node name="Player" node_paths=PackedStringArray("Sprite", "Shooter") groups=["Players"] instance=ExtResource("1_0c8c2")]
 script = ExtResource("2_15kon")
-_hurtBox = NodePath("Components/HurtBox")
 Sprite = NodePath("Sprite2D")
-_visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 IsPlayer = true
 Shooter = NodePath("Components/ShooterNode/Shooter")
 

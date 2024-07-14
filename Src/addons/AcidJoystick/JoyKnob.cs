@@ -10,7 +10,9 @@ public partial class JoyKnob : Sprite2D
     [Export] float _deadZone = 5f;
     
     Joystick _parent;
-    
+
+    public bool Pressing { get => _button.IsPressed(); }
+
     public override void _Ready()
     {
         _parent = GetNode<Joystick>("../");
@@ -27,25 +29,31 @@ public partial class JoyKnob : Sprite2D
         {
             _parent.TargetPos.Y = (GlobalPosition.Y - _parent.GlobalPosition.Y) / _maxLength;
         }
+        // Logger.Log("[JoyKnob] TargetPos: " + _parent.TargetPos);
     }
 
     public override void _Process(double delta)
     {
-        if (!_button.IsPressed())
+        if (_button.IsPressed())
+        {
+            if (GetGlobalMousePosition().DistanceTo(_parent.GlobalPosition) <= _maxLength)
+            {
+                GlobalPosition = GetGlobalMousePosition();
+            }
+            else
+            {
+                var angle = _parent.GlobalPosition.AngleToPoint(GetGlobalMousePosition());
+                GlobalPosition = new Vector2(
+                    _parent.GlobalPosition.X + (float)Math.Cos(angle) * _maxLength,
+                    _parent.GlobalPosition.Y + (float)Math.Sin(angle) * _maxLength
+                    );
+                CalculateVector();
+            }
+        }
+        else
         {
             GlobalPosition = _parent.GlobalPosition;
             _parent.TargetPos = Vector2.Zero;
-            return;
         }
-
-        CalculateVector();
-        if (GetGlobalMousePosition().DistanceTo(_parent.GlobalPosition) > _maxLength)
-        {
-            var angle = _parent.GlobalPosition.AngleToPoint(GetGlobalMousePosition());
-            GlobalPosition = _parent.GlobalPosition + new Vector2((float)Math.Cos(angle), (float)Math.Sin(angle)) * _maxLength;
-            return;
-        }
-
-        GlobalPosition = GetGlobalMousePosition();
     }
 }

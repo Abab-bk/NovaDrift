@@ -23,6 +23,7 @@ public partial class Beamcaster : MobAiComponent
             if (body == Mob) return;
             if (body is not MobBase mobBase) return;
             if (mobBase.Ai is Beamcaster) return;
+            if (_lines.Count >= 3) return;
 
             var lineVfx = new LineVfx();
             lineVfx.Target = mobBase;

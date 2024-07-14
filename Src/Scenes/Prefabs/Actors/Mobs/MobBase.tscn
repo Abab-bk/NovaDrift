@@ -7,13 +7,11 @@
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/Shooter.cs" id="4_02xj6"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HitBox.cs" id="6_au6bb"]
 
-[node name="MobBase" node_paths=PackedStringArray("_hitBox", "_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") groups=["Mobs"] instance=ExtResource("1_kd23v")]
+[node name="MobBase" node_paths=PackedStringArray("_hitBox", "Sprite", "Shooter") groups=["Mobs"] instance=ExtResource("1_kd23v")]
 script = ExtResource("2_e2oe2")
 Sign = ""
 _hitBox = NodePath("HitBox")
-_hurtBox = NodePath("Components/HurtBox")
 Sprite = NodePath("Sprite2D")
-_visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
 Shooter = NodePath("Components/ShooterNode/Shooter")
 
 [node name="Sprite2D" parent="." index="0"]

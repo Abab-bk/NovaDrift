@@ -32,13 +32,7 @@ public partial class PausedMenuPanel : PausedMenu
             EventBus.OnGameOver?.Invoke();
         };
 
-        EventBus.OnGameOver += () =>
-        {
-            foreach (var node in S_Abilities.Instance.GetChildren())
-            {
-                node.QueueFree();
-            }
-        };
+        EventBus.OnGameOver += Destroy;
         
         GenerateStats();
     }

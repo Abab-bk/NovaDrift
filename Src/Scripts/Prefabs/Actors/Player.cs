@@ -131,20 +131,20 @@ public partial class Player : Actor
                 TryStop(delta);
                 break;
             case "Running":
-                switch (Global.CurrentInputDevice)
+                switch (Global.CurrentPlatform)
                 {
-                    case InputDevice.Joystick:
-                        var dir = new Vector2(
-                            -Input.GetActionStrength("Left") + Input.GetActionStrength("Right"),
-                            +Input.GetActionStrength("Down") - Input.GetActionStrength("Up")
-                            ).Normalized();
-                        TryMoveTo(dir, delta);
-                        break;
-                    case InputDevice.Keyboard:
+                    case GamePlatform.Desktop:
                         var mousePos = GetGlobalMousePosition();
                         if (GlobalPosition.DirectionTo(mousePos) != Vector2.Zero)
                         {
                             TryMoveTo(GlobalPosition.DirectionTo(mousePos), delta);
+                        }
+                        break;
+                    case GamePlatform.Mobile:
+                        var pos = JoystickNode.TargetPos;
+                        if (GlobalPosition.DirectionTo(pos) != Vector2.Zero)
+                        {
+                            TryMoveTo(GlobalPosition.DirectionTo(pos), delta);
                         }
                         break;
                 }
@@ -293,29 +293,18 @@ public partial class Player : Actor
 
         if (Input.IsActionJustReleased("RClick") && IsCharge) OnStopCharging?.Invoke();
         
-        _movementMachine.SetTrigger(Input.IsActionPressed("Click") ? "GoToRunning" : "GoToIdle");
-
-        switch (Global.CurrentInputDevice)
+        
+        switch (Global.CurrentPlatform)
         {
-            case InputDevice.Keyboard:
+            case GamePlatform.Desktop:
                 Rotation = RotationTo(GlobalPosition.AngleToPoint(mousePos), delta);
+                _movementMachine.SetTrigger(Input.IsActionPressed("Click") ? "GoToRunning" : "GoToIdle");
                 break;
-            // case InputDevice.Joystick:
-            //     Rotation = RotationTo(GlobalPosition.AngleToPoint(GetControllerDir() * 100f), delta);
-            //     break;
-        }
+            case GamePlatform.Mobile:
+                Rotation = RotationTo(JoystickNode.TargetPos.Angle(), delta);
+                _movementMachine.SetTrigger(JoystickNode.Pressing ? "GoToRunning" : "GoToIdle");
 
-        if (Global.CurrentPlatform == GamePlatform.Mobile)
-        {
-            Rotation = RotationTo(JoystickNode.TargetPos.Angle(), delta);
-            if (JoystickNode.TargetPos != Vector2.Zero)
-            {
-                TryMoveTo(JoystickNode.TargetPos, delta);
-            }
-            else
-            {
-                TryStop(delta);
-            }
+                break;
         }
         
         base._PhysicsProcess(delta);

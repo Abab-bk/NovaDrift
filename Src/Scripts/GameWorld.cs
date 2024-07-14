@@ -142,9 +142,9 @@ public partial class GameWorld : Node2D
 	{
         HideBackground();
         
-        _moveJoystick.Visible = Global.CurrentPlatform != GamePlatform.Desktop;
-        _aimJoystick.Visible = Global.CurrentPlatform != GamePlatform.Desktop;
-        _shootBtn.Visible = Global.CurrentPlatform != GamePlatform.Desktop;
+        _moveJoystick.Hide();
+        _aimJoystick.Hide();
+        _shootBtn.Hide();
         
 		GetTree().CallGroup("Mobs", "RemoveSelf");
 
