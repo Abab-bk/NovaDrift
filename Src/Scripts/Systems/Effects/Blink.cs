@@ -1,16 +1,13 @@
 ﻿using AcidWallStudio.AcidUtilities;
 using Godot;
 using GTweens.Builders;
-using GTweens.Tweens;
 using GTweensGodot.Extensions;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
-using NovaDrift.Scripts.Ui.ActionBtn;
 
 namespace NovaDrift.Scripts.Systems.Effects;
 
 public class Blink : Effect
 {
-    private ActionBtnPanel _actionBtnPanel;
     private Timer _timer;
     private bool _isCoolDown = false;
     
@@ -24,32 +21,32 @@ public class Blink : Effect
             OneShot = true,
         };
         
-        _actionBtnPanel = EventBus.AddActionButton.Invoke("R to Blink", "R");
+        EventBus.AddActionButton.Invoke("R to Blink", "R", Action);
         Target.AddChild(_timer);
         
         _timer.Timeout += () => _isCoolDown = false;
-        
-        _actionBtnPanel.OnPressed += () =>
-        {
-            if (_isCoolDown) return;
-            _isCoolDown = true;
-            Color originalColor = Target.Modulate;
-            GTweenSequenceBuilder.New()
-                .Join(Target.TweenModulate(new Color("ffffff00"), 0.1f))
-                .Join(Target.TweenGlobalPosition(
-                    Target.GetForwardVector2(Target.Stats.Speed.Value * 0.5f), 0.1f))
-                .Append(Target.TweenModulate(originalColor, 0.1f))
-                .AppendCallback(() =>
+    }
+
+    private void Action()
+    {
+        if (_isCoolDown) return;
+        _isCoolDown = true;
+        Color originalColor = Target.Modulate;
+        GTweenSequenceBuilder.New()
+            .Join(Target.TweenModulate(new Color("ffffff00"), 0.1f))
+            .Join(Target.TweenGlobalPosition(
+                Target.GetForwardVector2(Target.Stats.Speed.Value * 0.5f), 0.1f))
+            .Append(Target.TweenModulate(originalColor, 0.1f))
+            .AppendCallback(() =>
+            {
+                foreach (var target in Target.Shield.GetTargetsInRange())
                 {
-                    foreach (var target in Target.Shield.GetTargetsInRange())
-                    {
-                        if (target is not MobBase mob) return;
-                        mob.TakeDamageWithoutKnockBack(Values[0]);
-                    }
-                    _timer.Start();
-                })
-                .Build()
-                .Play();
-        };
+                    if (target is not MobBase mob) return;
+                    mob.TakeDamageWithoutKnockBack(Values[0]);
+                }
+                _timer.Start();
+            })
+            .Build()
+            .Play();
     }
 }

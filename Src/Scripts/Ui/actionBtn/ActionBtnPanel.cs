@@ -5,9 +5,9 @@ namespace NovaDrift.Scripts.Ui.ActionBtn;
 
 public partial class ActionBtnPanel : ActionBtn
 {
-    public event Action OnPressed;
-
     private string _action;
+
+    public Action Action;
     
     public override void OnCreateUi()
     {
@@ -24,7 +24,7 @@ public partial class ActionBtnPanel : ActionBtn
     {
         if (@event.IsActionPressed(_action))
         {
-            OnPressed?.Invoke();
+            Action?.Invoke();
         }
     }
 

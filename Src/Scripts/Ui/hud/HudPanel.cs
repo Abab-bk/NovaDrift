@@ -28,13 +28,17 @@ public partial class HudPanel : Hud
 			Global.StopGame();
 		};
 		// ActionButton -> “按 R 闪现”
-		EventBus.AddActionButton += (prompt, action) =>
+		if (Global.CurrentPlatform == GamePlatform.Desktop)
 		{
-			var node = S_ActionButtons.OpenNestedUi<ActionBtnPanel>(UiManager.UiName.ActionBtn);
-			node.UpdateUi(prompt, action);
-			node.Show();
-			return node;
-		};
+			EventBus.AddActionButton += (prompt, action, function) =>
+			{
+				var node = S_ActionButtons.OpenNestedUi<ActionBtnPanel>(UiManager.UiName.ActionBtn);
+				node.UpdateUi(prompt, action);
+				node.Action = function;
+				node.Show();
+			};
+		}
+
 		EventBus.OnGameOver += Destroy;
 
 		EventBus.OnGameStart += () =>

@@ -19,7 +19,7 @@ public static class EventBus
 
     public static Action OnWorldColorChanged;
 
-    public static Func<string, string, ActionBtnPanel> AddActionButton;
+    public static Action<string, string, Action> AddActionButton;
     
     public static void EnteredMob(MobBase mobBase)
     {

@@ -9,6 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://wemn47b2a152" path="res://Assets/Ui/Buttons/JoyRing.png" id="6_fufc0"]
 [ext_resource type="Texture2D" uid="uid://tol226wbduwh" path="res://Assets/Ui/Buttons/JoyKnob.png" id="7_xcah2"]
 [ext_resource type="Script" path="res://Scripts/Libs/DwarfImpulse/Runtime/ShakeDirector2D.cs" id="7_y53n8"]
+[ext_resource type="PackedScene" uid="uid://bbig40fwpjysr" path="res://Scenes/Prefabs/TouchActionBtn.tscn" id="8_ymncb"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="9_hiy7p"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/WaveSpawnerController.cs" id="10_k5lv0"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/SpawnPoint.cs" id="11_euylg"]
@@ -25,15 +26,12 @@ size = Vector2(5141, 20)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tdua6"]
 size = Vector2(20, 2905)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_7mbmr"]
-size = Vector2(300, 300)
-
-[node name="World" type="Node2D" node_paths=PackedStringArray("_shakeDirector", "_background")]
+[node name="World" type="Node2D" node_paths=PackedStringArray("_shakeDirector", "_background", "_hud")]
 script = ExtResource("1_xxmb6")
 _shakeDirector = NodePath("ShakeDirector2D")
 _noise = SubResource("FastNoiseLite_34d4f")
 _background = NodePath("Background")
-metadata/_edit_horizontal_guides_ = [1127.0]
+_hud = NodePath("Hud")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 layer = -101
@@ -130,9 +128,10 @@ shape = SubResource("RectangleShape2D_tdua6")
 unique_name_in_owner = true
 visible = false
 position = Vector2(1268, -2056)
+texture_normal = ExtResource("7_xcah2")
 script = ExtResource("5_m5h7n")
 
-[node name="Control" type="Control" parent="Hud"]
+[node name="ShootBtn" type="Control" parent="Hud"]
 layout_mode = 3
 anchors_preset = 3
 anchor_left = 1.0
@@ -140,46 +139,51 @@ anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = -275.0
-offset_top = -264.0
+offset_top = -359.0
 offset_right = -275.0
-offset_bottom = -264.0
+offset_bottom = -359.0
 grow_horizontal = 0
 grow_vertical = 0
 
-[node name="ShootBtn" type="TouchScreenButton" parent="Hud/Control"]
+[node name="ShootBtn" type="TouchScreenButton" parent="Hud/ShootBtn"]
 unique_name_in_owner = true
 position = Vector2(-150, -150)
 texture_normal = ExtResource("4_848ec")
 texture_pressed = ExtResource("5_2ut0l")
-shape = SubResource("RectangleShape2D_7mbmr")
 action = "RClick"
 
-[node name="Control2" type="Control" parent="Hud"]
+[node name="Joystick" type="Control" parent="Hud"]
 layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
 offset_left = 341.0
-offset_top = -313.0
+offset_top = -408.0
 offset_right = 341.0
-offset_bottom = -313.0
+offset_bottom = -408.0
 grow_vertical = 0
 
-[node name="Sprite2D" type="Sprite2D" parent="Hud/Control2"]
+[node name="Sprite2D" type="Sprite2D" parent="Hud/Joystick"]
 texture = ExtResource("6_fufc0")
 
-[node name="MoveJoystick" type="TouchScreenButton" parent="Hud/Control2"]
+[node name="MoveJoystick" type="TouchScreenButton" parent="Hud/Joystick"]
 unique_name_in_owner = true
 position = Vector2(-100, -100)
 texture_normal = ExtResource("7_xcah2")
 script = ExtResource("5_m5h7n")
+
+[node name="BlinkButton" parent="Hud" instance=ExtResource("8_ymncb")]
+offset_left = -589.0
+offset_top = -359.0
+offset_right = -589.0
+offset_bottom = -359.0
+_prompt = "R"
 
 [node name="Something" type="Node2D" parent="."]
 
 [node name="WaveSpawnerController" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("10_k5lv0")
-_enabled = true
 
 [node name="Left" type="Marker2D" parent="WaveSpawnerController"]
 position = Vector2(100, 832)

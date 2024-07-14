@@ -15,6 +15,7 @@ public partial class GameWorld : Node2D
 	[Export] private ShakeDirector2D _shakeDirector;
 	[Export] private FastNoiseLite _noise;
 	[Export] private Node2D _background;
+	[Export] private CanvasLayer _hud;
 
 	[GetNode("%ShootBtn")] private TouchScreenButton _shootBtn;
 	
@@ -54,8 +55,7 @@ public partial class GameWorld : Node2D
 		
 		SoundManager.PlayMusic(AudioEvents.BackgroundMusic);
 		
-		GetNode<JoyKnob>("%MoveJoystick").Hide();
-		GetNode<JoyKnob>("%AimJoystick").Hide();
+		_hud.Hide();
 		
 		EventBus.OnGameInit += Init;
 		EventBus.OnGameOver += GameOver;
@@ -116,6 +116,7 @@ public partial class GameWorld : Node2D
 		_shootBtn.Visible = Global.CurrentPlatform != GamePlatform.Desktop;
 		
 		UiManager.Open_Hud();
+		_hud.Show();
 		
 		Global.GameWorld = this;
 		
@@ -141,10 +142,11 @@ public partial class GameWorld : Node2D
 	private async void GameOver()
 	{
         HideBackground();
+        _hud.Hide();
         
-        _moveJoystick.Hide();
-        _aimJoystick.Hide();
-        _shootBtn.Hide();
+        // _moveJoystick.Hide();
+        // _aimJoystick.Hide();
+        // _shootBtn.Hide();
         
 		GetTree().CallGroup("Mobs", "RemoveSelf");
 

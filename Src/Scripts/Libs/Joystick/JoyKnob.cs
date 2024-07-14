@@ -6,7 +6,6 @@ namespace AcidJoystick;
 public partial class JoyKnob : TouchScreenButton
 {
     public Vector2 TargetDir { private set; get; }
-    public bool Pressing { private set; get; }
     
     private const float DragRadius = 250f;
     

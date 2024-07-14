@@ -298,7 +298,7 @@ public partial class Player : Actor
                 break;
             case GamePlatform.Mobile:
                 Rotation = RotationTo(JoystickNode.TargetDir.Angle(), delta);
-                _movementMachine.SetTrigger(JoystickNode.Pressing ? "GoToRunning" : "GoToIdle");
+                _movementMachine.SetTrigger(JoystickNode.IsPressed() ? "GoToRunning" : "GoToIdle");
                 break;
         }
         
