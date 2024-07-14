@@ -22,7 +22,7 @@ public partial class Player : Actor
 
     private bool _updateShieldCooldown;
     
-    public Joystick JoystickNode;
+    public JoyKnob JoystickNode;
 
     // 为了 ChargedShot Ability 添加的，Hack
     public bool IsCharge = false;
@@ -141,11 +141,7 @@ public partial class Player : Actor
                         }
                         break;
                     case GamePlatform.Mobile:
-                        var pos = JoystickNode.TargetPos;
-                        if (GlobalPosition.DirectionTo(pos) != Vector2.Zero)
-                        {
-                            TryMoveTo(GlobalPosition.DirectionTo(pos), delta);
-                        }
+                        TryMoveTo(JoystickNode.TargetDir, delta);
                         break;
                 }
                 break;
@@ -301,9 +297,8 @@ public partial class Player : Actor
                 _movementMachine.SetTrigger(Input.IsActionPressed("Click") ? "GoToRunning" : "GoToIdle");
                 break;
             case GamePlatform.Mobile:
-                Rotation = RotationTo(JoystickNode.TargetPos.Angle(), delta);
+                Rotation = RotationTo(JoystickNode.TargetDir.Angle(), delta);
                 _movementMachine.SetTrigger(JoystickNode.Pressing ? "GoToRunning" : "GoToIdle");
-
                 break;
         }
         

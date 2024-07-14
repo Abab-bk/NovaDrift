@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ci06rqnb03xne"
-path="res://.godot/imported/JoyRing.png-071e3a1824957215ed085cf173b96072.ctex"
+uid="uid://wemn47b2a152"
+path="res://.godot/imported/JoyRing.png-558feaf7079013409a03638acf3825e0.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/AcidJoystick/Assets/JoyRing.png"
-dest_files=["res://.godot/imported/JoyRing.png-071e3a1824957215ed085cf173b96072.ctex"]
+source_file="res://Assets/Ui/Buttons/JoyRing.png"
+dest_files=["res://.godot/imported/JoyRing.png-558feaf7079013409a03638acf3825e0.ctex"]
 
 [params]
 

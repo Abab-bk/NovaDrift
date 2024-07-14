@@ -1,6 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://brkkcdmjbkvok"]
+[gd_scene load_steps=11 format=3 uid="uid://brkkcdmjbkvok"]
 
 [ext_resource type="Script" path="res://addons/trail_2d/trail_2d.gd" id="1_4d7r7"]
+[ext_resource type="Texture2D" uid="uid://wemn47b2a152" path="res://Assets/Ui/Buttons/JoyRing.png" id="2_qsh6p"]
+[ext_resource type="Texture2D" uid="uid://tol226wbduwh" path="res://Assets/Ui/Buttons/JoyKnob.png" id="2_x2bpl"]
+[ext_resource type="Script" path="res://Scripts/Libs/Joystick/JoyKnob.cs" id="3_6eoa8"]
 
 [sub_resource type="GDScript" id="GDScript_62opy"]
 resource_name = "Test scene"
@@ -76,5 +79,25 @@ offset_right = 40.0
 offset_bottom = 42.0
 text = "Trail length:"
 label_settings = SubResource("LabelSettings_g5i13")
+
+[node name="Control2" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_left = 361.0
+offset_top = 1103.0
+offset_right = 361.0
+offset_bottom = 1103.0
+grow_vertical = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="Control2"]
+texture = ExtResource("2_qsh6p")
+
+[node name="MoveJoystick" type="TouchScreenButton" parent="Control2"]
+unique_name_in_owner = true
+position = Vector2(-100, -100)
+texture_normal = ExtResource("2_x2bpl")
+script = ExtResource("3_6eoa8")
 
 [connection signal="value_changed" from="Slider" to="." method="_on_slider_value_changed"]

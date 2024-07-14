@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bxpmeit1mecr0"
-path="res://.godot/imported/JoyKnob.png-d65036c134392c75e208598ab00a5215.ctex"
+uid="uid://tol226wbduwh"
+path="res://.godot/imported/JoyKnob.png-5ec5992f02bc622fef734d885a9bd6f6.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://addons/AcidJoystick/Assets/JoyKnob.png"
-dest_files=["res://.godot/imported/JoyKnob.png-d65036c134392c75e208598ab00a5215.ctex"]
+source_file="res://Assets/Ui/Buttons/JoyKnob.png"
+dest_files=["res://.godot/imported/JoyKnob.png-5ec5992f02bc622fef734d885a9bd6f6.ctex"]
 
 [params]
 

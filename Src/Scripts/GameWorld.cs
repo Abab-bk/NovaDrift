@@ -18,8 +18,8 @@ public partial class GameWorld : Node2D
 
 	[GetNode("%ShootBtn")] private TouchScreenButton _shootBtn;
 	
-	private Joystick _moveJoystick;
-	private Joystick _aimJoystick;
+	private JoyKnob _moveJoystick;
+	private JoyKnob _aimJoystick;
 	
 	// GameStart 时 Init，不要删除
 	private GameCommands _gameCommands;
@@ -54,8 +54,8 @@ public partial class GameWorld : Node2D
 		
 		SoundManager.PlayMusic(AudioEvents.BackgroundMusic);
 		
-		GetNode<Joystick>("%MoveJoystick").Hide();
-		GetNode<Joystick>("%AimJoystick").Hide();
+		GetNode<JoyKnob>("%MoveJoystick").Hide();
+		GetNode<JoyKnob>("%AimJoystick").Hide();
 		
 		EventBus.OnGameInit += Init;
 		EventBus.OnGameOver += GameOver;
@@ -108,8 +108,8 @@ public partial class GameWorld : Node2D
 		// 更新能力池
 		DataBuilder.BuildAbilityIdPool();
 		
-		_moveJoystick = GetNode<Joystick>("%MoveJoystick");
-		_aimJoystick = GetNode<Joystick>("%AimJoystick");
+		_moveJoystick = GetNode<JoyKnob>("%MoveJoystick");
+		_aimJoystick = GetNode<JoyKnob>("%AimJoystick");
 		
 		_moveJoystick.Visible = Global.CurrentPlatform != GamePlatform.Desktop;
 		_aimJoystick.Visible = Global.CurrentPlatform != GamePlatform.Desktop;
