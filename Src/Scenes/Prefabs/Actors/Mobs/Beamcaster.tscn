@@ -1,9 +1,8 @@
-[gd_scene load_steps=18 format=3 uid="uid://dai2k1wuc6y38"]
+[gd_scene load_steps=17 format=3 uid="uid://dai2k1wuc6y38"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_yrrya"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/Beamcaster.cs" id="2_libbv"]
 [ext_resource type="Texture2D" uid="uid://dherwc0evanuk" path="res://Assets/Textures/Mobs/Beamcaster.png" id="2_y3saf"]
-[ext_resource type="Script" path="res://Scripts/Prefabs/MobWeapons/BeamcasterShooter.cs" id="3_6phtf"]
 [ext_resource type="Script" path="res://Scripts/Libs/SpringSystem/Spring.cs" id="5_g6jbc"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/CircleSprite2D.cs" id="6_1w80e"]
 [ext_resource type="Texture2D" uid="uid://hxannpomw2b1" path="res://Assets/Textures/Particles/circle_01.png" id="6_n8weo"]
@@ -50,13 +49,12 @@ state_config_list = Array[StateConfig]([SubResource("StateConfig_r1dwg"), SubRes
 transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_4plgd"), SubResource("TransitionConfig_oq18d")])
 variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_uvbq5")])
 
-[node name="Beamcaster" node_paths=PackedStringArray("_hitBox", "_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_yrrya")]
+[node name="Beamcaster" node_paths=PackedStringArray("_hitBox", "_hurtBox", "Sprite", "_visibleOnScreenNotifier2D") instance=ExtResource("1_yrrya")]
 modulate = Color(0.972549, 0.560784, 1, 1)
 _hitBox = NodePath("HitBox")
 _hurtBox = NodePath("Components/HurtBox")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
-Shooter = NodePath("Components/ShooterNode/Shooter")
 
 [node name="Node2D" type="Node2D" parent="." index="0"]
 
@@ -77,11 +75,6 @@ texture = ExtResource("2_y3saf")
 [node name="CollisionShape2D" parent="." index="2"]
 position = Vector2(-3.5, 0)
 shape = SubResource("RectangleShape2D_blio1")
-
-[node name="Shooter" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
-position = Vector2(-52, 0)
-script = ExtResource("3_6phtf")
-Actor = NodePath("../../..")
 
 [node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]
 Actor = NodePath("../..")

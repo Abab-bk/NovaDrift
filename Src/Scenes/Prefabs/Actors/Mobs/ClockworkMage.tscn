@@ -1,8 +1,9 @@
-[gd_scene load_steps=36 format=3 uid="uid://dqgj6nt1nqdw4"]
+[gd_scene load_steps=37 format=3 uid="uid://dqgj6nt1nqdw4"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_ng1li"]
 [ext_resource type="DragonBonesFactory" path="res://Assets/Textures/Mobs/DragonBones/ClockworkMage/ClockworkKnightD_ske.dbfactory" id="2_pso6i"]
 [ext_resource type="Script" path="res://Scripts/DragonController.cs" id="3_cby2l"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Components/Shooter.cs" id="3_ou2oq"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/ClockworkMageAi.cs" id="3_uo13j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_kg3ox"]
@@ -176,7 +177,8 @@ visible = false
 position = Vector2(-1.5, -7)
 shape = SubResource("RectangleShape2D_kg3ox")
 
-[node name="Shooter" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
+[node name="Shooter" type="Node2D" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
+script = ExtResource("3_ou2oq")
 Actor = NodePath("../../..")
 
 [node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]

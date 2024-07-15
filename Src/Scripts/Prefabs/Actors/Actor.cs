@@ -36,29 +36,30 @@ public partial class Actor : CharacterBody2D
             }
         }
     }
+    
+    public Node2D ShooterNode;
+    public Node2D ShieldNode;
+    private Area2D _bodyArea;
 
     public BaseShield Shield;
     
     public Action StartShooting;
     public Action StopShooting;
-    public event Action OnDied;
+    public Action OnDied;
     public Action<BulletBase> OnShoot;
     public Action OnShooting;
     public event Action<float> OnHurt;
     
     private BaseShooter _shooter;
 
-    public Node2D ShooterNode;
-    public Node2D ShieldNode;
     public readonly CharacterStats Stats = new CharacterStats();
+    
     public float ShootCd = 1f;
     
     public bool IsShooting = false;
     
     public bool IsDead;
     protected ActorVisual Visual;
-
-    private Area2D _bodyArea;
     
     protected virtual void _OnShoot(BulletBase bullet)
     {
@@ -107,15 +108,15 @@ public partial class Actor : CharacterBody2D
         }
         CallDeferred("set_collision_layer_value", (int)Layer.Mob, true);
     }
-
-    public override void _Ready()
+    
+    protected void Init()
     {
-        AddToGroup("Actors");
-        
         ShooterNode = GetNode<Node2D>("%ShooterNode");
         ShieldNode = GetNode<Node2D>("%ShieldNode");
         _bodyArea = GetNode<Area2D>("%BodyArea");
-
+        
+        AddToGroup("Actors");
+        
         Visual = new ActorVisual(this);
         
         InitStats();

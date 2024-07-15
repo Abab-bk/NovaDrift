@@ -30,6 +30,7 @@ public partial class Player : Actor
     public override void _Ready()
     {
         base._Ready();
+        Init();
         Global.Player = this;
 
         DataBuilder.BuildBodyById(1000).Use();

@@ -1,7 +1,10 @@
 [gd_resource type="GradientTexture2D" load_steps=2 format=3 uid="uid://c2q13ja5rmjfb"]
 
-[sub_resource type="Gradient" id="Gradient_jyh5h"]
-colors = PackedColorArray(0.207843, 0.113725, 0, 1, 1, 1, 0.407843, 1)
+[sub_resource type="Gradient" id="Gradient_ft2yb"]
+offsets = PackedFloat32Array(0, 0.630252, 1)
+colors = PackedColorArray(0.113725, 0.0313726, 0.101961, 1, 1, 0.109804, 0.270588, 1, 0.65098, 0.129412, 0.117647, 1)
 
 [resource]
-gradient = SubResource("Gradient_jyh5h")
+gradient = SubResource("Gradient_ft2yb")
+use_hdr = true
+fill = 1

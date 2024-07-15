@@ -1,10 +1,12 @@
 using System.Threading;
 using AcidWallStudio.AcidUtilities;
 using Godot;
+using GodotTask;
 using GTweens.Builders;
 using GTweens.Extensions;
 using GTweensGodot.Extensions;
 using NathanHoad;
+using NovaDrift.Scripts.Systems.Pool;
 using Timer = Godot.Timer;
 
 namespace NovaDrift.Scripts;
@@ -88,8 +90,7 @@ public partial class BootSplash : Control
             
                 Logger.Log("[UI] Loading min animation finished.");
             }
-
-            GetTree().Root.CallDeferred(Node.MethodName.AddChild, node);
+            
             node.Modulate = node.Modulate with { A = 0f };
             GTweenSequenceBuilder.New()
                 .Append(this.TweenModulateAlpha(0f, 0.2f))
@@ -123,21 +124,28 @@ public partial class BootSplash : Control
             switch (path)
             {
                 case "res://Scenes/World.tscn":
-                    var scene = (PackedScene)res;
-                    loadedNode = scene.Instantiate<GameWorld>();
-                    
-                    if (loadedNode == null)
-                    {
-                        Logger.LogError($"[BootSplash] Failed to load: {Path}");
-                        return;
-                    }
-                    
-                    ChangeScene(loadedNode);
-                    
+                    WorldLoaded(res);
                     break;
             }
         };
-        
+
+        async void WorldLoaded(Resource res)
+        {
+            var scene = (PackedScene)res;
+            loadedNode = scene.Instantiate<GameWorld>();
+                    
+            if (loadedNode == null)
+            {
+                Logger.LogError($"[BootSplash] Failed to load: {Path}");
+                return;
+            }
+            GetTree().Root.CallDeferred(Node.MethodName.AddChild, loadedNode);
+            await GDTask.DelayFrame(3);
+            Pool.Awake();
+                    
+            ChangeScene(loadedNode);
+        }
+
         loader.LoadResources(["res://Scenes/World.tscn"]);
     }
 }

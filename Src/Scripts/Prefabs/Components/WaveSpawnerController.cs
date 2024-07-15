@@ -5,6 +5,7 @@ using DsUi;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
 using NovaDrift.Scripts.Systems;
+using NovaDrift.Scripts.Systems.Pool;
 using NovaDrift.Scripts.Vfx;
 
 namespace NovaDrift.Scripts.Prefabs.Components;
@@ -86,7 +87,7 @@ public partial class WaveSpawnerController : Node2D
 
     public void GenerateWave()
     {
-        if (GetTree().GetNodesInGroup("Mobs").Count >= DataBuilder.Tables.TbConstants.MaxMobCount)
+        if (Pool.GetActiveMobCount() >= DataBuilder.Tables.TbConstants.MaxMobCount)
         {
             Logger.Log("[Wave Spawner] Max mobs reached, stop spawn and add clock.");
             _clock.Start();

@@ -56,13 +56,12 @@ variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_xfgil"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hr8fi"]
 size = Vector2(126, 88)
 
-[node name="Swallow" node_paths=PackedStringArray("_hitBox", "_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_cs027")]
+[node name="Swallow" node_paths=PackedStringArray("_hitBox", "_hurtBox", "Sprite", "_visibleOnScreenNotifier2D") instance=ExtResource("1_cs027")]
 modulate = Color(0.592157, 0.615686, 1, 1)
 _hitBox = NodePath("HitBox")
 _hurtBox = NodePath("Components/HurtBox")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
-Shooter = NodePath("Components/ShooterNode/Shooter")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_dfx1a")
@@ -70,9 +69,6 @@ texture = ExtResource("2_dfx1a")
 [node name="CollisionShape2D" parent="." index="1"]
 position = Vector2(-4, 0)
 shape = SubResource("RectangleShape2D_1odgc")
-
-[node name="Shooter" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
-Actor = NodePath("../../..")
 
 [node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]
 Actor = NodePath("../..")

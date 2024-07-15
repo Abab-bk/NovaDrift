@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using AcidWallStudio.ObjectPool.Classes;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Components;
 using NovaDrift.Scripts.Systems;
@@ -21,8 +22,11 @@ public partial class MobBase : Actor
     [Export] private HitBox _hitBox;
     [GetNode("%BoidsArea")] private Area2D _boidsArea;
 
+    public NodePool<MobBase> Pool = null;
+    
     public override void _Ready()
     {
+        base._Ready();
         if (Global.GameContext.IsGameOver)
         {
             QueueFree();
@@ -33,7 +37,9 @@ public partial class MobBase : Actor
         if (MobInfo == null) throw new Exception("MobInfo 为 Null");
 
         Ai = GetNode<MobAiComponent>("%MobAiComponent");
-        base._Ready();
+        
+        Init(); // base._Ready()
+        
         AddToGroup("Mobs");
 
         _hitBox.Damage = Stats.Damage.Value;
@@ -78,9 +84,13 @@ public partial class MobBase : Actor
         }
 
         UpdateScale();
-        // Visual.Appear();
     }
-    
+
+    public void PoolActive()
+    {
+        InitStats();
+    }
+
     protected override void InitStats()
     {
         Stats.Level = Mathf.Max(Global.GetPlayerLevel() - 1, 1);
@@ -99,7 +109,13 @@ public partial class MobBase : Actor
 
         Stats.BulletCount.BaseValue = MobInfo.BulletCount;
         
-        Shooter.SetShootCd(MobInfo.ShootCd);
+        if (IsBoss) Shooter.SetShootCd(MobInfo.ShootCd);
+    }
+
+    public override void Shoot()
+    {
+        if (!IsBoss) return;
+        base.Shoot();
     }
 
     public override void Die()
@@ -128,7 +144,12 @@ public partial class MobBase : Actor
         
         Global.Shake(10f);
         
-        base.Die();
+        OnDied?.Invoke();
+        IsDead = true;
+        Stats.BuffSystem.RemoveAllBuffs();
+        Stats.EffectSystem.RemoveAllEffects();
+        
+        if (Pool != null) Pool.Release(this);
     }
 
     public void RemoveSelf()

@@ -1,30 +1,24 @@
-[gd_scene load_steps=8 format=3 uid="uid://dunej3cac37vn"]
+[gd_scene load_steps=7 format=3 uid="uid://dunej3cac37vn"]
 
 [ext_resource type="PackedScene" uid="uid://b1vmhmtmuma0x" path="res://Scenes/Prefabs/Actors/ActorBase.tscn" id="1_kd23v"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Mobs/MobBase.cs" id="2_e2oe2"]
 [ext_resource type="Texture2D" uid="uid://cyi6k51yhl2w4" path="res://Assets/Textures/Mobs/TestMob.png" id="3_4f5vs"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/MobAiComponent.cs" id="3_d6jih"]
-[ext_resource type="Script" path="res://Scripts/Prefabs/Components/Shooter.cs" id="4_02xj6"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HitBox.cs" id="6_au6bb"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_durg3"]
 radius = 250.0
 
-[node name="MobBase" node_paths=PackedStringArray("_hitBox", "_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") groups=["Mobs"] instance=ExtResource("1_kd23v")]
+[node name="MobBase" node_paths=PackedStringArray("_hitBox", "_hurtBox", "Sprite", "_visibleOnScreenNotifier2D") groups=["Mobs"] instance=ExtResource("1_kd23v")]
 script = ExtResource("2_e2oe2")
 Sign = ""
 _hitBox = NodePath("HitBox")
 _hurtBox = NodePath("Components/HurtBox")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
-Shooter = NodePath("Components/ShooterNode/Shooter")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("3_4f5vs")
-
-[node name="Shooter" type="Node2D" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
-script = ExtResource("4_02xj6")
-Actor = NodePath("../../..")
 
 [node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]
 Actor = NodePath("../..")

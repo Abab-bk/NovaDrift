@@ -106,8 +106,7 @@ public class MobBuilder
 
     public MobBuilder(MobInfo mobInfo)
     {
-        _mobBase = GD.Load<PackedScene>(mobInfo.ScenePath).Instantiate() as MobBase;
-        if (_mobBase == null) throw new ("无法找到场景：" + mobInfo.ScenePath);
+        _mobBase = GD.Load<PackedScene>(mobInfo.ScenePath).Instantiate<MobBase>();
         _mobBase.MobInfo = mobInfo;
     }
 

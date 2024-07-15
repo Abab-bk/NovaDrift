@@ -8,6 +8,7 @@ using KaimiraGames;
 using NovaDrift.addons.AcidUtilities;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
 using NovaDrift.Scripts.Systems;
+using NovaDrift.Scripts.Systems.Pool;
 
 namespace NovaDrift.Scripts.Prefabs.Components;
 
@@ -70,9 +71,10 @@ public partial class WaveSpawner : Node2D
     {
         await GDTask.DelayFrame(3);
         RandomMove();
-        var mob = new MobBuilder(mobInfo).Build();
-        mob.GlobalPosition = GlobalPosition;
-        Global.GameWorld.CallDeferred(Node.MethodName.AddChild, mob);
+        Pool.MobPools[mobInfo.Id].Get().GlobalPosition = GlobalPosition;
+        // var mob = new MobBuilder(mobInfo).Build();
+        // mob.GlobalPosition = GlobalPosition;
+        // Global.GameWorld.CallDeferred(Node.MethodName.AddChild, mob);
         _mobCount -= 1;
         if (_mobCount <= 0) QueueFree();
     }
