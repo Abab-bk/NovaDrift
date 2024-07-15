@@ -88,6 +88,7 @@ public partial class MobBase : Actor
 
     public void PoolActive()
     {
+        // Visual.Appear();
         InitStats();
     }
 

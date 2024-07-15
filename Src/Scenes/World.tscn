@@ -187,7 +187,6 @@ metadata/_edit_use_anchors_ = true
 [node name="WaveSpawnerController" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("10_k5lv0")
-_enabled = true
 
 [node name="Left" type="Marker2D" parent="WaveSpawnerController"]
 position = Vector2(100, 832)

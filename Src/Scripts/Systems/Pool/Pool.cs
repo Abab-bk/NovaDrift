@@ -10,6 +10,9 @@ public static class Pool
 {
     public static Dictionary<int, NodePool<MobBase>> MobPools;
     public static NodePool<DieVfx> DieVfxPool;
+    public static NodePool<FocusParticles> FocusVfxPool;
+    public static NodePool<BlastVfx> BlastVfxPool;
+    public static NodePool<GpuParticles2D> BounceVfxPool;
 
     public static int GetActiveMobCount()
     {
@@ -84,7 +87,86 @@ public static class Pool
             80,
             200
             );
+        
+        FocusVfxPool = new NodePool<FocusParticles>(
+            () => GD.Load<PackedScene>("res://Scenes/Vfx/FocusParticles.tscn").Instantiate<FocusParticles>(),
+            particles =>
+            {
+                particles.SetProcessMode(Node.ProcessModeEnum.Pausable);
+                particles.Show();
+            },
+            particles =>
+            {
+                particles.SetProcessMode(Node.ProcessModeEnum.Disabled);
+                particles.Hide();
+            },
+            particles =>
+            {
+                particles.QueueFree();
+            },
+            true,
+            80,
+            200
+        );
+        
+        BlastVfxPool = new NodePool<BlastVfx>(
+            () => GD.Load<PackedScene>("res://Scenes/Vfx/Blast.tscn").Instantiate<BlastVfx>(),
+            particles =>
+            {
+                particles.SetProcessMode(Node.ProcessModeEnum.Inherit);
+                particles.Show();
+            },
+            particles =>
+            {
+                particles.SetProcessMode(Node.ProcessModeEnum.Disabled);
+                particles.Hide();
+            },
+            particles =>
+            {
+                particles.QueueFree();
+            },
+            true,
+            80,
+            200
+        );
+        
+        BounceVfxPool = new NodePool<GpuParticles2D>(
+            () =>
+            {
+                var vfx = GD.Load<PackedScene>("res://Scenes/Vfx/BounceVfx.tscn").Instantiate<GpuParticles2D>();
+                vfx.Finished += () => { BounceVfxPool.Release(vfx); };
+                return vfx;
+            },
+            particles =>
+            {
+                particles.SetProcessMode(Node.ProcessModeEnum.Inherit);
+                particles.Show();
+            },
+            particles =>
+            {
+                particles.SetProcessMode(Node.ProcessModeEnum.Disabled);
+                particles.Hide();
+                particles.Emitting = false;
+            },
+            particles =>
+            {
+                particles.QueueFree();
+            },
+            true,
+            80,
+            200
+        );
+        
+        Global.GameWorld.AddChild(BounceVfxPool);
+        BounceVfxPool.Init();
+        
         Global.GameWorld.AddChild(DieVfxPool);
         DieVfxPool.Init();
+        
+        // Global.GameWorld.AddChild(FocusVfxPool);
+        // FocusVfxPool.Init();
+        //
+        // Global.GameWorld.AddChild(BlastVfxPool);
+        // BlastVfxPool.Init();
     }
 }

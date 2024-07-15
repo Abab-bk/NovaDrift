@@ -28,11 +28,13 @@ public partial class NodePool<TNode>(
     public int CountInactive { get; private set; }
     
     /// <summary>
+    /// The total number of active instances in the pool.
     /// 池已创建但当前正在使用且尚未返回的对象数量
     /// </summary>
     public int CountActive { get; private set; }
     
     /// <summary>
+    /// The total number of instances in the pool. Includes both active and inactive instances.
     /// 池中全部实例的数量，包含激活和未激活
     /// </summary>
     public int CountAll => _pool.Count;
@@ -58,7 +60,7 @@ public partial class NodePool<TNode>(
     {
         foreach (var node in _pool)
         {
-            node.QueueFree();
+            onDestroy(node);
         }
         _pool.Clear();
         CountInactive = 0;

@@ -2,6 +2,7 @@ using System;
 using AcidWallStudio.Fmod;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Components;
+using NovaDrift.Scripts.Systems.Pool;
 
 namespace NovaDrift.Scripts.Vfx;
 
@@ -23,14 +24,17 @@ public partial class BlastVfx : Node2D
     public override void _Ready()
     {
         _circleSprite2D = GetNode<CircleSprite2D>("%CircleSprite2D");
-
+        _gpuParticles.OneShot = true;
         _gpuParticles.Finished += () =>
         {
             OnBlastDone?.Invoke();
+            Pool.BlastVfxPool.Release(this);
         };
-        
-        _gpuParticles.Restart();
-        
+    }
+
+    public void Play()
+    {
+        _gpuParticles.Emitting = true;
         if (PlaySound) SoundManager.PlayOneShotById("event:/Blast");
     }
 }

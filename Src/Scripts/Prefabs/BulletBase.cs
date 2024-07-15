@@ -6,6 +6,7 @@ using Godot;
 using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Components;
+using NovaDrift.Scripts.Systems.Pool;
 
 namespace NovaDrift.Scripts.Prefabs;
 
@@ -91,6 +92,13 @@ public partial class BulletBase : Node2D
     protected virtual void OnHitHandle(Actor actor)
     {
         SoundManager.PlayOneShotById("event:/OnBulletHit");
+        
+        var vfx = Pool.BounceVfxPool.Get();
+        vfx.GlobalPosition = GlobalPosition;
+        vfx.Rotation = Rotation;
+        vfx.Modulate = actor.Modulate;
+        vfx.Emitting = true;
+        
         OnHit?.Invoke(actor);
         if (CanPenetrate > 0)
         {

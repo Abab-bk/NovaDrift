@@ -7,6 +7,7 @@ using NovaDrift.Scripts.Frameworks.Stats;
 using NovaDrift.Scripts.Prefabs.Components;
 using NovaDrift.Scripts.Prefabs.Shields;
 using NovaDrift.Scripts.Prefabs.Weapons;
+using NovaDrift.Scripts.Systems.Pool;
 using NovaDrift.Scripts.Vfx;
 
 namespace NovaDrift.Scripts.Prefabs.Actors;
@@ -269,27 +270,23 @@ public class ActorVisual(Actor target)
 
     public void Appear()
     {
-        target.SelfModulate = target.SelfModulate with { A = 0f };
         target.ProcessMode = Node.ProcessModeEnum.Disabled;
         
-        var focusVfx = GD
-            .Load<PackedScene>("res://Scenes/Vfx/FocusParticles.tscn")
-            .Instantiate<FocusParticles>();
-        focusVfx.OneShot = true;
-        focusVfx.ProcessMode = Node.ProcessModeEnum.Pausable;
+        var focusVfx = Pool.FocusVfxPool.Get();
         
-        target.AddChild(focusVfx);
+        focusVfx.Reparent(target);
+        focusVfx.OneShot = true;
+        focusVfx.Play();
+        
         focusVfx.OnAnimationEnd += () =>
         {
-            var blastVfx = GD
-                .Load<PackedScene>("res://Scenes/Vfx/Blast.tscn")
-                .Instantiate<BlastVfx>();
-
-            blastVfx.PlaySound = false;
-            blastVfx.Modulate = target.Modulate;
-            target.AddChild(blastVfx);
+            var blastVfx = Pool.BlastVfxPool.Get();
             
-            target.SelfModulate = target.SelfModulate with { A = 1f };
+            blastVfx.Reparent(target);
+            blastVfx.Position = Vector2.Zero;
+            blastVfx.PlaySound = false;
+            blastVfx.Play();
+            
             target.ProcessMode = Node.ProcessModeEnum.Inherit;
         };
     }

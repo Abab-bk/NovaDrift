@@ -250,7 +250,11 @@ color = Color(1, 0.26, 0.457333, 1)
 
 [node name="Camera2D" type="Camera2D" parent="." index="14"]
 physics_interpolation_mode = 1
-zoom = Vector2(0.795, 0.795)
+zoom = Vector2(0.7, 0.7)
+limit_left = -2375
+limit_top = -1642
+limit_right = 2375
+limit_bottom = 1642
 
 [node name="PhantomCameraHost" type="Node" parent="Camera2D" index="0"]
 script = ExtResource("10_6xrll")
