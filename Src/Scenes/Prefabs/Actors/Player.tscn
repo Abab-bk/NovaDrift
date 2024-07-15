@@ -1,4 +1,4 @@
-[gd_scene load_steps=47 format=3 uid="uid://b1hvfrsat441r"]
+[gd_scene load_steps=48 format=3 uid="uid://b1hvfrsat441r"]
 
 [ext_resource type="PackedScene" uid="uid://b1vmhmtmuma0x" path="res://Scenes/Prefabs/Actors/ActorBase.tscn" id="1_0c8c2"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Player.cs" id="2_15kon"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" path="res://addons/trail_2d/trail_2d.gd" id="7_6dhtg"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera/phantom_camera_2d.gd" id="8_7ba0m"]
 [ext_resource type="Script" path="res://addons/phantom_camera/scripts/resources/tween_resource.gd" id="9_25cp4"]
+[ext_resource type="Script" path="res://addons/phantom_camera/scripts/phantom_camera_host/phantom_camera_host.gd" id="10_6xrll"]
 
 [sub_resource type="Curve" id="Curve_veys5"]
 _data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
@@ -247,7 +248,14 @@ unique_name_in_owner = true
 [node name="PointLight2D" parent="." index="13"]
 color = Color(1, 0.26, 0.457333, 1)
 
-[node name="PhantomCamera2D" type="Node2D" parent="." index="14" node_paths=PackedStringArray("follow_targets")]
+[node name="Camera2D" type="Camera2D" parent="." index="14"]
+physics_interpolation_mode = 1
+zoom = Vector2(0.795, 0.795)
+
+[node name="PhantomCameraHost" type="Node" parent="Camera2D" index="0"]
+script = ExtResource("10_6xrll")
+
+[node name="PhantomCamera2D" type="Node2D" parent="." index="15" node_paths=PackedStringArray("follow_targets")]
 script = ExtResource("8_7ba0m")
 priority = 1
 follow_mode = 3
@@ -256,19 +264,19 @@ zoom = Vector2(0.7, 0.7)
 tween_resource = SubResource("Resource_w330d")
 limit_target = NodePath("../CollisionShape2D2")
 
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="15"]
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="." index="16"]
 visible = false
 shape = SubResource("RectangleShape2D_5ar5p")
 disabled = true
 
-[node name="AreaMonitor" type="Area2D" parent="." index="16"]
+[node name="AreaMonitor" type="Area2D" parent="." index="17"]
 collision_layer = 0
 collision_mask = 1536
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="AreaMonitor" index="0"]
 shape = SubResource("RectangleShape2D_ln1bs")
 
-[node name="Node2D" type="Node2D" parent="." index="17"]
+[node name="Node2D" type="Node2D" parent="." index="18"]
 
 [node name="Marker2D" type="Marker2D" parent="Node2D" index="0"]
 position = Vector2(120, 0)

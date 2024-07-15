@@ -41,4 +41,5 @@ texture = ExtResource("1_5fgoh")
 lifetime = 0.8
 one_shot = true
 explosiveness = 1.0
+local_coords = true
 script = ExtResource("1_4lp7l")

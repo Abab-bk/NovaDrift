@@ -69,9 +69,12 @@ public partial class WaveSpawner : Node2D
 
     private async void SpawnMob(MobInfo mobInfo)
     {
-        await GDTask.DelayFrame(3);
+        await GDTask.DelayFrame(1);
         RandomMove();
-        Pool.MobPools[mobInfo.Id].Get().GlobalPosition = GlobalPosition;
+        var mob = Pool.MobPools[mobInfo.Id].Get();
+        mob.GlobalPosition = GlobalPosition;
+        await GDTask.DelayFrame(2);
+        mob.Show();
         // var mob = new MobBuilder(mobInfo).Build();
         // mob.GlobalPosition = GlobalPosition;
         // Global.GameWorld.CallDeferred(Node.MethodName.AddChild, mob);

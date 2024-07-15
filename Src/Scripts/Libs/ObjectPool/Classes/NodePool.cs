@@ -1,9 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
-using AcidWallStudio.ObjectPool.Interfaces;
 using Godot;
 
-namespace AcidWallStudio.ObjectPool.Classes;
+namespace AcidWallStudio.ObjectPool;
 
 /// <summary>
 /// 用于存放 Node 的对象池
@@ -79,13 +78,13 @@ public partial class NodePool<TNode>(
 
         if (CountInactive > 0)
         {
-            Logger.Log("[NodePool] Get an inactive object");
+            // Logger.Log("[NodePool] Get an inactive object");
             return GetObj();
         }
 
         if (CountAll < maxCapacity)
         {
-            Logger.Log("[NodePool] Create a new object and push to pool");
+            // Logger.Log("[NodePool] Create a new object and push to pool");
             _pool.Push(createFunc());
             return GetObj();
         }

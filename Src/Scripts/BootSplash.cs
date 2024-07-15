@@ -91,6 +91,9 @@ public partial class BootSplash : Control
                 Logger.Log("[UI] Loading min animation finished.");
             }
             
+            node.Modulate = node.Modulate with { A = 0f }; 
+            GetTree().Root.CallDeferred(Node.MethodName.AddChild, node);
+            
             node.Modulate = node.Modulate with { A = 0f };
             GTweenSequenceBuilder.New()
                 .Append(this.TweenModulateAlpha(0f, 0.2f))
@@ -139,10 +142,7 @@ public partial class BootSplash : Control
                 Logger.LogError($"[BootSplash] Failed to load: {Path}");
                 return;
             }
-            GetTree().Root.CallDeferred(Node.MethodName.AddChild, loadedNode);
-            await GDTask.DelayFrame(3);
-            Pool.Awake();
-                    
+            
             ChangeScene(loadedNode);
         }
 

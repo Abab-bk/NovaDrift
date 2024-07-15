@@ -7,6 +7,7 @@ using Godot;
 using GTweensGodot.Extensions;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Components;
+using NovaDrift.Scripts.Systems.Pool;
 
 namespace NovaDrift.Scripts;
 
@@ -48,6 +49,7 @@ public partial class GameWorld : Node2D
 		AcidSaver.LoadAll();
 		AudioServer.Lock();
 
+		Global.GameWorld = this;
 		Global.SceneTree = GetTree();
 		Global.ShakeDirector = _shakeDirector;
 		Global.Noise = _noise;
@@ -65,6 +67,8 @@ public partial class GameWorld : Node2D
 		AcidSaver.LoadAll();
 
 		Global.Something = GetNode<Node2D>("Something");
+		
+		Pool.Awake();
 		
 		if (!Global.IsDebugMode() || OS.HasFeature("template"))
 		{
@@ -118,8 +122,6 @@ public partial class GameWorld : Node2D
 		
 		UiManager.Open_Hud();
 		_hud.Show();
-		
-		Global.GameWorld = this;
 		
 		Player player = GD.Load<PackedScene>("res://Scenes/Prefabs/Actors/Player.tscn").Instantiate<Player>();
 		player.JoystickNode = _moveJoystick;

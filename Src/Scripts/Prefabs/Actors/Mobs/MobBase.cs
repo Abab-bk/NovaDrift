@@ -1,6 +1,6 @@
 using System;
 using System.Collections.Generic;
-using AcidWallStudio.ObjectPool.Classes;
+using AcidWallStudio.ObjectPool;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Components;
 using NovaDrift.Scripts.Systems;
@@ -130,10 +130,9 @@ public partial class MobBase : Actor
             Global.GameWorld.CallDeferred(Node.MethodName.AddChild, expBall);
         }
 
-        var dieVfx = GD.Load<PackedScene>("res://Scenes/Vfx/DieVfx.tscn").Instantiate<DieVfx>();
+        var dieVfx = Systems.Pool.Pool.DieVfxPool.Get();
         dieVfx.GlobalPosition = GlobalPosition;
         dieVfx.Modulate = Modulate;
-        Global.GameWorld.CallDeferred(Node.MethodName.AddChild, dieVfx);
         
         EventBus.OnMobDied?.Invoke(this);
         

@@ -1,4 +1,4 @@
-﻿namespace AcidWallStudio.ObjectPool.Interfaces;
+﻿namespace AcidWallStudio.ObjectPool;
 
 public interface IObjectPool<T>
 {
