@@ -21,9 +21,12 @@ public static class SoundManager
     private static Bus _uiSoundsBus;
     
     private static EventInstance _currentMusicInstance;
+
+    public static bool Disabled = false;
     
     public static EventInstance PlayOneShotById(string id)
     {
+        if (Disabled) return default;
         var instance = CreateInstanceById(id);
         instance.start();
         instance.release();
@@ -32,6 +35,7 @@ public static class SoundManager
 
     public static void PlayMusic(string id)
     {
+        if (Disabled) return;
         if (_currentMusicInstance.isValid()) _currentMusicInstance.release();
         _currentMusicInstance = CreateInstanceById(id);
         _currentMusicInstance.start();
@@ -39,6 +43,7 @@ public static class SoundManager
 
     public static void SetMusicParameter(string para, int value)
     {
+        if (Disabled) return;
         if (_currentMusicInstance.isValid())
         {
             _currentMusicInstance.setParameterByName(para, value);
@@ -47,6 +52,7 @@ public static class SoundManager
 
     public static float GetMusicParameter(string para)
     {
+        if (Disabled) return default;
         if (_currentMusicInstance.isValid())
         {
             _currentMusicInstance.getParameterByName(para, out var value);
@@ -57,11 +63,13 @@ public static class SoundManager
 
     public static EventInstance PlayUiSound(string id)
     {
+        if (Disabled) return default;
         return PlayOneShotById(id);
     }
     
     public static ATTRIBUTES_3D ToFmodAttribute3D(this Vector2 source)
     {
+        if (Disabled) return default;
         return new ATTRIBUTES_3D
         {
             position = new VECTOR
@@ -85,6 +93,7 @@ public static class SoundManager
 
     public static EventInstance PlaySound(string id, Vector2 position)
     {
+        if (Disabled) return default;
         var instance = CreateInstanceById(id);
         instance.set3DAttributes(position.ToFmodAttribute3D());
         instance.start();
@@ -93,6 +102,7 @@ public static class SoundManager
     
     public static EventInstance PlaySound(string id)
     {
+        if (Disabled) return default;
         var instance = CreateInstanceById(id);
         instance.start();
         return instance;
@@ -100,6 +110,7 @@ public static class SoundManager
 
     public static EventInstance CreateInstanceById(string id)
     {
+        if (Disabled) return default;
         var desc = _studioSystem.getEvent(id, out var soundDesc);
         if (desc != RESULT.OK) Logger.LogError($"Error loading sound {desc.ToString()}");
         
@@ -111,11 +122,13 @@ public static class SoundManager
 
     public static void Shutdown()
     {
+        if (Disabled) return;
         _studioSystem.release();
     }
 
     public static void Initialize()
     {
+        if (Disabled) return;
         FMOD.Studio.System.create(out _studioSystem);
         _studioSystem.initialize(FmodConfig.MaxChannels, INITFLAGS.NORMAL, FMOD.INITFLAGS._3D_RIGHTHANDED, IntPtr.Zero);
 
@@ -136,12 +149,19 @@ public static class SoundManager
     
     public static void LoadBank(string fileName, out Bank bank)
     {
+        if (Disabled)
+        {
+            bank = default;
+            return;
+        }
+
         var result = _studioSystem.loadBankFile(FmodConfig.RootPath + fileName, LOAD_BANK_FLAGS.NORMAL, out bank);
         if (result != RESULT.OK) Logger.LogError($"Error loading bank {result.ToString()}");
     }
 
     public static void SetVolume()
     {
+        if (Disabled) return;
         if (!_masterBus.isValid()) return;
         _masterBus.setVolume(MasterVolume);
         _musicBus.setVolume(MusicVolume);
@@ -151,6 +171,7 @@ public static class SoundManager
 
     public static void Update()
     {
+        if (Disabled) return;
         // 更新 Listener（玩家） 属性
         if (FmodConfig.Listener != null)
         {

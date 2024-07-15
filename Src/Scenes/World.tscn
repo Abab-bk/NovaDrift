@@ -138,12 +138,13 @@ anchor_left = 1.0
 anchor_top = 1.0
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = -275.0
+offset_left = -378.0
 offset_top = -359.0
-offset_right = -275.0
+offset_right = -378.0
 offset_bottom = -359.0
 grow_horizontal = 0
 grow_vertical = 0
+metadata/_edit_use_anchors_ = true
 
 [node name="ShootBtn" type="TouchScreenButton" parent="Hud/ShootBtn"]
 unique_name_in_owner = true
@@ -157,13 +158,15 @@ layout_mode = 3
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 341.0
+offset_left = 441.0
 offset_top = -408.0
-offset_right = 341.0
+offset_right = 441.0
 offset_bottom = -408.0
 grow_vertical = 0
+metadata/_edit_use_anchors_ = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Hud/Joystick"]
+[node name="JoyBackground" type="Sprite2D" parent="Hud/Joystick"]
+unique_name_in_owner = true
 texture = ExtResource("6_fufc0")
 
 [node name="MoveJoystick" type="TouchScreenButton" parent="Hud/Joystick"]
@@ -173,17 +176,19 @@ texture_normal = ExtResource("7_xcah2")
 script = ExtResource("5_m5h7n")
 
 [node name="BlinkButton" parent="Hud" instance=ExtResource("8_ymncb")]
-offset_left = -589.0
+offset_left = -692.0
 offset_top = -359.0
-offset_right = -589.0
+offset_right = -692.0
 offset_bottom = -359.0
 _prompt = "R"
+metadata/_edit_use_anchors_ = true
 
 [node name="Something" type="Node2D" parent="."]
 
 [node name="WaveSpawnerController" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("10_k5lv0")
+_enabled = true
 
 [node name="Left" type="Marker2D" parent="WaveSpawnerController"]
 position = Vector2(100, 832)

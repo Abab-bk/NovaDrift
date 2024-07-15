@@ -1,9 +1,8 @@
-[gd_scene load_steps=51 format=3 uid="uid://c58ljhki6asen"]
+[gd_scene load_steps=50 format=3 uid="uid://c58ljhki6asen"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_5irmn"]
 [ext_resource type="Texture2D" uid="uid://dj1a38qxe512e" path="res://Assets/Textures/Mobs/TheKnight.png" id="2_xq6n4"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/TheKnightAi.cs" id="3_r6a3d"]
-[ext_resource type="PackedScene" uid="uid://drobcpf7g4p2f" path="res://Scenes/StateDebugger.tscn" id="4_6yhsu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ebxgc"]
 size = Vector2(200, 194)
@@ -271,15 +270,3 @@ gizmo_extents = 100.0
 [node name="FrontMarker" type="Marker2D" parent="." index="9"]
 position = Vector2(392, 0)
 gizmo_extents = 100.0
-
-[node name="CanvasLayer" type="CanvasLayer" parent="." index="10"]
-
-[node name="StateDebugger" parent="CanvasLayer" index="0" instance=ExtResource("4_6yhsu")]
-custom_minimum_size = Vector2(200, 200)
-anchors_preset = 2
-anchor_top = 1.0
-anchor_right = 0.0
-offset_top = -392.0
-offset_right = 687.0
-grow_horizontal = 1
-grow_vertical = 0

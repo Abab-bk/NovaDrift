@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dunej3cac37vn"]
+[gd_scene load_steps=8 format=3 uid="uid://dunej3cac37vn"]
 
 [ext_resource type="PackedScene" uid="uid://b1vmhmtmuma0x" path="res://Scenes/Prefabs/Actors/ActorBase.tscn" id="1_kd23v"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Mobs/MobBase.cs" id="2_e2oe2"]
@@ -6,6 +6,9 @@
 [ext_resource type="Script" path="res://Scripts/Prefabs/MobAiComponent.cs" id="3_d6jih"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/Shooter.cs" id="4_02xj6"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HitBox.cs" id="6_au6bb"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_durg3"]
+radius = 250.0
 
 [node name="MobBase" node_paths=PackedStringArray("_hitBox", "_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") groups=["Mobs"] instance=ExtResource("1_kd23v")]
 script = ExtResource("2_e2oe2")
@@ -27,6 +30,15 @@ Actor = NodePath("../../..")
 Actor = NodePath("../..")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Components/HurtBox" index="0"]
+
+[node name="BoidsArea" type="Area2D" parent="Components" index="3"]
+unique_name_in_owner = true
+collision_layer = 0
+collision_mask = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Components/BoidsArea" index="0"]
+shape = SubResource("CircleShape2D_durg3")
+debug_color = Color(0, 0.646463, 0.236431, 0.42)
 
 [node name="MobAiComponent" type="Node" parent="State" index="0" node_paths=PackedStringArray("Mob")]
 unique_name_in_owner = true

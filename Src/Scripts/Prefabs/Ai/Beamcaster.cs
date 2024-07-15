@@ -53,6 +53,8 @@ public partial class Beamcaster : MobAiComponent
         };
         
         _healingTimer.Start();
+        
+        Machine.SetTrigger("Init");
     }
 
     protected override void ConnectProcessSignals(State state, float delta)

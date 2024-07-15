@@ -101,6 +101,11 @@ public sealed class WorldCommands
     public void GenerateBossWaveById() => Global.WaveSpawnerController.GenerateBossWave(SomethingId);
     public void GenerateWave() => Global.WaveSpawnerController.GenerateWave();
 
+    public void KillAllMobs()
+    {
+        Global.Player.GetTree().CallGroup("Mobs", "RemoveSelf");
+    }
+
     public void ChangeWorldCorrection()
     {
         Global.SetWorldCorrection(GD.Load<GradientTexture2D>("res://Assets/Gradients/KnightEnvironment.tres"));

@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://dai2k1wuc6y38"]
+[gd_scene load_steps=20 format=3 uid="uid://dai2k1wuc6y38"]
 
 [ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_yrrya"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Ai/Beamcaster.cs" id="2_libbv"]
@@ -26,9 +26,20 @@ editor_offset = Vector2(-60, -120)
 state_name = &"Moving"
 editor_offset = Vector2(660, -120)
 
+[sub_resource type="VariableConfig" id="VariableConfig_ii53a"]
+variable_name = &"Init"
+resource_name = "Init: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_xnw0o"]
+variable_config = SubResource("VariableConfig_ii53a")
+trigger_type = 0
+
 [sub_resource type="TransitionConfig" id="TransitionConfig_4plgd"]
 from_state_config = SubResource("StateConfig_r1dwg")
 to_state_config = SubResource("StateConfig_x6cuv")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_xnw0o")])
 
 [sub_resource type="VariableConfig" id="VariableConfig_uvbq5"]
 variable_name = &"Next"
@@ -48,7 +59,7 @@ variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("
 [sub_resource type="FSMConfig" id="FSMConfig_xi2o7"]
 state_config_list = Array[StateConfig]([SubResource("StateConfig_r1dwg"), SubResource("StateConfig_x6cuv")])
 transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_4plgd"), SubResource("TransitionConfig_oq18d")])
-variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_uvbq5")])
+variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_uvbq5"), SubResource("VariableConfig_ii53a")])
 
 [node name="Beamcaster" node_paths=PackedStringArray("_hitBox", "_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_yrrya")]
 modulate = Color(0.972549, 0.560784, 1, 1)

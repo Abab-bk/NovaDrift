@@ -19,6 +19,7 @@ public partial class MobBase : Actor
     
     [Export] public string Sign;
     [Export] private HitBox _hitBox;
+    [GetNode("%BoidsArea")] private Area2D _boidsArea;
 
     public override void _Ready()
     {
@@ -164,7 +165,7 @@ public partial class MobBase : Actor
     
     private Vector2 HandleDir(Vector2 movement)
     {
-        foreach (var node in GetTree().GetNodesInGroup("Mobs"))
+        foreach (var node in _boidsArea.GetOverlappingBodies())
         {
             if (node == this) continue;
             if (node is not MobBase mobBase) continue;
@@ -174,7 +175,7 @@ public partial class MobBase : Actor
             var ratio = (mobBase.GlobalPosition - GlobalPosition).Length() / 20f > 0f ? 1f : 0f;
             movement -= ratio * (mobBase.GlobalPosition - GlobalPosition);
         }
-
+        
         return movement.Normalized();
     }
 
