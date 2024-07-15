@@ -72,7 +72,11 @@ public partial class MobBase : Actor
         {
             Global.GameContext.AppendFollowTarget(this);
         }
-        
+        else
+        {
+            AddToGroup("NormalMobs");
+        }
+
         UpdateScale();
         Visual.Appear();
     }

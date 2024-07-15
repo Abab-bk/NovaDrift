@@ -13,9 +13,14 @@ public partial class BlackHole : Node2D
 	
 	private float _mass = 20000f;
 	
+	/// <summary>
+	/// 排除对象列表
+	/// </summary>
 	public List<Actor> ExceptActors = new();
 	public float Radius = 400f;
 	public int Life = 5;
+
+	public string GroupName = "Actors";
 	
 	public override void _Ready()
 	{
@@ -23,7 +28,7 @@ public partial class BlackHole : Node2D
 			.Append(this.TweenRotation(360f, 1f).SetLoops(Life))
 			.AppendCallback(() =>
 			{
-				foreach (var actor in GetTree().GetNodesInGroup("Actors"))
+				foreach (var actor in GetTree().GetNodesInGroup(GroupName))
 				{
 					if (actor is not Actor node2D) continue;
 					if (ExceptActors.Contains(node2D)) continue;
@@ -45,7 +50,7 @@ public partial class BlackHole : Node2D
 
 	private void Apply()
 	{
-		foreach (var actor in GetTree().GetNodesInGroup("Actors"))
+		foreach (var actor in GetTree().GetNodesInGroup(GroupName))
 		{
 			if (actor is not Actor node2D) continue;
 			if (ExceptActors.Contains(node2D)) continue;

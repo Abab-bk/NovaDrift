@@ -3,11 +3,11 @@ using System.Collections.Generic;
 using System.Linq;
 using AcidWallStudio.AcidUtilities;
 using Godot;
+using GodotTask;
 using KaimiraGames;
 using NovaDrift.addons.AcidUtilities;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
 using NovaDrift.Scripts.Systems;
-using NovaDrift.Scripts.Vfx;
 
 namespace NovaDrift.Scripts.Prefabs.Components;
 
@@ -24,6 +24,8 @@ public partial class WaveSpawner : Node2D
             new (new CircleSpawnType(), 1),
             new (new SpiralSpawnType(), 1),
         });
+
+    private int _mobCount;
     
     public override void _Ready()
     {
@@ -57,24 +59,22 @@ public partial class WaveSpawner : Node2D
         
         foreach (var mobInfo in generatedMobs)
         {
-            RandomMove();
-            var mob = new MobBuilder(mobInfo).Build();
-            mob.GlobalPosition = GlobalPosition;
-            Global.GameWorld.CallDeferred(Node.MethodName.AddChild, mob);
-            
-            // var spawnVfx = GD.Load<PackedScene>("res://Scenes/Vfx/SpawnVfx.tscn").Instantiate<SpawnVfx>();
-            // spawnVfx.OnAnimationEnd += () =>
-            // {
-            //     Global.GameWorld.CallDeferred(Node.MethodName.AddChild, mob);
-            // };
-            //
-            // spawnVfx.GlobalPosition = GlobalPosition;
-            // Global.GameWorld.CallDeferred(Node.MethodName.AddChild, spawnVfx);
+            _mobCount += 1;
+            SpawnMob(mobInfo);
         }
-
-        Logger.Log($"[Wave Spawner] 敌人生成数量: {generatedMobs.Count}, 阵型：{spawnType.GetType().Name}");
         
-        QueueFree();
+        Logger.Log($"[Wave Spawner] 敌人生成数量: {generatedMobs.Count}, 阵型：{spawnType.GetType().Name}");
+    }
+
+    private async void SpawnMob(MobInfo mobInfo)
+    {
+        await GDTask.DelayFrame(3);
+        RandomMove();
+        var mob = new MobBuilder(mobInfo).Build();
+        mob.GlobalPosition = GlobalPosition;
+        Global.GameWorld.CallDeferred(Node.MethodName.AddChild, mob);
+        _mobCount -= 1;
+        if (_mobCount <= 0) QueueFree();
     }
 
     public MobBase GenerateABoss(int id)

@@ -14,7 +14,7 @@ public class PowerUp
     {
     }
     
-    public void Destroy()
+    public virtual void Destroy()
     {
         OnDestroy?.Invoke();
     }

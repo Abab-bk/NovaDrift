@@ -15,34 +15,20 @@
   },
   {
     "id": 1003,
-    "name": "地雷",
-    "class_name": "PowerMine",
-    "desc": "在所有友方单位处放置一个地雷，敌人经过会激活地雷，造成巨大伤害",
-    "icon_name": "PowerMine"
-  },
-  {
-    "id": 1004,
     "name": "黑洞",
     "class_name": "PowerBlackHole",
     "desc": "在玩家位置产生一个黑洞，吸收所有敌人，造成伤害\n不影响BOSS\n持续 5s",
     "icon_name": "PowerBlackHole"
   },
   {
-    "id": 1005,
-    "name": "炮塔",
-    "class_name": "PowerTurret",
-    "desc": "召唤一个固定炮塔，炮塔会顺时针旋转射击。\n持续 5s",
-    "icon_name": "PowerTurret"
-  },
-  {
-    "id": 1006,
+    "id": 1004,
     "name": "急救针管",
-    "class_name": "PowerMedi",
+    "class_name": "PowerMed",
     "desc": "立即回复 20% 生命值和护盾",
-    "icon_name": "PowerMedi"
+    "icon_name": "PowerMed"
   },
   {
-    "id": 1007,
+    "id": 1005,
     "name": "超频模式",
     "class_name": "PowerHyper",
     "desc": "+33% 的推力、射速、再生\n持续 10s",
