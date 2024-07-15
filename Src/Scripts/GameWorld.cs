@@ -142,10 +142,14 @@ public partial class GameWorld : Node2D
 
 	private async void GameOver()
 	{
+		if (Global.GameContext.IsGameOver) return;
+		Global.GameContext.IsGameOver = true;
+		Logger.Log("[GameWorld] Game over.");
         HideBackground();
         _hud.Hide();
         
-		GetTree().CallGroup("Mobs", "RemoveSelf");
+        GetTree().CallGroup("Mobs", "RemoveSelf");
+        GetTree().CallGroup("ExpBalls", Node.MethodName.QueueFree);
 
 		await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
 		

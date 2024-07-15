@@ -26,7 +26,7 @@ public partial class Player : Actor
 
     // 为了 ChargedShot Ability 添加的，Hack
     public bool IsCharge = false;
-
+    
     public override void _Ready()
     {
         base._Ready();
@@ -214,6 +214,9 @@ public partial class Player : Actor
 
     public override void Die()
     {
+        if (IsDead) return;
+        IsDead = true;
+        
         if (Global.GameContext.ReliveCount > 0)
         {
             EventBus.OnPlayerDead?.Invoke();

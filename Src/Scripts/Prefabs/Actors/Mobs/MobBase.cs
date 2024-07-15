@@ -78,7 +78,7 @@ public partial class MobBase : Actor
         }
 
         UpdateScale();
-        Visual.Appear();
+        // Visual.Appear();
     }
     
     protected override void InitStats()

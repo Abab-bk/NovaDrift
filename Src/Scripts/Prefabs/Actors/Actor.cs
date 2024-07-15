@@ -55,7 +55,7 @@ public partial class Actor : CharacterBody2D
     
     public bool IsShooting = false;
     
-    protected bool IsDead;
+    public bool IsDead;
     protected ActorVisual Visual;
 
     private Area2D _bodyArea;

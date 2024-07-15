@@ -179,4 +179,4 @@ viewport/hdr_2d=true
 [run_configs]
 
 data/configs=["{\"custom_scene\":\"\",\"environment_variables\":{\"DebugMode\":\"true\"},\"name\":\"Debug\",\"play_mode\":0}", "{\"custom_scene\":\"\",\"environment_variables\":{\"DebugMode\":\"false\"},\"name\":\"Release\",\"play_mode\":0}"]
-data/current=-1
+data/current=0

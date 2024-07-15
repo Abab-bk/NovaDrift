@@ -117,10 +117,11 @@ public class GameContext
             var info = @base.MobInfo;
             AddScore((int)(info.DangerFactor * info.Health));
         };
-        EventBus.OnGameOver += () =>
-        {
-            IsGameOver = true;
-        };
+        // 这个放到了 GameWorld 的 GameOver()
+        // EventBus.OnGameOver += () =>
+        // {
+        //     IsGameOver = true;
+        // };
         EventBus.OnGameStart += Clear;
     }
 

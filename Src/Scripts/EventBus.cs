@@ -20,7 +20,15 @@ public static class EventBus
     public static Action OnWorldColorChanged;
 
     public static Action<string, string, Action> AddActionButton;
-    
+
+    static EventBus()
+    {
+        OnGameOver += () =>
+        {
+            Logger.Log("[EventBus] Game Over.");
+        };
+    }
+
     public static void EnteredMob(MobBase mobBase)
     {
         OnMobDied?.Invoke(mobBase);
