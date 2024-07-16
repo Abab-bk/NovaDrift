@@ -67,7 +67,6 @@ public partial class Pulse : BaseShooter
         
         AddChild(circleBlast);
         
-        
         for (int i = 0; i < Actor.Stats.BulletCount.Value; i++)
         {
             BulletBase bullet = GetBulletFunc?.Invoke(this);

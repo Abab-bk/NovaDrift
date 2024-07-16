@@ -15,6 +15,7 @@ public static class Pool
     public static NodePool<FocusParticles> FocusVfxPool;
     public static NodePool<BlastVfx> BlastVfxPool;
     public static NodePool<GpuParticles2D> BounceVfxPool;
+    public static NodePool<ExpBall> ExpBallPool;
 
     public static int GetActiveMobCount()
     {
@@ -201,6 +202,34 @@ public static class Pool
             80,
             200
         );
+        
+        ExpBallPool = new NodePool<ExpBall>(
+            () =>
+            {
+                var node = GD.Load<PackedScene>("res://Scenes/Vfx/ExpBall.tscn").Instantiate<ExpBall>();
+                return node;
+            },
+            node =>
+            {
+                node.SetProcessMode(Node.ProcessModeEnum.Inherit);
+                node.Show();
+            },
+            node =>
+            {
+                node.SetProcessMode(Node.ProcessModeEnum.Disabled);
+                node.Hide();
+            },
+            node =>
+            {
+                node.QueueFree();
+            },
+            true,
+            400,
+            400
+        );
+
+        Global.GameWorld.AddChild(ExpBallPool);
+        ExpBallPool.Init();
         
         Global.GameWorld.AddChild(BounceVfxPool);
         BounceVfxPool.Init();

@@ -23,7 +23,8 @@ public class Stat
         {
             if (_baseValue.Equals(value)) return;
             _baseValue = value;
-            _isDirty = true;
+            _isDirty = false;
+            _value = CalculateFinalValue();
             ValueChanged?.Invoke(Value);
         }
     }
@@ -34,13 +35,13 @@ public class Stat
     private float _value;
  
     public float Value {
-        get {
-            if(_isDirty) {
-                _value = CalculateFinalValue();
-                ValueChanged?.Invoke(_value);
-                _isDirty = false;
-            }
-            
+        get
+        {
+            if (!_isDirty) return _value;
+
+            _value = CalculateFinalValue();
+            ValueChanged?.Invoke(_value);
+            _isDirty = false;
             return _value;
         }
     }
@@ -83,8 +84,12 @@ public class Stat
 
     public bool RemoveModifier(StatModifier mod)
     {
-        _isDirty = true;
-        return _statModifiers.Remove(mod);
+        if (_statModifiers.Remove(mod))
+        {
+            _isDirty = true;
+            return true;
+        }
+        return false;
     }
  
     private float CalculateFinalValue()

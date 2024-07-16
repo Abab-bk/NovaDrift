@@ -2,6 +2,7 @@ using Godot;
 using System;
 using AcidWallStudio.AcidUtilities;
 using NovaDrift.Scripts.Prefabs.Components;
+using NovaDrift.Scripts.Systems.Pool;
 using NovaDrift.Scripts.Vfx;
 
 namespace NovaDrift.Scripts.Prefabs.Others;
@@ -38,9 +39,8 @@ public partial class TrainBody : Node2D
                     var temp = new Vector2(10f, 10f);
                     for (int i = 0; i < count; i++)
                     {
-                        var expBall = GD.Load<PackedScene>("res://Scenes/Vfx/ExpBall.tscn").Instantiate<ExpBall>();
-                        expBall.Pos = GlobalPosition + temp * i;
-                        Global.GameWorld.CallDeferred(Node.MethodName.AddChild, expBall);
+                        var expBall = Pool.ExpBallPool.Get();
+                        expBall.GlobalPosition = GlobalPosition + temp * i;
                     }
                         
                     break;

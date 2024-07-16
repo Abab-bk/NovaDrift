@@ -15,7 +15,7 @@ public partial class Grenade : BulletBase
     public override void _Ready()
     {
         base._Ready();
-        _timer = new Timer()
+        _timer = new Timer
         {
             WaitTime = 3f,
             OneShot = true

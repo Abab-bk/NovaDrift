@@ -154,8 +154,8 @@ public static class SoundManager
             bank = default;
             return;
         }
-
-        var result = _studioSystem.loadBankFile(FmodConfig.RootPath + fileName, LOAD_BANK_FLAGS.NORMAL, out bank);
+        
+        var result = _studioSystem.loadBankMemory(FileAccess.GetFileAsBytes(FmodConfig.RootPath + fileName), LOAD_BANK_FLAGS.NORMAL, out bank);
         if (result != RESULT.OK) Logger.LogError($"Error loading bank {result.ToString()}");
     }
 

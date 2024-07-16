@@ -19,7 +19,7 @@ public partial class CollectorAi : DroneAiComponent
         {
             if (area.Owner is not ExpBall expBall) return;
 
-            expBall.Get();
+            expBall.Active();
             FindTarget();
         };
         

@@ -95,13 +95,14 @@ public partial class Player : Actor
     {
         if (area.Owner is PowerUpEntity powerUp)
         {
+            if (powerUp.GlobalPosition.DistanceTo(GlobalPosition) > 100f) return;
             powerUp.Get();
             return;
         }
         
         if (area.Owner is ExpBall expBall)
         {
-            expBall.Get();
+            expBall.Active();
             return;
         }
     }
@@ -211,6 +212,10 @@ public partial class Player : Actor
         Stats.Exp.ValueChanged += UpdateUi;
         Stats.Health.ValueChanged += UpdateUi;
         Stats.Size.ValueChanged += f => Scale = new Vector2 { X = f, Y = f };
+        Stats.Damage.ValueChanged += f =>
+        {
+            Logger.Log("Damage value changed: " + Stats.Damage.Value);
+        };
     }
 
     public override void Die()
