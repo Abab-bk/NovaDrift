@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using AcidWallStudio.ObjectPool;
 using Godot;
+using NovaDrift.Scripts.Prefabs;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
 using NovaDrift.Scripts.Vfx;
 
@@ -9,6 +10,7 @@ namespace NovaDrift.Scripts.Systems.Pool;
 public static class Pool
 {
     public static Dictionary<int, NodePool<MobBase>> MobPools;
+    public static Dictionary<int, NodePool<MobBase>> CloneMobPools;
     public static NodePool<DieVfx> DieVfxPool;
     public static NodePool<FocusParticles> FocusVfxPool;
     public static NodePool<BlastVfx> BlastVfxPool;
@@ -29,6 +31,7 @@ public static class Pool
     public static void Awake()
     {
         MobPools = new();
+        CloneMobPools = new();
 
         // 初始化 MobPools
         foreach (var key in DataBuilder.Tables.TbMobInfo.DataMap.Keys)
@@ -37,12 +40,44 @@ public static class Pool
                 () => new MobBuilder(DataBuilder.BuildMobInfoById(key)).Build(),
                 mob =>
                 {
+                    mob.IsDead = false;
                     mob.SetProcessMode(Node.ProcessModeEnum.Inherit);
                     // mob.Show();
                     mob.PoolActive();
                 },
                 mob =>
                 {
+                    mob.Ai.Release();
+                    mob.CallDeferred(Node.MethodName.SetProcessMode, (int)Node.ProcessModeEnum.Disabled);
+                    mob.Hide();
+                },
+                mob =>
+                {
+                    mob.QueueFree();
+                },
+                true,
+                40,
+                100
+            );
+            
+            var clonePool = new NodePool<MobBase>(
+                () =>
+                {
+                    var mob = new MobBuilder(DataBuilder.BuildMobInfoById(key)).Build();
+                    var ai = new MobAiComponent();
+                    ai.SetScript(GD.Load<GodotObject>("res://Scripts/Prefabs/Ai/CloneMobAi.cs"));
+                    mob.Ai = ai;
+                    return mob;
+                },
+                mob =>
+                {
+                    mob.IsDead = false;
+                    mob.SetProcessMode(Node.ProcessModeEnum.Inherit);
+                    mob.PoolActive();
+                },
+                mob =>
+                {
+                    mob.Ai.Release();
                     mob.CallDeferred(Node.MethodName.SetProcessMode, (int)Node.ProcessModeEnum.Disabled);
                     mob.Hide();
                 },
@@ -56,13 +91,23 @@ public static class Pool
             );
             
             MobPools[key] = pool;
+            CloneMobPools[key] = clonePool;
             Global.GameWorld.AddChild(pool);
+            Global.GameWorld.AddChild(clonePool);
         }
         foreach (var pool in MobPools.Values)
         {
             pool.Init(mob =>
             {
                 mob.Pool = pool;
+            });
+        }
+        foreach (var pool in CloneMobPools.Values)
+        {
+            pool.Init(mob =>
+            {
+                mob.Pool = pool;
+                mob.Ai.Reparent(mob);
             });
         }
 

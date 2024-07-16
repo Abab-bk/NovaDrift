@@ -51,8 +51,22 @@ public partial class Beamcaster : MobAiComponent
                 line.Key.Stats.Health.Increase(line.Key.Stats.Health.MaxValue.Value * 0.015f);
             }
         };
-        
+    }
+
+    public override void Active()
+    {
+        base.Active();
         _healingTimer.Start();
+    }
+
+    public override void Release()
+    {
+        base.Release();
+        _healingTimer.Stop();
+        foreach (var pair in _lines)
+        {
+            pair.Value.QueueFree();
+        }
     }
 
     protected override void ConnectProcessSignals(State state, float delta)

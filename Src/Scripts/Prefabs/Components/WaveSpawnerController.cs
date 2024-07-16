@@ -175,19 +175,17 @@ public partial class WaveSpawnerController : Node2D
 
     public MobBase GenerateAMob(int id, Vector2 pos = default)
     {
-        var mob = new MobBuilder(DataBuilder.BuildMobInfoById(id)).Build();
-        Global.GameWorld.CallDeferred(Node.MethodName.AddChild, mob);
-        // Global.GameWorld.AddChild(mob);
+        var mob = Pool.MobPools[id].Get();
         mob.GlobalPosition = pos == default ? Wizard.GetScreenCenter() : pos;
+        mob.Show();
         return mob;
     }
     
     public MobBase GenerateAMob(MobInfo mobInfo, Vector2 pos = default)
     {
-        var mob = new MobBuilder(mobInfo).Build();
-        Global.GameWorld.CallDeferred(Node.MethodName.AddChild, mob);
-        // Global.GameWorld.AddChild(mob);
+        var mob = Pool.MobPools[mobInfo.Id].Get();
         mob.GlobalPosition = pos == default ? Wizard.GetScreenCenter() : pos;
+        mob.Show();
         return mob;
     }
     

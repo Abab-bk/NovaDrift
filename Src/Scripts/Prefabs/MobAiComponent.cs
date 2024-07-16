@@ -9,7 +9,16 @@ public partial class MobAiComponent : Node
     [Export] private bool _enabled = true;
     [Export] protected MobBase Mob;
     public HFSM Machine;
+
+    public virtual void Active()
+    {
+        Machine.Restart();
+    }
     
+    public virtual void Release()
+    {
+    }
+
     public override void _Ready()
     {
         if (!_enabled) return;

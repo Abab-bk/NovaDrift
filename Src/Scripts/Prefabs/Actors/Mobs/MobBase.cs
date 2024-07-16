@@ -90,6 +90,7 @@ public partial class MobBase : Actor
     {
         // Visual.Appear();
         InitStats();
+        Ai.Active();
     }
 
     protected override void InitStats()
@@ -123,6 +124,9 @@ public partial class MobBase : Actor
     {
         if (IsDead) return;
         
+        Stats.BuffSystem.RemoveAllBuffs();
+        Stats.EffectSystem.RemoveAllEffects();
+        
         var temp = new Vector2(10f, 10f);
         for (int i = 0; i < MobInfo.GetExp; i++)
         {
@@ -148,21 +152,40 @@ public partial class MobBase : Actor
         IsDead = true;
         Stats.BuffSystem.RemoveAllBuffs();
         Stats.EffectSystem.RemoveAllEffects();
-        
-        if (Pool != null) Pool.Release(this);
+
+        if (Pool != null)
+        {
+            Pool.Release(this);
+        }
+        else
+        {
+            QueueFree();
+        }
     }
 
     public void RemoveSelf()
     {
         if (IsDead) return;
-       
-        SetProcessMode(ProcessModeEnum.Disabled);
+        
         Logger.Log($"[MobBase] Game over, remove self: {Name}");
         
         IsDead = true;
         Stats.BuffSystem.RemoveAllBuffs();
         Stats.EffectSystem.RemoveAllEffects();
-        QueueFree();
+        
+        if (IsBoss)
+        {
+            Global.GameContext.RemoveFollowTarget(this);
+        }
+        
+        if (Pool != null)
+        {
+            Pool.Release(this);
+        }
+        else
+        {
+            QueueFree();
+        }
     }
 
     public float GetDistanceToPlayer()

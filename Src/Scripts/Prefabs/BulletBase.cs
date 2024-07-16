@@ -95,7 +95,7 @@ public partial class BulletBase : Node2D
         
         var vfx = Pool.BounceVfxPool.Get();
         vfx.GlobalPosition = GlobalPosition;
-        vfx.Rotation = Rotation;
+        vfx.Rotation = -Rotation;
         vfx.Modulate = actor.Modulate;
         vfx.Emitting = true;
         

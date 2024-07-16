@@ -11,10 +11,9 @@ public partial class Swallow : MobAiComponent
     private Vector2 _rightPoint;
     private float _padding = 40f;
 
-    public override void _Ready()
+    public override void Active()
     {
-        base._Ready();
-
+        base.Active();
         _leftPoint = SpawnPoint.GetPoint(Constants.Points.RandomLeft);
         _rightPoint = SpawnPoint.GetPoint(Constants.Points.RandomRight);
 

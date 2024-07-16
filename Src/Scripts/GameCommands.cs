@@ -108,7 +108,7 @@ public sealed class WorldCommands
 
     public void ChangeWorldCorrection()
     {
-        Global.SetWorldCorrection(GD.Load<GradientTexture2D>("res://Assets/Gradients/KnightEnvironment.tres"));
+        Global.SetWorldCorrection(GD.Load<GradientTexture1D>("res://Assets/Gradients/KnightEnvironment.tres"));
     }
 
     public void SpawnPowerUpEntity()

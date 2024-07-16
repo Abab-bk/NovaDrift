@@ -225,7 +225,7 @@ public static class Global
         EventBus.OnWorldColorChanged();
     }
 
-    public static void SetWorldCorrection(GradientTexture2D color)
+    public static void SetWorldCorrection(GradientTexture1D color)
     {
         WorldEnvironment.Environment.AdjustmentColorCorrection = color;
     }

@@ -17,7 +17,7 @@ editor_offset = Vector2(-20, 100)
 
 [sub_resource type="StateConfig" id="StateConfig_ydepp"]
 state_name = &"Moving"
-editor_offset = Vector2(220, 80)
+editor_offset = Vector2(340, 100)
 
 [sub_resource type="TransitionConfig" id="TransitionConfig_oaq74"]
 from_state_config = SubResource("StateConfig_wtddb")
@@ -43,13 +43,12 @@ variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_2ftj0"
 [sub_resource type="CircleShape2D" id="CircleShape2D_p6lt5"]
 radius = 51.2445
 
-[node name="Wardens" node_paths=PackedStringArray("_hitBox", "_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_u23yy")]
+[node name="Wardens" node_paths=PackedStringArray("_hitBox", "_hurtBox", "Sprite", "_visibleOnScreenNotifier2D") instance=ExtResource("1_u23yy")]
 modulate = Color(0.443137, 1, 0.945098, 1)
 _hitBox = NodePath("HitBox")
 _hurtBox = NodePath("Components/HurtBox")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
-Shooter = NodePath("Components/ShooterNode/Shooter")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_lsc4r")
@@ -59,9 +58,6 @@ shape = SubResource("CircleShape2D_roccn")
 
 [node name="ShooterNode" parent="Components" index="0"]
 position = Vector2(0, 0)
-
-[node name="Shooter" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
-Actor = NodePath("../../..")
 
 [node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]
 Actor = NodePath("../..")

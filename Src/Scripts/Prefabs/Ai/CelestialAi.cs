@@ -1,5 +1,6 @@
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
+using NovaDrift.Scripts.Systems.Pool;
 
 namespace NovaDrift.Scripts.Prefabs.Ai;
 
@@ -28,18 +29,10 @@ public partial class CelestialAi : MobAiComponent
                 {
                     var mob = GetTree().GetNodesInGroup("Mobs").PickRandom() as MobBase;
                     if (mob == null) break;
-
-                    var clone = mob.Duplicate((int)DuplicateFlags.UseInstantiation) as MobBase;
-                    if (clone == null) break;
                     
-                    clone.MobInfo = DataBuilder.BuildMobInfoById(mob.MobInfo.Id);
+                    var clone = Pool.CloneMobPools[mob.MobInfo.Id].Get();
                     clone.GlobalPosition = Mob.GlobalPosition;
-                    var ai = new MobAiComponent();
-                    ai.SetScript(GD.Load<GodotObject>("res://Scripts/Prefabs/Ai/CloneMobAi.cs"));
-                    clone.Ai = ai;
-                    
-                    Global.GameWorld.CallDeferred(Node.MethodName.AddChild, clone);
-                    clone.AddChild(ai);
+                    clone.Show();
                 }
                 
                 break;

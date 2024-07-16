@@ -1,4 +1,5 @@
 using Godot;
+using NovaDrift.Scripts.Systems.Pool;
 
 namespace NovaDrift.Scripts.Prefabs.Ai;
 
@@ -13,11 +14,11 @@ public partial class GyrogunAi : MobAiComponent
             for (int i = 0; i < 2; i++)
             {
                 if (Mob.Tags.Contains("IsClone")) continue;
-
-                var info = DataBuilder.BuildMobInfoById(Mob.MobInfo.Id);
-                info.Size = 0.7f;
                 
-                var mob = Global.WaveSpawnerController.GenerateAMob(info, pos);
+                var mob = Pool.MobPools[Mob.MobInfo.Id].Get();
+                mob.GlobalPosition = Mob.GlobalPosition;
+                mob.Scale = new Vector2(0.7f, 0.7f);
+                mob.Show();
                 
                 mob.Tags.Add("IsClone");
             }
