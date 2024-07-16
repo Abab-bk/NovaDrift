@@ -23,8 +23,7 @@ public class Stat
         {
             if (_baseValue.Equals(value)) return;
             _baseValue = value;
-            _isDirty = false;
-            _value = CalculateFinalValue();
+            _isDirty = true;
             ValueChanged?.Invoke(Value);
         }
     }
@@ -39,9 +38,11 @@ public class Stat
         {
             if (!_isDirty) return _value;
 
+            _isDirty = false;
+
             _value = CalculateFinalValue();
             ValueChanged?.Invoke(_value);
-            _isDirty = false;
+
             return _value;
         }
     }
