@@ -1,5 +1,6 @@
 using System;
 using AcidWallStudio.AcidUtilities;
+using AcidWallStudio.Fmod;
 using AcidWallStudio.ObjectPool;
 using Godot;
 using NovaDrift.Scripts.Systems.Pool;
@@ -23,6 +24,7 @@ public partial class ExpBall : Node2D
         GlobalPosition += GlobalPosition.DirectionTo(Global.Player.GlobalPosition) * 10f;
         if (GlobalPosition.DistanceTo(Global.Player.GlobalPosition) > 20f) return;
         Global.Player.Stats.Exp.Increase(1);
+        SoundManager.PlaySound("event:/Something/PickUp");
         Release();
     }
 

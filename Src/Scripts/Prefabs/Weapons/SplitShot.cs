@@ -36,7 +36,15 @@ public partial class SplitShot : BaseShooter
         _burstIntervalTimer.WaitTime = DataBuilder.Constants.BurstInterval;
         
         base._Ready();
-        
+
+        GetBulletFunc = shooter => new BulletBuilder().
+            SetIsPlayer(IsPlayer).
+            SetDamage(Actor.Stats.Damage.Value).
+            SetSpeed(Actor.Stats.BulletSpeed.Value).
+            SetSize(Actor.Stats.BulletSize.Value).
+            SetDegeneration(Actor.Stats.BulletDegeneration.Value).
+            Build();
+
         Actor.Stats.ShootSpeed.ValueChanged += SetShootCd;
     }
 
@@ -66,13 +74,8 @@ public partial class SplitShot : BaseShooter
         {
             for (int i = 0; i < Actor.Stats.BulletCount.Value + 3; i++)
             {
-                BulletBase bullet = new BulletBuilder().
-                    SetIsPlayer(IsPlayer).
-                    SetDamage(Actor.Stats.Damage.Value).
-                    SetSpeed(Actor.Stats.BulletSpeed.Value).
-                    SetSize(Actor.Stats.BulletSize.Value).
-                    SetDegeneration(Actor.Stats.BulletDegeneration.Value).
-                    Build();
+                BulletBase bullet = GetBulletFunc?.Invoke(this);
+                if (bullet == null) return;
                 
                 bullet.GlobalPosition = GlobalPosition;
                 

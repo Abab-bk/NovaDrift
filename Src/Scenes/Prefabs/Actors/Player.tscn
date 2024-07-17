@@ -1,4 +1,4 @@
-[gd_scene load_steps=48 format=3 uid="uid://b1hvfrsat441r"]
+[gd_scene load_steps=49 format=3 uid="uid://b1hvfrsat441r"]
 
 [ext_resource type="PackedScene" uid="uid://b1vmhmtmuma0x" path="res://Scenes/Prefabs/Actors/ActorBase.tscn" id="1_0c8c2"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Actors/Player.cs" id="2_15kon"]
@@ -179,6 +179,9 @@ size = Vector2(4750, 3284)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ln1bs"]
 size = Vector2(266, 250)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_baton"]
+size = Vector2(94, 114)
+
 [node name="Player" node_paths=PackedStringArray("_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") groups=["Players"] instance=ExtResource("1_0c8c2")]
 script = ExtResource("2_15kon")
 _hurtBox = NodePath("Components/HurtBox")
@@ -271,14 +274,22 @@ visible = false
 shape = SubResource("RectangleShape2D_5ar5p")
 disabled = true
 
-[node name="AreaMonitor" type="Area2D" parent="." index="17"]
+[node name="ExpBallMonitor" type="Area2D" parent="." index="17"]
 collision_layer = 0
-collision_mask = 1536
+collision_mask = 1024
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="AreaMonitor" index="0"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExpBallMonitor" index="0"]
 shape = SubResource("RectangleShape2D_ln1bs")
 
-[node name="Node2D" type="Node2D" parent="." index="18"]
+[node name="PowerUpMonitor" type="Area2D" parent="." index="18"]
+collision_layer = 0
+collision_mask = 512
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PowerUpMonitor" index="0"]
+shape = SubResource("RectangleShape2D_baton")
+debug_color = Color(0.835756, 0.00127027, 0.93267, 0.42)
+
+[node name="Node2D" type="Node2D" parent="." index="19"]
 
 [node name="Marker2D" type="Marker2D" parent="Node2D" index="0"]
 position = Vector2(120, 0)

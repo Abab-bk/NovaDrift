@@ -18,4 +18,5 @@ public enum BackgroundMusicStage
     Stage1,
     Stage2,
     Stage3,
+    BossBattle,
 }

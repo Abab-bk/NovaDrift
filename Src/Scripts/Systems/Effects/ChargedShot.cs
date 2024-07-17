@@ -1,5 +1,6 @@
 ﻿using Godot;
 using NovaDrift.addons.AcidStats;
+using NovaDrift.Scripts.Vfx;
 
 namespace NovaDrift.Scripts.Systems.Effects;
 
@@ -15,11 +16,16 @@ public class ChargedShot : Effect
         _bulletSizeMod = new StatModifier(0f, StatModType.PercentAdd),
         _blastRadiusMod = new StatModifier(0f, StatModType.PercentAdd),
         _accelerationMod = new StatModifier(0f, StatModType.PercentAdd);
+
+    private FocusParticles _focusVfx;
+    private PackedScene _focusVfxScene;
     
     public override void OnCreate()
     {
         base.OnCreate();
 
+        _focusVfxScene = GD.Load<PackedScene>("res://Scenes/Vfx/FocusParticles.tscn");
+        
         _timer = new Timer()
         {
             WaitTime = 1f,
@@ -41,11 +47,16 @@ public class ChargedShot : Effect
         {
             if (!_timer.IsStopped()) return;
             _timer.Start();
+            _focusVfx = _focusVfxScene.Instantiate<FocusParticles>();
+            Target.AddChild(_focusVfx);
+            _focusVfx.OneShot = false;
+            _focusVfx.Play();
         };
 
         Global.Player.OnStopCharging += () =>
         {
             _timer.Stop();
+            _focusVfx.QueueFree();
             _count = 0;
             Shoot();
         };

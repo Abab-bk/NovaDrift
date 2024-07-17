@@ -101,3 +101,7 @@ scale = Vector2(1.6, 2.05645)
 
 [node name="Spring" type="Node2D" parent="." index="8"]
 script = ExtResource("5_g6jbc")
+
+[node name="PointLight2D" parent="." index="10"]
+visible = true
+enabled = true

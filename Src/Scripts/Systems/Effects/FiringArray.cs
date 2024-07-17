@@ -24,7 +24,6 @@ public class FiringArray : Effect
 
                     Global.GameWorld.AddChild(bullet);
                 
-                    Global.Player.OnShoot?.Invoke(bullet);
                     bullet.OnHit += actor => { Global.Player.Shooter.OnHit?.Invoke(actor); };
                     _count = 0;
                 }

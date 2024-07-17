@@ -7,7 +7,6 @@
 radius = 22.0
 
 [node name="ExpBall" type="Node2D"]
-modulate = Color(0.505882, 0.486275, 1, 1)
 script = ExtResource("1_jadrx")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]

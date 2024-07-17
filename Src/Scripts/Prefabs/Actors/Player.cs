@@ -12,7 +12,8 @@ namespace NovaDrift.Scripts.Prefabs.Actors;
 public partial class Player : Actor
 {
     [GetNode("%RegenerationTimer")] private Timer _regenerationTimer;
-    [GetNode("AreaMonitor")] private Area2D _areaMonitor;
+    [GetNode("ExpBallMonitor")] private Area2D _expBallMonitor;
+    [GetNode("PowerUpMonitor")] private Area2D _powerUpMonitor;
 
     public event Action OnCharging;
     public event Action OnStopCharging;
@@ -84,30 +85,23 @@ public partial class Player : Actor
         };
         _regenerationTimer.Start();
 
-        _areaMonitor.AreaEntered += OnAreaMonitorAreaEntered;
+        _expBallMonitor.AreaEntered += area =>
+        {
+            if (area.Owner is not ExpBall expBall) return;
+            expBall.Active();
+        };
+        
+        _powerUpMonitor.AreaEntered += area =>
+        {
+            if (area.Owner is not PowerUpEntity powerUp) return;
+            powerUp.Get();
+        };
 
         Global.GameContext.SetCamera(GetNode<Node2D>("PhantomCamera2D"));
         
         UpdateUi();
     }
-
-    private void OnAreaMonitorAreaEntered(Area2D area)
-    {
-        if (area.Owner is PowerUpEntity powerUp)
-        {
-            if (powerUp.GlobalPosition.DistanceTo(GlobalPosition) > 100f) return;
-            powerUp.Get();
-            return;
-        }
-        
-        if (area.Owner is ExpBall expBall)
-        {
-            expBall.Active();
-            return;
-        }
-    }
-
-
+    
     private void ConnectMovementMachineEnter(State state)
     {
     }
@@ -212,10 +206,6 @@ public partial class Player : Actor
         Stats.Exp.ValueChanged += UpdateUi;
         Stats.Health.ValueChanged += UpdateUi;
         Stats.Size.ValueChanged += f => Scale = new Vector2 { X = f, Y = f };
-        Stats.Damage.ValueChanged += f =>
-        {
-            Logger.Log("Damage value changed: " + Stats.Damage.Value);
-        };
     }
 
     public override void Die()

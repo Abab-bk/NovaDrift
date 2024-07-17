@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using AcidWallStudio.Fmod;
 using AcidWallStudio.ObjectPool;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Components;
@@ -79,6 +80,8 @@ public partial class MobBase : Actor
         if (IsBoss)
         {
             Global.GameContext.AppendFollowTarget(this);
+            // 因为 BOSS 没有进对象池
+            SoundManager.SetMusicParameter(AudioParams.Stage, (int)BackgroundMusicStage.Stage2);
         }
         else
         {
@@ -146,6 +149,7 @@ public partial class MobBase : Actor
         if (IsBoss)
         {
             Global.GameContext.RemoveFollowTarget(this);
+            SoundManager.SetMusicParameter(AudioParams.Stage, (int)BackgroundMusicStage.Stage1);
         }
         
         Global.Shake(10f);
@@ -176,6 +180,7 @@ public partial class MobBase : Actor
         if (IsBoss)
         {
             Global.GameContext.RemoveFollowTarget(this);
+            SoundManager.SetMusicParameter(AudioParams.Stage, (int)BackgroundMusicStage.Stage1);
         }
         
         OnRemoved?.Invoke();
