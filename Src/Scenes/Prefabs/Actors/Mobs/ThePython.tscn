@@ -1,0 +1,44 @@
+[gd_scene load_steps=7 format=3 uid="uid://d10r3aw6occ8f"]
+
+[ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_ec5b0"]
+[ext_resource type="Texture2D" uid="uid://d0p2n0b8ke3oo" path="res://Assets/Textures/Mobs/ThePython.png" id="2_7blcd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8lpky"]
+size = Vector2(766, 176)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_k8jk4"]
+size = Vector2(768, 188)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v4gg5"]
+size = Vector2(768, 192)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_q7n1w"]
+size = Vector2(746, 166)
+
+[node name="ThePython" node_paths=PackedStringArray("_hitBox", "_hurtBox", "Sprite", "_visibleOnScreenNotifier2D") instance=ExtResource("1_ec5b0")]
+modulate = Color(0.960784, 0.866667, 0.392157, 1)
+_hitBox = NodePath("HitBox")
+_hurtBox = NodePath("Components/HurtBox")
+Sprite = NodePath("Sprite2D")
+_visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_7blcd")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_8lpky")
+
+[node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../..")
+
+[node name="CollisionShape2D" parent="Components/HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_k8jk4")
+
+[node name="CollisionShape2D" parent="Components/BoidsArea" index="0"]
+shape = SubResource("RectangleShape2D_v4gg5")
+
+[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("Mob")]
+Mob = NodePath("../..")
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("RectangleShape2D_q7n1w")

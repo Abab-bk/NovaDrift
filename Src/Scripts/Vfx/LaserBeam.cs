@@ -36,12 +36,14 @@ public partial class LaserBeam : BaseVfx
     private void Appear()
     {
         _sound = SoundManager.PlaySound("event:/Weapons/Laser/Laser");
-        GTweenExtensions.Tween(
-            () => _line.Width,
-            w => _line.Width = w,
-            Width,
-            0.2f)
-            .Play();
+        var tween = CreateTween();
+        tween.TweenProperty(_line, "width", Width, 0.2f);
+        // GTweenExtensions.Tween(
+        //     () => _line.Width,
+        //     w => _line.Width = w,
+        //     Width,
+        //     0.2f)
+        //     .Play();
     }
 
     private void Disappear()
@@ -53,6 +55,7 @@ public partial class LaserBeam : BaseVfx
             0.2f)
             .OnComplete(() =>
             {
+                if (!IsInstanceValid(this)) return;
                 OnAnimationEnd?.Invoke();
                 QueueFree();
             })

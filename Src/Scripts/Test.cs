@@ -1,20 +1,27 @@
-using AcidWallStudio.AcidUtilities;
 using Godot;
-using NovaDrift.Scripts.Vfx;
+using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts;
 
 public partial class Test : Node2D
 {
-    public override void _Process(double delta)
+    [Export] private Marker2D _marker2D;
+    private SnakeContainer _snakeContainer;
+    
+    public override void _Ready()
     {
-        if (Input.IsActionJustPressed("R"))
+        _snakeContainer = new SnakeContainer();
+        AddChild(_snakeContainer);
+
+        _snakeContainer.GlobalPosition = _marker2D.GlobalPosition;
+        for (int i = 0; i < 10; i++)
         {
-            var node = GD.Load<PackedScene>("res://Scenes/Vfx/IncineratorBeam.tscn").Instantiate() as IncineratorBeam;
-            if (node == null) return;
-            node.GlobalPosition = Wizard.GetScreenCenter();
-            AddChild(node);
+            _snakeContainer.AddPart();
         }
+    }
+
+    public override void _PhysicsProcess(double delta)
+    {
     }
 }
 

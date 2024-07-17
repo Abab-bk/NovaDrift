@@ -1,21 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://d1kwbf54qmb76"]
+[gd_scene load_steps=2 format=3 uid="uid://d1kwbf54qmb76"]
 
 [ext_resource type="Script" path="res://Scripts/Test.cs" id="1_kfpb1"]
-[ext_resource type="Texture2D" uid="uid://cxfgjfel27nur" path="res://Assets/Textures/Particles/light_01.png" id="2_nkxrv"]
-[ext_resource type="Texture2D" uid="uid://b6a5fyse34fc7" path="res://Assets/Textures/AcidWallLogo.png" id="3_2hyct"]
 
-[node name="Test" type="Node2D"]
+[node name="Test" type="Node2D" node_paths=PackedStringArray("_marker2D")]
 script = ExtResource("1_kfpb1")
+_marker2D = NodePath("Marker2D")
 
-[node name="PointLight2D" type="PointLight2D" parent="."]
-position = Vector2(444, 361)
-color = Color(0, 0.566667, 1, 1)
-energy = 16.0
-texture = ExtResource("2_nkxrv")
-
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(709, 378)
-texture = ExtResource("3_2hyct")
-
-[node name="CanvasModulate" type="CanvasModulate" parent="."]
-color = Color(0.273142, 0.273142, 0.273142, 1)
+[node name="Marker2D" type="Marker2D" parent="."]
+position = Vector2(1267, 742)

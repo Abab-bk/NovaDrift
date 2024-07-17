@@ -115,7 +115,8 @@ public partial class TheKnightAi : MobAiComponent
                     .Append(sword.TweenModulateAlpha(0f, 0.2f))
                     .AppendCallback(() =>
                     {
-                        sword.QueueFree();
+                        if (IsInstanceValid(sword))
+                            sword.QueueFree();
                         Machine.SetTrigger("ToMoving");
                     })
                     .Build()
@@ -217,7 +218,8 @@ public partial class TheKnightAi : MobAiComponent
             .Append(sword.TweenModulateAlpha(0f, 0.4f))
             .AppendCallback(() =>
                 {
-                    sword.QueueFree();
+                    if (IsInstanceValid(sword))
+                        sword.QueueFree();
                     Machine.SetTrigger("ToMoving");
                 }
             )

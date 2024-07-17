@@ -127,11 +127,7 @@ public partial class MobBase : Actor
 
     public override void Die()
     {
-        if (IsDead) return;
-        if (!IsActive) return;
-        
-        Stats.BuffSystem.RemoveAllBuffs();
-        Stats.EffectSystem.RemoveAllEffects();
+        InnerRemove();
         
         var temp = new Vector2(10f, 10f);
         for (int i = 0; i < MobInfo.GetExp; i++)
@@ -146,56 +142,42 @@ public partial class MobBase : Actor
         
         EventBus.OnMobDied?.Invoke(this);
         
+        Global.Shake(10f);
+        
+        OnDied?.Invoke();
+    }
+
+    private void InnerRemove()
+    {
+        if (IsDead) return;
+        if (!IsActive && !IsBoss) return;
+        
+        Stats.BuffSystem.RemoveAllBuffs();
+        Stats.EffectSystem.RemoveAllEffects();
+        
         if (IsBoss)
         {
             Global.GameContext.RemoveFollowTarget(this);
             SoundManager.SetMusicParameter(AudioParams.Stage, (int)BackgroundMusicStage.Stage1);
         }
         
-        Global.Shake(10f);
-        
-        OnDied?.Invoke();
         IsDead = true;
-        Stats.BuffSystem.RemoveAllBuffs();
-        Stats.EffectSystem.RemoveAllEffects();
-
+        
         if (Pool != null)
         {
             Pool.Release(this);
         }
         else
         {
+            if (IsBoss) Logger.Log("Boss Remove Self");
             QueueFree();
         }
     }
 
     public void RemoveSelf()
     {
-        if (IsDead) return;
-        if (!IsActive) return;
-        
-        Stats.BuffSystem.RemoveAllBuffs();
-        Stats.EffectSystem.RemoveAllEffects();
-        
-        if (IsBoss)
-        {
-            Global.GameContext.RemoveFollowTarget(this);
-            SoundManager.SetMusicParameter(AudioParams.Stage, (int)BackgroundMusicStage.Stage1);
-        }
-        
+        InnerRemove();
         OnRemoved?.Invoke();
-        IsDead = true;
-        Stats.BuffSystem.RemoveAllBuffs();
-        Stats.EffectSystem.RemoveAllEffects();
-
-        if (Pool != null)
-        {
-            Pool.Release(this);
-        }
-        else
-        {
-            QueueFree();
-        }
     }
 
     public float GetDistanceToPlayer()
@@ -227,8 +209,6 @@ public partial class MobBase : Actor
         {
             if (node == this) continue;
             if (node is not MobBase mobBase) continue;
-            
-            if (GlobalPosition.DistanceTo(mobBase.GlobalPosition) > 100f) continue;
             
             var ratio = (mobBase.GlobalPosition - GlobalPosition).Length() / 20f > 0f ? 1f : 0f;
             movement -= ratio * (mobBase.GlobalPosition - GlobalPosition);

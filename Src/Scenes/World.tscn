@@ -1,4 +1,4 @@
-[gd_scene load_steps=18 format=3 uid="uid://d25jyaf2cexon"]
+[gd_scene load_steps=19 format=3 uid="uid://d25jyaf2cexon"]
 
 [ext_resource type="Script" path="res://Scripts/GameWorld.cs" id="1_xxmb6"]
 [ext_resource type="Texture2D" uid="uid://ecv33h0gvcog" path="res://Assets/Textures/Grid.png" id="2_iakxi"]
@@ -24,6 +24,9 @@ size = Vector2(5141, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tdua6"]
 size = Vector2(20, 2905)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_n14kv"]
+radius = 186.99
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("_shakeDirector", "_background", "_hud")]
 script = ExtResource("1_xxmb6")
@@ -172,6 +175,7 @@ texture = ExtResource("6_fufc0")
 unique_name_in_owner = true
 position = Vector2(-100, -100)
 texture_normal = ExtResource("7_xcah2")
+shape = SubResource("CircleShape2D_n14kv")
 script = ExtResource("5_m5h7n")
 
 [node name="BlinkButton" parent="Hud" instance=ExtResource("8_ymncb")]
