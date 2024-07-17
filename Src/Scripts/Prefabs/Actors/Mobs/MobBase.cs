@@ -234,7 +234,7 @@ public partial class MobBase : Actor
 
     public override float RotationTo(float target, double delta)
     {
-        if (Tags.Contains(Constants.Tags.IsDragonBone)) return Rotation;
+        if (Tags.Contains(Constants.Tags.IsDragonBone) || Tags.Contains(Constants.Tags.IsDisabledRotation)) return Rotation;
         return base.RotationTo(target, delta);
     }
 }

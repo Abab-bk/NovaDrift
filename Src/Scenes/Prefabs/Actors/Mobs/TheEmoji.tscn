@@ -1,0 +1,169 @@
+[gd_scene load_steps=30 format=3 uid="uid://der5wcula2gay"]
+
+[ext_resource type="PackedScene" uid="uid://dunej3cac37vn" path="res://Scenes/Prefabs/Actors/Mobs/MobBase.tscn" id="1_xl50d"]
+[ext_resource type="Texture2D" uid="uid://bg6bop68q0u75" path="res://Assets/Textures/Mobs/TheEmoji.png" id="2_kaxfg"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Ai/TheEmojiAi.cs" id="3_4uy4b"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Components/Shooter.cs" id="3_hobtn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_3oq61"]
+size = Vector2(270, 270)
+
+[sub_resource type="StateConfig" id="StateConfig_1v6tb"]
+state_name = &"Idle"
+type = 1
+editor_offset = Vector2(-40, 40)
+
+[sub_resource type="StateConfig" id="StateConfig_qqb0t"]
+state_name = &"Anger"
+editor_offset = Vector2(220, -260)
+
+[sub_resource type="StateConfig" id="StateConfig_xu1ab"]
+state_name = &"Dizzy"
+editor_offset = Vector2(220, 380)
+
+[sub_resource type="StateConfig" id="StateConfig_f6b1f"]
+state_name = &"Nerd"
+editor_offset = Vector2(540, 40)
+
+[sub_resource type="StateConfig" id="StateConfig_fiejh"]
+state_name = &"Pick"
+editor_offset = Vector2(220, 40)
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_mb8wk"]
+from_state_config = SubResource("StateConfig_1v6tb")
+to_state_config = SubResource("StateConfig_fiejh")
+
+[sub_resource type="VariableConfig" id="VariableConfig_8e2t4"]
+variable_name = &"ToAnger"
+resource_name = "ToAnger: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_1fsre"]
+variable_config = SubResource("VariableConfig_8e2t4")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_i6vpr"]
+from_state_config = SubResource("StateConfig_fiejh")
+to_state_config = SubResource("StateConfig_qqb0t")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_1fsre")])
+
+[sub_resource type="VariableConfig" id="VariableConfig_wrr6y"]
+variable_name = &"ToNerd"
+resource_name = "ToNerd: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_lvn82"]
+variable_config = SubResource("VariableConfig_wrr6y")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_xoybq"]
+from_state_config = SubResource("StateConfig_fiejh")
+to_state_config = SubResource("StateConfig_f6b1f")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_lvn82")])
+
+[sub_resource type="VariableConfig" id="VariableConfig_fnhsk"]
+variable_name = &"ToDizzy"
+resource_name = "ToDizzy: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_50yjw"]
+variable_config = SubResource("VariableConfig_fnhsk")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_0dj0h"]
+from_state_config = SubResource("StateConfig_fiejh")
+to_state_config = SubResource("StateConfig_xu1ab")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_50yjw")])
+
+[sub_resource type="VariableConfig" id="VariableConfig_2lh8x"]
+variable_name = &"Next"
+resource_name = "Next: Trigger"
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_cwcs2"]
+variable_config = SubResource("VariableConfig_2lh8x")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_nhopi"]
+from_state_config = SubResource("StateConfig_xu1ab")
+to_state_config = SubResource("StateConfig_fiejh")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_cwcs2")])
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_gis1i"]
+variable_config = SubResource("VariableConfig_2lh8x")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_updq2"]
+from_state_config = SubResource("StateConfig_f6b1f")
+to_state_config = SubResource("StateConfig_fiejh")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_gis1i")])
+
+[sub_resource type="VariableExpressionConfig" id="VariableExpressionConfig_cqfls"]
+variable_config = SubResource("VariableConfig_2lh8x")
+trigger_type = 0
+
+[sub_resource type="TransitionConfig" id="TransitionConfig_27fl1"]
+from_state_config = SubResource("StateConfig_qqb0t")
+to_state_config = SubResource("StateConfig_fiejh")
+type = 2
+and_mode = true
+variable_expression_config_list = Array[VariableExpressionConfig]([SubResource("VariableExpressionConfig_cqfls")])
+
+[sub_resource type="FSMConfig" id="FSMConfig_w6s8k"]
+state_config_list = Array[StateConfig]([SubResource("StateConfig_1v6tb"), SubResource("StateConfig_qqb0t"), SubResource("StateConfig_xu1ab"), SubResource("StateConfig_f6b1f"), SubResource("StateConfig_fiejh")])
+transition_config_list = Array[TransitionConfig]([SubResource("TransitionConfig_mb8wk"), SubResource("TransitionConfig_i6vpr"), SubResource("TransitionConfig_xoybq"), SubResource("TransitionConfig_0dj0h"), SubResource("TransitionConfig_nhopi"), SubResource("TransitionConfig_updq2"), SubResource("TransitionConfig_27fl1")])
+variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_2lh8x"), SubResource("VariableConfig_8e2t4"), SubResource("VariableConfig_wrr6y"), SubResource("VariableConfig_fnhsk")])
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4cw16"]
+size = Vector2(270, 270)
+
+[node name="TheEmoji" node_paths=PackedStringArray("_hitBox", "_hurtBox", "Sprite", "_visibleOnScreenNotifier2D") instance=ExtResource("1_xl50d")]
+_hitBox = NodePath("HitBox")
+_hurtBox = NodePath("Components/HurtBox")
+Sprite = NodePath("Sprite2D")
+_visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_kaxfg")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("RectangleShape2D_3oq61")
+
+[node name="Shooter" type="Node2D" parent="Components/ShooterNode" index="0" node_paths=PackedStringArray("Actor")]
+position = Vector2(-52, 0)
+script = ExtResource("3_hobtn")
+Actor = NodePath("../../..")
+
+[node name="HurtBox" parent="Components" index="2" node_paths=PackedStringArray("Actor")]
+Actor = NodePath("../..")
+
+[node name="CollisionShape2D" parent="Components/HurtBox" index="0"]
+shape = SubResource("RectangleShape2D_3oq61")
+
+[node name="CollisionShape2D" parent="Components/BoidsArea" index="0"]
+shape = SubResource("RectangleShape2D_3oq61")
+
+[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("_sprite", "_timer", "Mob")]
+script = ExtResource("3_4uy4b")
+_sprite = NodePath("../../Sprite2D")
+_timer = NodePath("Timer")
+Mob = NodePath("../..")
+
+[node name="Timer" type="Timer" parent="State/MobAiComponent" index="0"]
+wait_time = 2.0
+one_shot = true
+
+[node name="HFSM" parent="State" index="1"]
+root_fsm_config = SubResource("FSMConfig_w6s8k")
+
+[node name="CollisionShape2D" parent="BodyArea" index="0"]
+shape = SubResource("RectangleShape2D_4cw16")
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+shape = SubResource("RectangleShape2D_3oq61")

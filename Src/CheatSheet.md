@@ -68,6 +68,13 @@ Creator of Assets: Riria/Ririsaurus
   - 召唤小弟
   - 强化攻击
 
+### The Emoji
+行为：
+会始终尝试接近玩家，同时造成以下攻击：
+- 旋转并射击 -> 切换到眩晕图片
+- 发射一圈子弹 -> 切换到生气图片
+- 向一个方向发射子弹 -> 切换到nerd图片
+
 ### The Hero
 The Hero看起来是一颗不断变化颜色的“正义之心”
 The Hero会在以下四种行为中循环：

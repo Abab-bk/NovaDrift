@@ -33,6 +33,11 @@ public partial class WaveSpawnerController : Node2D
 
     public override void _Ready()
     {
+        if (!_enabled)
+        {
+            if (OS.HasFeature("template")) _enabled = true;
+        }
+
         _bossIds = DataBuilder.Tables.TbBossMobInfo.DataMap.Keys.ToArray();
         Global.WaveSpawnerController = this;
         

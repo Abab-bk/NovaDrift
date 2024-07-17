@@ -39,7 +39,8 @@ public static class Constants
     public static class Tags
     {
         public const string
-            IsDragonBone = "IsDragonBone";
+            IsDragonBone = "IsDragonBone",
+            IsDisabledRotation = "IsDisabledRotation";
     }
     
     public static class Colors

@@ -1,6 +1,21 @@
 [
   {
     "id": 1001,
+    "name": "小明",
+    "scene_name": "TheEmoji",
+    "dragon_bone": "",
+    "health": 400,
+    "speed": 300,
+    "damage": 40,
+    "targeting": 0,
+    "shoot_cd": 0.1,
+    "bullet_count": 4,
+    "size": 1,
+    "danger_factor": 5,
+    "get_exp": 10
+  },
+  {
+    "id": 1002,
     "name": "骑士",
     "scene_name": "TheKnight",
     "dragon_bone": "",
@@ -15,7 +30,7 @@
     "get_exp": 10
   },
   {
-    "id": 1002,
+    "id": 1003,
     "name": "Timer",
     "scene_name": "ClockworkMage",
     "dragon_bone": "ClockworkMage/ClockworkKnightD_ske",
