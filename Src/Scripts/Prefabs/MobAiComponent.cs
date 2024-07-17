@@ -31,7 +31,7 @@ public partial class MobAiComponent : Node
         Machine.PhysicUpdated += ConnectProcessSignals;
         Machine.Transited += ConnectTransitedSignals;
         
-        Mob.OnDied += OnMobDied;
+        Mob.OnRemoved += OnMobDied;
     }
 
     protected virtual void OnMobDied()

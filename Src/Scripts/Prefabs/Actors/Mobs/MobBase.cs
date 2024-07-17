@@ -23,6 +23,8 @@ public partial class MobBase : Actor
     [GetNode("%BoidsArea")] private Area2D _boidsArea;
 
     public NodePool<MobBase> Pool = null;
+    public event Action OnRemoved; // GameOver 时触发
+    public bool IsActive; // 在 Pool 里就是 false
     
     public override void _Ready()
     {
@@ -123,6 +125,7 @@ public partial class MobBase : Actor
     public override void Die()
     {
         if (IsDead) return;
+        if (!IsActive) return;
         
         Stats.BuffSystem.RemoveAllBuffs();
         Stats.EffectSystem.RemoveAllEffects();
@@ -165,10 +168,8 @@ public partial class MobBase : Actor
     public void RemoveSelf()
     {
         if (IsDead) return;
+        if (!IsActive) return;
         
-        Logger.Log($"[MobBase] Game over, remove self: {Name}");
-        
-        IsDead = true;
         Stats.BuffSystem.RemoveAllBuffs();
         Stats.EffectSystem.RemoveAllEffects();
         
@@ -177,6 +178,11 @@ public partial class MobBase : Actor
             Global.GameContext.RemoveFollowTarget(this);
         }
         
+        OnRemoved?.Invoke();
+        IsDead = true;
+        Stats.BuffSystem.RemoveAllBuffs();
+        Stats.EffectSystem.RemoveAllEffects();
+
         if (Pool != null)
         {
             Pool.Release(this);

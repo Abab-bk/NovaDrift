@@ -41,6 +41,7 @@ public static class Pool
                 () => new MobBuilder(DataBuilder.BuildMobInfoById(key)).Build(),
                 mob =>
                 {
+                    mob.IsActive = true;
                     mob.IsDead = false;
                     mob.SetProcessMode(Node.ProcessModeEnum.Inherit);
                     // mob.Show();
@@ -48,6 +49,7 @@ public static class Pool
                 },
                 mob =>
                 {
+                    mob.IsActive = false;
                     mob.Ai.Release();
                     mob.CallDeferred(Node.MethodName.SetProcessMode, (int)Node.ProcessModeEnum.Disabled);
                     mob.Hide();
@@ -72,12 +74,14 @@ public static class Pool
                 },
                 mob =>
                 {
+                    mob.IsActive = true;
                     mob.IsDead = false;
                     mob.SetProcessMode(Node.ProcessModeEnum.Inherit);
                     mob.PoolActive();
                 },
                 mob =>
                 {
+                    mob.IsActive = false;
                     mob.Ai.Release();
                     mob.CallDeferred(Node.MethodName.SetProcessMode, (int)Node.ProcessModeEnum.Disabled);
                     mob.Hide();
