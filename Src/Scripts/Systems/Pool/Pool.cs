@@ -85,6 +85,7 @@ public static class Pool
                     mob.Ai.Release();
                     mob.CallDeferred(Node.MethodName.SetProcessMode, (int)Node.ProcessModeEnum.Disabled);
                     mob.Hide();
+                    mob.Scale = Vector2.One;
                 },
                 mob =>
                 {

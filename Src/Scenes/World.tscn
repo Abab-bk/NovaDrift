@@ -26,7 +26,7 @@ size = Vector2(5141, 20)
 size = Vector2(20, 2905)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n14kv"]
-radius = 186.99
+radius = 243.88
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("_shakeDirector", "_background", "_hud")]
 script = ExtResource("1_xxmb6")
@@ -191,7 +191,6 @@ metadata/_edit_use_anchors_ = true
 [node name="WaveSpawnerController" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("10_k5lv0")
-_enabled = true
 
 [node name="Left" type="Marker2D" parent="WaveSpawnerController"]
 position = Vector2(100, 832)

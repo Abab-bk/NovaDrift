@@ -15,7 +15,7 @@ public partial class GyrogunAi : MobAiComponent
             {
                 if (Mob.Tags.Contains("IsClone")) continue;
                 
-                var mob = Pool.MobPools[Mob.MobInfo.Id].Get();
+                var mob = Pool.CloneMobPools[Mob.MobInfo.Id].Get();
                 mob.GlobalPosition = Mob.GlobalPosition;
                 mob.Scale = new Vector2(0.7f, 0.7f);
                 mob.Show();
