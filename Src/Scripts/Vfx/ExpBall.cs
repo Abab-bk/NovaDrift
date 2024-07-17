@@ -9,6 +9,8 @@ namespace NovaDrift.Scripts.Vfx;
 public partial class ExpBall : Node2D
 {
     [GetNode("Area2D")] private Area2D _area;
+
+    public bool IsActive;
     
     public override void _Ready()
     {
@@ -31,6 +33,7 @@ public partial class ExpBall : Node2D
 
     public void Release()
     {
+        if (!IsActive) return;
         if (Pool.ExpBallPool == null)
         {
             QueueFree();

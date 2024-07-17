@@ -215,11 +215,13 @@ public static class Pool
             },
             node =>
             {
+                node.IsActive = true;
                 node.SetProcessMode(Node.ProcessModeEnum.Inherit);
                 node.Show();
             },
             node =>
             {
+                node.IsActive = false;
                 node.SetProcessMode(Node.ProcessModeEnum.Disabled);
                 node.Hide();
             },

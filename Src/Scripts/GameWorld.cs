@@ -151,7 +151,7 @@ public partial class GameWorld : Node2D
         _hud.Hide();
         
         GetTree().CallGroup("Mobs", "RemoveSelf");
-        GetTree().CallGroup("ExpBalls", Node.MethodName.QueueFree);
+        GetTree().CallGroup("ExpBalls", "Release");
 
 		await ToSignal(GetTree(), SceneTree.SignalName.PhysicsFrame);
 		
