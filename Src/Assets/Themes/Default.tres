@@ -1,4 +1,4 @@
-[gd_resource type="Theme" load_steps=20 format=3 uid="uid://b7g6xk4hko1sg"]
+[gd_resource type="Theme" load_steps=21 format=3 uid="uid://b7g6xk4hko1sg"]
 
 [ext_resource type="FontFile" uid="uid://djmsc2817eku8" path="res://Assets/Fonts/SourceHanSansCN-Medium.otf" id="1_bss3n"]
 
@@ -124,6 +124,8 @@ bg_color = Color(0.47451, 0.513726, 0.537255, 1)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_tiq65"]
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hcd0v"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gmw3i"]
 
 [resource]
@@ -170,6 +172,24 @@ StoreBtn/styles/normal_mirrored = SubResource("StyleBoxEmpty_3yvk8")
 StoreBtn/styles/pressed = SubResource("StyleBoxFlat_37bem")
 StoreBtn/styles/pressed_mirrored = SubResource("StyleBoxEmpty_3yvk8")
 TabContainer/styles/panel = SubResource("StyleBoxEmpty_tiq65")
+TextBtn/base_type = &"Button"
+TextBtn/colors/font_color = Color(1, 1, 1, 1)
+TextBtn/colors/font_focus_color = Color(1, 1, 1, 1)
+TextBtn/colors/font_hover_color = Color(0.785217, 0.785217, 0.785217, 1)
+TextBtn/colors/font_hover_pressed_color = Color(0.638661, 0.638661, 0.638661, 1)
+TextBtn/colors/font_pressed_color = Color(0.638661, 0.638661, 0.638661, 1)
+TextBtn/font_sizes/font_size = 100
+TextBtn/styles/disabled = SubResource("StyleBoxEmpty_hcd0v")
+TextBtn/styles/disabled_mirrored = SubResource("StyleBoxEmpty_hcd0v")
+TextBtn/styles/focus = SubResource("StyleBoxEmpty_hcd0v")
+TextBtn/styles/hover = SubResource("StyleBoxEmpty_hcd0v")
+TextBtn/styles/hover_mirrored = SubResource("StyleBoxEmpty_hcd0v")
+TextBtn/styles/hover_pressed = SubResource("StyleBoxEmpty_hcd0v")
+TextBtn/styles/hover_pressed_mirrored = SubResource("StyleBoxEmpty_hcd0v")
+TextBtn/styles/normal = SubResource("StyleBoxEmpty_hcd0v")
+TextBtn/styles/normal_mirrored = SubResource("StyleBoxEmpty_hcd0v")
+TextBtn/styles/pressed = SubResource("StyleBoxEmpty_hcd0v")
+TextBtn/styles/pressed_mirrored = SubResource("StyleBoxEmpty_hcd0v")
 VScrollBar/styles/grabber = SubResource("StyleBoxEmpty_gmw3i")
 VScrollBar/styles/grabber_highlight = SubResource("StyleBoxEmpty_gmw3i")
 VScrollBar/styles/grabber_pressed = SubResource("StyleBoxEmpty_gmw3i")

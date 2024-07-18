@@ -1,8 +1,6 @@
 using System.Linq;
 using DsUi;
 using Godot;
-using GTweens.Extensions;
-using GTweensGodot.Extensions;
 
 namespace NovaDrift.Scripts.Ui.Credit;
 
@@ -12,10 +10,15 @@ public partial class CreditPanel : Credit
         ["编程", "花神", "AcidWallStudio", "B-TO-THE-R"],
         ["美术", "花神", "AcidWallStudio", "B-TO-THE-R"],
         ["设计", "花神", "AcidWallStudio", "B-TO-THE-R"],
-        ["音频", "花神", "AcidWallStudio", "B-TO-THE-R"],
+        ["音频", "Atelier Magicae @Itch","abstractionmusic.com", "WangleLine @patreon", "花神", "AcidWallStudio", "B-TO-THE-R"],
         ["市场", "花神", "AcidWallStudio", "B-TO-THE-R"],
-        ["其他", "花神", "AcidWallStudio", "B-TO-THE-R"],
-        ["特殊鸣谢", "Atelier Magicae @Itch", "Riria/Ririsaurus", "忘忧の Daylily-Zeleen"],
+        ["特殊鸣谢",
+            "Riria/Ririsaurus",
+            "忘忧の Daylily-Zelee",
+            "Microsoft",
+            "Advanced Micro Devices",
+            "Godot Engine",
+        ]
     ];
 
     public override void _Ready()

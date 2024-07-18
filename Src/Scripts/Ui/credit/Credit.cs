@@ -31,16 +31,7 @@ public abstract partial class Credit : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: Credit.MarginContainer.VBoxContainer2.VBoxContainer2.Label
-    /// </summary>
-    public class Label : UiNode<CreditPanel, Godot.Label, Label>
-    {
-        public Label(CreditPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
-        public override Label Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
-    }
-
-    /// <summary>
-    /// 类型: <see cref="Godot.Control"/>, 路径: Credit.MarginContainer.VBoxContainer2.VBoxContainer2.Scroll.Items.Control
+    /// 类型: <see cref="Godot.Control"/>, 路径: Credit.MarginContainer.VBoxContainer2.Scroll.VBoxContainer.Control
     /// </summary>
     public class Control : UiNode<CreditPanel, Godot.Control, Control>
     {
@@ -49,12 +40,52 @@ public abstract partial class Credit : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: Credit.MarginContainer.VBoxContainer2.VBoxContainer2.Scroll.Items
+    /// 类型: <see cref="Godot.TextureRect"/>, 路径: Credit.MarginContainer.VBoxContainer2.Scroll.VBoxContainer.TextureRect
+    /// </summary>
+    public class TextureRect : UiNode<CreditPanel, Godot.TextureRect, TextureRect>
+    {
+        public TextureRect(CreditPanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
+        public override TextureRect Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.Control"/>, 路径: Credit.MarginContainer.VBoxContainer2.Scroll.VBoxContainer.Items.Control
+    /// </summary>
+    public class Control_1 : UiNode<CreditPanel, Godot.Control, Control_1>
+    {
+        public Control_1(CreditPanel uiPanel, Godot.Control node) : base(uiPanel, node) {  }
+        public override Control_1 Clone() => new (UiPanel, (Godot.Control)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: Credit.MarginContainer.VBoxContainer2.Scroll.VBoxContainer.Items
     /// </summary>
     public class Items : UiNode<CreditPanel, Godot.VBoxContainer, Items>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Control"/>, 节点路径: Credit.MarginContainer.VBoxContainer2.VBoxContainer2.Scroll.Control
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Control"/>, 节点路径: Credit.MarginContainer.VBoxContainer2.Scroll.VBoxContainer.Control
+        /// </summary>
+        public Control_1 L_Control
+        {
+            get
+            {
+                if (_L_Control == null) _L_Control = new Control_1(UiPanel, Instance.GetNode<Godot.Control>("Control"));
+                return _L_Control;
+            }
+        }
+        private Control_1 _L_Control;
+
+        public Items(CreditPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
+        public override Items Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: Credit.MarginContainer.VBoxContainer2.Scroll.VBoxContainer
+    /// </summary>
+    public class VBoxContainer : UiNode<CreditPanel, Godot.VBoxContainer, VBoxContainer>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Control"/>, 节点路径: Credit.MarginContainer.VBoxContainer2.Scroll.Control
         /// </summary>
         public Control L_Control
         {
@@ -66,17 +97,21 @@ public abstract partial class Credit : UiBase
         }
         private Control _L_Control;
 
-        public Items(CreditPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
-        public override Items Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
-    }
-
-    /// <summary>
-    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: Credit.MarginContainer.VBoxContainer2.VBoxContainer2.Scroll
-    /// </summary>
-    public class Scroll : UiNode<CreditPanel, Godot.ScrollContainer, Scroll>
-    {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Credit.MarginContainer.VBoxContainer2.VBoxContainer2.Items
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: Credit.MarginContainer.VBoxContainer2.Scroll.TextureRect
+        /// </summary>
+        public TextureRect L_TextureRect
+        {
+            get
+            {
+                if (_L_TextureRect == null) _L_TextureRect = new TextureRect(UiPanel, Instance.GetNode<Godot.TextureRect>("TextureRect"));
+                return _L_TextureRect;
+            }
+        }
+        private TextureRect _L_TextureRect;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Credit.MarginContainer.VBoxContainer2.Scroll.Items
         /// </summary>
         public Items L_Items
         {
@@ -88,43 +123,30 @@ public abstract partial class Credit : UiBase
         }
         private Items _L_Items;
 
-        public Scroll(CreditPanel uiPanel, Godot.ScrollContainer node) : base(uiPanel, node) {  }
-        public override Scroll Clone() => new (UiPanel, (Godot.ScrollContainer)Instance.Duplicate());
+        public VBoxContainer(CreditPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
+        public override VBoxContainer Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.VBoxContainer"/>, 路径: Credit.MarginContainer.VBoxContainer2.VBoxContainer2
+    /// 类型: <see cref="Godot.ScrollContainer"/>, 路径: Credit.MarginContainer.VBoxContainer2.Scroll
     /// </summary>
-    public class VBoxContainer2_1 : UiNode<CreditPanel, Godot.VBoxContainer, VBoxContainer2_1>
+    public class Scroll : UiNode<CreditPanel, Godot.ScrollContainer, Scroll>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: Credit.MarginContainer.VBoxContainer2.Label
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Credit.MarginContainer.VBoxContainer2.VBoxContainer
         /// </summary>
-        public Label L_Label
+        public VBoxContainer L_VBoxContainer
         {
             get
             {
-                if (_L_Label == null) _L_Label = new Label(UiPanel, Instance.GetNode<Godot.Label>("Label"));
-                return _L_Label;
+                if (_L_VBoxContainer == null) _L_VBoxContainer = new VBoxContainer(UiPanel, Instance.GetNode<Godot.VBoxContainer>("VBoxContainer"));
+                return _L_VBoxContainer;
             }
         }
-        private Label _L_Label;
+        private VBoxContainer _L_VBoxContainer;
 
-        /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: Credit.MarginContainer.VBoxContainer2.Scroll
-        /// </summary>
-        public Scroll L_Scroll
-        {
-            get
-            {
-                if (_L_Scroll == null) _L_Scroll = new Scroll(UiPanel, Instance.GetNode<Godot.ScrollContainer>("Scroll"));
-                return _L_Scroll;
-            }
-        }
-        private Scroll _L_Scroll;
-
-        public VBoxContainer2_1(CreditPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
-        public override VBoxContainer2_1 Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
+        public Scroll(CreditPanel uiPanel, Godot.ScrollContainer node) : base(uiPanel, node) {  }
+        public override Scroll Clone() => new (UiPanel, (Godot.ScrollContainer)Instance.Duplicate());
     }
 
     /// <summary>
@@ -142,17 +164,17 @@ public abstract partial class Credit : UiBase
     public class VBoxContainer2 : UiNode<CreditPanel, Godot.VBoxContainer, VBoxContainer2>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Credit.MarginContainer.VBoxContainer2
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: Credit.MarginContainer.Scroll
         /// </summary>
-        public VBoxContainer2_1 L_VBoxContainer2
+        public Scroll L_Scroll
         {
             get
             {
-                if (_L_VBoxContainer2 == null) _L_VBoxContainer2 = new VBoxContainer2_1(UiPanel, Instance.GetNode<Godot.VBoxContainer>("VBoxContainer2"));
-                return _L_VBoxContainer2;
+                if (_L_Scroll == null) _L_Scroll = new Scroll(UiPanel, Instance.GetNode<Godot.ScrollContainer>("Scroll"));
+                return _L_Scroll;
             }
         }
-        private VBoxContainer2_1 _L_VBoxContainer2;
+        private Scroll _L_Scroll;
 
         /// <summary>
         /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: Credit.MarginContainer.CloseBtn
@@ -195,29 +217,34 @@ public abstract partial class Credit : UiBase
 
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: Credit.MarginContainer.VBoxContainer2.VBoxContainer2.Label
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: Credit.MarginContainer.VBoxContainer2.Scroll.VBoxContainer.TextureRect
     /// </summary>
-    public Label S_Label => L_MarginContainer.L_VBoxContainer2.L_VBoxContainer2.L_Label;
+    public TextureRect S_TextureRect => L_MarginContainer.L_VBoxContainer2.L_Scroll.L_VBoxContainer.L_TextureRect;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Control"/>, 节点路径: Credit.MarginContainer.VBoxContainer2.VBoxContainer2.Scroll.Items.Control
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Credit.MarginContainer.VBoxContainer2.Scroll.VBoxContainer.Items
     /// </summary>
-    public Control S_Control => L_MarginContainer.L_VBoxContainer2.L_VBoxContainer2.L_Scroll.L_Items.L_Control;
+    public Items S_Items => L_MarginContainer.L_VBoxContainer2.L_Scroll.L_VBoxContainer.L_Items;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Credit.MarginContainer.VBoxContainer2.VBoxContainer2.Scroll.Items
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Credit.MarginContainer.VBoxContainer2.Scroll.VBoxContainer
     /// </summary>
-    public Items S_Items => L_MarginContainer.L_VBoxContainer2.L_VBoxContainer2.L_Scroll.L_Items;
+    public VBoxContainer S_VBoxContainer => L_MarginContainer.L_VBoxContainer2.L_Scroll.L_VBoxContainer;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: Credit.MarginContainer.VBoxContainer2.VBoxContainer2.Scroll
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.ScrollContainer"/>, 节点路径: Credit.MarginContainer.VBoxContainer2.Scroll
     /// </summary>
-    public Scroll S_Scroll => L_MarginContainer.L_VBoxContainer2.L_VBoxContainer2.L_Scroll;
+    public Scroll S_Scroll => L_MarginContainer.L_VBoxContainer2.L_Scroll;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Credit.MarginContainer.VBoxContainer2.CloseBtn
     /// </summary>
     public CloseBtn S_CloseBtn => L_MarginContainer.L_VBoxContainer2.L_CloseBtn;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Credit.MarginContainer.VBoxContainer2
+    /// </summary>
+    public VBoxContainer2 S_VBoxContainer2 => L_MarginContainer.L_VBoxContainer2;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: Credit.MarginContainer

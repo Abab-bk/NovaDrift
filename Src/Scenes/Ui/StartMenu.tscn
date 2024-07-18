@@ -55,13 +55,14 @@ theme = ExtResource("1_tq1sc")
 script = ExtResource("1_swjtv")
 
 [node name="Content" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_constants/margin_left = 200
+theme_override_constants/margin_left = 80
 theme_override_constants/margin_top = 80
 theme_override_constants/margin_right = 80
 theme_override_constants/margin_bottom = 80
@@ -103,45 +104,32 @@ offset_right = 1244.0
 offset_bottom = 1192.0
 _labelText = "每日任务"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Content"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Content"]
 layout_mode = 2
-size_flags_horizontal = 0
-size_flags_vertical = 4
-theme_override_constants/separation = 60
+theme_override_constants/separation = 70
+alignment = 1
 
-[node name="StartGameBtn" parent="Content/HBoxContainer" instance=ExtResource("2_rwks5")]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(1000, 600)
+[node name="StartGameBtn" type="Button" parent="Content/VBoxContainer"]
 layout_mode = 2
-_labelText = "开始游戏"
+theme_type_variation = &"TextBtn"
+text = "开始游戏"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Content/HBoxContainer"]
+[node name="SettingBtn" type="Button" parent="Content/VBoxContainer"]
 layout_mode = 2
-theme_override_constants/separation = 60
+theme_type_variation = &"TextBtn"
+text = "设置"
 
-[node name="CreditBtn" parent="Content/HBoxContainer/VBoxContainer" instance=ExtResource("2_rwks5")]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(250, 325)
+[node name="CreditBtn" type="Button" parent="Content/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-_labelText = "制作名单"
+theme_type_variation = &"TextBtn"
+text = "制作名单"
 
-[node name="SettingBtn" parent="Content/HBoxContainer/VBoxContainer" instance=ExtResource("2_rwks5")]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(600, 325)
+[node name="ExitBtn" type="Button" parent="Content/VBoxContainer"]
 layout_mode = 2
-size_flags_horizontal = 3
-_labelText = "设置"
-
-[node name="ExitBtn" parent="Content/HBoxContainer" instance=ExtResource("2_rwks5")]
-unique_name_in_owner = true
-custom_minimum_size = Vector2(400, 325)
-layout_mode = 2
-size_flags_horizontal = 3
-_labelText = "退出"
+theme_type_variation = &"TextBtn"
+text = "退出游戏"
 
 [node name="GameLogo" type="TextureRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -151,7 +139,7 @@ grow_vertical = 2
 size_flags_vertical = 3
 texture = ExtResource("2_doph4")
 expand_mode = 1
-stretch_mode = 5
+stretch_mode = 6
 
 [node name="Label" type="Label" parent="GameLogo"]
 layout_mode = 1

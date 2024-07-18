@@ -174,10 +174,10 @@ common/physics_interpolation=true
 
 renderer/rendering_method="mobile"
 textures/vram_compression/import_etc2_astc=true
-environment/defaults/default_clear_color=Color(0.28485, 0.28485, 0.28485, 1)
+environment/defaults/default_clear_color=Color(0.196078, 0.160784, 0.278431, 1)
 viewport/hdr_2d=true
 
 [run_configs]
 
 data/configs=["{\"custom_scene\":\"\",\"environment_variables\":{\"DebugMode\":\"true\"},\"name\":\"Debug\",\"play_mode\":0}", "{\"custom_scene\":\"\",\"environment_variables\":{\"DebugMode\":\"false\"},\"name\":\"Release\",\"play_mode\":0}"]
-data/current=0
+data/current=-1
