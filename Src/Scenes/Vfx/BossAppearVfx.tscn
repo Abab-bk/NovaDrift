@@ -8,72 +8,74 @@
 process_mode = 3
 script = ExtResource("1_ijdvn")
 
-[node name="Control" type="Control" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+layer = 127
+
+[node name="Control" type="Control" parent="CanvasLayer"]
 custom_minimum_size = Vector2(2560, 1440)
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 2560.0
-offset_bottom = 1440.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="ColorRect" type="ColorRect" parent="Control"]
+[node name="ColorRect" type="ColorRect" parent="CanvasLayer/Control"]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.87451, 0.862745, 0.819608, 1)
+color = Color(0.14902, 0.0862745, 0.286275, 1)
 
-[node name="Sprites" type="Node2D" parent="."]
+[node name="CanvasLayer" type="CanvasLayer" parent="CanvasLayer"]
+layer = 128
+
+[node name="Sprites" type="Node2D" parent="CanvasLayer/CanvasLayer"]
 unique_name_in_owner = true
 position = Vector2(1280, 550)
 
-[node name="BlueSprite" type="Sprite2D" parent="Sprites"]
+[node name="BlueSprite" type="Sprite2D" parent="CanvasLayer/CanvasLayer/Sprites"]
 unique_name_in_owner = true
 modulate = Color(0.145098, 0.156863, 0.368627, 1)
 scale = Vector2(3, 3)
 texture = ExtResource("2_gnkoh")
 
-[node name="RedSprite" type="Sprite2D" parent="Sprites"]
+[node name="RedSprite" type="Sprite2D" parent="CanvasLayer/CanvasLayer/Sprites"]
 unique_name_in_owner = true
 modulate = Color(0.878431, 0.219608, 0.192157, 1)
 scale = Vector2(3, 3)
 texture = ExtResource("2_gnkoh")
 
-[node name="YellowSprite" type="Sprite2D" parent="Sprites"]
+[node name="YellowSprite" type="Sprite2D" parent="CanvasLayer/CanvasLayer/Sprites"]
 unique_name_in_owner = true
 modulate = Color(0.933333, 0.772549, 0.164706, 1)
 scale = Vector2(3, 3)
 texture = ExtResource("2_gnkoh")
 
-[node name="OriginSprite" type="Sprite2D" parent="Sprites"]
+[node name="OriginSprite" type="Sprite2D" parent="CanvasLayer/CanvasLayer/Sprites"]
 unique_name_in_owner = true
-modulate = Color(0, 0, 0, 1)
 scale = Vector2(3, 3)
 texture = ExtResource("2_gnkoh")
 
-[node name="DragonBones" type="DragonBones" parent="."]
+[node name="DragonBones" type="DragonBones" parent="CanvasLayer/CanvasLayer"]
 unique_name_in_owner = true
 position = Vector2(1284, 874)
 scale = Vector2(3, 3)
 
-[node name="Name" type="Control" parent="."]
+[node name="Name" type="Control" parent="CanvasLayer/CanvasLayer"]
 unique_name_in_owner = true
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = 1280.0
 offset_top = 974.0
-offset_right = 1320.0
+offset_right = 40.0
 offset_bottom = 1014.0
 grow_horizontal = 2
 
-[node name="NameLabel" type="Label" parent="Name"]
+[node name="NameLabel" type="Label" parent="CanvasLayer/CanvasLayer/Name"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
@@ -91,7 +93,7 @@ theme_override_font_sizes/font_size = 200
 text = "The Knight"
 horizontal_alignment = 1
 
-[node name="NameLabel2" type="Label" parent="Name"]
+[node name="NameLabel2" type="Label" parent="CanvasLayer/CanvasLayer/Name"]
 unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15

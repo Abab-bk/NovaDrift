@@ -17,7 +17,7 @@ public partial class TheEmojiAi : MobAiComponent
     private Texture2D _dizzyTexture;
     private Texture2D _pickTexture;
 
-    private CirclePattern _circlePattern = new CirclePattern();
+    private readonly CirclePattern _circlePattern = new ();
     
     public override void _Ready()
     {

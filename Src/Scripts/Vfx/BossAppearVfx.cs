@@ -1,6 +1,5 @@
 using Godot;
 using System;
-using DwarfImpulse;
 using GTweens.Builders;
 using GTweens.Easings;
 using GTweensGodot.Extensions;

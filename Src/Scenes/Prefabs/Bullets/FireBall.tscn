@@ -1,19 +1,26 @@
-[gd_scene load_steps=5 format=3 uid="uid://bgb2krjhdsyq2"]
+[gd_scene load_steps=6 format=3 uid="uid://bgb2krjhdsyq2"]
 
 [ext_resource type="PackedScene" uid="uid://dopw3ixphjmh7" path="res://Scenes/Prefabs/BulletBase.tscn" id="1_l4gbv"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Bullets/FireBall.cs" id="2_bkjp2"]
 [ext_resource type="PackedScene" uid="uid://3wh7ubkrtntu" path="res://Scenes/Vfx/Blast.tscn" id="3_sfhfu"]
 
-[sub_resource type="CircleShape2D" id="CircleShape2D_ikj1e"]
-radius = 12.0416
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_i5moo"]
+size = Vector2(62, 28)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ppjyi"]
+size = Vector2(62, 28)
 
 [node name="FireBall" node_paths=PackedStringArray("_area2D", "_hitBox") instance=ExtResource("1_l4gbv")]
 script = ExtResource("2_bkjp2")
 _area2D = NodePath("Area2D")
 _hitBox = NodePath("HitBox")
 
-[node name="Sprite2D" parent="." index="0"]
-visible = false
+[node name="Sprite2D" parent="." index="1"]
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" parent="HitBox" index="0"]
+position = Vector2(0, 0)
+shape = SubResource("RectangleShape2D_i5moo")
 
 [node name="Blast" parent="." index="4" instance=ExtResource("3_sfhfu")]
 
@@ -22,4 +29,4 @@ collision_layer = 0
 collision_mask = 3
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" index="0"]
-shape = SubResource("CircleShape2D_ikj1e")
+shape = SubResource("RectangleShape2D_ppjyi")

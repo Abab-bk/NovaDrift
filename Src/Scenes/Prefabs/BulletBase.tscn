@@ -1,30 +1,21 @@
-[gd_scene load_steps=8 format=3 uid="uid://dopw3ixphjmh7"]
+[gd_scene load_steps=6 format=3 uid="uid://dopw3ixphjmh7"]
 
 [ext_resource type="Script" path="res://Scripts/Prefabs/BulletBase.cs" id="1_l73w7"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HitBox.cs" id="2_74isq"]
 [ext_resource type="Texture2D" uid="uid://cjd5cjg845jjq" path="res://Assets/Textures/Bullets/Bullet.png" id="2_7373b"]
-[ext_resource type="Script" path="res://addons/trail_2d/trail_2d.gd" id="2_bco6i"]
+[ext_resource type="Texture2D" uid="uid://bg172p675nwbh" path="res://Assets/Textures/Trail.png" id="2_i1853"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/FreeSelfWhenExitScreen.cs" id="3_bimy8"]
-
-[sub_resource type="Curve" id="Curve_1iyvv"]
-_data = [Vector2(0, 0.569231), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
-point_count = 2
-
-[sub_resource type="Gradient" id="Gradient_x6jox"]
-colors = PackedColorArray(1, 1, 1, 1, 1, 1, 1, 0)
 
 [node name="BulletBase" type="Node2D" node_paths=PackedStringArray("_hitBox")]
 y_sort_enabled = true
 script = ExtResource("1_l73w7")
 _hitBox = NodePath("HitBox")
 
-[node name="Trail2D" type="Line2D" parent="."]
-width_curve = SubResource("Curve_1iyvv")
-gradient = SubResource("Gradient_x6jox")
-script = ExtResource("2_bco6i")
+[node name="Trail" type="Sprite2D" parent="."]
+position = Vector2(-43, 0)
+texture = ExtResource("2_i1853")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.4, 0.4)
 texture = ExtResource("2_7373b")
 
 [node name="HitBox" type="Area2D" parent="."]
