@@ -10,16 +10,16 @@ public partial class StartMenuPanel : StartMenu
     
     public override void _Ready()
     {
-        S_StartGameBtn.Instance.Pressed += () =>
+        S_StartGameBtn.Instance.OnClick += () =>
         {
             EventBus.OnGameInit?.Invoke();
         };
-        S_ExitBtn.Instance.Pressed += () =>
+        S_ExitBtn.Instance.OnClick += () =>
         {
             GetTree().Quit();
         };
         
-        S_SettingBtn.Instance.Pressed += () =>
+        S_SettingBtn.Instance.OnClick += () =>
         {
             this.ChangeTo(UiManager.Create_Setting());
         };
@@ -33,7 +33,7 @@ public partial class StartMenuPanel : StartMenu
             this.ChangeTo(UiManager.Create_DailyQuests());
         };
         
-        S_CreditBtn.Instance.Pressed += () =>
+        S_CreditBtn.Instance.OnClick += () =>
         {
             this.ChangeTo(UiManager.Create_Credit());
         };

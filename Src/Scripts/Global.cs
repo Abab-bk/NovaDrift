@@ -37,7 +37,7 @@ public enum InputDevice
 
 public class GameContext
 {
-    public int Score;
+    public int Score { private set; get; }
     public bool IsGameOver;
     public int ReliveCount;
     private Node2D _camera;
@@ -115,7 +115,7 @@ public class GameContext
         EventBus.OnMobDied += @base =>
         {
             var info = @base.MobInfo;
-            AddScore((int)(info.DangerFactor * info.Health));
+            AddScore(info.DangerFactor);
         };
         // 这个放到了 GameWorld 的 GameOver()
         // EventBus.OnGameOver += () =>

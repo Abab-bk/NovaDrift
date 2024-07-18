@@ -25,6 +25,9 @@ public static partial class UiManager
         public const string GoodsInfoPopup = "GoodsInfoPopup";
         public const string GoodsItem = "GoodsItem";
         public const string Hud = "Hud";
+        public const string LeaderBoard = "LeaderBoard";
+        public const string LeaderItem = "LeaderItem";
+        public const string LeaderItemInfo = "LeaderItemInfo";
         public const string Loading = "Loading";
         public const string PausedMenu = "PausedMenu";
         public const string Popup = "Popup";
@@ -954,6 +957,150 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.Hud.HudPanel[] Get_Hud_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.Hud.HudPanel>(nameof(NovaDrift.Scripts.Ui.Hud.Hud));
+    }
+
+    /// <summary>
+    /// 创建 LeaderBoard, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.LeaderBoard.LeaderBoardPanel Create_LeaderBoard()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.LeaderBoard.LeaderBoardPanel>(UiName.LeaderBoard);
+    }
+
+    /// <summary>
+    /// 打开 LeaderBoard, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.LeaderBoard.LeaderBoardPanel Open_LeaderBoard()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.LeaderBoard.LeaderBoardPanel>(UiName.LeaderBoard);
+    }
+
+    /// <summary>
+    /// 隐藏 LeaderBoard 的所有实例
+    /// </summary>
+    public static void Hide_LeaderBoard()
+    {
+        var uiInstance = Get_LeaderBoard_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 LeaderBoard 的所有实例
+    /// </summary>
+    public static void Destroy_LeaderBoard()
+    {
+        var uiInstance = Get_LeaderBoard_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 LeaderBoard 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.LeaderBoard.LeaderBoardPanel[] Get_LeaderBoard_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.LeaderBoard.LeaderBoardPanel>(nameof(NovaDrift.Scripts.Ui.LeaderBoard.LeaderBoard));
+    }
+
+    /// <summary>
+    /// 创建 LeaderItem, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.LeaderItem.LeaderItemPanel Create_LeaderItem()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.LeaderItem.LeaderItemPanel>(UiName.LeaderItem);
+    }
+
+    /// <summary>
+    /// 打开 LeaderItem, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.LeaderItem.LeaderItemPanel Open_LeaderItem()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.LeaderItem.LeaderItemPanel>(UiName.LeaderItem);
+    }
+
+    /// <summary>
+    /// 隐藏 LeaderItem 的所有实例
+    /// </summary>
+    public static void Hide_LeaderItem()
+    {
+        var uiInstance = Get_LeaderItem_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 LeaderItem 的所有实例
+    /// </summary>
+    public static void Destroy_LeaderItem()
+    {
+        var uiInstance = Get_LeaderItem_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 LeaderItem 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.LeaderItem.LeaderItemPanel[] Get_LeaderItem_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.LeaderItem.LeaderItemPanel>(nameof(NovaDrift.Scripts.Ui.LeaderItem.LeaderItem));
+    }
+
+    /// <summary>
+    /// 创建 LeaderItemInfo, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.LeaderItemInfo.LeaderItemInfoPanel Create_LeaderItemInfo()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.LeaderItemInfo.LeaderItemInfoPanel>(UiName.LeaderItemInfo);
+    }
+
+    /// <summary>
+    /// 打开 LeaderItemInfo, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.LeaderItemInfo.LeaderItemInfoPanel Open_LeaderItemInfo()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.LeaderItemInfo.LeaderItemInfoPanel>(UiName.LeaderItemInfo);
+    }
+
+    /// <summary>
+    /// 隐藏 LeaderItemInfo 的所有实例
+    /// </summary>
+    public static void Hide_LeaderItemInfo()
+    {
+        var uiInstance = Get_LeaderItemInfo_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 LeaderItemInfo 的所有实例
+    /// </summary>
+    public static void Destroy_LeaderItemInfo()
+    {
+        var uiInstance = Get_LeaderItemInfo_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 LeaderItemInfo 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.LeaderItemInfo.LeaderItemInfoPanel[] Get_LeaderItemInfo_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.LeaderItemInfo.LeaderItemInfoPanel>(nameof(NovaDrift.Scripts.Ui.LeaderItemInfo.LeaderItemInfo));
     }
 
     /// <summary>

@@ -61,6 +61,7 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer3"]
+visible = false
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_constants/separation = 10

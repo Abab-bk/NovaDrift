@@ -5,12 +5,15 @@ namespace NovaDrift.Scripts.Ui.GalleryBtn;
 
 public partial class GalleryBtnPanel : GalleryBtn
 {
-    [Export] string _labelText = "GalleryBtnPanel";
+    [Export] private string _labelText = "GalleryBtnPanel";
+    [Export] private Texture2D _texture;
     
     public Action OnClick;
     
     public override void _Ready()
     {
+        S_Image.Instance.Texture = _texture;
+        
         S_Label.Instance.Text = _labelText;
         ChangeOverrideToNormal();
         

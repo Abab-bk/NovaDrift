@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://dkldb35hni6h5"]
+
+[ext_resource type="Script" path="res://Scripts/Ui/leaderBoard/LeaderBoardPanel.cs" id="1_ci5mh"]
+[ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_ntelv"]
+[ext_resource type="LabelSettings" uid="uid://cnabg1bgvdj1o" path="res://Assets/LabelSettings/WeightTitle.tres" id="3_ekpac"]
+[ext_resource type="PackedScene" uid="uid://bd42dpxrui8r4" path="res://Scenes/Ui/LeaderItem.tscn" id="4_m3xik"]
+
+[node name="LeaderBoard" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("1_ntelv")
+script = ExtResource("1_ci5mh")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 100
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 100
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 40
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "个人记录"
+label_settings = ExtResource("3_ekpac")
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer"]
+custom_minimum_size = Vector2(1000, 0)
+layout_mode = 2
+
+[node name="LeaderItem" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_m3xik")]
+layout_mode = 2
+
+[node name="LeaderItem2" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_m3xik")]
+layout_mode = 2
+
+[node name="LeaderItem3" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_m3xik")]
+layout_mode = 2
+
+[node name="LeaderItem4" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_m3xik")]
+layout_mode = 2
+
+[node name="LeaderItem5" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_m3xik")]
+layout_mode = 2
+
+[node name="LeaderItem6" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_m3xik")]
+layout_mode = 2
+
+[node name="CloseBtn" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(900, 100)
+layout_mode = 2
+size_flags_horizontal = 4
+text = "返回"
