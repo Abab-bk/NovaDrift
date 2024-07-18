@@ -2,6 +2,7 @@
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Systems;
+using NovaDrift.Scripts.Systems.BulletPatterns;
 
 namespace NovaDrift.Scripts.Prefabs.Weapons;
 
@@ -20,7 +21,22 @@ public abstract partial class BaseShooter : Node2D
     public bool IsPlayer { get; set; }
     
     public abstract void Shoot();
-    
+
+    public virtual void ShootWithConfig(BulletPattern bulletPattern, int bulletCount)
+    {
+        for (int i = 0; i < Actor.Stats.BulletCount.Value; i++)
+        {
+            BulletBase bullet = GetBulletFunc.Invoke(this);
+            bullet.GlobalPosition = GlobalPosition;
+            bulletPattern.SetPattern(bullet, Actor, bulletCount, i);
+            
+            Global.GameWorld.AddChild(bullet);
+            
+            OnShoot?.Invoke(bullet);
+            bullet.OnHit += actor => { OnHit?.Invoke(actor); };
+        }
+    }
+
     public abstract void Destroy();
 
     public virtual void SetShootCd(float value)

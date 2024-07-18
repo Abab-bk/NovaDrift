@@ -123,11 +123,12 @@ variable_config_list = Array[VariableConfig]([SubResource("VariableConfig_2lh8x"
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_4cw16"]
 size = Vector2(270, 270)
 
-[node name="TheEmoji" node_paths=PackedStringArray("_hitBox", "_hurtBox", "Sprite", "_visibleOnScreenNotifier2D") instance=ExtResource("1_xl50d")]
+[node name="TheEmoji" node_paths=PackedStringArray("_hitBox", "_hurtBox", "Sprite", "_visibleOnScreenNotifier2D", "Shooter") instance=ExtResource("1_xl50d")]
 _hitBox = NodePath("HitBox")
 _hurtBox = NodePath("Components/HurtBox")
 Sprite = NodePath("Sprite2D")
 _visibleOnScreenNotifier2D = NodePath("VisibleOnScreenNotifier2D")
+Shooter = NodePath("Components/ShooterNode/Shooter")
 
 [node name="Sprite2D" parent="." index="0"]
 texture = ExtResource("2_kaxfg")
@@ -149,14 +150,18 @@ shape = SubResource("RectangleShape2D_3oq61")
 [node name="CollisionShape2D" parent="Components/BoidsArea" index="0"]
 shape = SubResource("RectangleShape2D_3oq61")
 
-[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("_sprite", "_timer", "Mob")]
+[node name="MobAiComponent" parent="State" index="0" node_paths=PackedStringArray("_sprite", "_timer", "_nextTimer", "Mob")]
 script = ExtResource("3_4uy4b")
 _sprite = NodePath("../../Sprite2D")
 _timer = NodePath("Timer")
+_nextTimer = NodePath("NextTimer")
 Mob = NodePath("../..")
 
 [node name="Timer" type="Timer" parent="State/MobAiComponent" index="0"]
 wait_time = 2.0
+one_shot = true
+
+[node name="NextTimer" type="Timer" parent="State/MobAiComponent" index="1"]
 one_shot = true
 
 [node name="HFSM" parent="State" index="1"]

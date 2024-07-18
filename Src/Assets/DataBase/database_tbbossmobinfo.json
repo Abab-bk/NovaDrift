@@ -6,7 +6,7 @@
     "dragon_bone": "",
     "health": 400,
     "speed": 300,
-    "damage": 40,
+    "damage": 1,
     "targeting": 0,
     "shoot_cd": 0.1,
     "bullet_count": 4,

@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://do7x5cckbw7do"]
+
+[ext_resource type="Script" path="res://Scripts/Prefabs/BulletBase.cs" id="1_wdyp2"]
+[ext_resource type="Texture2D" uid="uid://bv6yvc5t51jys" path="res://Assets/Textures/Bullets/Shit.png" id="2_51e8i"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Components/HitBox.cs" id="3_6mgqv"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/Components/FreeSelfWhenExitScreen.cs" id="4_48c0p"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0ngga"]
+size = Vector2(49, 58)
+
+[node name="ShitBullet" type="Node2D" node_paths=PackedStringArray("_hitBox")]
+y_sort_enabled = true
+script = ExtResource("1_wdyp2")
+_hitBox = NodePath("HitBox")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+rotation = 1.5708
+texture = ExtResource("2_51e8i")
+
+[node name="HitBox" type="Area2D" parent="."]
+position = Vector2(13, 0)
+script = ExtResource("3_6mgqv")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="HitBox"]
+position = Vector2(-14.5, 0)
+shape = SubResource("RectangleShape2D_0ngga")
+
+[node name="FreeSelfWhenExitScreen" type="VisibleOnScreenNotifier2D" parent="."]
+scale = Vector2(2.9, 3.3)
+script = ExtResource("4_48c0p")

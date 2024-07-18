@@ -1,6 +1,8 @@
 using Godot;
 using System;
-using NovaDrift.Scripts.Prefabs;
+using AcidWallStudio.AcidUtilities;
+using NovaDrift.Scripts.Systems;
+using NovaDrift.Scripts.Systems.BulletPatterns;
 
 namespace NovaDrift.Scripts.Prefabs.Ai;
 
@@ -8,17 +10,31 @@ public partial class TheEmojiAi : MobAiComponent
 {
     [Export] private Sprite2D _sprite;
     [Export] private Timer _timer;
+    [Export] private Timer _nextTimer;
 
     private Texture2D _angerTexture;
     private Texture2D _nerdTexture;
     private Texture2D _dizzyTexture;
     private Texture2D _pickTexture;
 
+    private CirclePattern _circlePattern = new CirclePattern();
+    
     public override void _Ready()
     {
         base._Ready();
         Mob.IsBoss = true;
         Mob.Tags.Add(Constants.Tags.IsDisabledRotation);
+        
+        Mob.Shooter.GetBulletFunc = _ => new BulletBuilder()
+            .SetBulletBase("res://Scenes/Prefabs/Bullets/ShitBullet.tscn")
+            .SetOwner(Mob)
+            .SetIsPlayer(Mob.IsPlayer)
+            .SetDamage(Mob.Stats.Damage.Value)
+            .SetSpeed(Mob.Stats.BulletSpeed.Value)
+            .SetSize(Mob.Stats.BulletSize.Value)
+            .SetDegeneration(Mob.Stats.BulletDegeneration.Value)
+            .SetSteering(Mob.Stats.Targeting.Value)
+            .Build();
         
         _angerTexture = GD.Load<Texture2D>("res://Assets/Textures/Mobs/TheEmojiAnger.png");
         _nerdTexture = GD.Load<Texture2D>("res://Assets/Textures/Mobs/TheEmojiNerd.png");
@@ -43,6 +59,11 @@ public partial class TheEmojiAi : MobAiComponent
                     break;
             }
         };
+
+        _nextTimer.Timeout += () =>
+        {
+            Machine.SetTrigger("Next");
+        };
     }
 
     protected override void ConnectEnteredSignals(State state)
@@ -52,16 +73,61 @@ public partial class TheEmojiAi : MobAiComponent
         {
             case "Anger":
                 _sprite.Texture = _angerTexture;
+                SetNextTimer(Random.Shared.FloatRange(2f, 4f));
                 break;
             case "Nerd":
                 _sprite.Texture = _nerdTexture;
+                SetNextTimer(Random.Shared.FloatRange(2f, 4f));
                 break;
             case "Dizzy":
                 _sprite.Texture = _dizzyTexture;
+                SetNextTimer(Random.Shared.FloatRange(2f, 4f));
                 break;
             case "Pick":
                 _sprite.Texture = _pickTexture;
+                _timer.WaitTime = Random.Shared.FloatRange(2f, 4f);
                 _timer.Start();
+                break;
+        }
+    }
+
+    private void SetNextTimer(float waitTime)
+    {
+        _nextTimer.WaitTime = waitTime;
+        _nextTimer.Start();
+    }
+
+    protected override void ConnectProcessSignals(State state, float delta)
+    {
+        base.ConnectProcessSignals(state, delta);
+        switch (state.GetName())
+        {
+            case "Anger":
+                Mob.Shooter.ShootWithConfig(_circlePattern, 10);
+                Mob.SetTargetAndMove(Global.Player, delta);
+                break;
+            case "Nerd":
+                Mob.Shoot();
+                Mob.SetTargetAndMove(Global.Player, delta);
+                break;
+            case "Dizzy":
+                Mob.Rotation += 1f;
+                Mob.Shoot();
+                Mob.SetTargetAndMove(Global.Player, delta);
+                break;
+            case "Pick":
+                Mob.SetTargetAndMove(Global.Player, delta);
+                break;
+        }
+    }
+
+    protected override void ConnectExitedSignals(State state)
+    {
+        base.ConnectExitedSignals(state);
+        switch (state.GetName())
+        {
+            case "Dizzy":
+                Mob.Rotation = 0f;
                 break;
         }
     }
