@@ -1,0 +1,19 @@
+[gd_resource type="ParticleProcessMaterial" load_steps=4 format=3 uid="uid://boam80ebf8dtx"]
+
+[ext_resource type="Texture2D" uid="uid://cig8p2fa3tlct" path="res://Assets/Gradients/ExplosionGradient2.tres" id="1"]
+
+[sub_resource type="Curve" id="14"]
+_data = [Vector2(0, 0.0409091), 0.0, 8.35303, 0, 0, Vector2(0.251678, 1), 0.0, 0.0, 0, 0, Vector2(0.993289, 0.0136364), 0.0, 0.0, 0, 0]
+point_count = 3
+
+[sub_resource type="CurveTexture" id="15"]
+curve = SubResource("14")
+
+[resource]
+spread = 180.0
+initial_velocity_min = 544.67
+initial_velocity_max = 596.54
+gravity = Vector3(0, 0, 0)
+scale_max = 2.0
+scale_curve = SubResource("15")
+color_ramp = ExtResource("1")

@@ -1,7 +1,7 @@
-[gd_scene load_steps=19 format=3 uid="uid://d25jyaf2cexon"]
+[gd_scene load_steps=21 format=3 uid="uid://d25jyaf2cexon"]
 
 [ext_resource type="Script" path="res://Scripts/GameWorld.cs" id="1_xxmb6"]
-[ext_resource type="Texture2D" uid="uid://ecv33h0gvcog" path="res://Assets/Textures/Grid.png" id="2_iakxi"]
+[ext_resource type="Texture2D" uid="uid://0uduflkrtr1h" path="res://Assets/Textures/Particles/Star.png" id="2_4h7xe"]
 [ext_resource type="Texture2D" uid="uid://depldoxt73s0n" path="res://Assets/Ui/Buttons/ShootBtn.png" id="4_848ec"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/HazardSpawner.cs" id="5_2fkc6"]
 [ext_resource type="Texture2D" uid="uid://d33ml8qyq5ybe" path="res://Assets/Ui/Buttons/ShootBtnPressed.png" id="5_2ut0l"]
@@ -16,8 +16,21 @@
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_34d4f"]
 
-[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_6fb3h"]
-light_mode = 2
+[sub_resource type="Curve" id="Curve_ymj01"]
+_data = [Vector2(0, 0), 0.0, 0.0, 0, 0, Vector2(0.242248, 1), 0.0, 0.0, 0, 0, Vector2(0.513566, 0), 0.0, 0.0, 0, 0, Vector2(0.75, 1), 0.0, 0.0, 0, 0, Vector2(1, 0), 0.0, 0.0, 0, 0]
+point_count = 5
+
+[sub_resource type="CurveTexture" id="CurveTexture_sgnyt"]
+curve = SubResource("Curve_ymj01")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_tyl4m"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1000, 1000, 1)
+angular_velocity_min = 40.0
+angular_velocity_max = 50.0
+gravity = Vector3(0, 0, 0)
+scale_curve = SubResource("CurveTexture_sgnyt")
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ilgvf"]
 size = Vector2(5141, 20)
@@ -56,32 +69,24 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0.168468, 0.112248, 0.339585, 1)
+color = Color(0.196078, 0.160784, 0.278431, 1)
 metadata/_edit_use_anchors_ = true
 
 [node name="Background" type="Node2D" parent="."]
 unique_name_in_owner = true
 z_index = -1
 
-[node name="Background" type="Node2D" parent="Background"]
+[node name="Stars" type="Parallax2D" parent="Background"]
+repeat_size = Vector2(1000, 1000)
+repeat_times = 3
 
-[node name="Background" type="Sprite2D" parent="Background/Background"]
-modulate = Color(0.36, 0.3564, 0.3573, 0.0941176)
-texture_repeat = 2
-position = Vector2(2560, 1440)
-texture = ExtResource("2_iakxi")
-region_enabled = true
-region_rect = Rect2(0, 0, 5200, 3200)
-
-[node name="LightMask" type="Sprite2D" parent="Background/Background"]
-modulate = Color(1, 1, 1, 0.364706)
-light_mask = 2
-texture_repeat = 2
-material = SubResource("CanvasItemMaterial_6fb3h")
-position = Vector2(2560, 1440)
-texture = ExtResource("2_iakxi")
-region_enabled = true
-region_rect = Rect2(0, 0, 5200, 3200)
+[node name="Stars" type="GPUParticles2D" parent="Background/Stars"]
+position = Vector2(1071, 932)
+amount = 20
+process_material = SubResource("ParticleProcessMaterial_tyl4m")
+texture = ExtResource("2_4h7xe")
+lifetime = 5.0
+randomness = 1.0
 
 [node name="Border" type="Node2D" parent="Background"]
 
