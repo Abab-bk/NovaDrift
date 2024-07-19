@@ -19,7 +19,10 @@ public partial class TutorialPanel : Tutorial
         }
 
         await ShowLabelAndAwait("再次点击屏幕开始冒险！");
-        
+
+        var tween = CreateTween();
+        tween.TweenProperty(this, "modulate", Modulate with { A = 0f }, 0.2f);
+        await ToSignal(tween, Tween.SignalName.Finished);
         Destroy();
     }
 
@@ -43,9 +46,15 @@ public partial class TutorialPanel : Tutorial
         await AwaitPressed();
     }
     
+    public void CleanDraw()
+    {
+        _drawCommands = null;
+        QueueRedraw();
+    }
+    
     private async Task AwaitPressed() => await ToSignal(L_Button.Instance, BaseButton.SignalName.Pressed);
 
-    public void ShowLabel(string text)
+    private void ShowLabel(string text)
     {
         L_Label.Instance.Show();
         L_Label.Instance.Text = text;

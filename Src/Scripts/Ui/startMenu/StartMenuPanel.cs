@@ -38,12 +38,7 @@ public partial class StartMenuPanel : StartMenu
             this.ChangeTo(UiManager.Create_Credit());
         };
 
-        EventBus.OnGameStart += () =>
-        {
-            this.TweenModulateAlpha(0f, 0.2f)
-                .OnComplete(UiManager.Destroy_StartMenu)
-                .Play();
-        };
+        EventBus.OnGameInit += Destroy;
 
         S_GameLogoTouch.Instance.Pressed += () =>
         {
