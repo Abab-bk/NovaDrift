@@ -14,7 +14,7 @@ public partial class BulletBase : Node2D
 {
     [Export] private HitBox _hitBox;
 
-    public Actor Target;
+    public Actor Target; // Owner
     
     public Action<float> OnMove;
     public event Action<Actor> OnHit;

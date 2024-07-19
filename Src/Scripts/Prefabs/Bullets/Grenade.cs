@@ -1,6 +1,8 @@
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Systems;
+using NovaDrift.Scripts.Systems.Pool;
+using NovaDrift.Scripts.Vfx;
 
 namespace NovaDrift.Scripts.Prefabs.Bullets;
 
@@ -42,14 +44,11 @@ public partial class Grenade : BulletBase
 
     private void Blast()
     {
-        var fireBall = 
-            new BulletBuilder(BulletBuilder.BulletType.FireBall).
-                SetDamage(Damage).
-                SetOwner(Target).
-                SetBlastRadius(Target.Stats.BlastRadius.Value).
-                Build();
-        fireBall.GlobalPosition = GlobalPosition;
-        Global.GameWorld.CallDeferred(Node.MethodName.AddChild, fireBall);
+        var blast = Pool.BlastVfxPool.Get();
+        blast.GlobalPosition = GlobalPosition;
+        blast.SetBlastRadius(Target.Stats.BlastRadius.Value);
+        blast.Show();
+        blast.Play();
         QueueFree();
     }
 

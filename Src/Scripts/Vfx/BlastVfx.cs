@@ -11,19 +11,19 @@ public partial class BlastVfx : Node2D
     public event Action OnBlastDone;
     
     [GetNode("GPUParticles2D")] private GpuParticles2D _gpuParticles;
-    
-    private CircleSprite2D _circleSprite2D;
 
     public bool PlaySound = true;
     
+    public float Radius = 100f;
+    
     public void SetBlastRadius(float value)
     {
-        _circleSprite2D.UpdateRadius(value);
+        Radius = value;
+        Scale = new Vector2(Radius / 100f, Radius / 100f);
     }
     
     public override void _Ready()
     {
-        _circleSprite2D = GetNode<CircleSprite2D>("%CircleSprite2D");
         _gpuParticles.OneShot = true;
         _gpuParticles.Finished += () =>
         {

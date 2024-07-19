@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://3wh7ubkrtntu"]
+[gd_scene load_steps=7 format=3 uid="uid://3wh7ubkrtntu"]
 
 [ext_resource type="Script" path="res://Scripts/Vfx/BlastVfx.cs" id="1_8gjd8"]
-[ext_resource type="Texture2D" uid="uid://w80uidtfwsgd" path="res://Assets/Textures/Particles/fire_01.png" id="1_j4p14"]
-[ext_resource type="Script" path="res://Scripts/Prefabs/Components/CircleSprite2D.cs" id="3_abms8"]
 [ext_resource type="Texture2D" uid="uid://b51oi01rq88w4" path="res://Assets/Textures/CircleWhite.png" id="4_tdb2o"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_d3tah"]
+radius = 50.0
 
 [sub_resource type="Gradient" id="Gradient_mqaf6"]
 offsets = PackedFloat32Array(0, 0.439614, 1)
@@ -16,8 +17,8 @@ gradient = SubResource("Gradient_mqaf6")
 particle_flag_disable_z = true
 direction = Vector3(0, 0, 0)
 spread = 180.0
-initial_velocity_min = 867.6
-initial_velocity_max = 1000.0
+initial_velocity_min = 17.45
+initial_velocity_max = 149.85
 gravity = Vector3(0, 0, 0)
 scale_min = 0.1
 scale_max = 0.2
@@ -25,18 +26,15 @@ color_ramp = SubResource("GradientTexture1D_c72np")
 
 [node name="Blast" type="Node2D"]
 modulate = Color(1, 0.329412, 0.184314, 1)
-scale = Vector2(0.1, 0.1)
 script = ExtResource("1_8gjd8")
 
-[node name="CircleSprite2D" type="Sprite2D" parent="."]
-unique_name_in_owner = true
-visible = false
-modulate = Color(1, 0.423529, 0.0666667, 1)
-texture = ExtResource("1_j4p14")
-script = ExtResource("3_abms8")
+[node name="Area2D" type="Area2D" parent="."]
+scale = Vector2(1, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_d3tah")
 
 [node name="GPUParticles2D" type="GPUParticles2D" parent="."]
-scale = Vector2(3, 3)
 emitting = false
 amount = 51
 process_material = SubResource("ParticleProcessMaterial_j3ly3")

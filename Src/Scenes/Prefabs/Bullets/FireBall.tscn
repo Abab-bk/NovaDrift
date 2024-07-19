@@ -15,8 +15,11 @@ script = ExtResource("2_bkjp2")
 _area2D = NodePath("Area2D")
 _hitBox = NodePath("HitBox")
 
+[node name="Trail" parent="." index="0"]
+visible = false
+
 [node name="Sprite2D" parent="." index="1"]
-scale = Vector2(1, 1)
+visible = false
 
 [node name="CollisionShape2D" parent="HitBox" index="0"]
 position = Vector2(0, 0)

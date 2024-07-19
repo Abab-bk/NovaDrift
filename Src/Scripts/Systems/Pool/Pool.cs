@@ -165,7 +165,6 @@ public static class Pool
             particles =>
             {
                 particles.SetProcessMode(Node.ProcessModeEnum.Inherit);
-                particles.Show();
             },
             particles =>
             {
@@ -246,8 +245,8 @@ public static class Pool
         
         // Global.GameWorld.AddChild(FocusVfxPool);
         // FocusVfxPool.Init();
-        //
-        // Global.GameWorld.AddChild(BlastVfxPool);
-        // BlastVfxPool.Init();
+        
+        Global.GameWorld.AddChild(BlastVfxPool);
+        BlastVfxPool.Init();
     }
 }
