@@ -1,7 +1,8 @@
-[gd_scene load_steps=6 format=3 uid="uid://q35xmh26wes7"]
+[gd_scene load_steps=7 format=3 uid="uid://q35xmh26wes7"]
 
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/CircleSprite2D.cs" id="1_o3yu0"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Shields/BaseShield.cs" id="1_xqwrw"]
+[ext_resource type="Texture2D" uid="uid://bhgimrvksym6q" path="res://Assets/Textures/CircleOutline.png" id="2_yos5g"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/PureHurtBox.cs" id="3_ro08f"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_b80l4"]
@@ -15,7 +16,9 @@ script = ExtResource("1_xqwrw")
 
 [node name="CircleSprite2D" type="Sprite2D" parent="."]
 unique_name_in_owner = true
+texture = ExtResource("2_yos5g")
 script = ExtResource("1_o3yu0")
+Radius = 256.0
 
 [node name="ShieldArea" type="Area2D" parent="."]
 unique_name_in_owner = true

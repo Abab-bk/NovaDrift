@@ -43,5 +43,6 @@ public class Shield : IItemInfo
         shield.Target = Global.Player;
         Global.Player.SetShield(shield);
         Global.Player.ShieldNode.AddChild(shield);
+        shield.SetPlayerColor();
     }
 }

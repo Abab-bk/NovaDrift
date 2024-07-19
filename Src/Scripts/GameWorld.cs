@@ -138,8 +138,6 @@ public partial class GameWorld : Node2D
 		ShowBackground();
 		
 		EventBus.OnGameStart?.Invoke();
-		
-		Global.SetWorldColor(Constants.Colors.Red);
 	}
 
 	private async void GameOver()

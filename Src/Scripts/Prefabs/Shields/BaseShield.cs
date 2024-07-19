@@ -70,8 +70,8 @@ public partial class BaseShield : Node2D
         
         HurtBox.OnHurt += OnHurt;
         CoolDownTimer.Timeout += OnCoolDownTimeout;
-    
-        Init();
+
+        Global.Player.Modulate = new Color("a5a3ff");
         
         Active();
     }
@@ -81,7 +81,7 @@ public partial class BaseShield : Node2D
         OnHurt(value, source);
     }
 
-    protected virtual void Init()
+    public virtual void Init()
     {
     }
 
@@ -126,6 +126,10 @@ public partial class BaseShield : Node2D
         ShieldArea.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Inherit);
         HurtBox.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Inherit);
         Active();
+    }
+
+    public virtual void SetPlayerColor()
+    {
     }
 
     protected virtual void OnAreaEntered(Area2D area)

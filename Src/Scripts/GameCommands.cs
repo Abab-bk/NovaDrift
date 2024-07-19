@@ -34,23 +34,6 @@ public class GameCommands
         var worldCommand = new WorldCommands();
         var worldSection = GDebugPanel.AddSection("World", worldCommand);
         _world = worldSection;
-		
-        var worldColor = WorldCommands.WorldColors.Red;
-		
-        worldSection.AddEnum("ColorType", val =>
-        {
-            worldColor = val;
-
-            switch (worldColor)
-            {
-                case WorldCommands.WorldColors.Red:
-                    Global.SetWorldColor(Constants.Colors.Red);
-                    break;
-                case WorldCommands.WorldColors.Blue:
-                    Global.SetWorldColor(Constants.Colors.Blue);
-                    break;
-            }
-        }, () => worldColor);
     }
 
     private void Remove()
@@ -129,10 +112,4 @@ public sealed class WorldCommands
 
     public HazardSpawner.HazardType HazardType { get; set; }
     public void SpawnHazard() => Global.HazardSpawner.SpawnHazard(HazardType);
-    
-    public enum WorldColors
-    {
-        Red,
-        Blue,
-    }
 }

@@ -8,12 +8,11 @@ public partial class ForceField : BaseShield
 {
     private StatModifier _accelerationModifier;
     private StatModifier _damageModifier;
-
-    protected override void Init()
+    
+    public override void SetPlayerColor()
     {
-        base.Init();
-        _damageModifier = new StatModifier(Values[0], StatModType.PercentAdd, this);
-        _accelerationModifier = new StatModifier(Values[0], StatModType.PercentAdd, this);
+        base.SetPlayerColor();
+        Global.GameContext.SetPlayerColor(new Color("a9ffa3"));
     }
 
     protected override void OnBodyEnteredMethod(Node2D body)
@@ -43,6 +42,10 @@ public partial class ForceField : BaseShield
     protected override void Active()
     {
         base.Active();
+        
+        _damageModifier = new StatModifier(Values[0], StatModType.PercentAdd, this);
+        _accelerationModifier = new StatModifier(Values[0], StatModType.PercentAdd, this);
+        
         Target.Stats.Acceleration.AddModifier(_accelerationModifier);
         Target.Stats.Damage.AddModifier(_damageModifier);
     }

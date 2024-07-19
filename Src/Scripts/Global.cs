@@ -40,7 +40,14 @@ public class GameContext
     public int Score { private set; get; }
     public bool IsGameOver;
     public int ReliveCount;
+    public Color PlayerColor { get; private set; }
     private Node2D _camera;
+
+    public void SetPlayerColor(Color color)
+    {
+        PlayerColor = color;
+        Global.Player.Modulate = color;
+    }
 
     public enum FollowMode
     {
@@ -130,6 +137,7 @@ public class GameContext
         Score = 0;
         ReliveCount = 0;
         IsGameOver = false;
+        PlayerColor = new Color("#6a98c0");
     }
 
     public void AddScore(int amount)
@@ -141,7 +149,6 @@ public class GameContext
 public static class Global
 {
     // FIXME: 护盾半径好像无效
-    // FIXME: 射击距离越远伤害越高的ability太强了
     
     public static event Action OnAcidCoinsChanged;
     
@@ -218,13 +225,7 @@ public static class Global
                 .WithEulersAmount(new Vector3(strength, strength, 0.02f))
         );
     }
-
-    public static void SetWorldColor(Constants.WorldColor color)
-    {
-        WorldColor = color;
-        EventBus.OnWorldColorChanged();
-    }
-
+    
     public static void SetWorldCorrection(GradientTexture1D color)
     {
         WorldEnvironment.Environment.AdjustmentColorCorrection = color;

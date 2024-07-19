@@ -10,4 +10,10 @@ public partial class QuantumOverlay : BaseShield
         if (Wizard.GetChance() > Values[0]) return;
         base.OnHurt(value * Values[1], node2D);
     }
+    
+    public override void SetPlayerColor()
+    {
+        base.SetPlayerColor();
+        Global.GameContext.SetPlayerColor(new Color("fff4a3"));
+    }
 }

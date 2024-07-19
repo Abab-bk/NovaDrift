@@ -29,4 +29,10 @@ public partial class Halo : BaseShield
             }
         };
     }
+
+    public override void SetPlayerColor()
+    {
+        base.SetPlayerColor();
+        Global.GameContext.SetPlayerColor(new Color("ffa3a5"));
+    }
 }
