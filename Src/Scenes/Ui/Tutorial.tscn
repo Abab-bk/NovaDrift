@@ -1,0 +1,48 @@
+[gd_scene load_steps=4 format=3 uid="uid://dqam6eqb5ycnu"]
+
+[ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_8etgl"]
+[ext_resource type="Script" path="res://Scripts/Ui/tutorial/TutorialPanel.cs" id="1_g3lee"]
+[ext_resource type="LabelSettings" uid="uid://c6d3f67ue8afv" path="res://Assets/LabelSettings/SubTitleWhite.tres" id="3_0ckij"]
+
+[node name="Tutorial" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+theme = ExtResource("1_8etgl")
+script = ExtResource("1_g3lee")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 0.411765)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -12.0
+offset_right = 20.0
+offset_bottom = 12.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "按 A 开始"
+label_settings = ExtResource("3_0ckij")
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_type_variation = &"EmptyBtn"

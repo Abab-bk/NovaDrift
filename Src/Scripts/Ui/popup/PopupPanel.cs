@@ -92,7 +92,8 @@ public partial class PopupPanel : Popup
             {
                 S_Content.Instance.Show();
             })
-            .Play();
+            .PlayUnpausable();
+        Logger.Log("ShowAnimation");
     }
 
     private void HideAnimation()
@@ -101,7 +102,7 @@ public partial class PopupPanel : Popup
         S_Panel.Instance
             .TweenScale(new Vector2(0f, 1f), 0.1f)
             .OnComplete(QueueFree)
-            .Play();
+            .PlayUnpausable();
     }
 
     public override void _Ready()

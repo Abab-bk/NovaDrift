@@ -1,3 +1,4 @@
+using AcidWallStudio.AcidUtilities;
 using DsUi;
 using GDebugPanelGodot.Core;
 using Godot;
@@ -43,6 +44,38 @@ public partial class HudPanel : Hud
 
 		EventBus.OnGameStart += () =>
 		{
+			if (!AcidSaver.HasSetting("Game", "FinishedTutorial") 
+			    || (bool)AcidSaver.GetSetting("Game", "FinishedTutorial") == false)
+			{
+				Global.StopGame();
+				UiManager.Open_Popup()
+					.SetConfig(
+						"新手教程",
+						"你看起来是第一次玩《双子座的最后一口气》，要查看教程吗？",
+						true,
+						Global.ResumeGame,
+						() =>
+						{
+							Global.ResumeGame();
+							var panel = UiManager.Open_Tutorial();
+							panel.Launch([
+								() => panel.ShowRect(
+									new Rect2(S_ExpProgressBar.Instance.GlobalPosition, S_ExpProgressBar.Instance.Size),
+									"这个表示你的经验，当然现在你看不到，因为你还没有经验"),
+								() => panel.ShowRect(
+									new Rect2(S_HpProgressBar.Instance.GlobalPosition, S_HpProgressBar.Instance.Size), 
+									"这个表示你的血量"),
+								() => panel.ShowRect(
+									new Rect2(S_ShieldProgressBar.Instance.GlobalPosition, S_ShieldProgressBar.Instance.Size), 
+									"这个表示你的护盾"),
+								() => panel.ShowRect(
+									new Rect2(S_ShieldCooldownProgressBar.Instance.GlobalPosition, S_ShieldCooldownProgressBar.Instance.Size), 
+									"这个表示你的护盾充能"),
+							]);
+						}
+					);
+			}
+
 			UiManager.Open_Slogan();
 		};
 

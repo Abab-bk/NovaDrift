@@ -45,6 +45,7 @@ public static partial class UiManager
         public const string StatsMonitor = "StatsMonitor";
         public const string StatsMonitorItem = "StatsMonitorItem";
         public const string Tip = "Tip";
+        public const string Tutorial = "Tutorial";
     }
 
     /// <summary>
@@ -1917,6 +1918,54 @@ public static partial class UiManager
     public static NovaDrift.Scripts.Ui.Tip.TipPanel[] Get_Tip_Instance()
     {
         return GetUiInstance<NovaDrift.Scripts.Ui.Tip.TipPanel>(nameof(NovaDrift.Scripts.Ui.Tip.Tip));
+    }
+
+    /// <summary>
+    /// 创建 Tutorial, 并返回UI实例, 该函数不会打开 Ui
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Tutorial.TutorialPanel Create_Tutorial()
+    {
+        return CreateUi<NovaDrift.Scripts.Ui.Tutorial.TutorialPanel>(UiName.Tutorial);
+    }
+
+    /// <summary>
+    /// 打开 Tutorial, 并返回UI实例
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Tutorial.TutorialPanel Open_Tutorial()
+    {
+        return OpenUi<NovaDrift.Scripts.Ui.Tutorial.TutorialPanel>(UiName.Tutorial);
+    }
+
+    /// <summary>
+    /// 隐藏 Tutorial 的所有实例
+    /// </summary>
+    public static void Hide_Tutorial()
+    {
+        var uiInstance = Get_Tutorial_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.HideUi();
+        }
+    }
+
+    /// <summary>
+    /// 销毁 Tutorial 的所有实例
+    /// </summary>
+    public static void Destroy_Tutorial()
+    {
+        var uiInstance = Get_Tutorial_Instance();
+        foreach (var uiPanel in uiInstance)
+        {
+            uiPanel.Destroy();
+        }
+    }
+
+    /// <summary>
+    /// 获取所有 Tutorial 的实例, 如果没有实例, 则返回一个空数组
+    /// </summary>
+    public static NovaDrift.Scripts.Ui.Tutorial.TutorialPanel[] Get_Tutorial_Instance()
+    {
+        return GetUiInstance<NovaDrift.Scripts.Ui.Tutorial.TutorialPanel>(nameof(NovaDrift.Scripts.Ui.Tutorial.Tutorial));
     }
 
 }
