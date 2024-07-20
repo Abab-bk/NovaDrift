@@ -467,6 +467,14 @@ func _validate_property(property: Dictionary) -> void:
 
 	notify_property_list_changed()
 
+@export_group("Camera Shake")
+@export_range(0.000, 1.0) var SHAKE_DECAY: float = 0.02 ## How long it takes the camera to completely stop shaking.
+@export_range(0.0, 2.0) var SHAKE_ANGLE_MULTIPLIER: float = 1.0 ## How much the camera will rotate during shakes (won't work if IGNORE ROTATION is enabled).
+@export_range(0.0, 2.0) var SHAKE_POSITION_MULTIPLIER: float = 1.0 ## How much the camera will shake.
+@export_range(0.0,100.0) var shake_strength: float = 0.0 ## This variable determines the current shake strength.
+var position_tilt: Vector2 = Vector2.ZERO ## The camera's position tilt offset.
+var angle_tilt: float = 0.0 ## The camera's angle tilt offset.	
+
 #region Private Functions
 
 func _enter_tree() -> void:
@@ -491,9 +499,20 @@ func _process(delta: float) -> void:
 
 
 func _physics_process(delta: float):
+	if(is_active() && shake_strength>0.1):
+		shake_strength = min(shake_strength, 50)
+		var rotation = randf_range(-shake_strength * SHAKE_ANGLE_MULTIPLIER, shake_strength * SHAKE_ANGLE_MULTIPLIER) + angle_tilt
+		var offset = Vector2(randf_range(-shake_strength * SHAKE_POSITION_MULTIPLIER, shake_strength * SHAKE_POSITION_MULTIPLIER), randf_range(-shake_strength * SHAKE_POSITION_MULTIPLIER, shake_strength * SHAKE_POSITION_MULTIPLIER)) + position_tilt
+		if (shake_strength > 0): # Checking if the shake strength is greater than 0.
+			shake_strength = lerp(shake_strength, 0.0, SHAKE_DECAY) # Slowly decreasing the shake strength if so.
+		self.get_pcam_host_owner().camera_2d.offset=offset
+	
 	if not _follow_target_physics_based: return
 	_process_logic(delta)
-
+	
+	
+func add_shake(value: float) -> void:
+	shake_strength += value
 
 func _process_logic(delta: float) -> void:
 	if not _is_active:

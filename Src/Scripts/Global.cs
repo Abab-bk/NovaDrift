@@ -76,6 +76,11 @@ public class GameContext
         _camera.Call("erase_follow_targets", target);
     }
 
+    public void AddShake(float value)
+    {
+        _camera.Call("add_shake", value);
+    }
+
     public void SetFollowMode(FollowMode followMode)
     {
         if (_camera == null) return;
@@ -219,11 +224,7 @@ public static class Global
 
     public static void Shake(float strength, float duration = 0.5f)
     {
-        ShakeDirector.Shake(
-            NoiseShake.CreateWithNoise(Noise)
-                .WithDuration(0.5f)
-                .WithEulersAmount(new Vector3(strength, strength, 0.02f))
-        );
+        GameContext.AddShake(strength);
     }
     
     public static void SetWorldCorrection(GradientTexture1D color)

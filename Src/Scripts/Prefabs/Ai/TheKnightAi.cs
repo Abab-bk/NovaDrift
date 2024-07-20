@@ -235,7 +235,7 @@ public partial class TheKnightAi : MobAiComponent
         sword.Area2D.BodyEntered += (body) =>
         {
             if (body is not Player player) return;
-            Global.Shake(10f);
+            Global.Shake(1f);
             player.TakeDamageWithoutKnockBack(Mob.Stats.Damage.Value);
         };
         
