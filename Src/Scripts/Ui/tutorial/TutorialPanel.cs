@@ -7,7 +7,7 @@ namespace NovaDrift.Scripts.Ui.Tutorial;
 
 public partial class TutorialPanel : Tutorial
 {
-    private Action _drawCommands;
+    private Action _drawCommand;
 
     public async void Launch(Func<Task>[] commands)
     {
@@ -17,9 +17,7 @@ public partial class TutorialPanel : Tutorial
         {
             await command();
         }
-
-        await ShowLabelAndAwait("再次点击屏幕开始冒险！");
-
+        
         var tween = CreateTween();
         tween.TweenProperty(this, "modulate", Modulate with { A = 0f }, 0.2f);
         await ToSignal(tween, Tween.SignalName.Finished);
@@ -40,15 +38,23 @@ public partial class TutorialPanel : Tutorial
 
     public async Task ShowRect(Rect2 rect2, string text = "")
     {
-        _drawCommands = () => DrawRect(rect2, Colors.White, false, 10f);
+        _drawCommand = () => DrawRect(rect2, Colors.White, false, 10f);
         QueueRedraw();
         if (text != "") ShowLabel(text);
         await AwaitPressed();
     }
-    
+
+    public async Task ShowCircle(Vector2 position, float radius, string text = "")
+    {
+        _drawCommand = () => DrawCircle(position, radius, Colors.White, false, 10f);
+        QueueRedraw();
+        if (text != "") ShowLabel(text);
+        await AwaitPressed();
+    }
+
     public void CleanDraw()
     {
-        _drawCommands = null;
+        _drawCommand = null;
         QueueRedraw();
     }
     
@@ -68,6 +74,6 @@ public partial class TutorialPanel : Tutorial
 
     public override void _Draw()
     {
-        _drawCommands?.Invoke();
+        _drawCommand?.Invoke();
     }
 }

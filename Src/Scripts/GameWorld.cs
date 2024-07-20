@@ -1,3 +1,4 @@
+using System.Linq;
 using AcidJoystick;
 using AcidWallStudio.AcidUtilities;
 using AcidWallStudio.Fmod;
@@ -61,6 +62,7 @@ public partial class GameWorld : Node2D
 		
 		EventBus.OnGameInit += Init;
 		EventBus.OnGameOver += GameOver;
+		EventBus.OnGameStart += GameStart;
 		
 		// Global.GameContext.SetCamera(GetNode<Node2D>("PhantomCamera2D"));
 		
@@ -80,6 +82,10 @@ public partial class GameWorld : Node2D
 		
 		Logger.Log("[Game] Debug mode, enter world.");
 		EventBus.OnGameInit?.Invoke();
+	}
+
+	private void GameStart()
+	{
 	}
 
 	private void ShowBackground()
@@ -138,6 +144,11 @@ public partial class GameWorld : Node2D
 		ShowBackground();
 		
 		EventBus.OnGameStart?.Invoke();
+	}
+	
+	public void StartTutorial()
+	{
+		UiManager.Get_Hud_Instance().First()?.StartTutorial(_moveJoystick.GlobalPosition, _shootBtn.GlobalPosition);
 	}
 
 	private async void GameOver()
