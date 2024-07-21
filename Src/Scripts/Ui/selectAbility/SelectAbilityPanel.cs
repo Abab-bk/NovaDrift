@@ -24,6 +24,8 @@ public partial class SelectAbilityPanel : SelectAbility
         S_CloseBtn.Instance.Pressed += Destroy;
         
         GenerateAbilityPanel(new AbilityGenerateConfig());
+        OnAbilitySelected(S_ItemRow2.Instance.GetChild(0) as AbilityItemPanel);
+        S_Indicator.Instance.Hide();
     }
 
     private void GenerateAbilityPanel(AbilityGenerateConfig config)
