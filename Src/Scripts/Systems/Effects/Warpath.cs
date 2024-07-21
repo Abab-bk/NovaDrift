@@ -4,6 +4,7 @@ using NovaDrift.addons.AcidStats;
 
 namespace NovaDrift.Scripts.Systems.Effects;
 
+// TODO: 需要优化
 public class Warpath : Effect
 {
     private int _token;
@@ -35,7 +36,6 @@ public class Warpath : Effect
         UpdateStats();
     }
 
-    // TODO: 如果给 Shooter 加换了武器就没了，所以换武器的时候写个继承
     private void UpdateStats()
     {
         Target.Stats.ShootKnockBack.RemoveAllModifiersFromSource(this);
