@@ -168,7 +168,7 @@ public partial class Player : Actor
     {
         base.OnHit(value);
 
-        var shakeLevel = MathF.Max(10f, value / 10f);
+        var shakeLevel = MathF.Max(10f, value / 20f);
         
         Global.Shake(shakeLevel);
     }
@@ -242,6 +242,7 @@ public partial class Player : Actor
         if (UiManager.Get_Hud_Instance().Length <= 0) return;
         UiManager.Get_Hud_Instance()[0].UpdateExpBar(Stats.Exp.BaseValue / Stats.Exp.MaxValue.Value);
         UiManager.Get_Hud_Instance()[0].UpdateHpBar(Stats.Health.BaseValue / Stats.Health.MaxValue.Value);
+        UiManager.Get_Hud_Instance()[0].UpdateShieldBar(Shield.Health.BaseValue / Shield.Health.MaxValue.Value);
     }
 
     public void RemoveSelf()

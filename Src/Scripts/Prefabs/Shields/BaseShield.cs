@@ -1,10 +1,12 @@
 using Godot;
 using System;
 using System.Collections.Generic;
+using AcidWallStudio.Fmod;
 using Godot.Collections;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Components;
 using NovaDrift.Scripts.Systems;
+using NovaDrift.Scripts.Systems.Pool;
 using Attribute = NovaDrift.addons.AcidStats.Attribute;
 
 namespace NovaDrift.Scripts.Prefabs.Shields;
@@ -96,35 +98,54 @@ public partial class BaseShield : Node2D
         
         OnHurtEvent?.Invoke(node2D);
 
-        if (Health.BaseValue > 0) return;
+        var vfx = Pool.BounceVfxPool.Get();
+        vfx.GlobalPosition = GlobalPosition;
+        vfx.Rotation = -Rotation;
+        vfx.Modulate = Target.Modulate;
+        vfx.Emitting = true;
         
-        Hide();
-        OnBreak?.Invoke();
-        Break();
-        CoolDownTimer.Stop();
-        CoolDownTimer.Start();
+        if (Health.BaseValue <= 0) Break();
     }
 
     protected virtual void Break()
     {
+        OnBreak?.Invoke();
         IsActive = false;
+
+        SoundManager.PlaySound("event:/Something/ShieldBreak");
+        
+        var tween = CreateTween();
+        tween.TweenProperty(this, "modulate", Modulate with { A = 0f }, 0.2f);
+        tween.Finished += Hide;
+        
         ShieldArea.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Disabled);
         HurtBox.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Disabled);
+        
         OnCharge?.Invoke();
+        
+        CoolDownTimer.Stop();
+        CoolDownTimer.Start();
     }
 
     protected virtual void Active()
     {
         IsActive = true;
+        
+        Show();
+        var tween = CreateTween();
+        tween.TweenProperty(this, "modulate", Modulate with { A = 1f }, 0.2f);
+
+        SoundManager.PlayUiSound("event:/Something/ShieldActive");
+        
+        Health.Replenish();
+        ShieldArea.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Inherit);
+        HurtBox.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Inherit);
+        
         OnActive?.Invoke();
     }
 
     protected virtual void OnCoolDownTimeout()
     {
-        Show();
-        Health.Replenish();
-        ShieldArea.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Inherit);
-        HurtBox.CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Inherit);
         Active();
     }
 

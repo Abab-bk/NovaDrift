@@ -500,7 +500,7 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float):
 	if(is_active() && shake_strength>0.1):
-		shake_strength = min(shake_strength, 50)
+		shake_strength = min(shake_strength, 40)
 		var rotation = randf_range(-shake_strength * SHAKE_ANGLE_MULTIPLIER, shake_strength * SHAKE_ANGLE_MULTIPLIER) + angle_tilt
 		var offset = Vector2(randf_range(-shake_strength * SHAKE_POSITION_MULTIPLIER, shake_strength * SHAKE_POSITION_MULTIPLIER), randf_range(-shake_strength * SHAKE_POSITION_MULTIPLIER, shake_strength * SHAKE_POSITION_MULTIPLIER)) + position_tilt
 		if (shake_strength > 0): # Checking if the shake strength is greater than 0.
