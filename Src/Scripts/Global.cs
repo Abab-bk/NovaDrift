@@ -5,6 +5,7 @@ using Godot;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
 using NovaDrift.Scripts.Prefabs.Components;
+using NovaDrift.Scripts.Systems.Saver;
 
 namespace NovaDrift.Scripts;
 
@@ -172,6 +173,9 @@ public static class Global
     public static WorldEnvironment WorldEnvironment;
     public static bool ShowLogo = true;
     public static readonly GameContext GameContext = new GameContext();
+    
+    // Saver ========
+    public static CdKeySaveNode CdKeySaveNode;
 
     public static int AcidCoins
     {

@@ -19,6 +19,7 @@
   <ItemGroup>
     <PackageReference Include="GDTask" Version="1.2.2" />
     <PackageReference Include="GodotSharpSome.Drawing2D" Version="0.23.0" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.3" />
     <ProjectReference Include="..\GodotGetNode\GodotGetNode.csproj" ReferenceOutputAssembly="false" OutputItemType="Analyzer" />
   </ItemGroup>
   <ItemGroup>

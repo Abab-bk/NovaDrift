@@ -1,4 +1,4 @@
-[gd_scene load_steps=22 format=3 uid="uid://d25jyaf2cexon"]
+[gd_scene load_steps=23 format=3 uid="uid://d25jyaf2cexon"]
 
 [ext_resource type="Script" path="res://Scripts/GameWorld.cs" id="1_xxmb6"]
 [ext_resource type="Texture2D" uid="uid://0uduflkrtr1h" path="res://Assets/Textures/Particles/Star.png" id="2_4h7xe"]
@@ -14,6 +14,7 @@
 [ext_resource type="Script" path="res://Scripts/Prefabs/Components/SpawnPoint.cs" id="11_euylg"]
 [ext_resource type="Environment" uid="uid://dwua3nxtba68l" path="res://Assets/Environments/Default.tres" id="12_ltxuf"]
 [ext_resource type="Texture2D" uid="uid://bhgimrvksym6q" path="res://Assets/Textures/CircleOutline.png" id="14_r8155"]
+[ext_resource type="Script" path="res://Scripts/Systems/Saver/CdKeySaveNode.cs" id="15_jve0g"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_34d4f"]
 
@@ -424,3 +425,6 @@ visible = false
 modulate = Color(0.646, 0.64, 1, 1)
 position = Vector2(1268, 781)
 texture = ExtResource("14_r8155")
+
+[node name="CdKeySaveNode" type="Node" parent="."]
+script = ExtResource("15_jve0g")

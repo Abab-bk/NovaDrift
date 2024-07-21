@@ -29,7 +29,6 @@ modulate = Color(1, 0.329412, 0.184314, 1)
 script = ExtResource("1_8gjd8")
 
 [node name="Area2D" type="Area2D" parent="."]
-scale = Vector2(1, 1)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("CircleShape2D_d3tah")

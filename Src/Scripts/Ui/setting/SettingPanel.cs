@@ -1,4 +1,3 @@
-using System.Linq;
 using AcidWallStudio.AcidUtilities;
 using AcidWallStudio.Fmod;
 using DsUi;
@@ -10,7 +9,7 @@ namespace NovaDrift.Scripts.Ui.Setting;
 public partial class SettingPanel : Setting
 {
     private static Control _currentColorBlindModePanel;
-    private static int _currentColorBlindMode = 0;
+    private static int _currentColorBlindMode;
     
     public override void _Ready()
     {
@@ -31,7 +30,6 @@ public partial class SettingPanel : Setting
         S_ColorBlindMode2.Instance.Pressed += () => { ChangeColorBlindMode(2); };
         S_ColorBlindMode3.Instance.Pressed += () => { ChangeColorBlindMode(3); };
         
-        // TODO: 存档用过的兑换码
         S_CdkeyBtn.Instance.Pressed += () =>
         {
             var lineEdit = new LineEdit()
@@ -52,7 +50,9 @@ public partial class SettingPanel : Setting
                     () => { },
                     () =>
                     {
-                        if (lineEdit.Text.Trim() == "")
+                        var key = lineEdit.Text.Trim();
+                        
+                        if (key == "")
                         {
                             UiManager
                                 .Open_Popup()
@@ -63,7 +63,18 @@ public partial class SettingPanel : Setting
                             return;
                         }
 
-                        var content = Encryptor.Decode(lineEdit.Text.Trim());
+                        var content = Encryptor.Decode(key);
+
+                        if (Global.CdKeySaveNode.HasCdKey(key))
+                        {
+                            UiManager
+                                .Open_Popup()
+                                .SetConfig(
+                                    "兑换码",
+                                    "兑换码已使用"
+                                );
+                            return;
+                        }
 
                         if (!Reward.ParseReward(content, out var reward))
                         {
@@ -80,7 +91,10 @@ public partial class SettingPanel : Setting
                             .Open_Popup()
                             .SetConfig(
                                 "兑换成功",
-                                reward.GetReward()
+                                reward.GetReward(),
+                                false,
+                                null,
+                                () => Global.CdKeySaveNode.AddCdKey(key)
                             );
                     }
                 );

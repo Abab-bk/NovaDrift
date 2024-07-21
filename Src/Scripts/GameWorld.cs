@@ -9,6 +9,7 @@ using GTweensGodot.Extensions;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Components;
 using NovaDrift.Scripts.Systems.Pool;
+using Saveable;
 
 namespace NovaDrift.Scripts;
 
@@ -67,6 +68,7 @@ public partial class GameWorld : Node2D
 		// Global.GameContext.SetCamera(GetNode<Node2D>("PhantomCamera2D"));
 		
 		AcidSaver.LoadAll();
+		SaveSystem.LoadFile(Constants.SavePath, GetTree().Root, FileAccess.CompressionMode.Fastlz);
 
 		Global.Something = GetNode<Node2D>("Something");
 		

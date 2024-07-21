@@ -8,6 +8,8 @@ namespace NovaDrift.Scripts;
 
 public static class Constants
 {
+    public const string SavePath = "user://save.dat";
+    
     public static class Points
     {
         public const string
