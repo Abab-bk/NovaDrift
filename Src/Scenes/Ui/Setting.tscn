@@ -284,9 +284,17 @@ layout_mode = 2
 text = "兑换码"
 
 [node name="Button2" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer3/HBoxContainer"]
+visible = false
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 text = "删除存档"
+
+[node name="LogOutBtn" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer/MarginContainer/VBoxContainer2/VBoxContainer3/HBoxContainer"]
+unique_name_in_owner = true
+visible = false
+custom_minimum_size = Vector2(500, 0)
+layout_mode = 2
+text = "退出账号"
 
 [node name="CloseBtn" type="Button" parent="MarginContainer/VBoxContainer/VBoxContainer"]
 unique_name_in_owner = true

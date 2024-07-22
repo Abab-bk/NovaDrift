@@ -415,6 +415,15 @@ public abstract partial class Setting : UiBase
     }
 
     /// <summary>
+    /// 类型: <see cref="Godot.Button"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer3.HBoxContainer.LogOutBtn
+    /// </summary>
+    public class LogOutBtn : UiNode<SettingPanel, Godot.Button, LogOutBtn>
+    {
+        public LogOutBtn(SettingPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
+        public override LogOutBtn Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
+    }
+
+    /// <summary>
     /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer3.HBoxContainer
     /// </summary>
     public class HBoxContainer_1 : UiNode<SettingPanel, Godot.HBoxContainer, HBoxContainer_1>
@@ -444,6 +453,19 @@ public abstract partial class Setting : UiBase
             }
         }
         private Button2 _L_Button2;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer3.LogOutBtn
+        /// </summary>
+        public LogOutBtn L_LogOutBtn
+        {
+            get
+            {
+                if (_L_LogOutBtn == null) _L_LogOutBtn = new LogOutBtn(UiPanel, Instance.GetNode<Godot.Button>("LogOutBtn"));
+                return _L_LogOutBtn;
+            }
+        }
+        private LogOutBtn _L_LogOutBtn;
 
         public HBoxContainer_1(SettingPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
         public override HBoxContainer_1 Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
@@ -715,6 +737,11 @@ public abstract partial class Setting : UiBase
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer3.HBoxContainer.Button2
     /// </summary>
     public Button2 S_Button2 => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer2.L_VBoxContainer3.L_HBoxContainer.L_Button2;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer3.HBoxContainer.LogOutBtn
+    /// </summary>
+    public LogOutBtn S_LogOutBtn => L_MarginContainer.L_VBoxContainer.L_VBoxContainer.L_MarginContainer.L_VBoxContainer2.L_VBoxContainer3.L_HBoxContainer.L_LogOutBtn;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Setting.MarginContainer.VBoxContainer.VBoxContainer.MarginContainer.VBoxContainer2.VBoxContainer3

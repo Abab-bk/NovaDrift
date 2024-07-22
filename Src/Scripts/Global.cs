@@ -1,4 +1,5 @@
 ﻿using System;
+using AcidWallStudio.AcidUtilities;
 using AcidWallStudio.Fmod;
 using DwarfImpulse;
 using Godot;
@@ -164,6 +165,7 @@ public static class Global
     public static GamePlatform CurrentPlatform = GamePlatform.Desktop;
     public static InputDevice CurrentInputDevice = InputDevice.Keyboard;
 
+    public static TapTapNode TapTapNode;
     public static Player Player;
     public static Node2D Something;
     public static GameWorld GameWorld;
