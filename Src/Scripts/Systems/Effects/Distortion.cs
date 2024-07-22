@@ -7,13 +7,15 @@ namespace NovaDrift.Scripts.Systems.Effects;
 
 public class Distortion : Effect
 {
+    private PackedScene _circleBlastScene = GD.Load<PackedScene>("res://Scenes/Vfx/CircleBlast.tscn");
+    
     public override void OnCreate()
     {
         base.OnCreate();
         EventBus.OnMobDied += mob =>
         {
             if (Wizard.GetChance() > Values[0]) return;
-            var circleBlast = GD.Load<PackedScene>("res://Scenes/Vfx/CircleBlast.tscn").Instantiate<CircleBlast>();
+            var circleBlast = _circleBlastScene.Instantiate<CircleBlast>();
             circleBlast.IsPlayer = Target.IsPlayer;
             circleBlast.Radius = 100f;
             circleBlast.GlobalPosition = mob.GlobalPosition;

@@ -26,7 +26,7 @@ public static class DataBuilder
     public static readonly List<int> MutationAbilityIdPool = new List<int>();
 
     // TODO: 在这里修改默认解锁能力树数量，不是 TODO 是 TIP
-    private const int DefaultMaxAbilityTreeId = 1014;
+    private const int DefaultMaxAbilityTreeId = 1013;
     private static readonly List<int> UnlockedAbilityTreeIds = new List<int>();
     
     public static readonly Dictionary<int, StoreModifier> StoreModifiers = new()

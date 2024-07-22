@@ -7,28 +7,30 @@ namespace NovaDrift.Scripts.Systems.Effects;
 public class Discharge : Effect
 {
     private ElectricArc _arc;
+
+    private readonly PackedScene _scene = GD.Load<PackedScene>("res://Scenes/Vfx/ElectricArc.tscn");
     
-    // Note: Shield Power should affect arc width.
     public override void OnCreate()
     {
         base.OnCreate();
 
         Target.OnShooting += () =>
         {
+            if (!Target.Shield.IsActive) return;
             Target.Shield.TakeDamage(Target.Stats.Damage.Value * Values[1], Target);
-            if (_arc != null) return;
+        };
+        
+        Target.StopShooting += DestroyArc;
+        Target.StartShooting += () =>
+        {
+            if (!Target.Shield.IsActive) return;
             CreateArc();
         };
-        Target.StopShooting += DestroyArc;
-        
-        // Target.Stats.ShieldRadius.ValueChanged += f => { ReCalculateArc(); };
-        // Target.Stats.ShieldPower.ValueChanged += f => { ReCalculateArc(); };
     }
 
     private void CreateArc()
     {
-        var arc = GD.Load<PackedScene>("res://Scenes/Vfx/ElectricArc.tscn").Instantiate() as ElectricArc;
-        if (arc == null) return;
+        var arc = _scene.Instantiate<ElectricArc>();
         arc.IsPlayer = true;
         _arc = arc;
         Target.AddChild(arc);

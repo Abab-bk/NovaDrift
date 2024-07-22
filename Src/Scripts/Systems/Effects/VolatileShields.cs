@@ -8,13 +8,14 @@ namespace NovaDrift.Scripts.Systems.Effects;
 
 public class VolatileShields : Effect
 {
+    private readonly PackedScene _scene = GD.Load<PackedScene>("res://Scenes/Vfx/ElectricArc.tscn");
+    
     public override void OnCreate()
     {
         base.OnCreate();
         Target.Shield.OnBreak += () =>
         {
-            var arc = GD.Load<PackedScene>("res://Scenes/Vfx/ElectricArc.tscn").Instantiate() as ElectricArc;
-            if (arc == null) return;
+            var arc = _scene.Instantiate<ElectricArc>();
             arc.IsPlayer = true;
             arc.Radius = Target.Stats.ShieldRadius.Value * (1f + Target.Stats.ShieldPower.Value);
             Target.AddChild(arc);
