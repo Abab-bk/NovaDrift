@@ -1,13 +1,45 @@
+using System;
+using AcidWallStudio.AcidUtilities;
+using Godot;
+using NovaDrift.Scripts.Prefabs.Bullets;
 using NovaDrift.Scripts.Prefabs.Components;
+using NovaDrift.Scripts.Prefabs.Others;
 using NovaDrift.Scripts.Systems;
 
 namespace NovaDrift.Scripts.Prefabs.Weapons;
 
 public partial class GrenadeShooter : Shooter
 {
+    private PackedScene _mine = GD.Load<PackedScene>("res://Scenes/Prefabs/Others/NormalMine.tscn");
+    
+    public override void Init()
+    {
+        base.Init();
+
+        OnShoot += bullet =>
+        {
+            if (bullet is not Grenade grenade) return;
+            grenade.OnBlast += pos =>
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    var mine = _mine.Instantiate<Mine>();
+                    mine.RotationDegrees = Random.Shared.FloatRange(-360f, 360f);
+                    mine.IsPlayer = true;
+                    mine.GlobalPosition = pos + new Vector2(
+                        Random.Shared.FloatRange(-Actor.Stats.BlastRadius.Value, Actor.Stats.BlastRadius.Value),
+                        Random.Shared.FloatRange(-Actor.Stats.BlastRadius.Value, Actor.Stats.BlastRadius.Value)
+                        );
+                    mine.Life = 5f;
+                    Global.GameWorld.CallDeferred(Node.MethodName.AddChild, mine);
+                }
+            };
+        };
+    }
+
     public override void SetShootCd(float value)
     {
-        base.SetShootCd(value * 2f);
+        base.SetShootCd(value * 4f);
     }
 
     public override void _Ready()

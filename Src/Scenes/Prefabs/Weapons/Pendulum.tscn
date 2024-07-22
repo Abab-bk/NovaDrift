@@ -1,0 +1,20 @@
+[gd_scene load_steps=5 format=3 uid="uid://dhtqe5qtt8k1a"]
+
+[ext_resource type="Script" path="res://Scripts/Prefabs/Weapons/Pendulum.cs" id="1_c524a"]
+[ext_resource type="Script" path="res://addons/ropesim/Rope.gd" id="1_lst5o"]
+[ext_resource type="Script" path="res://addons/ropesim/RopeRendererLine2D.gd" id="2_u4yyg"]
+[ext_resource type="PackedScene" uid="uid://baqm5ajc13gox" path="res://Scenes/Prefabs/Others/PendulumHead.tscn" id="3_jrxil"]
+
+[node name="Pendulum" type="Node2D"]
+script = ExtResource("1_c524a")
+
+[node name="Rope" type="Node2D" parent="."]
+script = ExtResource("1_lst5o")
+
+[node name="RopeRendererLine2D" type="Line2D" parent="Rope"]
+points = PackedVector2Array(0, 0, 0, 11.2227, 0, 22.3719, 0, 33.4202, 0, 44.3467, 0, 55.136, 0, 65.7771, 0, 76.2626, 0, 86.5879, 0, 96.7505, 0, 106.751)
+script = ExtResource("2_u4yyg")
+
+[node name="PendulumHead" parent="." instance=ExtResource("3_jrxil")]
+unique_name_in_owner = true
+position = Vector2(0, 106)

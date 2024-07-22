@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://baqm5ajc13gox"]
+
+[ext_resource type="Script" path="res://Scripts/Prefabs/Others/PendulumHead.cs" id="1_havqg"]
+
+[node name="PendulumHead" type="Node2D"]
+script = ExtResource("1_havqg")

@@ -7,9 +7,9 @@ namespace NovaDrift.Scripts.Prefabs.Components;
 [GlobalClass]
 public partial class HitBox : Area2D
 {
-    [Export] public bool IsWorld = false;
+    [Export] public bool IsWorld;
     
-    private bool _isPlayer = false;
+    private bool _isPlayer;
     public float Damage = 1f;
     
     // TODO: 这里不调用，因为这俩事件是从HurtBox发出的，有点奇怪，应该修改

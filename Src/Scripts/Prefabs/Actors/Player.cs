@@ -200,6 +200,8 @@ public partial class Player : Actor
         Stats.BlastRadius.BaseValue = DataBuilder.Constants.PlayerBlastRadius;
         Stats.BurstFire.BaseValue = DataBuilder.Constants.PlayerBurstFire;
         
+        Stats.MaxShield.BaseValue = DataBuilder.Constants.PlayerMaxShield;
+        
         Scale = new Vector2 { X = Stats.Size.Value, Y = Stats.Size.Value };
         
         Stats.Exp.ValueToMax += UpLevel;
@@ -213,14 +215,18 @@ public partial class Player : Actor
         if (IsDead) return;
         IsDead = true;
         
-        if (Global.GameContext.ReliveCount > 0)
-        {
-            EventBus.OnPlayerDead?.Invoke();
-            EventBus.OnGameOver?.Invoke();
-            return;
-        }
-        Global.StopGame();
-        UiManager.Open_Relife();
+        EventBus.OnPlayerDead?.Invoke();
+        EventBus.OnGameOver?.Invoke();
+        
+        // TODO: 接入广告了再开下面的
+        // if (Global.GameContext.ReliveCount > 0)
+        // {
+        //     EventBus.OnPlayerDead?.Invoke();
+        //     EventBus.OnGameOver?.Invoke();
+        //     return;
+        // }
+        // Global.StopGame();
+        // UiManager.Open_Relife();
     }
 
     public void UpLevel(float value = 0f)

@@ -64,46 +64,13 @@ public partial class Shooter : BaseShooter
         _burstIntervalTimer.WaitTime = DataBuilder.Constants.BurstInterval;
         
         Actor.Stats.ShootSpeed.ValueChanged += SetShootCd;
+        
+        SetShootCd(Actor.Stats.ShootSpeed.Value);
     }
 
     public override void Shoot()
     {
         ShootWithConfig(_defaultPattern, (int)Actor.Stats.BulletCount.Value);
-        // if (!_shootTimer.IsStopped()) { return; }
-        // if (_isBursting) { return; }
-        //
-        // _isBursting = true;
-        //
-        // for (int x = 0; x < Actor.Stats.BurstFire.Value; x++)
-        // {
-        //     for (int i = 0; i < Actor.Stats.BulletCount.Value; i++)
-        //     {
-        //         BulletBase bullet = GetBulletFunc.Invoke(this);
-        //         
-        //         bullet.GlobalPosition = GlobalPosition;
-        //         if ((int)Actor.Stats.BulletCount.Value == 1)
-        //         {
-        //             bullet.Direction = bullet.Direction.Rotated(GlobalRotation);
-        //         }
-        //         else
-        //         {
-        //             float arcRad = Mathf.DegToRad(Actor.Stats.ShootSpread.Value);
-        //             float increment = arcRad / (Actor.Stats.BulletCount.Value - 1);
-        //             bullet.Direction = bullet.Direction.Rotated(Actor.GlobalRotation + increment * i - arcRad / 2);
-        //         }
-        //
-        //         Global.GameWorld.AddChild(bullet);
-        //         
-        //         _shootTimer.Start();
-        //
-        //         OnShoot?.Invoke(bullet);
-        //         bullet.OnHit += actor => { OnHit?.Invoke(actor); };
-        //         _burstIntervalTimer.Start();
-        //     }
-        // }
-        //
-        // _burstCooldownTimer.WaitTime = Actor.Stats.ShootSpeed.Value * Actor.Stats.BurstFire.Value;
-        // _burstCooldownTimer.Start();
     }
 
     public override void ShootWithConfig(BulletPattern bulletPattern, int bulletCount)

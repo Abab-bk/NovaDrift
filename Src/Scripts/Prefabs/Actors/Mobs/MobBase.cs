@@ -106,10 +106,10 @@ public partial class MobBase : Actor
         Stats.Size.BaseValue = MobInfo.Size;
         
         Stats.Health.MaxValue.BaseValue = MobInfo.Health;
-        Stats.Health.BaseValue = MobInfo.Health;
+        Stats.Health.BaseValue = Stats.Health.MaxValue.Value;
         
         Stats.Speed.BaseValue = MobInfo.Speed + Stats.Level * 1;
-        Stats.Damage.BaseValue = MobInfo.Damage + Stats.Level * 4;
+        Stats.Damage.BaseValue = MobInfo.Damage + Stats.Level * 2;
         Stats.ShootSpeed.BaseValue = MobInfo.ShootCd;
 
         Stats.Targeting.BaseValue = MobInfo.Targeting;
@@ -142,7 +142,7 @@ public partial class MobBase : Actor
         
         EventBus.OnMobDied?.Invoke(this);
         
-        Global.Shake(10f);
+        Global.Shake(1f);
         
         OnDied?.Invoke();
     }

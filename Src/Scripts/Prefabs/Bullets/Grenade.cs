@@ -1,3 +1,4 @@
+using System;
 using Godot;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Systems;
@@ -8,6 +9,8 @@ namespace NovaDrift.Scripts.Prefabs.Bullets;
 
 public partial class Grenade : BulletBase
 {
+    public event Action<Vector2> OnBlast;
+    
     private float _deceleration = 100f;
     private float _acceleration = 300f;
     private Vector2 _maxVelocity = new Vector2(300f, 300f);
@@ -49,6 +52,9 @@ public partial class Grenade : BulletBase
         blast.SetBlastRadius(Target.Stats.BlastRadius.Value);
         blast.Show();
         blast.Play();
+        
+        OnBlast?.Invoke(GlobalPosition);
+        
         QueueFree();
     }
 

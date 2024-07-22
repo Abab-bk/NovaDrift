@@ -34,6 +34,7 @@ public sealed partial class Constants : Luban.BeanBase
         PlayerBlastRadius = _buf.GetProperty("player_blast_radius").GetSingle();
         MaxLevel = _buf.GetProperty("max_level").GetSingle();
         MaxMobCount = _buf.GetProperty("max_mob_count").GetInt32();
+        PlayerMaxShield = _buf.GetProperty("player_max_shield").GetSingle();
     }
 
     public static Constants DeserializeConstants(JsonElement _buf)
@@ -109,12 +110,17 @@ public sealed partial class Constants : Luban.BeanBase
     /// 最大同屏怪物数量
     /// </summary>
     public readonly int MaxMobCount;
+    /// <summary>
+    /// 默认护盾血量
+    /// </summary>
+    public readonly float PlayerMaxShield;
    
     public const int __ID__ = 1581691183;
     public override int GetTypeId() => __ID__;
 
     public  void ResolveRef(Tables tables)
     {
+        
         
         
         
@@ -154,6 +160,7 @@ public sealed partial class Constants : Luban.BeanBase
         + "playerBlastRadius:" + PlayerBlastRadius + ","
         + "maxLevel:" + MaxLevel + ","
         + "maxMobCount:" + MaxMobCount + ","
+        + "playerMaxShield:" + PlayerMaxShield + ","
         + "}";
     }
 }

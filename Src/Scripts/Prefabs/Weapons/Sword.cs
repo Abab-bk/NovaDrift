@@ -1,4 +1,3 @@
-using System;
 using Godot;
 using GTweens.Builders;
 using GTweens.Easings;
@@ -6,6 +5,7 @@ using GTweens.Tweens;
 using GTweensGodot.Extensions;
 using NovaDrift.Scripts.Prefabs.Components;
 using NovaDrift.Scripts.Systems;
+using NovaDrift.Scripts.Systems.BulletPatterns;
 
 namespace NovaDrift.Scripts.Prefabs.Weapons;
 
@@ -37,6 +37,8 @@ public partial class Sword : BaseShooter
 
     private HitBox _hitBox1;
     private HitBox _hitBox2;
+
+    private readonly BulletPattern _pattern = new ShotGunPattern();
     
     public override void Init()
     {
@@ -55,39 +57,13 @@ public partial class Sword : BaseShooter
         _hitBox1 = GetNode<HitBox>("%HitBox1");
         _hitBox2 = GetNode<HitBox>("%HitBox2");
 
-        _hitBox1
-            .SetIsPlayer(IsPlayer)
-            .CallDeferred("set_collision_mask_value", (int)Layer.MobBullet, true);
-        _hitBox1
-            .SetIsPlayer(IsPlayer)
-            .CallDeferred("set_collision_mask_value", (int)Layer.MobBullet, true);
-        
-        _hitBox1.OnHitSomething += HandleHit;
-        _hitBox1.OnHitSomething += HandleHit;
+        _hitBox1.SetIsPlayer(IsPlayer);
+        _hitBox1.SetIsPlayer(IsPlayer);
+        Logger.Log("[Weapon] Init Sword");
 
-        EventBus.OnMobDied += mob =>
+        EventBus.OnMobDied += _ =>
         {
-            for (int i = 0; i < Actor.Stats.BulletCount.Value; i++)
-            {
-                BulletBase bullet = GetBulletFunc.Invoke(this);
-                
-                bullet.GlobalPosition = mob.GlobalPosition;
-                if ((int)Actor.Stats.BulletCount.Value == 1)
-                {
-                    bullet.Direction = bullet.Direction.Rotated(GlobalRotation);
-                }
-                else
-                {
-                    float arcRad = Mathf.DegToRad(Actor.Stats.ShootSpread.Value);
-                    float increment = arcRad / (Actor.Stats.BulletCount.Value - 1);
-                    bullet.Direction = bullet.Direction.Rotated(Actor.GlobalRotation + increment * i - arcRad / 2);
-                }
-
-                Global.GameWorld.CallDeferred(Node.MethodName.AddChild, bullet);
-                
-                OnShoot?.Invoke(bullet);
-                bullet.OnHit += actor => { OnHit?.Invoke(actor); };
-            }
+            ShootWithConfig(_pattern, (int)Actor.Stats.BulletCount.Value);
         };
         
         SetModifier();
@@ -112,13 +88,7 @@ public partial class Sword : BaseShooter
             return;
         }
 
-        _waveDuration = 0.3f + Actor.Stats.ShootSpeed.Value;
-    }
-
-    private void HandleHit(Node2D body)
-    {
-        if (body is not BulletBase bullet) return;
-        bullet.Destroy();
+        _waveDuration = 0.15f + Actor.Stats.ShootSpeed.Value;
     }
 
     private void MakeAnimation()
@@ -155,7 +125,7 @@ public partial class Sword : BaseShooter
         if (_isShooting) return;
 
         MakeAnimation();
-        Logger.Log("[Weapon: Sword] Wave");
+        
         _isShooting = true;
         _waveAnimation.Play();
     }

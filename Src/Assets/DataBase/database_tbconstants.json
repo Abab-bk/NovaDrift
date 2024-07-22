@@ -16,6 +16,7 @@
     "player_blast_damage": 20,
     "player_blast_radius": 100,
     "max_level": 500,
-    "max_mob_count": 100
+    "max_mob_count": 100,
+    "player_max_shield": 600
   }
 ]

@@ -96,6 +96,10 @@ public partial class TbConstants
     /// 最大同屏怪物数量
     /// </summary>
      public int MaxMobCount => _data.MaxMobCount;
+    /// <summary>
+    /// 默认护盾血量
+    /// </summary>
+     public float PlayerMaxShield => _data.PlayerMaxShield;
     
     public void ResolveRef(Tables tables)
     {

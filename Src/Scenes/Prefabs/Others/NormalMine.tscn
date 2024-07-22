@@ -1,0 +1,25 @@
+[gd_scene load_steps=5 format=3 uid="uid://bdtimt0l2exjy"]
+
+[ext_resource type="PackedScene" uid="uid://c8txa1iq1ppbf" path="res://Scenes/Prefabs/Others/Mine.tscn" id="1_61143"]
+[ext_resource type="Texture2D" uid="uid://cnklh0va5lpqf" path="res://Assets/Textures/Objects/Mine.png" id="2_xthqu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qwv45"]
+radius = 33.1361
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_nrgm4"]
+radius = 33.2415
+
+[node name="NormalMine" node_paths=PackedStringArray("_hurtBox", "MonitorArea", "_sprite") instance=ExtResource("1_61143")]
+_hurtBox = NodePath("PureHurtBox")
+MonitorArea = NodePath("MonitorArea")
+_sprite = NodePath("Sprite2D")
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(0, -5)
+texture = ExtResource("2_xthqu")
+
+[node name="CollisionShape2D" parent="PureHurtBox" index="0"]
+shape = SubResource("CircleShape2D_qwv45")
+
+[node name="CollisionShape2D" parent="MonitorArea" index="0"]
+shape = SubResource("CircleShape2D_nrgm4")

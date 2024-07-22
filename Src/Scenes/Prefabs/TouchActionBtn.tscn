@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://bbig40fwpjysr"]
+[gd_scene load_steps=5 format=3 uid="uid://bbig40fwpjysr"]
 
 [ext_resource type="Texture2D" uid="uid://bs7p83ffgsbsn" path="res://Assets/Ui/Buttons/BlinkBtn.png" id="1_jomk0"]
 [ext_resource type="Script" path="res://Scripts/Prefabs/TouchActionBtn.cs" id="1_rshqe"]
 [ext_resource type="Texture2D" uid="uid://covqhvhvn43ub" path="res://Assets/Ui/Buttons/BlinkBtnPressed.png" id="2_rxotb"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u5elp"]
+size = Vector2(300, 300)
 
 [node name="TouchActionBtn" type="Control"]
 layout_mode = 3
@@ -23,3 +26,4 @@ script = ExtResource("1_rshqe")
 position = Vector2(-150, -150)
 texture_normal = ExtResource("1_jomk0")
 texture_pressed = ExtResource("2_rxotb")
+shape = SubResource("RectangleShape2D_u5elp")

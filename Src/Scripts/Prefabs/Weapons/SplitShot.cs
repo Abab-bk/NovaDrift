@@ -1,5 +1,6 @@
 using AcidWallStudio.AcidUtilities;
 using Godot;
+using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Actors.Mobs;
 using NovaDrift.Scripts.Systems;
@@ -34,6 +35,8 @@ public partial class SplitShot : BaseShooter
         AddChild(_burstIntervalTimer);
         _burstIntervalTimer.OneShot = true;
         _burstIntervalTimer.WaitTime = DataBuilder.Constants.BurstInterval;
+        
+        Actor.Stats.BulletDegeneration.AddModifier(new StatModifier(-0.5f, StatModType.PercentAdd));
         
         base._Ready();
 
@@ -78,10 +81,7 @@ public partial class SplitShot : BaseShooter
                 if (bullet == null) return;
                 
                 bullet.GlobalPosition = GlobalPosition;
-                
-                float arcRad = Mathf.DegToRad(Actor.Stats.ShootSpread.Value);
-                float increment = arcRad / (Actor.Stats.BulletCount.Value - 1 + 3);
-                bullet.Direction = bullet.Direction.Rotated(Actor.GlobalRotation + increment * i - arcRad / 2);
+                bullet.Direction = bullet.Direction.Rotated(Mathf.DegToRad(360f / (Actor.Stats.BulletCount.Value + 3) * i + 1));
     
                 Global.GameWorld.AddChild(bullet);
                 
