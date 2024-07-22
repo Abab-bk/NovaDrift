@@ -61,7 +61,7 @@ public partial class TheKnightAi : MobAiComponent
             .SetDegeneration(Mob.Stats.BulletDegeneration.Value)
             .SetSteering(Mob.Stats.Targeting.Value)
             .Build();
-        Global.SetWorldCorrection(GD.Load<GradientTexture1D>("res://Assets/Gradients/KnightEnvironment.tres"));
+        // Global.SetWorldCorrection(GD.Load<GradientTexture1D>("res://Assets/Gradients/KnightEnvironment.tres"));
     }
 
     protected override void OnMobDied()

@@ -14,7 +14,7 @@ public partial class ClockworkMageAi : MobAiComponent
         base._Ready();
         Mob.DragonController = _dragonController;
         Mob.Tags.Add(Constants.Tags.IsDragonBone);
-        Global.SetWorldCorrection(GD.Load<GradientTexture1D>("res://Assets/Gradients/TimerEnvironment.tres"));
+        // Global.SetWorldCorrection(GD.Load<GradientTexture1D>("res://Assets/Gradients/TimerEnvironment.tres"));
     }
     
     protected override void ConnectEnteredSignals(State state)
