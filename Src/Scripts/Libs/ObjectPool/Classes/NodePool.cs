@@ -38,15 +38,23 @@ public partial class NodePool<TNode>(
     public int CountAll => _pool.Count;
     
     private readonly Stack<TNode> _pool = new Stack<TNode>();
+
+    private Action<TNode> _onInit;
     
+    /// <summary>
+    /// Init pool
+    /// </summary>
+    /// <param name="onInit">Called when an instance is init.</param>
     public void Init(Action<TNode> onInit = null)
     {
+        _onInit = onInit;
+        
         for (int i = 0; i < defaultCapacity; i++)
         {
             var node = createFunc();
             _pool.Push(node);
             AddChild(node);
-            onInit?.Invoke(node);
+            _onInit?.Invoke(node);
             onRelease(node);
         }
         
@@ -81,17 +89,23 @@ public partial class NodePool<TNode>(
         if (CountAll < maxCapacity)
         {
             var node = createFunc();
-            AddChild(node);
             _pool.Push(node);
+            AddChild(node);
+            _onInit?.Invoke(node);
             return GetObj();
         }
-        
-        return createFunc();
+
+        var obj = createFunc();
+        AddChild(obj);
+        _onInit?.Invoke(obj);
+        return obj;
     }
 
     public void Release(TNode obj)
     {
-        if (collectionCheck && _pool.Contains(obj)) throw new Exception("Object is already in the pool.");
+        if (OS.HasFeature("editor") && collectionCheck && _pool.Contains(obj))
+            throw new Exception("Object is already in the pool.");
+        
         if (_pool.Count >= maxCapacity)
         {
             onDestroy(obj);
