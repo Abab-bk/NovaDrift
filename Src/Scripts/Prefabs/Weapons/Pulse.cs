@@ -95,5 +95,7 @@ public partial class Pulse : BaseShooter
 
     public override void Destroy()
     {
+        base.Destroy();
+        _shootTimer.QueueFree();
     }
 }

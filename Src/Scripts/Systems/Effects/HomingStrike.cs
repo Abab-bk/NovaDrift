@@ -37,7 +37,6 @@ public class HomingStrike : Effect
             }
             
             _count += 1;
-            Shoot();
         };
     }
 

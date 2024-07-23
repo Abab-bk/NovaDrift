@@ -35,7 +35,10 @@ public abstract partial class BaseShooter : Node2D
         }
     }
 
-    public abstract void Destroy();
+    public virtual void Destroy()
+    {
+        GetBulletFunc = (shooter) => shooter.GetBullet();
+    }
 
     public virtual void SetShootCd(float value)
     {

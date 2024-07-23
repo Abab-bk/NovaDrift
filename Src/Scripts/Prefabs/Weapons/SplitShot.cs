@@ -14,6 +14,8 @@ public partial class SplitShot : BaseShooter
     private Timer _burstCooldownTimer;
     private bool _isBursting = false;
 
+    private readonly StatModifier _modifier = new (-0.5f, StatModType.PercentAdd);
+    
     public override void _Ready()
     {
         if (Owner is Actor actor)
@@ -35,7 +37,7 @@ public partial class SplitShot : BaseShooter
         _burstIntervalTimer.OneShot = true;
         _burstIntervalTimer.WaitTime = DataBuilder.Constants.BurstInterval;
         
-        Actor.Stats.BulletDegeneration.AddModifier(new StatModifier(-0.5f, StatModType.PercentAdd));
+        Actor.Stats.BulletDegeneration.AddModifier(_modifier);
         
         base._Ready();
 
@@ -52,7 +54,12 @@ public partial class SplitShot : BaseShooter
 
     public override void Destroy()
     {
+        base.Destroy();
         Actor.Stats.ShootSpeed.ValueChanged -= SetShootCd;
+        _burstCooldownTimer.QueueFree();
+        _shootTimer.QueueFree();
+        _burstIntervalTimer.QueueFree();
+        Actor.Stats.BulletDegeneration.RemoveModifier(_modifier);
     }
 
     public override void SetShootCd(float value)

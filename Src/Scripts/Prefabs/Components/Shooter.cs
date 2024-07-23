@@ -33,6 +33,7 @@ public partial class Shooter : BaseShooter
 
     public override void Destroy()
     {
+        base.Destroy();
         Actor.Stats.ShootSpeed.ValueChanged -= SetShootCd;
     }
 

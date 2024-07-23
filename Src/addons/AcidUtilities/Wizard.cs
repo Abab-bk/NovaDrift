@@ -271,7 +271,7 @@ public static class Wizard
         if (targets.Count <= 0) return null;
         
         return targets
-            .OrderBy(orderNode => orderNode.GlobalPosition.DistanceTo(orderNode.GlobalPosition))
+            .OrderBy(orderNode => orderNode.GlobalPosition.DistanceSquaredTo(orderNode.GlobalPosition))
             .First();
     }
 }
