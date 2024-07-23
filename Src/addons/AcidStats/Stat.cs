@@ -60,6 +60,7 @@ public class Stat
     public void ForceCalculate()
     {
         _isDirty = true;
+        var a = Value;
     }
  
     private int CompareModifierOrder(StatModifier a, StatModifier b)
@@ -76,6 +77,7 @@ public class Stat
         _isDirty = true;
         _statModifiers.Add(mod);
         _statModifiers.Sort(CompareModifierOrder);
+        ForceCalculate();
     }
 
     public bool HasModifier(StatModifier mod)
@@ -88,6 +90,7 @@ public class Stat
         if (_statModifiers.Remove(mod))
         {
             _isDirty = true;
+            ForceCalculate();
             return true;
         }
         return false;

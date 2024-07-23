@@ -173,6 +173,7 @@ public partial class BaseShield : Node2D
 
     private void UpdateRadius(float value)
     {
+        Logger.Log("[Shield] UpdateRadius: " + value);
         CircleSprite2D.UpdateRadius(value);
         if (ShieldArea.GetChild<CollisionShape2D>(0).Shape is CircleShape2D shape)
         {

@@ -41,4 +41,15 @@ public class AdrenalModule : Effect
         var healthRatio = Target.Stats.Health.BaseValue / Target.Stats.Health.MaxValue.Value;
         _modifier.Value = Mathf.Min(Values[0], (shieldRatio + healthRatio) / 2f);
     }
+
+    public override void OnDestroy()
+    {
+        base.OnDestroy();
+
+        foreach (var node in Global.SceneTree.GetNodesInGroup("Mobs"))
+        {
+            if (node is not MobBase mobBase) continue;
+            mobBase.Stats.InjuryFactor.RemoveModifier(_modifier);
+        }
+    }
 }
