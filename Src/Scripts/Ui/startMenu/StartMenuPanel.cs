@@ -8,6 +8,8 @@ namespace NovaDrift.Scripts.Ui.StartMenu;
 public partial class StartMenuPanel : StartMenu
 {
     private bool _isClicked;
+
+    private bool _shouldLogin;
     
     public override void _Ready()
     {
@@ -41,34 +43,12 @@ public partial class StartMenuPanel : StartMenu
 
         EventBus.OnGameInit += Destroy;
 
-        S_GameLogoTouch.Instance.Pressed += CheckLogin;
+        S_GameLogoTouch.Instance.Pressed += Enter;
         
         var tapNode = new TapTapNode();
         AddChild(tapNode);
         Global.TapTapNode = tapNode;
-        Global.TapTapNode.Awake();
-        Global.TapTapNode.Init();
-        
-        if (Global.ShowLogo)
-        {
-            L_Content.Instance.Hide();
-            L_GameLogo.Instance.Show();
-            Global.ShowLogo = false;
-            return;
-        }
-        L_Content.Instance.Show();
-        L_GameLogo.Instance.Hide();
-        _isClicked = true;
-    }
 
-    private void CheckLogin()
-    {
-        if (Global.CurrentPlatform == GamePlatform.Desktop)
-        {
-            Enter();
-            return;
-        }
-        
         Global.TapTapNode.OnAntiPass += Enter;
         Global.TapTapNode.OnLogged += () =>
         {
@@ -76,9 +56,48 @@ public partial class StartMenuPanel : StartMenu
         };
         Global.TapTapNode.OnLoginNot += () =>
         {
+            S_LoginBtn.Instance.Show();
+            if (!_shouldLogin)
+            {
+                _shouldLogin = true;
+            }
             Global.TapTapNode.Login();
         };
         
+        Global.TapTapNode.Awake();
+        Global.TapTapNode.Init();
+        
+        S_LoginBtn.Instance.Pressed += CheckLogin;
+        S_LoginBtn.Instance.Hide();
+        
+        if (Global.ShowLogo)
+        {
+            if (Global.CurrentPlatform == GamePlatform.Desktop)
+            {
+                L_Content.Instance.Hide();
+                S_LoginBtn.Instance.Hide();
+                S_GameLogoTouch.Instance.Disabled = false;
+                Global.ShowLogo = false;
+                return;
+            }
+            
+            S_LoginBtn.Instance.Show();
+            S_GameLogoTouch.Instance.Disabled = true;
+            L_Content.Instance.Hide();
+            Global.ShowLogo = false;
+            _shouldLogin = false;
+            CheckLogin();
+            return;
+        }
+        L_Content.Instance.Show();
+        L_GameLogo.Instance.Hide();
+        S_GameLogoTouch.Instance.Disabled = false;
+        _isClicked = true;
+    }
+
+    private void CheckLogin()
+    {
+        if (Global.CurrentPlatform == GamePlatform.Desktop) return;
         Global.TapTapNode.IsLogged();
     }
 

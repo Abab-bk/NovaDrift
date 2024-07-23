@@ -353,15 +353,6 @@ public abstract partial class StartMenu : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Label"/>, 路径: StartMenu.GameLogo.Label
-    /// </summary>
-    public class Label : UiNode<StartMenuPanel, Godot.Label, Label>
-    {
-        public Label(StartMenuPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
-        public override Label Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
-    }
-
-    /// <summary>
     /// 类型: <see cref="Godot.AnimationPlayer"/>, 路径: StartMenu.GameLogo.AnimationPlayer
     /// </summary>
     public class AnimationPlayer : UiNode<StartMenuPanel, Godot.AnimationPlayer, AnimationPlayer>
@@ -371,21 +362,21 @@ public abstract partial class StartMenu : UiBase
     }
 
     /// <summary>
+    /// 类型: <see cref="Godot.Label"/>, 路径: StartMenu.GameLogo.GameLogoTouch.Label
+    /// </summary>
+    public class Label : UiNode<StartMenuPanel, Godot.Label, Label>
+    {
+        public Label(StartMenuPanel uiPanel, Godot.Label node) : base(uiPanel, node) {  }
+        public override Label Clone() => new (UiPanel, (Godot.Label)Instance.Duplicate());
+    }
+
+    /// <summary>
     /// 类型: <see cref="Godot.Button"/>, 路径: StartMenu.GameLogo.GameLogoTouch
     /// </summary>
     public class GameLogoTouch : UiNode<StartMenuPanel, Godot.Button, GameLogoTouch>
     {
-        public GameLogoTouch(StartMenuPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
-        public override GameLogoTouch Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
-    }
-
-    /// <summary>
-    /// 类型: <see cref="Godot.TextureRect"/>, 路径: StartMenu.GameLogo
-    /// </summary>
-    public class GameLogo : UiNode<StartMenuPanel, Godot.TextureRect, GameLogo>
-    {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: StartMenu.Label
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Label"/>, 节点路径: StartMenu.GameLogo.Label
         /// </summary>
         public Label L_Label
         {
@@ -397,6 +388,24 @@ public abstract partial class StartMenu : UiBase
         }
         private Label _L_Label;
 
+        public GameLogoTouch(StartMenuPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
+        public override GameLogoTouch Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.TextureButton"/>, 路径: StartMenu.GameLogo.LoginBtn
+    /// </summary>
+    public class LoginBtn : UiNode<StartMenuPanel, Godot.TextureButton, LoginBtn>
+    {
+        public LoginBtn(StartMenuPanel uiPanel, Godot.TextureButton node) : base(uiPanel, node) {  }
+        public override LoginBtn Clone() => new (UiPanel, (Godot.TextureButton)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.TextureRect"/>, 路径: StartMenu.GameLogo
+    /// </summary>
+    public class GameLogo : UiNode<StartMenuPanel, Godot.TextureRect, GameLogo>
+    {
         /// <summary>
         /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.AnimationPlayer"/>, 节点路径: StartMenu.AnimationPlayer
         /// </summary>
@@ -422,6 +431,19 @@ public abstract partial class StartMenu : UiBase
             }
         }
         private GameLogoTouch _L_GameLogoTouch;
+
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TextureButton"/>, 节点路径: StartMenu.LoginBtn
+        /// </summary>
+        public LoginBtn L_LoginBtn
+        {
+            get
+            {
+                if (_L_LoginBtn == null) _L_LoginBtn = new LoginBtn(UiPanel, Instance.GetNode<Godot.TextureButton>("LoginBtn"));
+                return _L_LoginBtn;
+            }
+        }
+        private LoginBtn _L_LoginBtn;
 
         public GameLogo(StartMenuPanel uiPanel, Godot.TextureRect node) : base(uiPanel, node) {  }
         public override GameLogo Clone() => new (UiPanel, (Godot.TextureRect)Instance.Duplicate());
@@ -495,19 +517,24 @@ public abstract partial class StartMenu : UiBase
     public Content S_Content => L_Content;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: StartMenu.GameLogo.Label
-    /// </summary>
-    public Label S_Label => L_GameLogo.L_Label;
-
-    /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.AnimationPlayer"/>, 节点路径: StartMenu.GameLogo.AnimationPlayer
     /// </summary>
     public AnimationPlayer S_AnimationPlayer => L_GameLogo.L_AnimationPlayer;
 
     /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Label"/>, 节点路径: StartMenu.GameLogo.GameLogoTouch.Label
+    /// </summary>
+    public Label S_Label => L_GameLogo.L_GameLogoTouch.L_Label;
+
+    /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: StartMenu.GameLogo.GameLogoTouch
     /// </summary>
     public GameLogoTouch S_GameLogoTouch => L_GameLogo.L_GameLogoTouch;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureButton"/>, 节点路径: StartMenu.GameLogo.LoginBtn
+    /// </summary>
+    public LoginBtn S_LoginBtn => L_GameLogo.L_LoginBtn;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TextureRect"/>, 节点路径: StartMenu.GameLogo

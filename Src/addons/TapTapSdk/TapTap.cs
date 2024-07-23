@@ -44,7 +44,12 @@ public partial class TapTapNode : Node
         }
     }
 
-    public void Init() => Plugin.Call("Init", ClientId);
+    public void Init()
+    {
+        Plugin.Call("Init", ClientId);
+        InitAntiAddiction();
+    }
+
     public void InitAntiAddiction() => Plugin.Call("InitAntiAddiction", ClientId);
     public void StartupAntiAddiction() => Plugin.Call("startupAntiAddiction");
     public void Login() => Plugin.Call("Login");

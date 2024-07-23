@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://dp1lufp6n177m"]
+[gd_scene load_steps=14 format=3 uid="uid://dp1lufp6n177m"]
 
 [ext_resource type="Script" path="res://Scripts/Ui/startMenu/StartMenuPanel.cs" id="1_swjtv"]
 [ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_tq1sc"]
@@ -9,13 +9,14 @@
 [ext_resource type="Texture2D" uid="uid://c64xlnb5wui5a" path="res://Assets/Ui/ScreenShot2.png" id="5_7l0q3"]
 [ext_resource type="Texture2D" uid="uid://r0bvuc4hv1b1" path="res://Assets/Ui/ScreenShot3.png" id="6_pkxad"]
 [ext_resource type="Texture2D" uid="uid://lkwj7inlvjbx" path="res://Assets/Ui/ScreenShot4.png" id="7_qbug5"]
+[ext_resource type="Texture2D" uid="uid://bpdrtpa53f8v0" path="res://Assets/Ui/Buttons/TapTapLogin.png" id="9_g38fq"]
 
 [sub_resource type="Animation" id="Animation_h8vb4"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Label:modulate")
+tracks/0/path = NodePath("GameLogoTouch/Label:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -32,7 +33,7 @@ step = 0.1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Label:modulate")
+tracks/0/path = NodePath("GameLogoTouch/Label:modulate")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -97,6 +98,7 @@ offset_bottom = 1192.0
 _labelText = "每日任务"
 
 [node name="Content" type="MarginContainer" parent="."]
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -141,7 +143,6 @@ _labelText = "退出"
 _texture = ExtResource("7_qbug5")
 
 [node name="GameLogo" type="TextureRect" parent="."]
-visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -153,21 +154,6 @@ texture = ExtResource("2_doph4")
 expand_mode = 1
 stretch_mode = 6
 
-[node name="Label" type="Label" parent="GameLogo"]
-layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_top = -267.0
-offset_bottom = -208.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 40
-text = "点击屏幕继续"
-horizontal_alignment = 1
-vertical_alignment = 1
-
 [node name="AnimationPlayer" type="AnimationPlayer" parent="GameLogo"]
 libraries = {
 "": SubResource("AnimationLibrary_o26vd")
@@ -176,6 +162,7 @@ autoplay = "Tip"
 
 [node name="GameLogoTouch" type="Button" parent="GameLogo"]
 unique_name_in_owner = true
+visible = false
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -183,6 +170,37 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_type_variation = &"EmptyBtn"
+
+[node name="Label" type="Label" parent="GameLogo/GameLogoTouch"]
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -268.0
+offset_bottom = -208.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_font_sizes/font_size = 40
+text = "点击屏幕继续"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LoginBtn" type="TextureButton" parent="GameLogo"]
+unique_name_in_owner = true
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -428.0
+offset_top = -353.0
+offset_right = 382.0
+offset_bottom = -203.0
+grow_horizontal = 2
+grow_vertical = 0
+texture_normal = ExtResource("9_g38fq")
 
 [node name="Setting" parent="." instance=ExtResource("3_khrum")]
 visible = false
