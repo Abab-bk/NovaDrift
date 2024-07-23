@@ -5,6 +5,8 @@ namespace NovaDrift.Scripts.Systems.Effects;
 
 public class Splinter : Effect
 {
+    private readonly BulletBuilder _builder = new BulletBuilder();
+    
     public override void OnCreate()
     {
         base.OnCreate();
@@ -19,7 +21,7 @@ public class Splinter : Effect
                 
                 for (int i = 0; i < miniBulletCount; i++)
                 {
-                    BulletBase miniBullet = new BulletBuilder().
+                    BulletBase miniBullet = _builder.
                         SetIsPlayer(Target.IsPlayer).
                         SetDamage(Target.Stats.Damage.Value).
                         SetSpeed(Target.Stats.BulletSpeed.Value).
@@ -27,7 +29,6 @@ public class Splinter : Effect
                         SetDegeneration(Target.Stats.BulletDegeneration.Value).
                         Build();
                 
-                    miniBullet.GlobalPosition = bullet.GlobalPosition;
                     if (miniBulletCount == 1)
                     {
                         miniBullet.Direction = miniBullet.Direction;
@@ -39,9 +40,7 @@ public class Splinter : Effect
                         miniBullet.Direction = miniBullet.Direction.Rotated(miniBullet.GlobalRotation + increment * i - arcRad / 2);
                     }
 
-                    Global.GameWorld.CallDeferred(Node.MethodName.AddChild, miniBullet);
-                    // OnShoot?.Invoke(bullet);
-                    // bullet.OnHit += actor => { OnHit?.Invoke(actor); };
+                    miniBullet.Active(bullet.GlobalPosition);
                 }
             };
         };

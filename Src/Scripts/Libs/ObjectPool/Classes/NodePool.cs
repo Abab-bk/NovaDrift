@@ -80,7 +80,9 @@ public partial class NodePool<TNode>(
 
         if (CountAll < maxCapacity)
         {
-            _pool.Push(createFunc());
+            var node = createFunc();
+            AddChild(node);
+            _pool.Push(node);
             return GetObj();
         }
         

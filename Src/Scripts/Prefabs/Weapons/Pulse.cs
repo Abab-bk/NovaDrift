@@ -72,8 +72,7 @@ public partial class Pulse : BaseShooter
             BulletBase bullet = GetBulletFunc?.Invoke(this);
                 
             if (bullet == null) continue;
-                
-            bullet.GlobalPosition = GlobalPosition;
+            
             if ((int)Actor.Stats.BulletCount.Value == 1)
             {
                 bullet.Direction = bullet.Direction.Rotated(GlobalRotation);
@@ -85,7 +84,7 @@ public partial class Pulse : BaseShooter
                 bullet.Direction = bullet.Direction.Rotated(Actor.GlobalRotation + increment * i - arcRad / 2);
             }
 
-            Global.GameWorld.AddChild(bullet);
+            bullet.Active(GlobalPosition);
                 
             OnShoot?.Invoke(bullet);
             bullet.OnHit += body => { OnHit?.Invoke(body); };

@@ -83,10 +83,9 @@ public partial class Shooter : BaseShooter
         for (int i = 0; i < bulletCount; i++)
         {
             BulletBase bullet = GetBulletFunc.Invoke(this);
-            bullet.GlobalPosition = GlobalPosition;
             bulletPattern.SetPattern(bullet, Actor, bulletCount, i);
+            bullet.Active(GlobalPosition);
             
-            Global.GameWorld.AddChild(bullet);
             _shootTimer.Start();
             
             OnShoot?.Invoke(bullet);

@@ -73,7 +73,6 @@ public partial class DroneBase : CharacterBody2D
         {
             var bullet = GetBullet();
                 
-            bullet.GlobalPosition = FrontMarker.GlobalPosition;
             if (DroneInfo.BulletCount == 1)
             {
                 bullet.Direction = bullet.Direction.Rotated(GlobalRotation);
@@ -85,7 +84,7 @@ public partial class DroneBase : CharacterBody2D
                 bullet.Direction = bullet.Direction.Rotated(GlobalRotation + increment * i - arcRad / 2);
             }
 
-            Global.GameWorld.AddChild(bullet);
+            bullet.Active(FrontMarker.GlobalPosition);
         }
     }
 }

@@ -47,7 +47,7 @@ public partial class Grenade : BulletBase
 
     private void Blast()
     {
-        var blast = Pool.BlastVfxPool.Get();
+        var blast = Systems.Pool.Pool.BlastVfxPool.Get();
         blast.GlobalPosition = GlobalPosition;
         blast.SetBlastRadius(Target.Stats.BlastRadius.Value);
         blast.Show();

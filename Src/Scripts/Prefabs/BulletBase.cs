@@ -1,6 +1,7 @@
 using System;
 using AcidWallStudio.AcidUtilities;
 using AcidWallStudio.Fmod;
+using AcidWallStudio.ObjectPool;
 using Godot;
 using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Prefabs.Actors;
@@ -45,9 +46,11 @@ public partial class BulletBase : Node2D
     protected Node2D TargetingActor;
     protected Vector2 Acceleration = Vector2.Zero;
 
+    public NodePool<BulletBase> Pool;
+    
     public void Destroy()
     {
-        QueueFree();
+        Release();
     }
 
     protected void TakeOnHitEvent(Actor obj)
@@ -55,17 +58,14 @@ public partial class BulletBase : Node2D
         OnHit?.Invoke(obj);
     }
 
-    public override void _Ready()
+    public void Active(Vector2 pos)
     {
         Scale = new Vector2(Size, Size);
 
         Velocity = Direction * Speed;
         Rotation = Direction.Angle();
-        
         _hitBox.SetIsPlayer(IsPlayer);
-        _hitBox.OnHit += OnHitHandle;
-        _hitBox.OnHitOthers += OnHitOthersHandle;
-        
+
         if (IsPlayer)
         {
             _hitBox.CallDeferred(CollisionObject2D.MethodName.SetCollisionLayerValue, (int)Layer.PlayerBullet, true);
@@ -74,25 +74,50 @@ public partial class BulletBase : Node2D
         {
             _hitBox.CallDeferred(CollisionObject2D.MethodName.SetCollisionLayerValue, (int)Layer.MobBullet, true);
         }
-
+        
         Degenerate();
 
         if (Steering > 0)
         {
             TargetingActor = this.GetClosestTarget(IsPlayer ? "Mobs" : "Players");
         }
+
+        GlobalPosition = pos;
+        SetProcessMode(ProcessModeEnum.Inherit);
+        
+        Show();
+    }
+    
+    public void Release()
+    {
+        if (Pool != null)
+        {
+            Pool.Release(this);
+            LastPosition = new Vector2();
+            TargetingActor = null;
+        }
+        else
+        {
+            QueueFree();
+        }
+    }
+
+    public override void _Ready()
+    {
+        _hitBox.OnHit += OnHitHandle;
+        _hitBox.OnHitOthers += OnHitOthersHandle;
     }
 
     protected virtual void OnHitOthersHandle()
     {
-        QueueFree();
+        Release();
     }
 
     protected virtual void OnHitHandle(Actor actor)
     {
         SoundManager.PlayOneShotById("event:/OnBulletHit");
         
-        var vfx = Pool.BounceVfxPool.Get();
+        var vfx = Systems.Pool.Pool.BounceVfxPool.Get();
         vfx.GlobalPosition = GlobalPosition;
         vfx.Rotation = -Rotation;
         vfx.Modulate = actor.Modulate;
@@ -104,10 +129,10 @@ public partial class BulletBase : Node2D
             CanPenetrate--;
             if (CanPenetrate == 0)
             {
-                QueueFree();
+                Release();
             }
         }
-        QueueFree();
+        Release();
     }
 
     private Vector2 Seek()
@@ -121,7 +146,7 @@ public partial class BulletBase : Node2D
     {
         Tween tween = CreateTween();
         tween.TweenProperty(this, "scale", Vector2.Zero, Degeneration);
-        tween.Finished += QueueFree;
+        tween.Finished += Release;
     }
 
     public void AddModifierToDamage(StatModifier modifier)

@@ -6,16 +6,15 @@ public class Rupture : Effect
 {
     public override void OnCreate()
     {
+        var builder = new BulletBuilder(BulletBuilder.BulletType.FireBall);
         base.OnCreate();
         EventBus.OnMobDied += mob =>
         {
-            var fireBall = 
-                new BulletBuilder(BulletBuilder.BulletType.FireBall).
-                    SetDamage(mob.Stats.Health.MaxValue.Value * Values[0]).
-                    SetBlastRadius(Target.Stats.BlastRadius.Value).
-                    Build();
-            fireBall.GlobalPosition = mob.GlobalPosition;
-            Global.GameWorld.CallDeferred(Node.MethodName.AddChild, fireBall);
+            builder.
+                SetDamage(mob.Stats.Health.MaxValue.Value * Values[0]).
+                SetBlastRadius(Target.Stats.BlastRadius.Value).
+                Build().
+                Active(mob.GlobalPosition);
         };
     }
 }

@@ -78,12 +78,15 @@ public partial class SplitShot : BaseShooter
             for (int i = 0; i < Actor.Stats.BulletCount.Value + 3; i++)
             {
                 BulletBase bullet = GetBulletFunc?.Invoke(this);
-                if (bullet == null) return;
+                if (bullet == null)
+                {
+                    Logger.LogError("[SplitShot] Bullet is null");
+                    return;
+                }
                 
-                bullet.GlobalPosition = GlobalPosition;
                 bullet.Direction = bullet.Direction.Rotated(Mathf.DegToRad(360f / (Actor.Stats.BulletCount.Value + 3) * i + 1));
     
-                Global.GameWorld.AddChild(bullet);
+                bullet.Active(GlobalPosition);
                 
                 _shootTimer.Start();
         
@@ -91,10 +94,7 @@ public partial class SplitShot : BaseShooter
                 bullet.OnHit += actor =>
                 {
                     OnHit?.Invoke(actor);
-                    var fireBall = GetBullet();
-                    fireBall.GlobalPosition = bullet.GlobalPosition;
-                    // Global.GameWorld.AddChild(fireBall);
-                    Global.GameWorld.CallDeferred(Node.MethodName.AddChild, fireBall);
+                    GetBullet().Active(bullet.GlobalPosition);
                 };
                 _burstIntervalTimer.Start();
             }

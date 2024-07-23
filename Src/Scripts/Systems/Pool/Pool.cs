@@ -16,6 +16,9 @@ public static class Pool
     public static NodePool<BlastVfx> BlastVfxPool;
     public static NodePool<GpuParticles2D> BounceVfxPool;
     public static NodePool<ExpBall> ExpBallPool;
+    public static NodePool<BulletBase> NormalBulletPool;
+    public static NodePool<BulletBase> GrenadeBulletPool;
+    public static NodePool<BulletBase> FireBallBulletPool;
 
     public static int GetActiveMobCount()
     {
@@ -208,11 +211,7 @@ public static class Pool
         );
         
         ExpBallPool = new NodePool<ExpBall>(
-            () =>
-            {
-                var node = GD.Load<PackedScene>("res://Scenes/Vfx/ExpBall.tscn").Instantiate<ExpBall>();
-                return node;
-            },
+            () => GD.Load<PackedScene>("res://Scenes/Vfx/ExpBall.tscn").Instantiate<ExpBall>(),
             node =>
             {
                 node.IsActive = true;
@@ -233,7 +232,76 @@ public static class Pool
             400,
             400
         );
+        
+        NormalBulletPool = new NodePool<BulletBase>(
+            () => GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/NormalBullet.tscn").Instantiate<BulletBase>(),
+            node =>
+            {
+                node.Hide();
+            },
+            node =>
+            {
+                node.SetProcessMode(Node.ProcessModeEnum.Disabled);
+                node.Hide();
+            },
+            node =>
+            {
+                node.QueueFree();
+            },
+            true,
+            500,
+            1000
+        );
+        
+        GrenadeBulletPool = new NodePool<BulletBase>(
+            () => GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/Grenade.tscn").Instantiate<BulletBase>(),
+            node =>
+            {
+                node.Hide();
+            },
+            node =>
+            {
+                node.SetProcessMode(Node.ProcessModeEnum.Disabled);
+                node.Hide();
+            },
+            node =>
+            {
+                node.QueueFree();
+            },
+            true,
+            500,
+            1000
+        );
+        
+        FireBallBulletPool = new NodePool<BulletBase>(
+            () => GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/FireBall.tscn").Instantiate<BulletBase>(),
+            node =>
+            {
+                node.Hide();
+            },
+            node =>
+            {
+                node.Hide();
+                node.SetProcessMode(Node.ProcessModeEnum.Disabled);
+            },
+            node =>
+            {
+                node.QueueFree();
+            },
+            true,
+            500,
+            1000
+        );
+        
+        Global.GameWorld.AddChild(FireBallBulletPool);
+        FireBallBulletPool.Init();
+        
+        Global.GameWorld.AddChild(NormalBulletPool);
+        NormalBulletPool.Init();
 
+        Global.GameWorld.AddChild(GrenadeBulletPool);
+        GrenadeBulletPool.Init();
+        
         Global.GameWorld.AddChild(ExpBallPool);
         ExpBallPool.Init();
         

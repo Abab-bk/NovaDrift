@@ -24,23 +24,23 @@ public class BulletBuilder
         switch (type)
         {
             case BulletType.Normal:
-                _bulletBase = GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/NormalBullet.tscn").Instantiate() as BulletBase;
+                _bulletBase = Pool.Pool.NormalBulletPool.Get();
                 break;
             case BulletType.FireBall:
-                _bulletBase = GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/FireBall.tscn").Instantiate() as BulletBase;
+                _bulletBase = Pool.Pool.FireBallBulletPool.Get();
                 break;
             case BulletType.Grenade:
-                _bulletBase = GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/Grenade.tscn").Instantiate() as BulletBase;
+                _bulletBase = Pool.Pool.GrenadeBulletPool.Get();
                 break;
             default:
-                _bulletBase = GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/NormalBullet.tscn").Instantiate() as BulletBase;
-                throw new Exception("无法识别的子弹类型");
+                _bulletBase = Pool.Pool.NormalBulletPool.Get();
+                break;
         }
     }
 
     public BulletBuilder SetBulletBase(string path)
     {
-        _bulletBase = GD.Load<PackedScene>(path).Instantiate() as BulletBase;
+        _bulletBase = GD.Load<PackedScene>(path).Instantiate<BulletBase>();
         return this;
     }
 

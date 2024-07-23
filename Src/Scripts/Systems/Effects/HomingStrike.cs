@@ -46,9 +46,7 @@ public class HomingStrike : Effect
         for (int i = 0; i < 2; i++)
         {
             BulletBase bullet = GetBullet();
-                
-            bullet.GlobalPosition = Target.GlobalPosition;
-
+            
             if (i == 0)
             {
                 bullet.Direction = bullet.Direction.Rotated(Mathf.DegToRad(
@@ -62,7 +60,7 @@ public class HomingStrike : Effect
                 ));
             }
 
-            Global.GameWorld.AddChild(bullet);
+            bullet.Active(Target.GlobalPosition);
             bullet.OnHit += actor => { Target.Shooter.OnHit?.Invoke(actor); };
         }
     }

@@ -27,10 +27,8 @@ public abstract partial class BaseShooter : Node2D
         for (int i = 0; i < Actor.Stats.BulletCount.Value; i++)
         {
             BulletBase bullet = GetBulletFunc.Invoke(this);
-            bullet.GlobalPosition = GlobalPosition;
             bulletPattern.SetPattern(bullet, Actor, bulletCount, i);
-            
-            Global.GameWorld.AddChild(bullet);
+            bullet.Active(GlobalPosition);
             
             OnShoot?.Invoke(bullet);
             bullet.OnHit += actor => { OnHit?.Invoke(actor); };
