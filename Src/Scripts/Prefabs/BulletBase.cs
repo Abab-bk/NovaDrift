@@ -83,7 +83,7 @@ public partial class BulletBase : Node2D
         }
 
         GlobalPosition = pos;
-        SetProcessMode(ProcessModeEnum.Inherit);
+        CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Inherit);
         
         Show();
     }

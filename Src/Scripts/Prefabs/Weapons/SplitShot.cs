@@ -91,11 +91,7 @@ public partial class SplitShot : BaseShooter
                 _shootTimer.Start();
         
                 OnShoot?.Invoke(bullet);
-                bullet.OnHit += actor =>
-                {
-                    OnHit?.Invoke(actor);
-                    GetBullet().Active(bullet.GlobalPosition);
-                };
+                
                 _burstIntervalTimer.Start();
             }
         }

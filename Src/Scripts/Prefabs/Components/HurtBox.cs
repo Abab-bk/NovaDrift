@@ -34,8 +34,8 @@ public partial class HurtBox : Area2D
 
     private void Init()
     {
-        CollisionLayer = 0;
-        CollisionMask = 0;
+        CallDeferred(CollisionObject2D.MethodName.SetCollisionLayer, 0);
+        CallDeferred(CollisionObject2D.MethodName.SetCollisionMask, 0);
         
         if (_isPlayer)
         {

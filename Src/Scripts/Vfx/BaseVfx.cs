@@ -21,34 +21,34 @@ public static class CollisionObjectExtensions
 {
     public static void SetIsPlayer(this CollisionObject2D source, bool isPlayer)
     {
-        source.CollisionLayer = 0;
-        source.CollisionMask = 0;
-
+        source.CallDeferred(CollisionObject2D.MethodName.SetCollisionLayer, 0);
+        source.CallDeferred(CollisionObject2D.MethodName.SetCollisionMask, 0);
+        
         if (source is Actor)
         {
             if (isPlayer)
             {
-                source.SetCollisionLayerValue((int)Layer.Player, true);
+                source.CallDeferred(CollisionObject2D.MethodName.SetCollisionLayerValue, (int)Layer.Player, true);
             }
             else
             {
-                source.SetCollisionLayerValue((int)Layer.Mob, true);
+                source.CallDeferred(CollisionObject2D.MethodName.SetCollisionLayerValue, (int)Layer.Mob, true);
             }
         }
         else
         {
             if (isPlayer)
             {
-                source.SetCollisionLayerValue((int)Layer.Player, true);
-                source.SetCollisionMaskValue((int)Layer.Mob, true);
+                source.CallDeferred(CollisionObject2D.MethodName.SetCollisionLayerValue, (int)Layer.Player, true);
+                source.CallDeferred(CollisionObject2D.MethodName.SetCollisionMaskValue, (int)Layer.Mob, true);
             }
             else
             {
-                source.SetCollisionLayerValue((int)Layer.Mob, true);
-                source.SetCollisionMaskValue((int)Layer.Player, true);
+                source.CallDeferred(CollisionObject2D.MethodName.SetCollisionLayerValue, (int)Layer.Mob, true);
+                source.CallDeferred(CollisionObject2D.MethodName.SetCollisionMaskValue, (int)Layer.Player, true);
             }
         }
 
-        source.SetCollisionMaskValue((int)Layer.Object, true);
+        source.CallDeferred(CollisionObject2D.MethodName.SetCollisionMaskValue, (int)Layer.Object, true);
     }
 }
