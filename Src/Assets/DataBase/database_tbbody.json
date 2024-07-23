@@ -13,14 +13,14 @@
   {
     "id": 1001,
     "name": "突击",
-    "desc": "攻击时，8% 的几率强化子弹\n武器射速、武器扩散和射弹速度提高 15%\n- 60% 射击减速度\n- 10% 最大护盾",
+    "desc": "攻击时，8% 的几率强化子弹\n武器射速、武器扩散和射弹速度提高 15%\n- 60% 射击减速度\n- 10% 最大护盾\n适中的速度与略低的血量",
     "values": [
       0.08,
       0.15,
       -0.6,
       -0.1
     ],
-    "health": 100,
+    "health": 90,
     "icon_name": "Assault",
     "class_name": "Assault",
     "acceleration": 1000,
@@ -29,23 +29,23 @@
   {
     "id": 1002,
     "name": "猎狗",
-    "desc": "+3 子弹数量\n+10% 武器射速\n-60% 武器扩散\n你的武器从两门舷侧加农炮发射，你的射弹将在它们之间分开\n-10% 武器伤害、爆炸半径和射弹尺寸",
+    "desc": "+3 子弹数量\n+10% 武器射速\n-60% 武器扩散\n你的武器从两门舷侧加农炮发射，你的射弹将在它们之间分开\n-10% 武器伤害、爆炸半径和射弹尺寸\n较高的速度与较低的血量",
     "values": [
       3,
       0.1,
       -0.6,
       -0.1
     ],
-    "health": 100,
+    "health": 85,
     "icon_name": "Courser",
     "class_name": "Courser",
     "acceleration": 1400,
-    "deceleration": 500
+    "deceleration": 300
   },
   {
     "id": 1003,
     "name": "恶魔粉碎机",
-    "desc": "受到伤害时额外发射一枚子弹\n+5 %伤害",
+    "desc": "受到伤害时额外发射一枚子弹\n+5 %伤害\n适中的速度与适中的血量",
     "values": [
       1,
       0.05
@@ -53,7 +53,7 @@
     "health": 100,
     "icon_name": "Breaker",
     "class_name": "Breaker",
-    "acceleration": 1400,
-    "deceleration": 500
+    "acceleration": 1000,
+    "deceleration": 400
   }
 ]

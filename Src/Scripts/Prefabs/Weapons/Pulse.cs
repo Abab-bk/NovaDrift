@@ -11,10 +11,12 @@ public partial class Pulse : BaseShooter
 {
     // TODO: 需要应用上各种Modifier，包括其他武器
     private Timer _shootTimer;
+
+    private PackedScene _scene = GD.Load<PackedScene>("res://Scenes/Vfx/CircleBlast.tscn");
     
     public override void SetShootCd(float value)
     {
-        _shootTimer.WaitTime = Actor.Stats.ShootSpeed.Value * 4f;
+        _shootTimer.WaitTime = ClampShootCd(value) * 4f;
     }
 
     public override void Init()
@@ -47,7 +49,7 @@ public partial class Pulse : BaseShooter
         if (!_shootTimer.IsStopped()) return;
         _shootTimer.Start();
         
-        var circleBlast = GD.Load<PackedScene>("res://Scenes/Vfx/CircleBlast.tscn").Instantiate<CircleBlast>();
+        var circleBlast = _scene.Instantiate<CircleBlast>();
         circleBlast.IsPlayer = IsPlayer;
         circleBlast.Radius = GetRadius();
         

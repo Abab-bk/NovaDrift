@@ -236,7 +236,7 @@ public partial class Player : Actor
         Stats.Exp.Clear();
         Stats.Exp.MaxValue.BaseValue = DataBuilder.GetNextLevelExp(Stats.Level);
         
-        Stats.Health.Replenish();
+        Stats.Health.Increase(Stats.Health.MaxValue.Value * 0.5f);
         
         UpdateUi();
 

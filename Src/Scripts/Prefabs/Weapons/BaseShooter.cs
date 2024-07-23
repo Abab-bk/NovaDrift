@@ -39,8 +39,10 @@ public abstract partial class BaseShooter : Node2D
 
     public virtual void SetShootCd(float value)
     {
-        if (DefaultCooldownTimer != null) DefaultCooldownTimer.WaitTime = value;
+        if (DefaultCooldownTimer != null) DefaultCooldownTimer.WaitTime = ClampShootCd(value);
     }
+
+    protected float ClampShootCd(float value) => Mathf.Max(value, 0.01f);
 
     public abstract void Init();
 

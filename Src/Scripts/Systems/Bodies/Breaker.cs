@@ -12,10 +12,9 @@ public class Breaker : Body
         {
             BulletBase bullet = Actor.Shooter.GetBulletFunc.Invoke(Actor.Shooter);
             
-            bullet.GlobalPosition = Actor.Shooter.GlobalPosition;
             bullet.Direction = bullet.Direction.Rotated(Actor.Shooter.GlobalRotation);
             
-            Global.GameWorld.CallDeferred(Node.MethodName.AddChild, bullet);
+            bullet.Active(Actor.Shooter.GlobalPosition);
             
             Actor.OnShoot?.Invoke(bullet);
             bullet.OnHit += actor => { Actor.Shooter.OnHit?.Invoke(actor); };

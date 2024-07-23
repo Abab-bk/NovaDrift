@@ -58,7 +58,7 @@ public partial class SplitShot : BaseShooter
     public override void SetShootCd(float value)
     {
         _shootTimer.Stop();
-        _shootTimer.WaitTime = value;
+        _shootTimer.WaitTime = ClampShootCd(value);
     }
     
     public override void Init()

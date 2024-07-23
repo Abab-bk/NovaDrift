@@ -14,12 +14,11 @@ public class Calibrate : Effect
             {
                 var bullet = Global.Player.Shooter.GetBulletFunc.Invoke(Global.Player.Shooter);
                 
-                bullet.GlobalPosition = Global.Player.GlobalPosition;
                 bullet.Direction = bullet.Direction
                     .Rotated(Global.Player.GlobalRotation)
                     .Rotated(Mathf.DegToRad(180f));
 
-                Global.GameWorld.AddChild(bullet);
+                bullet.Active(Global.Player.GlobalPosition);
                 
                 Global.Player.OnShoot?.Invoke(bullet);
                 bullet.OnHit += actor => { Global.Player.Shooter.OnHit?.Invoke(actor); };
