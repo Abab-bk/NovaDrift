@@ -57,7 +57,7 @@ public partial class GameWorld : Node2D
 		Global.Noise = _noise;
 		Global.WorldEnvironment = GetNode<WorldEnvironment>("%WorldEnvironment");
 		
-		SoundManager.PlayMusic(AudioEvents.BackgroundMusic);
+		SoundManager.PlayMusic("event:/BackgroundMusic");
 		
 		_hud.Hide();
 		

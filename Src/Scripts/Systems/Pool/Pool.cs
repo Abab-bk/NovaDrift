@@ -19,6 +19,7 @@ public static class Pool
     public static NodePool<BulletBase> NormalBulletPool;
     public static NodePool<BulletBase> GrenadeBulletPool;
     public static NodePool<BulletBase> FireBallBulletPool;
+    public static NodePool<BulletBase> ShitBulletPool;
 
     public static int GetActiveMobCount()
     {
@@ -293,14 +294,49 @@ public static class Pool
             1000
         );
         
+        ShitBulletPool = new NodePool<BulletBase>(
+            () => GD.Load<PackedScene>("res://Scenes/Prefabs/Bullets/ShitBullet.tscn").Instantiate<BulletBase>(),
+            node =>
+            {
+                node.Hide();
+            },
+            node =>
+            {
+                node.Hide();
+                node.SetProcessMode(Node.ProcessModeEnum.Disabled);
+            },
+            node =>
+            {
+                node.QueueFree();
+            },
+            true,
+            500,
+            1000
+        );
+        
+        Global.GameWorld.AddChild(ShitBulletPool);
+        ShitBulletPool.Init(bullet =>
+        {
+            bullet.Pool = ShitBulletPool;
+        });
+        
         Global.GameWorld.AddChild(FireBallBulletPool);
-        FireBallBulletPool.Init();
+        FireBallBulletPool.Init(bullet =>
+        {
+            bullet.Pool = FireBallBulletPool;
+        });
         
         Global.GameWorld.AddChild(NormalBulletPool);
-        NormalBulletPool.Init();
+        NormalBulletPool.Init(bullet =>
+        {
+            bullet.Pool = NormalBulletPool;
+        });
 
         Global.GameWorld.AddChild(GrenadeBulletPool);
-        GrenadeBulletPool.Init();
+        GrenadeBulletPool.Init(bullet =>
+        {
+            bullet.Pool = GrenadeBulletPool;
+        });
         
         Global.GameWorld.AddChild(ExpBallPool);
         ExpBallPool.Init();

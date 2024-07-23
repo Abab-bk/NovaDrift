@@ -1,7 +1,5 @@
 using Godot;
 using System;
-using NovaDrift.Scripts;
-using NovaDrift.Scripts.Prefabs.Hazards;
 
 namespace NovaDrift.Scripts.Prefabs.Hazards;
 

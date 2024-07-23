@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Godot;
+using NovaDrift.Scripts;
 
 namespace AcidWallStudio.ObjectPool;
 
@@ -52,8 +53,8 @@ public partial class NodePool<TNode>(
         for (int i = 0; i < defaultCapacity; i++)
         {
             var node = createFunc();
-            _pool.Push(node);
             AddChild(node);
+            _pool.Push(node);
             _onInit?.Invoke(node);
             onRelease(node);
         }
@@ -61,7 +62,7 @@ public partial class NodePool<TNode>(
         CountInactive = defaultCapacity;
         CountActive = 0;
         
-        GlobalPosition = new Vector2(-10000, -10000);
+        GlobalPosition = Constants.DefaultPoolPos;
     }
 
     public void Clear()

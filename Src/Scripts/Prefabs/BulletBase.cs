@@ -3,10 +3,10 @@ using AcidWallStudio.AcidUtilities;
 using AcidWallStudio.Fmod;
 using AcidWallStudio.ObjectPool;
 using Godot;
+using GodotTask;
 using NovaDrift.addons.AcidStats;
 using NovaDrift.Scripts.Prefabs.Actors;
 using NovaDrift.Scripts.Prefabs.Components;
-using NovaDrift.Scripts.Systems.Pool;
 
 namespace NovaDrift.Scripts.Prefabs;
 
@@ -46,7 +46,10 @@ public partial class BulletBase : Node2D
     protected Node2D TargetingActor;
     protected Vector2 Acceleration = Vector2.Zero;
 
-    public NodePool<BulletBase> Pool;
+    public NodePool<BulletBase> Pool = null;
+
+    private Tween _tween;
+    private bool _isRelease;
     
     public void Destroy()
     {
@@ -60,6 +63,8 @@ public partial class BulletBase : Node2D
 
     public void Active(Vector2 pos)
     {
+        _isRelease = false;
+
         Scale = new Vector2(Size, Size);
 
         Velocity = Direction * Speed;
@@ -83,6 +88,8 @@ public partial class BulletBase : Node2D
         }
 
         GlobalPosition = pos;
+        LastPosition = GlobalPosition;
+
         CallDeferred(Node.MethodName.SetProcessMode, (int)ProcessModeEnum.Inherit);
         
         Show();
@@ -90,16 +97,24 @@ public partial class BulletBase : Node2D
     
     public void Release()
     {
-        if (Pool != null)
-        {
-            Pool.Release(this);
-            LastPosition = new Vector2();
-            TargetingActor = null;
-        }
-        else
+        if (_isRelease) return;
+        
+        _isRelease = true;
+        
+        if (Pool == null)
         {
             QueueFree();
+            return;
         }
+
+        _tween.Kill();
+
+        Direction = Vector2.Right;
+        Velocity = Vector2.Zero;
+        
+        Pool.Release(this);
+        GlobalPosition = Constants.DefaultPoolPos;
+        TargetingActor = null;
     }
 
     public override void _Ready()
@@ -144,9 +159,9 @@ public partial class BulletBase : Node2D
 
     protected virtual void Degenerate()
     {
-        Tween tween = CreateTween();
-        tween.TweenProperty(this, "scale", Vector2.Zero, Degeneration);
-        tween.Finished += Release;
+        _tween = CreateTween();
+        _tween.TweenProperty(this, "scale", Vector2.Zero, Degeneration);
+        _tween.Finished += Release;
     }
 
     public void AddModifierToDamage(StatModifier modifier)

@@ -64,6 +64,7 @@ public partial class BossAppearVfx : Node2D
             .AppendTime(1f)
             .AppendCallback(() =>
             {
+                Global.GameContext.SetZoom(new Vector2(0.8f, 0.8f));
                 OnAnimationEnd?.Invoke();
                 QueueFree();
             })

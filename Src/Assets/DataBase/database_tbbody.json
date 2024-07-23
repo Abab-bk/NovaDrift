@@ -8,7 +8,7 @@
     "icon_name": "Default",
     "class_name": "Default",
     "acceleration": 1000,
-    "deceleration": 400
+    "deceleration": 200
   },
   {
     "id": 1001,
@@ -24,7 +24,7 @@
     "icon_name": "Assault",
     "class_name": "Assault",
     "acceleration": 1000,
-    "deceleration": 400
+    "deceleration": 200
   },
   {
     "id": 1002,
@@ -40,7 +40,7 @@
     "icon_name": "Courser",
     "class_name": "Courser",
     "acceleration": 1400,
-    "deceleration": 300
+    "deceleration": 100
   },
   {
     "id": 1003,
@@ -54,6 +54,6 @@
     "icon_name": "Breaker",
     "class_name": "Breaker",
     "acceleration": 1000,
-    "deceleration": 400
+    "deceleration": 200
   }
 ]

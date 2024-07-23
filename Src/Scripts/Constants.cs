@@ -8,6 +8,7 @@ namespace NovaDrift.Scripts;
 
 public static class Constants
 {
+    public static Vector2 DefaultPoolPos = new Vector2(-10000f, -10000f);
     public const string SavePath = "user://save.dat";
     
     public static class Points

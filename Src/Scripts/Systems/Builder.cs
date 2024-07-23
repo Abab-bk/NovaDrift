@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Linq.Expressions;
 using Godot;
 using NovaDrift.Scripts.Prefabs;
 using NovaDrift.Scripts.Prefabs.Actors;
@@ -15,6 +14,7 @@ public class BulletBuilder
         Normal,
         FireBall,
         Grenade,
+        Shit,
     }
     
     private BulletBase _bulletBase;
@@ -31,6 +31,9 @@ public class BulletBuilder
                 break;
             case BulletType.Grenade:
                 _bulletBase = Pool.Pool.GrenadeBulletPool.Get();
+                break;
+            case BulletType.Shit:
+                _bulletBase = Pool.Pool.ShitBulletPool.Get();
                 break;
             default:
                 _bulletBase = Pool.Pool.NormalBulletPool.Get();

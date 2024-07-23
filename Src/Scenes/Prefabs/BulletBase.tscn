@@ -27,3 +27,4 @@ position = Vector2(-13.5, 0)
 [node name="FreeSelfWhenExitScreen" type="VisibleOnScreenNotifier2D" parent="."]
 scale = Vector2(6.2, 3.1)
 script = ExtResource("3_bimy8")
+ReleaseMethod = "Release"

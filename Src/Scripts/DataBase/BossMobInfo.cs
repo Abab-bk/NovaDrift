@@ -27,6 +27,7 @@ public sealed partial class BossMobInfo : Luban.BeanBase
         Targeting = _buf.GetProperty("targeting").GetSingle();
         ShootCd = _buf.GetProperty("shoot_cd").GetSingle();
         BulletCount = _buf.GetProperty("bullet_count").GetSingle();
+        BulletDegeneration = _buf.GetProperty("bullet_degeneration").GetSingle();
         Size = _buf.GetProperty("size").GetSingle();
         DangerFactor = _buf.GetProperty("danger_factor").GetInt32();
         GetExp = _buf.GetProperty("get_exp").GetInt32();
@@ -78,6 +79,10 @@ public sealed partial class BossMobInfo : Luban.BeanBase
     /// </summary>
     public readonly float BulletCount;
     /// <summary>
+    /// 子弹退化
+    /// </summary>
+    public readonly float BulletDegeneration;
+    /// <summary>
     /// 大小
     /// </summary>
     public readonly float Size;
@@ -108,6 +113,7 @@ public sealed partial class BossMobInfo : Luban.BeanBase
         
         
         
+        
     }
 
     public override string ToString()
@@ -123,6 +129,7 @@ public sealed partial class BossMobInfo : Luban.BeanBase
         + "targeting:" + Targeting + ","
         + "shootCd:" + ShootCd + ","
         + "bulletCount:" + BulletCount + ","
+        + "bulletDegeneration:" + BulletDegeneration + ","
         + "size:" + Size + ","
         + "dangerFactor:" + DangerFactor + ","
         + "getExp:" + GetExp + ","

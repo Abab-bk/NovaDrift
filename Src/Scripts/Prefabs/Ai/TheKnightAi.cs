@@ -12,7 +12,7 @@ using NovaDrift.Scripts.Vfx;
 
 namespace NovaDrift.Scripts.Prefabs.Ai;
 
-public partial class TheKnightAi : MobAiComponent
+public partial class TheKnightAi : MobAiComponent, IBossAiHelper
 {
     [Export] private Marker2D _swordMarker;
     [Export] private Marker2D _frontMarker;
@@ -51,16 +51,8 @@ public partial class TheKnightAi : MobAiComponent
         base._Ready();
         SoundManager.LoadBank("TheKnight.bank", out _bank);
         Mob.IsBoss = true;
-        Mob.Shooter.GetBulletFunc = _ => new BulletBuilder()
-            .SetBulletBase("res://Scenes/Prefabs/Bullets/FireBall2.tscn")
-            .SetOwner(Mob)
-            .SetIsPlayer(Mob.IsPlayer)
-            .SetDamage(Mob.Stats.Damage.Value)
-            .SetSpeed(Mob.Stats.BulletSpeed.Value)
-            .SetSize(Mob.Stats.BulletSize.Value)
-            .SetDegeneration(Mob.Stats.BulletDegeneration.Value)
-            .SetSteering(Mob.Stats.Targeting.Value)
-            .Build();
+        Mob.Shooter.GetBulletFunc = _ =>
+            ((IBossAiHelper)this).GetSpecialBullet(Mob, "res://Scenes/Prefabs/Bullets/FireBall2.tscn");
     }
 
     protected override void OnMobDied()

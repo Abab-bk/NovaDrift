@@ -28,3 +28,4 @@ shape = SubResource("RectangleShape2D_0ngga")
 [node name="FreeSelfWhenExitScreen" type="VisibleOnScreenNotifier2D" parent="."]
 scale = Vector2(2.9, 3.3)
 script = ExtResource("4_48c0p")
+ReleaseMethod = "Release"

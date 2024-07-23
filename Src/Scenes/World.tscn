@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://d25jyaf2cexon"]
+[gd_scene load_steps=26 format=3 uid="uid://d25jyaf2cexon"]
 
 [ext_resource type="Script" path="res://Scripts/GameWorld.cs" id="1_xxmb6"]
 [ext_resource type="Texture2D" uid="uid://0uduflkrtr1h" path="res://Assets/Textures/Particles/Star.png" id="2_4h7xe"]
@@ -15,6 +15,7 @@
 [ext_resource type="Environment" uid="uid://dwua3nxtba68l" path="res://Assets/Environments/Default.tres" id="12_ltxuf"]
 [ext_resource type="Texture2D" uid="uid://bhgimrvksym6q" path="res://Assets/Textures/CircleOutline.png" id="14_r8155"]
 [ext_resource type="Script" path="res://Scripts/Systems/Saver/CdKeySaveNode.cs" id="15_jve0g"]
+[ext_resource type="Script" path="res://Scripts/Prefabs/DestroyArea.cs" id="16_q752e"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_34d4f"]
 
@@ -45,6 +46,9 @@ size = Vector2(300, 300)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_n14kv"]
 radius = 243.88
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_v6s0c"]
+size = Vector2(5709, 461)
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("_shakeDirector", "_background", "_hud")]
 script = ExtResource("1_xxmb6")
@@ -202,7 +206,6 @@ metadata/_edit_use_anchors_ = true
 [node name="WaveSpawnerController" type="Node2D" parent="."]
 unique_name_in_owner = true
 script = ExtResource("10_k5lv0")
-_enabled = true
 
 [node name="Left" type="Marker2D" parent="WaveSpawnerController"]
 position = Vector2(100, 832)
@@ -432,3 +435,31 @@ texture = ExtResource("14_r8155")
 
 [node name="CdKeySaveNode" type="Node" parent="."]
 script = ExtResource("15_jve0g")
+
+[node name="DestroyArea" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 384
+script = ExtResource("16_q752e")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="DestroyArea"]
+position = Vector2(1524, -1311)
+shape = SubResource("RectangleShape2D_v6s0c")
+disabled = true
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="DestroyArea"]
+position = Vector2(-1500, 1337)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_v6s0c")
+disabled = true
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="DestroyArea"]
+position = Vector2(4635, 1337)
+rotation = 1.57079
+shape = SubResource("RectangleShape2D_v6s0c")
+disabled = true
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="DestroyArea"]
+position = Vector2(1524, 3995)
+rotation = 3.14159
+shape = SubResource("RectangleShape2D_v6s0c")
+disabled = true

@@ -47,15 +47,15 @@ public static class DataBuilder
         }
         else if (level <= 20)
         {
-            nextLevelExp = level * 10;
+            nextLevelExp = level * 11;
         }
         else if (level <= 40)
         {
-            nextLevelExp = level * 13;
+            nextLevelExp = level * 14;
         }
         else
         {
-            nextLevelExp = level * 16;
+            nextLevelExp = level * 17;
         }
 
         return nextLevelExp;
@@ -307,6 +307,7 @@ public static class DataBuilder
             Size = tbMobInfo.Size,
             DangerFactor = tbMobInfo.DangerFactor,
             GetExp = tbMobInfo.GetExp,
+            Degeneration = tbMobInfo.BulletDegeneration,
             ScenePath = $"res://Scenes/Prefabs/Actors/Mobs/{tbMobInfo.SceneName}.tscn".Trim(),
         };
         

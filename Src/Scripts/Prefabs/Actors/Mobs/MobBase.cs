@@ -115,8 +115,12 @@ public partial class MobBase : Actor
         Stats.Targeting.BaseValue = MobInfo.Targeting;
 
         Stats.BulletCount.BaseValue = MobInfo.BulletCount;
-        
-        if (IsBoss) Shooter.SetShootCd(MobInfo.ShootCd);
+
+        if (IsBoss)
+        {
+            Stats.BulletDegeneration.BaseValue = MobInfo.Degeneration;
+            Shooter.SetShootCd(MobInfo.ShootCd);
+        }
     }
 
     public override void Shoot()
@@ -158,6 +162,7 @@ public partial class MobBase : Actor
         if (IsBoss)
         {
             Global.GameContext.RemoveFollowTarget(this);
+            Global.GameContext.SetZoom(Vector2.One);
             SoundManager.SetMusicParameter(AudioParams.Stage, (int)BackgroundMusicStage.Stage1);
         }
         

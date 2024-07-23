@@ -2,15 +2,9 @@
 
 namespace NovaDrift.Scripts;
 
-public static class AudioEvents
-{
-    public static string ButtonClicked = "event:/ButtonClicked";
-    public static string BackgroundMusic = "event:/BackgroundMusic";
-}
-
 public static class AudioParams
 {
-    public static string Stage = "Stage";
+    public static readonly string Stage = "Stage";
 }
 
 public enum BackgroundMusicStage

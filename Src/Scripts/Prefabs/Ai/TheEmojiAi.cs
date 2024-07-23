@@ -6,7 +6,7 @@ using NovaDrift.Scripts.Systems.BulletPatterns;
 
 namespace NovaDrift.Scripts.Prefabs.Ai;
 
-public partial class TheEmojiAi : MobAiComponent
+public partial class TheEmojiAi : MobAiComponent, IBossAiHelper
 {
     [Export] private Sprite2D _sprite;
     [Export] private Timer _timer;
@@ -25,8 +25,7 @@ public partial class TheEmojiAi : MobAiComponent
         Mob.IsBoss = true;
         Mob.Tags.Add(Constants.Tags.IsDisabledRotation);
         
-        Mob.Shooter.GetBulletFunc = _ => new BulletBuilder()
-            .SetBulletBase("res://Scenes/Prefabs/Bullets/ShitBullet.tscn")
+        Mob.Shooter.GetBulletFunc = _ => new BulletBuilder(BulletBuilder.BulletType.Shit)
             .SetOwner(Mob)
             .SetIsPlayer(Mob.IsPlayer)
             .SetDamage(Mob.Stats.Damage.Value)

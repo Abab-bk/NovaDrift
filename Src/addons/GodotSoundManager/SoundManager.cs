@@ -58,7 +58,7 @@ public static class SoundManager
             _currentMusicInstance.getParameterByName(para, out var value);
             return value;
         }
-        return 0;
+        return 0f;
     }
 
     public static EventInstance PlayUiSound(string id)

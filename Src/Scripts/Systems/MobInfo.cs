@@ -15,4 +15,5 @@ public class MobInfo
     public int GetExp;
     public string ScenePath;
     public string IconPath;
+    public float Degeneration;
 }
