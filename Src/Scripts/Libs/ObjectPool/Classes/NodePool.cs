@@ -23,7 +23,7 @@ public partial class NodePool<TNode>(
     bool collectionCheck,
     int defaultCapacity,
     int maxCapacity
-    ) : Node, IObjectPool<TNode> where TNode : Node
+    ) : Node2D, IObjectPool<TNode> where TNode : Node
 {
     public int CountInactive { get; private set; }
     
@@ -60,6 +60,8 @@ public partial class NodePool<TNode>(
         
         CountInactive = defaultCapacity;
         CountActive = 0;
+        
+        GlobalPosition = new Vector2(-10000, -10000);
     }
 
     public void Clear()
