@@ -39,7 +39,7 @@ public partial class GrenadeShooter : Shooter
 
     public override void SetShootCd(float value)
     {
-        base.SetShootCd(ClampShootCd(value * 4f));
+        base.SetShootCd(ClampShootCd(value * 5f));
     }
 
     public override void _Ready()

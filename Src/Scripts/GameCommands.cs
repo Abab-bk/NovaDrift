@@ -46,7 +46,7 @@ public class GameCommands
 
 public sealed class PlayerCommands
 {
-    public int SomethingId { get; set; } = 1001;
+    public int SomethingId { get; set; } = 1003;
     public void UseAbilityById() => DataBuilder.BuildAbilityById(SomethingId).Use();
     public void UseShooterById() => DataBuilder.BuildWeaponById(SomethingId).Use();
     public void UseBodyById() => DataBuilder.BuildBodyById(SomethingId).Use();

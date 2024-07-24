@@ -48,7 +48,7 @@ size = Vector2(300, 300)
 radius = 243.88
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_v6s0c"]
-size = Vector2(5709, 461)
+size = Vector2(5840.5, 461)
 
 [node name="World" type="Node2D" node_paths=PackedStringArray("_shakeDirector", "_background", "_hud")]
 script = ExtResource("1_xxmb6")
@@ -442,24 +442,20 @@ collision_mask = 384
 script = ExtResource("16_q752e")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="DestroyArea"]
-position = Vector2(1524, -1311)
+position = Vector2(1589.75, -1311)
 shape = SubResource("RectangleShape2D_v6s0c")
-disabled = true
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="DestroyArea"]
 position = Vector2(-1500, 1337)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_v6s0c")
-disabled = true
 
 [node name="CollisionShape2D3" type="CollisionShape2D" parent="DestroyArea"]
 position = Vector2(4635, 1337)
 rotation = 1.57079
 shape = SubResource("RectangleShape2D_v6s0c")
-disabled = true
 
 [node name="CollisionShape2D4" type="CollisionShape2D" parent="DestroyArea"]
 position = Vector2(1524, 3995)
 rotation = 3.14159
 shape = SubResource("RectangleShape2D_v6s0c")
-disabled = true

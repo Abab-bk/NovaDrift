@@ -3,18 +3,26 @@
 [ext_resource type="Script" path="res://Scripts/Prefabs/Weapons/Pendulum.cs" id="1_c524a"]
 [ext_resource type="Script" path="res://addons/ropesim/Rope.gd" id="1_lst5o"]
 [ext_resource type="Script" path="res://addons/ropesim/RopeRendererLine2D.gd" id="2_u4yyg"]
-[ext_resource type="PackedScene" uid="uid://baqm5ajc13gox" path="res://Scenes/Prefabs/Others/PendulumHead.tscn" id="3_jrxil"]
+[ext_resource type="Script" path="res://addons/ropesim/RopeHandle.gd" id="4_rxo0s"]
 
-[node name="Pendulum" type="Node2D"]
+[node name="Pendulum" type="Node2D" node_paths=PackedStringArray("_tailMarker", "_rope")]
 script = ExtResource("1_c524a")
+_tailMarker = NodePath("TailMarker")
+_rope = NodePath("Rope")
 
 [node name="Rope" type="Node2D" parent="."]
 script = ExtResource("1_lst5o")
+rope_length = 300.0
+gravity_direction = Vector2(0, 0)
 
 [node name="RopeRendererLine2D" type="Line2D" parent="Rope"]
-points = PackedVector2Array(0, 0, 0, 11.2227, 0, 22.3719, 0, 33.4202, 0, 44.3467, 0, 55.136, 0, 65.7771, 0, 76.2626, 0, 86.5879, 0, 96.7505, 0, 106.751)
+points = PackedVector2Array(0, 0, -30.5721, -0.0119768, -61.1586, -0.0227984, -91.7585, -0.0314324, -122.356, -0.0370528, -152.922, -0.0391304, -183.421, -0.0374939, -213.82, -0.0323413, -244.095, -0.0242039, -274.232, -0.0138678, -304.232, -0.00226322)
 script = ExtResource("2_u4yyg")
 
-[node name="PendulumHead" parent="." instance=ExtResource("3_jrxil")]
-unique_name_in_owner = true
-position = Vector2(0, 106)
+[node name="TailMarker" type="Marker2D" parent="."]
+position = Vector2(0, 108)
+
+[node name="RopeHandle" type="Marker2D" parent="."]
+position = Vector2(-310, 0)
+script = ExtResource("4_rxo0s")
+rope_path = NodePath("../Rope")

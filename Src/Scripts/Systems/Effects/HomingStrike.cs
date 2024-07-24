@@ -9,15 +9,13 @@ public class HomingStrike : Effect
     
     private BulletBase GetBullet()
     {
-        return new BulletBuilder().
-            SetOwner(Target).
-            SetIsPlayer(Target.IsPlayer).
-            SetDamage(Target.Stats.Damage.Value * Values[2]).
-            SetSpeed(Target.Stats.BulletSpeed.Value * Values[3]).
-            SetSize(Target.Stats.BulletSize.Value).
-            SetDegeneration(Target.Stats.BulletDegeneration.Value + 2f).
-            SetSteering(Target.Stats.Targeting.Value + 1f).
-            Build();
+        var bullet = Target.Shooter.GetBulletFunc.Invoke(Target.Shooter);
+        bullet.Steering = Target.Stats.Targeting.Value + 50f;
+        bullet.Damage = Target.Stats.Damage.Value * Values[2];
+        bullet.Speed = Target.Stats.BulletSpeed.Value * Values[3];
+        bullet.Size = Target.Stats.BulletSize.Value * 0.8f;
+        bullet.Degeneration = Target.Stats.BulletDegeneration.Value + 2f;
+        return bullet;
     }
     
     public override void OnCreate()
@@ -28,7 +26,7 @@ public class HomingStrike : Effect
         {
             if (_count >= (int)Values[0])
             {
-                for (int i = 0; i < 1 + Values[1]; i++)
+                for (int i = 0; i < Values[1]; i++)
                 {
                     Shoot();
                 }

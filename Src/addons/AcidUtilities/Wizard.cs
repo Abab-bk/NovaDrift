@@ -266,12 +266,18 @@ public static class Wizard
     /// <returns></returns>
     public static Node2D GetClosestTarget(this Node2D node, string groupName)
     {
-        var targets = node.GetTree().GetNodesInGroup(groupName).Cast<Node2D>().ToList();
-
-        if (targets.Count <= 0) return null;
+        Node2D target = null;
+        var minDistance = float.MaxValue;
         
-        return targets
-            .OrderBy(orderNode => orderNode.GlobalPosition.DistanceSquaredTo(orderNode.GlobalPosition))
-            .First();
+        foreach (Node child in node.GetTree().GetNodesInGroup(groupName))
+        {
+            if (child is not Node2D node2D) continue;
+            var distance = node.GlobalPosition.DistanceSquaredTo(node2D.GlobalPosition);
+            if (distance > minDistance) continue;
+            minDistance = distance;
+            target = node2D;
+        }
+        
+        return target;
     }
 }

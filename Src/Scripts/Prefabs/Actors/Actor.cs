@@ -243,7 +243,7 @@ public partial class Actor : CharacterBody2D
         
         if (Stats.GetKnockBack() > 0)
         {
-            Velocity += Vector2.Right.Rotated(Rotation) * -Stats.GetKnockBack();
+            Velocity += Vector2.Right.Rotated(Rotation) * (-Stats.GetKnockBack() / 5f);
             Stats.AddKnockBack(-Stats.GetKnockBack());
         }
     }

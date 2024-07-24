@@ -1,6 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://baqm5ajc13gox"]
+[gd_scene load_steps=3 format=3 uid="uid://baqm5ajc13gox"]
 
 [ext_resource type="Script" path="res://Scripts/Prefabs/Others/PendulumHead.cs" id="1_havqg"]
+[ext_resource type="Script" path="res://addons/ropesim/RopeHandle.gd" id="2_873ut"]
 
 [node name="PendulumHead" type="Node2D"]
 script = ExtResource("1_havqg")
+
+[node name="RopeHandle" type="Marker2D" parent="."]
+script = ExtResource("2_873ut")
+enable = false
