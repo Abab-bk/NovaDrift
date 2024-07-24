@@ -159,7 +159,7 @@ public abstract partial class Popup : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: Popup.Panel.VBoxContainer.HBoxContainer.ConfirmBtn
+    /// 类型: <see cref="Godot.Button"/>, 路径: Popup.Panel.VBoxContainer.MarginContainer.HBoxContainer.ConfirmBtn
     /// </summary>
     public class ConfirmBtn : UiNode<PopupPanel, Godot.Button, ConfirmBtn>
     {
@@ -168,7 +168,7 @@ public abstract partial class Popup : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: Popup.Panel.VBoxContainer.HBoxContainer.CloseBtn
+    /// 类型: <see cref="Godot.Button"/>, 路径: Popup.Panel.VBoxContainer.MarginContainer.HBoxContainer.CloseBtn
     /// </summary>
     public class CloseBtn : UiNode<PopupPanel, Godot.Button, CloseBtn>
     {
@@ -177,12 +177,12 @@ public abstract partial class Popup : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: Popup.Panel.VBoxContainer.HBoxContainer
+    /// 类型: <see cref="Godot.HBoxContainer"/>, 路径: Popup.Panel.VBoxContainer.MarginContainer.HBoxContainer
     /// </summary>
     public class HBoxContainer : UiNode<PopupPanel, Godot.HBoxContainer, HBoxContainer>
     {
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: Popup.Panel.VBoxContainer.ConfirmBtn
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: Popup.Panel.VBoxContainer.MarginContainer.ConfirmBtn
         /// </summary>
         public ConfirmBtn L_ConfirmBtn
         {
@@ -195,7 +195,7 @@ public abstract partial class Popup : UiBase
         private ConfirmBtn _L_ConfirmBtn;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: Popup.Panel.VBoxContainer.CloseBtn
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: Popup.Panel.VBoxContainer.MarginContainer.CloseBtn
         /// </summary>
         public CloseBtn L_CloseBtn
         {
@@ -209,6 +209,28 @@ public abstract partial class Popup : UiBase
 
         public HBoxContainer(PopupPanel uiPanel, Godot.HBoxContainer node) : base(uiPanel, node) {  }
         public override HBoxContainer Clone() => new (UiPanel, (Godot.HBoxContainer)Instance.Duplicate());
+    }
+
+    /// <summary>
+    /// 类型: <see cref="Godot.MarginContainer"/>, 路径: Popup.Panel.VBoxContainer.MarginContainer
+    /// </summary>
+    public class MarginContainer : UiNode<PopupPanel, Godot.MarginContainer, MarginContainer>
+    {
+        /// <summary>
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Popup.Panel.VBoxContainer.HBoxContainer
+        /// </summary>
+        public HBoxContainer L_HBoxContainer
+        {
+            get
+            {
+                if (_L_HBoxContainer == null) _L_HBoxContainer = new HBoxContainer(UiPanel, Instance.GetNode<Godot.HBoxContainer>("HBoxContainer"));
+                return _L_HBoxContainer;
+            }
+        }
+        private HBoxContainer _L_HBoxContainer;
+
+        public MarginContainer(PopupPanel uiPanel, Godot.MarginContainer node) : base(uiPanel, node) {  }
+        public override MarginContainer Clone() => new (UiPanel, (Godot.MarginContainer)Instance.Duplicate());
     }
 
     /// <summary>
@@ -243,17 +265,17 @@ public abstract partial class Popup : UiBase
         private Content _L_Content;
 
         /// <summary>
-        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Popup.Panel.HBoxContainer
+        /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: Popup.Panel.MarginContainer
         /// </summary>
-        public HBoxContainer L_HBoxContainer
+        public MarginContainer L_MarginContainer
         {
             get
             {
-                if (_L_HBoxContainer == null) _L_HBoxContainer = new HBoxContainer(UiPanel, Instance.GetNode<Godot.HBoxContainer>("HBoxContainer"));
-                return _L_HBoxContainer;
+                if (_L_MarginContainer == null) _L_MarginContainer = new MarginContainer(UiPanel, Instance.GetNode<Godot.MarginContainer>("MarginContainer"));
+                return _L_MarginContainer;
             }
         }
-        private HBoxContainer _L_HBoxContainer;
+        private MarginContainer _L_MarginContainer;
 
         public VBoxContainer(PopupPanel uiPanel, Godot.VBoxContainer node) : base(uiPanel, node) {  }
         public override VBoxContainer Clone() => new (UiPanel, (Godot.VBoxContainer)Instance.Duplicate());
@@ -318,19 +340,24 @@ public abstract partial class Popup : UiBase
     public Content S_Content => L_Panel.L_VBoxContainer.L_Content;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Popup.Panel.VBoxContainer.HBoxContainer.ConfirmBtn
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Popup.Panel.VBoxContainer.MarginContainer.HBoxContainer.ConfirmBtn
     /// </summary>
-    public ConfirmBtn S_ConfirmBtn => L_Panel.L_VBoxContainer.L_HBoxContainer.L_ConfirmBtn;
+    public ConfirmBtn S_ConfirmBtn => L_Panel.L_VBoxContainer.L_MarginContainer.L_HBoxContainer.L_ConfirmBtn;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Popup.Panel.VBoxContainer.HBoxContainer.CloseBtn
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: Popup.Panel.VBoxContainer.MarginContainer.HBoxContainer.CloseBtn
     /// </summary>
-    public CloseBtn S_CloseBtn => L_Panel.L_VBoxContainer.L_HBoxContainer.L_CloseBtn;
+    public CloseBtn S_CloseBtn => L_Panel.L_VBoxContainer.L_MarginContainer.L_HBoxContainer.L_CloseBtn;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Popup.Panel.VBoxContainer.HBoxContainer
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.HBoxContainer"/>, 节点路径: Popup.Panel.VBoxContainer.MarginContainer.HBoxContainer
     /// </summary>
-    public HBoxContainer S_HBoxContainer => L_Panel.L_VBoxContainer.L_HBoxContainer;
+    public HBoxContainer S_HBoxContainer => L_Panel.L_VBoxContainer.L_MarginContainer.L_HBoxContainer;
+
+    /// <summary>
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.MarginContainer"/>, 节点路径: Popup.Panel.VBoxContainer.MarginContainer
+    /// </summary>
+    public MarginContainer S_MarginContainer => L_Panel.L_VBoxContainer.L_MarginContainer;
 
     /// <summary>
     /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.VBoxContainer"/>, 节点路径: Popup.Panel.VBoxContainer

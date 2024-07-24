@@ -1,7 +1,10 @@
-[gd_scene load_steps=4 format=3 uid="uid://bycxxjw8gymoe"]
+[gd_scene load_steps=5 format=3 uid="uid://bycxxjw8gymoe"]
 
 [ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_d81gn"]
 [ext_resource type="Script" path="res://Scripts/Ui/popup/PopupPanel.cs" id="1_metdk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djb6e"]
+bg_color = Color(0.0900985, 0.0900985, 0.0900984, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qx3am"]
 bg_color = Color(0.937255, 0.780392, 0, 1)
@@ -38,6 +41,7 @@ offset_bottom = 340.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(1280, 380)
+theme_override_styles/panel = SubResource("StyleBoxFlat_djb6e")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
 layout_mode = 2
@@ -81,20 +85,24 @@ theme_override_font_sizes/font_size = 50
 text = "描述"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/margin_bottom = 50
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer"]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 theme_override_constants/separation = 50
 alignment = 1
 
-[node name="ConfirmBtn" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+[node name="ConfirmBtn" type="Button" parent="Panel/VBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 4
 text = "确认"
 
-[node name="CloseBtn" type="Button" parent="Panel/VBoxContainer/HBoxContainer"]
+[node name="CloseBtn" type="Button" parent="Panel/VBoxContainer/MarginContainer/HBoxContainer"]
 unique_name_in_owner = true
 custom_minimum_size = Vector2(600, 0)
 layout_mode = 2

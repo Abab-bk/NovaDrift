@@ -7,7 +7,7 @@ public partial class JoyKnob : TouchScreenButton
 {
     public Vector2 TargetDir { private set; get; }
     
-    private const float DragRadius = 300f;
+    private const float DragRadius = 350f;
     
     private int _fingerIndex = -1;
     private Vector2 _dragOffset;

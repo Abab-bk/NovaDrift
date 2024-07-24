@@ -63,7 +63,7 @@ public static class Pool
                     mob.QueueFree();
                 },
                 true,
-                40,
+                20,
                 100
             );
             
@@ -96,7 +96,7 @@ public static class Pool
                     mob.QueueFree();
                 },
                 true,
-                40,
+                20,
                 100
             );
             
@@ -139,7 +139,7 @@ public static class Pool
                 dieVfx.QueueFree();
             },
             true,
-            80,
+            40,
             200
             );
         
@@ -160,7 +160,7 @@ public static class Pool
                 particles.QueueFree();
             },
             true,
-            80,
+            40,
             200
         );
         
@@ -180,7 +180,7 @@ public static class Pool
                 particles.QueueFree();
             },
             true,
-            80,
+            40,
             200
         );
         
@@ -207,7 +207,7 @@ public static class Pool
                 particles.QueueFree();
             },
             true,
-            80,
+            40,
             200
         );
         
@@ -230,7 +230,7 @@ public static class Pool
                 node.QueueFree();
             },
             true,
-            400,
+            200,
             400
         );
         
@@ -250,7 +250,7 @@ public static class Pool
                 node.QueueFree();
             },
             true,
-            500,
+            100,
             1000
         );
         
@@ -270,7 +270,7 @@ public static class Pool
                 node.QueueFree();
             },
             true,
-            500,
+            100,
             1000
         );
         
@@ -290,7 +290,7 @@ public static class Pool
                 node.QueueFree();
             },
             true,
-            500,
+            100,
             1000
         );
         
@@ -310,7 +310,7 @@ public static class Pool
                 node.QueueFree();
             },
             true,
-            500,
+            100,
             1000
         );
         

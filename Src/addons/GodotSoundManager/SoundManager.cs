@@ -9,6 +9,7 @@ namespace AcidWallStudio.Fmod;
 public static class SoundManager
 {
     private static FMOD.Studio.System _studioSystem;
+    private static FMOD.System _coreSystem;
 
     public static float MasterVolume = 1;
     public static float MusicVolume = 1;
@@ -23,7 +24,17 @@ public static class SoundManager
     private static EventInstance _currentMusicInstance;
 
     public static bool Disabled = false;
-    
+
+    public static void MixerSuspend()
+    {
+        _coreSystem.mixerSuspend();
+    }
+
+    public static void MixerResume()
+    {
+        _coreSystem.mixerResume();
+    }
+
     public static EventInstance PlayOneShotById(string id)
     {
         if (Disabled) return default;
@@ -131,7 +142,8 @@ public static class SoundManager
         if (Disabled) return;
         FMOD.Studio.System.create(out _studioSystem);
         _studioSystem.initialize(FmodConfig.MaxChannels, INITFLAGS.NORMAL, FMOD.INITFLAGS._3D_RIGHTHANDED, IntPtr.Zero);
-
+        _studioSystem.getCoreSystem(out _coreSystem);
+        
         foreach (var path in FmodConfig.BankPaths)
         {
             // TODO: 加一层 buffer 可能造成额外内存消耗，出问题就改成 stream

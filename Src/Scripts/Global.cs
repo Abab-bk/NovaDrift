@@ -155,7 +155,10 @@ public class GameContext
 
 public static class Global
 {
-    // FIXME: 护盾半径好像无效
+    public static event Action OnAdRewardGet;
+    public static event Action OnAdVideoFailed;
+    public static event Action OnAdVideoClosed;
+    public static event Action OnAdVideoSkip;
     
     public static event Action OnAcidCoinsChanged;
     
@@ -175,6 +178,8 @@ public static class Global
     public static WorldEnvironment WorldEnvironment;
     public static bool ShowLogo = true;
     public static readonly GameContext GameContext = new GameContext();
+
+    private static Node _pockAd;
     
     // Saver ========
     public static CdKeySaveNode CdKeySaveNode;
@@ -187,6 +192,20 @@ public static class Global
             _acidCoins = value;
             OnAcidCoinsChanged?.Invoke();
         }
+    }
+
+    public static void SetPockAd(Node node)
+    {
+        _pockAd = node;
+        _pockAd.Connect("get_reward", Callable.From(() => OnAdRewardGet?.Invoke()));
+        _pockAd.Connect("reward_failed", Callable.From(() => OnAdVideoFailed?.Invoke()));
+        _pockAd.Connect("rewrad_closed", Callable.From(() => OnAdVideoClosed?.Invoke()));
+        _pockAd.Connect("reward_skip", Callable.From(() => OnAdVideoSkip?.Invoke()));
+    }
+
+    public static void ShowRewardVideoAd()
+    {
+        _pockAd.Call("show_reward_video_ad");
     }
 
     private static int _acidCoins;

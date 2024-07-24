@@ -215,18 +215,15 @@ public partial class Player : Actor
         if (IsDead) return;
         IsDead = true;
         
-        EventBus.OnPlayerDead?.Invoke();
-        EventBus.OnGameOver?.Invoke();
+        if (Global.GameContext.ReliveCount > 0)
+        {
+            EventBus.OnPlayerDead?.Invoke();
+            EventBus.OnGameOver?.Invoke();
+            return;
+        }
         
-        // TODO: 接入广告了再开下面的
-        // if (Global.GameContext.ReliveCount > 0)
-        // {
-        //     EventBus.OnPlayerDead?.Invoke();
-        //     EventBus.OnGameOver?.Invoke();
-        //     return;
-        // }
-        // Global.StopGame();
-        // UiManager.Open_Relife();
+        Global.StopGame();
+        UiManager.Open_Relife();
     }
 
     public void UpLevel(float value = 0f)

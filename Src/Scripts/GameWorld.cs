@@ -51,6 +51,7 @@ public partial class GameWorld : Node2D
 		AcidSaver.LoadAll();
 		AudioServer.Lock();
 
+		Global.SetPockAd(GetNode("/root/PockAD"));
 		Global.GameWorld = this;
 		Global.SceneTree = GetTree();
 		Global.ShakeDirector = _shakeDirector;
@@ -102,10 +103,18 @@ public partial class GameWorld : Node2D
 
 	public override void _Notification(int what)
 	{
-		if (what == NotificationExitTree)
+		switch (what)
 		{
-			SoundManager.Shutdown();
-			AudioServer.Unlock();
+			case (int)NotificationExitTree:
+				SoundManager.Shutdown();
+				AudioServer.Unlock();
+				break;
+			case (int)NotificationApplicationPaused:
+				SoundManager.MixerSuspend();
+				break;
+			case (int)NotificationApplicationResumed:
+				SoundManager.MixerResume();
+				break;
 		}
 	}
 
