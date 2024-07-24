@@ -21,17 +21,17 @@ public abstract partial class PowerUpBtn : UiBase
     private Icon _L_Icon;
 
     /// <summary>
-    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.Button"/>, 节点路径: PowerUpBtn.Button
+    /// 使用 Instance 属性获取当前节点实例对象, 节点类型: <see cref="Godot.TouchScreenButton"/>, 节点路径: PowerUpBtn.TouchScreenButton
     /// </summary>
-    public Button L_Button
+    public TouchScreenButton L_TouchScreenButton
     {
         get
         {
-            if (_L_Button == null) _L_Button = new Button((PowerUpBtnPanel)this, GetNode<Godot.Button>("Button"));
-            return _L_Button;
+            if (_L_TouchScreenButton == null) _L_TouchScreenButton = new TouchScreenButton((PowerUpBtnPanel)this, GetNode<Godot.TouchScreenButton>("TouchScreenButton"));
+            return _L_TouchScreenButton;
         }
     }
-    private Button _L_Button;
+    private TouchScreenButton _L_TouchScreenButton;
 
 
     public PowerUpBtn() : base(nameof(PowerUpBtn))
@@ -53,12 +53,12 @@ public abstract partial class PowerUpBtn : UiBase
     }
 
     /// <summary>
-    /// 类型: <see cref="Godot.Button"/>, 路径: PowerUpBtn.Button
+    /// 类型: <see cref="Godot.TouchScreenButton"/>, 路径: PowerUpBtn.TouchScreenButton
     /// </summary>
-    public class Button : UiNode<PowerUpBtnPanel, Godot.Button, Button>
+    public class TouchScreenButton : UiNode<PowerUpBtnPanel, Godot.TouchScreenButton, TouchScreenButton>
     {
-        public Button(PowerUpBtnPanel uiPanel, Godot.Button node) : base(uiPanel, node) {  }
-        public override Button Clone() => new (UiPanel, (Godot.Button)Instance.Duplicate());
+        public TouchScreenButton(PowerUpBtnPanel uiPanel, Godot.TouchScreenButton node) : base(uiPanel, node) {  }
+        public override TouchScreenButton Clone() => new (UiPanel, (Godot.TouchScreenButton)Instance.Duplicate());
     }
 
 
@@ -68,8 +68,8 @@ public abstract partial class PowerUpBtn : UiBase
     public Icon S_Icon => L_Icon;
 
     /// <summary>
-    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.Button"/>, 节点路径: PowerUpBtn.Button
+    /// 场景中唯一名称的节点, 节点类型: <see cref="Godot.TouchScreenButton"/>, 节点路径: PowerUpBtn.TouchScreenButton
     /// </summary>
-    public Button S_Button => L_Button;
+    public TouchScreenButton S_TouchScreenButton => L_TouchScreenButton;
 
 }

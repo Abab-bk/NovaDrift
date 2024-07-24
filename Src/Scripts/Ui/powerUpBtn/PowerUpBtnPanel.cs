@@ -17,7 +17,7 @@ public partial class PowerUpBtnPanel : PowerUpBtn
         PowerUp = powerUp;
         L_Icon.Instance.Texture = GD
             .Load<Texture2D>($"res://Assets/Ui/Icons/PowerUpsIcon/{PowerUp.PowerUpInfo.IconName}.png");
-        L_Button.Instance.Pressed += () =>
+        L_TouchScreenButton.Instance.Pressed += () =>
         {
             L_Icon.Instance.Modulate = new Color("#ababab");
             PowerUp.Use();

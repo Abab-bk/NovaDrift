@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://uhxybs1u1kqw"]
+[gd_scene load_steps=5 format=3 uid="uid://uhxybs1u1kqw"]
 
 [ext_resource type="Script" path="res://Scripts/Ui/powerUpBtn/PowerUpBtnPanel.cs" id="1_1n7xe"]
 [ext_resource type="Theme" uid="uid://b7g6xk4hko1sg" path="res://Assets/Themes/Default.tres" id="1_81olb"]
 [ext_resource type="Texture2D" uid="uid://dxcetcd5cmn18" path="res://Assets/Ui/Icons/PowerUpsIcon/PowerGunman.png" id="2_rbmjw"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mtmhb"]
+size = Vector2(200, 200)
 
 [node name="PowerUpBtn" type="Control"]
 custom_minimum_size = Vector2(200, 200)
@@ -22,11 +25,6 @@ texture = ExtResource("2_rbmjw")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_type_variation = &"EmptyBtn"
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+position = Vector2(100, 100)
+shape = SubResource("RectangleShape2D_mtmhb")
